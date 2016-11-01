@@ -1,0 +1,30 @@
+kmdaBundle\Entity\GeocodingPoint:
+    type: entity
+    table: geocoding_point
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        latitude:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: Широта
+        longtitude:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: Довгота
+        theGeom900913:
+            type: point
+            nullable: true
+            requireSQLConversion: true
+            column: the_geom900913
+    lifecycleCallbacks: {  }

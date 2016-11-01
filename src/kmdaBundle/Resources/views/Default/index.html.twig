@@ -1,0 +1,497 @@
+{% extends '::base.html.twig' %}
+{#{% form_theme form 'bootstrap_3_layout.html.twig' %}#}
+{% block stylesheets %}
+    {% stylesheets
+        '//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css'
+        'css/bootstrap.css'
+        'css/ol.css'
+        'https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+        'https://fonts.googleapis.com/icon?family=Material+Icons'
+        'https://code.getmdl.io/1.1.3/material.cyan-light_blue.min.css'
+        'css/ekko-lightbox.min.css'
+        'css/styles.css'
+        filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+    {#'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css'#}
+{% block javascripts %}
+
+    {% javascripts 
+        'js/jquery-2.1.1.min.js'
+        'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'
+        'js/bootstrap.js'
+        'http://maps.google.com/maps/api/js?v=3&key=AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g'
+        'js/jquery.placeholder.js'
+        'js/jquery.slimscroll.min_1.js'
+        'js/jquery.maskedinput.min.js'
+        'js/ol.js'        
+        'js/ol3gm.js'
+        'https://code.getmdl.io/1.1.3/material.min.js'
+        'js/ekko-lightbox.min.js'
+        'js/app.js'
+
+        output='js/appkmda.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {#'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js'#}
+    <script type="text/javascript">
+      $(function () {
+        $(".mdl-navigation__link").click(function(){
+              $(this).next(".demo-filters").slideToggle(600);
+              $(this).toggleClass("active");
+          });
+        $(".mdl-navigation__link").click(function(){
+              $(this).next(".mdl-navigation__level2").slideToggle(600);
+          });
+        toggleInfo = function(){
+          $('.demo-info').toggle();
+        };
+                    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+                        event.preventDefault();
+                        $(this).ekkoLightbox();
+                    });
+      });
+</script>
+{% endblock %}
+
+{% block body -%}
+{% set functions_z = [
+ "Території сільськогосподарські (існуючі)",
+ "Території житлової середньо- та малоповерхової забудови (існуючі)",
+ "Водоймища та водотоки",
+ "Території спецпризначення",
+ "Території житлової забудови багатоповерхової (перспективні)",
+ "Території вулиць і доріг",
+ "Території житлової садибної забудови (перспективні)",
+ "Території промислові (існуючі)",
+ "Території лугів та лугопарків (існуючі)",
+ "Охоронна зона газопроводу",
+ "Території сільськогосподарські (перспективні)",
+ "Території громадських будівель та споруд (перспективні)",
+ "Території комунально-складські  (на розрахунковий період)",
+ "Території житлової середньо- та малоповерхової забудови (на розрахунковий період)",
+ "Території лісів та лісопарків (перспективні)",
+ "Території захисної зелені (на розрахунковий період)",
+ "Території комунально-складські (існуючі)",
+ "Території лісів та лісопарків (існуючі)",
+ "Території житлової садибної забудови (існуючі)",
+ "Території лісів та лісопарків (на розрахунковий період)",
+ "Території зелених насаджень загального користування (існуючі)",
+ "Території житлової забудови багатоповерхової (існуючі)",
+ "Території промислові (перспективні)",
+ "Території зелених насаджень загального користування (на розрахунковий період)",
+ "Території зелених насаджень загального користування (перспективні)",
+ "Території рекреаційної забудови (існуючі)",
+ "Території лугів та лугопарків (на розрахунковий період)",
+ "Території аеропортів",
+ "Території комунально-складські (перспективні)",
+ "Території громадських будівель та споруд (існуючі)",
+ "Території колективних садів та дач (існуючі)",
+ "Території рекреаційної забудови (перспективні)",
+ "Території колективних садів та дач (перспективні)",
+ "Водоймища та водотоки (перспективні)",
+ "Території кладовищ (на розрахунковий період)",
+ "Території захисної зелені (існуючі)",
+ "Території захисної зелені (перспективні)",
+ "Території промислові (на розрахунковий період)",
+ "Території житлової забудови багатоповерхової (на розрахунковий період)",
+ "Території житлової садибної забудови (на розрахунковий період)",
+ "Території житлової середньо- та малоповерхової забудови (перспективні)",
+ "Території залізничного транспорту",
+ "Території громадських будівель та споруд (на розрахунковий період)",
+ "Території рекреаційної забудови (на розрахунковий період)",
+ "Території кладовищ (існуючі)",
+] %}
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+            
+    <div id="bazlayer">
+            <form  action="#">
+            <div class="mdl-selectfield">
+              <select class="browser-default">
+                <option value="osm" selected="selected">Open Street Map</option>
+                <option value="kiev2000">Топографія (1:2000)</option>
+                <option value="google">Google Satellite</option>
+                <option value="googlehybrid">Google Hybrid</option>
+                <option value="kiev2006">Космічний знімок, 2006р</option>
+                <option value="kiev2015">Космічний знімок, 2015р</option>
+              </select>
+            </div>
+          </form>
+    </div>
+            
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search">
+              <label class="mdl-textfield__label" for="search">Пошук...</label>
+            </div>
+          </div>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+            <li class="mdl-menu__item">Увійти</li>
+            <li class="mdl-menu__item">Допомога</li>
+          </ul>
+        </div>
+      </header>
+      <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+          <span class="mdl-layout-title brand">
+            <a href="/"><img src="/images/logo.png"></a>
+          </span>
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+          <a class="mdl-navigation__link mdl-navigation__level1" href="javascript:void(0);">
+              <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_balance</i>
+              Комунальна власність</a>
+          <div class="mdl-navigation__level2">
+              <a class="mdl-navigation__link legend-tooltip" href="#wms1" ><i class="mdl-color-text--blue-grey-400 material-icons"  role="presentation">vpn_lock</i>Власність</a>
+          <form class="demo-filters" action="#">
+            {% set districts = ["Голосіївський","Дарницький","Деснянський","Дніпровський","Оболонський","Печерський","Подільський","Святошинський","Солом'янський","Шевченківський"] %}
+            <div class="mdl-selectfield">
+              <label>Район</label>
+              <select class="browser-default fl1" id="district">
+                <option value="" disabled selected>Район</option>
+                {% for district in districts %}
+                <option>{{ district|e }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mdl-selectfield">
+              <label>Група тип</label>
+              <select class="browser-default fl1" id="btype">
+                <option value="" disabled selected>Група тип</option>
+                {% for bType in buildingType %}
+                    <option>{{ bType.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mdl-selectfield">
+              <label>Група вид</label>
+              <select class="browser-default fl1" id="kind">
+                <option value="" disabled selected>Група вид</option>
+                {% for bKind in buildingKind %}
+                    <option>{{ bKind.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mdl-selectfield">
+              <label>Технічний стан</label>
+              <select class="browser-default fl1" id="btechstate"> 
+                <option value="" disabled selected>Технічний стан</option>
+                {% for bTechState in buildingTechState %}
+                    <option>{{ bTechState.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <span class="label-filters">Загальна площа</span>
+            <div class="fromto-filters">
+              <div class="fromto-item">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input fl1" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="minsqrtotal">
+                  <label class="mdl-textfield__label" for="minsqrtotal">Від (кв.м.)</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+              </div>
+              <div class="fromto-item">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input fl1" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="maxsqrtotal">
+                  <label class="mdl-textfield__label" for="maxsqrtotal">До (кв.м.)</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+              </div>
+            </div>
+            <span class="label-filters">Балансова вартість</span>
+            <div class="fromto-filters">
+              <div class="fromto-item">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input fl1" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="mincostbalans">
+                  <label class="mdl-textfield__label" for="mincostbalans">Від (грн.)</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+              </div>
+              <div class="fromto-item">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input fl1" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="maxcostbalans">
+                  <label class="mdl-textfield__label" for="maxcostbalans">До (грн.)</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+              </div>
+            </div>
+          </form>
+          <a class="mdl-navigation__link legend-tooltip" href="#wms2"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">event</i>Оренда</a>
+          <form class="demo-filters" action="#">
+{#            <div class="mdl-selectfield">
+              <label>Район</label>
+              <select class="browser-default fl2" id="DistrictName">
+                <option value="" disabled selected>Район</option>
+                {% for district in districts %}
+                <option>{{ district }}</option>
+                {% endfor %}
+              </select>
+            </div>#}
+            <span class="label-filters">Загальна площа</span>
+            <div class="fromto-filters">
+              <div class="fromto-item">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input fl2" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="minsqr_rent">
+                  <label class="mdl-textfield__label" for="minSqrTotal">Від (кв.м.)</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+              </div>
+              <div class="fromto-item">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input fl2" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="maxsqr_rent">
+                  <label class="mdl-textfield__label" for="maxSqrTotal">До (кв.м.)</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <a class="mdl-navigation__link legend-tooltip" href="#wms3"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">folder_shared</i>Приватизація</a>
+          <form class="demo-filters" action="#">
+            <span class="label-filters">Загальна площа</span>
+            <div class="fromto-filters">
+              <div class="fromto-item">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input fl3" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="minaqrtotal">
+                  <label class="mdl-textfield__label" for="minaqrtotal">Від (кв.м.)</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+              </div>
+              <div class="fromto-item">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input fl3" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="maxaqrtotal">
+                  <label class="mdl-textfield__label" for="maxaqrtotal">До (кв.м.)</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+              </div>
+            </div>
+            <span class="label-filters">Балансова вартість</span>
+            <div class="fromto-filters">
+              <div class="fromto-item">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input fl3" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="mincost">
+                  <label class="mdl-textfield__label" for="mincost">Від (грн.)</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+              </div>
+              <div class="fromto-item">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input fl3" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="maxcost">
+                  <label class="mdl-textfield__label" for="maxcost">До (грн.)</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+              </div>
+            </div>
+          </form>
+          <a class="mdl-navigation__link legend-tooltip" href="#wms4"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">nature_people</i>Комунальні організації</a>
+          <form class="demo-filters" action="#">
+            <div class="mdl-selectfield">
+              <label>Район</label>
+              <select class="browser-default fl4" id="district">
+                <option value="" disabled selected>Район</option>
+                {% for district in districts %}
+                    <option>{{ district }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <span class="label-filters">Загальна площа</span>
+            <div class="fromto-filters">
+              <div class="fromto-item">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input fl4" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="minaqrtotal">
+                  <label class="mdl-textfield__label" for="minaqrtotal">Від (кв.м.)</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+              </div>
+              <div class="fromto-item">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input fl4" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="maxaqrtotal">
+                  <label class="mdl-textfield__label" for="maxaqrtotal">До (кв.м.)</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+              </div>
+            </div>
+          </form>
+              </div>
+          <a class="mdl-navigation__link mdl-navigation__level1" href="#"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">location_city</i>Архітектура</a>
+          <div class="mdl-navigation__level2">
+            <a class="mdl-navigation__link legend-tooltip" href="#wms8"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">content_paste</i>Генплан</a>
+            <form class="demo-filters" action="#">
+            <div class="mdl-selectfield">
+              <select class="browser-default fl8" id="function_z">
+                <option value="" selected>Функціональне призначення</option>
+                {% for function_z in functions_z %}
+                    <option>{{ function_z }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </form>
+            <a class="mdl-navigation__link legend-tooltip" href="#wms13"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">history</i>Зміни до генплану</a>
+            <a class="mdl-navigation__link legend-tooltip" href="#wms10"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">store</i>Містобудівні умови</a>
+            <a class="mdl-navigation__link legend-tooltip" href="#wms12"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">explore</i>ДПТ</a>
+            <a class="mdl-navigation__link legend-tooltip" href="#wms5"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Будинки</a>
+            <a class="mdl-navigation__link legend-tooltip" href="#wms6"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">business</i>Вулиці</a>
+                        <a class="mdl-navigation__link legend-tooltip" href="#wms23"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">important_devices</i>Мониторинг</a>
+          </div>
+
+<a class="mdl-navigation__link mdl-navigation__level1" href="#"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">terrain</i>Земля</a>
+          <div class="mdl-navigation__level2">          
+          <a class="mdl-navigation__link legend-tooltip" href="#wms9"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">receipt</i>Інформація про оренду</a>
+          <a class="mdl-navigation__link legend-tooltip" href="#wms11"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Кадастровий поділ</a>
+          </div>
+ <a class="mdl-navigation__link mdl-navigation__level1" href="#"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">motorcycle</i>Транспорт</a>
+          <div class="mdl-navigation__level2">
+            <a class="mdl-navigation__link legend-tooltip" href="#wms14"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">traffic</i>Ремонти автодоріг</a>
+            <a class="mdl-navigation__link legend-tooltip" href="#wms17"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">airport_shuttle</i>Зупинки транспорту</a>
+            <a class="mdl-navigation__link legend-tooltip" href="#wms21"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_bus</i>Зупинки автобусiв</a>
+            <a class="mdl-navigation__link legend-tooltip" href="#wms19"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">av_timer</i>Парксервіс</a>
+              <form class="demo-filters" action="#">
+                  {% set districts = ["Голосіївський","Дарницький","Деснянський","Дніпровський","Оболонський","Печерський","Подільський","Святошинський","Солом\'янський","Шевченківський"] %}
+                  {% set techs = ["дорожні знаки","дорожні знаки/паркомат","дорожні знаки/паркомати","дорожні знаки/термінал","дорожні знаки/шлагбаум"] %}
+                  <div class="mdl-selectfield">
+                      <select class="browser-default fl19" id="region">
+                          <option value="" selected>Район</option>
+                          {% for district in districts %}
+                              <option>{{ district|e }}</option>
+                          {% endfor %}
+                      </select>
+                  </div>
+                  <div class="mdl-selectfield">
+                      <select class="browser-default fl19" id="p_zone">
+                          <option value="" selected>Номер зони</option>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                      </select>
+                  </div>
+                  <div class="mdl-selectfield">
+                      <select class="browser-default fl19" id="p_mode">
+                          <option value="" selected>Форма паркування</option>
+                          <option>Денна</option>
+                          <option>Нічна</option>
+                          <option>Цілодобовий</option>
+                      </select>
+                  </div>
+                  <div class="mdl-selectfield">
+                      <select class="browser-default fl19" id="tech">
+                          <option value="" selected>Тех. облаштування</option>
+                          {% for tech in techs %}
+                              <option>{{ tech|e }}</option>
+                          {% endfor %}
+                      </select>
+                  </div>
+              </form>
+
+
+            <a class="mdl-navigation__link legend-tooltip" href="#wms22"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">priority_high</i>ДТП</a>
+          </div>
+ <a class="mdl-navigation__link mdl-navigation__level1" href="#"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">border_clear</i>Інше</a>
+          <div class="mdl-navigation__level2">
+            <a class="mdl-navigation__link legend-tooltip" href="#wms7"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">question_answer</i>Реклама</a>
+            <a class="mdl-navigation__link legend-tooltip" href="#wms16"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flash_auto</i>Електромережі</a>
+            <a class="mdl-navigation__link legend-tooltip" href="#wms20"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">&#xE545;</i>Зеленбуд</a>
+
+            {% if is_granted('ROLE_SECRETAR') %}
+            <a class="mdl-navigation__link" href="{{  path('orendaresh_new')  }}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assignment_turned_in</i>Протокол комісії</a>
+          {% endif %}
+          </div>
+        </nav>
+      </div>
+      <div class="demo-info" id="demoinfo">
+        <div class="demo-updates mdl-card mdl-shadow--2dp">
+            <div id="carousel-main" class="carousel slide" data-ride="carousel" data-interval="3000" role="listbox">
+{#          <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+          </div>#}
+                         
+                        <div class="carousel-inner" id="information">
+                        </div>
+{#                        <ol class="carousel-indicators">
+                        </ol>#}
+                                <!-- Control -->
+{#                    <a class="left carousel-control" href="#carousel-main" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-main" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>#}
+            
+{#          <div class="demo-card__title mdl-card--expand mdl-color--teal-300">
+            <h1>Головний заголовок</h1>
+            <h2>Другий загаловок обраного місця</h2>
+          </div>
+          <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+            <small>Type of property</small>
+            <h5>City comunal</h5>
+            <small>Type of property</small>
+            <h5>City comunal</h5>
+            <small>Type of property</small>
+            <h5>City comunal</h5>
+            <small>Type of property</small>
+            <h5>City comunal</h5>
+            <small>Type of property</small>
+            <h5>City comunal</h5>
+            <small>Type of property</small>
+            <h5>City comunal</h5>
+            <small>Type of property</small>
+            <h5>City comunal</h5>
+          </div>#}
+          <div class="mdl-card__actions mdl-card--border">
+            <a href="#" id="orendadoc" class="mdl-button mdl-js-button mdl-js-ripple-effect" onclick="toggleInfoPopup()">Додати заявку</a>
+            <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect" onclick="toggleInfo()">Сховати</a>
+          </div>
+          </div>
+        </div>
+      </div>
+      <main class="mdl-layout__content mdl-color--grey-100">
+        <div class="mdl-grid demo-content">
+        <div id="wrapper">  
+            <div id="mapView">        
+                <div class="mapPlaceholder"><span class="fa fa-spin fa-spinner"></span> Завантаження карти...</div>
+                <div id="external_control"></div>
+                <div id="popup"></div>
+                <div id="legend" class="legend"></div>
+                <div id="measure"    class="">
+                    <div id="length" data-toggle="tooltip" data-placement="bottom" title="Виміряти відстань" class="measure">
+                        <img src="../img/material-icons-blackruleractive.svg">
+                    </div>
+                    <div id="area" data-toggle="tooltip" data-placement="bottom" title="Виміряти площу" class="measure">
+                        <img src="../img/material-icons-blacksquareactive.svg">
+                    </div>
+                    <div id="erase" data-toggle="tooltip" data-placement="bottom" title="Очистити" class="measure">
+                        <img src="../img/delete_forever.png">
+                    </div>
+                </div>
+            </div>    
+        </div>
+{#          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+
+              <!-- PLACE CONTENT HERE -->
+
+          </div>#}
+        </div>
+      </main>
+    </div>   
+    <a href="#" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" onclick="toggleInfoPopup()">Додати заявку</a>
+
+    <div id="infopopup">
+        <h1>Надання інформації</h1>
+        <div>
+                  <input class="mdl-textfield__input" type="text" placeholder="Тема">
+        </div>
+        <div>
+            <input class="mdl-textfield__input" type="text" rows="5" placeholder="Детальний опис">
+            <div class="mdl-card__actions mdl-card--border">
+            <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect" onclick="toggleInfoPopup();">Додати заявку</a>
+            <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect" onclick="toggleInfoPopup();">Сховати</a>
+          </div>
+        </div>
+    </div>
+{% endblock %}

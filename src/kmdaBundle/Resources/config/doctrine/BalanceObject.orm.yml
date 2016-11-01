@@ -1,0 +1,158 @@
+kmdaBundle\Entity\BalanceObject:
+    type: entity
+    table: balanceobjectold
+#    indexes:
+#        IDX_2D56ED8523C81AE8:
+#            columns:
+#                - id_building_kind
+#        IDX_2D56ED85B1B48D41:
+#            columns:
+#                - id_building
+#        IDX_2D56ED8594D2F118:
+#            columns:
+#                - id_building_type
+#        IDX_2D56ED856CC56B10:
+#            columns:
+#                - id_building_purpose
+#        IDX_2D56ED8554F6EE9E:
+#            columns:
+#                - id_form_ownership
+#        IDX_2D56ED856E3593D2:
+#            columns:
+#                - id_balance_holder
+##        IDX_2D56ED85D2B59AE8:
+##            columns:
+##                - id_balance_object_photo
+#        IDX_2D56ED85A92C0EE:
+#            columns:
+#                - id_building_purpose_group
+#        IDX_2D56ED852CF7708D:
+#            columns:
+#                - id_building_category
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'Форма власності'
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        locationPremises:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Розташування приміщення'
+            column: location_premises
+        inventoryNumber:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'Інвентарний номер об''єкту'
+            column: inventory_number
+        sqrTotal:
+            type: decimal
+            nullable: true
+            precision: 9
+            scale: 2
+            comment: 'Загальна площа'
+            column: sqr_total
+        sqrFree:
+            type: decimal
+            nullable: true
+            precision: 9
+            scale: 2
+            comment: 'Площа вільних приміщень'
+            column: sqr_free
+        costBalans:
+            type: decimal
+            nullable: true
+            precision: 15
+            scale: 3
+            comment: 'Балансова вартість'
+            column: cost_balans
+    manyToOne:
+        idBuildingKind:
+            targetEntity: BuildingKind
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_building_kind:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idBuilding:
+            targetEntity: Building
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_building:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idBuildingType:
+            targetEntity: BuildingType
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_building_type:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idBuildingPurpose:
+            targetEntity: BuildingPurpose
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_building_purpose:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idFormOwnership:
+            targetEntity: BuildingFormOwnership
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_form_ownership:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idBalanceHolder:
+            targetEntity: Organization
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_balance_holder:
+                    referencedColumnName: id
+            orphanRemoval: false
+#       idBalanceObjectPhoto:
+#           targetEntity: BalanceObjectPhoto
+#           cascade: {  }
+#           mappedBy: null
+#           inversedBy: null
+#           joinColumns:
+#               id_balance_object_photo:
+#                   referencedColumnName: '"﻿id"'
+#            orphanRemoval: false
+        idBuildingPurposeGroup:
+            targetEntity: BuildingPurposeGroup
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_building_purpose_group:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idBuildingCategory:
+            targetEntity: BuildingCategory
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_building_category:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

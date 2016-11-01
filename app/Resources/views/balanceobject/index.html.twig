@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>BalanceObject list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Buildingid</th>
+                <th>Addrstreet</th>
+                <th>Addrnumber</th>
+                <th>Sqrtotal</th>
+                <th>Costbalans</th>
+                <th>Objectname</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for balanceObject in balanceObjects %}
+            <tr>
+                <td><a href="{{ path('balanceobject_show', { 'id': balanceObject.id }) }}">{{ balanceObject.id }}</a></td>
+                <td>{{ balanceObject.BuildingId }}</td>
+                <td>{{ balanceObject.AddrStreet }}</td>
+                <td>{{ balanceObject.AddrNumber }}</td>
+                <td>{{ balanceObject.SqrTotal }}</td>
+                <td>{{ balanceObject.CostBalans }}</td>
+                <td>{{ balanceObject.ObjectName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('balanceobject_show', { 'id': balanceObject.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('balanceobject_edit', { 'id': balanceObject.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('balanceobject_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

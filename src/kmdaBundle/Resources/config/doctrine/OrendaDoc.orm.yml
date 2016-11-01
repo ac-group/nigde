@@ -1,0 +1,209 @@
+kmdaBundle\Entity\OrendaDoc:
+    type: entity
+    table: orenda_doc
+    repositoryClass: kmdaBundle\Repository\OrendaDocRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        agreementNumber:
+            type: string
+            nullable: true
+            length: 255
+            comment: 'Номер договору'
+            column: agreement_number
+        incomeNumber:
+            type: string
+            nullable: true
+            length: 255
+            comment: 'Вхідний номер'
+            column: income_number
+        outgoingNumber:
+            type: string
+            nullable: true
+            length: 255
+            comment: 'Вихідний номер'    
+            column: outgoing_number
+        entryToLessorDate:
+            type: date
+            nullable: true
+            comment: 'Дата надходження до орендодавця'
+            column: entry_to_lessor_date
+        entryToCommisDate:
+            type: date
+            nullable: true
+            comment: 'Дата надходження до комісії'
+            column: entry_to_commis_date
+        reviewDate:
+            type: date
+            nullable: true
+            comment: 'Дата Дата розгляду'
+            column: review_date
+        announcementDate:
+            type: date
+            nullable: true
+            comment: 'Дата оголошення'
+            column: announcement_date
+        valuationDate:
+            type: date
+            nullable: true
+            comment: 'Дата оцінки'
+            column: valuation_date
+        valuationNumber:
+            type: string
+            nullable: true
+            length: 255
+            comment: 'Номер оценки'    
+            column: valuation_number     
+        valuator:
+            type: string
+            nullable: true
+            length: 255
+            comment: 'Оценщик'   
+        landLord:
+            type: string
+            nullable: true
+            length: 255
+            comment: 'Орендодавец'
+            column: land_lord
+        balanceHolder:
+            type: string
+            nullable: true
+            length: 255
+            comment: 'Орендодавец'
+            column: balance_holder
+        organization:
+            type: string
+            length: 255
+            nullable: true
+            comment: 'Назва орендаря'
+        edrpouOrganization:
+            type: string
+            length: 255
+            nullable: true
+            comment: 'ЕДРПОУ орендаря'  
+            column: edrpou_organization
+        houseKind:
+            type: string
+            length: 255
+            nullable: true
+            comment: 'Тип будинку'  
+            column: house_kind
+        propertyRentObject:
+            type: string
+            nullable: true
+            length: 255
+            comment: 'Характеристика об''єкта оренди'
+            column: property_rent_object
+        category:
+            type: string
+            nullable: true
+            length: 255
+            comment: 'Категория'
+        rentRatePercent:
+            type: integer
+            nullable: true
+            comment: 'Орендна ставка'
+            column: rent_rate_percent
+        rentKind:
+            type: integer
+            nullable: true
+            comment: 'Тип оренди'
+            column: rent_kind
+        cost1month:
+            type: decimal
+            nullable: true
+            precision: 15
+            scale: 3
+            comment: 'Вартість за місяць'
+            column: cost_1month
+        costObject:
+            type: decimal
+            nullable: true
+            precision: 15
+            scale: 3
+            comment: 'Вартість об''єкту'
+            column: cost_object
+        leaseTerm:
+            type: string
+            nullable: true
+            length: 255
+            comment: 'Строк або термін оренди'
+            column: lease_term
+        rentType:
+            type: string
+            nullable: true
+            length: 255
+            comment: 'Тип оренди'
+            column: rent_type
+        note:
+            type: string
+            length: 255
+            nullable: true
+        purpose:
+            type: string
+            length: 255
+            nullable: true
+        sqrrent:
+            type: integer
+            nullable: true
+        costrentagreement:
+            type: integer
+            nullable: true            
+        agreem1:
+            type: boolean
+            options:
+                default: false
+        agreem2:
+            type: boolean
+            options:
+                default: false
+        status:
+            type: integer
+            nullable: true
+        note2:
+            type: string
+            lenght: 255
+            nullable: true
+        tip:
+            type: string
+            lenght: 255
+            nullable: true
+        solution:
+            type: string
+            lenght: 255
+            nullable: true
+        created:
+            type: datetime
+            gedmo:
+                timestampable:
+                  on: create
+        updated:
+            type: datetime  
+            gedmo:
+                timestampable:
+                  on: update
+#    oneToMany:
+#        purpose:
+#            targetEntity: Purpose
+#            mappedBy: orendadoc
+#            cascade: ["persist", "merge"]
+    manyToOne:
+        kmdaobject:
+            targetEntity: kmdaObject
+    #            inversedBy: rentdocuments
+            joinColumns:
+                id_balanceobject:
+                    referencedColumnName: id
+            orphanRemoval: false
+#        organization:
+#            targetEntity: Organization
+#    #            inversedBy: rentdocuments
+#            joinColumns:
+#                id_organization:
+#                    referencedColumnName: id
+#            orphanRemoval: false
+    lifecycleCallbacks: {  }

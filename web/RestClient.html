@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            $(function () {
+                var refreshtoken = "277be326eef77fdf1b58c474a3af62eccdbb1fc788a38ba0779c78c54cea6d0a4a4c372af8500c057c56a813b38960365ab956d1cd43720a5c3ee0656863364f";
+                var jwtoken;
+
+                    $.ajax({
+                        url: '/api/token/refresh',
+                        dataType: 'json',
+                        data: {
+                            'refresh_token': refreshtoken,
+                        },
+                        success: function (data) {
+                            jwtoken = data.token;
+                        //    jwtoken = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE0NzQ3MjA3NDksInVzZXJuYW1lIjoiYW50b24iLCJpYXQiOiIxNDc0NjM0MzQ5In0.0aEHvQmbgwF7bE9xQkFNJan_enT0ii7ukSNnkzdGe_qtBasDiF2pmbam4yh0xYO_JfnGthy5ofYLwIbGIyArgtpQaynNShVW5U66zBNaD52cgw5OFbAPGYQ_Y_s7tMLsvtosbBi8zoHlLxQKfV4T79Wpgg3D8SM9xOLl7z8EgEc6QZtbMIPpam1FhTRH0nfwHsxnMdF_fU_rBFExZ7QpXPghkn1ouXHasxS1gsODXj68I4mRWZvwFb2fPGzKPL0RSQ4ijpdTQ5cDf8llBcPhHz6_YjDOggl0DLtrAHFzgqlsxlkSB8mFTrI2qRvCFJDWEtYuq1Rc5Do1guyAuYLH7gvf0wYAQPKcL8OG3kE8D4VQInayUDBQkr7fFCQ4yPX1zXLGrXZQ7kE-Ht4pxXrkTwVaYVy46NETb_8XHMOHBAb87DGI5Mt3muN4E3Ye0PQ7qDj4jXLdNW9CbpPHnUHXZvIGo1LSNT8-WpZYVUaQ3NjiXe5BouKS-OQTfa_8oDb2GPlgk0wshidHO0aIZDAXlWaPMotNu16ooOg3DcI_9V_xGotx9YUT_Pdsf2SvViy4rQQ53-fhafLadZ1loakYFAHIqOjoATlB4MOrN1nf3UNqI7E2IS_a-ngZaz99rEphhwx2f3UAaZ7GqJ3T3DPE-WHrMqwcUw_uWbLHws0yteU";
+                        //    console.log(jwtoken);
+                        
+//                            $.ajax({
+//                                url: '/app_dev.php/api/search.json',
+//                                type: 'GET',
+//                                data: {'n':'76В', 's':'Бродовская'},
+//                                headers: {
+//                                    'Authorization': 'Bearer ' + jwtoken,
+//                                },
+//                                success: function (data) {
+//                                    var items = [];
+//                                    $.each( data, function( key, val ) {
+//                                        items.push(  key + ">>>>>>>>>>>> <br>" );
+//                                        $.each(val, function (key1, val1){
+//                                            items.push ( key1 + " : " + val1 + "<br>");
+//                                        })
+//                                      });
+//                                      $('#list').html(items);
+//                                },
+//                                error: function () {
+//                                    console.log('error');
+//                                }
+//                            });
+                        $.ajax({
+                            url: '/app_dev.php/api/msg.json',
+                            type: 'POST',
+                            data: {'msg':'hello'},
+                            headers: {
+                                'Authorization': 'Bearer ' + jwtoken,
+                            },
+                        })
+                        }
+                    });
+            });
+        </script>
+        <div id="list"></div>
+    </body>
+</html>

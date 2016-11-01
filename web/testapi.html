@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            $(function () {
+                var refreshtoken = "b3ffc9298cda2ef37f4b51bf05068ead95d9ee2e73633a93cffb1c0ec918f29e4e47404f66c649b99c7644f735190eeb23352c8e38f965dd4fdb4a12bff52178";
+                var jwtoken;
+
+                    $.ajax({
+                        url: '/api/token/refresh',
+                        dataType: 'json',
+                        data: {
+                            'refresh_token': refreshtoken,
+                        },
+                        success: function (data) {
+                            jwtoken = data.token;
+                            $.ajax({
+                                url: '/api/citystreets.json',
+                                type: 'GET',
+                                headers: {
+                                    'Authorization': 'Bearer ' + jwtoken,
+                                },
+                                success: function (data) {
+                                    var items = [];
+                                    $.each( data, function( key, val ) {
+                                        items.push(  key + ">>>>>>>>>>>> <br>" );
+                                        $.each(val, function (key1, val1){
+                                            items.push ( key1 + " : " + val1 + "<br>");
+                                        })
+                                      });
+                                      $('#list').html(items);
+                                },
+                                error: function () {
+                                    console.log('error');
+                                }
+                            });
+                        }
+                    });
+            });
+        </script>
+        <div id="list"></div>
+    </body>
+</html>

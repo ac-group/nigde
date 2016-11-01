@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+{#{% form_theme form 'bootstrap_3_layout.html.twig' %}#}
+{% block stylesheets %}
+    {% stylesheets
+        'css/bootstrap.css'
+
+        'https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+        'https://fonts.googleapis.com/icon?family=Material+Icons'
+
+        'css/styles.css'
+        filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>Список засідань комісії</h1>
+
+    <table>
+{#        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Note</th>
+                <th>Actions</th>
+            </tr>
+        </thead>#}
+        <tbody>
+        {% for orendaResh in orendaReshes %}
+            <tr>
+                <td><a href="{{ path('orendaresh_edit', { 'id': orendaResh.id }) }}">{{ orendaResh.id }}</a></td>
+                <td>{{ orendaResh.title }}</td>
+
+<td>{{ orendaResh.created | date()}}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('orendaresh_pdf', { 'id': orendaResh.id }) }}">pdf</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('orendaresh_edit', { 'id': orendaResh.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    </div>
+{% endblock %}

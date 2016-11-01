@@ -1,0 +1,177 @@
+{% extends '::base.html.twig' %}
+{#{% form_theme form 'bootstrap_3_layout.html.twig' %}#}
+{% form_theme form _self %}
+
+{#{% block checkbox_widget %}
+        {% set type = type|default('checkbox') %}        
+        {{ block('form_widget_simple') }}
+{% endblock %}#}
+
+{% block checkbox_widget %}
+{% spaceless %}
+
+    <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+
+
+{% endspaceless %}
+{% endblock checkbox_widget %}
+
+
+{% block stylesheets %}
+    {% stylesheets
+        'css/jquery.datetimepicker.min.css'
+        'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
+        'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css'
+        'https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+        'https://fonts.googleapis.com/icon?family=Material+Icons'
+        'css/styles.css'
+        filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <style>
+        body {
+            overflow: auto;
+        }
+ {#       .row :nth-child(even){
+        background-color: #dcdcdc;
+            border:1px solid #4db6ac;
+        }
+         .row :nth-child(odd){
+         background-color: #aaaaaa;
+        }#}
+    </style>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/jquery-2.1.1.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.collection.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-checkbox.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.datetimepicker.full.min.js') }}"></script>
+    <script type="text/javascript">
+        $('#orenda_resh_expected').datetimepicker();
+        $.datetimepicker.setLocale('uk');
+        $('.my-selector').collection({
+            prototype_name: 'orenda_resh_orendadoc',
+            hide_useless_buttons: true,
+            drag_drop: true,
+            allow_add: false,
+            name_prefix:  'orenda_resh_orendadoc',
+
+{#            after_up: 
+                function(collection, element) {
+            // automatic backup or whatever
+                    $.each( collection, function( key, value ) {
+                        console.log(value);
+                    });
+                    return true;
+                }#}
+    });
+    $(':checkbox').checkboxpicker({  html: true,
+  offLabel: '<span class="glyphicon glyphicon-remove">',
+  onLabel: '<span class="glyphicon glyphicon-ok">'});
+    </script>
+{% endblock %}
+{% block body %}
+
+    <div class="container">
+
+        <h1>Комісcія</h1>
+
+
+    {{ form_start(form) }}
+        {{ form_row(form.note) }}
+        <label for="#orenda_resh_expected">Дата</label>
+        {{ form_row(form.expected) }}
+        
+{% block form_label %}{% endblock %}
+{% block form_errors %}{% endblock %}
+
+        <div class="row" style="font-weight: bold; margin-bottom: 5px;">
+            <div class='col-md-2'>Найменування</div> 
+            <div class='col-md-1'>Тип питання</div>
+            <div class='col-md-1'>Адреса</div>
+            <div class='col-md-1'>Орендар</div>
+            <div class='col-md-1'>Вартість об'єкту</div>
+            <div class='col-md-1'>Вартість оренди</div>
+            <div class='col-md-1'>Примiтка</div>
+            <div class='col-md-1'>Погодження голови</div>
+            <div class='col-md-1'>Рішення коміссії</div>
+            <div class='col-md-1'></div>
+        </div>
+      {{ form_errors(form.orendadoc) }}  
+        {% set i = 0 %}
+        <div id="orenda_resh_orendadoc" class="my-selector">
+
+        {% for oc in form.orendadoc %}
+            <div id="orenda_resh_orendadoc_{{ i }}" class="row" style="border:1px solid #4db6ac; padding: 5px; margin-bottom: 5px;">
+            {{ form_errors(oc) }}
+
+            <div class='col-md-2'>
+                {{ form.orendadoc.vars.value[i].kmdaobject.objectname }}
+            </div>
+            <div class='col-md-1'>
+                {{ form.orendadoc.vars.value[i].tip }}
+            </div>
+            <div class='col-md-1'>                     
+                {{ form.orendadoc.vars.value[i].kmdaobject.addrstreet }} 
+                {{ form.orendadoc.vars.value[i].kmdaobject.addrnumber }}
+            </div>
+            <div class='col-md-1'>
+                {{ form.orendadoc.vars.value[i].organization }}
+            </div>
+            <div class='col-md-1'>
+                {{ form.orendadoc.vars.value[i].kmdaobject.costbalans }}
+            </div>
+            <div class='col-md-1'>
+                {{ form.orendadoc.vars.value[i].costrentagreement }}
+            </div>
+            <div class='col-md-1'>{{ form.orendadoc.vars.value[i].note }}</div> 
+{#            {% if is_granted('ROLE_GOLOVA') %}
+            <div class='col-md-1'>{{ form_widget(oc.note2) }}</div> 
+            {% else %}
+                <div class='col-md-1'>{{ form.orendadoc.vars.value[i].note2 }}{{ form_widget(oc.note2, { 'required': 'false' }) }}</div> 
+            {% endif %}#}          
+            <div class='col-md-1'>
+                {{ form_widget(oc.agreem1) }}
+{#                <input id="orenda_resh_orendadoc_{{ i }}_agreem1" class="form-control" type="checkbox" {% if form.orendadoc.vars.value[i].agreem1 > 0 %} checked {% endif %} name="orenda_resh[orendadoc][{{ i }}][agreem1]">
+                #}
+            </div>
+            <div class='col-md-1'>
+            {{ form_widget(oc.agreem2) }}
+{#            {{ form.orendadoc.vars.value[i].agreem2 }}#}
+            </div> 
+            <div class='col-md-1'>{% if is_granted('ROLE_SECRETAR') %}
+                {{ form_widget(oc.note2,{ 'attr': {'required':'required'} }) }}
+                {% else %}
+                {{ form_widget(oc.note2) }}
+                {% endif %}
+            </div>
+        <div class="col-md-1">
+            <a href="#" class="collection-up">&#x25B2;</a>
+            <a href="#" class="collection-down">&#x25BC;</a>
+            <a href="#" class="collection-remove">[ - ]</a>
+        </div>
+            </div>
+
+            {% set i=i+1 %} 
+        {% endfor %}
+        </div>
+      {#  <input type="submit" value="Create" />#}
+    {{ form_end(form) }}
+    <ul>
+        {% if form.vars.value.id  %}
+        <li>
+            <a href="{{ path('orendaresh_pdf',{ 'id': form.vars.value.id }) }}">pdf</a>
+        </li>
+        {% endif %}
+    </ul>
+    <ul>
+        <li>
+            <a href="{{ path('orendaresh_index') }}">до списку</a>
+        </li>
+    </ul>
+    
+    </div>
+    
+
+{% endblock %}

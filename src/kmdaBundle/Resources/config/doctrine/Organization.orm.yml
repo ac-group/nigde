@@ -1,0 +1,220 @@
+kmdaBundle\Entity\Organization:
+    type: entity
+    table: organization
+#    indexes:
+##        IDX_C1EE637C49D1064F:
+##            columns:
+##                - id_addr_zipcode
+#        IDX_C1EE637C54F6EE9E:
+#            columns:
+#                - id_form_ownership
+#        IDX_C1EE637CD06674F4:
+#            columns:
+#                - org_industryid
+#        IDX_C1EE637C6797952:
+#            columns:
+#                - id_org_kved
+#        IDX_C1EE637CBAC28F93:
+#            columns:
+#                - id_org_occupation
+#        IDX_C1EE637CC1A0C49F:
+#            columns:
+#                - id_form_funding
+#        IDX_C1EE637C843D7F82:
+#            columns:
+#                - id_form_gosp
+#        IDX_C1EE637C7D4DB26E:
+#            columns:
+#                - id_admin_auth
+#        IDX_C1EE637C6D192B34:
+#            columns:
+#                - id_department_subord
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        addrCity:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Адреса підприємства'
+            column: addr_city
+        addrStreet:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Адреса підприємства'
+            column: addr_street
+        addrNumber:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Адреса підприємства'
+            column: addr_number
+        addrDistrict:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Адреса підприємства'
+            column: addr_district
+        fullName:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: 'Повна назва'
+            column: full_name
+        zkpoCode:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'Код ЄДРПОУ'
+            column: zkpo_code
+        shortName:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Коротка назва'
+            column: short_name
+        directorName:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'ПІБ керівника'
+            column: director_name
+        directorPhone:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Телефон керівника'
+            column: director_phone
+        directorEmail:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Електронна адреса керівника'
+            column: director_email
+        accountantName:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'ПІБ бухгалтера'
+            column: accountant_name
+        accountantPhone:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Телефон бухгалтера'
+            column: accountant_phone
+        accountantEmail:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Електронна адреса бухгалтера'
+            column: accountant_email
+        directorPost:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Посада керівника'
+            column: director_post
+    manyToOne:
+ #       idAddrZipcode:
+ #           targetEntity: AddrZipcode
+ #           cascade: {  }
+ #           mappedBy: null
+ #           inversedBy: null
+ #           joinColumns:
+ #               id_addr_zipcode:
+ #                   referencedColumnName: id
+ #           orphanRemoval: false
+        idFormOwnership:
+            targetEntity: BuildingFormOwnership
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_form_ownership:
+                    referencedColumnName: id
+            orphanRemoval: false
+        orgIndustryid:
+            targetEntity: OrgIndustry
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                org_industryid:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idOrgKved:
+            targetEntity: OrgKved
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_org_kved:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idOrgOccupation:
+            targetEntity: OrgOccupation
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_org_occupation:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idFormFunding:
+            targetEntity: FormFunding
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_form_funding:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idFormGosp:
+            targetEntity: FormGosp
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_form_gosp:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idAdminAuth:
+            targetEntity: AdminAuth
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_admin_auth:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idDepartmentSubord:
+            targetEntity: DepartmentSubord
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_department_subord:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

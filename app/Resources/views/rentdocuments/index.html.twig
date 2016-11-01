@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>RentDocuments list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Agreementdate</th>
+                <th>Agreementnumber</th>
+                <th>Isactive</th>
+                <th>Costrentagreement</th>
+                <th>Costexpert1m</th>
+                <th>Reason</th>
+                <th>Rentstartdate</th>
+                <th>Rentfinishdate</th>
+                <th>Rentratepercent</th>
+                <th>Sqrrent</th>
+                <th>Issubrent</th>
+                <th>Paymenttype</th>
+                <th>Idrentcontract</th>
+                <th>Filename</th>
+                <th>Filepath</th>
+                <th>Fileext</th>
+                <th>Filecreatedate</th>
+                <th>Reviewdate</th>
+                <th>Propertyrentobject</th>
+                <th>Cost1hour</th>
+                <th>Usingschedule</th>
+                <th>Hoursofweek</th>
+                <th>Hoursofmonth</th>
+                <th>Cost1month</th>
+                <th>Incomenumber</th>
+                <th>Inputnamber</th>
+                <th>Entrytocommisdate</th>
+                <th>Entrytolessordate</th>
+                <th>Announcementdate</th>
+                <th>Costobject</th>
+                <th>Admonition</th>
+                <th>Notes</th>
+                <th>Valuationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rentDocument in rentDocuments %}
+            <tr>
+                <td><a href="{{ path('rentdocuments_show', { 'id': rentDocument.id }) }}">{{ rentDocument.id }}</a></td>
+                <td>{% if rentDocument.agreementDate %}{{ rentDocument.agreementDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ rentDocument.agreementNumber }}</td>
+                <td>{% if rentDocument.isActive %}Yes{% else %}No{% endif %}</td>
+                <td>{{ rentDocument.costRentAgreement }}</td>
+                <td>{{ rentDocument.costExpert1m }}</td>
+                <td>{{ rentDocument.reason }}</td>
+                <td>{% if rentDocument.rentStartDate %}{{ rentDocument.rentStartDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if rentDocument.rentFinishDate %}{{ rentDocument.rentFinishDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ rentDocument.rentRatePercent }}</td>
+                <td>{{ rentDocument.sqrRent }}</td>
+                <td>{{ rentDocument.isSubrent }}</td>
+                <td>{{ rentDocument.paymentType }}</td>
+                <td>{{ rentDocument.idRentContract }}</td>
+                <td>{{ rentDocument.fileName }}</td>
+                <td>{{ rentDocument.filePath }}</td>
+                <td>{{ rentDocument.fileExt }}</td>
+                <td>{% if rentDocument.fileCreateDate %}{{ rentDocument.fileCreateDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if rentDocument.reviewDate %}{{ rentDocument.reviewDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ rentDocument.propertyRentObject }}</td>
+                <td>{{ rentDocument.cost1hour }}</td>
+                <td>{{ rentDocument.usingSchedule }}</td>
+                <td>{{ rentDocument.hoursOfWeek }}</td>
+                <td>{{ rentDocument.hoursOfMonth }}</td>
+                <td>{{ rentDocument.cost1month }}</td>
+                <td>{{ rentDocument.incomeNumber }}</td>
+                <td>{{ rentDocument.inputNamber }}</td>
+                <td>{% if rentDocument.entryToCommisDate %}{{ rentDocument.entryToCommisDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if rentDocument.entryToLessorDate %}{{ rentDocument.entryToLessorDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if rentDocument.announcementDate %}{{ rentDocument.announcementDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ rentDocument.costObject }}</td>
+                <td>{{ rentDocument.admonition }}</td>
+                <td>{{ rentDocument.notes }}</td>
+                <td>{% if rentDocument.valuationDate %}{{ rentDocument.valuationDate|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('rentdocuments_show', { 'id': rentDocument.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('rentdocuments_edit', { 'id': rentDocument.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('rentdocuments_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

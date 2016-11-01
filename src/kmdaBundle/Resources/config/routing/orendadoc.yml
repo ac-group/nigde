@@ -1,0 +1,34 @@
+orendadoc_index:
+    path:     /
+    defaults: { _controller: "kmdaBundle:OrendaDoc:index" }
+    methods:  GET
+
+orendadoc_show:
+    path:     /{id}/show
+    defaults: { _controller: "kmdaBundle:OrendaDoc:show" }
+    methods:  GET
+
+orendadoc_new:
+    path:     /{kmdaobjectid}/new
+    defaults: { _controller: "kmdaBundle:OrendaDoc:new" }
+    methods:  [GET, POST]
+
+orendadoc_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "kmdaBundle:OrendaDoc:edit" }
+    methods:  [GET, POST]
+
+orendadoc_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "kmdaBundle:OrendaDoc:delete" }
+    methods:  DELETE
+
+orendadoc_ajaxnew:
+    path:     /orendanew
+    defaults: { _controller: "kmdaBundle:OrendaDoc:newajax" }
+    methods:  [POST]
+    
+orendadoc_ajaxdelete:
+    defaults: { _controller: "kmdaBundle:OrendaDoc:ajaxdelete" }
+    path:   /ajaxdelete
+    methods:  [GET, POST]

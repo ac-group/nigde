@@ -1,0 +1,33 @@
+orendaresh_index:
+    path:     /
+    defaults: { _controller: "kmdaBundle:OrendaResh:index" }
+    methods:  GET
+
+orendaresh_show:
+    path:     /{id}/show
+    defaults: { _controller: "kmdaBundle:OrendaResh:show" }
+    methods:  GET
+
+orendaresh_new:
+    path:     /new
+    defaults: { _controller: "kmdaBundle:OrendaResh:new" }
+    methods:  [GET, POST]
+
+orendaresh_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "kmdaBundle:OrendaResh:edit" }
+    methods:  [GET, POST]
+
+orendaresh_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "kmdaBundle:OrendaResh:delete" }
+    methods:  DELETE
+    
+orendaresh_pdf:
+    defaults: { _controller: "kmdaBundle:OrendaResh:pdf" }
+    path:   /{id}/pdf
+    
+orendareshsecretary_edit:
+    path:     /{id}/secretaryedit
+    defaults: { _controller: "kmdaBundle:OrendaResh:secretaryedit" }
+    methods:  [GET, POST]

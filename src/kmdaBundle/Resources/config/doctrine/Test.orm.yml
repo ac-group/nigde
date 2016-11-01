@@ -1,0 +1,14 @@
+kmdaBundle\Entity\Test:
+    type: entity
+    table: test
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        msg:
+            type: string
+
+    lifecycleCallbacks: {  }

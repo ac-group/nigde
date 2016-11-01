@@ -1,0 +1,18 @@
+kmdaBundle\Entity\BuildingType:
+    type: entity
+    table: building_type
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 64
+            fixed: false
+    lifecycleCallbacks: {  }

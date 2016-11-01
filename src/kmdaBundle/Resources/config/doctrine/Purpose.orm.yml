@@ -1,0 +1,20 @@
+kmdaBundle\Entity\Purpose:
+    type: entity
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            nullable: true
+            length: 255
+            comment: 'Цільове призначення'
+    manyToMany:
+      kmdaObject:
+        targetEntity: kmdaBundle\Entity\kmdaObject
+        mappedBy: purpose
+        cascade: ["persist","merge"]
+    lifecycleCallbacks: {  }

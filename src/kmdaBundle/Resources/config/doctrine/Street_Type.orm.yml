@@ -1,0 +1,37 @@
+kmdaBundle\Entity\Street_Type:
+    type: entity
+    table: a_street_type
+    repositoryClass: kmdaBundle\Repository\Street_TypeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        itemid:
+            type: integer
+        name:
+            type: string
+            length: 255
+            nullable: true
+        shortname:
+            type: string
+            length: 255
+            nullable: true
+        name_ru:
+            type: string
+            length: 255
+            nullable: true
+        shortname_ru:
+            type: string
+            length: 255
+            nullable: true
+        name_en:
+            type: string
+            length: 255
+        shortname_en:
+            type: string
+            length: 255
+
+    lifecycleCallbacks: {  }

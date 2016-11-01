@@ -1,0 +1,18 @@
+kmdaBundle\Entity\OrgKved:
+    type: entity
+    table: org_kved
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+    lifecycleCallbacks: {  }

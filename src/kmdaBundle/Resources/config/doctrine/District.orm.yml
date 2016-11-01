@@ -1,0 +1,38 @@
+kmdaBundle\Entity\District:
+    type: entity
+    table: district
+#    indexes:
+#        IDX_31C15487A67B1E36:
+#            columns:
+#                - id_city
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Назва району'
+#    manyToOne:
+#        idCity:
+#            targetEntity: City
+#            cascade: {  }
+#            mappedBy: null
+#            inversedBy: null
+#            joinColumns:
+#                id_city:
+#                    referencedColumnName: id
+#            orphanRemoval: false
+    oneToMany:
+      kmdaObject:
+          targetEntity: kmdaBundle\Entity\kmdaObject
+          mappedBy: district
+          cascade: ["persist","merge"]
+    lifecycleCallbacks: {  }

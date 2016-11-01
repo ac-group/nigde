@@ -1,0 +1,62 @@
+.add_new_bid_dialog {
+    width: 700px;
+    margin-left: -350px;
+}
+
+.new_bid_container .right_block {
+    padding-top: 27px;
+    width: auto;
+    margin-left: 24px;
+    display: inline-block;
+    float: left;
+    text-align: left;
+}
+
+.new_bid_container .right_block {
+    margin: 0px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 24px;
+    padding-left: 24px;
+}
+
+.add_new_bid_dialog .new_bid_container {
+    padding: 20px 0px 20px 0px;
+}
+
+.add_new_bid_dialog .input_div .mdl-textfield {
+    padding-top: 0px;
+}
+
+.add_new_bid_dialog .fix_select {
+    margin-bottom: 16px;
+}
+
+.new_bid_container .title,
+.new_bid_container .sub_title {
+    padding-left: 24px;
+}
+
+.right_block .input_div.hour_inp{
+    display: none;
+}
+
+.right_block .input_div.hour_inp.visible {
+    display: block;
+}
+
+
+
+.right_block .fix_select .mdl-textfield__input{
+    background: url('../img/ic_arrow_drop_down_black_24px.svg') no-repeat center right;
+    background-position: right 4px;
+}
+.prizn_child .w100{
+    width: 90%;
+    position: relative;
+}
+.prizn_child .w100 .mdl-button{
+    position: absolute;
+        right: -63px;
+        top: 0;
+}

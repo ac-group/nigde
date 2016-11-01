@@ -1,0 +1,18 @@
+kmdaBundle\Entity\FormFunding:
+    type: entity
+    table: form_funding
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+    lifecycleCallbacks: {  }

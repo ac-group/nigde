@@ -1,0 +1,89 @@
+<?php
+namespace kmdaBundle\Entity;
+
+use JMS\Serializer\Annotation\Accessor;
+
+/**
+ * AddrStreet
+ */
+class VotingDtp
+{
+	/**
+	 * @var integer
+	 */
+	private $id;
+
+	/**
+	 * @var string
+	 */
+	private $idTicketit;
+
+	/**
+	 * @var boolean
+	 */
+	private $voice;
+
+	/**
+	 * @var string
+	 */
+	private $ipUser;
+
+
+	/**
+	 * @return int
+	 */
+	public function getId() {
+		return $this->id;
+	}
+
+	/**
+	 * @param int $id
+	 */
+	public function setId($id) {
+		$this->id = $id;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getIdTicketit() {
+		return $this->idTicketit;
+	}
+
+	/**
+	 * @param string $idTicketit
+	 */
+	public function setIdTicketit($idTicketit) {
+		$this->idTicketit = $idTicketit;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getVoice() {
+		return $this->voice;
+	}
+
+	/**
+	 * @param boolean $voice
+	 */
+	public function setVoice($voice) {
+		$this->voice = $voice;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getIpUser() {
+		return $this->ipUser;
+	}
+
+	/**
+	 * @param string $ipUser
+	 */
+	public function setIpUser($ipUser) {
+		$this->ipUser = $ipUser;
+	}
+
+
+}

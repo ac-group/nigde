@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>OrendaDoc list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Note</th>
+                <th>ObjectName</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for orendaDoc in orendaDocs %}
+            <tr>
+                <td><a href="{{ path('orendadoc_show', { 'id': orendaDoc.id }) }}">{{ orendaDoc.id }}</a></td>
+                <td>{{ orendaDoc.note }}</td>
+                <td>{{ orendaDoc.kmdaObject }} </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('orendadoc_show', { 'id': orendaDoc.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('orendadoc_edit', { 'id': orendaDoc.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('orendadoc_new', {'kmdaobjectid': 52028}) }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

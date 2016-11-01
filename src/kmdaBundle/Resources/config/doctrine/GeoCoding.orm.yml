@@ -1,0 +1,21 @@
+kmdaBundle\Entity\GeoCoding:
+    type: entity
+    table: GeoCoding
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        Latitude:
+            type: string
+            length: 255
+        Longitude:
+            type: string
+            length: 255
+        geom900913:
+            type: string
+            length: 255
+
+    lifecycleCallbacks: {  }

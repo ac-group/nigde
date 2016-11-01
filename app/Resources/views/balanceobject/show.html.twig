@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>BalanceObject</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ balanceObject.id }}</td>
+            </tr>
+            <tr>
+                <th>Buildingid</th>
+                <td>{{ balanceObject.BuildingId }}</td>
+            </tr>
+            <tr>
+                <th>Addrstreet</th>
+                <td>{{ balanceObject.AddrStreet }}</td>
+            </tr>
+            <tr>
+                <th>Addrnumber</th>
+                <td>{{ balanceObject.AddrNumber }}</td>
+            </tr>
+            <tr>
+                <th>Sqrtotal</th>
+                <td>{{ balanceObject.SqrTotal }}</td>
+            </tr>
+            <tr>
+                <th>Costbalans</th>
+                <td>{{ balanceObject.CostBalans }}</td>
+            </tr>
+            <tr>
+                <th>Objectname</th>
+                <td>{{ balanceObject.ObjectName }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('balanceobject_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('balanceobject_edit', { 'id': balanceObject.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

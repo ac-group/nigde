@@ -1,0 +1,18 @@
+kmdaBundle\Entity\BuildingPurposeGroup:
+    type: entity
+    table: building_purpose_group
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 160
+            fixed: false
+    lifecycleCallbacks: {  }

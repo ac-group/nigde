@@ -1,0 +1,51 @@
+kmdaBundle\Entity\BalanceObjectPhoto:
+    type: entity
+    table: balance_object_photo
+    id:
+        ﻿id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        fileName:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Назва файлу'
+            column: file_name
+        fileExt:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Розширення файлу'
+            column: file_ext
+        fileCreateDate:
+            type: date
+            nullable: true
+            comment: 'Дата створення'
+            column: file_create_date
+        thumbnailHeight:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: thumbnail_height
+        thumbnailWidth:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: thumbnail_width
+        filePath:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Шлях до файлу'
+            column: file_path
+    lifecycleCallbacks: {  }

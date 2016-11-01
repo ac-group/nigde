@@ -1,0 +1,63 @@
+kmdaBundle\Entity\Documents:
+    type: entity
+    table: documents
+#    indexes:
+#        IDX_A2B0728810305083:
+#            columns:
+#                - id_balance_object
+#        IDX_A2B07288851F0C6A:
+#            columns:
+#                - id_doc_type
+#        IDX_A2B0728893AE01B2:
+#            columns:
+#                - id_doc_information
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        agreementNumber:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Номер документу'
+            column: agreement_number
+        agreementDate:
+            type: date
+            nullable: true
+            comment: 'Дата документу'
+            column: agreement_date
+    manyToOne:
+        idBalanceObject:
+            targetEntity: BalanceObject
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_balance_object:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idDocType:
+            targetEntity: DocType
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_doc_type:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idDocInformation:
+            targetEntity: RentDocuments
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_doc_information:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

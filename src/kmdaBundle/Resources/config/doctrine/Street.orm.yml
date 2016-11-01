@@ -1,0 +1,126 @@
+kmdaBundle\Entity\Street:
+    type: entity
+    table: a_street
+    repositoryClass: kmdaBundle\Repository\StreetRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        the_geom:
+            type: geometry
+            nullable: true
+        itemid:
+            type: integer
+        code_obj:
+            type: integer
+        name:
+            type: string
+            length: 255
+            nullable: true
+        shortname:
+            type: string
+            length: 255
+            nullable: true
+        name_ru:
+            type: string
+            length: 255
+            nullable: true
+        shortname_ru:
+            type: string
+            length: 255
+            nullable: true
+        name_en:
+            type: string
+            length: 255
+            nullable: true
+        shortname_en:
+            type: string
+            length: 255
+            nullable: true
+        categ_code:
+            type: integer
+            nullable: true
+        region_adm:
+            type: string
+            lenght: 255
+            nullable: true
+        doctype:
+            type: string
+            lenght: 255
+            nullable: true
+        docname:
+            type: string
+            lenght: 255
+            nullable: true
+        docdate:
+            type: date
+            nullable: true
+        docnumber:
+            type: string
+            lenght: 255
+            nullable: true
+        doclink:
+            type: string
+            lenght: 255
+            nullable: true
+        placetype:
+            type: string
+            lenght: 255
+            nullable: true
+        status_vul:
+            type: integer
+            nullable: true
+        local_type:
+            type: integer
+            nullable: true
+        source_koo:
+            type: integer
+        shp_leng:
+            type: float
+        sad_tov:
+            type: string
+            lenght: 255
+            nullable: true
+        doccode:
+            type: string
+            lenght: 255
+            nullable: true
+        shp_stle:
+            type: float
+        relisedate:
+            type: date
+            nullable: true
+        date_s:
+            type: date
+            nullable: true
+        date_e:
+            type: date
+            nullable: true
+        status:
+            type: integer
+            nullable: true
+        full_name:
+            type: string
+            lenght: 255
+        street_id:
+            type: integer
+            nullable: true
+    oneToMany:
+        addr_num:
+            targetEntity: AddrNumber
+            mappedBy: Street
+    manyToOne:
+        Street_Type:
+            targetEntity: Street_Type
+            joinColumn:
+              name: street_type_id
+              referencedColumnName: id
+        id_region:
+            targetEntity: KyivDistrict
+            joinColumn:
+                name: id_region
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

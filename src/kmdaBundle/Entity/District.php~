@@ -1,0 +1,87 @@
+<?php
+
+namespace kmdaBundle\Entity;
+
+/**
+ * District
+ */
+class District
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+
+    public function __toString() {
+        return $this->name;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return District
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+    /**
+     * @var \kmdaBundle\Entity\City
+     */
+    private $idCity;
+
+
+    /**
+     * Set idCity
+     *
+     * @param \kmdaBundle\Entity\City $idCity
+     *
+     * @return District
+     */
+    public function setIdCity(\kmdaBundle\Entity\City $idCity = null)
+    {
+        $this->idCity = $idCity;
+
+        return $this;
+    }
+
+    /**
+     * Get idCity
+     *
+     * @return \kmdaBundle\Entity\City
+     */
+    public function getIdCity()
+    {
+        return $this->idCity;
+    }
+}

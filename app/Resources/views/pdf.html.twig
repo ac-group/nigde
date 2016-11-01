@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ua">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="widtd=device-widtd, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=cyrillic,cyrillic-ext" rel="stylesheet">
+</head>
+
+<body>
+    <style type="text/css">
+    .rent_table {
+        text-align: center;
+    }
+    
+    .rent_table table {
+        border-collapse: collapse;
+        font-size: 10px;
+    }
+    
+    .rent_table caption {
+        font-weight: 700;
+        font-size: 16px;
+        border: solid 1px black;
+        background: orange;
+    }
+    
+    .rent_table table tr:nth-child(1) {
+        background: orange;
+        border: solid 1px black;
+    }  
+    .rent_table .orange_bg{
+      border: solid 1px black;
+    }  
+    .rent_table .orange_bg td:nth-child(5),.rent_table .orange_bg td:nth-child(26) {
+        background: orange;
+    }
+    .rent_table table tr:nth-child(2) {
+        border: solid 2px black;
+        background: lightgray;
+    }
+    .rent_table .orange_bg td{
+      padding: 4px;
+    }
+    </style>
+    <div class="rent_table">
+        <table border="1">
+            <caption>Питання оренди 04.10.2016</caption>
+            <tr>
+                <td>№ п/п.:</td>
+                <td>Вихідний №:</td>
+                <td>Вхідний №</td>
+                <td>Дата надходження до Комісії</td>
+                <td>Дата розгляду</td>
+                <td>Дата надходження до Орендодавця</td>
+                <td>Дата оголошення </td>
+                <td>Дата оцінки</td>
+                <td>Тип питання</td>
+                <td>Орендодавець</td>
+                <td>Балансоутримувач</td>
+                <td>Орендар</td>
+                <td>Адреса</td>
+                <td>Тип будинку</td>
+                <td>Характеристика об'єкта оренди</td>
+                <td>Категорія</td>
+                <td>Цільове призначення</td>
+                <td>Орендована площа кв.м.</td>
+                <td>Поточна ставка, %</td>
+                <td>Місячна орендна плата грн.</td>
+                <td>Тип оренди </td>
+                <td>Вартість об'єкту</td>
+                <td>Строк або термін оренди:</td>
+                <td>Статус розкриття публічної інформації</td>
+                <td>Статус розгляду</td>
+                <td>Рішення комісії</td>
+                <td>Причина відкладення, зауваження:</td>
+                <td>Примітки</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+            </tr>
+            {% set i = 0 %}
+            {% for oc in orendaresh.orendadoc %}
+            <tr class="orange_bg">
+                <td>{{ oc.agreementNumber }}</td>
+                <td>{{ oc.outgoingNumber }}</td>
+                <td>{{ oc.incomeNumber }}</td>
+                <td>{{ oc.entryToCommisDate|date('d/m/y') }}</td>
+                <td>{{ oc.reviewDate|date('d/m/y') }}</td>
+                <td>{{ oc.entryToLessorDate|date('d/m/y') }}</td>
+                <td>{{ oc.announcementDate|date('d/m/y') }}</td>
+                <td>{{ oc.valuationDate|date('d/m/y') }}</td>
+                <td>{{ oc.tip }}</td>
+                <td>{{ oc.balanceHolder }}</td>
+                <td>{{ oc.landLord }}</td>
+                <td>{{ oc.organization }}</td>
+                <td>{{ oc.kmdaobject.addrstreet}} {{ oc.kmdaobject.addrnumber}}</td>
+                <td>{{ oc.houseKind }}</td>
+                <td>{{ oc.propertyRentObject }}</td>
+                <td>{{ oc.category }}</td>
+                <td>{{ oc.purpose }}</td>
+                <td>{{ oc.sqrrent }}</td>
+                <td>{{ oc.rentRatePercent }}</td>
+                <td>{{ oc.cost1month }}</td>
+                <td>{{ oc.rentType }}</td>
+                <td>{{ oc.kmdaobject.costbalans }}</td>
+                <td>{{ oc.leaseTerm }}</td>
+                <td>немає</td>
+                <td>{{ oc.solution }}</td>
+                <td>{{ oc.status }}</td>
+                <td>{{ oc.note2 }}</td>
+                <td>{{ oc.note }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</body>
+
+</html>

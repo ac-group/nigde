@@ -1,0 +1,15 @@
+kmdaBundle\Entity\DictBuildingPurpose:
+    type: entity
+    table: dictbuildingpurpose
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+
+    lifecycleCallbacks: {  }

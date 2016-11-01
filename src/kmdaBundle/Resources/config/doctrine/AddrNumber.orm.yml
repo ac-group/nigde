@@ -1,0 +1,48 @@
+kmdaBundle\Entity\AddrNumber:
+    type: entity
+    table: addr_number
+#    indexes:
+#        IDX_3FE43DF241883C89:
+#            columns:
+#                - id_addr_street
+#        IDX_3FE43DF249D1064F:
+#            columns:
+#                - id_addr_zipcode
+#        IDX_3FE43DF2754C55B3:
+#            columns:
+#                - id_geocoding_point
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        addrNumber:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Номер будинку'
+            column: addr_number
+        isActive:
+            type: boolean
+            nullable: true
+            comment: Актуальність
+            column: is_active
+        the_geom:
+            type: geometry
+            nullable: true
+    manyToOne:
+        Street:
+            targetEntity: Street
+#            cascade: {  }
+#            mappedBy: null
+            inversedBy: addr_num
+            joinColumns:
+                street_id:
+                    referencedColumnName: id
+#            nullable: true
+    lifecycleCallbacks: {  }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="27px" viewBox="0 0 44 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>17E68190-1267-49DC-936C-531DFD17CC1B</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M38.7068085,12.0974939 C38.7068085,16.2353549 30.1383787,19.7285235 19.997238,19.7296089 C9.85554481,19.7296089 1.28766745,16.2342695 1.28766745,12.0985792 C1.28766745,10.1878371 3.21281591,8.26841233 6.56870598,6.83522009 C10.0908714,5.32931004 14.7742025,4.49576847 19.7718547,4.47406166 L17.4732772,6.72885671 C17.2219307,6.97631437 18.2604613,7.74690618 18.3869631,7.62480536 L22.2477558,3.83533873 L18.3869631,0.0426160719 C18.1356166,-0.20429891 17.2235879,0.691649739 17.4749344,0.938564721 L19.7834553,3.20638386 C14.6079271,3.22917601 9.73953874,4.10124717 6.05662201,5.67390567 C2.1510841,7.3409888 0,9.62454538 0,12.0996646 C0,17.0922312 8.78607927,21 20,21 C31.2150255,20.9978293 40,17.0873472 40,12.0974939 C39.997238,11.7485569 38.7068085,11.7480142 38.7068085,12.0974939 Z" id="path-1"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.24 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter2" result="shadowBlurOuter2"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0" type="matrix" in="shadowBlurOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Desktop-Landscape" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="right-nav-var.3" transform="translate(-30.000000, -247.000000)">
+            <g id="rotate-object" transform="translate(52.000000, 261.500000) scale(1, -1) translate(-52.000000, -261.500000) translate(32.000000, 251.000000)">
+                <g id="Shape" transform="translate(20.000000, 10.500000) scale(-1, 1) translate(-20.000000, -10.500000) ">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,48 @@
+kmdaBundle\Entity\OrendaResh:
+    type: entity
+    table: orenda_resh
+    repositoryClass: kmdaBundle\Repository\OrendaReshRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+            nullable: true
+        note:
+            type: string
+            length: 255
+            nullable: true
+        closed:
+            type: datetime
+            nullable: true
+        expected:
+            type: datetime
+            nullable: true
+        created:
+            type: datetime
+            gedmo:
+                timestampable:
+                  on: create
+        updated:
+            type: datetime  
+            gedmo:
+                timestampable:
+                  on: update
+    manyToMany:
+      orendadoc:
+        targetEntity: OrendaDoc
+        joinTable:
+          name: orendaresh_doc
+          joinColumns:
+            resh_id:
+              referencedColumnName: id
+          inverseJoinColumns:
+            doc_id:
+              referencedColumnName: id
+        cascade: [persist]
+    lifecycleCallbacks: {  }

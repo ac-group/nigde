@@ -1,0 +1,28 @@
+api_index:
+    path: /citystreets
+    defaults: { _controller: "kmdaBundle:Api:index" }
+    prefix: /v1
+    requirements:
+        _method: GET
+        
+api_streettype:
+    path: /streettype
+    defaults: { _controller: "kmdaBundle:Api:streettype" }
+    prefix: /v1
+    requirements:
+        _method: GET
+
+    
+api_streetsearch:
+    path:   /search
+    defaults: { _controller: "kmdaBundle:Api:streetsearch" }
+    prefix: /v1
+    requirements:
+        _method: GET
+        
+api_putmsg:
+    path: /msg
+    defaults: { _controller: "kmdaBundle:Api:putmsg" }
+    prefix: /v1
+    requirements:
+        _method: POST

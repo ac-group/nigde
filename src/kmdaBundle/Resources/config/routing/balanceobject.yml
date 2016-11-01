@@ -1,0 +1,24 @@
+balanceobject_index:
+    path:     /
+    defaults: { _controller: "kmdaBundle:BalanceObject:index" }
+    methods:  GET
+
+balanceobject_show:
+    path:     /{id}/show
+    defaults: { _controller: "kmdaBundle:BalanceObject:show" }
+    methods:  GET
+
+balanceobject_new:
+    path:     /new
+    defaults: { _controller: "kmdaBundle:BalanceObject:new" }
+    methods:  [GET, POST]
+
+balanceobject_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "kmdaBundle:BalanceObject:edit" }
+    methods:  [GET, POST]
+
+balanceobject_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "kmdaBundle:BalanceObject:delete" }
+    methods:  DELETE

@@ -1,0 +1,74 @@
+parameters:
+#    parameter_name: value
+
+services:
+    kmda.admin.kmdaobject: 
+        class: kmdaBundle\Admin\kmdaObjectAdmin  
+        arguments:
+            - ''
+            - kmdaBundle\Entity\kmdaObject
+            - 'SonataAdminBundle:CRUD'
+        tags:
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: true }
+    kmda.admin.organization: 
+        class: kmdaBundle\Admin\OrganizationAdmin  
+        arguments:
+            - ''
+            - kmdaBundle\Entity\Organization
+            - 'SonataAdminBundle:CRUD'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Организации", label: "Организации", pager_type: "simple" }
+    kmda.admin.phonenumber: 
+        class: kmdaBundle\Admin\PhonenumberAdmin  
+        arguments:
+            - ''
+            - kmdaBundle\Entity\Phonenumber
+            - 'SonataAdminBundle:CRUD'
+        tags:
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false }
+#    kmda.postgislistener:
+#        class: kmdaBundle\EventListener\PostgisListener
+#        tags:
+#            - { name: doctrine.event_subscriber,  connection: default }
+    kmda.admin.rentdocuments: 
+        class: kmdaBundle\Admin\RentDocumentsAdmin 
+        arguments:
+            - ''
+            - kmdaBundle\Entity\RentDocuments
+            - 'SonataAdminBundle:CRUD'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Оренда", label: "Оренда" }        
+    
+    kmda.admin.questiontype: 
+        class: kmdaBundle\Admin\QuestionTypeAdmin 
+        arguments:
+            - ''
+            - kmdaBundle\Entity\QuestionType
+            - 'SonataAdminBundle:CRUD'
+        tags:
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false } 
+    kmda.admin.addrnumber: 
+        class: kmdaBundle\Admin\AddrNumberAdmin 
+        arguments:
+            - ''
+            - kmdaBundle\Entity\AddrNumber
+            - 'SonataAdminBundle:CRUD'
+        tags:
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false }  
+    kmda.admin.addrstreet: 
+        class: kmdaBundle\Admin\AddrStreetAdmin 
+        arguments:
+            - ''
+            - kmdaBundle\Entity\Street
+            - 'SonataAdminBundle:CRUD'
+        tags:
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false }  
+#    kmda.type.orendaresh:
+#        class: kmdaBundle\Form\OrendaReshType
+#        tags:
+#            - { name: form.type, alias: form_orendaresh }
+#        arguments: [@doctrine]
+    kmda.workflow.listener.agreem1:
+        class: kmdaBundle\WorkFlow\Listener\OrendaDocProcessSubscriber
+        tags:
+            - { name: kernel.event_subscriber }

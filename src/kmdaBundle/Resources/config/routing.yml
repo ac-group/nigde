@@ -1,0 +1,64 @@
+kmda_homepage:
+    path:     /
+    defaults: { _controller: kmdaBundle:Version2:index }
+    
+kmda_getphoto:
+    path:     /getphoto/{id}
+    defaults: { _controller: kmdaBundle:Default:getbalanceobjectphoto }
+
+kmda_balanceobject:
+    resource: "@kmdaBundle/Resources/config/routing/balanceobject.yml"
+    prefix:   /balanceobject
+    
+kmda_api:
+    type: rest
+    resource: "@kmdaBundle/Resources/config/routing/api.yml"
+    prefix:   /api
+    
+kmda_search:
+    path:     /search
+    defaults: { _controller: kmdaBundle:Default:getsearch }
+    requirements:
+        _method: POST
+
+kmda_voting:
+    path:     /voting
+    defaults: { _controller: kmdaBundle:Default:voting }
+    requirements:
+        _method: POST
+
+kmda_votingResult:
+    path:     /votingResult
+    defaults: { _controller: kmdaBundle:Default:votingResult }
+    requirements:
+        _method: POST
+
+kmda_checkIp:
+    path:     /checkIp
+    defaults: { _controller: kmdaBundle:Default:checkIp }
+    requirements:
+        _method: POST
+        
+kmda_autocomplete:
+    path:     /autocomplete
+    defaults: { _controller: kmdaBundle:Default:autocomplete }
+
+#kmda_documents:
+#    resource: "@kmdaBundle/Resources/config/routing/documents.yml"
+#    prefix:   /documents
+    
+kmda_rentdocuments:
+    resource: "@kmdaBundle/Resources/config/routing/rentdocuments.yml"
+    prefix:   /rentdocuments
+
+kmda_orendadoc:
+    resource: "@kmdaBundle/Resources/config/routing/orendadoc.yml"
+    prefix:   /orendadoc
+
+kmda_orendaresh:
+    resource: "@kmdaBundle/Resources/config/routing/orendaresh.yml"
+    prefix:   /meeting
+
+kmda_house:
+    resource: "@kmdaBundle/Resources/config/routing/house.yml"
+    prefix:   /house

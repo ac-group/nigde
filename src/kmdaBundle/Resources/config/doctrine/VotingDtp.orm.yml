@@ -1,0 +1,30 @@
+kmdaBundle\Entity\VotingDtp:
+    type: entity
+    table: voting_dtp
+    repositoryClass: kmdaBundle\Repository\VotingDtpRepository
+    id:
+        id:
+                  type: integer
+                  id: true
+                  generator:
+                      strategy: AUTO
+
+    fields:
+      idTicketit:
+                  type: integer
+                  nullable: true
+                  unsigned: false
+                  column: id_ticketit
+
+      voice:
+                  type: boolean
+                  nullable: true
+                  column: voice
+
+      ipUser:
+                type: string
+                nullable: true
+                length: 255
+                fixed: false
+                column: ip_user
+    lifecycleCallbacks: {  }

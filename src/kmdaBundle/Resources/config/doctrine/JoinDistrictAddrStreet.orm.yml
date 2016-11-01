@@ -1,0 +1,38 @@
+kmdaBundle\Entity\JoinDistrictAddrStreet:
+    type: entity
+    table: join_district_addr_street
+#    indexes:
+#        IDX_F9D5816141883C89:
+#            columns:
+#                - id_addr_street
+#        IDX_F9D58161611AB812:
+#            columns:
+#                - id_district
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    manyToOne:
+        idAddrStreet:
+            targetEntity: AddrStreet
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_addr_street:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idDistrict:
+            targetEntity: District
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_district:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

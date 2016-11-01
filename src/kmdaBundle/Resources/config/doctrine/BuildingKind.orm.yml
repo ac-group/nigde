@@ -1,0 +1,23 @@
+kmdaBundle\Entity\BuildingKind:
+    type: entity
+    table: building_kind
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 64
+            fixed: false
+    oneToMany:
+      kmdaObject:
+          targetEntity: kmdaBundle\Entity\kmdaObject
+          mappedBy: buildingKind
+          cascade: ["persist","merge"]
+    lifecycleCallbacks: {  }

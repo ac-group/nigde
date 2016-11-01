@@ -1,0 +1,18 @@
+kmdaBundle\Entity\StatusReview:
+    type: entity
+    table: status_review
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+    lifecycleCallbacks: {  }

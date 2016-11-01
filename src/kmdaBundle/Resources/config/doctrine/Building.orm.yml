@@ -1,0 +1,140 @@
+kmdaBundle\Entity\Building:
+    type: entity
+    table: building
+#    indexes:
+#        IDX_E16F61D427F6F005:
+#            columns:
+#                - id_addr_number
+#        IDX_E16F61D41C2A402F:
+#            columns:
+#                - id_building_tech_state
+#        IDX_E16F61D427C89835:
+#            columns:
+#                - id_building_historical_value
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'Кількість поверхів'
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        isActive:
+            type: boolean
+            nullable: true
+            comment: Актуальність
+            column: is_active
+        theGeom900913:
+            type: polygon
+            nullable: true
+            requireSQLConversion: true
+            column: the_geom900913
+        block:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Корпус дома'
+        numFloors:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Кількість поверхів'
+            column: num_floors
+        culturalHeritage:
+            type: boolean
+            nullable: true
+            comment: 'Об''єкт культурної спадщини'
+            column: cultural_heritage
+        facade:
+            type: boolean
+            nullable: true
+            comment: Фасадність
+        sqrNonResidential:
+            type: decimal
+            nullable: true
+            precision: 9
+            scale: 2
+            comment: 'Площа нежилих приміщень на балансі'
+            column: sqr_non_residential
+        sqrTotal:
+            type: decimal
+            nullable: true
+            precision: 9
+            scale: 2
+            comment: 'Загальна площа'
+            column: sqr_total
+        sqrRented:
+            type: decimal
+            nullable: true
+            precision: 9
+            scale: 2
+            comment: 'Площа надана в оренду'
+            column: sqr_rented
+        sqrBasement:
+            type: decimal
+            nullable: true
+            precision: 9
+            scale: 2
+            comment: 'Площа підвального приміщення'
+            column: sqr_basement
+        sqrInternal:
+            type: decimal
+            nullable: true
+            precision: 9
+            scale: 2
+            comment: 'Площа для власних потреб'
+            column: sqr_internal
+        sqrFree:
+            type: decimal
+            nullable: true
+            precision: 9
+            scale: 2
+            comment: 'Вільна площа'
+            column: sqr_free
+        sqrHousing:
+            type: decimal
+            nullable: true
+            precision: 9
+            scale: 2
+            comment: 'Площа житлового фонду'
+            column: sqr_housing
+        sqrAttic:
+            type: decimal
+            nullable: true
+            precision: 9
+            scale: 2
+            comment: 'Площа горища'
+            column: sqr_attic
+    manyToOne:
+        idAddrNumber:
+            targetEntity: AddrNumber
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_addr_number:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idBuildingTechState:
+            targetEntity: BuildingTechState
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_building_tech_state:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idBuildingHistoricalValue:
+            targetEntity: BuildingHistoricalValue
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_building_historical_value:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

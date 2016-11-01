@@ -1,0 +1,34 @@
+kmdaBundle\Entity\AddrStreet:
+    type: entity
+    table: addr_street
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Назва вулиці'
+        isActive:
+            type: boolean
+            nullable: true
+            column: is_active
+        theGeom900913:
+            type: linestring
+            nullable: true
+            requireSQLConversion: true
+            column: the_geom900913
+        idDistrict:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: id_district
+
+    lifecycleCallbacks: {  }

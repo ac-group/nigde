@@ -1,0 +1,66 @@
+kmdaBundle\Entity\kmdaObject:
+    type: entity
+    table: balanceobject
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        geocoding:
+            type: geometry
+            nullable: true
+            column: geocoding_id
+        objectname:
+            type: string
+            nullable: true
+            column: objectname
+        addrstreet:
+            type: string
+            nullable: true
+        addrnumber:
+            type: string
+            nullable: true
+        sqrTotal:
+            type: decimal
+            nullable: true
+            precision: 9
+            scale: 2
+            comment: 'Загальна площа'
+            column: sqrtotal
+        costBalans:
+            type: decimal
+            nullable: true
+            precision: 15
+            scale: 3
+            comment: 'Балансова вартість'
+            column: costbalans
+    manyToOne:
+        buildingKind:
+            targetEntity: kmdaBundle\Entity\BuildingKind
+            inversedBy: kmdaObject
+            joinColumn:
+                name: building_kind_id
+                referencedColumnName: id 
+        district:
+            targetEntity: kmdaBundle\Entity\District
+            inversedBy: kmdaObject
+            joinColumn:
+                name: district_id
+                referencedColumnName: id 
+    manyToMany:
+        purpose:
+            targetEntity: kmdaBundle\Entity\Purpose
+            inversedBy: kmdaObject
+            joinTable:
+                name: kmdaobject_purpose
+                joinColumns:
+                    kmdaobject_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    purpose_id:
+                        referencedColumnName: id  
+    lifecycleCallbacks: {  }

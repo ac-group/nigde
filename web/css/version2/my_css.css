@@ -1,0 +1,21 @@
+.meet_th {
+box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 12px;
+    font-weight: 700;
+    height: 48px;
+    letter-spacing: 0;
+    line-height: 24px;
+    padding-bottom: 8px;
+    position: relative;
+    text-overflow: ellipsis;
+    vertical-align: bottom;   
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.meet_td {
+    height: 48px;
+    padding: 12px 0;
+    overflow: hidden;
+    margin: 0 16px 0 0;
+}

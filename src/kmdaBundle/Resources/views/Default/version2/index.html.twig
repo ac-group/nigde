@@ -1,0 +1,213 @@
+{% extends ':version2:index.html.twig' %}
+
+{% block stylesheets %}
+    {% stylesheets
+    'css/version2/bootstrap.css'
+    '//fonts.googleapis.com/icon?family=Material+Icons'
+    '//fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=cyrillic,cyrillic-ext'
+    'css/version2/material.min.css'
+    'css/version2/new_css.css'
+    'css/version2/style.css'
+    'css/version2/jquery.bxslider.css'
+    'css/version2/bootstrap-material-datetimepicker.css'
+    '//ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css'
+        'css/new_modal.css'
+        output='css/version2/sc1.css' 
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+
+    '//code.jquery.com/jquery-2.2.4.min.js'
+    'js/version2/material.min.js'
+'js/version2/app.js'
+
+    'js/version2/jquery.bxslider.min.js'
+    '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'
+    '//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js'
+    '//momentjs.com/downloads/moment-with-locales.min.js'
+    'js/version2/bootstrap-material-datetimepicker.js'
+
+    '//code.jquery.com/ui/1.12.1/jquery-ui.min.js'
+    'js/jquery.maskedinput.min.js'
+    'js/ol.js'
+    'js/ol3gm.js'
+    '//maps.google.com/maps/api/js?v=3&key=AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g'
+    'js/version2/main.js'
+
+    'js/new_modal.js'
+
+    output='js/version2/sc22.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+     <script>
+     $(document).ready(function() {
+     $('#orenda_doc_type_reviewDate').mask("99/99/9999");
+$('#orenda_doc_type_entryToLessorDate').mask("99/99/9999");
+$('#orenda_doc_type_entryToCommisDate').mask("99/99/9999");
+$('#orenda_doc_type_announcementDate').mask("99/99/9999");
+$('#orenda_doc_type_valuationDate').mask("99/99/9999");
+     });     
+ </script>
+{% endblock %}
+
+{% block body -%}
+    <body>
+    <div class="head_block">
+        <div class="menu_button">
+            <button class="mdl-button mdl-js-button mdl-button--icon filter_list open_menu_but">
+                <i class="material-icons">menu</i>
+            </button>
+            <a href="#" class="company_logo">
+                <img src="/img/nsci1.png" alt="logo"> NSDI
+            </a>
+        </div>
+    </div>
+    <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50 is-visible left_menu_open"
+         aria-hidden="false">
+        <span class="mdl-layout-title brand">
+               <a href="#" class="company_logo">
+                   <img src="/img/nsci1.png" alt="logo"> NSDI
+               </a>
+               <button class="mdl-button mdl-js-button mdl-button--icon  open_menu_but">
+                   <i class="material-icons">keyboard_arrow_left</i>
+               </button>
+             </span>
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+            <div class="level_menu">
+            <div class="level_menu">
+                <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">terrain</i>Земля</a>
+
+                <div class="mdl-navigation__level2">
+                    <a class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#wms1">
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Кадастровий
+                        поділ</a>
+                </div>
+            </div>
+
+            </div>
+        </nav>
+    </div>
+
+    <div id="snackbar_container" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+                
+
+    <div class="right_menu close" >
+        <div class="right_menu_container">
+            <div class="right_menu_button">
+                <i class="material-icons">chevron_right</i>
+            </div>
+
+            <div class='info'>
+                <div class="info-slider" id="information">
+
+                </div>
+            </div>
+
+            <div class="right_menu_footer-block">
+                <div class="control_bttons">
+                    <button class=" mdl-button mdl-js-button mdl-js-ripple-effect btn-add">СТВОРИТИ ЗАЯВКУ</button>
+                    <div class="control_i">
+                        <button class="mdl-button mdl-js-button mdl-button--icon filter_list btn">
+                            <i class="material-icons">sms_failed</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon filter_list btn marg10">
+                            <i class="material-icons">local_printshop</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon filter_list btn">
+                            <i class="material-icons">share</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="edit_buttons left_menu_open">
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt4">
+            <i class="material-icons">near_me</i>
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt4">
+            Поточна
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color measure" id="length">
+            <img src="/img/ruler_nsci.png" class="no_active"><img
+                    src="/img/ruler_nsci_active.png" class="is_active">
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="length">
+            Відстань
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color measure" id="area">
+            <img src="/img/area_nsci1.png" class="no_active"><img
+                    src="/img/area_nsci1_active.png" class="is_active">
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="area">
+            Площа
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color measure" id="erase">
+            <img src="/img/delete_nsci.png" class="no_active"><img src="/img/delete_nsci_active.png"
+                                                                               class="is_active">
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="erase">
+            Очистити
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt7">
+            <i class="material-icons">room</i>
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt7">
+            Мітка
+        </div>
+    </div>
+
+    <div class="map_mode_select left_menu_open">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height ">
+            <input class="mdl-textfield__input " type="text" id="map_mode" readonly tabIndex="-1"
+                   value="Open Street Map">
+            <label for="map_mode">
+                <i class="mdl-icon-toggle__label material-icons">arrow_drop_down</i>
+            </label>
+            <ul for="map_mode" class="mdl-menu mdl-menu--bottom-left mdl-js-menu ">
+
+                <li class="mdl-menu__item" data-val="osm">Open Street Map</li>
+                <li class="mdl-menu__item" data-val="google">Google Satellite</li>
+                <li class="mdl-menu__item" data-val="googlehybrid">Google Hybryd</li>
+                <li class="mdl-menu__item" data-val="kiev2006">Космічний знімок, 2006р</li>
+               {# <li class="mdl-menu__item" data-val="kiev2015">Космічний знімок, 2015р</li>#}
+            </ul>
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="map_mode">
+            Обрати підоснову
+        </div>
+    </div>
+    <div class="new_legend">
+            <span class="new_legent_title">
+            </span>
+        <img src="">
+    </div>
+    <div class="main_search_container ">
+        <div class="main_search_block">
+            <i class="material-icons clear_icon main_clear_block_button">clear</i>
+            <input type="text" placeholder="Пошук" id="main_search_input">
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab bg_white mdl-js-ripple-effect btn_small search_block_button main_search_block_button"
+                    id="main_tt8">
+                <i class="material-icons">search</i>
+            </button>
+            <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt8">
+                Пошук
+            </div>
+        </div>
+    </div>
+    <div id="mapView" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;">
+
+    </div>
+
+    </body>
+
+{% endblock body %}

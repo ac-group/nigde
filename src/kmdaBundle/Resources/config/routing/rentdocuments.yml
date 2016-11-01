@@ -1,0 +1,24 @@
+rentdocuments_index:
+    path:     /
+    defaults: { _controller: "kmdaBundle:RentDocuments:index" }
+    methods:  GET
+
+rentdocuments_show:
+    path:     /{id}/show
+    defaults: { _controller: "kmdaBundle:RentDocuments:show" }
+    methods:  GET
+
+rentdocuments_new:
+    path:     /new
+    defaults: { _controller: "kmdaBundle:RentDocuments:new" }
+    methods:  [GET, POST]
+
+rentdocuments_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "kmdaBundle:RentDocuments:edit" }
+    methods:  [GET, POST]
+
+rentdocuments_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "kmdaBundle:RentDocuments:delete" }
+    methods:  DELETE

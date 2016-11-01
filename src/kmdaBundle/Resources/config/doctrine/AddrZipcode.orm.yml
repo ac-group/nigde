@@ -1,0 +1,18 @@
+kmdaBundle\Entity\AddrZipcode:
+    type: entity
+    table: addr_zipcode
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        zipcode:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'Поштовий індекс'
+    lifecycleCallbacks: {  }

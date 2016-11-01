@@ -1,0 +1,326 @@
+kmdaBundle\Entity\RentDocuments:
+    type: entity
+    table: rent_documents
+#    indexes:
+#        IDX_4A5842E66C186BA3:
+#            columns:
+#                - id_question_type
+#        IDX_4A5842E66E3593D2:
+#            columns:
+#                - id_balance_holder
+#        IDX_4A5842E6AE4D8FF7:
+#            columns:
+#                - id_renter
+#        IDX_4A5842E6CA429D51:
+#            columns:
+#                - id_lessor
+#        IDX_4A5842E67A21F8EE:
+#            columns:
+#                - id_status_review
+#        IDX_4A5842E67C814545:
+#            columns:
+#                - id_rent_type
+#        IDX_4A5842E6F8D657AB:
+#            columns:
+#                - id_commiss_decision
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        agreementDate:
+            type: date
+            nullable: true
+            comment: 'Дата договору'
+            column: agreement_date
+        agreementNumber:
+            type: string
+            nullable: true
+            length: 18
+            fixed: false
+            comment: 'Номер договору'
+            column: agreement_number
+        isActive:
+            type: boolean
+            nullable: true
+            comment: Актуальність
+            column: is_active
+        costRentAgreement:
+            type: decimal
+            nullable: true
+            precision: 15
+            scale: 3
+            comment: 'Вартість приміщень за договором'
+            column: cost_rent_agreement
+        costExpert1m:
+            type: decimal
+            nullable: true
+            precision: 15
+            scale: 3
+            comment: 'Орендна плата за 1м'
+            column: cost_expert_1m
+#        сostExpertTotal:
+#            type: decimal
+#            nullable: true
+#            precision: 15
+#            scale: 3
+#            comment: 'Орендна плата (всього)'
+#            column: сost_expert_total
+        reason:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: Підстава
+        rentStartDate:
+            type: date
+            nullable: true
+            comment: 'Початок оренди'
+            column: rent_start_date
+        rentFinishDate:
+            type: date
+            nullable: true
+            comment: 'Кінець оренди'
+            column: rent_finish_date
+        rentRatePercent:
+            type: decimal
+            nullable: true
+            precision: 15
+            scale: 3
+            comment: 'Орендна ставка'
+            column: rent_rate_percent
+        sqrRent:
+            type: decimal
+            nullable: true
+            precision: 9
+            scale: 2
+            comment: 'Площа оренди'
+            column: sqr_rent
+        isSubrent:
+            type: smallint
+            nullable: true
+            unsigned: false
+            comment: Cуборенда
+            column: is_subrent
+        paymentType:
+            type: string
+            nullable: true
+            length: 64
+            fixed: false
+            comment: 'Вид оплати'
+            column: payment_type
+        idRentContract:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'Скан договору оренди'
+            column: id_rent_contract
+        fileName:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Ім''я файлу'
+            column: file_name
+        filePath:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Шлях до файлу'
+            column: file_path
+        fileExt:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Розширення файлу'
+            column: file_ext
+        fileCreateDate:
+            type: date
+            nullable: true
+            comment: 'Дата створення'
+            column: file_create_date
+        reviewDate:
+            type: date
+            nullable: true
+            comment: 'Дата розгляду'
+            column: review_date
+        propertyRentObject:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Характеристика об''єкта оренди'
+            column: property_rent_object
+        cost1hour:
+            type: decimal
+            nullable: true
+            precision: 15
+            scale: 3
+            comment: 'Плата за годину'
+            column: cost_1hour
+        usingSchedule:
+            type: string
+            nullable: true
+            length: null
+            fixed: false
+            comment: 'Графік використання'
+            column: using_schedule
+        hoursOfWeek:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: 'Годин на тиждень'
+            column: hours_of_week
+        hoursOfMonth:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: 'Годин на місяць'
+            column: hours_of_month
+        cost1month:
+            type: decimal
+            nullable: true
+            precision: 15
+            scale: 3
+            comment: 'Вартість за місяць'
+            column: cost_1month
+        incomeNumber:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Вихідний номер'
+            column: income_number
+        inputNamber:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Вхідний номер'
+            column: input_namber
+        entryToCommisDate:
+            type: date
+            nullable: true
+            comment: 'Дата надходження до комісії'
+            column: entry_to_commis_date
+        entryToLessorDate:
+            type: date
+            nullable: true
+            comment: 'Дата надходження до орендодавця'
+            column: entry_to_lessor_date
+        announcementDate:
+            type: date
+            nullable: true
+            comment: 'Дата оголошення'
+            column: announcement_date
+        costObject:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'Вартість об''єкту'
+            column: cost_object
+        admonition:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: 'Причини відкладання, зауваження'
+        notes:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: Примітки
+        valuationDate:
+            type: date
+            nullable: true
+            comment: 'Дата оцінки'
+            column: valuation_date
+    manyToOne:
+        idQuestionType:
+            targetEntity: QuestionType
+#            cascade: ["persist"]
+#            mappedBy: null
+#            inversedBy: rentdocuments
+            joinColumn:
+                name: id_question_type
+                referencedColumnName: id
+#            orphanRemoval: false
+        idBalanceHolder:
+            targetEntity: Organization
+            comment: 'Балансоутримувач'
+#            inversedBy: rentdocuments
+            joinColumns:
+                id_balance_holder:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idRenter:
+            targetEntity: Organization
+#            inversedBy: rentdocuments
+            joinColumns:
+                id_renter:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idLessor:
+            targetEntity: Organization
+#            inversedBy: rentdocuments
+            joinColumns:
+                id_lessor:
+                    referencedColumnName: id
+            orphanRemoval: false
+#        idDisclosurePublicInfo:
+#            targetEntity: DisclosurePublicInfo
+#            cascade: {  }
+#            mappedBy: null
+#            inversedBy: null
+#            joinColumns:
+#                id_disclosure_public_info:
+#                    referencedColumnName: id
+#            orphanRemoval: false
+        idStatusReview:
+            targetEntity: StatusReview
+#            cascade: {  }
+#            mappedBy: null
+#            inversedBy: rentdocuments
+            joinColumns:
+                id_status_review:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idRentType:
+            targetEntity: RentType
+#            cascade: {  }
+#            mappedBy: null
+#            inversedBy: rentdocuments
+            joinColumns:
+                id_rent_type:
+                    referencedColumnName: id
+            orphanRemoval: false
+ #       idCommissDecision:
+ #           targetEntity: CommissDecision
+ #           cascade: {  }
+ #           mappedBy: null
+ #           inversedBy: null
+ #           joinColumns:
+ #               id_commiss_decision:
+ #                   referencedColumnName: id
+ #           orphanRemoval: false
+        Street:
+            targetEntity: Street
+            joinColumns:
+                street_id:
+                    referencedColumnName: id  
+        AddrNumber:
+            targetEntity: AddrNumber
+            joinColumns:
+                addrnumber_id:
+                    referencedColumnName: id 
+
+    lifecycleCallbacks: {  }

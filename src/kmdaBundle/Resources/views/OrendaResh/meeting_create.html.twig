@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="ua">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        {% block stylesheets %}
+            {% stylesheets
+        '//fonts.googleapis.com/icon?family=Material+Icons'
+        '//fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=cyrillic,cyrillic-ext'
+        'css/version2/material.min.css'      
+        'css/version2/style.css'
+        'css/version2/jquery.bxslider.css'
+        'css/version2/bootstrap-material-datetimepicker.css'
+        '//ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css'
+        'css/version2/my_css.css'
+        output='css/version2/scmc.css' 
+        filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+
+    </head>
+
+    <body>
+
+        <div class="head_block meetings_create">
+            <div class="menu_button">
+                <button class="mdl-button mdl-js-button mdl-button--icon filter_list open_menu_but">
+                    <i class="material-icons">menu</i>
+                </button>
+                <a href="#" class="company_logo">
+                    <img src="{{ asset('img/k-s-c-logo-c-m-y-k-white.svg') }}" alt="SmartCity">
+                </a>
+            </div>
+            <div class="head_right_button">
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab bg_white btn_small">
+                    <i class="material-icons">notifications</i>
+                </button>
+                <a href="{{path('fos_user_security_logout')}}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab bg_white">
+                    <i class="material-icons">person</i>
+                </a>
+            </div>
+        </div>
+        <div class="sub_header meetings_create">
+            <div class="sub_header_container">
+                <a href="{{ path('orendaresh_index') }}"><i class="material-icons">arrow_back</i><span class="back">ПОВЕРНУТИСЯ ДО ПЕРЕЛІКУ</span></a>
+                <div class="sub_header_control-btn">
+                    <div class="button ">
+                        <button class="mdl-button mdl-js-button mdl-button--icon filter_list" data-upgraded=",MaterialButton">
+                            <i class="material-icons">close</i>
+                        </button>
+                    </div>
+                    <div class="button ">
+                        <button class="mdl-button mdl-js-button mdl-button--icon filter_list" data-upgraded=",MaterialButton">
+                            <i class="material-icons">room</i>
+                        </button>
+                    </div>
+                </div>
+                <dib class="meetings_create_title">Сформувати нове слухання</dib>
+            </div>
+        </div>
+        <div class="meetings_create_plus">
+
+        </div>
+                                {{ form_start(form) }}
+        <div class="meetings_create_wrap">
+            <div class="left_block">
+            <div class="left_block-content">
+                <div class="mdl-textfield mdl-js-textfield">
+                    {{ form_widget(form.title,{'type':'text', 'disabled': true, 'attr':{'class':'mdl-textfield__input','placeholder':'Назва комісії',}}) }}
+                
+                </div>
+                <div class="left_block_input"> <i class="material-icons mirror">today</i>
+                    <span class="label">Дата комісії</span>
+                    <div class="mdl-textfield mdl-js-textfield ">
+                        {{ form_widget(form.expected.date,{'type':'text', 'disabled': true, 'attr':{'class':'mdl-textfield__input'}}) }}
+                    </div>
+                </div>
+                <div class="left_block_input"> <i class="material-icons">access_time</i>
+                    <span class="label">Час проведення комісії</span>
+                    <div class="mdl-textfield mdl-js-textfield ">
+                        {{ form_widget(form.expected.time,{'type':'text', 'disabled': true, 'attr':{'class':'mdl-textfield__input'}}) }}
+                    </div>
+                </div>
+                <div class="control_bttons">
+                        {{ form_widget(form.submit,{'label':'СФОРМУВАТИ','attr':{'class':'mdl-button mdl-js-button mdl-js-ripple-effect btn-add btn-public'}}) }}
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect  btn-cancel">СКАСУВАТИ</button>
+                </div>
+            </div>
+            <div id="calendar_cont"></div>
+        </div>
+            </div>
+            <div class="right_block">
+                <span class="meet_item_content-title">
+                    Перелік заявок внесених на комісію
+                </span>
+                <div class="meet_item_content-control_but">
+                    <button class="mdl-button mdl-js-button mdl-button--icon filter_list" data-upgraded=",MaterialButton">
+                        <i class="material-icons">sort</i>
+                    </button>
+                    <button class="mdl-button mdl-js-button mdl-button--icon filter_list" data-upgraded=",MaterialButton">
+                        <i class="material-icons">more_vert</i>
+                    </button>
+                </div>
+
+
+            {% block form_label %}{% endblock %}
+        {% block form_errors %}{% endblock %}
+        <div style="clear: both;"></div>
+
+{#         <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--1-col graybox">1</div>
+            <div class="mdl-cell mdl-cell--1-col graybox">2</div>
+            <div class="mdl-cell mdl-cell--1-col graybox">3</div>
+            <div class="mdl-cell mdl-cell--1-col graybox">4</div>
+            <div class="mdl-cell mdl-cell--1-col graybox">5</div>
+            <div class="mdl-cell mdl-cell--1-col graybox">6</div>
+            <div class="mdl-cell mdl-cell--1-col graybox">7</div>
+            <div class="mdl-cell mdl-cell--1-col graybox">8</div>
+            <div class="mdl-cell mdl-cell--1-col graybox">9</div>
+            <div class="mdl-cell mdl-cell--1-col graybox">10</div>
+            <div class="mdl-cell mdl-cell--1-col graybox">11</div>
+            <div class="mdl-cell mdl-cell--1-col graybox">12</div>
+         </div>#}
+        <div class="mdl-grid head_table meet_th">
+            <div class="mdl-cell mdl-cell--2-col">Назва</div>
+            <div class="mdl-cell mdl-cell--2-col">Адреса</div>
+            <div class="mdl-cell mdl-cell--1-col">Тип</div>
+            <div class="mdl-cell mdl-cell--2-col">Орендар</div>
+            <div class="mdl-cell mdl-cell--1-col">Вартість</div>
+            <div class="mdl-cell mdl-cell--2-col">Примітки</div>
+            <div class="mdl-cell mdl-cell--2-col"></div>
+ {#           <div class="mdl-cell mdl-cell--1-col">8</div>#}
+        </div>
+        {{ form_errors(form.orendadoc) }}  
+        {% set i = 0 %}
+        {% block MyType_widget %}
+        <div class="my-selector" style="font-size: 13px;">   
+            {% for oc in form.orendadoc %}
+
+                <div class="mdl-grid" id="orenda_resh_orendadoc_{{ i }}">
+                    <div class="mdl-cell mdl-cell--2-col meet_td" id="ta1{{ i }}">{{ form.orendadoc.vars.value[i].kmdaobject.objectname }}</div>
+                            <div for="ta1{{ i }}" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                                <div>{{ form.orendadoc.vars.value[i].kmdaobject.objectname }}</div>
+                            </div>
+                    <div class="mdl-cell mdl-cell--2-col meet_td" style="overflow: hidden;" id="ta2{{ i }}">{{ form.orendadoc.vars.value[i].kmdaobject.addrstreet }}{{ form.orendadoc.vars.value[i].kmdaobject.addrnumber }}</div>
+                            <div for="ta2{{ i }}" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                                <div>{{ form.orendadoc.vars.value[i].kmdaobject.objectname }} {{ form.orendadoc.vars.value[i].kmdaobject.addrstreet }}{{ form.orendadoc.vars.value[i].kmdaobject.addrnumber }}</div>
+                            </div>                    
+                    <div class="mdl-cell mdl-cell--1-col meet_td" style="overflow: hidden;" id="ta3{{ i }}">{{ form.orendadoc.vars.value[i].tip }}</div>
+                            <div for="ta3{{ i }}" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                                <div>{{ form.orendadoc.vars.value[i].tip }}</div>
+                            </div>
+                    <div class="mdl-cell mdl-cell--2-col meet_td" style="overflow: hidden;" id="ta4{{ i }}">{{ form.orendadoc.vars.value[i].organization }}</div>
+                            <div for="ta4{{ i }}" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                                <div>{{ form.orendadoc.vars.value[i].organization }}{{ form.orendadoc.vars.value[i].edrpouOrganization }}</div>
+                            </div>                    
+                    <div class="mdl-cell mdl-cell--1-col meet_td">{{ form.orendadoc.vars.value[i].kmdaobject.costbalans }}</div>
+
+                    <div class="mdl-cell mdl-cell--2-col meet_td">                                    
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1{{i}}" style="overflow: hidden;">{{ form.orendadoc.vars.value[i].note }}</span>
+                            <div for="t_prim1{{i}}" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">{{ form.orendadoc.vars.value[i].note }}</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        {#<textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>#}
+                                        {{ form_widget(oc.note) }}
+                                        {% if(oc.note.vars.value is empty) %}
+                                        <label class="mdl-textfield__label">Примітки</label>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div></div>
+                    <div class="mdl-cell mdl-cell--2-col meet_td">
+                        <a href="#" class="collection-up mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton"><i class="material-icons">keyboard_arrow_up</i></a>
+                        <a href="#" class="collection-down mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton"><i class="material-icons">keyboard_arrow_down</i></a>
+                    </div>
+{#                    <div class="mdl-cell mdl-cell--1-col">
+                        <button class="collection-remove mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton"><i class="material-icons ">delete</i></button>
+                    </div>#}
+                </div>
+                {% set i=i+1 %}
+
+            {% endfor %}
+
+        </div>
+{% endblock %}
+
+        
+            {% if form.vars.value.id  %}
+                
+                    <a href="{{ path('orendaresh_pdf',{ 'id': form.vars.value.id }) }}">PDF</a>
+               
+            {% endif %}
+
+
+
+ {#       <table class="mdl-data-table mdl-js-data-table ">
+            <thead>
+                <tr>
+                    <th>Назва</th>
+                    <th>Адреса</th>
+                    <th>Тип</th>
+                    <th>Орендар</th>
+                    <th>Вартість</th>
+                    <th>Примітки</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="sort_table_block">
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta1">вул. Верхній Ва…</span>
+                        <div for="ta1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov1">ТОВ Ва...</span>
+                        <div for="t_tov1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim1">Якась примітка …</span>
+                            <div for="t_prim1" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">delete</i>
+                        </button>
+                    </td>
+                </tr>
+
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta2">вул. Верхній Ва…</span>
+                        <div for="ta2" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov2">ТОВ Ва...</span>
+                        <div for="t_tov2" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim2">Якась примітка …</span>
+                            <div for="t_prim2" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" type="text" id="conclusion_id_12" rows="2"></textarea>
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="swap_item">
+                    <td>Приміщення</td>
+                    <td>
+                        <span id="ta3">вул. Верхній Ва…</span>
+                        <div for="ta3" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_adr">
+                            <img src="{{ asset('img/example_3.png') }}" alt="">
+                            <div>Церква київського патріархату.Площею 109,07 кв.м. 40143, м. Київ, Шевчерківський район, вул. Бульварно-Кудрявська, 45/143.</div>
+                        </div>
+                    </td>
+                    <td>Комун...</td>
+                    <td>
+                        <span id="t_tov3">ТОВ Ва...</span>
+                        <div for="t_tov3" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_tov">
+                            <div>ТОВ Василько Кисилько ЄДРПУО 12345678</div>
+                        </div>
+                    </td>
+                    <td>7 455,00</td>
+                    <td class="overflow_visible">
+                        <div class="conclusion_back_block_fix"></div>
+                        <div class="conclusion_container">
+                            <span class="conclusion_span " id="t_prim3">Якась примітка …</span>
+                            <div for="t_prim3" class="mdl-tooltip mdl-tooltip_style mdl-tooltip--top mctooltip mctooltip_prim">
+                                <div class="prim_cont">Щось пішло не так мабудь не обрали потрібну ціну для передачі в аренду даний об’єкт, щось отримати дуже велику вигоду для нашого міста, та підняти досягнення на новий рівень самобутності</div>
+                            </div>
+                            <div class="conclusion_Input_block">
+                                <div class="conclusion_Input_block_container prim">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">                              
+                                        <label class="mdl-textfield__label" for="conclusion_id_1">Примітки</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color up" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_up</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color down" data-upgraded=",MaterialButton">
+                            <i class="material-icons ">keyboard_arrow_down</i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon theme_icon_color" data-upgraded=",MaterialButton">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>#}
+    </div>
+    <div class="clear"></div>
+    </div>
+ {{ form_end(form) }}
+<div class="left_menu ">
+    <div class="left_menu_head">
+        <a href="#" class="company_logo">
+            <img src="{{ asset('img/k-s-c-logo-c-m-y-k-bw.svg') }}" alt="logo">
+        </a>
+        <button class="mdl-button mdl-js-button mdl-button--icon filter_list open_menu_but">
+            <i class="material-icons">keyboard_arrow_left</i>
+        </button>
+    </div>
+    <div class="left_menu_obr">
+        <div class="left_menu_body">
+            <ul class="left_menu_items">
+                <li>
+                    <span>Перелік слухань</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--Modals-->
+
+{% block javascripts %}    
+            {% javascripts    
+    'js/version2/jquery-3.1.1.min.js'
+    '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
+    'js/version2/material.min.js'
+    'js/version2/getmdl-select.min.js'
+    'js/version2/jquery.bxslider.min.js'
+    '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'
+    '//momentjs.com/downloads/moment-with-locales.min.js'
+    'js/version2/bootstrap-material-datetimepicker.js'
+    '//code.jquery.com/ui/1.12.1/jquery-ui.min.js'
+    'js/jquery.collection.js'
+    'js/version2/main.js'
+    output='js/version2/scmc.js' %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}     
+    <script type="text/javascript">
+
+        $('.my-selector').collection({
+            drag_drop: true,
+            allow_add: false,
+            allow_remove: false,
+            allow_up: true,
+            allow_down: true,
+            prototype: true,
+            prototype_name: 'orenda_resh_orendadoc',
+            name_prefix: 'orenda_resh_orendadoc',
+{#                before_remove: function(collection, element) {
+                    console.log(element);
+                    //$('#simple_dialog').toggle();
+                return false;
+             },#}
+        });
+
+        {#        $('.my-selector').collection({
+                    up: '<button class=\"mdl-button mdl-js-button mdl-button--icon theme_icon_color up\" data-upgraded=\",MaterialButton\"><i class=\"material-icons \">keyboard_arrow_up</i></button>',
+                    down: '<a href="#">[ # ]</a>',
+                    add: '<button class=\"mdl-button mdl-js-button mdl-button--icon theme_icon_color up\" data-upgraded=\",MaterialButton\"><i class=\"material-icons \">keyboard_arrow_up</i></button>',
+                    remove: '<a href="#">[ # ]</a>',
+                    duplicate: '<a href="#">[ # ]</a>',
+                    name_prefix: 'orenda_resh_orendadoc',
+                });#}
+    </script>
+
+{% endblock %}   
+</body>
+
+</html>
+

@@ -1,0 +1,18 @@
+kmdaBundle\Entity\AdminAuth:
+    type: entity
+    table: admin_auth
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+    lifecycleCallbacks: {  }

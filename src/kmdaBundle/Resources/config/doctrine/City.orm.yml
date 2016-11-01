@@ -1,0 +1,19 @@
+kmdaBundle\Entity\City:
+    type: entity
+    table: city
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'Назва міста'
+    lifecycleCallbacks: {  }

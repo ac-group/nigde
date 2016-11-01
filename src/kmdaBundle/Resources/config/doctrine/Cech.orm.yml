@@ -1,0 +1,8 @@
+kmdaBundle\Entity\Cech:
+    type: mappedSuperclass
+
+    fields:
+        material:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
