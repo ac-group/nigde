@@ -1024,6 +1024,14 @@ $('body').on('click', '.modal-dtp', function(){
             name: 'osm',
         });
 
+        var pubLayer = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://212.26.144.103/map/dzk_overview/{z}/{x}/{-y}.png',
+                crossOrigin: 'null',
+            }),
+            name: 'pub',
+            visible: 1,
+        });
 
         var kiev2006Layer = new ol.layer.Tile({
             source: new ol.source.XYZ({
@@ -1041,7 +1049,7 @@ $('body').on('click', '.modal-dtp', function(){
         });
         var vin2015Layer = new ol.layer.Tile({
             source: new ol.source.XYZ({
-//                url: '/ortho2k_2015/{z}/{x}/{-y}.jpg',
+//                url: '/ortho2k_vyn/{z}/{x}/{-y}.png',
                 url: 'http://212.26.144.103/map/ortho2k_vyn/{z}/{x}/{-y}.png',
                 crossOrigin: 'null',
             }),
@@ -1145,7 +1153,8 @@ $('body').on('click', '.modal-dtp', function(){
                 googleLayer,
                 googleHybridLayer,
 //                satLayer,
-                osmLayer,
+//                osmLayer,
+                pubLayer,
                 kiev2006Layer,
                 wmsLayer,
                 vin2015Layer
@@ -1197,7 +1206,7 @@ $('body').on('click', '.modal-dtp', function(){
 
         $('.map_mode_select li').on('click', function(event){
             var selected = $(this).attr('data-val');
-            var artbaz = ['osm', 'google', 'googlehybrid', 'vin2015', 'kiev2006'];
+            var artbaz = ['pub', 'google', 'googlehybrid', 'vin2015', 'kiev2006'];
             map.getLayers().forEach(function (l, i) {
                 if (($.inArray(l.get('name'), artbaz)) > -1) {
                     if (l.get('name') !== selected) {

@@ -80,9 +80,9 @@ a:active {
 .head_block {
     z-index: 1;
     width: 100%;
-    background: rgba(255,255,255,0.8);
+   // background: rgba(255,255,255,0.8);
     height: 68px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  //  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
 }
 
 .left_menu i:hover,
@@ -173,6 +173,7 @@ a:active {
 .left_menu_head .company_logo {
     margin: 24px 16px;
     display: inline-block;
+//    z-index: 5;
 }
 
 .left_menu_head .open_menu_but {
@@ -1311,7 +1312,7 @@ a:active {
 
 .head_block {
     position: fixed;
-    top: 0;
+    top: 20px;
     z-index: 3;
 }
 
@@ -2452,7 +2453,7 @@ tr td {
 .scale_buttons,
 .edit_buttons {
     width: 40px;
-    height: 80x;
+    height: 80px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
@@ -2477,7 +2478,9 @@ tr td {
     width: 40px;
     height: 40px;
 }
-
+#ol-overviewmap{
+    border-radius: 10px;
+}
 .ol-overviewmap.ol-control,
 .ol-zoom.ol-control {
 / / width: 32 px;
@@ -2520,6 +2523,9 @@ tr td {
 
 / / border-bottom: solid 1 px rgba(0, 0, 0, 0.12);
 
+}
+.ol-overviewmap.ol-control button{
+    height: 38px;
 }
 
 .ol-zoom.ol-control button {
@@ -3305,7 +3311,7 @@ textarea {
     position: fixed;
     left: 346px;
     transition: left 1s;
-    top: 84px;
+    top: 15px;
     z-index: 100;
 }
 .left_menu_open.new_legend {
@@ -3313,7 +3319,7 @@ textarea {
 }
 
 .left_menu_open.map_mode_select {
-    left: 30px;
+    left: 130px;
 }
 
 .ol-zoom,
@@ -3517,7 +3523,7 @@ background: rgba(74, 160, 255, 1)
 }
 .mdl-layout-title{
     padding-left:10px !important;
-    padding-top:10px;
+    padding-top:3px;
 }
 .mdl-layout-title .company_logo{
     padding-left: 0px;
@@ -3527,6 +3533,17 @@ background: rgba(74, 160, 255, 1)
 }
 .mdl-layout-title .mdl-button{
     left: 90px;
+}
+.ol-overviewmap{
+    left: auto;
+    right: 30px;
+}
+.head_block_logo{
+    position: fixed;
+    bottom: 15px;
+    left: 43%;
+    z-index: 3;
+    opacity: 0.5;
 }
 /*
 .edit_buttons .mdl-button.active{
@@ -5218,26 +5235,4 @@ body .ui-tooltip {
 	opacity: .6;
 	filter: Alpha(Opacity=60);
 	border-radius: 8px;
-}
-
-.meet_th {
-box-sizing: border-box;
-    color: rgba(0, 0, 0, 0.54);
-    font-size: 12px;
-    font-weight: 700;
-    height: 48px;
-    letter-spacing: 0;
-    line-height: 24px;
-    padding-bottom: 8px;
-    position: relative;
-    text-overflow: ellipsis;
-    vertical-align: bottom;   
-    text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
-.meet_td {
-    height: 48px;
-    padding: 12px 0;
-    overflow: hidden;
-    margin: 0 16px 0 0;
 }

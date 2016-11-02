@@ -18,7 +18,7 @@ var map;
 
 var osmLayer;
 var googleLayer;
-var art = ['wms1', 'wms2', 'wms3', 'wms4', 'wms5', 'wms6', 'wms7', 'wms8', 'wms9', 'wms10', 'wms11', 'wms12', 'wms13', 'wms14', 'wms15', 'wms16', 'wms17', 'wms19', 'wms20', 'wms21', 'wms22','wms23'];
+var art = ['wms1'];
 
 
 function showUP(layer, elem) {
@@ -820,7 +820,7 @@ $('body').on('click', '.modal-dtp', function(){
         })
 //var w = $(window).width();
 //var h = $(window).height();
-        var wmsSource = new ol.source.ImageWMS({
+/*        var wmsSource = new ol.source.ImageWMS({
             url: '/kmda/wms',
             //         url: 'http://212.26.144.110/geowebcache/service/wms',
 //            url: 'http://212.26.144.107:8092/vector/geoserver/gwc/service/wms',
@@ -847,7 +847,7 @@ $('body').on('click', '.modal-dtp', function(){
             name: 'wms1',
             //           extent: map.getView().calculateExtent(map.getSize()),
 //            imageSize: [192,192]
-        });
+        });*/
 
         var wmsSource2 = new ol.source.ImageWMS({
             url: '/kmda/wms',
@@ -1005,74 +1005,12 @@ $('body').on('click', '.modal-dtp', function(){
             visible: 0,
             name: 'wms7'
         });
-        var wmsSource8 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_l_function',
-                'ALIAS':'Генплан',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 765,
-                'HEIGHT': 768,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
 
-        var wmsLayer8 = new ol.layer.Tile({
-            source: wmsSource8,
-            visible: 0,
-            name: 'wms8'
-        });
-        var wmsSource9 = new ol.source.ImageWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_l_land',
-                'ALIAS':'Інформація про оренду',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 768,
-                'HEIGHT': 730,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
 
-        var wmsLayer9 = new ol.layer.Image({
-            source: wmsSource9,
-            visible: 0,
-            name: 'wms9'
-        });
-        var wmsSource10 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_l_muo',
-                'ALIAS':'Містобудівні умови',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 768,
-                'HEIGHT': 727,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
 
-        var wmsLayer10 = new ol.layer.Tile({
-            source: wmsSource10,
-            visible: 0,
-            name: 'wms10'
-        });
 
-        var wmsSource11 = new ol.source.TileWMS({
+
+        var wmsSource = new ol.source.TileWMS({
             url: '/dzk',
             params: {
                 'LAYERS': 'kadastr',
@@ -1089,263 +1027,12 @@ $('body').on('click', '.modal-dtp', function(){
             }
         });
 
-        var wmsLayer11 = new ol.layer.Tile({
-            source: wmsSource11,
+        var wmsLayer = new ol.layer.Tile({
+            source: wmsSource,
             visible: 0,
-            name: 'wms11'
-        });
-        var wmsSource12 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_l_scheme_dpt',
-                'ALIAS':'ДПТ',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 768,
-                'HEIGHT': 711,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
+            name: 'wms1'
         });
 
-        var wmsLayer12 = new ol.layer.Tile({
-            source: wmsSource12,
-            visible: 0,
-            name: 'wms12'
-        });
-        var wmsSource13 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_l_function_change',
-                'ALIAS':'Зміни до генплану',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 768,
-                'HEIGHT': 752,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer13 = new ol.layer.Tile({
-            source: wmsSource13,
-            visible: 0,
-            name: 'wms13'
-        });
-
-        var wmsSource14 = new ol.source.ImageWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_r_road',
-                'ALIAS':'Ремонт автодоріг',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 768,
-                'HEIGHT': 557,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer14 = new ol.layer.Image({
-            source: wmsSource14,
-            visible: 0,
-            name: 'wms14'
-        });
-
-        var wmsSource15 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_i_street_flash',
-                'VERSION': '1.1.1',
-                'TILED': 'false',
-                'FORMAT': 'image/png8',
-                'WIDTH': 716,
-                'HEIGHT': 768,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer15 = new ol.layer.Tile({
-            source: wmsSource15,
-            visible: 0,
-            name: 'wms15'
-        });
-
-        var wmsSource16 = new ol.source.ImageWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_i_pole',
-                'ALIAS':'Електромережі',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 433,
-                'HEIGHT': 768,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer16 = new ol.layer.Image({
-            source: wmsSource16,
-            visible: 0,
-            name: 'wms16'
-        });
-
-        var wmsSource17 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_t_station',
-                'ALIAS':'Зупинки транспорту',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 768,
-                'HEIGHT': 757,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer17 = new ol.layer.Tile({
-            source: wmsSource17,
-            visible: 0,
-            name: 'wms17'
-        });
-
-        var wmsSource19 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_p_parkservice',
-                'ALIAS':'Парксервіс',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 768,
-                'HEIGHT': 608,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer19 = new ol.layer.Tile({
-            source: wmsSource19,
-            visible: 0,
-            name: 'wms19'
-        });
-
-        var wmsSource20 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_z_zelenbud',
-                'ALIAS':'Зеленбуд',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 330,
-                'HEIGHT': 768,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer20 = new ol.layer.Tile({
-            source: wmsSource20,
-            visible: 0,
-            name: 'wms20'
-        });
-
-        var wmsSource21 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_t_station_bus',
-                'ALIAS':'Зупинки автобусів',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 768,
-                'HEIGHT': 757,
-                'CRS': 'EPSG:900913',
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer21 = new ol.layer.Tile({
-            source: wmsSource21,
-            visible: 0,
-            name: 'wms21'
-        });
-
-        var wmsSource22 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_r_smartroads',
-                'ALIAS':'ДТП',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 768,
-                'HEIGHT': 433,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-
-        var wmsLayer22 = new ol.layer.Tile({
-            source: wmsSource22,
-            visible: 0,
-            name: 'wms22'
-        });
-
-        var wmsSource23 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_l_monitoring',
-                'ALIAS':'Моніторінг',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-//                'WIDTH': 768,
-//                'HEIGHT': 433,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-
-        var wmsLayer23 = new ol.layer.Tile({
-            source: wmsSource23,
-            visible: 0,
-            name: 'wms23'
-        });
         
         osmLayer = new ol.layer.Tile({
             source: new ol.source.OSM(),
@@ -1353,6 +1040,14 @@ $('body').on('click', '.modal-dtp', function(){
             name: 'osm',
         });
 
+        var pubLayer = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://212.26.144.103/map/dzk_overview/{z}/{x}/{-y}.png',
+                crossOrigin: 'null',
+            }),
+            name: 'pub',
+            visible: 1,
+        });
 
         var kiev2006Layer = new ol.layer.Tile({
             source: new ol.source.XYZ({
@@ -1368,6 +1063,16 @@ $('body').on('click', '.modal-dtp', function(){
 //                                  .replace('{y}', (-tileCoord[2] - 1).toString());
 //              },
         });
+        var vin2015Layer = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+//                url: '/ortho2k_vyn/{z}/{x}/{-y}.png',
+                url: 'http://212.26.144.103/map/ortho2k_vyn/{z}/{x}/{-y}.png',
+                crossOrigin: 'null',
+            }),
+            name: 'vin2015',
+            visible: 0,
+        });
+
         var kiev2015Layer = new ol.layer.Tile({
             source: new ol.source.XYZ({
 //                url: '/ortho2k_2015/{z}/{x}/{-y}.jpg',
@@ -1377,18 +1082,11 @@ $('body').on('click', '.modal-dtp', function(){
             name: 'kiev2015',
             visible: 0,
         });
-        var kiev2000Layer = new ol.layer.Tile({
-            source: new ol.source.XYZ({
-                url: '/topo2k_kyiv/{z}/{x}/{-y}.jpg',
-                crossOrigin: 'null',
-            }),
-            name: 'kiev2000',
-            visible: 0,
-        });
+
         var view = new ol.View({
-            center: [3396647.44192, 6527057.33961],
+             center: [3170647.44192, 6315057.33961],
 //            extent: [3365331.64184455, 6509557.90965887, 3417855.95133155, 6545186.44247934],
-            extent: [3347533.00, 6463838.00, 3457804.00, 6576380.00],
+
 //            projection: projection,
             zoom: 12,
             minZoom: 2
@@ -1471,33 +1169,11 @@ $('body').on('click', '.modal-dtp', function(){
                 googleLayer,
                 googleHybridLayer,
 //                satLayer,
-                osmLayer,
-                kiev2000Layer,
+//                osmLayer,
+                pubLayer,
                 kiev2006Layer,
-                kiev2015Layer,
-                wmsLayer5,
-                wmsLayer6,
-                wmsLayer7,
-                wmsLayer8,
-                wmsLayer9,
-                wmsLayer10,
-                wmsLayer11,
-                wmsLayer12,
-                wmsLayer13,
-                wmsLayer14,
-                wmsLayer15,
-                wmsLayer16,
-                wmsLayer17,
-                wmsLayer19,
-                wmsLayer20,
-                wmsLayer21,
-                wmsLayer22,
-                wmsLayer23,
                 wmsLayer,
-                wmsLayer2,
-                wmsLayer3,
-                wmsLayer4,
-
+                vin2015Layer
             ],
             //           overlays: [overlay],
             view: view,
@@ -1511,16 +1187,19 @@ $('body').on('click', '.modal-dtp', function(){
             target: document.getElementById('external_control')
         });
         map.addControl(external_control);
-        /*var overview = new ol.control.OverviewMap({
+        var overview = new ol.control.OverviewMap({
             layers: [
                 new ol.layer.Tile({
                     source: new ol.source.OSM()
                 })
             ],
             target: 'map',
+            label: '«',
+            collapseLabel: '»'
         });
 
-        map.addControl(overview);*/
+        map.addControl(overview);
+        //$('.ol-overviewmap').addClass('ol-rotate');
         //$('.ol-control').addClass('left_menu_open');
 
         $('.ol-overviewmap button').attr("id", "ol-overviewmap");
@@ -1536,27 +1215,18 @@ $('body').on('click', '.modal-dtp', function(){
         olGM.activate();
         $('div.mapPlaceholder').remove();
         windowResizeHandler();
-        addLegend(map);
+       // addLegend(map);
         addMeasure(map);
         layersOff(map);
-
-        //       map.getView().fitExtent(wmsSource.getExtent(), map.getSize());
-
-//         map.getView().fitExtent(wmsLayer.getExtent(), map.getSize());
-//var extente = [3365331.64184455,6509557.90965887,3417855.95133155,6545186.44247934];
-//map.getView().fitExtent(extente, map.getSize());
-       /* $('.map_mode_select li').on('click', function(event){
-            console.log(event);
-            console.log($(this).attr('data-val'));
-        });*/
 
 
         $('.map_mode_select li').on('click', function(event){
             var selected = $(this).attr('data-val');
-            var artbaz = ['osm', 'google', 'googlehybrid', 'kiev2000', 'kiev2006', 'kiev2015'];
+            var artbaz = ['pub', 'google', 'googlehybrid', 'vin2015', 'kiev2006'];
             map.getLayers().forEach(function (l, i) {
                 if (($.inArray(l.get('name'), artbaz)) > -1) {
                     if (l.get('name') !== selected) {
+                        console.log(l.get('name'));
                         l.setVisible(false);
                     } else {
                         l.setVisible(true);
@@ -1566,49 +1236,16 @@ $('body').on('click', '.modal-dtp', function(){
         });
 
         $('#bazlayer select').change();
-//        var rightNav = false;
 
-
-//                map.on('pointermove', function(event) {
-//                    var feature = map.forEachFeatureAtPixel(event.pixel, function(feature, layer) {
-//                              return feature;
-//                            }, null, function(layer) {
-//                              return layer === wmsLayer;
-//                            });
-//                  var target = document.getElementById(map.getTarget());
-//                  if (feature) {
-//
-//                  target.style.cursor = 'pointer';
-//
-//                  } else { 
-//                      target.style.cursor = ''; 
-//
-//                  }
-//                }); 
         var sliderInfo;
         var sliderCarousel;
         map.on('singleclick', function (evt) {
             if(!$('#length').hasClass('active') && !$('#area').hasClass('active')){
 
-//            $.ajax({
-//                url: '/api/streettype.json',
-//                type: 'GET',
-//                success: function (data) {
-//                    console.log(data);
-//                },
-//                error: function () {
-//                    console.log('error');
-//                }
-//            });
-//      document.getElementById('popup').innerHTML = '';
             var viewResolution = (view.getResolution());
-
-//            var infocontainer = document.getElementById('information');
             var infocontainer = $('#information');
-
             var url;
             var flah = false;
-
             var infostr="";
             var layerAlias;
             var indic;
@@ -5494,7 +5131,7 @@ google.maps = google.maps || {};
   
   google.maps.Load = function(apiLoad) {
     delete google.maps.Load;
-    apiLoad([0.009999999776482582,[[["http://mt0.googleapis.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026"],null,null,null,null,"m@367000000",["https://mts0.google.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026","https://mts1.google.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026"]],[["http://khm0.googleapis.com/kh?v=702\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=702\u0026hl=en-US\u0026"],null,null,null,1,"702",["https://khms0.google.com/kh?v=702\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=702\u0026hl=en-US\u0026"]],null,[["http://mt0.googleapis.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026"],null,null,null,null,"t@367,r@367000000",["https://mts0.google.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026","https://mts1.google.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026"]],null,null,[["http://cbk0.googleapis.com/cbk?","http://cbk1.googleapis.com/cbk?"]],[["http://khm0.googleapis.com/kh?v=101\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=101\u0026hl=en-US\u0026"],null,null,null,null,"101",["https://khms0.google.com/kh?v=101\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=101\u0026hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt?hl=en-US\u0026","http://mt1.googleapis.com/mapslt?hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt/ft?hl=en-US\u0026","http://mt1.googleapis.com/mapslt/ft?hl=en-US\u0026"]],[["http://mt0.googleapis.com/maps/vt?hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt/loom?hl=en-US\u0026","http://mt1.googleapis.com/mapslt/loom?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt/ft?hl=en-US\u0026","https://mts1.googleapis.com/mapslt/ft?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt/loom?hl=en-US\u0026","https://mts1.googleapis.com/mapslt/loom?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"http://maps.gstatic.com/mapfiles/","http://csi.gstatic.com","https://maps.googleapis.com","http://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","http://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["http://maps.google.com/maps-api-v3/api/js/25/15","3.25.15"],[328567634],1,null,null,null,null,null,"",null,null,0,"http://khm.googleapis.com/mz?v=702\u0026","AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"http://mt.googleapis.com/maps/vt/icon",[["http://maps.google.com/maps/vt"],["https://maps.google.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",367000000,367],2,500,[null,"http://g0.gstatic.com/landmark/tour","http://g0.gstatic.com/landmark/config",null,"http://www.google.com/maps/preview/log204","","http://static.panoramio.com.storage.googleapis.com/photos/",["http://geo0.ggpht.com/cbk","http://geo1.ggpht.com/cbk","http://geo2.ggpht.com/cbk","http://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["http://lh3.ggpht.com/","http://lh4.ggpht.com/","http://lh5.ggpht.com/","http://lh6.ggpht.com/"]],["https://www.google.com/maps/api/js/master?pb=!1m2!1u25!2s15!2sen-US!3sUS!4s25/15","https://www.google.com/maps/api/js/widget?pb=!1m2!1u25!2s15!2sen-US"],null,0,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["25.15"]], loadScriptTime);
+    apiLoad([0.009999999776482582,[[["http://mt0.googleapis.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026"],null,null,null,null,"m@367000000",["https://mts0.google.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026","https://mts1.google.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026"]],[["http://khm0.googleapis.com/kh?v=702\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=702\u0026hl=en-US\u0026"],null,null,null,1,"702",["https://khms0.google.com/kh?v=702\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=702\u0026hl=en-US\u0026"]],null,[["http://mt0.googleapis.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026"],null,null,null,null,"t@367,r@367000000",["https://mts0.google.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026","https://mts1.google.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026"]],null,null,[["http://cbk0.googleapis.com/cbk?","http://cbk1.googleapis.com/cbk?"]],[["http://khm0.googleapis.com/kh?v=101\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=101\u0026hl=en-US\u0026"],null,null,null,null,"101",["https://khms0.google.com/kh?v=101\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=101\u0026hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt?hl=en-US\u0026","http://mt1.googleapis.com/mapslt?hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt/ft?hl=en-US\u0026","http://mt1.googleapis.com/mapslt/ft?hl=en-US\u0026"]],[["http://mt0.googleapis.com/maps/vt?hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt/loom?hl=en-US\u0026","http://mt1.googleapis.com/mapslt/loom?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt/ft?hl=en-US\u0026","https://mts1.googleapis.com/mapslt/ft?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt/loom?hl=en-US\u0026","https://mts1.googleapis.com/mapslt/loom?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"http://maps.gstatic.com/mapfiles/","http://csi.gstatic.com","https://maps.googleapis.com","http://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","http://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["http://maps.google.com/maps-api-v3/api/js/25/15","3.25.15"],[3360699765],1,null,null,null,null,null,"",null,null,0,"http://khm.googleapis.com/mz?v=702\u0026","AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"http://mt.googleapis.com/maps/vt/icon",[["http://maps.google.com/maps/vt"],["https://maps.google.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",367000000,367],2,500,[null,"http://g0.gstatic.com/landmark/tour","http://g0.gstatic.com/landmark/config",null,"http://www.google.com/maps/preview/log204","","http://static.panoramio.com.storage.googleapis.com/photos/",["http://geo0.ggpht.com/cbk","http://geo1.ggpht.com/cbk","http://geo2.ggpht.com/cbk","http://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["http://lh3.ggpht.com/","http://lh4.ggpht.com/","http://lh5.ggpht.com/","http://lh6.ggpht.com/"]],["https://www.google.com/maps/api/js/master?pb=!1m2!1u25!2s15!2sen-US!3sUS!4s25/15","https://www.google.com/maps/api/js/widget?pb=!1m2!1u25!2s15!2sen-US"],null,0,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["25.15"]], loadScriptTime);
   };
   var loadScriptTime = (new Date).getTime();
 })();
@@ -5630,7 +5267,7 @@ KmlLayerStatus:_.Di,MaxZoomService:Eg,MaxZoomStatus:{OK:_.ga,ERROR:_.aa},SaveWid
         $('.edit_buttons').toggleClass('left_menu_open');
         $('.map_mode_select').toggleClass('left_menu_open');
         $('.ol-zoom').toggleClass('left_menu_open');
-        $('.ol-overviewmap').toggleClass('left_menu_open');
+       // $('.ol-overviewmap').toggleClass('left_menu_open');
         $('.new_legend').toggleClass('left_menu_open');
 
         // $('.bid_list').toggleClass('left');
