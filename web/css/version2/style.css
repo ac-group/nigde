@@ -2322,7 +2322,7 @@ tr td {
 /*Стили для основных книпочек*/
 
 .map_mode_select {
-    width: 224px;
+    width: 246px;
     height: 40px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -2359,7 +2359,7 @@ tr td {
 
 .map_mode_select .mdl-menu__container,
 .map_mode_select .mdl-menu__container ul {
-    width: 224px !important;
+    width: 246px !important;
 }
 
 .map_mode_select .mdl-menu {

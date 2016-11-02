@@ -2,7 +2,7 @@ var map;
 
 var osmLayer;
 var googleLayer;
-var art = ['wms1'];
+var art = ['wms1', 'wms2'];
 
 
 function showUP(layer, elem) {
@@ -834,14 +834,11 @@ $('body').on('click', '.modal-dtp', function(){
         });*/
 
         var wmsSource2 = new ol.source.ImageWMS({
-            url: '/kmda/wms',
-            //         url: 'http://212.26.144.110/geowebcache/service/wms',
-//            url: 'http://212.26.144.107:8092/vector/geoserver/gwc/service/wms',
-            //   url: 'http://192.168.33.51/geowebcache/service/wms',
+            url: 'http://192.168.33.69:8080/geoserver/nsdi/wms',
             params: {
-                'LAYERS': 'kmda:kmda_orenda',
-                'ALIAS':'Оренда',
-                'VERSION': '1.1.1',
+                'LAYERS': 'nsdi:nsdi',
+                'ALIAS':'Векторна карта',
+                'VERSION': '1.1.0',
                 'TILED': 'true',
                 'FORMAT': 'image/png8',
                 'WIDTH': 703,
@@ -858,70 +855,8 @@ $('body').on('click', '.modal-dtp', function(){
             source: wmsSource2,
             visible: 0,
             name: 'wms2'
-
-            //           extent: map.getView().calculateExtent(map.getSize()),
-//            imageSize: [192,192]
         });
 
-        var wmsSource3 = new ol.source.ImageWMS({
-            url: '/kmda/wms',
-            //         url: 'http://212.26.144.110/geowebcache/service/wms',
-//            url: 'http://212.26.144.107:8092/vector/geoserver/gwc/service/wms',
-            //   url: 'http://192.168.33.51/geowebcache/service/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_l_privat',
-                'ALIAS':'Приватизація',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 768,
-                'HEIGHT': 520,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-//            projection: 'EPSG:900913',
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer3 = new ol.layer.Image({
-            source: wmsSource3,
-            visible: 0,
-            name: 'wms3'
-
-            //           extent: map.getView().calculateExtent(map.getSize()),
-//            imageSize: [192,192]
-        });
-
-        var wmsSource4 = new ol.source.ImageWMS({
-            url: '/kmda/wms',
-            //         url: 'http://212.26.144.110/geowebcache/service/wms',
-//            url: 'http://212.26.144.107:8092/vector/geoserver/gwc/service/wms',
-            //   url: 'http://192.168.33.51/geowebcache/service/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_l_komunal_org',
-                'ALIAS':'Комунальні організації',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 768,
-                'HEIGHT': 520,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-//            projection: 'EPSG:900913',
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer4 = new ol.layer.Image({
-            source: wmsSource4,
-            visible: 0,
-            name: 'wms4'
-
-            //           extent: map.getView().calculateExtent(map.getSize()),
-//            imageSize: [192,192]
-        });
 
         var wmsSource5 = new ol.source.TileWMS({
             url: '/kmda/wms',
@@ -967,31 +902,6 @@ $('body').on('click', '.modal-dtp', function(){
             visible: 0,
             name: 'wms6'
         });
-        var wmsSource7 = new ol.source.ImageWMS({
-            url: '/kyiv.recl/wms',
-            params: {
-                'LAYERS': 'kyiv.recl:reclama',
-                'ALIAS':'Реклама',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 768,
-                'HEIGHT': 758,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer7 = new ol.layer.Image({
-            source: wmsSource7,
-            visible: 0,
-            name: 'wms7'
-        });
-
-
-
 
 
         var wmsSource = new ol.source.TileWMS({
@@ -1020,7 +930,7 @@ $('body').on('click', '.modal-dtp', function(){
         
         osmLayer = new ol.layer.Tile({
             source: new ol.source.OSM(),
-            visible: 1,
+           // visible: 1,
             name: 'osm',
             visible: 0,
         });
@@ -1043,12 +953,6 @@ $('body').on('click', '.modal-dtp', function(){
             }),
             name: 'kiev2006',
             visible: 0,
-//            projection: projection,
-//            tileUrlFunction: function(tileCoord) {
-//                return urlTemplate.replace('{z}', (tileCoord[0] - 1).toString())
-//                                  .replace('{x}', tileCoord[1].toString())
-//                                  .replace('{y}', (-tileCoord[2] - 1).toString());
-//              },
         });
         var vin2015Layer = new ol.layer.Tile({
             source: new ol.source.XYZ({
@@ -1057,6 +961,16 @@ $('body').on('click', '.modal-dtp', function(){
                 crossOrigin: 'null',
             }),
             name: 'vin2015',
+            visible: 0,
+        });
+
+        var dzk_overview = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+//                url: '/ortho2k_2015/{z}/{x}/{-y}.jpg',
+                url: 'http://212.26.144.103/map/dzk_overview/{z}/{x}/{-y}.png',
+                crossOrigin: 'null',
+            }),
+            name: 'dzk_overview',
             visible: 0,
         });
 
@@ -1079,35 +993,6 @@ $('body').on('click', '.modal-dtp', function(){
             minZoom: 2
         });
 
-//        var iconFeature = new ol.Feature();
-//        var styleiconFeature =new ol.style.Style({
-//                        image: new ol.style.Icon({
-//                            opacity: 0.75,
-//         //                   src: "data:image/svg+xml;base64," + btoa( svgto ),
-//                            src: "/marker-new.png",
-//                            size: [48,48],
-//                            anchor: [0.5, 24],
-//                            anchorXUnits: 'fraction',
-//                            anchorYUnits: 'pixel',
-//                          
-//                        })
-//                    });
-//        iconFeature.setStyle(styleiconFeature);
-
-//        var gmlSource = new ol.source.Vector();
-//        var gmlLayer = new ol.layer.Vector({
-//            source: gmlSource,
-//            map: map,
-//            style: new ol.style.Style({
-//              stroke: new ol.style.Stroke({
-//                color: '#f00',
-//                width: 1
-//              }),
-//              fill: new ol.style.Fill({
-//                color: 'rgba(255,0,0,0.1)'
-//              })
-//            })
-//          });
 
         /**
          * Create an overlay to anchor the popup to the map.
@@ -1173,6 +1058,7 @@ $('body').on('click', '.modal-dtp', function(){
                 pubLayer,
                 kiev2006Layer,
                 wmsLayer,
+                wmsLayer2,
                 vin2015Layer
             ],
             //           overlays: [overlay],
