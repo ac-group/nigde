@@ -21,7 +21,7 @@
         $('.edit_buttons').toggleClass('left_menu_open');
         $('.map_mode_select').toggleClass('left_menu_open');
         $('.ol-zoom').toggleClass('left_menu_open');
-        $('.ol-overviewmap').toggleClass('left_menu_open');
+       // $('.ol-overviewmap').toggleClass('left_menu_open');
         $('.new_legend').toggleClass('left_menu_open');
 
         // $('.bid_list').toggleClass('left');

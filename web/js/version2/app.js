@@ -1039,6 +1039,16 @@ $('body').on('click', '.modal-dtp', function(){
 //                                  .replace('{y}', (-tileCoord[2] - 1).toString());
 //              },
         });
+        var vin2015Layer = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+//                url: '/ortho2k_2015/{z}/{x}/{-y}.jpg',
+                url: 'http://212.26.144.103/map/ortho2k_vyn/z/x/y.png',
+                crossOrigin: 'null',
+            }),
+            name: 'vin2015',
+            visible: 0,
+        });
+
         var kiev2015Layer = new ol.layer.Tile({
             source: new ol.source.XYZ({
 //                url: '/ortho2k_2015/{z}/{x}/{-y}.jpg',
@@ -1048,18 +1058,11 @@ $('body').on('click', '.modal-dtp', function(){
             name: 'kiev2015',
             visible: 0,
         });
-        var kiev2000Layer = new ol.layer.Tile({
-            source: new ol.source.XYZ({
-                url: '/topo2k_kyiv/{z}/{x}/{-y}.jpg',
-                crossOrigin: 'null',
-            }),
-            name: 'kiev2000',
-            visible: 0,
-        });
+
         var view = new ol.View({
-            center: [3396647.44192, 6527057.33961],
+             center: [3170647.44192, 6315057.33961],
 //            extent: [3365331.64184455, 6509557.90965887, 3417855.95133155, 6545186.44247934],
-            extent: [3347533.00, 6463838.00, 3457804.00, 6576380.00],
+
 //            projection: projection,
             zoom: 12,
             minZoom: 2
@@ -1144,8 +1147,8 @@ $('body').on('click', '.modal-dtp', function(){
 //                satLayer,
                 osmLayer,
                 kiev2006Layer,
-                kiev2015Layer,
                 wmsLayer,
+                vin2015Layer
             ],
             //           overlays: [overlay],
             view: view,
@@ -1166,9 +1169,12 @@ $('body').on('click', '.modal-dtp', function(){
                 })
             ],
             target: 'map',
+            label: '«',
+            collapseLabel: '»'
         });
 
         map.addControl(overview);
+        //$('.ol-overviewmap').addClass('ol-rotate');
         //$('.ol-control').addClass('left_menu_open');
 
         $('.ol-overviewmap button').attr("id", "ol-overviewmap");
@@ -1201,10 +1207,11 @@ $('body').on('click', '.modal-dtp', function(){
 
         $('.map_mode_select li').on('click', function(event){
             var selected = $(this).attr('data-val');
-            var artbaz = ['osm', 'google', 'googlehybrid', 'kiev2000', 'kiev2006', 'kiev2015'];
+            var artbaz = ['osm', 'google', 'googlehybrid', 'vin2015', 'kiev2006'];
             map.getLayers().forEach(function (l, i) {
                 if (($.inArray(l.get('name'), artbaz)) > -1) {
                     if (l.get('name') !== selected) {
+                        console.log(l.get('name'));
                         l.setVisible(false);
                     } else {
                         l.setVisible(true);
@@ -1214,25 +1221,7 @@ $('body').on('click', '.modal-dtp', function(){
         });
 
         $('#bazlayer select').change();
-//        var rightNav = false;
 
-
-//                map.on('pointermove', function(event) {
-//                    var feature = map.forEachFeatureAtPixel(event.pixel, function(feature, layer) {
-//                              return feature;
-//                            }, null, function(layer) {
-//                              return layer === wmsLayer;
-//                            });
-//                  var target = document.getElementById(map.getTarget());
-//                  if (feature) {
-//
-//                  target.style.cursor = 'pointer';
-//
-//                  } else { 
-//                      target.style.cursor = ''; 
-//
-//                  }
-//                }); 
         var sliderInfo;
         var sliderCarousel;
         map.on('singleclick', function (evt) {
