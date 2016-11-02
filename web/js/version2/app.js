@@ -1022,8 +1022,11 @@ $('body').on('click', '.modal-dtp', function(){
             source: new ol.source.OSM(),
             visible: 1,
             name: 'osm',
+            visible: 0,
         });
 
+//        var osmsatLayer = new ol.layer.Tile({ source: new ol.source.MapQuest({layer: 'sat'}), visible: 0, name: 'osmsat' });
+        
         var pubLayer = new ol.layer.Tile({
             source: new ol.source.XYZ({
                 url: 'http://212.26.144.103/map/dzk_overview/{z}/{x}/{-y}.png',
@@ -1135,6 +1138,17 @@ $('body').on('click', '.modal-dtp', function(){
 //            scrollwheel: false,
 //            streetViewControl: false
 //          });
+
+
+        var cycleLayer = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=b29e6bf28b894c94958bfd507072f4c8',
+                crossOrigin: 'null',
+            }),
+            name: 'OpenCycleMap',
+            visible: 0,
+        });                        
+        
         googleLayer = new olgm.layer.Google({name: 'google', visible: 0, mapTypeId: google.maps.MapTypeId.SATELLITE});
         var googleHybridLayer = new olgm.layer.Google({
             name: 'googlehybrid',
@@ -1153,7 +1167,9 @@ $('body').on('click', '.modal-dtp', function(){
                 googleLayer,
                 googleHybridLayer,
 //                satLayer,
-//                osmLayer,
+                osmLayer,
+                cycleLayer,
+                cycleLayer,
                 pubLayer,
                 kiev2006Layer,
                 wmsLayer,
@@ -1206,7 +1222,7 @@ $('body').on('click', '.modal-dtp', function(){
 
         $('.map_mode_select li').on('click', function(event){
             var selected = $(this).attr('data-val');
-            var artbaz = ['pub', 'google', 'googlehybrid', 'vin2015', 'kiev2006'];
+            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006'];
             map.getLayers().forEach(function (l, i) {
                 if (($.inArray(l.get('name'), artbaz)) > -1) {
                     if (l.get('name') !== selected) {
