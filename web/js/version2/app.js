@@ -1042,7 +1042,7 @@ $('body').on('click', '.modal-dtp', function(){
         var vin2015Layer = new ol.layer.Tile({
             source: new ol.source.XYZ({
 //                url: '/ortho2k_2015/{z}/{x}/{-y}.jpg',
-                url: 'http://212.26.144.103/map/ortho2k_vyn/z/x/y.png',
+                url: 'http://212.26.144.103/map/ortho2k_vyn/{z}/{x}/{-y}.png',
                 crossOrigin: 'null',
             }),
             name: 'vin2015',
@@ -1194,16 +1194,6 @@ $('body').on('click', '.modal-dtp', function(){
         addMeasure(map);
         layersOff(map);
 
-        //       map.getView().fitExtent(wmsSource.getExtent(), map.getSize());
-
-//         map.getView().fitExtent(wmsLayer.getExtent(), map.getSize());
-//var extente = [3365331.64184455,6509557.90965887,3417855.95133155,6545186.44247934];
-//map.getView().fitExtent(extente, map.getSize());
-       /* $('.map_mode_select li').on('click', function(event){
-            console.log(event);
-            console.log($(this).attr('data-val'));
-        });*/
-
 
         $('.map_mode_select li').on('click', function(event){
             var selected = $(this).attr('data-val');
@@ -1227,25 +1217,10 @@ $('body').on('click', '.modal-dtp', function(){
         map.on('singleclick', function (evt) {
             if(!$('#length').hasClass('active') && !$('#area').hasClass('active')){
 
-//            $.ajax({
-//                url: '/api/streettype.json',
-//                type: 'GET',
-//                success: function (data) {
-//                    console.log(data);
-//                },
-//                error: function () {
-//                    console.log('error');
-//                }
-//            });
-//      document.getElementById('popup').innerHTML = '';
             var viewResolution = (view.getResolution());
-
-//            var infocontainer = document.getElementById('information');
             var infocontainer = $('#information');
-
             var url;
             var flah = false;
-
             var infostr="";
             var layerAlias;
             var indic;
