@@ -1030,7 +1030,9 @@ $('body').on('click', '.modal-dtp', function(){
             ],
             target: 'map',
             label: '«',
-            collapseLabel: '»'
+            collapseLabel: '»',
+
+            //collapsible:false
         });
 
         map.addControl(overview);
@@ -1061,10 +1063,17 @@ $('body').on('click', '.modal-dtp', function(){
             map.getLayers().forEach(function (l, i) {
                 if (($.inArray(l.get('name'), artbaz)) > -1) {
                     if (l.get('name') !== selected) {
-                        console.log(l.get('name'));
+
                         l.setVisible(false);
                     } else {
+                    //    console.log(l.get('name'));
+                        if (l.get('name') == 'OpenCycleMap' || l.get('name') == 'osm') {
+                            $('.osm-copyright').show();
+                        }else{
+                            $('.osm-copyright').hide();
+                        }
                         l.setVisible(true);
+
                     }
                 }
             });
