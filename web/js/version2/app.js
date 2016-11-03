@@ -834,7 +834,7 @@ $('body').on('click', '.modal-dtp', function(){
         });*/
 
         var wmsSource2 = new ol.source.ImageWMS({
-            url: 'http://192.168.33.69:8080/geoserver/nsdi/wms',
+            url: '/geoserver/nsdi/wms',
             params: {
                 'LAYERS': 'nsdi:nsdi',
                 'ALIAS':'Векторна карта',
