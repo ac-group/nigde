@@ -833,12 +833,12 @@ $('body').on('click', '.modal-dtp', function(){
 //            imageSize: [192,192]
         });*/
 
-        var wmsSource2 = new ol.source.ImageWMS({
+        var wmsSource2 = new ol.source.TileWMS({
             url: '/geoserver/nsdi/wms',
             params: {
                 'LAYERS': 'nsdi:nsdi',
                 'ALIAS':'Векторна карта',
-                'VERSION': '1.1.0',
+                'VERSION': '1.1.1',
                 'TILED': 'true',
                 'FORMAT': 'image/png8',
                 'WIDTH': 703,
@@ -851,7 +851,7 @@ $('body').on('click', '.modal-dtp', function(){
             }
         });
 
-        var wmsLayer2 = new ol.layer.Image({
+        var wmsLayer2 = new ol.layer.Tile({
             source: wmsSource2,
             visible: 0,
             name: 'wms2'
@@ -1057,9 +1057,9 @@ $('body').on('click', '.modal-dtp', function(){
                 cycleLayer,
                 pubLayer,
                 kiev2006Layer,
+                vin2015Layer,
                 wmsLayer,
-                wmsLayer2,
-                vin2015Layer
+                wmsLayer2,                
             ],
             //           overlays: [overlay],
             view: view,

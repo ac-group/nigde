@@ -529,7 +529,7 @@ a:active {
 
 .right_menu_title-block {
     height: 104px;
-    background-color: #00bcd4;
+    background-color: rgb(51, 155, 255);;
     /*    padding: 0px 32px;*/
     width: 384px;
     overflow-y: auto;
@@ -2376,7 +2376,7 @@ tr td {
 /*Стили для основных книпочек*/
 
 .map_mode_select {
-    width: 224px;
+    width: 246px;
     height: 40px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -2413,7 +2413,7 @@ tr td {
 
 .map_mode_select .mdl-menu__container,
 .map_mode_select .mdl-menu__container ul {
-    width: 224px !important;
+    width: 246px !important;
 }
 
 .map_mode_select .mdl-menu {
@@ -3519,7 +3519,7 @@ background: rgba(74, 160, 255, 1)
     border-radius: 10px;
 }
 .mdl-button .material-icons{
-    color: rgba(21,155,255,1);
+    color: rgba(51,155,255,1);
 }
 .mdl-layout-title{
     padding-left:10px !important;

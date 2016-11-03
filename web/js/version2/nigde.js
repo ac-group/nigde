@@ -849,12 +849,12 @@ $('body').on('click', '.modal-dtp', function(){
 //            imageSize: [192,192]
         });*/
 
-        var wmsSource2 = new ol.source.TileWMS({
-            url: '/geoserver/nsdi/wms',
+        var wmsSource2 = new ol.source.ImageWMS({
+            url: 'http://192.168.33.69:8080/geoserver/nsdi/wms',
             params: {
                 'LAYERS': 'nsdi:nsdi',
                 'ALIAS':'Векторна карта',
-                'VERSION': '1.1.1',
+                'VERSION': '1.1.0',
                 'TILED': 'true',
                 'FORMAT': 'image/png8',
                 'WIDTH': 703,
@@ -867,7 +867,7 @@ $('body').on('click', '.modal-dtp', function(){
             }
         });
 
-        var wmsLayer2 = new ol.layer.Tile({
+        var wmsLayer2 = new ol.layer.Image({
             source: wmsSource2,
             visible: 0,
             name: 'wms2'
@@ -1073,9 +1073,9 @@ $('body').on('click', '.modal-dtp', function(){
                 cycleLayer,
                 pubLayer,
                 kiev2006Layer,
-                vin2015Layer,
                 wmsLayer,
-                wmsLayer2,                
+                wmsLayer2,
+                vin2015Layer
             ],
             //           overlays: [overlay],
             view: view,
@@ -5035,7 +5035,7 @@ google.maps = google.maps || {};
   
   google.maps.Load = function(apiLoad) {
     delete google.maps.Load;
-    apiLoad([0.009999999776482582,[[["http://mt0.googleapis.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026"],null,null,null,null,"m@367000000",["https://mts0.google.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026","https://mts1.google.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026"]],[["http://khm0.googleapis.com/kh?v=703\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=703\u0026hl=en-US\u0026"],null,null,null,1,"703",["https://khms0.google.com/kh?v=703\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=703\u0026hl=en-US\u0026"]],null,[["http://mt0.googleapis.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026"],null,null,null,null,"t@367,r@367000000",["https://mts0.google.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026","https://mts1.google.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026"]],null,null,[["http://cbk0.googleapis.com/cbk?","http://cbk1.googleapis.com/cbk?"]],[["http://khm0.googleapis.com/kh?v=101\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=101\u0026hl=en-US\u0026"],null,null,null,null,"101",["https://khms0.google.com/kh?v=101\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=101\u0026hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt?hl=en-US\u0026","http://mt1.googleapis.com/mapslt?hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt/ft?hl=en-US\u0026","http://mt1.googleapis.com/mapslt/ft?hl=en-US\u0026"]],[["http://mt0.googleapis.com/maps/vt?hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt/loom?hl=en-US\u0026","http://mt1.googleapis.com/mapslt/loom?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt/ft?hl=en-US\u0026","https://mts1.googleapis.com/mapslt/ft?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt/loom?hl=en-US\u0026","https://mts1.googleapis.com/mapslt/loom?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"http://maps.gstatic.com/mapfiles/","http://csi.gstatic.com","https://maps.googleapis.com","http://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","http://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["http://maps.google.com/maps-api-v3/api/js/25/15","3.25.15"],[3358547843],1,null,null,null,null,null,"",null,null,0,"http://khm.googleapis.com/mz?v=703\u0026","AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"http://mt.googleapis.com/maps/vt/icon",[["http://maps.google.com/maps/vt"],["https://maps.google.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",367000000,367],2,500,[null,null,null,null,"http://www.google.com/maps/preview/log204","","http://static.panoramio.com.storage.googleapis.com/photos/",["http://geo0.ggpht.com/cbk","http://geo1.ggpht.com/cbk","http://geo2.ggpht.com/cbk","http://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["http://lh3.ggpht.com/","http://lh4.ggpht.com/","http://lh5.ggpht.com/","http://lh6.ggpht.com/"]],["https://www.google.com/maps/api/js/master?pb=!1m2!1u25!2s15!2sen-US!3sUS!4s25/15","https://www.google.com/maps/api/js/widget?pb=!1m2!1u25!2s15!2sen-US"],null,0,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["25.15"]], loadScriptTime);
+    apiLoad([0.009999999776482582,[[["http://mt0.googleapis.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026"],null,null,null,null,"m@367000000",["https://mts0.google.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026","https://mts1.google.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026"]],[["http://khm0.googleapis.com/kh?v=703\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=703\u0026hl=en-US\u0026"],null,null,null,1,"703",["https://khms0.google.com/kh?v=703\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=703\u0026hl=en-US\u0026"]],null,[["http://mt0.googleapis.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026"],null,null,null,null,"t@367,r@367000000",["https://mts0.google.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026","https://mts1.google.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026"]],null,null,[["http://cbk0.googleapis.com/cbk?","http://cbk1.googleapis.com/cbk?"]],[["http://khm0.googleapis.com/kh?v=101\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=101\u0026hl=en-US\u0026"],null,null,null,null,"101",["https://khms0.google.com/kh?v=101\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=101\u0026hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt?hl=en-US\u0026","http://mt1.googleapis.com/mapslt?hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt/ft?hl=en-US\u0026","http://mt1.googleapis.com/mapslt/ft?hl=en-US\u0026"]],[["http://mt0.googleapis.com/maps/vt?hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt/loom?hl=en-US\u0026","http://mt1.googleapis.com/mapslt/loom?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt/ft?hl=en-US\u0026","https://mts1.googleapis.com/mapslt/ft?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt/loom?hl=en-US\u0026","https://mts1.googleapis.com/mapslt/loom?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"http://maps.gstatic.com/mapfiles/","http://csi.gstatic.com","https://maps.googleapis.com","http://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","http://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["http://maps.google.com/maps-api-v3/api/js/25/15","3.25.15"],[3360699765],1,null,null,null,null,null,"",null,null,0,"http://khm.googleapis.com/mz?v=703\u0026","AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"http://mt.googleapis.com/maps/vt/icon",[["http://maps.google.com/maps/vt"],["https://maps.google.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",367000000,367],2,500,[null,null,null,null,"http://www.google.com/maps/preview/log204","","http://static.panoramio.com.storage.googleapis.com/photos/",["http://geo0.ggpht.com/cbk","http://geo1.ggpht.com/cbk","http://geo2.ggpht.com/cbk","http://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["http://lh3.ggpht.com/","http://lh4.ggpht.com/","http://lh5.ggpht.com/","http://lh6.ggpht.com/"]],["https://www.google.com/maps/api/js/master?pb=!1m2!1u25!2s15!2sen-US!3sUS!4s25/15","https://www.google.com/maps/api/js/widget?pb=!1m2!1u25!2s15!2sen-US"],null,0,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["25.15"]], loadScriptTime);
   };
   var loadScriptTime = (new Date).getTime();
 })();
