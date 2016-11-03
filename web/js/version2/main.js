@@ -189,6 +189,7 @@
         $('.right_menu').toggleClass('close');
         $('.bid_list').toggleClass('close');
         $('.main_search_container').toggleClass('close');
+        $('.ol-overviewmap').toggleClass('close');
 
     });
 

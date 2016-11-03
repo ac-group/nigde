@@ -841,7 +841,7 @@ $('body').on('click', '.modal-dtp', function(){
                 'VERSION': '1.1.1',
                 'TILED': 'true',
                 'FORMAT': 'image/png8',
-                'WIDTH': 703,
+                'WIDTH': 702,
                 'HEIGHT': 768,
                 'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
 //            projection: 'EPSG:900913',
@@ -856,53 +856,6 @@ $('body').on('click', '.modal-dtp', function(){
             visible: 0,
             name: 'wms2'
         });
-
-
-        var wmsSource5 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_l_building',
-                'ALIAS':'Будинки',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 716,
-                'HEIGHT': 768,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer5 = new ol.layer.Tile({
-            source: wmsSource5,
-            visible: 0,
-            name: 'wms5'
-        });
-        var wmsSource6 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_l_street',
-                'ALIAS':'Вулиці',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 716,
-                'HEIGHT': 768,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer6 = new ol.layer.Tile({
-            source: wmsSource6,
-            visible: 0,
-            name: 'wms6'
-        });
-
 
         var wmsSource = new ol.source.TileWMS({
             url: '/dzk',
@@ -927,7 +880,6 @@ $('body').on('click', '.modal-dtp', function(){
             name: 'wms1'
         });
 
-        
         osmLayer = new ol.layer.Tile({
             source: new ol.source.OSM(),
            // visible: 1,
@@ -935,8 +887,6 @@ $('body').on('click', '.modal-dtp', function(){
             visible: 0,
         });
 
-//        var osmsatLayer = new ol.layer.Tile({ source: new ol.source.MapQuest({layer: 'sat'}), visible: 0, name: 'osmsat' });
-        
         var pubLayer = new ol.layer.Tile({
             source: new ol.source.XYZ({
                 url: 'http://212.26.144.103/map/dzk_overview/{z}/{x}/{-y}.png',
@@ -956,7 +906,6 @@ $('body').on('click', '.modal-dtp', function(){
         });
         var vin2015Layer = new ol.layer.Tile({
             source: new ol.source.XYZ({
-//                url: '/ortho2k_vyn/{z}/{x}/{-y}.png',
                 url: 'http://212.26.144.103/map/ortho2k_vyn/{z}/{x}/{-y}.png',
                 crossOrigin: 'null',
             }),
@@ -1615,6 +1564,7 @@ $('body').on('click', '.modal-dtp', function(){
                 $('.right_menu').toggleClass('close');
                 $('.bid_list').toggleClass('close');
                 $('.main_search_container').toggleClass('close');
+                $('.ol-overviewmap').toggleClass('close');
                 $('.right_menu_button').show();
             }else if(!$('.right_menu').hasClass('close') && infostr==""){
                 $('.right_menu').toggleClass('close');

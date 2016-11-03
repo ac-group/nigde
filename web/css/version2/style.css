@@ -2442,7 +2442,7 @@ tr td {
 / / border-bottom: solid 1 px rgba(0, 0, 0, 0.12);
 / / position: fixed;
 / / left: 346 px;
-    transition: left 1s;
+ //   transition: left 1s;
     border: 1px solid darkgrey;
 / / top: 319 px;
 }
@@ -2460,7 +2460,7 @@ tr td {
     margin: 0;
     color: rgb(51, 155, 255);
     height: 40px;
-    width: 38px;
+    width: 37px;
     font-size: 36px;
     background-color: #ffffff;
     -webkit-border-radius: 0px;
@@ -3273,16 +3273,19 @@ textarea {
     position: fixed;
     left: 30px;
     transition: left 1s;
-    top: 319px;
+    top: auto;
+    bottom: 300px;
 }
 
 .ol-overviewmap {
     position: fixed;
-    left: 26px;
-    transition: left 1s;
+    right: 40px;
+    transition: right 1s;
     bottom: 45px;
 }
-
+.close.ol-overviewmap{
+    right: 420px;
+}
 .ol-overviewmap:not(.ol-collapsed) button {
     left: 0px;
     bottom: 0px;
