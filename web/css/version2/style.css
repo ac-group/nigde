@@ -2493,7 +2493,7 @@ tr td {
 }
 
 .edit_buttons {
-    height: 200px;
+    height: 240px;
 }
 
 .edit_buttons .mdl-button {
@@ -3274,7 +3274,7 @@ textarea {
     left: 30px;
     transition: left 1s;
     top: auto;
-    bottom: 295px;
+    bottom: 335px;
 }
 
 .ol-overviewmap {
@@ -3452,14 +3452,14 @@ background: rgba(74, 160, 255, 1)
     border-radius: 10px 10px 0 0;
 
 }
-#main_tt7{
+#main_tt9{
 
     border-bottom: none !important;
 
 }
 
-#main_tt7:hover{
-    border-radius: 0 0 10px 10px;
+#main_tt9:hover{
+   border-radius: 0 0 10px 10px;
     border-bottom: none !important;
 }
 

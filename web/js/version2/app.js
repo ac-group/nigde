@@ -1031,10 +1031,10 @@ $('body').on('click', '.modal-dtp', function(){
             target: 'map',
             label: '«',
             collapseLabel: '»',
-
-            //collapsible:false
         });
-
+        $('#main_tt9').on('click', function(){
+           window.print();
+        });
         map.addControl(overview);
         //$('.ol-overviewmap').addClass('ol-rotate');
         //$('.ol-control').addClass('left_menu_open');
