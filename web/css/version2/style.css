@@ -2648,25 +2648,27 @@ tr td {
 .open .bg_white:hover {
     background: rgba(255, 255, 255, 0.34);
 }
-
+.account_block,
 .main_search_block {
-    position: absolute;
-    height: 32px;
-    width: 32px;
-    background: white;
-    right: 0;
-    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
-    -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
-    -webkit-transition: all 0.6s;
-    -o-transition: all 0.6s;
-    -moz-transition: all 0.6s;
-    transition: all 0.6s;
-    overflow: hidden;
-    -webkit-border-radius: 32px;
-    -moz-border-radius: 32px;
-    border-radius: 32px;
-}
+   // z-index: 10;
+     position: absolute;
+     height: 32px;
+     width: 32px;
+     background: white;
+     right: 0;
+     -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+     -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+     -webkit-transition: all 0.6s;
+     -o-transition: all 0.6s;
+     -moz-transition: all 0.6s;
+     transition: all 0.6s;
+     overflow: hidden;
+     -webkit-border-radius: 32px;
+     -moz-border-radius: 32px;
+     border-radius: 32px;
+ }
+
 
 .main_search_block.open {
     width: 344px;
@@ -2722,7 +2724,7 @@ tr td {
 .main_search_block .clear_icon:hover {
     cursor: pointer;
 }
-
+.account_container,
 .main_search_container {
     display: block;
     position: relative;
@@ -3299,11 +3301,24 @@ textarea {
 .main_search_container {
     position: fixed;
     transition: right 1s;
+    right: 80px;
+    top: 18px;
+}
+.account_container {
+    position: fixed;
+    transition: right 1s;
     right: 40px;
     top: 18px;
 }
+.account_block .mdl-button--icon{
+    height: 32px;
+    width: 32px;
+}
 
 .close.main_search_container {
+    right: 460px;
+}
+.close.account_container {
     right: 420px;
 }
 
@@ -3484,7 +3499,7 @@ background: rgba(74, 160, 255, 1)
 }
 .ol-overviewmap{
     left: auto;
-    right: 30px;
+  //  right: 30px;
 }
 .head_block_logo{
     position: fixed;

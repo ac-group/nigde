@@ -1574,12 +1574,15 @@ $('body').on('click', '.modal-dtp', function(){
                 $('.bid_list').toggleClass('close');
                 $('.main_search_container').toggleClass('close');
                 $('.ol-overviewmap').toggleClass('close');
+                $('.account_block').toggleClass('close');
                 $('.right_menu_button').show();
             }else if(!$('.right_menu').hasClass('close') && infostr==""){
                 $('.right_menu').toggleClass('close');
                 $('.bid_list').toggleClass('close');
                 $('.main_search_container').toggleClass('close');
                 $('.right_menu_button').hide();
+                $('.ol-overviewmap').toggleClass('close');
+                $('.account_block').toggleClass('close');
             }
             if(infostr==""){
                 $('.right_menu_button').hide();
