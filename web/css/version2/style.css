@@ -3507,6 +3507,16 @@ background: rgba(74, 160, 255, 1)
     color:rgb(68, 68, 68);
 }
 
+@media print {
+    @page {
+        size:landscape;
+    }
+    .demo-drawer,
+    .map_mode_select,
+    .edit_buttons{
+        display: none;
+    }
+}
 /*
 .edit_buttons .mdl-button.active{
     background-color: rgba(51,150,255,0.3);
