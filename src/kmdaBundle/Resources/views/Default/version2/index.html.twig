@@ -11,8 +11,8 @@
     'css/version2/jquery.bxslider.css'
     'css/version2/bootstrap-material-datetimepicker.css'
     '//ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css'
-        'css/new_modal.css'
-        output='css/version2/sc1.css'
+    'css/new_modal.css'
+    output='css/version2/sc1.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
@@ -44,15 +44,15 @@
     output='js/version2/sc22.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
-     <script>
-     $(document).ready(function() {
-     $('#orenda_doc_type_reviewDate').mask("99/99/9999");
-$('#orenda_doc_type_entryToLessorDate').mask("99/99/9999");
-$('#orenda_doc_type_entryToCommisDate').mask("99/99/9999");
-$('#orenda_doc_type_announcementDate').mask("99/99/9999");
-$('#orenda_doc_type_valuationDate').mask("99/99/9999");
-     });
- </script>
+    <script>
+        $(document).ready(function () {
+            $('#orenda_doc_type_reviewDate').mask("99/99/9999");
+            $('#orenda_doc_type_entryToLessorDate').mask("99/99/9999");
+            $('#orenda_doc_type_entryToCommisDate').mask("99/99/9999");
+            $('#orenda_doc_type_announcementDate').mask("99/99/9999");
+            $('#orenda_doc_type_valuationDate').mask("99/99/9999");
+        });
+    </script>
 {% endblock %}
 
 {% block body -%}
@@ -92,16 +92,40 @@ $('#orenda_doc_type_valuationDate').mask("99/99/9999");
                         поділ</a>
                 </div>
             </div>
-                <div class="level_menu">
-                    <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
-                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">location_city</i>Вінниця</a>
-                    <div class="mdl-navigation__level2">
-                        <a class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#wms2">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>Векторна карта</a>
+            <div class="level_menu">
+                <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">location_city</i>Вінниця</a>
+                <div class="mdl-navigation__level2">
+                    <a class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#wms2">
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>Векторна
+                        карта</a>
+                </div>
+            </div>
+        </nav>
+        <div class="bid_list">
+            <div class="bid_list_container">
+                <div class="bid_list_button">
+                    <i class="material-icons">keyboard_arrow_up</i>
+                </div>
+                {# <div class="bid_list-header">
+                 <span class="title">Список заявок <span class="bid_list-count"></span>
+                 </span>
+                 </div>#}
+                <div class="bid_list-content-fix">
+                    <div class="bid_list-content">
+                        <div class="zoomOff">
+                            <label class="mdl-checkbox mdl-js-checkbox" for="checkbox-zoom">
+                                <span class="mdl-checkbox__label">Відображати зум</span>
+                                <input type="checkbox" id="checkbox-zoom" class="mdl-checkbox__input" checked>
+                            </label>
                     </div>
                 </div>
-        </nav>
-
+            </div>
+            <div class="bid_list-footer">
+                <a href="#" class="btn">НАЛАШТУВАННЯ</a>
+            </div>
+        </div>
+    </div>
     </div>
 
     <div id="snackbar_container" class="mdl-js-snackbar mdl-snackbar">
@@ -110,7 +134,7 @@ $('#orenda_doc_type_valuationDate').mask("99/99/9999");
     </div>
 
 
-    <div class="right_menu close" >
+    <div class="right_menu close">
         <div class="right_menu_container">
             <div class="right_menu_button">
                 <i class="material-icons">chevron_right</i>
@@ -124,7 +148,7 @@ $('#orenda_doc_type_valuationDate').mask("99/99/9999");
 
             <div class="right_menu_footer-block">
                 <div class="control_bttons">
-                  {#  <button class=" mdl-button mdl-js-button mdl-js-ripple-effect btn-add">СТВОРИТИ ЗАЯВКУ</button>#}
+                    {#  <button class=" mdl-button mdl-js-button mdl-js-ripple-effect btn-add">СТВОРИТИ ЗАЯВКУ</button>#}
                     <div class="control_i">
                         <button class="mdl-button mdl-js-button mdl-button--icon filter_list btn">
                             <i class="material-icons">sms_failed</i>
@@ -161,7 +185,7 @@ $('#orenda_doc_type_valuationDate').mask("99/99/9999");
         </div>
         <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color measure" id="erase">
             <img src="/img/delete_nsci.png" class="no_active"><img src="/img/delete_nsci_active.png"
-                                                                               class="is_active">
+                                                                   class="is_active">
         </button>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="erase">
             Очистити
@@ -180,29 +204,29 @@ $('#orenda_doc_type_valuationDate').mask("99/99/9999");
         </div>
     </div>
 
-    <div class="osm-copyright" >©<a  target="_blank" href="http://www.openstreetmap.org/copyright">Участники OpenStreetMap</a></div>
-  {#  <div class="map_mode_select  left_menu_open">
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height ">
-            <input class="mdl-textfield__input " type="text" id="map_mode" readonly tabIndex="-1"
-                   value="Open Street Map">
-            <label for="map_mode">
-                <i class="mdl-icon-toggle__label material-icons">arrow_drop_down</i>
-            </label>
-            <ul for="map_mode" class="mdl-menu mdl-menu--bottom-left mdl-js-menu ">
+    <div class="osm-copyright">©<a target="_blank" href="http://www.openstreetmap.org/copyright">Участники
+            OpenStreetMap</a></div>
+    {#  <div class="map_mode_select  left_menu_open">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height ">
+              <input class="mdl-textfield__input " type="text" id="map_mode" readonly tabIndex="-1"
+                     value="Open Street Map">
+              <label for="map_mode">
+                  <i class="mdl-icon-toggle__label material-icons">arrow_drop_down</i>
+              </label>
+              <ul for="map_mode" class="mdl-menu mdl-menu--bottom-left mdl-js-menu ">
 
-                <li class="mdl-menu__item" data-val="osm">Open Street Map</li>
-                <li class="mdl-menu__item" data-val="kiev2000">Топографія (1:2000)</li>
-                <li class="mdl-menu__item" data-val="google">Google Satellite</li>
-                <li class="mdl-menu__item" data-val="googlehybrid">Google Hybryd</li>
-                <li class="mdl-menu__item" data-val="kiev2006">Космічний знімок, 2006р</li>
-                <li class="mdl-menu__item" data-val="kiev2015">Космічний знімок, 2015р</li>
-            </ul>
-        </div>
-        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="map_mode">
-            Обрати підоснову
-        </div>
-    </div>#}
-
+                  <li class="mdl-menu__item" data-val="osm">Open Street Map</li>
+                  <li class="mdl-menu__item" data-val="kiev2000">Топографія (1:2000)</li>
+                  <li class="mdl-menu__item" data-val="google">Google Satellite</li>
+                  <li class="mdl-menu__item" data-val="googlehybrid">Google Hybryd</li>
+                  <li class="mdl-menu__item" data-val="kiev2006">Космічний знімок, 2006р</li>
+                  <li class="mdl-menu__item" data-val="kiev2015">Космічний знімок, 2015р</li>
+              </ul>
+          </div>
+          <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="map_mode">
+              Обрати підоснову
+          </div>
+      </div>#}
 
 
     <div class="map_mode_select left_menu_open">
@@ -247,16 +271,17 @@ $('#orenda_doc_type_valuationDate').mask("99/99/9999");
             </div>
         </div>
         <div class="account_container ">
-        <div class="account_block">
-            <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt10">
-                <i class="material-icons">account_circle</i>
-            </button>
-            <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt10">
-                Авторизуватись
+            <div class="account_block">
+                <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt10">
+                    <i class="material-icons">account_circle</i>
+                </button>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt10">
+                    Авторизуватись
+                </div>
             </div>
         </div>
-            </div>
     </div>
+
     <div id="mapView" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;">
 
     </div>

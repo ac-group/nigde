@@ -1057,6 +1057,12 @@ $('body').on('click', '.modal-dtp', function(){
         layersOff(map);
 
 
+        $('.mdl-checkbox').on('mouseup', function(){
+           // $('.account_block').toggleClass('close');
+            $('.ol-zoom').toggleClass('hide');
+            console.log($('#checkbox-zoom').attr('checked'));
+        });
+
         $('.map_mode_select li').on('click', function(event){
             var selected = $(this).attr('data-val');
             var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006'];

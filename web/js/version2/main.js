@@ -48,7 +48,7 @@
         $(this).toggleClass('open');
     });
 
-    $('.bid_list_button').click(function() {
+    $('.bid_list_button, .bid_list-footer').click(function() {
         $('.bid_list').toggleClass('open');
     });
 
