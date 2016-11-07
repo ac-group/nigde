@@ -187,10 +187,10 @@
     });
     $('.right_menu_button').click(function() {
         $('.right_menu').toggleClass('close');
-        $('.bid_list').toggleClass('close');
+        //$('.bid_list').toggleClass('close');
         $('.main_search_container').toggleClass('close');
         $('.ol-overviewmap').toggleClass('close');
-        $('.account_block').toggleClass('close');
+        $('.account_container').toggleClass('close');
 
     });
 

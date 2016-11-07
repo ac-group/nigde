@@ -3538,7 +3538,7 @@ background: rgba(74, 160, 255, 1)
     }
 }
 .bid_list-content .mdl-checkbox__box-outline{
-    border: 3px solid rgba(0,0,0,.54);
+    border: 2px solid rgba(0,0,0,.54);
     left: 290px;
 }
 .bid_list-content .mdl-checkbox__label{
