@@ -2,7 +2,7 @@ var map;
 
 var osmLayer;
 var googleLayer;
-var art = ['wms1', 'wms2'];
+var art = ['wms1', 'wms2', 'wms3'];
 
 
 function showUP(layer, elem) {
@@ -913,6 +913,15 @@ $('body').on('click', '.modal-dtp', function(){
             visible: 0,
         });
 
+        var vinOrto = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://212.26.144.103/map/ortho2k_vyn/{z}/{x}/{-y}.png',
+                crossOrigin: 'null',
+            }),
+            name: 'wms3',
+            visible: 0,
+        });
+
         var dzk_overview = new ol.layer.Tile({
             source: new ol.source.XYZ({
 //                url: '/ortho2k_2015/{z}/{x}/{-y}.jpg',
@@ -1008,7 +1017,8 @@ $('body').on('click', '.modal-dtp', function(){
                 kiev2006Layer,
                 vin2015Layer,
                 wmsLayer,
-                wmsLayer2,                
+                wmsLayer2,
+                vinOrto,
             ],
             //           overlays: [overlay],
             view: view,
