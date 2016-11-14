@@ -1025,6 +1025,25 @@ $('body').on('click', '.modal-dtp', function(){
             controls: [],
         });
 
+        $('#vinOrto').on('click',function(){
+            if($(this).hasClass('active')){
+                $('#slider_wms3').show();
+            }else{
+                $('#slider_wms3').hide();
+            }
+        });
+
+        console.log(vinOrto.getOpacity());
+        var slider = $('#slider_wms3').slider({
+            value: vinOrto.getOpacity()*100
+        })
+        slider.on('slide', function(ev, ui) {
+            vinOrto.setOpacity(ui.value/100);
+            ev.stopPropagation();
+        });
+        $('#slider_wms3').on('click', function(event){
+            event.stopPropagation();
+        })
         map.addOverlay(popup);
 //  var zoomslider = new ol.control.ZoomSlider();
 //  map.addControl(zoomslider);

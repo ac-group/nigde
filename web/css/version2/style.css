@@ -3552,6 +3552,23 @@ background: rgba(74, 160, 255, 1)
 .ol-zoom.hide{
     display: none;
 }
+#slider_wms3{
+    display: none;
+    width: 90%;
+    margin: 12px 0 10px 6px;
+    font-size: 14px;
+}
+#slider_wms3.ui-widget-content{
+    background: #ebf5ff;
+}
+
+#slider_wms3 span{
+    border: 2px solid #3396ff;
+    background: rgb(185, 207, 255);
+}
+#slider_wms3 span:focus{
+   outline: none;
+}
 /*
 .edit_buttons .mdl-button.active{
     background-color: rgba(51,150,255,0.3);

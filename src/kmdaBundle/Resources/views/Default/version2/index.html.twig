@@ -46,6 +46,7 @@
     {% endjavascripts %}
     <script>
         $(document).ready(function () {
+
             $('#orenda_doc_type_reviewDate').mask("99/99/9999");
             $('#orenda_doc_type_entryToLessorDate').mask("99/99/9999");
             $('#orenda_doc_type_entryToCommisDate').mask("99/99/9999");
@@ -99,8 +100,10 @@
                     <a class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#wms2">
                         <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>Векторна
                         карта</a>
-                    <a class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#wms3">
-                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>Ортофотоплан (м. Вінниця)</a>
+                    <a id="vinOrto" class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#wms3">
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>Ортофотоплан (м. Вінниця)
+                        <div id="slider_wms3"></div>
+                    </a>
                 </div>
 
             </div>
