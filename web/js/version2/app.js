@@ -1810,12 +1810,39 @@ $('body').on('click', '.modal-dtp', function(){
 //            $("#rightSwitch").removeClass("expanded");
 //            $("#rightblur").removeClass("expanded");
 //        });
-
-
         $('#main_search_input').bind("enterKey", function (e) {
             var searchval = $('#main_search_input').val();
-//    console.log(searchval);
+            console.log(searchval);
             $.ajax({
+                url: 'https://maps.googleapis.com/maps/api/geocode/json',
+                data: { 'address': searchval + ' Винница' },
+                success: function (data) {
+
+                    var sourceProj = map.getView().getProjection();
+
+                    var c1 = ol.proj.transform([data.results[0].geometry.viewport.northeast.lng,data.results[0].geometry.viewport.northeast.lat],'EPSG:4326','EPSG:900913');
+
+                    var c2 = ol.proj.transform([data.results[0].geometry.viewport.southwest.lng,data.results[0].geometry.viewport.southwest.lat], 'EPSG:4326', 'EPSG:900913');
+
+                    var fitextent = [c1[0],c1[1],c2[0],c2[1]];
+
+                    map.getView().fit(fitextent, map.getSize());
+                }
+        })
+        });
+        $('#main_search_input').keyup(function (e) {
+            if (e.keyCode == 13) {
+                $(this).trigger("enterKey");
+            }
+        });
+
+
+
+
+     /*   $('#main_search_input').bind("enterKey", function (e) {
+            var searchval = $('#main_search_input').val();
+//    console.log(searchval);
+            $.ajax({hg
                 url: '/search',
                 type: 'POST',
                 data: {searchstring: searchval},
@@ -1870,7 +1897,7 @@ $('body').on('click', '.modal-dtp', function(){
                     }
                 });
             }
-        });
+        });*/
 
 
     }, 300);
