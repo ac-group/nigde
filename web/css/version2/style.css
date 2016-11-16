@@ -777,7 +777,7 @@ a:active {
     position: fixed;
     right: 0;
     bottom: 0;
-    z-index: 99;
+    z-index: 1000;
     transition: right 1s;
 }
 
@@ -2652,6 +2652,7 @@ tr td {
 .open .bg_white:hover {
     background: rgba(255, 255, 255, 0.34);
 }
+.language_block,
 .account_block,
 .main_search_block {
    // z-index: 10;
@@ -2672,7 +2673,9 @@ tr td {
      -moz-border-radius: 32px;
      border-radius: 32px;
  }
-
+.language_container .material-icons{
+    font-size: 14px;
+}
 
 .main_search_block.open {
     width: 344px;
@@ -2728,6 +2731,7 @@ tr td {
 .main_search_block .clear_icon:hover {
     cursor: pointer;
 }
+.language_container,
 .account_container,
 .main_search_container {
     display: block;
@@ -3305,28 +3309,37 @@ textarea {
 .main_search_container {
     position: fixed;
     transition: right 1s;
-    right: 80px;
+    right: 120px;
     top: 18px;
 }
-.account_container {
+.language_container{
     position: fixed;
     transition: right 1s;
     right: 40px;
     top: 18px;
 }
+.account_container {
+    position: fixed;
+    transition: right 1s;
+    right: 80px;
+    top: 18px;
+}
+.language_container .mdl-button--icon,
 .account_block .mdl-button--icon{
     height: 32px;
     width: 32px;
 }
 
 .close.main_search_container {
-    right: 460px;
+    right: 500px;
 }
 
 .close.account_container {
+    right: 460px;
+}
+.close.language_container {
     right: 420px;
 }
-
 .map_mode_select .mdl-menu li:first-child {
     background: url(../../img/ic_arrow_drop_up_black_24px.svg) no-repeat center right;
     background-size: 30px;
@@ -3552,23 +3565,43 @@ background: rgba(74, 160, 255, 1)
 .ol-zoom.hide{
     display: none;
 }
-#slider_wms3{
+#slider_orto10000sidebar,
+#slider_vinOrtoSidebar{
     display: none;
     width: 90%;
     margin: 12px 0 10px 6px;
     font-size: 14px;
 }
-#slider_wms3.ui-widget-content{
+#slider_orto10000sidebar,
+#slider_vinOrtoSidebar.ui-widget-content{
     background: #ebf5ff;
 }
-
-#slider_wms3 span{
+#slider_orto10000sidebar span,
+#slider_vinOrtoSidebar span{
     border: 2px solid #3396ff;
     background: rgb(185, 207, 255);
 }
-#slider_wms3 span:focus{
+#slider_orto10000sidebar span:focus,
+#slider_vinOrtoSidebar span:focus{
    outline: none;
 }
+#slider_orto10000sidebar .ui-slider-range,
+#slider_vinOrtoSidebar .ui-slider-range {
+    background: rgb(152, 205, 255);
+}
+#slider_orto10000sidebar .ui-slider-handle,
+#slider_wms3  .ui-slider-handle {
+    border-color: rgb(154, 154, 154);
+}
+.layersAll{
+    position: static;
+    overflow-y: auto;
+    //height: 100%-48px-67px;
+}
+.demo-drawer{
+    overflow: hidden;
+}
+
 /*
 .edit_buttons .mdl-button.active{
     background-color: rgba(51,150,255,0.3);

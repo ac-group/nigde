@@ -50,6 +50,7 @@
 
     $('.bid_list_button, .bid_list-footer').click(function() {
         $('.bid_list').toggleClass('open');
+
     });
 
     $('.bid_list-footer .btn').click(function() {
@@ -191,6 +192,7 @@
         $('.main_search_container').toggleClass('close');
         $('.ol-overviewmap').toggleClass('close');
         $('.account_container').toggleClass('close');
+        $('.language_container').toggleClass('close');
 
     });
 
@@ -291,14 +293,41 @@
             $(this).next('.mdl-navigation__level2').slideToggle(400); //раскрываем/скрываем следующий за "кликнутым" p блок div с эффектом slide
         }
     });
-    $('.mdl-navigation__level3').click(function(event) { //при клике на пункт меню:
+    //Убираем выключения слоя при перетаскивании слайдера//
+    var slide_vinOrtoSidebar = true;
+    $('#slider_vinOrtoSidebar').on('mousedown', function(event){
+        slide_vinOrtoSidebar = false;
+    })
 
-        if (event.target.className == 'material-icons') {
+    $('#slider_vinOrtoSidebar').on('click', function(event){
+        event.stopImmediatePropagation();
+        slide_vinOrtoSidebar = true;
+    })
+    var slide_orto10000sidebar = true;
+    $('#slider_orto10000sidebar').on('mousedown', function(event){
+        slide_orto10000sidebar = false;
+    })
 
-        } else {
-            $(this).toggleClass('active'); //делаем данный пункт активным/неактивным
-            $(this).next('.demo-filters').slideToggle(400); //раскрываем/скрываем следующий за "кликнутым" p блок div с эффектом slide
+    $('#slider_orto10000sidebar').on('click', function(event){
+        event.stopImmediatePropagation();
+        slide_orto10000sidebar = true;
+    })
+
+    $('.mdl-navigation__level3').on('click',function(event) { //при клике на пункт меню:
+        console.log($(this).getId);
+        if(($(this).attr('id') == 'orto10000' && slide_orto10000sidebar == false)||($(this).attr('id') == 'vinOrto' && slide_vinOrtoSidebar == false)){
+        }else{
+            event.relatedTarget;
+            if (event.target.className == 'material-icons') {
+
+            } else {
+                $(this).toggleClass('active'); //делаем данный пункт активным/неактивным
+                $(this).next('.demo-filters').slideToggle(400); //раскрываем/скрываем следующий за "кликнутым" p блок div с эффектом slide
+            }
         }
+        slide_vinOrtoSidebar = true;
+        slide_orto10000sidebar = true;
 
     });
+    //---------------------------------------------------------------//
 })(jQuery);

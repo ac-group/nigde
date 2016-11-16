@@ -2,7 +2,7 @@ var map;
 
 var osmLayer;
 var googleLayer;
-var art = ['wms1', 'wms2', 'wms3'];
+var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'vinOrtoSidebar'];
 
 
 function showUP(layer, elem) {
@@ -34,8 +34,8 @@ function toggleOL(layer, elem) {
 
     map.getLayers().forEach(function (l, i) {
         if (($.inArray(l.get('name'), art)) > -1) {
-            if (l.get('name') === layer) {
-                if (l.getVisible() == true) {
+            if (l.get('name') === layer ) {
+                if (l.getVisible() == true && !elem.hasClass('active')) {
                     l.setVisible(false);
                     // delclass(.on_layer)
                     $(elem).removeClass('on_layer');
@@ -77,11 +77,12 @@ function toggleDOWN(e) {
 function layersOff(map){
     $('.mdl-navigation__level3').click(function () {
 
-
         if($(this).hasClass('active')){
+
             $(this).closest('.mdl-navigation__level2').prev().find('.layersOff').show().children('label').addClass('is-checked');
         }else{
             var isActive = false;
+
             $(this).closest('.mdl-navigation__level2').find('a.mdl-navigation__link').each(function(){
                if($(this).hasClass('active')){
                    isActive = true;
@@ -90,7 +91,10 @@ function layersOff(map){
             });
 
             if(isActive == false){
+
                 $(this).closest('.mdl-navigation__level2').prev().find('.layersOff').hide().removeClass('is-checked');
+
+
             }
         }
     });
@@ -124,6 +128,7 @@ $('.mdl-navigation__level1').prepend('<div class="layersOff"><label class="mdl-c
                 }
             });
         }
+        $('#slider_wms3').hide();
         $(this).prop('checked', false).hide();
         event.stopPropagation();
     });
@@ -287,7 +292,28 @@ $('body').on('click', '.modal-dtp', function(){
         var contentHeight;
         var contentWidth;
         var isDevice = true;
+        $('.bid_list_button').click(function(){
+            var height = $('.layersAll').height()
+            console.log($('.layersAll').height());
+            if($('.bid_list').hasClass('open')){
+                console.log($('.layersAll').height());
+                console.log($('.bid_list-content').height());
 
+                $('.layersAll').height(height-180);
+            }else{
+                $('.layersAll').height(height+180);
+            }
+        });
+        $('.language_container').click(function(){
+            if($('.language_container i').text()=="UA"){
+                $('.language_container i').text("EN")
+                $('.language_container .mdl-tooltip').text("English");
+            }else{
+                $('.language_container i').text("UA");
+                $('.language_container .mdl-tooltip').text("Українською");
+            }
+            console.log($('.language_container i').text())
+        });
         // calculations for elements that changes size on window resize
         var windowResizeHandler = function () {
             windowHeight = $(window).height();
@@ -309,6 +335,7 @@ $('body').on('click', '.modal-dtp', function(){
             if($('.carousel-block').closest('.bx-wrapper').css('display') == 'none'){
                 carousel_block_height = 0;
             }
+            $('.layersAll').height(windowHeight-$('.bid_list').height()-$('.mdl-layout-title').height());
 
             var right_menu_content_block = windowHeight-$('.right_menu_footer-block').height()- $('.right_menu_title-block').height()-carousel_block_height;
             $('.right_menu_content-block').css('height', right_menu_content_block);
@@ -608,20 +635,14 @@ $('body').on('click', '.modal-dtp', function(){
 //        $('#accordion').on('shown.bs.collapse', toggleUP);
 //        $('a.accordion-toggle').on('click', function () {
         $('a.mdl-navigation__link').on('click', function () {
-           // console.log($(this));
-
-//            if ($(this).hasClass('active')) {
             toggleOL($(this).attr('href').substr(1), $(this));
-//            } else {
-//                showUP($(this).attr('href').substr(1), $(this));
-//            }
-            if ($(this).hasClass('active') == false && $(this).find('.arrow_box').hasClass('active')) {
+           /* if ($(this).hasClass('active') == false && $(this).find('.arrow_box').hasClass('active')) {
                 $('.legend').hide();
                 $(this).find('.legend-radio').hide();
                 $(this).find('.legend-radio').removeAttr('checked');
                 $(this).find('.arrow_box').removeClass('active');
                 $(this).find('.arrow_box').hide();
-            }
+            }*/
 
             if ($(this).next().find('a.mdl-navigation__link').hasClass('active') && $(this).hasClass('active') == false) {
                 $(this).addClass('active');
@@ -833,7 +854,7 @@ $('body').on('click', '.modal-dtp', function(){
 //            imageSize: [192,192]
         });*/
 
-        var wmsSource2 = new ol.source.TileWMS({
+        var vectorVinSidebarWms = new ol.source.TileWMS({
             url: '/geoserver/nsdi/wms',
             params: {
                 'LAYERS': 'nsdi:nsdi',
@@ -843,21 +864,43 @@ $('body').on('click', '.modal-dtp', function(){
                 'FORMAT': 'image/png8',
                 'WIDTH': 702,
                 'HEIGHT': 768,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-//            projection: 'EPSG:900913',
+                'CRS': 'EPSG:900913',
                 serverType: 'geoserver',
                 crossOrigin: '',
                 projection: projection,
             }
         });
 
-        var wmsLayer2 = new ol.layer.Tile({
-            source: wmsSource2,
+        var vectorVinSidebar = new ol.layer.Tile({
+            source: vectorVinSidebarWms,
             visible: 0,
-            name: 'wms2'
+            name: 'vectorVinSidebar'
         });
 
-        var wmsSource = new ol.source.TileWMS({
+        var gryntSidebarWms = new ol.source.TileWMS({
+            url: 'http://212.26.144.103/geowebcache/service/wms',
+            params: {
+                'LAYERS': 'grunt',
+                'ALIAS':'Грунти',
+                'VERSION': '1.1.1',
+                'TILED': 'true',
+                'FORMAT': 'image/png8',
+                'WIDTH': 702,
+                'HEIGHT': 768,
+                'CRS': 'EPSG:900913',
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+
+        var gryntSidebar = new ol.layer.Tile({
+            source: gryntSidebarWms,
+            visible: 0,
+            name: 'gryntSidebar'
+        });
+
+        var parcelSidebarWms = new ol.source.TileWMS({
             url: '/dzk',
             params: {
                 'LAYERS': 'kadastr',
@@ -874,10 +917,33 @@ $('body').on('click', '.modal-dtp', function(){
             }
         });
 
-        var wmsLayer = new ol.layer.Tile({
-            source: wmsSource,
+        var parcelSidebar = new ol.layer.Tile({
+            source: parcelSidebarWms,
             visible: 0,
-            name: 'wms1'
+            name: 'parcelSidebar'
+        });
+
+        var dynamicSidebarWms = new ol.source.TileWMS({
+            url: 'http://212.26.144.103/dzk/wms',
+            params: {
+                'LAYERS': 'dzk:osm',
+                'ALIAS':'Динамічна карта',
+                'VERSION': '1.1.1',
+                'TILED': 'true',
+                'FORMAT': 'image/png',
+                'WIDTH': 702,
+                'HEIGHT': 768,
+                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+
+        var dynamicSidebar = new ol.layer.Tile({
+            source: dynamicSidebarWms,
+            visible: 0,
+            name: 'dynamicSidebar'
         });
 
         osmLayer = new ol.layer.Tile({
@@ -904,6 +970,26 @@ $('body').on('click', '.modal-dtp', function(){
             name: 'kiev2006',
             visible: 0,
         });
+
+        var orto10000sidebar = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://map.land.gov.ua/map/ortho10k_all/{z}/{x}/{-y}.jpg',
+                crossOrigin: 'null'
+            }),
+            name: 'orto10000sidebar',
+            visible: 0,
+        });
+
+        var orto2000sidebar = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://map.land.gov.ua/map/ortho2k_all/{z}/{x}/{-y}.jpg',
+                crossOrigin: 'null'
+            }),
+            name: 'orto2000sidebar',
+            visible: 0,
+        });
+
+
         var vin2015Layer = new ol.layer.Tile({
             source: new ol.source.XYZ({
                 url: 'http://212.26.144.103/map/ortho2k_vyn/{z}/{x}/{-y}.png',
@@ -913,15 +999,42 @@ $('body').on('click', '.modal-dtp', function(){
             visible: 0,
         });
 
-        var vinOrto = new ol.layer.Tile({
+        var vinOrtoSidebar = new ol.layer.Tile({
             source: new ol.source.XYZ({
                 url: 'http://212.26.144.103/map/ortho2k_vyn/{z}/{x}/{-y}.png',
                 crossOrigin: 'null',
             }),
-            name: 'wms3',
+            name: 'vinOrtoSidebar',
             visible: 0,
         });
 
+        var emptyRelief = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://212.26.144.103/map/relief/{z}/{x}/{-y}.png',
+                crossOrigin: 'null',
+            }),
+            name: 'emptyRelief',
+            visible: 0,
+        });
+
+        var emptyLayer = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://212.26.144.103/files/404-tile707.png',
+                crossOrigin: 'null',
+            }),
+            name: 'emptyLayer',
+            visible: 0,
+        });
+
+       /* var gryntSidebar = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://map.land.gov.ua/geowebcache/service/wms/{z}/{x}/{-y}.png',
+                crossOrigin: 'null',
+            }),
+            name: 'gryntSidebar',
+            visible: 0,
+        });
+*/
         var dzk_overview = new ol.layer.Tile({
             source: new ol.source.XYZ({
 //                url: '/ortho2k_2015/{z}/{x}/{-y}.jpg',
@@ -998,52 +1111,76 @@ $('body').on('click', '.modal-dtp', function(){
             visible: 0,
             mapTypeId: google.maps.MapTypeId.HYBRID
         });
-//osmLayer.setVisible(false);
-//googleLayer.setVisible(false);
+
 
         map = new ol.Map({
-//            interactions: olgm.interaction.defaults(),
             target: "mapView",
             layers: [
-//                   new ol.layer.Tile({ source: new ol.source.MapQuest({layer: 'sat'}) }), 
-//                   new ol.layer.Tile({ source: new ol.source.MapQuest({layer: 'hyb'}) }),
                 googleLayer,
                 googleHybridLayer,
 //                satLayer,
                 osmLayer,
+                emptyRelief,
                 cycleLayer,
                 cycleLayer,
                 pubLayer,
                 kiev2006Layer,
                 vin2015Layer,
-                wmsLayer,
-                wmsLayer2,
-                vinOrto,
+                parcelSidebar,
+                vectorVinSidebar,
+                vinOrtoSidebar,
+                orto10000sidebar,
+                orto2000sidebar,
+                dynamicSidebar,
+                gryntSidebar,
+                emptyLayer,
+
             ],
-            //           overlays: [overlay],
             view: view,
             controls: [],
         });
 
         $('#vinOrto').on('click',function(){
             if($(this).hasClass('active')){
-                $('#slider_wms3').show();
+                $('#slider_vinOrtoSidebar').show();
             }else{
-                $('#slider_wms3').hide();
+                $('#slider_vinOrtoSidebar').hide();
             }
         });
 
-        console.log(vinOrto.getOpacity());
-        var slider = $('#slider_wms3').slider({
-            value: vinOrto.getOpacity()*100
+        var sliderVinOrto = $('#slider_vinOrtoSidebar').slider({
+            value: vinOrtoSidebar.getOpacity()*100,
+            range: "min"
+
         })
-        slider.on('slide', function(ev, ui) {
-            vinOrto.setOpacity(ui.value/100);
-            ev.stopPropagation();
+
+        sliderVinOrto.on('slide', function(ev, ui) {
+            vinOrtoSidebar.setOpacity(ui.value/100);
+            //ev.stopPropagation();
         });
-        $('#slider_wms3').on('click', function(event){
-            event.stopPropagation();
+
+        $('#orto10000').on('click',function(){
+            if($(this).hasClass('active')){
+                $('#slider_orto10000sidebar').show();
+            }else{
+                $('#slider_orto10000sidebar').hide();
+            }
+        });
+
+        var sliderOrto10000 = $('#slider_orto10000sidebar').slider({
+            value: orto10000sidebar.getOpacity()*100,
+            range: "min"
+
         })
+        sliderOrto10000.on('slide', function(ev, ui) {
+            orto10000sidebar.setOpacity(ui.value/100);
+            //ev.stopPropagation();
+        });
+
+
+       /* $('#slider_wms3').on('mousedown', function(event){
+            event.stopPropagation();
+        })*/
         map.addOverlay(popup);
 //  var zoomslider = new ol.control.ZoomSlider();
 //  map.addControl(zoomslider);
@@ -1086,15 +1223,15 @@ $('body').on('click', '.modal-dtp', function(){
         layersOff(map);
 
 
-        $('.mdl-checkbox').on('mouseup', function(){
+        $('.zoomOff .mdl-checkbox').on('mouseup', function(){
            // $('.account_block').toggleClass('close');
             $('.ol-zoom').toggleClass('hide');
-            console.log($('#checkbox-zoom').attr('checked'));
+           // console.log($('#checkbox-zoom').attr('checked'));
         });
 
         $('.map_mode_select li').on('click', function(event){
             var selected = $(this).attr('data-val');
-            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006'];
+            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006','emptyRelief', 'emptyLayer'];
             map.getLayers().forEach(function (l, i) {
                 if (($.inArray(l.get('name'), artbaz)) > -1) {
                     if (l.get('name') !== selected) {
@@ -1610,6 +1747,7 @@ $('body').on('click', '.modal-dtp', function(){
                 $('.main_search_container').toggleClass('close');
                 $('.ol-overviewmap').toggleClass('close');
                 $('.account_container').toggleClass('close');
+                $('.language_container').toggleClass('close');
                 $('.right_menu_button').show();
             }else if(!$('.right_menu').hasClass('close') && infostr==""){
                 $('.right_menu').toggleClass('close');
@@ -1618,6 +1756,7 @@ $('body').on('click', '.modal-dtp', function(){
                 $('.right_menu_button').hide();
                 $('.ol-overviewmap').toggleClass('close');
                 $('.account_container').toggleClass('close');
+                $('.language_container').toggleClass('close');
             }
             if(infostr==""){
                 $('.right_menu_button').hide();
