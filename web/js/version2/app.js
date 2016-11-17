@@ -263,21 +263,80 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+function select(element) {
+    var selectedText;
+
+    if (element.nodeName === 'INPUT' || element.nodeName === 'TEXTAREA') {
+        element.focus();
+        element.setSelectionRange(0, element.value.length);
+
+        selectedText = element.value;
+    }
+    else {
+        if (element.hasAttribute('contenteditable')) {
+            element.focus();
+        }
+
+        var selection = window.getSelection();
+        var range = document.createRange();
+
+        range.selectNodeContents(element);
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        selectedText = selection.toString();
+    }
+
+    return selectedText;
+}
 
 $(function () {
+    $('#main_tt7').on('click', function(){
+        $('#modal-help').toggleClass('open');
+    })
 
  //   Вызываем модальное окно для статистики по ДТП
-$('body').on('click', '.modal-dtp', function(){
-    $('#modal-dtp').toggleClass('open');
-})
+ //   $('#orto10000base i').tooltip();
+$('body').click(function(){
+    $('.tooltip-info').removeClass('active');
+});
+/*$('.map_mode_select ul li i').on('click', function(){
+    console.log('sds');
+
+});*/
+   /* $('.tooltip-info').hover(function(){
+        $('.mdl-tooltip').removeClass('is-active');
+
+    })*/
+    new Clipboard('.material-icons.buffer');
+
+
+    /*$('.map_mode_select .mdl-menu__item div .material-icons').click(function(){
+
+        var target = document.getElementById("hiddenText");
+        target.textContent = "sdssdsdss";
+        console.log(target.textContent);
+        select(target);
+        document.execCommand("copy");
+
+
+    });*/
 
 
 
 
+    $('.mdl-menu .material-icons:not(.buffer)').on('click', function (event) {
+        console.log('sds');
+        if (!$(this).next().hasClass('active')) {
+            $('.tooltip-info').removeClass('active');
+        }
+        $(this).next('.tooltip-info').toggleClass('active');
+        event.stopPropagation();
+    })
 
-    //$('#modal-dtp').modal();
+    //$('#modal-help').modal();
 
-    "use strict";
+
 //    $('.carousel').carousel();
     setTimeout(function () {
 
@@ -946,7 +1005,7 @@ $('body').on('click', '.modal-dtp', function(){
             name: 'dynamicSidebar'
         });
 
-        osmLayer = new ol.layer.Tile({
+        var osmLayer = new ol.layer.Tile({
             source: new ol.source.OSM(),
            // visible: 1,
             name: 'osm',
@@ -988,6 +1047,14 @@ $('body').on('click', '.modal-dtp', function(){
             name: 'orto2000sidebar',
             visible: 0,
         });
+        var topoVin = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://212.26.144.103/map/topo2k_vyn/{z}/{x}/{y}.png',
+                crossOrigin: 'null'
+            }),
+            name: 'topoVin',
+            visible: 0,
+        });
 
 
         var vin2015Layer = new ol.layer.Tile({
@@ -1006,11 +1073,14 @@ $('body').on('click', '.modal-dtp', function(){
             }),
             name: 'vinOrtoSidebar',
             visible: 0,
+            params: {
+                alias:'Ортофотоплан'
+            }
         });
 
         var emptyRelief = new ol.layer.Tile({
             source: new ol.source.XYZ({
-                url: 'http://212.26.144.103/map/relief/{z}/{x}/{-y}.png',
+                url: 'http://212.26.144.103/map/relief/{z}/{x}/{y}.png',
                 crossOrigin: 'null',
             }),
             name: 'emptyRelief',
@@ -1116,6 +1186,7 @@ $('body').on('click', '.modal-dtp', function(){
         map = new ol.Map({
             target: "mapView",
             layers: [
+                topoVin,
                 googleLayer,
                 googleHybridLayer,
 //                satLayer,
@@ -1134,6 +1205,7 @@ $('body').on('click', '.modal-dtp', function(){
                 dynamicSidebar,
                 gryntSidebar,
                 emptyLayer,
+
 
             ],
             view: view,
@@ -1231,7 +1303,7 @@ $('body').on('click', '.modal-dtp', function(){
 
         $('.map_mode_select li').on('click', function(event){
             var selected = $(this).attr('data-val');
-            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006','emptyRelief', 'emptyLayer'];
+            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006','emptyRelief', 'emptyLayer', 'topoVin'];
             map.getLayers().forEach(function (l, i) {
                 if (($.inArray(l.get('name'), artbaz)) > -1) {
                     if (l.get('name') !== selected) {

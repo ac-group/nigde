@@ -1005,7 +1005,7 @@ a:active {
 /*end bid lock styles*/
 
 /*dialog_window_publication_bids_list style*/
-#modal-dtp,
+#modal-help,
 .modal_bg.bids_list {
     position: absolute;
     top: 0;
@@ -1016,7 +1016,7 @@ a:active {
     z-index: 100;
     display: none;
 }
-#modal-dtp.open,
+#modal-help.open,
 .bids_list.open {
     display: block;
 }
@@ -3433,10 +3433,10 @@ textarea {
     width: 100%;
     max-height: 240px;
 }
-#modal-dtp .dialog_window_publication_bids_list{
+#modal-help .dialog_window_publication_bids_list{
     max-height: 350px;
 }
-#modal-dtp .mdl-data-table__cell--non-numeric{
+#modal-help .mdl-data-table__cell--non-numeric{
     text-align: center;
 
 }
@@ -3601,7 +3601,77 @@ background: rgba(74, 160, 255, 1)
 .demo-drawer{
     overflow: hidden;
 }
+.mdl-menu hr{
+    margin: 0;
+}
+.mdl-menu .material-icons{
+    font-size:16px;
+    position: absolute;
+    left: 208px;
+    margin-top: -4px;
+}
+.mdl-menu .tooltip-info .material-icons{
+    font-size:26px;
+    position: static;
+    left: 0px;
+    margin-top: 0px;
+    margin-left: 35%;
+    color: white !important;
+}
+.mdl-menu .tooltip-info .material-icons:hover{
+    color: #333d71 !important;
+}
 
+
+.mdl-menu .material-icons a{
+    width: 16px;
+    height: 16px;
+}
+.tooltip-info{
+    display: none;
+}
+.tooltip-info.active{
+    display: block;
+}
+.tooltip-info{
+    float: right;
+    margin: -20px 0px 0 220px;
+    background: rgba(51,155,255,.9);
+    padding: 7px 7px 0 7px;
+    border-radius: 2px;
+    color: #fff;
+   // display: inline-block;
+    position: fixed;
+    font-size: 12px;
+    z-index: 1000;
+   /* -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: top center;
+    transform-origin: top center;
+    z-index: 999;
+    background: rgba(97,97,97,.9);
+    border-radius: 2px;
+    color: #fff;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 14px;
+    max-width: 170px;
+    position: fixed;
+    top: -500px;
+    left: -500px;
+    padding: 8px;
+    text-align: center;*/
+
+}
+
+.tooltip-info a{
+    color: #fff;
+}
+.tooltip-info a:hover{
+    color: #333d71;
+    text-decoration: underline;
+}
 /*
 .edit_buttons .mdl-button.active{
     background-color: rgba(51,150,255,0.3);

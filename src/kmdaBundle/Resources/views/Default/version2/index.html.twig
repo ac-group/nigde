@@ -24,7 +24,7 @@
 
     '//code.jquery.com/jquery-2.2.4.min.js'
     'js/version2/material.min.js'
-
+    'js/version2/clipboard.min.js'
     'js/version2/getmdl-select.min.js'
     'js/version2/jquery.bxslider.min.js'
     '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'
@@ -40,6 +40,7 @@
     'js/version2/main.js'
     'js/version2/app.js'
     'js/new_modal.js'
+
 
     output='js/version2/sc22.js' %}
     <script src="{{ asset_url }}"></script>
@@ -191,8 +192,11 @@
         </div>
     </div>
     </div>
+
     <div class="edit_buttons left_menu_open">
-        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt4">
+
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color"    id="main_tt4">
+
             <i class="material-icons">near_me</i>
         </button>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt4">
@@ -220,11 +224,20 @@
             Очистити
         </div>
         <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt7">
+            <i class="material-icons"> help_outline</i>
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt7">
+            Допомога
+        </div>
+       {# <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt7">
             <i class="material-icons">room</i>
         </button>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt7">
             Мітка
-        </div>
+        </div>#}
+
+
+
         <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt9">
             <i class="material-icons">print</i>
         </button>
@@ -235,23 +248,117 @@
 
     <div class="osm-copyright">©<a target="_blank" href="http://www.openstreetmap.org/copyright">Участники
             OpenStreetMap</a></div>
+
     <div class="map_mode_select left_menu_open">
+
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height ">
+
             <input class="mdl-textfield__input " type="text" id="map_mode" readonly tabIndex="-1"
                    value="Оглядова карта України">
             <label for="map_mode">
                 <i class="mdl-icon-toggle__label material-icons">arrow_drop_down</i>
             </label>
             <ul for="map_mode" class="mdl-menu mdl-menu--bottom-left mdl-js-menu ">
-                <li class="mdl-menu__item" data-val="pub">Оглядова карта України</li>
-                <li class="mdl-menu__item" data-val="emptyRelief">Порожній шар (рельєф)</li>
-                <li class="mdl-menu__item" data-val="emptyLayer">Порожній шар</li>
-                <li class="mdl-menu__item" data-val="osm">Open Street Map</li>
-                <li class="mdl-menu__item" data-val="OpenCycleMap">Open Street Cycle Map</li>
-                <li class="mdl-menu__item" data-val="google">Google Satellite</li>
-                <li class="mdl-menu__item" data-val="googlehybrid">Google Hybryd</li>
-                <li class="mdl-menu__item" data-val="kiev2006">Ортофотоплани, 2006р</li>
-                <li class="mdl-menu__item" data-val="vin2015">Ортофотоплани, 2015р</li>
+
+                <li id="viewMap" class="mdl-menu__item" data-val="pub">Оглядова карта України
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                </li>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="viewMap">
+                    Оглядова карта України масштабу 1:100000
+                </div>
+                <li id='orto10000base' class="mdl-menu__item" data-val="kiev2006">Ортофотоплани, 2006р
+                    <i id='orto10000baseInfo' class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                    <div class="tooltip-info">
+                        <a href="http://map.land.gov.ua/kadastrova-karta" target="_blank">Публічна кадастрова карта</a><br>
+                        <i id="insert_buffer2" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                        <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_buffer2">
+                            Скопіювати в буфер
+                        </div>
+                    </div>
+                </li>
+
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="orto10000base">
+                    Ортофотоплани масштабу 1:10000, які створені в рамках проекту світового банку
+                </div>
+                <li id='orto2000base' class="mdl-menu__item" data-val="vin2015">Ортофотоплани, 2015р
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                </li>
+                <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="orto2000base">
+                    Ортофотоплани масштабу 1:2000
+                </div>
+                <li id='topoVin' class="mdl-menu__item" data-val="topoVin">Топографічна карта
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                </li>
+                <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="topoVin">
+                     Топографічна карта масштабу 1:2000
+                </div>
+                <hr>
+
+                <li id='osmBase' class="mdl-menu__item" data-clipboard-text="https://www.openstreetmap.org/" data-clipboard-text="https://www.openstreetmap.org/" data-val="osm">Open Street Map
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                    <div id='orto10000baseInfoTooltip' class="tooltip-info">
+                        <a id='bufferOSM' href="https://www.openstreetmap.org/" target="_blank">Open Street Map</a><br>
+                        <i id="insert_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="https://www.openstreetmap.org/" role="presentation">insert_link</i>
+                        <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_buffer">
+                            Скопіювати в буфер
+                        </div>
+                    </div>
+                </li>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="osmBase">
+                    Веб-картографічний проект по створенню детальної вільної і безкоштовної географічної карти світу
+                </div>
+                <li id='osmCycle' class="mdl-menu__item" data-val="OpenCycleMap">Open Street Cycle Map
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                    <div class="tooltip-info">
+                        <a href="https://www.openstreetmap.org/#layers=C" target="_blank">Open Street Cycle Map</a><br>
+                        <i id="insert_buffer1" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="https://www.openstreetmap.org/#layers=C" role="presentation">insert_link</i>
+                        <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_buffer1">
+                            Скопіювати в буфер
+                        </div>
+                    </div>
+                </li>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="osmCycle">
+                    Веб-картографічний проект по створенню детальної, вільної і безкоштовної географічної карти світу
+                </div>
+                <li id='googleSatelit'class="mdl-menu__item" data-val="google">Google Satellite
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                    <div class="tooltip-info">
+                        <a href="https://www.google.com.ua/maps/@49.2326973,28.4969277,13683m/data=!3m1!1e3" target="_blank">Google Satellite</a><br>
+                        <i id="insert_buffer3" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="https://www.google.com.ua/maps" role="presentation">insert_link</i>
+                        <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_buffer3">
+                            Скопіювати в буфер
+                        </div>
+                    </div>
+                </li>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="googleSatelit">
+                    Набір додатків, побудованих на основі безкоштовного картографічного сервісу і технологій, які надає компанія Google.
+                </div>
+                <li id='googleHybrid'class="mdl-menu__item" data-val="googlehybrid">Google Hybryd
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                    <div class="tooltip-info">
+                        <a href="https://www.google.com.ua/maps/@49.2326973,28.4969277,13683m" target="_blank">Google Hybrid</a><br>
+                        <i id="insert_buffer4" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="https://www.google.com.ua/maps" role="presentation">insert_link</i>
+                        <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_buffer4">
+                            Скопіювати в буфер
+                        </div>
+                    </div>
+                </li>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="googleHybrid">
+                    Набір додатків, побудованих на основі безкоштовного картографічного сервісу і технологій, які надає компанія Google.
+                </div>
+                <hr>
+                <li id='emptyLayerR'class="mdl-menu__item" data-val="emptyRelief">Порожній шар (рельєф)
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                </li>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="emptyLayerR">
+                    Базовий шар рельєфу
+                </div>
+                <li id='emptyLayer'class="mdl-menu__item" data-val="emptyLayer">Порожній шар
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                </li>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="emptyLayer">
+                    Базовий порожній шар
+                </div>
             </ul>
         </div>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="map_mode">
@@ -299,7 +406,7 @@
             </div>
         </div>
     </div>
-
+    {% include '@version2/modal/help.html.twig' %}
     <div id="mapView" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;">
 
     </div>

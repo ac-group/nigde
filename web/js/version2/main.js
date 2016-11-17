@@ -60,8 +60,8 @@
         $('.bids_list').toggleClass('open');
     });
 
-    $('#modal-dtp .btn-cancel').click(function() {
-        $('#modal-dtp').toggleClass('open');
+    $('#modal-help .btn-cancel').click(function() {
+        $('#modal-help').toggleClass('open');
     });
 
     $('.dialog_window_publication_bids_list-footer .btn-public').click(function() {
