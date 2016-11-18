@@ -8448,6 +8448,9 @@ select:focus {
 
 }
 
+.dialog_window_publication_bids_list-footer {
+    display: inherit !important;
+}
 
 /*.ol-overviewmap-map .ol-overviewmap-box {
     border: 3px solid #189a8b;
