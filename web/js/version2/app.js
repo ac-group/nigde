@@ -1078,6 +1078,7 @@ $('body').click(function(){
             }
         });
 
+
         var emptyRelief = new ol.layer.Tile({
             source: new ol.source.XYZ({
                 url: 'http://212.26.144.103/map/relief/{z}/{x}/{y}.png',
