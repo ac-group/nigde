@@ -2,7 +2,7 @@ var map;
 
 var osmLayer;
 var googleLayer;
-var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'vinOrtoSidebar'];
+var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'vinOrtoSidebar', 'topoVinSidebar'];
 
 
 function showUP(layer, elem) {
@@ -1056,6 +1056,18 @@ $('body').click(function(){
             visible: 0,
         });
 
+        var topoVinSidebar = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://212.26.144.103/map/topo2k_vyn/{z}/{x}/{y}.png',
+                crossOrigin: 'null',
+                params:{
+                 'ALIAS':'Топографічна карта'
+                }
+            }),
+            name: 'topoVinSidebar',
+            visible: 0,
+        });
+
 
         var vin2015Layer = new ol.layer.Tile({
             source: new ol.source.XYZ({
@@ -1096,6 +1108,7 @@ $('body').click(function(){
             name: 'emptyLayer',
             visible: 0,
         });
+
 
        /* var gryntSidebar = new ol.layer.Tile({
             source: new ol.source.XYZ({
@@ -1206,7 +1219,7 @@ $('body').click(function(){
                 dynamicSidebar,
                 gryntSidebar,
                 emptyLayer,
-
+                topoVinSidebar,
 
             ],
             view: view,
