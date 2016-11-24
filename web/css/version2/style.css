@@ -1005,7 +1005,7 @@ a:active {
 /*end bid lock styles*/
 
 /*dialog_window_publication_bids_list style*/
-#modal-help,
+#modal-help, #modal-copy,
 .modal_bg.bids_list {
     position: absolute;
     top: 0;
@@ -1016,7 +1016,7 @@ a:active {
     z-index: 100;
     display: none;
 }
-#modal-help.open,
+#modal-help.open, #modal-copy.open,
 .bids_list.open {
     display: block;
 }
@@ -1025,6 +1025,18 @@ a:active {
     position: absolute;
     width: 448px;
     height: 354px;
+    left: 50%;
+    margin-left: -224px;
+    background: white;
+    top: 120px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+.dialog_window_publication_bids_list_copy {
+    position: absolute;
+    width: 448px;
+   
     left: 50%;
     margin-left: -224px;
     background: white;

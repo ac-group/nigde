@@ -2,6 +2,12 @@ kmda_homepage:
     path:     /
     defaults: { _controller: kmdaBundle:Version2:index }
     
+kmda_maplink:
+    path:     /maplink/{zoom}/{x}/{y}
+    defaults: { _controller: kmdaBundle:Version2:maplink }
+    requirements:
+        _method: GET
+        
 kmda_getphoto:
     path:     /getphoto/{id}
     defaults: { _controller: kmdaBundle:Default:getbalanceobjectphoto }

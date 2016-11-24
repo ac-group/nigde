@@ -14,1972 +14,13 @@ void 0!==c?e&&"set"in e&&void 0!==(d=e.set(a,c,b))?d:a[b]=c:e&&"get"in e&&null!=
 this.actionElement_.addEventListener("click",this.actionHandler_),this.setActionHidden_(!1)),this.textElement_.textContent=this.message_,this.element_.classList.add(this.cssClasses_.ACTIVE),this.element_.setAttribute("aria-hidden","false"),setTimeout(this.cleanup_.bind(this),this.timeout_)},C.prototype.showSnackbar=function(e){if(void 0===e)throw new Error("Please provide a data object with at least a message to display.");if(void 0===e.message)throw new Error("Please provide a message to be displayed.");if(e.actionHandler&&!e.actionText)throw new Error("Please provide action text with the handler.");this.active?this.queuedNotifications_.push(e):(this.active=!0,this.message_=e.message,e.timeout?this.timeout_=e.timeout:this.timeout_=2750,e.actionHandler&&(this.actionHandler_=e.actionHandler),e.actionText&&(this.actionText_=e.actionText),this.displaySnackbar_())},C.prototype.showSnackbar=C.prototype.showSnackbar,C.prototype.checkQueue_=function(){this.queuedNotifications_.length>0&&this.showSnackbar(this.queuedNotifications_.shift())},C.prototype.cleanup_=function(){this.element_.classList.remove(this.cssClasses_.ACTIVE),setTimeout(function(){this.element_.setAttribute("aria-hidden","true"),this.textElement_.textContent="",Boolean(this.actionElement_.getAttribute("aria-hidden"))||(this.setActionHidden_(!0),this.actionElement_.textContent="",this.actionElement_.removeEventListener("click",this.actionHandler_)),this.actionHandler_=void 0,this.message_=void 0,this.actionText_=void 0,this.active=!1,this.checkQueue_()}.bind(this),this.Constant_.ANIMATION_LENGTH)},C.prototype.setActionHidden_=function(e){e?this.actionElement_.setAttribute("aria-hidden","true"):this.actionElement_.removeAttribute("aria-hidden")},s.register({constructor:C,classAsString:"MaterialSnackbar",cssClass:"mdl-js-snackbar",widget:!0});var u=function(e){this.element_=e,this.init()};window.MaterialSpinner=u,u.prototype.Constant_={MDL_SPINNER_LAYER_COUNT:4},u.prototype.CssClasses_={MDL_SPINNER_LAYER:"mdl-spinner__layer",MDL_SPINNER_CIRCLE_CLIPPER:"mdl-spinner__circle-clipper",MDL_SPINNER_CIRCLE:"mdl-spinner__circle",MDL_SPINNER_GAP_PATCH:"mdl-spinner__gap-patch",MDL_SPINNER_LEFT:"mdl-spinner__left",MDL_SPINNER_RIGHT:"mdl-spinner__right"},u.prototype.createLayer=function(e){var t=document.createElement("div");t.classList.add(this.CssClasses_.MDL_SPINNER_LAYER),t.classList.add(this.CssClasses_.MDL_SPINNER_LAYER+"-"+e);var s=document.createElement("div");s.classList.add(this.CssClasses_.MDL_SPINNER_CIRCLE_CLIPPER),s.classList.add(this.CssClasses_.MDL_SPINNER_LEFT);var i=document.createElement("div");i.classList.add(this.CssClasses_.MDL_SPINNER_GAP_PATCH);var n=document.createElement("div");n.classList.add(this.CssClasses_.MDL_SPINNER_CIRCLE_CLIPPER),n.classList.add(this.CssClasses_.MDL_SPINNER_RIGHT);for(var a=[s,i,n],l=0;l<a.length;l++){var o=document.createElement("div");o.classList.add(this.CssClasses_.MDL_SPINNER_CIRCLE),a[l].appendChild(o)}t.appendChild(s),t.appendChild(i),t.appendChild(n),this.element_.appendChild(t)},u.prototype.createLayer=u.prototype.createLayer,u.prototype.stop=function(){this.element_.classList.remove("is-active")},u.prototype.stop=u.prototype.stop,u.prototype.start=function(){this.element_.classList.add("is-active")},u.prototype.start=u.prototype.start,u.prototype.init=function(){if(this.element_){for(var e=1;e<=this.Constant_.MDL_SPINNER_LAYER_COUNT;e++)this.createLayer(e);this.element_.classList.add("is-upgraded")}},s.register({constructor:u,classAsString:"MaterialSpinner",cssClass:"mdl-js-spinner",widget:!0});var E=function(e){this.element_=e,this.init()};window.MaterialSwitch=E,E.prototype.Constant_={TINY_TIMEOUT:.001},E.prototype.CssClasses_={INPUT:"mdl-switch__input",TRACK:"mdl-switch__track",THUMB:"mdl-switch__thumb",FOCUS_HELPER:"mdl-switch__focus-helper",RIPPLE_EFFECT:"mdl-js-ripple-effect",RIPPLE_IGNORE_EVENTS:"mdl-js-ripple-effect--ignore-events",RIPPLE_CONTAINER:"mdl-switch__ripple-container",RIPPLE_CENTER:"mdl-ripple--center",RIPPLE:"mdl-ripple",IS_FOCUSED:"is-focused",IS_DISABLED:"is-disabled",IS_CHECKED:"is-checked"},E.prototype.onChange_=function(e){this.updateClasses_()},E.prototype.onFocus_=function(e){this.element_.classList.add(this.CssClasses_.IS_FOCUSED)},E.prototype.onBlur_=function(e){this.element_.classList.remove(this.CssClasses_.IS_FOCUSED)},E.prototype.onMouseUp_=function(e){this.blur_()},E.prototype.updateClasses_=function(){this.checkDisabled(),this.checkToggleState()},E.prototype.blur_=function(){window.setTimeout(function(){this.inputElement_.blur()}.bind(this),this.Constant_.TINY_TIMEOUT)},E.prototype.checkDisabled=function(){this.inputElement_.disabled?this.element_.classList.add(this.CssClasses_.IS_DISABLED):this.element_.classList.remove(this.CssClasses_.IS_DISABLED)},E.prototype.checkDisabled=E.prototype.checkDisabled,E.prototype.checkToggleState=function(){this.inputElement_.checked?this.element_.classList.add(this.CssClasses_.IS_CHECKED):this.element_.classList.remove(this.CssClasses_.IS_CHECKED)},E.prototype.checkToggleState=E.prototype.checkToggleState,E.prototype.disable=function(){this.inputElement_.disabled=!0,this.updateClasses_()},E.prototype.disable=E.prototype.disable,E.prototype.enable=function(){this.inputElement_.disabled=!1,this.updateClasses_()},E.prototype.enable=E.prototype.enable,E.prototype.on=function(){this.inputElement_.checked=!0,this.updateClasses_()},E.prototype.on=E.prototype.on,E.prototype.off=function(){this.inputElement_.checked=!1,this.updateClasses_()},E.prototype.off=E.prototype.off,E.prototype.init=function(){if(this.element_){this.inputElement_=this.element_.querySelector("."+this.CssClasses_.INPUT);var e=document.createElement("div");e.classList.add(this.CssClasses_.TRACK);var t=document.createElement("div");t.classList.add(this.CssClasses_.THUMB);var s=document.createElement("span");if(s.classList.add(this.CssClasses_.FOCUS_HELPER),t.appendChild(s),this.element_.appendChild(e),this.element_.appendChild(t),this.boundMouseUpHandler=this.onMouseUp_.bind(this),this.element_.classList.contains(this.CssClasses_.RIPPLE_EFFECT)){this.element_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS),this.rippleContainerElement_=document.createElement("span"),this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_CONTAINER),this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_EFFECT),this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_CENTER),this.rippleContainerElement_.addEventListener("mouseup",this.boundMouseUpHandler);var i=document.createElement("span");i.classList.add(this.CssClasses_.RIPPLE),this.rippleContainerElement_.appendChild(i),this.element_.appendChild(this.rippleContainerElement_)}this.boundChangeHandler=this.onChange_.bind(this),this.boundFocusHandler=this.onFocus_.bind(this),this.boundBlurHandler=this.onBlur_.bind(this),this.inputElement_.addEventListener("change",this.boundChangeHandler),this.inputElement_.addEventListener("focus",this.boundFocusHandler),this.inputElement_.addEventListener("blur",this.boundBlurHandler),this.element_.addEventListener("mouseup",this.boundMouseUpHandler),this.updateClasses_(),this.element_.classList.add("is-upgraded")}},s.register({constructor:E,classAsString:"MaterialSwitch",cssClass:"mdl-js-switch",widget:!0});var m=function(e){this.element_=e,this.init()};window.MaterialTabs=m,m.prototype.Constant_={},m.prototype.CssClasses_={TAB_CLASS:"mdl-tabs__tab",PANEL_CLASS:"mdl-tabs__panel",ACTIVE_CLASS:"is-active",UPGRADED_CLASS:"is-upgraded",MDL_JS_RIPPLE_EFFECT:"mdl-js-ripple-effect",MDL_RIPPLE_CONTAINER:"mdl-tabs__ripple-container",MDL_RIPPLE:"mdl-ripple",MDL_JS_RIPPLE_EFFECT_IGNORE_EVENTS:"mdl-js-ripple-effect--ignore-events"},m.prototype.initTabs_=function(){this.element_.classList.contains(this.CssClasses_.MDL_JS_RIPPLE_EFFECT)&&this.element_.classList.add(this.CssClasses_.MDL_JS_RIPPLE_EFFECT_IGNORE_EVENTS),this.tabs_=this.element_.querySelectorAll("."+this.CssClasses_.TAB_CLASS),this.panels_=this.element_.querySelectorAll("."+this.CssClasses_.PANEL_CLASS);for(var t=0;t<this.tabs_.length;t++)new e(this.tabs_[t],this);this.element_.classList.add(this.CssClasses_.UPGRADED_CLASS)},m.prototype.resetTabState_=function(){for(var e=0;e<this.tabs_.length;e++)this.tabs_[e].classList.remove(this.CssClasses_.ACTIVE_CLASS)},m.prototype.resetPanelState_=function(){for(var e=0;e<this.panels_.length;e++)this.panels_[e].classList.remove(this.CssClasses_.ACTIVE_CLASS)},m.prototype.init=function(){this.element_&&this.initTabs_()},s.register({constructor:m,classAsString:"MaterialTabs",cssClass:"mdl-js-tabs"});var L=function(e){this.element_=e,this.maxRows=this.Constant_.NO_MAX_ROWS,this.init()};window.MaterialTextfield=L,L.prototype.Constant_={NO_MAX_ROWS:-1,MAX_ROWS_ATTRIBUTE:"maxrows"},L.prototype.CssClasses_={LABEL:"mdl-textfield__label",INPUT:"mdl-textfield__input",IS_DIRTY:"is-dirty",IS_FOCUSED:"is-focused",IS_DISABLED:"is-disabled",IS_INVALID:"is-invalid",IS_UPGRADED:"is-upgraded",HAS_PLACEHOLDER:"has-placeholder"},L.prototype.onKeyDown_=function(e){var t=e.target.value.split("\n").length;13===e.keyCode&&t>=this.maxRows&&e.preventDefault()},L.prototype.onFocus_=function(e){this.element_.classList.add(this.CssClasses_.IS_FOCUSED)},L.prototype.onBlur_=function(e){this.element_.classList.remove(this.CssClasses_.IS_FOCUSED)},L.prototype.onReset_=function(e){this.updateClasses_()},L.prototype.updateClasses_=function(){this.checkDisabled(),this.checkValidity(),this.checkDirty(),this.checkFocus()},L.prototype.checkDisabled=function(){this.input_.disabled?this.element_.classList.add(this.CssClasses_.IS_DISABLED):this.element_.classList.remove(this.CssClasses_.IS_DISABLED)},L.prototype.checkDisabled=L.prototype.checkDisabled,L.prototype.checkFocus=function(){Boolean(this.element_.querySelector(":focus"))?this.element_.classList.add(this.CssClasses_.IS_FOCUSED):this.element_.classList.remove(this.CssClasses_.IS_FOCUSED)},L.prototype.checkFocus=L.prototype.checkFocus,L.prototype.checkValidity=function(){this.input_.validity&&(this.input_.validity.valid?this.element_.classList.remove(this.CssClasses_.IS_INVALID):this.element_.classList.add(this.CssClasses_.IS_INVALID))},L.prototype.checkValidity=L.prototype.checkValidity,L.prototype.checkDirty=function(){this.input_.value&&this.input_.value.length>0?this.element_.classList.add(this.CssClasses_.IS_DIRTY):this.element_.classList.remove(this.CssClasses_.IS_DIRTY)},L.prototype.checkDirty=L.prototype.checkDirty,L.prototype.disable=function(){this.input_.disabled=!0,this.updateClasses_()},L.prototype.disable=L.prototype.disable,L.prototype.enable=function(){this.input_.disabled=!1,this.updateClasses_()},L.prototype.enable=L.prototype.enable,L.prototype.change=function(e){this.input_.value=e||"",this.updateClasses_()},L.prototype.change=L.prototype.change,L.prototype.init=function(){if(this.element_&&(this.label_=this.element_.querySelector("."+this.CssClasses_.LABEL),this.input_=this.element_.querySelector("."+this.CssClasses_.INPUT),this.input_)){this.input_.hasAttribute(this.Constant_.MAX_ROWS_ATTRIBUTE)&&(this.maxRows=parseInt(this.input_.getAttribute(this.Constant_.MAX_ROWS_ATTRIBUTE),10),isNaN(this.maxRows)&&(this.maxRows=this.Constant_.NO_MAX_ROWS)),this.input_.hasAttribute("placeholder")&&this.element_.classList.add(this.CssClasses_.HAS_PLACEHOLDER),this.boundUpdateClassesHandler=this.updateClasses_.bind(this),this.boundFocusHandler=this.onFocus_.bind(this),this.boundBlurHandler=this.onBlur_.bind(this),this.boundResetHandler=this.onReset_.bind(this),this.input_.addEventListener("input",this.boundUpdateClassesHandler),this.input_.addEventListener("focus",this.boundFocusHandler),this.input_.addEventListener("blur",this.boundBlurHandler),this.input_.addEventListener("reset",this.boundResetHandler),this.maxRows!==this.Constant_.NO_MAX_ROWS&&(this.boundKeyDownHandler=this.onKeyDown_.bind(this),this.input_.addEventListener("keydown",this.boundKeyDownHandler));var e=this.element_.classList.contains(this.CssClasses_.IS_INVALID);this.updateClasses_(),this.element_.classList.add(this.CssClasses_.IS_UPGRADED),e&&this.element_.classList.add(this.CssClasses_.IS_INVALID),this.input_.hasAttribute("autofocus")&&(this.element_.focus(),this.checkFocus())}},s.register({constructor:L,classAsString:"MaterialTextfield",cssClass:"mdl-js-textfield",widget:!0});var I=function(e){this.element_=e,this.init()};window.MaterialTooltip=I,I.prototype.Constant_={},I.prototype.CssClasses_={IS_ACTIVE:"is-active",BOTTOM:"mdl-tooltip--bottom",LEFT:"mdl-tooltip--left",RIGHT:"mdl-tooltip--right",TOP:"mdl-tooltip--top"},I.prototype.handleMouseEnter_=function(e){var t=e.target.getBoundingClientRect(),s=t.left+t.width/2,i=t.top+t.height/2,n=-1*(this.element_.offsetWidth/2),a=-1*(this.element_.offsetHeight/2);this.element_.classList.contains(this.CssClasses_.LEFT)||this.element_.classList.contains(this.CssClasses_.RIGHT)?(s=t.width/2,i+a<0?(this.element_.style.top="0",this.element_.style.marginTop="0"):(this.element_.style.top=i+"px",this.element_.style.marginTop=a+"px")):s+n<0?(this.element_.style.left="0",this.element_.style.marginLeft="0"):(this.element_.style.left=s+"px",this.element_.style.marginLeft=n+"px"),this.element_.classList.contains(this.CssClasses_.TOP)?this.element_.style.top=t.top-this.element_.offsetHeight-10+"px":this.element_.classList.contains(this.CssClasses_.RIGHT)?this.element_.style.left=t.left+t.width+10+"px":this.element_.classList.contains(this.CssClasses_.LEFT)?this.element_.style.left=t.left-this.element_.offsetWidth-10+"px":this.element_.style.top=t.top+t.height+10+"px",this.element_.classList.add(this.CssClasses_.IS_ACTIVE)},I.prototype.hideTooltip_=function(){this.element_.classList.remove(this.CssClasses_.IS_ACTIVE)},I.prototype.init=function(){if(this.element_){var e=this.element_.getAttribute("for")||this.element_.getAttribute("data-mdl-for");e&&(this.forElement_=document.getElementById(e)),this.forElement_&&(this.forElement_.hasAttribute("tabindex")||this.forElement_.setAttribute("tabindex","0"),this.boundMouseEnterHandler=this.handleMouseEnter_.bind(this),this.boundMouseLeaveAndScrollHandler=this.hideTooltip_.bind(this),this.forElement_.addEventListener("mouseenter",this.boundMouseEnterHandler,!1),this.forElement_.addEventListener("touchend",this.boundMouseEnterHandler,!1),this.forElement_.addEventListener("mouseleave",this.boundMouseLeaveAndScrollHandler,!1),window.addEventListener("scroll",this.boundMouseLeaveAndScrollHandler,!0),window.addEventListener("touchstart",this.boundMouseLeaveAndScrollHandler))}},s.register({constructor:I,classAsString:"MaterialTooltip",cssClass:"mdl-tooltip"});var f=function(e){this.element_=e,this.init()};window.MaterialLayout=f,f.prototype.Constant_={MAX_WIDTH:"(max-width: 1024px)",TAB_SCROLL_PIXELS:100,RESIZE_TIMEOUT:100,MENU_ICON:"&#xE5D2;",CHEVRON_LEFT:"chevron_left",CHEVRON_RIGHT:"chevron_right"},f.prototype.Keycodes_={ENTER:13,ESCAPE:27,SPACE:32},f.prototype.Mode_={STANDARD:0,SEAMED:1,WATERFALL:2,SCROLL:3},f.prototype.CssClasses_={CONTAINER:"mdl-layout__container",HEADER:"mdl-layout__header",DRAWER:"mdl-layout__drawer",CONTENT:"mdl-layout__content",DRAWER_BTN:"mdl-layout__drawer-button",ICON:"material-icons",JS_RIPPLE_EFFECT:"mdl-js-ripple-effect",RIPPLE_CONTAINER:"mdl-layout__tab-ripple-container",RIPPLE:"mdl-ripple",RIPPLE_IGNORE_EVENTS:"mdl-js-ripple-effect--ignore-events",HEADER_SEAMED:"mdl-layout__header--seamed",HEADER_WATERFALL:"mdl-layout__header--waterfall",HEADER_SCROLL:"mdl-layout__header--scroll",FIXED_HEADER:"mdl-layout--fixed-header",OBFUSCATOR:"mdl-layout__obfuscator",TAB_BAR:"mdl-layout__tab-bar",TAB_CONTAINER:"mdl-layout__tab-bar-container",TAB:"mdl-layout__tab",TAB_BAR_BUTTON:"mdl-layout__tab-bar-button",TAB_BAR_LEFT_BUTTON:"mdl-layout__tab-bar-left-button",TAB_BAR_RIGHT_BUTTON:"mdl-layout__tab-bar-right-button",PANEL:"mdl-layout__tab-panel",HAS_DRAWER:"has-drawer",HAS_TABS:"has-tabs",HAS_SCROLLING_HEADER:"has-scrolling-header",CASTING_SHADOW:"is-casting-shadow",IS_COMPACT:"is-compact",IS_SMALL_SCREEN:"is-small-screen",IS_DRAWER_OPEN:"is-visible",IS_ACTIVE:"is-active",IS_UPGRADED:"is-upgraded",IS_ANIMATING:"is-animating",ON_LARGE_SCREEN:"mdl-layout--large-screen-only",ON_SMALL_SCREEN:"mdl-layout--small-screen-only"},f.prototype.contentScrollHandler_=function(){if(!this.header_.classList.contains(this.CssClasses_.IS_ANIMATING)){var e=!this.element_.classList.contains(this.CssClasses_.IS_SMALL_SCREEN)||this.element_.classList.contains(this.CssClasses_.FIXED_HEADER);this.content_.scrollTop>0&&!this.header_.classList.contains(this.CssClasses_.IS_COMPACT)?(this.header_.classList.add(this.CssClasses_.CASTING_SHADOW),this.header_.classList.add(this.CssClasses_.IS_COMPACT),e&&this.header_.classList.add(this.CssClasses_.IS_ANIMATING)):this.content_.scrollTop<=0&&this.header_.classList.contains(this.CssClasses_.IS_COMPACT)&&(this.header_.classList.remove(this.CssClasses_.CASTING_SHADOW),this.header_.classList.remove(this.CssClasses_.IS_COMPACT),e&&this.header_.classList.add(this.CssClasses_.IS_ANIMATING))}},f.prototype.keyboardEventHandler_=function(e){e.keyCode===this.Keycodes_.ESCAPE&&this.drawer_.classList.contains(this.CssClasses_.IS_DRAWER_OPEN)&&this.toggleDrawer()},f.prototype.screenSizeHandler_=function(){this.screenSizeMediaQuery_.matches?this.element_.classList.add(this.CssClasses_.IS_SMALL_SCREEN):(this.element_.classList.remove(this.CssClasses_.IS_SMALL_SCREEN),this.drawer_&&(this.drawer_.classList.remove(this.CssClasses_.IS_DRAWER_OPEN),this.obfuscator_.classList.remove(this.CssClasses_.IS_DRAWER_OPEN)))},f.prototype.drawerToggleHandler_=function(e){if(e&&"keydown"===e.type){if(e.keyCode!==this.Keycodes_.SPACE&&e.keyCode!==this.Keycodes_.ENTER)return;e.preventDefault()}this.toggleDrawer()},f.prototype.headerTransitionEndHandler_=function(){this.header_.classList.remove(this.CssClasses_.IS_ANIMATING)},f.prototype.headerClickHandler_=function(){this.header_.classList.contains(this.CssClasses_.IS_COMPACT)&&(this.header_.classList.remove(this.CssClasses_.IS_COMPACT),this.header_.classList.add(this.CssClasses_.IS_ANIMATING))},f.prototype.resetTabState_=function(e){for(var t=0;t<e.length;t++)e[t].classList.remove(this.CssClasses_.IS_ACTIVE)},f.prototype.resetPanelState_=function(e){for(var t=0;t<e.length;t++)e[t].classList.remove(this.CssClasses_.IS_ACTIVE)},f.prototype.toggleDrawer=function(){var e=this.element_.querySelector("."+this.CssClasses_.DRAWER_BTN);this.drawer_.classList.toggle(this.CssClasses_.IS_DRAWER_OPEN),this.obfuscator_.classList.toggle(this.CssClasses_.IS_DRAWER_OPEN),this.drawer_.classList.contains(this.CssClasses_.IS_DRAWER_OPEN)?(this.drawer_.setAttribute("aria-hidden","false"),e.setAttribute("aria-expanded","true")):(this.drawer_.setAttribute("aria-hidden","true"),e.setAttribute("aria-expanded","false"))},f.prototype.toggleDrawer=f.prototype.toggleDrawer,f.prototype.init=function(){if(this.element_){var e=document.createElement("div");e.classList.add(this.CssClasses_.CONTAINER);var s=this.element_.querySelector(":focus");this.element_.parentElement.insertBefore(e,this.element_),this.element_.parentElement.removeChild(this.element_),e.appendChild(this.element_),s&&s.focus();for(var i=this.element_.childNodes,n=i.length,a=0;a<n;a++){var l=i[a];l.classList&&l.classList.contains(this.CssClasses_.HEADER)&&(this.header_=l),l.classList&&l.classList.contains(this.CssClasses_.DRAWER)&&(this.drawer_=l),l.classList&&l.classList.contains(this.CssClasses_.CONTENT)&&(this.content_=l)}window.addEventListener("pageshow",function(e){e.persisted&&(this.element_.style.overflowY="hidden",requestAnimationFrame(function(){this.element_.style.overflowY=""}.bind(this)))}.bind(this),!1),this.header_&&(this.tabBar_=this.header_.querySelector("."+this.CssClasses_.TAB_BAR));var o=this.Mode_.STANDARD;if(this.header_&&(this.header_.classList.contains(this.CssClasses_.HEADER_SEAMED)?o=this.Mode_.SEAMED:this.header_.classList.contains(this.CssClasses_.HEADER_WATERFALL)?(o=this.Mode_.WATERFALL,this.header_.addEventListener("transitionend",this.headerTransitionEndHandler_.bind(this)),this.header_.addEventListener("click",this.headerClickHandler_.bind(this))):this.header_.classList.contains(this.CssClasses_.HEADER_SCROLL)&&(o=this.Mode_.SCROLL,e.classList.add(this.CssClasses_.HAS_SCROLLING_HEADER)),o===this.Mode_.STANDARD?(this.header_.classList.add(this.CssClasses_.CASTING_SHADOW),this.tabBar_&&this.tabBar_.classList.add(this.CssClasses_.CASTING_SHADOW)):o===this.Mode_.SEAMED||o===this.Mode_.SCROLL?(this.header_.classList.remove(this.CssClasses_.CASTING_SHADOW),this.tabBar_&&this.tabBar_.classList.remove(this.CssClasses_.CASTING_SHADOW)):o===this.Mode_.WATERFALL&&(this.content_.addEventListener("scroll",this.contentScrollHandler_.bind(this)),this.contentScrollHandler_())),this.drawer_){var r=this.element_.querySelector("."+this.CssClasses_.DRAWER_BTN);if(!r){r=document.createElement("div"),r.setAttribute("aria-expanded","false"),r.setAttribute("role","button"),r.setAttribute("tabindex","0"),r.classList.add(this.CssClasses_.DRAWER_BTN);var _=document.createElement("i");_.classList.add(this.CssClasses_.ICON),_.innerHTML=this.Constant_.MENU_ICON,r.appendChild(_)}this.drawer_.classList.contains(this.CssClasses_.ON_LARGE_SCREEN)?r.classList.add(this.CssClasses_.ON_LARGE_SCREEN):this.drawer_.classList.contains(this.CssClasses_.ON_SMALL_SCREEN)&&r.classList.add(this.CssClasses_.ON_SMALL_SCREEN),r.addEventListener("click",this.drawerToggleHandler_.bind(this)),r.addEventListener("keydown",this.drawerToggleHandler_.bind(this)),this.element_.classList.add(this.CssClasses_.HAS_DRAWER),this.element_.classList.contains(this.CssClasses_.FIXED_HEADER)?this.header_.insertBefore(r,this.header_.firstChild):this.element_.insertBefore(r,this.content_);var d=document.createElement("div");d.classList.add(this.CssClasses_.OBFUSCATOR),this.element_.appendChild(d),d.addEventListener("click",this.drawerToggleHandler_.bind(this)),this.obfuscator_=d,this.drawer_.addEventListener("keydown",this.keyboardEventHandler_.bind(this)),this.drawer_.setAttribute("aria-hidden","true")}if(this.screenSizeMediaQuery_=window.matchMedia(this.Constant_.MAX_WIDTH),this.screenSizeMediaQuery_.addListener(this.screenSizeHandler_.bind(this)),this.screenSizeHandler_(),this.header_&&this.tabBar_){this.element_.classList.add(this.CssClasses_.HAS_TABS);var h=document.createElement("div");h.classList.add(this.CssClasses_.TAB_CONTAINER),this.header_.insertBefore(h,this.tabBar_),this.header_.removeChild(this.tabBar_);var c=document.createElement("div");c.classList.add(this.CssClasses_.TAB_BAR_BUTTON),c.classList.add(this.CssClasses_.TAB_BAR_LEFT_BUTTON);var p=document.createElement("i");p.classList.add(this.CssClasses_.ICON),p.textContent=this.Constant_.CHEVRON_LEFT,c.appendChild(p),c.addEventListener("click",function(){this.tabBar_.scrollLeft-=this.Constant_.TAB_SCROLL_PIXELS}.bind(this));var C=document.createElement("div");C.classList.add(this.CssClasses_.TAB_BAR_BUTTON),C.classList.add(this.CssClasses_.TAB_BAR_RIGHT_BUTTON);var u=document.createElement("i");u.classList.add(this.CssClasses_.ICON),u.textContent=this.Constant_.CHEVRON_RIGHT,C.appendChild(u),C.addEventListener("click",function(){this.tabBar_.scrollLeft+=this.Constant_.TAB_SCROLL_PIXELS}.bind(this)),h.appendChild(c),h.appendChild(this.tabBar_),h.appendChild(C);var E=function(){this.tabBar_.scrollLeft>0?c.classList.add(this.CssClasses_.IS_ACTIVE):c.classList.remove(this.CssClasses_.IS_ACTIVE),this.tabBar_.scrollLeft<this.tabBar_.scrollWidth-this.tabBar_.offsetWidth?C.classList.add(this.CssClasses_.IS_ACTIVE):C.classList.remove(this.CssClasses_.IS_ACTIVE)}.bind(this);this.tabBar_.addEventListener("scroll",E),E();var m=function(){this.resizeTimeoutId_&&clearTimeout(this.resizeTimeoutId_),this.resizeTimeoutId_=setTimeout(function(){E(),this.resizeTimeoutId_=null}.bind(this),this.Constant_.RESIZE_TIMEOUT)}.bind(this);window.addEventListener("resize",m),this.tabBar_.classList.contains(this.CssClasses_.JS_RIPPLE_EFFECT)&&this.tabBar_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS);for(var L=this.tabBar_.querySelectorAll("."+this.CssClasses_.TAB),I=this.content_.querySelectorAll("."+this.CssClasses_.PANEL),f=0;f<L.length;f++)new t(L[f],L,I,this)}this.element_.classList.add(this.CssClasses_.IS_UPGRADED)}},window.MaterialLayoutTab=t,s.register({constructor:f,classAsString:"MaterialLayout",cssClass:"mdl-js-layout"});var b=function(e){this.element_=e,this.init()};window.MaterialDataTable=b,b.prototype.Constant_={},b.prototype.CssClasses_={DATA_TABLE:"mdl-data-table",SELECTABLE:"mdl-data-table--selectable",SELECT_ELEMENT:"mdl-data-table__select",IS_SELECTED:"is-selected",IS_UPGRADED:"is-upgraded"},b.prototype.selectRow_=function(e,t,s){return t?function(){e.checked?t.classList.add(this.CssClasses_.IS_SELECTED):t.classList.remove(this.CssClasses_.IS_SELECTED)}.bind(this):s?function(){var t,i;if(e.checked)for(t=0;t<s.length;t++)i=s[t].querySelector("td").querySelector(".mdl-checkbox"),i.MaterialCheckbox.check(),s[t].classList.add(this.CssClasses_.IS_SELECTED);else for(t=0;t<s.length;t++)i=s[t].querySelector("td").querySelector(".mdl-checkbox"),i.MaterialCheckbox.uncheck(),s[t].classList.remove(this.CssClasses_.IS_SELECTED)}.bind(this):void 0},b.prototype.createCheckbox_=function(e,t){var i=document.createElement("label"),n=["mdl-checkbox","mdl-js-checkbox","mdl-js-ripple-effect",this.CssClasses_.SELECT_ELEMENT];i.className=n.join(" ");var a=document.createElement("input");return a.type="checkbox",a.classList.add("mdl-checkbox__input"),e?(a.checked=e.classList.contains(this.CssClasses_.IS_SELECTED),a.addEventListener("change",this.selectRow_(a,e))):t&&a.addEventListener("change",this.selectRow_(a,null,t)),i.appendChild(a),s.upgradeElement(i,"MaterialCheckbox"),i},b.prototype.init=function(){if(this.element_){var e=this.element_.querySelector("th"),t=Array.prototype.slice.call(this.element_.querySelectorAll("tbody tr")),s=Array.prototype.slice.call(this.element_.querySelectorAll("tfoot tr")),i=t.concat(s);if(this.element_.classList.contains(this.CssClasses_.SELECTABLE)){var n=document.createElement("th"),a=this.createCheckbox_(null,i);n.appendChild(a),e.parentElement.insertBefore(n,e);for(var l=0;l<i.length;l++){var o=i[l].querySelector("td");if(o){var r=document.createElement("td");if("TBODY"===i[l].parentNode.nodeName.toUpperCase()){var _=this.createCheckbox_(i[l]);r.appendChild(_)}i[l].insertBefore(r,o)}}this.element_.classList.add(this.CssClasses_.IS_UPGRADED)}}},s.register({constructor:b,classAsString:"MaterialDataTable",cssClass:"mdl-js-data-table"});var y=function(e){this.element_=e,this.init()};window.MaterialRipple=y,y.prototype.Constant_={INITIAL_SCALE:"scale(0.0001, 0.0001)",INITIAL_SIZE:"1px",INITIAL_OPACITY:"0.4",FINAL_OPACITY:"0",FINAL_SCALE:""},y.prototype.CssClasses_={RIPPLE_CENTER:"mdl-ripple--center",RIPPLE_EFFECT_IGNORE_EVENTS:"mdl-js-ripple-effect--ignore-events",RIPPLE:"mdl-ripple",IS_ANIMATING:"is-animating",IS_VISIBLE:"is-visible"},y.prototype.downHandler_=function(e){if(!this.rippleElement_.style.width&&!this.rippleElement_.style.height){var t=this.element_.getBoundingClientRect();this.boundHeight=t.height,this.boundWidth=t.width,this.rippleSize_=2*Math.sqrt(t.width*t.width+t.height*t.height)+2,this.rippleElement_.style.width=this.rippleSize_+"px",this.rippleElement_.style.height=this.rippleSize_+"px"}if(this.rippleElement_.classList.add(this.CssClasses_.IS_VISIBLE),"mousedown"===e.type&&this.ignoringMouseDown_)this.ignoringMouseDown_=!1;else{"touchstart"===e.type&&(this.ignoringMouseDown_=!0);var s=this.getFrameCount();if(s>0)return;this.setFrameCount(1);var i,n,a=e.currentTarget.getBoundingClientRect();if(0===e.clientX&&0===e.clientY)i=Math.round(a.width/2),n=Math.round(a.height/2);else{var l=e.clientX?e.clientX:e.touches[0].clientX,o=e.clientY?e.clientY:e.touches[0].clientY;i=Math.round(l-a.left),n=Math.round(o-a.top)}this.setRippleXY(i,n),this.setRippleStyles(!0),window.requestAnimationFrame(this.animFrameHandler.bind(this))}},y.prototype.upHandler_=function(e){e&&2!==e.detail&&window.setTimeout(function(){this.rippleElement_.classList.remove(this.CssClasses_.IS_VISIBLE)}.bind(this),0)},y.prototype.init=function(){if(this.element_){var e=this.element_.classList.contains(this.CssClasses_.RIPPLE_CENTER);this.element_.classList.contains(this.CssClasses_.RIPPLE_EFFECT_IGNORE_EVENTS)||(this.rippleElement_=this.element_.querySelector("."+this.CssClasses_.RIPPLE),this.frameCount_=0,this.rippleSize_=0,this.x_=0,this.y_=0,this.ignoringMouseDown_=!1,this.boundDownHandler=this.downHandler_.bind(this),this.element_.addEventListener("mousedown",this.boundDownHandler),this.element_.addEventListener("touchstart",this.boundDownHandler),this.boundUpHandler=this.upHandler_.bind(this),this.element_.addEventListener("mouseup",this.boundUpHandler),this.element_.addEventListener("mouseleave",this.boundUpHandler),this.element_.addEventListener("touchend",this.boundUpHandler),this.element_.addEventListener("blur",this.boundUpHandler),this.getFrameCount=function(){return this.frameCount_},this.setFrameCount=function(e){this.frameCount_=e},this.getRippleElement=function(){return this.rippleElement_},this.setRippleXY=function(e,t){this.x_=e,this.y_=t},this.setRippleStyles=function(t){if(null!==this.rippleElement_){var s,i,n,a="translate("+this.x_+"px, "+this.y_+"px)";t?(i=this.Constant_.INITIAL_SCALE,n=this.Constant_.INITIAL_SIZE):(i=this.Constant_.FINAL_SCALE,n=this.rippleSize_+"px",e&&(a="translate("+this.boundWidth/2+"px, "+this.boundHeight/2+"px)")),s="translate(-50%, -50%) "+a+i,this.rippleElement_.style.webkitTransform=s,this.rippleElement_.style.msTransform=s,this.rippleElement_.style.transform=s,t?this.rippleElement_.classList.remove(this.CssClasses_.IS_ANIMATING):this.rippleElement_.classList.add(this.CssClasses_.IS_ANIMATING)}},this.animFrameHandler=function(){this.frameCount_-- >0?window.requestAnimationFrame(this.animFrameHandler.bind(this)):this.setRippleStyles(!1)})}},s.register({constructor:y,classAsString:"MaterialRipple",cssClass:"mdl-js-ripple-effect",widget:!1})}();
 //# sourceMappingURL=material.min.js.map
 
-var map;
-
-var osmLayer;
-var googleLayer;
-var art = ['wms1', 'wms2'];
-
-
-function showUP(layer, elem) {
-
-
-    map.getLayers().forEach(function (l, i) {
-        if (($.inArray(l.get('name'), art)) > -1) {
-            if (l.get('name') === layer) {
-                l.setVisible(true);
-                // addclass(.on_layer)
-                $(elem).addClass('on_layer');
-            }
-        }
-    });
-}
-function showDOWN(layer) {
-
-
-    map.getLayers().forEach(function (l, i) {
-        if (($.inArray(l.get('name'), art)) > -1) {
-            if (l.get('name') === layer) {
-                l.setVisible(false);
-            }
-        }
-    });
-}
-
-function toggleOL(layer, elem) {
-
-    map.getLayers().forEach(function (l, i) {
-        if (($.inArray(l.get('name'), art)) > -1) {
-            if (l.get('name') === layer) {
-                if (l.getVisible() == true) {
-                    l.setVisible(false);
-                    // delclass(.on_layer)
-                    $(elem).removeClass('on_layer');
-                } else {
-                    l.setVisible(true);
-                }
-            }
-        }
-    });
-}
-
-function toggleChevron(e) {
-    $(e.target)
-        .prev('.panel-heading')
-        .find("i.indicator")
-        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
-}
-
-function toggleUP(e) {
-    //   var id = $('#accordion .in').parent().attr("id");
-    var trg = $(e.target)
-        .prev('.panel-heading');
-    trg.find("a")
-        .addClass('active');
-    trg.find("i.indicator")
-        .addClass('active');
-//    swtch($(e.target).attr('id'));
-}
-
-function toggleDOWN(e) {
-    var trg = $(e.target)
-        .prev('.panel-heading');
-    trg.find("a")
-        .removeClass('active');
-    trg.find("i.indicator")
-        .removeClass('active');
-}
-
-function layersOff(map){
-    $('.mdl-navigation__level3').click(function () {
-
-
-        if($(this).hasClass('active')){
-            $(this).closest('.mdl-navigation__level2').prev().find('.layersOff').show().children('label').addClass('is-checked');
-        }else{
-            var isActive = false;
-            $(this).closest('.mdl-navigation__level2').find('a.mdl-navigation__link').each(function(){
-               if($(this).hasClass('active')){
-                   isActive = true;
-                   return false;
-               }
-            });
-
-            if(isActive == false){
-                $(this).closest('.mdl-navigation__level2').prev().find('.layersOff').hide().removeClass('is-checked');
-            }
-        }
-    });
-
-//    $('.mdl-navigation__level1').prepend('<div class="layersOff"><label class="mdl-checkbox mdl-js-checkbox" for="checkbox2"><input type="checkbox" id="checkbox2" class="mdl-checkbox__input"><span class="mdl-checkbox__label"></span></label></div></label>');
-$('.mdl-navigation__level1').prepend('<div class="layersOff"><label class="mdl-checkbox mdl-js-checkbox" for="checkbox2"><input type="checkbox" id="checkbox2" class="mdl-checkbox__input"><span class="mdl-checkbox__label"></span><span class="mdl-checkbox__focus-helper"></span><span class="mdl-checkbox__box-outline"><span class="mdl-checkbox__tick-outline"></span></label></div>');
-    $('.layersOff').on('mousedown',function (event) {
-        var layersName = [];
-        $(this).parents('.mdl-navigation__level1').next().find('a.mdl-navigation__link').each(function(){
-            //console.log(this);
-            $(this).next('form').slideUp(500);
-            $(this).removeClass('active');
-            $(this).children('.legend-button').hide();
-            if($(this).children('.legend-button').hasClass('active')){
-               $('.legend-button').removeClass('active')
-                $('.new_legend').hide();
-            }
-            layersName.push($(this).attr('href').substring(1));
-        });
-
-        if( $(this).parents('.mdl-navigation__level1').next('.mdl-navigation__level2').css('display') == 'none'){
-            $(this).parents('.mdl-navigation__level1').removeClass('active');
-        }
-
-        if(layersName.length > 0){
-            map.getLayers().forEach(function(layer) {
-                if(layer.get('name') != undefined){
-                    if((layersName.indexOf(layer.get('name'))) != -1 ){
-                        layer.setVisible(false);
-                    }
-                }
-            });
-        }
-        $(this).prop('checked', false).hide();
-        event.stopPropagation();
-    });
-
-}
-
-function getLayerName(){
-
-}
-
-function addLegend(map) {
-    var urlGeoServer = '/geoserver';
-    var layerOn = '';
-    var url = '';
-    $('.mdl-navigation__level3').prepend('<button class="legend-button mdl-button mdl-js-button mdl-button--icon new_menu_but" data-upgraded=",MaterialButton"><i class="material-icons">keyboard_arrow_right</i></button>');
-
-    $('.mdl-navigation__level3').click(function () {
-        if ($(this).hasClass('active')) {
-            $(this).children('.legend-button').show();
-        } else {
-            $(this).children('.legend-button').hide();
-        }
-    });
-    var ifChange = false;
-    $('.legend-button').click(function (event) {
-
-
-        if($(this).hasClass("active")){
-            $(this).removeClass("active");
-            $('.new_legend').hide();
-            $('.legend').hide();
-        }else{
-            $('.legend-button').removeClass('active');
-            $(this).addClass("active");
-            $('.new_legend').show();
-
-
-            layerName = $(this).parent().attr('href');
-            layerName = layerName.substring(1);
-            map.getLayers().forEach(function (layer) {
-                if (layer.get('name') == layerName) {
-                    layerOn = layer.getSource().getParams().LAYERS;
-                }
-            });
-            var layerName = $(this).parent().text();
-            var reg = /[a-zA-Z0-9._]/gi;
-            layerName = layerName.replace(reg, '');
-            layerName = layerName.trim();
-            url = urlGeoServer + '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=50&HEIGHT=30&LAYER=' + layerOn;
-            $('.new_legent_title').text('Умовні знаки (' + layerName+')');
-            $('.new_legend img').attr('src', url);
-        }
-
-        ifChange = true;
-        event.stopPropagation();
-
-    });
-
-    $('input[name=legend-radio]').change(function (event) {
-
-        if (ifChange == false) {
-            $('.legend').hide();
-            $(this).removeAttr("checked");
-            $(this).next().removeClass('active');
-        } else {
-            $('.arrow_box').removeClass('active');
-            $(this).next().addClass('active');
-            $('.legend').show();
-            layerName = $('input[name=legend-radio]:checked').parent().attr('href');
-            layerName = layerName.substring(1);
-            map.getLayers().forEach(function (layer) {
-                if (layer.get('name') == layerName) {
-                    layerOn = layer.getSource().getParams().LAYERS;
-                }
-            });
-            var layerName = $(this).parent().text();
-            var reg = /[a-zA-Z0-9._]/gi;
-            layerName = layerName.replace(reg, '');
-            layerName = layerName.trim();
-            url = urlGeoServer + '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=50&HEIGHT=30&LAYER=' + layerOn;
-            $('.legend').html('Умовні знаки (' + layerName + ')<br><img  src="' + url + '">')
-        }
-    });
-
-}
-function checkIp() {
-    var idTicketit = $('#id_ticketit').val();
-    var checkIp;
-    $.ajax({
-        url: '/checkIp',
-        type: 'POST',
-        async: false,
-        dataType: "json",
-        data: {
-            'idTicketit': idTicketit
-        },
-        success: function (data) {
-            checkIp = data.ifIp;
-        }
-    });
-    return checkIp;
-}
-
-function votingResult() {
-    var voiceResult;
-    var idTicketit = $('#id_ticketit').val();
-    $.ajax({
-        url: '/votingResult',
-        type: 'POST',
-        async: false,
-        dataType: "json",
-        data: {
-            'idTicketit': idTicketit
-        },
-        success: function (data) {
-            voiceResult = "<hr><div id='voting-res'><span class='title' >Результати опитування:</span>"
-            voiceResult += "<span class='right_menu_content-description'>Підтримали: <b style='color: green'>" + data.true + "</b></span>"
-            voiceResult += "<span class='right_menu_content-description'> Не підтримали: <b style='color: red'>" + data.false + "</b></span></div>"
-            voiceResult += '<div class="modal-dtp"><input type="button" class="btn btn-primary btn-block" value="Загальні результати опитування"></div><hr>'
-        }
-
-    });
-    return voiceResult;
-}
-
-function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-
-$(function () {
-
- //   Вызываем модальное окно для статистики по ДТП
-$('body').on('click', '.modal-dtp', function(){
-    $('#modal-dtp').toggleClass('open');
-})
-
-
-
-
-
-    //$('#modal-dtp').modal();
-
-    "use strict";
-//    $('.carousel').carousel();
-    setTimeout(function () {
-
-//        $('.ol-zoom').css({
-//        //        position:'absolute',
-//        //        left: ($(document).width() - $('.ol-zoom').outerWidth())/2,
-//                top: '300 px;'
-//        });       
-
-        var windowHeight;
-        var windowWidth;
-        var contentHeight;
-        var contentWidth;
-        var isDevice = true;
-
-        // calculations for elements that changes size on window resize
-        var windowResizeHandler = function () {
-            windowHeight = $(window).height();
-            windowWidth = $(window).width();
-            contentHeight = windowHeight - $('header').height();
-            //contentWidth = windowWidth - $('.demo-drawer').width();
-            //$('#leftSide').height(windowHeight);
-            //$('#rightSide').height(windowHeight);
-            //$('.closeLeftSide').height(contentHeight);
-            $('#wrapper').height(contentHeight);
-
-            $('#mapView').height(contentHeight);
-            $('#wrapper').width(windowWidth);
-            $('#content').height(contentHeight);
-            $('#external_control').css({top: windowHeight / 2});
-
-
-            var carousel_block_height = $('.carousel-block').height();
-            if($('.carousel-block').closest('.bx-wrapper').css('display') == 'none'){
-                carousel_block_height = 0;
-            }
-
-            var right_menu_content_block = windowHeight-$('.right_menu_footer-block').height()- $('.right_menu_title-block').height()-carousel_block_height;
-            $('.right_menu_content-block').css('height', right_menu_content_block);
-            $('.right_menu_content-block').closest('.bx-viewport').height(windowHeight - $('.right_menu_footer-block').height());
-
-            if ($('.mdl-card__title').is(':visible')) {
-                $('.mdl-card__supporting-text').height(windowHeight - $('.mdl-card__title').height() - $('.demo-card__title').height() - $('.mdl-card__actions').height() * 2.6);
-            } else {
-                $('.mdl-card__supporting-text').height(windowHeight - $('.demo-card__title').height() - $('.mdl-card__actions').height() * 2.1);
-            }
-            //$(".item").height(windowHeight- $('.mdl-card__actions').height() * 2);
-//            
-//            $('#carousel-main').height(windowHeight - $('div.mdl-card__title').height() - $('.mdl-card__actions').height() * 2);
-//        setTimeout(function () {
-//            $('.commentsFormWrapper').width(contentWidth);
-//        }, 300);
-
-            if (map) {
-//            google.maps.event.trigger(map, 'resize');
-                map.updateSize();
-
-            }
-
-            // Add custom scrollbar for left side navigation
-           /* if (windowWidth > 767) {
-                $('.bigNav').slimScroll({
-                    height: contentHeight - $('.leftUserWraper').height()
-                });
-            } else {
-                $('.bigNav').slimScroll({
-                    height: contentHeight
-                });
-            }
-            if ($('.bigNav').parent('.slimScrollDiv').size() > 0) {
-                $('.bigNav').parent().replaceWith($('.bigNav'));
-                if (windowWidth > 767) {
-                    $('.bigNav').slimScroll({
-                        height: contentHeight - $('.leftUserWraper').height()
-                    });
-                } else {
-                    $('.bigNav').slimScroll({
-                        height: contentHeight
-                    });
-                }
-            }*/
-        }
-
-
-        $(window).resize(function () {
-            windowResizeHandler();
-        });
-        var navExpanded = true;
-        $('#information').on('click', function (event) {
-            if (event.target.classList.contains('voting') == true) {
-                var votingRes = event.target.name;
-                var idTicketit = $('#id_ticketit').val();
-                $.ajax({
-                    url: '/voting',
-                    type: 'POST',
-                    dataType: "json",
-                    data: {
-                        'votingRes': votingRes,
-                        'idTicketit': idTicketit
-                    },
-                    success: function (data) {
-                        $('.votingAll').hide();
-                        $('.votingAll').after('<div class="title votingMessage" id="votingMessage" >Дякуємо, що прийняли участь в опитуванні.</div>')
-                        $('.votingMessage').after(votingResult());
-                    }
-
-                });
-            }
-        });
-
-        $('.fl1').on('change', function () {
-            var filterstr = '';
-            $('select.fl1').each(function (i, elem) {
-                if (filterstr === '') {
-                    if ($(elem).val()) {
-                        filterstr = "(" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
-                    }
-                } else {
-                    if ($(elem).val()) {
-                        filterstr += " AND (" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
-                    }
-                }
-            });
-            $('input[type=text].fl1').each(function (i, elem) {
-                var tmp = '';
-                if ($.isNumeric($(elem).val()) && ($(elem).val() > 0)) {
-                    if ($(elem).attr('id').substr(0, 3) == 'min') {
-                        tmp = "(" + $(elem).attr('id').substr(3) + ">'" + $(elem).val() + "')";
-                    }
-                    if ($(elem).attr('id').substr(0, 3) == 'max') {
-                        tmp = "(" + $(elem).attr('id').substr(3) + "<'" + $(elem).val() + "')";
-                    }
-                    if (filterstr === '') {
-                        filterstr = tmp;
-                    } else {
-                        filterstr += " AND " + tmp;
-                    }
-                }
-            });
-            wmsSource.updateParams({
-                CQL_FILTER: filterstr
-            });
-        });
-
-        $('.fl2').on('change', function () {
-            var filterstr = '';
-            $('select.fl2').each(function (i, elem) {
-                if (filterstr === '') {
-                    if ($(elem).val()) {
-                        filterstr = "(" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
-                    }
-                } else {
-                    if ($(elem).val()) {
-                        filterstr += " AND (" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
-                    }
-                }
-            });
-            $('input[type=text].fl2').each(function (i, elem) {
-                var tmp = '';
-                if ($.isNumeric($(elem).val()) && ($(elem).val() > 0)) {
-                    if ($(elem).attr('id').substr(0, 3) == 'min') {
-                        tmp = "(" + $(elem).attr('id').substr(3) + ">'" + $(elem).val() + "')";
-                    }
-                    if ($(elem).attr('id').substr(0, 3) == 'max') {
-                        tmp = "(" + $(elem).attr('id').substr(3) + "<'" + $(elem).val() + "')";
-                    }
-                    if (filterstr === '') {
-                        filterstr = tmp;
-                    } else {
-                        filterstr += " AND " + tmp;
-                    }
-                }
-            });
-
-//            console.log(filterstr);
-            wmsSource2.updateParams({
-                CQL_FILTER: filterstr
-            });
-        });
-
-        $('.fl3').on('change', function () {
-            var filterstr = '';
-            $('select.fl3').each(function (i, elem) {
-                if (filterstr === '') {
-                    if ($(elem).val()) {
-                        filterstr = "(" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
-                    }
-                } else {
-                    if ($(elem).val()) {
-                        filterstr += " AND (" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
-                    }
-                }
-            });
-            $('input[type=text].fl3').each(function (i, elem) {
-                var tmp = '';
-                if ($.isNumeric($(elem).val()) && ($(elem).val() > 0)) {
-                    if ($(elem).attr('id').substr(0, 3) == 'min') {
-                        tmp = "(" + $(elem).attr('id').substr(3) + ">'" + $(elem).val() + "')";
-                    }
-                    if ($(elem).attr('id').substr(0, 3) == 'max') {
-                        tmp = "(" + $(elem).attr('id').substr(3) + "<'" + $(elem).val() + "')";
-                    }
-                    if (filterstr === '') {
-                        filterstr = tmp;
-                    } else {
-                        filterstr += " AND " + tmp;
-                    }
-                }
-            });
-            wmsSource3.updateParams({
-                CQL_FILTER: filterstr
-            });
-        });
-
-        $('.fl4').on('change', function () {
-            var filterstr = '';
-            $('select.fl4').each(function (i, elem) {
-                if (filterstr === '') {
-                    if ($(elem).val()) {
-                        filterstr = "(" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
-                    }
-                } else {
-                    if ($(elem).val()) {
-                        filterstr += " AND (" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
-                    }
-                }
-            });
-            $('input[type=text].fl4').each(function (i, elem) {
-                var tmp = '';
-                if ($.isNumeric($(elem).val()) && ($(elem).val() > 0)) {
-                    if ($(elem).attr('id').substr(0, 3) == 'min') {
-                        tmp = "(" + $(elem).attr('id').substr(3) + ">'" + $(elem).val() + "')";
-                    }
-                    if ($(elem).attr('id').substr(0, 3) == 'max') {
-                        tmp = "(" + $(elem).attr('id').substr(3) + "<'" + $(elem).val() + "')";
-                    }
-                    if (filterstr === '') {
-                        filterstr = tmp;
-                    } else {
-                        filterstr += " AND " + tmp;
-                    }
-                }
-            });
-            wmsSource4.updateParams({
-                CQL_FILTER: filterstr
-            });
-        });
-
-        $('.fl8').on('change', function () {
-            var filterstr = '';
-            $('select.fl8').each(function (i, elem) {
-                if (filterstr === '') {
-                    if ($(elem).val()) {
-                        filterstr = "(" + $(elem).attr('id') + "='" + $(elem).val() + "')";
-                    }
-                } else {
-                    if ($(elem).val()) {
-                        filterstr += " AND (" + $(elem).attr('id') + "='" + $(elem).val() + "')";
-                    }
-                }
-                if ($(elem).val() == "") {
-                    filterstr = "notview";
-                }
-            });
-            $('input[type=text].fl8').each(function (i, elem) {
-                var tmp = '';
-                if ($.isNumeric($(elem).val()) && ($(elem).val() > 0)) {
-                    if ($(elem).attr('id').substr(0, 3) == 'min') {
-                        tmp = "(" + $(elem).attr('id').substr(3) + ">'" + $(elem).val() + "')";
-                    }
-                    if ($(elem).attr('id').substr(0, 3) == 'max') {
-                        tmp = "(" + $(elem).attr('id').substr(3) + "<'" + $(elem).val() + "')";
-                    }
-                    if (filterstr === '') {
-                        filterstr = tmp;
-                    } else {
-                        filterstr += " AND " + tmp;
-                    }
-                }
-            });
-//            console.log(filterstr);
-            if (filterstr == "notview") {
-                wmsSource8.updateParams({CQL_FILTER: null});
-            } else {
-                wmsSource8.updateParams({
-                    CQL_FILTER: filterstr
-                });
-            }
-        });
-
-        $('.fl19').on('change', function () {
-            var filterstr = '';
-            $('select.fl19').each(function (i, elem) {
-                if (filterstr === '') {
-                    if ($(elem).val()) {
-                        filterstr = "(" + $(elem).attr('id') + "='" + $(elem).val() + "')";
-                    }
-                } else {
-                    if ($(elem).val()) {
-                        filterstr += " AND (" + $(elem).attr('id') + "='" + $(elem).val() + "')";
-                    }
-                }
-            });
-            if (filterstr == "") {
-                filterstr = "notview";
-            }
-
-            $('input[type=text].fl19').each(function (i, elem) {
-                var tmp = '';
-                if ($.isNumeric($(elem).val()) && ($(elem).val() > 0)) {
-                    if ($(elem).attr('id').substr(0, 3) == 'min') {
-                        tmp = "(" + $(elem).attr('id').substr(3) + ">'" + $(elem).val() + "')";
-                    }
-                    if ($(elem).attr('id').substr(0, 3) == 'max') {
-                        tmp = "(" + $(elem).attr('id').substr(3) + "<'" + $(elem).val() + "')";
-                    }
-                    if (filterstr === '') {
-                        filterstr = tmp;
-                    } else {
-                        filterstr += " AND " + tmp;
-                    }
-                }
-            });
-            if (filterstr == "notview") {
-                wmsSource19.updateParams({CQL_FILTER: null});
-            } else {
-                wmsSource19.updateParams({
-                    CQL_FILTER: filterstr
-                });
-            }
-        });
-//        $('#accordion').on('hidden.bs.collapse', toggleDOWN);
-//        $('#accordion').on('shown.bs.collapse', toggleUP);
-//        $('a.accordion-toggle').on('click', function () {
-        $('a.mdl-navigation__link').on('click', function () {
-           // console.log($(this));
-
-//            if ($(this).hasClass('active')) {
-            toggleOL($(this).attr('href').substr(1), $(this));
-//            } else {
-//                showUP($(this).attr('href').substr(1), $(this));
-//            }
-            if ($(this).hasClass('active') == false && $(this).find('.arrow_box').hasClass('active')) {
-                $('.legend').hide();
-                $(this).find('.legend-radio').hide();
-                $(this).find('.legend-radio').removeAttr('checked');
-                $(this).find('.arrow_box').removeClass('active');
-                $(this).find('.arrow_box').hide();
-            }
-
-            if ($(this).next().find('a.mdl-navigation__link').hasClass('active') && $(this).hasClass('active') == false) {
-                $(this).addClass('active');
-            }
-        });
-
-
-
-        $('.navHandler, .closeLeftSide').click(function () {
-            if (!navExpanded) {
-                $('.logo').addClass('expanded');
-
-                $('#leftSide').addClass('expanded');
-                if (windowWidth < 768) {
-                    $('.closeLeftSide').show();
-                }
-                $('#bazlayer').addClass('expanded');
-                $('#external_control').addClass('expanded');
-                $('.hasSub').addClass('hasSubActive');
-                $('.leftNav').addClass('bigNav');
-                $('#tools').addClass('expanded');
-                if (windowWidth > 767) {
-                    $('.full').addClass('m-full');
-                }
-                windowResizeHandler();
-                navExpanded = true;
-            } else {
-                $('.logo').removeClass('expanded');
-                $('#leftSide').removeClass('expanded');
-                $('.closeLeftSide').hide();
-                $('#bazlayer').removeClass('expanded');
-                $('#external_control').removeClass('expanded');
-                $('.hasSub').removeClass('hasSubActive');
-                $('.bigNav').slimScroll({destroy: true});
-                $('.leftNav').removeClass('bigNav');
-                $('#tools').removeClass('expanded');
-                $('.leftNav').css('overflow', 'visible');
-                $('.full').removeClass('m-full');
-                navExpanded = false;
-            }
-        });
-
-        var fullm = false;
-        $('#fullm').click(function () {
-            if (!fullm) {
-                $('#content').hide();
-
-                $('#mapView').addClass('expanded');
-                $('#mapView').css("width", "100%");
-                fullm = true;
-                windowResizeHandler();
-            } else {
-                $('#mapView').removeClass('expanded');
-                $('#mapView').css("width", "50%");
-                $('#content').show();
-                fullm = false;
-                windowResizeHandler();
-            }
-        });
-
-        //windowResizeHandler();
-
-//        $('.selectpicker').selectpicker('refrjesh');
-
-        $("#searchstring").mask("9999999999:99:999:9999");
-
-        $("#searchbutton").on('click',
-            function () {
-                if ($("#searchstring").val() != '') {
-
-                    $('html, body').css("cursor", "wait");
-                    $.ajax({
-                        url: '/find-Parcel',
-                        type: 'GET',
-                        data: {
-                            'cadnum': $("#searchstring").val()
-                        },
-                        success: function (data) {
-                            var box = [data.data[0].st_xmin, data.data[0].st_ymin, data.data[0].st_xmax, data.data[0].st_ymax];
-                            //                           var areaExtent = ol.extent.applyTransform(box, ol.proj.getTransform('EPSG:4326', 'EPSG:3857'));
-                            view.fit(box, map.getSize());
-                            view.setZoom(16);
-//                            iconFeature.setGeometry(new ol.geom.Point( view.getCenter()) );
-//                            gmlSource.addFeature(iconFeature); 
-                            var evt = view.getCenter();
-                            $('html, body').css("cursor", "wait");
-                            $.ajax({
-                                type: 'GET',
-                                //                url: 'http://portal.dzk.gov.ua/kadastrova-karta/getobjectinfo',
-                                url: '/getobjectinfo',
-                                data: {
-                                    'x': evt[1],
-                                    'y': evt[0],
-                                    'layer': 'kadastr',
-                                    'zoom': 16
-                                },
-                                success: function (data) {
-
-                                    //                data = $.parseJSON(JSON.stringify(data));
-                                    // console.log(data);
-                                    if (data.data) {
-                                        var goi = $.parseJSON(data.data);
-
-                                        var regex = /[0-9]{10}:[0-9]{2}:[0-9]{3}:[0-9]{4}/g;
-                                        var regex2 = /\u0422\u0438\u043f \u0432\u043b\u0430\u0441\u043d\u043e\u0441\u0442\u0456:<\/div>(.*?)<\/li>/;
-                                        var regex3 = /<div class=\"label\">\u0426\u0456\u043b\u044c\u043e\u0432\u0435 \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f:<\/div>(.*?)<\/li>/
-                                        var str;
-
-                                        if (goi.dilanka) {
-                                            str = goi.dilanka;
-                                        } else if (goi.ikk) {
-                                            str = goi.ikk;
-                                        } else if (goi.rajonunion) {
-                                            str = goi.rajonunion;
-                                        } else {
-                                            str = goi.obl;
-                                        }
-
-                                        if (str) {
-                                            var koatuu = regex.exec(str);
-                                            var nom = koatuu;
-                                            //koatuu = koatuu + ' ' + regex2.exec(str)[1] + ' ' + regex3.exec(str)[1]
-                                            if (regex2.exec(str) != null) {
-                                                koatuu = koatuu + ' ' + regex2.exec(str)[1];
-                                            }
-                                            if (regex3.exec(str) != null) {
-                                                koatuu = koatuu + ' ' + regex3.exec(str)[1];
-                                            }
-                                            //                   console.log(regex2.exec(str)[1]);
-                                            if (koatuu) {
-                                                if (data.username != '') {
-                                                    //        $('#alert_placeholder').html('<div class="alert alert-success fade in"><a class="close" data-dismiss="alert">Ã—</a><span>'+ koatuu + '<button>Pay</button></span></div>');
-                                                    koatuu = koatuu + '<button type="button" onclick="reque(\'' + nom + '\');">Ð—Ð°Ð¼Ð¾Ð²Ð¸Ñ‚Ð¸, ' + data.username + '</button>';
-                                                }
-                                                content.innerHTML = ol.coordinate.toStringHDMS(ol.proj.transform(evt, 'EPSG:3857', 'EPSG:4326')) + '  ' + koatuu;
-                                                overlay.setPosition(evt);
-                                                view.setCenter(evt);
-                                            } else {
-                                                $('#alert_placeholder').html('');
-                                            }
-                                        }
-                                        //         console.log(data);
-                                    }
-                                    $('html, body').css("cursor", "auto");
-                                },
-                                error: function () {
-                                    $('html, body').css("cursor", "auto");
-                                }
-
-                            });
-                            //        content.innerHTML = $("#searchstring").val();
-                            //        overlay.setPosition(view.getCenter());
-                            $('html, body').css("cursor", "auto");
-                        },
-                        error: function () {
-                            $('html, body').css("cursor", "auto");
-                        }
-                    });
-                }
-            }
-        );
-
-//        $('body').removeClass('notransition');
-//        var satLayer = new ol.layer.Tile({visible: false, source: new ol.source.MapQuest({layer: 'sat'}), name: 'sat'});
-
-        //var satLayer = new ol.layer.Tile({
-        //    source: new ol.source.BingMaps({
-        //      culture: 'ru',
-        //      key: 'Ak-dzM4wZjSqTlzveKz5u0d4IQ4bRzVI309GxmkgSVr1ewS6iPSrOvOKhA-CJlm3',
-        //      imagerySet: 'AerialWithLabels',
-        //  }),
-        //    visible: 0
-        //});
-        var projection = new ol.proj.Projection({
-            code: 'EPSG:900913',
-            units: 'm'
-        });
-        var popup = new ol.Overlay({
-            element: document.getElementById('popup')
-        })
-//var w = $(window).width();
-//var h = $(window).height();
-/*        var wmsSource = new ol.source.ImageWMS({
-            url: '/kmda/wms',
-            //         url: 'http://212.26.144.110/geowebcache/service/wms',
-//            url: 'http://212.26.144.107:8092/vector/geoserver/gwc/service/wms',
-            //   url: 'http://192.168.33.51/geowebcache/service/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_l_orenda',
-                'ALIAS':'Власність',
-                'VERSION': '1.1.1',
-                'TILED': true,
-                'WIDTH': 768,
-                'HEIGHT': 520,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-//            projection: 'EPSG:900913',
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-//            extent: [3365331.64184455,6509557.90965887,3417855.95133155,6545186.44247934],
-            }
-        });
-
-        var wmsLayer = new ol.layer.Image({
-            source: wmsSource,
-            visible: 0,
-            name: 'wms1',
-            //           extent: map.getView().calculateExtent(map.getSize()),
-//            imageSize: [192,192]
-        });*/
-
-        var wmsSource2 = new ol.source.TileWMS({
-            url: '/geoserver/nsdi/wms',
-            params: {
-                'LAYERS': 'nsdi:nsdi',
-                'ALIAS':'Векторна карта',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 703,
-                'HEIGHT': 768,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-//            projection: 'EPSG:900913',
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer2 = new ol.layer.Tile({
-            source: wmsSource2,
-            visible: 0,
-            name: 'wms2'
-        });
-
-
-        var wmsSource5 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_l_building',
-                'ALIAS':'Будинки',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 716,
-                'HEIGHT': 768,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer5 = new ol.layer.Tile({
-            source: wmsSource5,
-            visible: 0,
-            name: 'wms5'
-        });
-        var wmsSource6 = new ol.source.TileWMS({
-            url: '/kmda/wms',
-            params: {
-                'LAYERS': 'kmda:kmda_l_street',
-                'ALIAS':'Вулиці',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png8',
-                'WIDTH': 716,
-                'HEIGHT': 768,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer6 = new ol.layer.Tile({
-            source: wmsSource6,
-            visible: 0,
-            name: 'wms6'
-        });
-
-
-        var wmsSource = new ol.source.TileWMS({
-            url: '/dzk',
-            params: {
-                'LAYERS': 'kadastr',
-                'ALIAS':'Кадастровий поділ',
-                'VERSION': '1.1.1',
-                'TILED': 'true',
-                'FORMAT': 'image/png',
-                'WIDTH': 256,
-                'HEIGHT': 256,
-                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
-                serverType: 'geoserver',
-                crossOrigin: '',
-                projection: projection,
-            }
-        });
-
-        var wmsLayer = new ol.layer.Tile({
-            source: wmsSource,
-            visible: 0,
-            name: 'wms1'
-        });
-
-        
-        osmLayer = new ol.layer.Tile({
-            source: new ol.source.OSM(),
-           // visible: 1,
-            name: 'osm',
-            visible: 0,
-        });
-
-//        var osmsatLayer = new ol.layer.Tile({ source: new ol.source.MapQuest({layer: 'sat'}), visible: 0, name: 'osmsat' });
-        
-        var pubLayer = new ol.layer.Tile({
-            source: new ol.source.XYZ({
-                url: 'http://212.26.144.103/map/dzk_overview/{z}/{x}/{-y}.png',
-                crossOrigin: 'null',
-            }),
-            name: 'pub',
-            visible: 1,
-        });
-
-        var kiev2006Layer = new ol.layer.Tile({
-            source: new ol.source.XYZ({
-                url: 'http://map.land.gov.ua/map/ortho10k_all/{z}/{x}/{-y}.jpg',
-                crossOrigin: 'null'
-            }),
-            name: 'kiev2006',
-            visible: 0,
-        });
-        var vin2015Layer = new ol.layer.Tile({
-            source: new ol.source.XYZ({
-//                url: '/ortho2k_vyn/{z}/{x}/{-y}.png',
-                url: 'http://212.26.144.103/map/ortho2k_vyn/{z}/{x}/{-y}.png',
-                crossOrigin: 'null',
-            }),
-            name: 'vin2015',
-            visible: 0,
-        });
-
-        var dzk_overview = new ol.layer.Tile({
-            source: new ol.source.XYZ({
-//                url: '/ortho2k_2015/{z}/{x}/{-y}.jpg',
-                url: 'http://212.26.144.103/map/dzk_overview/{z}/{x}/{-y}.png',
-                crossOrigin: 'null',
-            }),
-            name: 'dzk_overview',
-            visible: 0,
-        });
-
-        var kiev2015Layer = new ol.layer.Tile({
-            source: new ol.source.XYZ({
-//                url: '/ortho2k_2015/{z}/{x}/{-y}.jpg',
-                url: 'http://map.land.gov.ua/map/ortho_kiev/{z}/{x}/{-y}.jpg',
-                crossOrigin: 'null',
-            }),
-            name: 'kiev2015',
-            visible: 0,
-        });
-
-        var view = new ol.View({
-             center: [3170647.44192, 6315057.33961],
-//            extent: [3365331.64184455, 6509557.90965887, 3417855.95133155, 6545186.44247934],
-
-//            projection: projection,
-            zoom: 12,
-            minZoom: 2
-        });
-
-
-        /**
-         * Create an overlay to anchor the popup to the map.
-         */
-//        var container = document.getElementById('popup');
-//        var content = document.getElementById('popup-content');
-//        var closer = document.getElementById('popup-closer');
-//
-//        closer.onclick = function () {
-//            overlay.setPosition(undefined);
-//            closer.blur();
-//            return false;
-//        };
-
-//        var overlay = new ol.Overlay(/** @type {olx.OverlayOptions} */ ({
-//            element: container,
-//            autoPan: true,
-//            autoPanAnimation: {
-//                duration: 250
-//            }
-//        }));
-
-//        var gmap = new google.maps.Map(document.getElementById('gmap'), {
-//            disableDefaultUI: true,
-//            keyboardShortcuts: false,
-//            draggable: false,
-//            disableDoubleClickZoom: true,
-//            scrollwheel: false,
-//            streetViewControl: false
-//          });
-
-
-        var cycleLayer = new ol.layer.Tile({
-            source: new ol.source.XYZ({
-                url: 'https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=b29e6bf28b894c94958bfd507072f4c8',
-                crossOrigin: 'null',
-            }),
-            name: 'OpenCycleMap',
-            visible: 0,
-        });                        
-        
-        googleLayer = new olgm.layer.Google({name: 'google', visible: 0, mapTypeId: google.maps.MapTypeId.SATELLITE});
-        var googleHybridLayer = new olgm.layer.Google({
-            name: 'googlehybrid',
-            visible: 0,
-            mapTypeId: google.maps.MapTypeId.HYBRID
-        });
-//osmLayer.setVisible(false);
-//googleLayer.setVisible(false);
-
-        map = new ol.Map({
-//            interactions: olgm.interaction.defaults(),
-            target: "mapView",
-            layers: [
-//                   new ol.layer.Tile({ source: new ol.source.MapQuest({layer: 'sat'}) }), 
-//                   new ol.layer.Tile({ source: new ol.source.MapQuest({layer: 'hyb'}) }),
-                googleLayer,
-                googleHybridLayer,
-//                satLayer,
-                osmLayer,
-                cycleLayer,
-                cycleLayer,
-                pubLayer,
-                kiev2006Layer,
-                vin2015Layer,
-                wmsLayer,
-                wmsLayer2,                
-            ],
-            //           overlays: [overlay],
-            view: view,
-            controls: [],
-        });
-
-        map.addOverlay(popup);
-//  var zoomslider = new ol.control.ZoomSlider();
-//  map.addControl(zoomslider);
-        var external_control = new ol.control.Zoom({
-            target: document.getElementById('external_control')
-        });
-        map.addControl(external_control);
-        var overview = new ol.control.OverviewMap({
-            layers: [
-                new ol.layer.Tile({
-                    source: new ol.source.OSM()
-                })
-            ],
-            target: 'map',
-            label: '«',
-            collapseLabel: '»'
-        });
-
-        map.addControl(overview);
-        //$('.ol-overviewmap').addClass('ol-rotate');
-        //$('.ol-control').addClass('left_menu_open');
-
-        $('.ol-overviewmap button').attr("id", "ol-overviewmap");
-        $('.ol-overviewmap button').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-overviewmap" >Оглядова карта</div>');
-        $('.ol-zoom-in').attr("id", "ol-zoom-in");
-        $('.ol-zoom-in').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-zoom-in" >Збільшити</div>');
-        $('.ol-zoom-out').attr("id", "ol-zoom-out");
-        $('.ol-zoom-out').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-zoom-out" >Зменшити</div>')
-
-
-
-        var olGM = new olgm.OLGoogleMaps({map: map}); // map is the ol.Map instance
-        olGM.activate();
-        $('div.mapPlaceholder').remove();
-        windowResizeHandler();
-       // addLegend(map);
-        addMeasure(map);
-        layersOff(map);
-
-
-        $('.map_mode_select li').on('click', function(event){
-            var selected = $(this).attr('data-val');
-            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006'];
-            map.getLayers().forEach(function (l, i) {
-                if (($.inArray(l.get('name'), artbaz)) > -1) {
-                    if (l.get('name') !== selected) {
-                        console.log(l.get('name'));
-                        l.setVisible(false);
-                    } else {
-                        l.setVisible(true);
-                    }
-                }
-            });
-        });
-
-        $('#bazlayer select').change();
-
-        var sliderInfo;
-        var sliderCarousel;
-        map.on('singleclick', function (evt) {
-            if(!$('#length').hasClass('active') && !$('#area').hasClass('active')){
-
-            var viewResolution = (view.getResolution());
-            var infocontainer = $('#information');
-            var url;
-            var flah = false;
-            var infostr="";
-            var layerAlias;
-            var indic;
-            var count = 0;
-
-            map.getLayers().forEach(function (l, i) {
-                if ((($.inArray(l.get('name'), art)) > -1) && (l.getVisible())) {
-
-                    if(l.getSource().getParams().ALIAS){
-                        layerAlias = l.getSource().getParams().ALIAS;
-                    }else{
-                        layerAlias = "Не визначено";
-                    }
-                    if(sliderInfo != undefined){
-                        sliderInfo.destroySlider();
-                    }
-                    if(sliderCarousel != undefined){
-                       // sliderCarousel.destroySlider();
-                    }
-                    url = l.getSource().getGetFeatureInfoUrl(
-                        evt.coordinate, viewResolution, 'EPSG:900913',
-                        {'INFO_FORMAT': 'application/json'});
-                    //var fitextent  = [3399302.74458409,6523059.490493268,3400267.76206619,6524024.507975368];
-                    //map.getView().fit(fitextent, map.getSize());
-                    //console.log(l.getSource().getExtent());
-                    $.ajax({
-                        url: url,
-                        async: false,
-                        dataType: 'json',
-//          jsonpCallback: 'parseResponse'
-                    }).then(function (response) {
-                        //         var result = parser.readFeatures(response);
-//                        temp_photo = response.features[0].properties.objectid;
-                      //  console.log(response);
-
-                        for (var i = 0; i < response.features.length; i++) {
-
-                            if (!flah) {
-                                flah = true;
-                            } else {
-                                /*infostr += "<div class='item'>";
-                                infostr += "<div class='mdl-card__title mdl-card--expand mdl-color--teal-300'></div>";
-                                indic += '<li data-target="#carousel-example-generic" data-slide-to="' + count + '"></li>';*/
-                            }
-                      if(response.features[0].properties.objectid) {
-                      $('#orendadocnew').attr('action', 'orendadoc/'+response.features[0].properties.objectid+'/new');
-                  }
-                            var name;
-                            if ((name = response.features[i].properties.ObjectName) === undefined) {
-                                if ((name = response.features[i].properties.objectname) === undefined) {
-                                    if ((name = response.features[i].properties.orgname) === undefined) {
-                                        if ((name = response.features[i].properties.function_z) === undefined) {
-                                            if ((name = response.features[i].properties.name) === undefined) {
-                                                if ((name = response.features[i].properties.obj_name) === undefined) {
-                                                    if ((name = response.features[i].properties.name1) === undefined) {
-                                                        if ((name = response.features[i].properties.objectname) === undefined) {
-                                                            if ((name = response.features[i].properties.sname) === undefined) {
-                                                                name = response.features[i].properties.subject;
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            if (response.features[i].properties.full_name) {
-                                name = response.features[i].properties.full_name;
-                            }
-                            if (response.features[i].properties.addr_number) {
-                                name += ", " + response.features[i].properties.addr_number;
-                            }
-                            if (!name) {
-                                name = '';
-                            }
-                            infostr += '<div>'
-
-                            if (response.features[i].properties.html != undefined) {
-                                var pattern = /http:[^ >]+[^>]*jpeg|http:[^ >]+[^>]*png.*?/g;
-                                var src = response.features[i].properties.html.match(pattern);
-
-                                if(src != null){
-                                    infostr += '<div class="carousel-block">';
-                                    src.forEach(function(item){
-                                        infostr += '<li><img src="'+item+'" alt=""></li>'
-                                    });
-                                    infostr += '</div>';
-                                }/*else{
-                                    infostr += '<div><div class="carousel-block"><li><img src="/img/example.jpg" alt=""></li><li><img src="/img/example.jpg" alt=""></li></div>';
-                                }*/
-                            }/* else{
-                                infostr += '<div><div class="carousel-block"><li><img src="/img/example.jpg" alt=""></li><li><img src="/img/example.jpg" alt=""></li></div>';
-                            }*/
-                            infostr += "<div class='right_menu_title-block'><span class='layer-alias'><p> " + layerAlias + "</p></span>";
-                            infostr += "<span class='title'>" + name + "</span>";
-
-                            var districtname;
-                            if ((districtname = response.features[i].properties.DistrictName) === undefined) {
-                                if ((districtname = response.features[i].properties.district) === undefined) {
-                                    if ((districtname = response.features[i].properties.type_str) === undefined) {
-                                        districtname = ' ';
-                                    }
-                                }
-                            }
-                            var addrstreet;
-                            if ((addrstreet = response.features[i].properties.ObjectAddrStreet) === undefined) {
-                                if ((addrstreet = response.features[i].properties.street) === undefined) {
-                                    if ((addrstreet = response.features[i].properties.adress) === undefined) {
-                                        if ((addrstreet = response.features[i].properties.name_str) === undefined) {
-                                            if ((addrstreet = response.features[i].properties.street) === undefined) {
-                                                addrstreet = response.features[i].properties.long;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            var housenum;
-                            if ((housenum = response.features[i].properties.ObjectAddrNumber) === undefined) {
-                                if ((housenum = response.features[i].properties.house) === undefined) {
-                                    if ((housenum = response.features[i].properties.num_str) === undefined) {
-                                        if ((housenum = response.features[i].properties.house) === undefined) {
-                                            housenum = response.features[i].properties.lat;
-                                        }
-                                    }
-                                }
-                            }
-
-                            if (districtname && addrstreet && housenum) {
-                                infostr += "<span class='adrs'>" + districtname + " " + addrstreet + " " + housenum + "</span>";
-                            }
-                            if (response.features[i].properties.reclAdress !== undefined) {
-                                infostr += "<span class='adrs'>" + response.features[i].properties.reclAdress + "</span>";
-                            }
-                            if (response.features[i].properties.code_addro !== undefined) {
-                                infostr += "<span class='adrs'>" + response.features[i].properties.code_addrn + " " + response.features[i].properties.code_addro + "</span>";
-                            }
-                            if (response.features[i].properties.address !== undefined) {
-                                infostr += "<span class='adrs'>" + response.features[i].properties.address + "</span>";
-                            }
-
-                            infostr += "</div><div class='right_menu_content-block'>";
-                            if (response.features[i].properties.cadnum != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Кадастровий номер</span><span class='right_menu_content-description'>" + response.features[i].properties.cadnum + "</span>";
-                            }
-                            var ownership;
-                            if ((ownership = response.features[i].properties.OrgOwnership) === undefined) {
-                                ownership = response.features[i].properties.ownership;
-                            }
-                            if (ownership) {
-                                infostr += "<span class='right_menu_content-title'>Форма власностi</span><span class='right_menu_content-description'>" + ownership + "</span>";
-                            }
-                            if (response.features[i].properties.right_type !== undefined) {
-                                infostr += "<span class='right_menu_content-title'>Права власностi</span><span class='right_menu_content-description'>" + response.features[i].properties.right_type + "</span>";
-                            }
-                            if (response.features[i].properties.type !== undefined) {
-                                infostr += "<span class='right_menu_content-title'>Тип</span><span class='right_menu_content-description'>" + response.features[i].properties.type + "</span>";
-                            }
-                            if (response.features[i].properties.reclType !== undefined) {
-                                infostr += "<span class='right_menu_content-title'>Тип</span><span class='right_menu_content-description'>" + response.features[i].properties.reclType + "</span>";
-                            }
-                            if (response.features[i].properties.reclOwner !== undefined) {
-                                infostr += "<span class='right_menu_content-title'>Замовник</span><span class='right_menu_content-description'>" + response.features[i].properties.reclOwner + "</span>";
-                            }
-                            if (response.features[i].properties.zamovn_b !== undefined) {
-                                infostr += "<span class='right_menu_content-title'>Замовник</span><span class='right_menu_content-description'>" + response.features[i].properties.zamovn_b + "</span>";
-                            }
-
-                            if (response.features[i].properties.zamovnyk !== undefined) {
-                                infostr += "<span class='right_menu_content-title'>Замовник</span><span class='right_menu_content-description'>"  + response.features[i].properties.zamovnyk + "</span>";
-                            }
-                            if (response.features[i].properties.rozrobnik_ !== undefined) {
-                                infostr += "<span class='right_menu_content-title'>Розробник</span><span class='right_menu_content-description'>"  + response.features[i].properties.rozrobnik_ + "</span>";
-                            }
-                            var sqrtotal;
-                            if ((sqrtotal = response.features[i].properties.SqrTotal) === undefined) {
-                                if ((sqrtotal = response.features[i].properties.sqrtotal) === undefined) {
-                                    if ((sqrtotal = response.features[i].properties.area) === undefined) {
-                                        if ((sqrtotal = response.features[i].properties.arearishkr) === undefined) {
-                                            if ((sqrtotal = response.features[i].properties.reclArea) === undefined) {
-                                                sqrtotal = response.features[i].properties.aqrtotal;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            if (sqrtotal) {
-                                infostr += "<span class='right_menu_content-title'>Загальна площа (кв. м.)</span><span class='right_menu_content-description'>"  + sqrtotal + "</span>";
-                            }
-                            var costbalance;
-                            if ((costbalance = response.features[i].properties.CostBalans) === undefined) {
-                                costbalance = response.features[i].properties.costbalans;
-                            }
-                            if (costbalance) {
-                                infostr += "<span class='right_menu_content-title'>Балансова вартiсть (тис. грн.)</span><span class='right_menu_content-description'>"  + costbalance + "</span>";
-                            }
-
-                            var busage;
-                            if ((busage = response.features[i].properties.BuildingUsage) === undefined) {
-                                if ((busage = response.features[i].properties.purpose) === undefined) {
-                                    if ((busage = response.features[i].properties.startfunc) === undefined) {
-                                        busage = response.features[i].properties.industryname;
-                                    }
-                                }
-                            }
-                            if (busage) {
-                                infostr += "<span class='right_menu_content-title'>Призначення</span><span class='right_menu_content-description'>"  + busage + "</span>";
-                            }
-                            var bkind;
-                            if ((bkind = response.features[i].properties.BuildingKind) == undefined) {
-                                if ((bkind = response.features[i].properties.kind) == undefined) {
-                                    bkind = response.features[i].properties.p0003;
-                                }
-                            }
-                            if (bkind) {
-                                infostr += "<span class='right_menu_content-title'>Вид об'єкту</span><span class='right_menu_content-description'>"  + bkind + "</span>";
-                            }
-                            var btype;
-                            if ((btype = response.features[i].properties.BuildingType) == undefined) {
-                                if ((btype = response.features[i].properties.btype) == undefined) {
-                                    if (response.features[i].properties.p0010 !== undefined) {
-                                        btype = response.features[i].properties.p0010 + " " + response.features[i].properties.p0013;
-                                    }
-                                    if (btype === undefined) {
-                                        btype = response.features[i].properties.kindname;
-                                    }
-                                    if (btype === undefined) {
-                                        btype = response.features[i].properties.occupationname;
-                                    }
-                                }
-                            }
-                            if (btype) {
-                                infostr += "<span class='right_menu_content-title'>Тип об'єкту</span><span class='right_menu_content-description'>"  + btype + "</span>";
-                            }
-                            var btech;
-                            if ((btech = response.features[i].properties.BTS_NAME) == undefined) {
-                                btech = response.features[i].properties.btechstate;
-                            }
-                            if (btech) {
-                                infostr += "<span class='right_menu_content-title'>Стан об'єкту</span><span class='right_menu_content-description'>"  + btech + "</span>";
-                            }
-                            if (response.features[i].properties.link != undefined) {
-                                if (response.features[i].properties.name_obj != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Посилання на документ</span>";
-                                } else {
-                                    infostr += "<span class='right_menu_content-title'>" + response.features[i].properties.name_obj + "</span>";
-                                }
-                                infostr += "<span class='right_menu_content-description'><a target='_blank' href='/PDF/" + response.features[i].properties.id_region + "/" + response.features[i].properties.link + "'>" + response.features[i].properties.doc_type + "</a></span>";
-                            }
-                            if (response.features[i].properties.num_in != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Вхідний номер</span><span class='right_menu_content-description'>" + response.features[i].properties.num_in + "</span>";
-                            }
-                            if (response.features[i].properties.data_in != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Вхідна дата</span><span class='right_menu_content-description'>" + response.features[i].properties.data_in + "</span>";
-                            }
-                            if (response.features[i].properties.num_out != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Вихідний номер</span><span class='right_menu_content-description'>" + response.features[i].properties.num_out + "</span>";
-                            }
-                            if (response.features[i].properties.data_out != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Вихідна дата</span><span class='right_menu_content-description'>"+ response.features[i].properties.data_out + "</span>";
-                            }
-                            if (response.features[i].properties.cad_num_z != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Кадастровий номер</span><span class='right_menu_content-description'>" + response.features[i].properties.cad_num_z + "</span>";
-                            }
-
-                            if (response.features[i].properties.chanfunc != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Нова функція території за генеральним планом міста</span><span class='right_menu_content-description'>" + response.features[i].properties.chanfunc + "</span>";
-                            }
-                            if (response.features[i].properties.code_func1 != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Код нової функції</span><span class='right_menu_content-description'>" + response.features[i].properties.code_func1 + "</span>";
-                            }
-
-                            if (response.features[i].properties.nrishkmda != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Номер рішення КМДА</span><span class='right_menu_content-description'>" + response.features[i].properties.nrishkmda + "</span>";
-                            }
-
-                            if (response.features[i].properties.n_rish_kmr != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Номер рішення Київради про затвердження</span><span class='right_menu_content-description'>" + response.features[i].properties.n_rish_kmr + "</span>";
-                            }
-                            if (response.features[i].properties.rayon_b != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Адмінрайон міста</span><span class='right_menu_content-description'>" + response.features[i].properties.rayon_b + "</span>";
-                            }
-                            if (response.features[i].properties.rozrobnik_doc != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Розробник містобудівної документації</span><span class='right_menu_content-description'>" + response.features[i].properties.rozrobnik_doc + "</span>";
-                            }
-                            if (response.features[i].properties.reestrazno != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Реєстраціний номер</span><span class='right_menu_content-description'>" + response.features[i].properties.reestrazno + "</span>";
-                            }
-
-                            if (response.features[i].properties.stadia_roz != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Стадія розроблення </span><span class='right_menu_content-description'>" + response.features[i].properties.stadia_roz + "</span>";
-                            }
-                            if (response.features[i].properties.type_b != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Тип містобудівної документації</span><span class='right_menu_content-description'>" + response.features[i].properties.type_b + "</span>";
-                            }
-
-                            if (response.features[i].properties.daterihkr != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Дата рішення КМДА</span><span class='right_menu_content-description'>" + response.features[i].properties.daterihkr + "</span>";
-                            }
-                            if (response.features[i].properties.group_name != null) {
-                                infostr += "<span class='right_menu_content-title'>Назва групи</span><span class='right_menu_content-description'>" + response.features[i].properties.group_name + "</span>";
-                            }
-                            if (response.features[i].properties.pidstavaza != null) {
-                                infostr += "<span class='right_menu_content-title'>Підстава внесення</span><span class='right_menu_content-description'>" + response.features[i].properties.pidstavaza + "</span>";
-                            }
-                            if (response.features[i].properties.code != null) {
-                                infostr += "<span class='right_menu_content-title'>Код</span><span class='right_menu_content-description'>" + response.features[i].properties.code + "</span>";
-                            }
-                            if (response.features[i].properties.status != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Статус</span><span class='right_menu_content-description'>" + response.features[i].properties.status + "</span>";
-                            }
-                            if (response.features[i].properties.zamovn != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Замовник</span><span class='right_menu_content-description'>" + response.features[i].properties.zamovn + "</span>";
-                            }
-                            if (response.features[i].properties.p_name != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Місце розташування</span><span class='right_menu_content-description'>" + response.features[i].properties.p_name + "</span>";
-                            }
-                            if (response.features[i].properties.content != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Опис</span><span class='right_menu_content-description'>" + response.features[i].properties.content + "</span>";
-                            }
-
-                            if (response.features[i].properties.inv_number != null) {
-                                infostr += "<span class='right_menu_content-title'>Інвентарний номер</span><span class='right_menu_content-description'>" + response.features[i].properties.inv_number + "</span>";
-                            }
-                            if (response.features[i].properties.priority_name != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Статус</span><span class='right_menu_content-description'>" + response.features[i].properties.priority_name + "</span>";
-                            }
-                            /*if (response.features[i].properties.priority_id != undefined) {
-                             infostr += "<small> Статус</small>";
-                             switch(response.features[i].properties.priority_id) {
-                             case 1:
-                             infostr += "<h5>Внесено</h5>";
-                             break;
-                             case 2:
-                             infostr += "<h5>Перевірено</h5>";
-                             break;
-                             default:
-                             infostr += "<h5>Не визначено</h5>";
-                             }
-                             }*/
-                            if (response.features[i].properties.p_mode != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Форма паркування</span><span class='right_menu_content-description'>" + response.features[i].properties.p_mode + "</span>";
-                            }
-
-                            if (response.features[i].properties.p_zone != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Номер зони</span><span class='right_menu_content-description'>" + response.features[i].properties.p_zone + "</span>";
-                            }
-
-                            if (response.features[i].properties.area_project != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Проектна площа ремонту (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.area_project + "</span>";
-                            }
-                            if (response.features[i].properties.area_fact != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Фактична площа ремонту (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.area_fact + "</span>";
-                            }
-                            if (response.features[i].properties.cost_repairs != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Проектна вартість ремонту (тис. грн.)</span><span class='right_menu_content-description'>" + response.features[i].properties.cost_repairs + "</span>";
-                            }
-                            if (response.features[i].properties.cost_repairs_fact != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Фактична вартість ремонту (тис. грн.)</span><span class='right_menu_content-description'>" + response.features[i].properties.cost_repairs_fact + "</span>";
-                            }
-
-                            if (response.features[i].properties.field_1 != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Ідентифікатор об'єкта</span><span class='right_menu_content-description'>" + response.features[i].properties.field_1 + "</span>";
-                            }
-                            if (response.features[i].properties.field_2 != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Номер ПВ-ВП</span><span class='right_menu_content-description'>" + response.features[i].properties.field_2 + "</span>";
-                            }
-                            if (response.features[i].properties.field_3 != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Тип опори</span><span class='right_menu_content-description'>" + response.features[i].properties.field_3 + "</span>";
-                            }
-                            if (response.features[i].properties.field_4 != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Дата установки опори</span><span class='right_menu_content-description'>" + response.features[i].properties.field_4 + "</span>";
-                            }
-                            if (response.features[i].properties.field_5 != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Кронштейн</span><span class='right_menu_content-description'>" + response.features[i].properties.field_5 + "</span>";
-                            }
-                            if (response.features[i].properties.field_6 != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Тип світильника</span><span class='right_menu_content-description'>" + response.features[i].properties.field_6 + "</span>";
-                            }
-                            if (response.features[i].properties.field_7 != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Дата установки світильника</span><span class='right_menu_content-description'>" + response.features[i].properties.field_7 + "</span>";
-                            }
-                            if (response.features[i].properties.field_8 != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Дата установки ламп</span><span class='right_menu_content-description'>" + response.features[i].properties.field_8 + "</span>";
-                            }
-                            if (response.features[i].properties.field_9 != undefined) {
-                                infostr += "<span class='right_menu_content-title'>Номер опори</span><span class='right_menu_content-description'>" + response.features[i].properties.field_9 + "</span>";
-                            }
-                            if (response.features[i].properties.agreement_number) {
-                                infostr += "<span class='right_menu_content-title'>Номер договору</span><span class='right_menu_content-description'>" + response.features[i].properties.agreement_number + "</span>";
-                            }
-                            if (response.features[i].properties.agreement_date) {
-                                infostr += "<span class='right_menu_content-title'>Дата договору</span><span class='right_menu_content-description'>" + response.features[i].properties.agreement_date + "</span>";
-                            }
-                            if (response.features[i].properties.sqr_rent) {
-                                infostr += "<span class='right_menu_content-title'>Площа оренди</span><span class='right_menu_content-description'>" + response.features[i].properties.sqr_rent + " (кв. м.)</span>";
-                            }
-                            if (response.features[i].properties.reason) {
-                                infostr += "<span class='right_menu_content-title'>Підстава</span><span class='right_menu_content-description'>" + response.features[i].properties.reason + "</span>";
-                            }
-
-                            if (response.features[i].properties.org_name) {
-                                infostr += "<span class='right_menu_content-title'>Балансоутримувач</span><span class='right_menu_content-description'>" + response.features[i].properties.org_name + "</span>";
-                            }
-                            if (response.features[i].properties.region) {
-                                infostr += "<span class='right_menu_content-title'>Район</span><span class='right_menu_content-description'>" + response.features[i].properties.region + "</span>";
-                            }
-                            if (response.features[i].properties.subject) {
-                                infostr += "<span class='right_menu_content-title'>Суб'єкт господарювання</span><span class='right_menu_content-description'>" + response.features[i].properties.subject + "</span>";
-                            }
-                            if (response.features[i].properties.category_id >= 0) {
-                                if (response.features[i].properties.id) {
-
-                                    $('#id_ticketit').remove();
-                                    $('#information').after("<input type='hidden' id = 'id_ticketit' name = 'id_ticketit' value='" + response.features[i].properties.id + "'>");
-                                }
-                                if (checkIp() == true) {
-                                    if ($('body').is('#votingMessage')) {
-                                        $('#votingMessage').remove();
-                                    }
-
-                                    infostr += votingResult();
-                                } else {
-                                    infostr += '<div class="votingAll btn-group btn-group-justified"><div class="btn-group"><input type="button" name="1" class="voting btn btn-success" value="Підтримую"></div><div class="btn-group"><input type="button" class="voting btn btn-danger" value="Не підтримую" name="0"></div></div>';
-                                }
-                            }
-
-                            if (response.features[i].properties.tech) {
-                                infostr += "<span class='right_menu_content-title'>Тех. облаштування</span><span class='right_menu_content-description'>" + response.features[i].properties.tech + "</span>";
-                            }
-                            if (response.features[i].properties.type) {
-                                infostr += "<span class='right_menu_content-title'>Тип паркування</span><span class='right_menu_content-description'>" + response.features[i].properties.type + "</span>";
-                            }
-                            if (response.features[i].properties.zone) {
-                                infostr += "<span class='right_menu_content-title'>Зона</span><span class='right_menu_content-description'>" + response.features[i].properties.zone + "</span>";
-                            }
-                            if (response.features[i].properties.payment_type) {
-                                infostr += "<span class='right_menu_content-title'>Вид оплати</span><span class='right_menu_content-description'>" + response.features[i].properties.payment_type + "</span>";
-                            }
-                            if (response.features[i].properties.allsquare) {
-                                infostr += "<span class='right_menu_content-title'>Площа (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.allsquare + "</span>";
-                            }
-                            if (response.features[i].properties.cars) {
-                                infostr += "<span class='right_menu_content-title'>Машиномісць</span><span class='right_menu_content-description'>" + response.features[i].properties.cars + "</span>";
-                            }
-                            if (response.features[i].properties.freesquare) {
-                                infostr += "<span class='right_menu_content-title'>Безоплатне паркування (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.freesquare + "</span>";
-                            }
-
-                            if (response.features[i].properties.mode) {
-                                infostr += "<span class='right_menu_content-title'>Режим роботи</span><span class='right_menu_content-description'>" + response.features[i].properties.mode + "</span>";
-                            }
-                            if (response.features[i].properties.paysquare) {
-                                infostr += "<span class='right_menu_content-title'>Для паркування (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.paysquare + "</span>";
-                            }
-                            if (response.features[i].properties.privilege) {
-                                infostr += "<span class='right_menu_content-title'>Кількість пільгових машиномісць</span><span class='right_menu_content-description'>" + response.features[i].properties.privilege + "</span>";
-                            }
-                            if (response.features[i].properties.price) {
-                                infostr += "<span class='right_menu_content-title'>Вартість</span><span class='right_menu_content-description'>" + response.features[i].properties.price + "</span>";
-                            }
-
-                            if (response.features[i].properties.p_cost || response.features[i].properties.p_cost == 0) {
-                                if (response.features[i].properties.p_cost == 0) {
-                                    infostr += "<span class='right_menu_content-title'>Надходження(грн.)</span><span class='right_menu_content-description'>Інформація не надана КПТС</span>>";
-                                } else {
-                                    infostr += "<span class='right_menu_content-title'>Надходження (грн.)</span><span class='right_menu_content-description'>" + response.features[i].properties.p_cost + "</span>";
-                                }
-                            }
-                            if (response.features[i].properties.objectid) {
-                                $("#orendadoc").attr('href', "/orendadoc/" + response.features[i].properties.objectid + "/new");
-                            }
-                            infostr += "</div></div></div>";
-                        }
-
-                    });
-
-                }
-            });
-            if(infostr != "" && $('.right_menu').hasClass('close')){
-                $('.right_menu').toggleClass('close');
-                $('.bid_list').toggleClass('close');
-                $('.main_search_container').toggleClass('close');
-                $('.right_menu_button').show();
-            }else if(!$('.right_menu').hasClass('close') && infostr==""){
-                $('.right_menu').toggleClass('close');
-                $('.bid_list').toggleClass('close');
-                $('.main_search_container').toggleClass('close');
-                $('.right_menu_button').hide();
-            }
-            if(infostr==""){
-                $('.right_menu_button').hide();
-            }
-            setTimeout(function () {
-                if (flah) {
-
-                    $('ol.carousel-indicators').html(indic);
-                    $('#information').html(infostr);
-                    if($('div').is('.carousel-block')){
-                        sliderCarousel = $('.carousel-block').bxSlider();
-                    }
-                    sliderInfo = $('.info-slider').bxSlider({pager: false});
-                    $('.mdl-card__supporting-text img:not(:first)').each(function (i, elem) {
-                        $(this).hide().wrap("<a href='" + this.src + "' data-toggle='lightbox' data-gallery='multiimages'></a>");
-                    });
-
-//                    var wrp = "<a href='"+$('.mdl-card__supporting-text img').src+"'></a>";
-//                    $('.mdl-card__supporting-text img').wrap(wrp);
-                    if ($('.mdl-card__supporting-text img').filter(':first').attr("src") != null) {
-                        var srcimg = 'url("' + $('.mdl-card__supporting-text img').filter(':first').attr('src') + '")';
-                        $('.mdl-card__title').css("background-image", srcimg).show();
-
-                        $('.mdl-card__title').wrap("<a href='" + $('.mdl-card__supporting-text img').filter(':first').attr('src') + "' data-toggle='lightbox' data-gallery='multiimages'></a>");
-                        $('.mdl-card__supporting-text img').filter(':first').hide();
-                    }
-
-                    $('.demo-info').show();
-                    windowResizeHandler();
-                    $('#view-source').hide();
-//                        rightNav = true;
-//                    }
-                } else {
-                    //console.log("no" + infostr);
-                    infocontainer.innerHTML = '&nbsp;';
-//                    if (rightNav) {
-//                        $("#rightSide").removeClass("expanded");
-//                        $("#rightSwitch").removeClass("expanded");
-//                        $("#rightblur").removeClass("expanded");
-                    $('.demo-info').hide();
-                    $('#view-source').show();
-//                        rightNav = false;
-//                    }
-                }
-            }, 300);
-            }
-        });
-//        $("#rightClose").on('click', function () {
-//            $("#rightSide").removeClass("expanded");
-//            rightNav = false;
-//            $("#rightSwitch").removeClass("expanded");
-//            $("#rightblur").removeClass("expanded");
-//        });
-
-
-        $('#main_search_input').bind("enterKey", function (e) {
-            var searchval = $('#main_search_input').val();
-//    console.log(searchval);
-            $.ajax({
-                url: '/search',
-                type: 'POST',
-                data: {searchstring: searchval},
-                success: function (data) {
-//            console.log(data.names);
-                    var fitextent = [data[0], data[1], data[2], data[3]];
-                    map.getView().fit(fitextent, map.getSize());
-
-                    wmsSource15.updateParams({
-                        CQL_FILTER: "id = " + data[4] // 10143
-                    });
-                    wmsLayer15.setVisible(true);
-
-//            wmsSource6.updateParams({'LAYERS': 'kmda:kmda_l_street', 'VERSION': '1.1.1', 'TILED': 'true', 'FORMAT': 'image/png8', 'WIDTH': 768, 'HEIGHT': 396, 'CRS': 'EPSG:900913', 'STYLE': 'a_street_flash',//, CQL_FILTER:'koatuu=3520386800'
-//                serverType: 'geoserver',
-//                crossOrigin: '',
-//                projection: projection,
-//            });
-//            map.render();
-                },
-                error: function () {
-                    wmsLayer15.setVisible(false);
-                }
-            });
-        });
-        $('#main_search_input').keyup(function (e) {
-            if (e.keyCode == 13) {
-                $(this).trigger("enterKey");
-            }
-        });
-        $('#main_search_input').autocomplete({
-            source: '/autocomplete',
-            minLength: 3,
-            select: function (e, ui) {
-                var value = ui.item.value;
-                $.ajax({
-                    url: '/search',
-                    type: 'POST',
-                    data: {searchstring: value},
-                    success: function (data) {
-
-                        var fitextent = [data[0], data[1], data[2], data[3]];
-                        map.getView().fit(fitextent, map.getSize());
-
-                        wmsSource15.updateParams({
-                            CQL_FILTER: "id = " + data[4] // 10143
-                        });
-                        wmsLayer15.setVisible(true);
-                    },
-                    error: function () {
-
-                    }
-                });
-            }
-        });
-
-
-    }, 300);
-
-
-});
-
-/*----Add measure (START)----*/
-function addMeasure(map) {
-
-    var source = new ol.source.Vector();
-    var style = new ol.style.Style({
-        fill: new ol.style.Fill({
-            color: 'rgba(255, 255, 255, 0.4)',
-        }),
-        stroke: new ol.style.Stroke({
-            color: '#09f',
-            width: 3
-        }),
-        image: new ol.style.Circle({
-            radius: 7,
-            fill: new ol.style.Fill({
-                color: '#ffcc33'
-            })
-        })
-    })
-    var vector = new ol.layer.Vector({
-        source: source,
-        style: style
-    });
-
-    /**
-     * The measure tooltip element.
-     * @type {Element}
-     */
-    var measureTooltipElement;
-
-    /**
-     * Overlay to show the measurement.
-     * @type {ol.Overlay}
-     */
-    var measureTooltip;
-    /**
-     * Currently drawed feature
-     * @type {ol.Feature}
-     */
-
-    var sketch;
-    /**
-     * Element for currently drawed feature
-     * @type {Element}
-     */
-    var sketchElement;
-    var typeSelect;
-    /**
-     * handle pointer move
-     * @param {Event} evt
-     */
-    var wgs84Sphere = new ol.Sphere(6378137);
-
-    map.addLayer(vector);
-    $('#erase').on('mousedown', function(){
-        $(this).addClass('active');
-
-    });
-    $('#erase').on('mouseup', function(){
-        $('.measure').removeClass('active');
-        $('.tooltip.tooltip-static').remove();
-        map.removeInteraction(draw);
-        source.clear();
-    });
-
-    $('.measure:not(#erase)').on('click', function (e) {
-
-        if($(this).hasClass('active')){
-            $(this).removeClass('active')
-            $('.tooltip.tooltip-static').remove();
-        }else{
-            source.clear();
-            $('.measure').removeClass('active')
-            $('.tooltip.tooltip-static').remove();
-
-            $(this).addClass('active')
-            map.removeInteraction(draw);
-        }
-        if($(this).hasClass('active')){
-            typeSelect = $(this).attr('id')
-
-            addInteraction();
-        }else{
-            map.removeInteraction(draw);
-            source.clear();
-        }
-    });
-
-    createMeasureTooltip();
-    var draw; // global so we can remove it later
-    function addInteraction() {
-        var type = (typeSelect == 'area' ? 'Polygon' : 'LineString');
-        draw = new ol.interaction.Draw({
-            source: source,
-            type: /** @type {ol.geom.GeometryType} */ (type),
-            style: new ol.style.Style({
-                fill: new ol.style.Fill({
-                    color: 'rgba(255, 255, 255, 0.4)'
-                }),
-                stroke: new ol.style.Stroke({
-                    color: 'rgba(0, 0, 0, 0.7)',
-                    lineDash: [10, 10],
-                    width: 2
-                }),
-                image: new ol.style.Circle({
-                    radius: 5,
-                    stroke: new ol.style.Stroke({
-                        color: 'rgba(0, 0, 0, 0.8)'
-                    }),
-                    fill: new ol.style.Fill({
-                        color: 'rgba(255, 255, 255, 0.2)'
-                    })
-                })
-            })
-        });
-        map.addInteraction(draw);
-        var listener;
-        draw.on('drawstart',
-            function (evt) {
-                sketch = evt.feature;
-                var tooltipCoord = evt.coordinate;
-                listener = sketch.getGeometry().on('change', function(evt) {
-                    var geom = evt.target;
-                    var output;
-                    if (geom instanceof ol.geom.Polygon) {
-                        output = formatArea(geom);
-                        tooltipCoord = geom.getInteriorPoint().getCoordinates();
-                    } else if (geom instanceof ol.geom.LineString) {
-                        output = formatLength(geom);
-                        tooltipCoord = geom.getLastCoordinate();
-                    }
-                    measureTooltipElement.innerHTML = output;
-                    measureTooltip.setPosition(tooltipCoord);
-                });
-            }, this);
-        draw.on('drawend',
-            function() {
-                measureTooltipElement.className = 'tooltip tooltip-static';
-                measureTooltip.setOffset([0, -9]);
-                // unset sketch
-                sketch = null;
-                // unset tooltip so that a new one can be created
-                measureTooltipElement = null;
-                createMeasureTooltip();
-                ol.Observable.unByKey(listener);
-            }, this);
-    }
-
-    /**
-     * format length output
-     * @param {ol.geom.LineString} line
-     * @return {string}
-     */
-
-    var formatLength = function (line) {
-        var length;
-        var coordinates = line.getCoordinates();
-        length = 0;
-        var sourceProj = map.getView().getProjection();
-        for (var i = 0, ii = coordinates.length - 1; i < ii; ++i) {
-            var c1 = ol.proj.transform(coordinates[i], sourceProj, 'EPSG:4326');
-            var c2 = ol.proj.transform(coordinates[i + 1], sourceProj, 'EPSG:4326');
-            length += wgs84Sphere.haversineDistance(c1, c2);
-        }
-        var output;
-        if (length > 100) {
-            output = (Math.round(length / 1000 * 100) / 100) +
-                ' ' + 'км';
-        } else {
-            output = (Math.round(length * 100) / 100) +
-                ' ' + 'м';
-        }
-        return output;
-    };
-
-    /**
-     * format length output
-     * @param {ol.geom.Polygon} polygon
-     * @return {string}
-     */
-    var formatArea = function (polygon) {
-        var area;
-        var sourceProj = map.getView().getProjection();
-        var geom = /** @type {ol.geom.Polygon} */(polygon.clone().transform(
-            sourceProj, 'EPSG:4326'));
-        var coordinates = geom.getLinearRing(0).getCoordinates();
-        area = Math.abs(wgs84Sphere.geodesicArea(coordinates));
-        var output;
-        if (area > 10000) {
-            output = (Math.round(area / 1000000 * 100) / 100) +
-                ' ' + 'км<sup>2</sup>';
-        } else {
-            output = (Math.round(area * 100) / 100) +
-                ' ' + 'м<sup>2</sup>';
-        }
-        return output;
-    };
-
-    function createMeasureTooltip() {
-        if (measureTooltipElement) {
-            measureTooltipElement.parentNode.removeChild(measureTooltipElement);
-        }
-        measureTooltipElement = document.createElement('div');
-        measureTooltipElement.className = 'tooltip tooltip-measure';
-        measureTooltip = new ol.Overlay({
-            element: measureTooltipElement,
-            offset: [0, -15],
-            positioning: 'bottom-center'
-        });
-        map.addOverlay(measureTooltip);
-    }
-
-  /*  $('.measure').hover(function(){
-       $(this).addClass('is-active');
-    });
-    $('.measure').mouseleave(function(){
-        $(this).removeClass('is-active');
-    });*/
-
-    /*----Add measure (END)----*/
-
-}
+/*!
+ * clipboard.js v1.5.15
+ * https://zenorocha.github.io/clipboard.js
+ *
+ * Licensed MIT © Zeno Rocha
+ */
+!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var t;t="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this,t.Clipboard=e()}}(function(){var e,t,n;return function e(t,n,i){function o(a,c){if(!n[a]){if(!t[a]){var l="function"==typeof require&&require;if(!c&&l)return l(a,!0);if(r)return r(a,!0);var s=new Error("Cannot find module '"+a+"'");throw s.code="MODULE_NOT_FOUND",s}var u=n[a]={exports:{}};t[a][0].call(u.exports,function(e){var n=t[a][1][e];return o(n?n:e)},u,u.exports,e,t,n,i)}return n[a].exports}for(var r="function"==typeof require&&require,a=0;a<i.length;a++)o(i[a]);return o}({1:[function(e,t,n){function i(e,t){for(;e&&e!==document;){if(e.matches(t))return e;e=e.parentNode}}if(Element&&!Element.prototype.matches){var o=Element.prototype;o.matches=o.matchesSelector||o.mozMatchesSelector||o.msMatchesSelector||o.oMatchesSelector||o.webkitMatchesSelector}t.exports=i},{}],2:[function(e,t,n){function i(e,t,n,i,r){var a=o.apply(this,arguments);return e.addEventListener(n,a,r),{destroy:function(){e.removeEventListener(n,a,r)}}}function o(e,t,n,i){return function(n){n.delegateTarget=r(n.target,t),n.delegateTarget&&i.call(e,n)}}var r=e("./closest");t.exports=i},{"./closest":1}],3:[function(e,t,n){n.node=function(e){return void 0!==e&&e instanceof HTMLElement&&1===e.nodeType},n.nodeList=function(e){var t=Object.prototype.toString.call(e);return void 0!==e&&("[object NodeList]"===t||"[object HTMLCollection]"===t)&&"length"in e&&(0===e.length||n.node(e[0]))},n.string=function(e){return"string"==typeof e||e instanceof String},n.fn=function(e){var t=Object.prototype.toString.call(e);return"[object Function]"===t}},{}],4:[function(e,t,n){function i(e,t,n){if(!e&&!t&&!n)throw new Error("Missing required arguments");if(!c.string(t))throw new TypeError("Second argument must be a String");if(!c.fn(n))throw new TypeError("Third argument must be a Function");if(c.node(e))return o(e,t,n);if(c.nodeList(e))return r(e,t,n);if(c.string(e))return a(e,t,n);throw new TypeError("First argument must be a String, HTMLElement, HTMLCollection, or NodeList")}function o(e,t,n){return e.addEventListener(t,n),{destroy:function(){e.removeEventListener(t,n)}}}function r(e,t,n){return Array.prototype.forEach.call(e,function(e){e.addEventListener(t,n)}),{destroy:function(){Array.prototype.forEach.call(e,function(e){e.removeEventListener(t,n)})}}}function a(e,t,n){return l(document.body,e,t,n)}var c=e("./is"),l=e("delegate");t.exports=i},{"./is":3,delegate:2}],5:[function(e,t,n){function i(e){var t;if("SELECT"===e.nodeName)e.focus(),t=e.value;else if("INPUT"===e.nodeName||"TEXTAREA"===e.nodeName)e.focus(),e.setSelectionRange(0,e.value.length),t=e.value;else{e.hasAttribute("contenteditable")&&e.focus();var n=window.getSelection(),i=document.createRange();i.selectNodeContents(e),n.removeAllRanges(),n.addRange(i),t=n.toString()}return t}t.exports=i},{}],6:[function(e,t,n){function i(){}i.prototype={on:function(e,t,n){var i=this.e||(this.e={});return(i[e]||(i[e]=[])).push({fn:t,ctx:n}),this},once:function(e,t,n){function i(){o.off(e,i),t.apply(n,arguments)}var o=this;return i._=t,this.on(e,i,n)},emit:function(e){var t=[].slice.call(arguments,1),n=((this.e||(this.e={}))[e]||[]).slice(),i=0,o=n.length;for(i;i<o;i++)n[i].fn.apply(n[i].ctx,t);return this},off:function(e,t){var n=this.e||(this.e={}),i=n[e],o=[];if(i&&t)for(var r=0,a=i.length;r<a;r++)i[r].fn!==t&&i[r].fn._!==t&&o.push(i[r]);return o.length?n[e]=o:delete n[e],this}},t.exports=i},{}],7:[function(t,n,i){!function(o,r){if("function"==typeof e&&e.amd)e(["module","select"],r);else if("undefined"!=typeof i)r(n,t("select"));else{var a={exports:{}};r(a,o.select),o.clipboardAction=a.exports}}(this,function(e,t){"use strict";function n(e){return e&&e.__esModule?e:{default:e}}function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var o=n(t),r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},a=function(){function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(t,n,i){return n&&e(t.prototype,n),i&&e(t,i),t}}(),c=function(){function e(t){i(this,e),this.resolveOptions(t),this.initSelection()}return a(e,[{key:"resolveOptions",value:function e(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action=t.action,this.emitter=t.emitter,this.target=t.target,this.text=t.text,this.trigger=t.trigger,this.selectedText=""}},{key:"initSelection",value:function e(){this.text?this.selectFake():this.target&&this.selectTarget()}},{key:"selectFake",value:function e(){var t=this,n="rtl"==document.documentElement.getAttribute("dir");this.removeFake(),this.fakeHandlerCallback=function(){return t.removeFake()},this.fakeHandler=document.body.addEventListener("click",this.fakeHandlerCallback)||!0,this.fakeElem=document.createElement("textarea"),this.fakeElem.style.fontSize="12pt",this.fakeElem.style.border="0",this.fakeElem.style.padding="0",this.fakeElem.style.margin="0",this.fakeElem.style.position="absolute",this.fakeElem.style[n?"right":"left"]="-9999px";var i=window.pageYOffset||document.documentElement.scrollTop;this.fakeElem.addEventListener("focus",window.scrollTo(0,i)),this.fakeElem.style.top=i+"px",this.fakeElem.setAttribute("readonly",""),this.fakeElem.value=this.text,document.body.appendChild(this.fakeElem),this.selectedText=(0,o.default)(this.fakeElem),this.copyText()}},{key:"removeFake",value:function e(){this.fakeHandler&&(document.body.removeEventListener("click",this.fakeHandlerCallback),this.fakeHandler=null,this.fakeHandlerCallback=null),this.fakeElem&&(document.body.removeChild(this.fakeElem),this.fakeElem=null)}},{key:"selectTarget",value:function e(){this.selectedText=(0,o.default)(this.target),this.copyText()}},{key:"copyText",value:function e(){var t=void 0;try{t=document.execCommand(this.action)}catch(e){t=!1}this.handleResult(t)}},{key:"handleResult",value:function e(t){this.emitter.emit(t?"success":"error",{action:this.action,text:this.selectedText,trigger:this.trigger,clearSelection:this.clearSelection.bind(this)})}},{key:"clearSelection",value:function e(){this.target&&this.target.blur(),window.getSelection().removeAllRanges()}},{key:"destroy",value:function e(){this.removeFake()}},{key:"action",set:function e(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"copy";if(this._action=t,"copy"!==this._action&&"cut"!==this._action)throw new Error('Invalid "action" value, use either "copy" or "cut"')},get:function e(){return this._action}},{key:"target",set:function e(t){if(void 0!==t){if(!t||"object"!==("undefined"==typeof t?"undefined":r(t))||1!==t.nodeType)throw new Error('Invalid "target" value, use a valid Element');if("copy"===this.action&&t.hasAttribute("disabled"))throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');if("cut"===this.action&&(t.hasAttribute("readonly")||t.hasAttribute("disabled")))throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');this._target=t}},get:function e(){return this._target}}]),e}();e.exports=c})},{select:5}],8:[function(t,n,i){!function(o,r){if("function"==typeof e&&e.amd)e(["module","./clipboard-action","tiny-emitter","good-listener"],r);else if("undefined"!=typeof i)r(n,t("./clipboard-action"),t("tiny-emitter"),t("good-listener"));else{var a={exports:{}};r(a,o.clipboardAction,o.tinyEmitter,o.goodListener),o.clipboard=a.exports}}(this,function(e,t,n,i){"use strict";function o(e){return e&&e.__esModule?e:{default:e}}function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function a(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function c(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}function l(e,t){var n="data-clipboard-"+e;if(t.hasAttribute(n))return t.getAttribute(n)}var s=o(t),u=o(n),f=o(i),d=function(){function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(t,n,i){return n&&e(t.prototype,n),i&&e(t,i),t}}(),h=function(e){function t(e,n){r(this,t);var i=a(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return i.resolveOptions(n),i.listenClick(e),i}return c(t,e),d(t,[{key:"resolveOptions",value:function e(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action="function"==typeof t.action?t.action:this.defaultAction,this.target="function"==typeof t.target?t.target:this.defaultTarget,this.text="function"==typeof t.text?t.text:this.defaultText}},{key:"listenClick",value:function e(t){var n=this;this.listener=(0,f.default)(t,"click",function(e){return n.onClick(e)})}},{key:"onClick",value:function e(t){var n=t.delegateTarget||t.currentTarget;this.clipboardAction&&(this.clipboardAction=null),this.clipboardAction=new s.default({action:this.action(n),target:this.target(n),text:this.text(n),trigger:n,emitter:this})}},{key:"defaultAction",value:function e(t){return l("action",t)}},{key:"defaultTarget",value:function e(t){var n=l("target",t);if(n)return document.querySelector(n)}},{key:"defaultText",value:function e(t){return l("text",t)}},{key:"destroy",value:function e(){this.listener.destroy(),this.clipboardAction&&(this.clipboardAction.destroy(),this.clipboardAction=null)}}]),t}(u.default);e.exports=h})},{"./clipboard-action":7,"good-listener":4,"tiny-emitter":6}]},{},[8])(8)});
 "use strict";window.onload=function(){getmdlSelect.init(".getmdl-select"),document.addEventListener("DOMNodeInserted",function(e){e.relatedNode.querySelectorAll(".getmdl-select").length>0&&componentHandler.upgradeDom()},!1)};var getmdlSelect={defaultValue:{width:300},addEventListeners:function(e){var t=e.querySelector("input"),n=e.querySelectorAll("li"),l=e.querySelector(".mdl-js-menu");t.onkeydown=function(e){38!=e.keyCode&&40!=e.keyCode||l.MaterialMenu.show()},l.onkeydown=function(e){13==e.keyCode&&t.focus()},[].forEach.call(n,function(n){n.onclick=function(){if(t.value=n.textContent,e.MaterialTextfield.change(n.textContent),setTimeout(function(){e.MaterialTextfield.updateClasses_()},250),t.dataset.val=n.dataset.val||"","createEvent"in document){var l=document.createEvent("HTMLEvents");l.initEvent("change",!1,!0),t.dispatchEvent(l)}else t.fireEvent("onchange")}})},init:function(e,t){var n=document.querySelectorAll(e);[].forEach.call(n,function(e){getmdlSelect.addEventListeners(e);var n=t?t:e.querySelector(".mdl-menu").offsetWidth?e.querySelector(".mdl-menu").offsetWidth:getmdlSelect.defaultValue.width;e.style.width=n+"px"})}};
 //# sourceMappingURL=getmdl-select.min.js.map
 /**
@@ -2002,47 +43,42 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
 !function(a){function b(a){return"undefined"==typeof a.which?!0:"number"==typeof a.which&&a.which>0?!a.ctrlKey&&!a.metaKey&&!a.altKey&&8!=a.which&&9!=a.which:!1}a.expr[":"].notmdproc=function(b){return a(b).data("mdproc")?!1:!0},a.material={options:{input:!0,ripples:!0,checkbox:!0,togglebutton:!0,radio:!0,arrive:!0,autofill:!1,withRipples:[".btn:not(.btn-link)",".card-image",".navbar a:not(.withoutripple)",".dropdown-menu a",".nav-tabs a:not(.withoutripple)",".withripple"].join(","),inputElements:"input.form-control, textarea.form-control, select.form-control",checkboxElements:".checkbox > label > input[type=checkbox]",togglebuttonElements:".togglebutton > label > input[type=checkbox]",radioElements:".radio > label > input[type=radio]"},checkbox:function(b){a(b?b:this.options.checkboxElements).filter(":notmdproc").data("mdproc",!0).after("<span class=checkbox-material><span class=check></span></span>")},togglebutton:function(b){a(b?b:this.options.togglebuttonElements).filter(":notmdproc").data("mdproc",!0).after("<span class=toggle></span>")},radio:function(b){a(b?b:this.options.radioElements).filter(":notmdproc").data("mdproc",!0).after("<span class=circle></span><span class=check></span>")},input:function(c){a(c?c:this.options.inputElements).filter(":notmdproc").data("mdproc",!0).each(function(){var b=a(this);if(a(this).attr("data-hint")||b.hasClass("floating-label")){if(b.wrap("<div class=form-control-wrapper></div>"),b.after("<span class=material-input></span>"),b.hasClass("floating-label")){var c=b.attr("placeholder");b.attr("placeholder",null).removeClass("floating-label"),b.after("<div class=floating-label>"+c+"</div>")}if(b.attr("data-hint")&&b.after("<div class=hint>"+b.attr("data-hint")+"</div>"),(null===b.val()||"undefined"==b.val()||""===b.val())&&b.addClass("empty"),b.parent().next().is("[type=file]")){b.parent().addClass("fileinput");var d=b.parent().next().detach();b.after(d)}}}),a(document).on("change",".checkbox input[type=checkbox]",function(){a(this).blur()}).on("keydown paste",".form-control",function(c){b(c)&&a(this).removeClass("empty")}).on("keyup change",".form-control",function(){var b=a(this);""===b.val()&&"undefined"!=typeof b[0].checkValidity&&b[0].checkValidity()?b.addClass("empty"):b.removeClass("empty")}).on("focus",".form-control-wrapper.fileinput",function(){a(this).find("input").addClass("focus")}).on("blur",".form-control-wrapper.fileinput",function(){a(this).find("input").removeClass("focus")}).on("change",".form-control-wrapper.fileinput [type=file]",function(){var b="";a.each(a(this)[0].files,function(a,c){b+=c.name+", "}),b=b.substring(0,b.length-2),b?a(this).prev().removeClass("empty"):a(this).prev().addClass("empty"),a(this).prev().val(b)})},ripples:function(b){a(b?b:this.options.withRipples).ripples()},autofill:function(){var b=setInterval(function(){a("input[type!=checkbox]").each(function(){a(this).val()&&a(this).val()!==a(this).attr("value")&&a(this).trigger("change")})},100);setTimeout(function(){clearInterval(b)},1e4);var c;a(document).on("focus","input",function(){var b=a(this).parents("form").find("input").not("[type=file]");c=setInterval(function(){b.each(function(){a(this).val()!==a(this).attr("value")&&a(this).trigger("change")})},100)}).on("blur","input",function(){clearInterval(c)})},init:function(){a.fn.ripples&&this.options.ripples&&this.ripples(),this.options.input&&this.input(),this.options.checkbox&&this.checkbox(),this.options.togglebutton&&this.togglebutton(),this.options.radio&&this.radio(),this.options.autofill&&this.autofill(),document.arrive&&this.options.arrive&&(a.fn.ripples&&this.options.ripples&&a(document).arrive(this.options.withRipples,function(){a.material.ripples(a(this))}),this.options.input&&a(document).arrive(this.options.inputElements,function(){a.material.input(a(this))}),this.options.checkbox&&a(document).arrive(this.options.checkboxElements,function(){a.material.checkbox(a(this))}),this.options.radio&&a(document).arrive(this.options.radioElements,function(){a.material.radio(a(this))}),this.options.togglebutton&&a(document).arrive(this.options.togglebuttonElements,function(){a.material.togglebutton(a(this))}))}}}(jQuery);
 //# sourceMappingURL=material.min.js.map
 
-//! moment.js
-//! version : 2.15.2
-//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
-//! license : MIT
-//! momentjs.com
-!function(a,b){"object"==typeof exports&&"undefined"!=typeof module?module.exports=b():"function"==typeof define&&define.amd?define(b):a.moment=b()}(this,function(){"use strict";function a(){return je.apply(null,arguments)}
+!function(a,b){"object"==typeof exports&&"undefined"!=typeof module?module.exports=b():"function"==typeof define&&define.amd?define(b):a.moment=b()}(this,function(){"use strict";function a(){return le.apply(null,arguments)}
 // This is done to register the method called with moment()
 // without creating circular dependencies.
-function b(a){je=a}function c(a){return a instanceof Array||"[object Array]"===Object.prototype.toString.call(a)}function d(a){
+function b(a){le=a}function c(a){return a instanceof Array||"[object Array]"===Object.prototype.toString.call(a)}function d(a){
 // IE8 will treat undefined and null as object if it wasn't for
 // input != null
 return null!=a&&"[object Object]"===Object.prototype.toString.call(a)}function e(a){var b;for(b in a)
 // even if its not own property I'd still call it non-empty
-return!1;return!0}function f(a){return a instanceof Date||"[object Date]"===Object.prototype.toString.call(a)}function g(a,b){var c,d=[];for(c=0;c<a.length;++c)d.push(b(a[c],c));return d}function h(a,b){return Object.prototype.hasOwnProperty.call(a,b)}function i(a,b){for(var c in b)h(b,c)&&(a[c]=b[c]);return h(b,"toString")&&(a.toString=b.toString),h(b,"valueOf")&&(a.valueOf=b.valueOf),a}function j(a,b,c,d){return qb(a,b,c,d,!0).utc()}function k(){
+return!1;return!0}function f(a){return"number"==typeof a||"[object Number]"===Object.prototype.toString.call(a)}function g(a){return a instanceof Date||"[object Date]"===Object.prototype.toString.call(a)}function h(a,b){var c,d=[];for(c=0;c<a.length;++c)d.push(b(a[c],c));return d}function i(a,b){return Object.prototype.hasOwnProperty.call(a,b)}function j(a,b){for(var c in b)i(b,c)&&(a[c]=b[c]);return i(b,"toString")&&(a.toString=b.toString),i(b,"valueOf")&&(a.valueOf=b.valueOf),a}function k(a,b,c,d){return rb(a,b,c,d,!0).utc()}function l(){
 // We need to deep clone this object.
-return{empty:!1,unusedTokens:[],unusedInput:[],overflow:-2,charsLeftOver:0,nullInput:!1,invalidMonth:null,invalidFormat:!1,userInvalidated:!1,iso:!1,parsedDateParts:[],meridiem:null}}function l(a){return null==a._pf&&(a._pf=k()),a._pf}function m(a){if(null==a._isValid){var b=l(a),c=ke.call(b.parsedDateParts,function(a){return null!=a}),d=!isNaN(a._d.getTime())&&b.overflow<0&&!b.empty&&!b.invalidMonth&&!b.invalidWeekday&&!b.nullInput&&!b.invalidFormat&&!b.userInvalidated&&(!b.meridiem||b.meridiem&&c);if(a._strict&&(d=d&&0===b.charsLeftOver&&0===b.unusedTokens.length&&void 0===b.bigHour),null!=Object.isFrozen&&Object.isFrozen(a))return d;a._isValid=d}return a._isValid}function n(a){var b=j(NaN);return null!=a?i(l(b),a):l(b).userInvalidated=!0,b}function o(a){return void 0===a}function p(a,b){var c,d,e;if(o(b._isAMomentObject)||(a._isAMomentObject=b._isAMomentObject),o(b._i)||(a._i=b._i),o(b._f)||(a._f=b._f),o(b._l)||(a._l=b._l),o(b._strict)||(a._strict=b._strict),o(b._tzm)||(a._tzm=b._tzm),o(b._isUTC)||(a._isUTC=b._isUTC),o(b._offset)||(a._offset=b._offset),o(b._pf)||(a._pf=l(b)),o(b._locale)||(a._locale=b._locale),le.length>0)for(c in le)d=le[c],e=b[d],o(e)||(a[d]=e);return a}
+return{empty:!1,unusedTokens:[],unusedInput:[],overflow:-2,charsLeftOver:0,nullInput:!1,invalidMonth:null,invalidFormat:!1,userInvalidated:!1,iso:!1,parsedDateParts:[],meridiem:null}}function m(a){return null==a._pf&&(a._pf=l()),a._pf}function n(a){if(null==a._isValid){var b=m(a),c=ne.call(b.parsedDateParts,function(a){return null!=a}),d=!isNaN(a._d.getTime())&&b.overflow<0&&!b.empty&&!b.invalidMonth&&!b.invalidWeekday&&!b.nullInput&&!b.invalidFormat&&!b.userInvalidated&&(!b.meridiem||b.meridiem&&c);if(a._strict&&(d=d&&0===b.charsLeftOver&&0===b.unusedTokens.length&&void 0===b.bigHour),null!=Object.isFrozen&&Object.isFrozen(a))return d;a._isValid=d}return a._isValid}function o(a){var b=k(NaN);return null!=a?j(m(b),a):m(b).userInvalidated=!0,b}function p(a){return void 0===a}function q(a,b){var c,d,e;if(p(b._isAMomentObject)||(a._isAMomentObject=b._isAMomentObject),p(b._i)||(a._i=b._i),p(b._f)||(a._f=b._f),p(b._l)||(a._l=b._l),p(b._strict)||(a._strict=b._strict),p(b._tzm)||(a._tzm=b._tzm),p(b._isUTC)||(a._isUTC=b._isUTC),p(b._offset)||(a._offset=b._offset),p(b._pf)||(a._pf=m(b)),p(b._locale)||(a._locale=b._locale),oe.length>0)for(c in oe)d=oe[c],e=b[d],p(e)||(a[d]=e);return a}
 // Moment prototype object
-function q(b){p(this,b),this._d=new Date(null!=b._d?b._d.getTime():NaN),
+function r(b){q(this,b),this._d=new Date(null!=b._d?b._d.getTime():NaN),this.isValid()||(this._d=new Date(NaN)),
 // Prevent infinite loop in case updateOffset creates new moment
 // objects.
-me===!1&&(me=!0,a.updateOffset(this),me=!1)}function r(a){return a instanceof q||null!=a&&null!=a._isAMomentObject}function s(a){return a<0?Math.ceil(a)||0:Math.floor(a)}function t(a){var b=+a,c=0;return 0!==b&&isFinite(b)&&(c=s(b)),c}
+pe===!1&&(pe=!0,a.updateOffset(this),pe=!1)}function s(a){return a instanceof r||null!=a&&null!=a._isAMomentObject}function t(a){return a<0?Math.ceil(a)||0:Math.floor(a)}function u(a){var b=+a,c=0;return 0!==b&&isFinite(b)&&(c=t(b)),c}
 // compare two arrays, return the number of differences
-function u(a,b,c){var d,e=Math.min(a.length,b.length),f=Math.abs(a.length-b.length),g=0;for(d=0;d<e;d++)(c&&a[d]!==b[d]||!c&&t(a[d])!==t(b[d]))&&g++;return g+f}function v(b){a.suppressDeprecationWarnings===!1&&"undefined"!=typeof console&&console.warn&&console.warn("Deprecation warning: "+b)}function w(b,c){var d=!0;return i(function(){if(null!=a.deprecationHandler&&a.deprecationHandler(null,b),d){for(var e,f=[],g=0;g<arguments.length;g++){if(e="","object"==typeof arguments[g]){e+="\n["+g+"] ";for(var h in arguments[0])e+=h+": "+arguments[0][h]+", ";e=e.slice(0,-2)}else e=arguments[g];f.push(e)}v(b+"\nArguments: "+Array.prototype.slice.call(f).join("")+"\n"+(new Error).stack),d=!1}return c.apply(this,arguments)},c)}function x(b,c){null!=a.deprecationHandler&&a.deprecationHandler(b,c),ne[b]||(v(c),ne[b]=!0)}function y(a){return a instanceof Function||"[object Function]"===Object.prototype.toString.call(a)}function z(a){var b,c;for(c in a)b=a[c],y(b)?this[c]=b:this["_"+c]=b;this._config=a,
+function v(a,b,c){var d,e=Math.min(a.length,b.length),f=Math.abs(a.length-b.length),g=0;for(d=0;d<e;d++)(c&&a[d]!==b[d]||!c&&u(a[d])!==u(b[d]))&&g++;return g+f}function w(b){a.suppressDeprecationWarnings===!1&&"undefined"!=typeof console&&console.warn&&console.warn("Deprecation warning: "+b)}function x(b,c){var d=!0;return j(function(){if(null!=a.deprecationHandler&&a.deprecationHandler(null,b),d){for(var e,f=[],g=0;g<arguments.length;g++){if(e="","object"==typeof arguments[g]){e+="\n["+g+"] ";for(var h in arguments[0])e+=h+": "+arguments[0][h]+", ";e=e.slice(0,-2)}else e=arguments[g];f.push(e)}w(b+"\nArguments: "+Array.prototype.slice.call(f).join("")+"\n"+(new Error).stack),d=!1}return c.apply(this,arguments)},c)}function y(b,c){null!=a.deprecationHandler&&a.deprecationHandler(b,c),qe[b]||(w(c),qe[b]=!0)}function z(a){return a instanceof Function||"[object Function]"===Object.prototype.toString.call(a)}function A(a){var b,c;for(c in a)b=a[c],z(b)?this[c]=b:this["_"+c]=b;this._config=a,
 // Lenient ordinal parsing accepts just a number in addition to
 // number + (possibly) stuff coming from _ordinalParseLenient.
-this._ordinalParseLenient=new RegExp(this._ordinalParse.source+"|"+/\d{1,2}/.source)}function A(a,b){var c,e=i({},a);for(c in b)h(b,c)&&(d(a[c])&&d(b[c])?(e[c]={},i(e[c],a[c]),i(e[c],b[c])):null!=b[c]?e[c]=b[c]:delete e[c]);for(c in a)h(a,c)&&!h(b,c)&&d(a[c])&&(
+this._ordinalParseLenient=new RegExp(this._ordinalParse.source+"|"+/\d{1,2}/.source)}function B(a,b){var c,e=j({},a);for(c in b)i(b,c)&&(d(a[c])&&d(b[c])?(e[c]={},j(e[c],a[c]),j(e[c],b[c])):null!=b[c]?e[c]=b[c]:delete e[c]);for(c in a)i(a,c)&&!i(b,c)&&d(a[c])&&(
 // make sure changes to properties don't modify parent config
-e[c]=i({},e[c]));return e}function B(a){null!=a&&this.set(a)}function C(a,b,c){var d=this._calendar[a]||this._calendar.sameElse;return y(d)?d.call(b,c):d}function D(a){var b=this._longDateFormat[a],c=this._longDateFormat[a.toUpperCase()];return b||!c?b:(this._longDateFormat[a]=c.replace(/MMMM|MM|DD|dddd/g,function(a){return a.slice(1)}),this._longDateFormat[a])}function E(){return this._invalidDate}function F(a){return this._ordinal.replace("%d",a)}function G(a,b,c,d){var e=this._relativeTime[c];return y(e)?e(a,b,c,d):e.replace(/%d/i,a)}function H(a,b){var c=this._relativeTime[a>0?"future":"past"];return y(c)?c(b):c.replace(/%s/i,b)}function I(a,b){var c=a.toLowerCase();we[c]=we[c+"s"]=we[b]=a}function J(a){return"string"==typeof a?we[a]||we[a.toLowerCase()]:void 0}function K(a){var b,c,d={};for(c in a)h(a,c)&&(b=J(c),b&&(d[b]=a[c]));return d}function L(a,b){xe[a]=b}function M(a){var b=[];for(var c in a)b.push({unit:c,priority:xe[c]});return b.sort(function(a,b){return a.priority-b.priority}),b}function N(b,c){return function(d){return null!=d?(P(this,b,d),a.updateOffset(this,c),this):O(this,b)}}function O(a,b){return a.isValid()?a._d["get"+(a._isUTC?"UTC":"")+b]():NaN}function P(a,b,c){a.isValid()&&a._d["set"+(a._isUTC?"UTC":"")+b](c)}
+e[c]=j({},e[c]));return e}function C(a){null!=a&&this.set(a)}function D(a,b,c){var d=this._calendar[a]||this._calendar.sameElse;return z(d)?d.call(b,c):d}function E(a){var b=this._longDateFormat[a],c=this._longDateFormat[a.toUpperCase()];return b||!c?b:(this._longDateFormat[a]=c.replace(/MMMM|MM|DD|dddd/g,function(a){return a.slice(1)}),this._longDateFormat[a])}function F(){return this._invalidDate}function G(a){return this._ordinal.replace("%d",a)}function H(a,b,c,d){var e=this._relativeTime[c];return z(e)?e(a,b,c,d):e.replace(/%d/i,a)}function I(a,b){var c=this._relativeTime[a>0?"future":"past"];return z(c)?c(b):c.replace(/%s/i,b)}function J(a,b){var c=a.toLowerCase();Ae[c]=Ae[c+"s"]=Ae[b]=a}function K(a){return"string"==typeof a?Ae[a]||Ae[a.toLowerCase()]:void 0}function L(a){var b,c,d={};for(c in a)i(a,c)&&(b=K(c),b&&(d[b]=a[c]));return d}function M(a,b){Be[a]=b}function N(a){var b=[];for(var c in a)b.push({unit:c,priority:Be[c]});return b.sort(function(a,b){return a.priority-b.priority}),b}function O(b,c){return function(d){return null!=d?(Q(this,b,d),a.updateOffset(this,c),this):P(this,b)}}function P(a,b){return a.isValid()?a._d["get"+(a._isUTC?"UTC":"")+b]():NaN}function Q(a,b,c){a.isValid()&&a._d["set"+(a._isUTC?"UTC":"")+b](c)}
 // MOMENTS
-function Q(a){return a=J(a),y(this[a])?this[a]():this}function R(a,b){if("object"==typeof a){a=K(a);for(var c=M(a),d=0;d<c.length;d++)this[c[d].unit](a[c[d].unit])}else if(a=J(a),y(this[a]))return this[a](b);return this}function S(a,b,c){var d=""+Math.abs(a),e=b-d.length,f=a>=0;return(f?c?"+":"":"-")+Math.pow(10,Math.max(0,e)).toString().substr(1)+d}
+function R(a){return a=K(a),z(this[a])?this[a]():this}function S(a,b){if("object"==typeof a){a=L(a);for(var c=N(a),d=0;d<c.length;d++)this[c[d].unit](a[c[d].unit])}else if(a=K(a),z(this[a]))return this[a](b);return this}function T(a,b,c){var d=""+Math.abs(a),e=b-d.length,f=a>=0;return(f?c?"+":"":"-")+Math.pow(10,Math.max(0,e)).toString().substr(1)+d}
 // token:    'M'
 // padded:   ['MM', 2]
 // ordinal:  'Mo'
 // callback: function () { this.month() + 1 }
-function T(a,b,c,d){var e=d;"string"==typeof d&&(e=function(){return this[d]()}),a&&(Be[a]=e),b&&(Be[b[0]]=function(){return S(e.apply(this,arguments),b[1],b[2])}),c&&(Be[c]=function(){return this.localeData().ordinal(e.apply(this,arguments),a)})}function U(a){return a.match(/\[[\s\S]/)?a.replace(/^\[|\]$/g,""):a.replace(/\\/g,"")}function V(a){var b,c,d=a.match(ye);for(b=0,c=d.length;b<c;b++)Be[d[b]]?d[b]=Be[d[b]]:d[b]=U(d[b]);return function(b){var e,f="";for(e=0;e<c;e++)f+=d[e]instanceof Function?d[e].call(b,a):d[e];return f}}
+function U(a,b,c,d){var e=d;"string"==typeof d&&(e=function(){return this[d]()}),a&&(Fe[a]=e),b&&(Fe[b[0]]=function(){return T(e.apply(this,arguments),b[1],b[2])}),c&&(Fe[c]=function(){return this.localeData().ordinal(e.apply(this,arguments),a)})}function V(a){return a.match(/\[[\s\S]/)?a.replace(/^\[|\]$/g,""):a.replace(/\\/g,"")}function W(a){var b,c,d=a.match(Ce);for(b=0,c=d.length;b<c;b++)Fe[d[b]]?d[b]=Fe[d[b]]:d[b]=V(d[b]);return function(b){var e,f="";for(e=0;e<c;e++)f+=d[e]instanceof Function?d[e].call(b,a):d[e];return f}}
 // format date using native date object
-function W(a,b){return a.isValid()?(b=X(b,a.localeData()),Ae[b]=Ae[b]||V(b),Ae[b](a)):a.localeData().invalidDate()}function X(a,b){function c(a){return b.longDateFormat(a)||a}var d=5;for(ze.lastIndex=0;d>=0&&ze.test(a);)a=a.replace(ze,c),ze.lastIndex=0,d-=1;return a}function Y(a,b,c){Te[a]=y(b)?b:function(a,d){return a&&c?c:b}}function Z(a,b){return h(Te,a)?Te[a](b._strict,b._locale):new RegExp($(a))}
+function X(a,b){return a.isValid()?(b=Y(b,a.localeData()),Ee[b]=Ee[b]||W(b),Ee[b](a)):a.localeData().invalidDate()}function Y(a,b){function c(a){return b.longDateFormat(a)||a}var d=5;for(De.lastIndex=0;d>=0&&De.test(a);)a=a.replace(De,c),De.lastIndex=0,d-=1;return a}function Z(a,b,c){Xe[a]=z(b)?b:function(a,d){return a&&c?c:b}}function $(a,b){return i(Xe,a)?Xe[a](b._strict,b._locale):new RegExp(_(a))}
 // Code from http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
-function $(a){return _(a.replace("\\","").replace(/\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g,function(a,b,c,d,e){return b||c||d||e}))}function _(a){return a.replace(/[-\/\\^$*+?.()|[\]{}]/g,"\\$&")}function aa(a,b){var c,d=b;for("string"==typeof a&&(a=[a]),"number"==typeof b&&(d=function(a,c){c[b]=t(a)}),c=0;c<a.length;c++)Ue[a[c]]=d}function ba(a,b){aa(a,function(a,c,d,e){d._w=d._w||{},b(a,d._w,d,e)})}function ca(a,b,c){null!=b&&h(Ue,a)&&Ue[a](b,c._a,c,a)}function da(a,b){return new Date(Date.UTC(a,b+1,0)).getUTCDate()}function ea(a,b){return a?c(this._months)?this._months[a.month()]:this._months[(this._months.isFormat||cf).test(b)?"format":"standalone"][a.month()]:this._months}function fa(a,b){return a?c(this._monthsShort)?this._monthsShort[a.month()]:this._monthsShort[cf.test(b)?"format":"standalone"][a.month()]:this._monthsShort}function ga(a,b,c){var d,e,f,g=a.toLocaleLowerCase();if(!this._monthsParse)for(
+function _(a){return aa(a.replace("\\","").replace(/\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g,function(a,b,c,d,e){return b||c||d||e}))}function aa(a){return a.replace(/[-\/\\^$*+?.()|[\]{}]/g,"\\$&")}function ba(a,b){var c,d=b;for("string"==typeof a&&(a=[a]),f(b)&&(d=function(a,c){c[b]=u(a)}),c=0;c<a.length;c++)Ye[a[c]]=d}function ca(a,b){ba(a,function(a,c,d,e){d._w=d._w||{},b(a,d._w,d,e)})}function da(a,b,c){null!=b&&i(Ye,a)&&Ye[a](b,c._a,c,a)}function ea(a,b){return new Date(Date.UTC(a,b+1,0)).getUTCDate()}function fa(a,b){return a?c(this._months)?this._months[a.month()]:this._months[(this._months.isFormat||hf).test(b)?"format":"standalone"][a.month()]:this._months}function ga(a,b){return a?c(this._monthsShort)?this._monthsShort[a.month()]:this._monthsShort[hf.test(b)?"format":"standalone"][a.month()]:this._monthsShort}function ha(a,b,c){var d,e,f,g=a.toLocaleLowerCase();if(!this._monthsParse)for(
 // this is not used
-this._monthsParse=[],this._longMonthsParse=[],this._shortMonthsParse=[],d=0;d<12;++d)f=j([2e3,d]),this._shortMonthsParse[d]=this.monthsShort(f,"").toLocaleLowerCase(),this._longMonthsParse[d]=this.months(f,"").toLocaleLowerCase();return c?"MMM"===b?(e=pe.call(this._shortMonthsParse,g),e!==-1?e:null):(e=pe.call(this._longMonthsParse,g),e!==-1?e:null):"MMM"===b?(e=pe.call(this._shortMonthsParse,g),e!==-1?e:(e=pe.call(this._longMonthsParse,g),e!==-1?e:null)):(e=pe.call(this._longMonthsParse,g),e!==-1?e:(e=pe.call(this._shortMonthsParse,g),e!==-1?e:null))}function ha(a,b,c){var d,e,f;if(this._monthsParseExact)return ga.call(this,a,b,c);
+this._monthsParse=[],this._longMonthsParse=[],this._shortMonthsParse=[],d=0;d<12;++d)f=k([2e3,d]),this._shortMonthsParse[d]=this.monthsShort(f,"").toLocaleLowerCase(),this._longMonthsParse[d]=this.months(f,"").toLocaleLowerCase();return c?"MMM"===b?(e=gf.call(this._shortMonthsParse,g),e!==-1?e:null):(e=gf.call(this._longMonthsParse,g),e!==-1?e:null):"MMM"===b?(e=gf.call(this._shortMonthsParse,g),e!==-1?e:(e=gf.call(this._longMonthsParse,g),e!==-1?e:null)):(e=gf.call(this._longMonthsParse,g),e!==-1?e:(e=gf.call(this._shortMonthsParse,g),e!==-1?e:null))}function ia(a,b,c){var d,e,f;if(this._monthsParseExact)return ha.call(this,a,b,c);
 // TODO: add sorting
 // Sorting makes sure if one month (or abbr) is a prefix of another
 // see sorting in computeMonthsParse
@@ -2050,180 +86,183 @@ for(this._monthsParse||(this._monthsParse=[],this._longMonthsParse=[],this._shor
 // test the regex
 if(
 // make the regex if we don't have it already
-e=j([2e3,d]),c&&!this._longMonthsParse[d]&&(this._longMonthsParse[d]=new RegExp("^"+this.months(e,"").replace(".","")+"$","i"),this._shortMonthsParse[d]=new RegExp("^"+this.monthsShort(e,"").replace(".","")+"$","i")),c||this._monthsParse[d]||(f="^"+this.months(e,"")+"|^"+this.monthsShort(e,""),this._monthsParse[d]=new RegExp(f.replace(".",""),"i")),c&&"MMMM"===b&&this._longMonthsParse[d].test(a))return d;if(c&&"MMM"===b&&this._shortMonthsParse[d].test(a))return d;if(!c&&this._monthsParse[d].test(a))return d}}
+e=k([2e3,d]),c&&!this._longMonthsParse[d]&&(this._longMonthsParse[d]=new RegExp("^"+this.months(e,"").replace(".","")+"$","i"),this._shortMonthsParse[d]=new RegExp("^"+this.monthsShort(e,"").replace(".","")+"$","i")),c||this._monthsParse[d]||(f="^"+this.months(e,"")+"|^"+this.monthsShort(e,""),this._monthsParse[d]=new RegExp(f.replace(".",""),"i")),c&&"MMMM"===b&&this._longMonthsParse[d].test(a))return d;if(c&&"MMM"===b&&this._shortMonthsParse[d].test(a))return d;if(!c&&this._monthsParse[d].test(a))return d}}
 // MOMENTS
-function ia(a,b){var c;if(!a.isValid())
+function ja(a,b){var c;if(!a.isValid())
 // No op
-return a;if("string"==typeof b)if(/^\d+$/.test(b))b=t(b);else
+return a;if("string"==typeof b)if(/^\d+$/.test(b))b=u(b);else
 // TODO: Another silent failure?
-if(b=a.localeData().monthsParse(b),"number"!=typeof b)return a;return c=Math.min(a.date(),da(a.year(),b)),a._d["set"+(a._isUTC?"UTC":"")+"Month"](b,c),a}function ja(b){return null!=b?(ia(this,b),a.updateOffset(this,!0),this):O(this,"Month")}function ka(){return da(this.year(),this.month())}function la(a){return this._monthsParseExact?(h(this,"_monthsRegex")||na.call(this),a?this._monthsShortStrictRegex:this._monthsShortRegex):(h(this,"_monthsShortRegex")||(this._monthsShortRegex=ff),this._monthsShortStrictRegex&&a?this._monthsShortStrictRegex:this._monthsShortRegex)}function ma(a){return this._monthsParseExact?(h(this,"_monthsRegex")||na.call(this),a?this._monthsStrictRegex:this._monthsRegex):(h(this,"_monthsRegex")||(this._monthsRegex=gf),this._monthsStrictRegex&&a?this._monthsStrictRegex:this._monthsRegex)}function na(){function a(a,b){return b.length-a.length}var b,c,d=[],e=[],f=[];for(b=0;b<12;b++)
+if(b=a.localeData().monthsParse(b),!f(b))return a;return c=Math.min(a.date(),ea(a.year(),b)),a._d["set"+(a._isUTC?"UTC":"")+"Month"](b,c),a}function ka(b){return null!=b?(ja(this,b),a.updateOffset(this,!0),this):P(this,"Month")}function la(){return ea(this.year(),this.month())}function ma(a){return this._monthsParseExact?(i(this,"_monthsRegex")||oa.call(this),a?this._monthsShortStrictRegex:this._monthsShortRegex):(i(this,"_monthsShortRegex")||(this._monthsShortRegex=lf),this._monthsShortStrictRegex&&a?this._monthsShortStrictRegex:this._monthsShortRegex)}function na(a){return this._monthsParseExact?(i(this,"_monthsRegex")||oa.call(this),a?this._monthsStrictRegex:this._monthsRegex):(i(this,"_monthsRegex")||(this._monthsRegex=mf),this._monthsStrictRegex&&a?this._monthsStrictRegex:this._monthsRegex)}function oa(){function a(a,b){return b.length-a.length}var b,c,d=[],e=[],f=[];for(b=0;b<12;b++)
 // make the regex if we don't have it already
-c=j([2e3,b]),d.push(this.monthsShort(c,"")),e.push(this.months(c,"")),f.push(this.months(c,"")),f.push(this.monthsShort(c,""));for(
+c=k([2e3,b]),d.push(this.monthsShort(c,"")),e.push(this.months(c,"")),f.push(this.months(c,"")),f.push(this.monthsShort(c,""));for(
 // Sorting makes sure if one month (or abbr) is a prefix of another it
 // will match the longer piece.
-d.sort(a),e.sort(a),f.sort(a),b=0;b<12;b++)d[b]=_(d[b]),e[b]=_(e[b]);for(b=0;b<24;b++)f[b]=_(f[b]);this._monthsRegex=new RegExp("^("+f.join("|")+")","i"),this._monthsShortRegex=this._monthsRegex,this._monthsStrictRegex=new RegExp("^("+e.join("|")+")","i"),this._monthsShortStrictRegex=new RegExp("^("+d.join("|")+")","i")}
+d.sort(a),e.sort(a),f.sort(a),b=0;b<12;b++)d[b]=aa(d[b]),e[b]=aa(e[b]);for(b=0;b<24;b++)f[b]=aa(f[b]);this._monthsRegex=new RegExp("^("+f.join("|")+")","i"),this._monthsShortRegex=this._monthsRegex,this._monthsStrictRegex=new RegExp("^("+e.join("|")+")","i"),this._monthsShortStrictRegex=new RegExp("^("+d.join("|")+")","i")}
 // HELPERS
-function oa(a){return pa(a)?366:365}function pa(a){return a%4===0&&a%100!==0||a%400===0}function qa(){return pa(this.year())}function ra(a,b,c,d,e,f,g){
+function pa(a){return qa(a)?366:365}function qa(a){return a%4===0&&a%100!==0||a%400===0}function ra(){return qa(this.year())}function sa(a,b,c,d,e,f,g){
 //can't just apply() to create a date:
 //http://stackoverflow.com/questions/181348/instantiating-a-javascript-object-by-calling-prototype-constructor-apply
 var h=new Date(a,b,c,d,e,f,g);
 //the date constructor remaps years 0-99 to 1900-1999
-return a<100&&a>=0&&isFinite(h.getFullYear())&&h.setFullYear(a),h}function sa(a){var b=new Date(Date.UTC.apply(null,arguments));
+return a<100&&a>=0&&isFinite(h.getFullYear())&&h.setFullYear(a),h}function ta(a){var b=new Date(Date.UTC.apply(null,arguments));
 //the Date.UTC function remaps years 0-99 to 1900-1999
 return a<100&&a>=0&&isFinite(b.getUTCFullYear())&&b.setUTCFullYear(a),b}
 // start-of-first-week - start-of-year
-function ta(a,b,c){var// first-week day -- which january is always in the first week (4 for iso, 1 for other)
+function ua(a,b,c){var// first-week day -- which january is always in the first week (4 for iso, 1 for other)
 d=7+b-c,
 // first-week day local weekday -- which local weekday is fwd
-e=(7+sa(a,0,d).getUTCDay()-b)%7;return-e+d-1}
+e=(7+ta(a,0,d).getUTCDay()-b)%7;return-e+d-1}
 //http://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
-function ua(a,b,c,d,e){var f,g,h=(7+c-d)%7,i=ta(a,d,e),j=1+7*(b-1)+h+i;return j<=0?(f=a-1,g=oa(f)+j):j>oa(a)?(f=a+1,g=j-oa(a)):(f=a,g=j),{year:f,dayOfYear:g}}function va(a,b,c){var d,e,f=ta(a.year(),b,c),g=Math.floor((a.dayOfYear()-f-1)/7)+1;return g<1?(e=a.year()-1,d=g+wa(e,b,c)):g>wa(a.year(),b,c)?(d=g-wa(a.year(),b,c),e=a.year()+1):(e=a.year(),d=g),{week:d,year:e}}function wa(a,b,c){var d=ta(a,b,c),e=ta(a+1,b,c);return(oa(a)-d+e)/7}
+function va(a,b,c,d,e){var f,g,h=(7+c-d)%7,i=ua(a,d,e),j=1+7*(b-1)+h+i;return j<=0?(f=a-1,g=pa(f)+j):j>pa(a)?(f=a+1,g=j-pa(a)):(f=a,g=j),{year:f,dayOfYear:g}}function wa(a,b,c){var d,e,f=ua(a.year(),b,c),g=Math.floor((a.dayOfYear()-f-1)/7)+1;return g<1?(e=a.year()-1,d=g+xa(e,b,c)):g>xa(a.year(),b,c)?(d=g-xa(a.year(),b,c),e=a.year()+1):(e=a.year(),d=g),{week:d,year:e}}function xa(a,b,c){var d=ua(a,b,c),e=ua(a+1,b,c);return(pa(a)-d+e)/7}
 // HELPERS
 // LOCALES
-function xa(a){return va(a,this._week.dow,this._week.doy).week}function ya(){return this._week.dow}function za(){return this._week.doy}
+function ya(a){return wa(a,this._week.dow,this._week.doy).week}function za(){return this._week.dow}function Aa(){return this._week.doy}
 // MOMENTS
-function Aa(a){var b=this.localeData().week(this);return null==a?b:this.add(7*(a-b),"d")}function Ba(a){var b=va(this,1,4).week;return null==a?b:this.add(7*(a-b),"d")}
+function Ba(a){var b=this.localeData().week(this);return null==a?b:this.add(7*(a-b),"d")}function Ca(a){var b=wa(this,1,4).week;return null==a?b:this.add(7*(a-b),"d")}
 // HELPERS
-function Ca(a,b){return"string"!=typeof a?a:isNaN(a)?(a=b.weekdaysParse(a),"number"==typeof a?a:null):parseInt(a,10)}function Da(a,b){return"string"==typeof a?b.weekdaysParse(a)%7||7:isNaN(a)?null:a}function Ea(a,b){return a?c(this._weekdays)?this._weekdays[a.day()]:this._weekdays[this._weekdays.isFormat.test(b)?"format":"standalone"][a.day()]:this._weekdays}function Fa(a){return a?this._weekdaysShort[a.day()]:this._weekdaysShort}function Ga(a){return a?this._weekdaysMin[a.day()]:this._weekdaysMin}function Ha(a,b,c){var d,e,f,g=a.toLocaleLowerCase();if(!this._weekdaysParse)for(this._weekdaysParse=[],this._shortWeekdaysParse=[],this._minWeekdaysParse=[],d=0;d<7;++d)f=j([2e3,1]).day(d),this._minWeekdaysParse[d]=this.weekdaysMin(f,"").toLocaleLowerCase(),this._shortWeekdaysParse[d]=this.weekdaysShort(f,"").toLocaleLowerCase(),this._weekdaysParse[d]=this.weekdays(f,"").toLocaleLowerCase();return c?"dddd"===b?(e=pe.call(this._weekdaysParse,g),e!==-1?e:null):"ddd"===b?(e=pe.call(this._shortWeekdaysParse,g),e!==-1?e:null):(e=pe.call(this._minWeekdaysParse,g),e!==-1?e:null):"dddd"===b?(e=pe.call(this._weekdaysParse,g),e!==-1?e:(e=pe.call(this._shortWeekdaysParse,g),e!==-1?e:(e=pe.call(this._minWeekdaysParse,g),e!==-1?e:null))):"ddd"===b?(e=pe.call(this._shortWeekdaysParse,g),e!==-1?e:(e=pe.call(this._weekdaysParse,g),e!==-1?e:(e=pe.call(this._minWeekdaysParse,g),e!==-1?e:null))):(e=pe.call(this._minWeekdaysParse,g),e!==-1?e:(e=pe.call(this._weekdaysParse,g),e!==-1?e:(e=pe.call(this._shortWeekdaysParse,g),e!==-1?e:null)))}function Ia(a,b,c){var d,e,f;if(this._weekdaysParseExact)return Ha.call(this,a,b,c);for(this._weekdaysParse||(this._weekdaysParse=[],this._minWeekdaysParse=[],this._shortWeekdaysParse=[],this._fullWeekdaysParse=[]),d=0;d<7;d++){
+function Da(a,b){return"string"!=typeof a?a:isNaN(a)?(a=b.weekdaysParse(a),"number"==typeof a?a:null):parseInt(a,10)}function Ea(a,b){return"string"==typeof a?b.weekdaysParse(a)%7||7:isNaN(a)?null:a}function Fa(a,b){return a?c(this._weekdays)?this._weekdays[a.day()]:this._weekdays[this._weekdays.isFormat.test(b)?"format":"standalone"][a.day()]:this._weekdays}function Ga(a){return a?this._weekdaysShort[a.day()]:this._weekdaysShort}function Ha(a){return a?this._weekdaysMin[a.day()]:this._weekdaysMin}function Ia(a,b,c){var d,e,f,g=a.toLocaleLowerCase();if(!this._weekdaysParse)for(this._weekdaysParse=[],this._shortWeekdaysParse=[],this._minWeekdaysParse=[],d=0;d<7;++d)f=k([2e3,1]).day(d),this._minWeekdaysParse[d]=this.weekdaysMin(f,"").toLocaleLowerCase(),this._shortWeekdaysParse[d]=this.weekdaysShort(f,"").toLocaleLowerCase(),this._weekdaysParse[d]=this.weekdays(f,"").toLocaleLowerCase();return c?"dddd"===b?(e=gf.call(this._weekdaysParse,g),e!==-1?e:null):"ddd"===b?(e=gf.call(this._shortWeekdaysParse,g),e!==-1?e:null):(e=gf.call(this._minWeekdaysParse,g),e!==-1?e:null):"dddd"===b?(e=gf.call(this._weekdaysParse,g),e!==-1?e:(e=gf.call(this._shortWeekdaysParse,g),e!==-1?e:(e=gf.call(this._minWeekdaysParse,g),e!==-1?e:null))):"ddd"===b?(e=gf.call(this._shortWeekdaysParse,g),e!==-1?e:(e=gf.call(this._weekdaysParse,g),e!==-1?e:(e=gf.call(this._minWeekdaysParse,g),e!==-1?e:null))):(e=gf.call(this._minWeekdaysParse,g),e!==-1?e:(e=gf.call(this._weekdaysParse,g),e!==-1?e:(e=gf.call(this._shortWeekdaysParse,g),e!==-1?e:null)))}function Ja(a,b,c){var d,e,f;if(this._weekdaysParseExact)return Ia.call(this,a,b,c);for(this._weekdaysParse||(this._weekdaysParse=[],this._minWeekdaysParse=[],this._shortWeekdaysParse=[],this._fullWeekdaysParse=[]),d=0;d<7;d++){
 // test the regex
 if(
 // make the regex if we don't have it already
-e=j([2e3,1]).day(d),c&&!this._fullWeekdaysParse[d]&&(this._fullWeekdaysParse[d]=new RegExp("^"+this.weekdays(e,"").replace(".",".?")+"$","i"),this._shortWeekdaysParse[d]=new RegExp("^"+this.weekdaysShort(e,"").replace(".",".?")+"$","i"),this._minWeekdaysParse[d]=new RegExp("^"+this.weekdaysMin(e,"").replace(".",".?")+"$","i")),this._weekdaysParse[d]||(f="^"+this.weekdays(e,"")+"|^"+this.weekdaysShort(e,"")+"|^"+this.weekdaysMin(e,""),this._weekdaysParse[d]=new RegExp(f.replace(".",""),"i")),c&&"dddd"===b&&this._fullWeekdaysParse[d].test(a))return d;if(c&&"ddd"===b&&this._shortWeekdaysParse[d].test(a))return d;if(c&&"dd"===b&&this._minWeekdaysParse[d].test(a))return d;if(!c&&this._weekdaysParse[d].test(a))return d}}
+e=k([2e3,1]).day(d),c&&!this._fullWeekdaysParse[d]&&(this._fullWeekdaysParse[d]=new RegExp("^"+this.weekdays(e,"").replace(".",".?")+"$","i"),this._shortWeekdaysParse[d]=new RegExp("^"+this.weekdaysShort(e,"").replace(".",".?")+"$","i"),this._minWeekdaysParse[d]=new RegExp("^"+this.weekdaysMin(e,"").replace(".",".?")+"$","i")),this._weekdaysParse[d]||(f="^"+this.weekdays(e,"")+"|^"+this.weekdaysShort(e,"")+"|^"+this.weekdaysMin(e,""),this._weekdaysParse[d]=new RegExp(f.replace(".",""),"i")),c&&"dddd"===b&&this._fullWeekdaysParse[d].test(a))return d;if(c&&"ddd"===b&&this._shortWeekdaysParse[d].test(a))return d;if(c&&"dd"===b&&this._minWeekdaysParse[d].test(a))return d;if(!c&&this._weekdaysParse[d].test(a))return d}}
 // MOMENTS
-function Ja(a){if(!this.isValid())return null!=a?this:NaN;var b=this._isUTC?this._d.getUTCDay():this._d.getDay();return null!=a?(a=Ca(a,this.localeData()),this.add(a-b,"d")):b}function Ka(a){if(!this.isValid())return null!=a?this:NaN;var b=(this.day()+7-this.localeData()._week.dow)%7;return null==a?b:this.add(a-b,"d")}function La(a){if(!this.isValid())return null!=a?this:NaN;
+function Ka(a){if(!this.isValid())return null!=a?this:NaN;var b=this._isUTC?this._d.getUTCDay():this._d.getDay();return null!=a?(a=Da(a,this.localeData()),this.add(a-b,"d")):b}function La(a){if(!this.isValid())return null!=a?this:NaN;var b=(this.day()+7-this.localeData()._week.dow)%7;return null==a?b:this.add(a-b,"d")}function Ma(a){if(!this.isValid())return null!=a?this:NaN;
 // behaves the same as moment#day except
 // as a getter, returns 7 instead of 0 (1-7 range instead of 0-6)
 // as a setter, sunday should belong to the previous week.
-if(null!=a){var b=Da(a,this.localeData());return this.day(this.day()%7?b:b-7)}return this.day()||7}function Ma(a){return this._weekdaysParseExact?(h(this,"_weekdaysRegex")||Pa.call(this),a?this._weekdaysStrictRegex:this._weekdaysRegex):(h(this,"_weekdaysRegex")||(this._weekdaysRegex=nf),this._weekdaysStrictRegex&&a?this._weekdaysStrictRegex:this._weekdaysRegex)}function Na(a){return this._weekdaysParseExact?(h(this,"_weekdaysRegex")||Pa.call(this),a?this._weekdaysShortStrictRegex:this._weekdaysShortRegex):(h(this,"_weekdaysShortRegex")||(this._weekdaysShortRegex=of),this._weekdaysShortStrictRegex&&a?this._weekdaysShortStrictRegex:this._weekdaysShortRegex)}function Oa(a){return this._weekdaysParseExact?(h(this,"_weekdaysRegex")||Pa.call(this),a?this._weekdaysMinStrictRegex:this._weekdaysMinRegex):(h(this,"_weekdaysMinRegex")||(this._weekdaysMinRegex=pf),this._weekdaysMinStrictRegex&&a?this._weekdaysMinStrictRegex:this._weekdaysMinRegex)}function Pa(){function a(a,b){return b.length-a.length}var b,c,d,e,f,g=[],h=[],i=[],k=[];for(b=0;b<7;b++)
+if(null!=a){var b=Ea(a,this.localeData());return this.day(this.day()%7?b:b-7)}return this.day()||7}function Na(a){return this._weekdaysParseExact?(i(this,"_weekdaysRegex")||Qa.call(this),a?this._weekdaysStrictRegex:this._weekdaysRegex):(i(this,"_weekdaysRegex")||(this._weekdaysRegex=sf),this._weekdaysStrictRegex&&a?this._weekdaysStrictRegex:this._weekdaysRegex)}function Oa(a){return this._weekdaysParseExact?(i(this,"_weekdaysRegex")||Qa.call(this),a?this._weekdaysShortStrictRegex:this._weekdaysShortRegex):(i(this,"_weekdaysShortRegex")||(this._weekdaysShortRegex=tf),this._weekdaysShortStrictRegex&&a?this._weekdaysShortStrictRegex:this._weekdaysShortRegex)}function Pa(a){return this._weekdaysParseExact?(i(this,"_weekdaysRegex")||Qa.call(this),a?this._weekdaysMinStrictRegex:this._weekdaysMinRegex):(i(this,"_weekdaysMinRegex")||(this._weekdaysMinRegex=uf),this._weekdaysMinStrictRegex&&a?this._weekdaysMinStrictRegex:this._weekdaysMinRegex)}function Qa(){function a(a,b){return b.length-a.length}var b,c,d,e,f,g=[],h=[],i=[],j=[];for(b=0;b<7;b++)
 // make the regex if we don't have it already
-c=j([2e3,1]).day(b),d=this.weekdaysMin(c,""),e=this.weekdaysShort(c,""),f=this.weekdays(c,""),g.push(d),h.push(e),i.push(f),k.push(d),k.push(e),k.push(f);for(
+c=k([2e3,1]).day(b),d=this.weekdaysMin(c,""),e=this.weekdaysShort(c,""),f=this.weekdays(c,""),g.push(d),h.push(e),i.push(f),j.push(d),j.push(e),j.push(f);for(
 // Sorting makes sure if one weekday (or abbr) is a prefix of another it
 // will match the longer piece.
-g.sort(a),h.sort(a),i.sort(a),k.sort(a),b=0;b<7;b++)h[b]=_(h[b]),i[b]=_(i[b]),k[b]=_(k[b]);this._weekdaysRegex=new RegExp("^("+k.join("|")+")","i"),this._weekdaysShortRegex=this._weekdaysRegex,this._weekdaysMinRegex=this._weekdaysRegex,this._weekdaysStrictRegex=new RegExp("^("+i.join("|")+")","i"),this._weekdaysShortStrictRegex=new RegExp("^("+h.join("|")+")","i"),this._weekdaysMinStrictRegex=new RegExp("^("+g.join("|")+")","i")}
+g.sort(a),h.sort(a),i.sort(a),j.sort(a),b=0;b<7;b++)h[b]=aa(h[b]),i[b]=aa(i[b]),j[b]=aa(j[b]);this._weekdaysRegex=new RegExp("^("+j.join("|")+")","i"),this._weekdaysShortRegex=this._weekdaysRegex,this._weekdaysMinRegex=this._weekdaysRegex,this._weekdaysStrictRegex=new RegExp("^("+i.join("|")+")","i"),this._weekdaysShortStrictRegex=new RegExp("^("+h.join("|")+")","i"),this._weekdaysMinStrictRegex=new RegExp("^("+g.join("|")+")","i")}
 // FORMATTING
-function Qa(){return this.hours()%12||12}function Ra(){return this.hours()||24}function Sa(a,b){T(a,0,0,function(){return this.localeData().meridiem(this.hours(),this.minutes(),b)})}
+function Ra(){return this.hours()%12||12}function Sa(){return this.hours()||24}function Ta(a,b){U(a,0,0,function(){return this.localeData().meridiem(this.hours(),this.minutes(),b)})}
 // PARSING
-function Ta(a,b){return b._meridiemParse}
+function Ua(a,b){return b._meridiemParse}
 // LOCALES
-function Ua(a){
+function Va(a){
 // IE8 Quirks Mode & IE7 Standards Mode do not allow accessing strings like arrays
 // Using charAt should be more compatible.
-return"p"===(a+"").toLowerCase().charAt(0)}function Va(a,b,c){return a>11?c?"pm":"PM":c?"am":"AM"}function Wa(a){return a?a.toLowerCase().replace("_","-"):a}
+return"p"===(a+"").toLowerCase().charAt(0)}function Wa(a,b,c){return a>11?c?"pm":"PM":c?"am":"AM"}function Xa(a){return a?a.toLowerCase().replace("_","-"):a}
 // pick the locale from the array
 // try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
 // substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
-function Xa(a){for(var b,c,d,e,f=0;f<a.length;){for(e=Wa(a[f]).split("-"),b=e.length,c=Wa(a[f+1]),c=c?c.split("-"):null;b>0;){if(d=Ya(e.slice(0,b).join("-")))return d;if(c&&c.length>=b&&u(e,c,!0)>=b-1)
+function Ya(a){for(var b,c,d,e,f=0;f<a.length;){for(e=Xa(a[f]).split("-"),b=e.length,c=Xa(a[f+1]),c=c?c.split("-"):null;b>0;){if(d=Za(e.slice(0,b).join("-")))return d;if(c&&c.length>=b&&v(e,c,!0)>=b-1)
 //the next array item is better than a shallower substring of this one
-break;b--}f++}return null}function Ya(a){var b=null;
+break;b--}f++}return null}function Za(a){var b=null;
 // TODO: Find a better way to register and load all the locales in Node
-if(!uf[a]&&"undefined"!=typeof module&&module&&module.exports)try{b=qf._abbr,require("./locale/"+a),
+if(!zf[a]&&"undefined"!=typeof module&&module&&module.exports)try{b=vf._abbr,require("./locale/"+a),
 // because defineLocale currently also sets the global locale, we
 // want to undo that for lazy loaded locales
-Za(b)}catch(a){}return uf[a]}
+$a(b)}catch(a){}return zf[a]}
 // This function will load locale and then set the global locale.  If
 // no arguments are passed in, it will simply return the current global
 // locale key.
-function Za(a,b){var c;
+function $a(a,b){var c;
 // moment.duration._locale = moment._locale = data;
-return a&&(c=o(b)?ab(a):$a(a,b),c&&(qf=c)),qf._abbr}function $a(a,b){if(null!==b){var c=tf;
-// treat as if there is no base config
+return a&&(c=p(b)?bb(a):_a(a,b),c&&(vf=c)),vf._abbr}function _a(a,b){if(null!==b){var c=yf;if(b.abbr=a,null!=zf[a])y("defineLocaleOverride","use moment.updateLocale(localeName, config) to change an existing locale. moment.defineLocale(localeName, config) should only be used for creating a new locale See http://momentjs.com/guides/#/warnings/define-locale/ for more info."),c=zf[a]._config;else if(null!=b.parentLocale){if(null==zf[b.parentLocale])return Af[b.parentLocale]||(Af[b.parentLocale]=[]),Af[b.parentLocale].push({name:a,config:b}),null;c=zf[b.parentLocale]._config}
 // backwards compat for now: also set the locale
-return b.abbr=a,null!=uf[a]?(x("defineLocaleOverride","use moment.updateLocale(localeName, config) to change an existing locale. moment.defineLocale(localeName, config) should only be used for creating a new locale See http://momentjs.com/guides/#/warnings/define-locale/ for more info."),c=uf[a]._config):null!=b.parentLocale&&(null!=uf[b.parentLocale]?c=uf[b.parentLocale]._config:x("parentLocaleUndefined","specified parentLocale is not defined yet. See http://momentjs.com/guides/#/warnings/parent-locale/")),uf[a]=new B(A(c,b)),Za(a),uf[a]}
+// make sure we set the locale AFTER all child locales have been
+// created, so we won't end up with the child locale set.
+return zf[a]=new C(B(c,b)),Af[a]&&Af[a].forEach(function(a){_a(a.name,a.config)}),$a(a),zf[a]}
 // useful for testing
-return delete uf[a],null}function _a(a,b){if(null!=b){var c,d=tf;
+return delete zf[a],null}function ab(a,b){if(null!=b){var c,d=yf;
 // MERGE
-null!=uf[a]&&(d=uf[a]._config),b=A(d,b),c=new B(b),c.parentLocale=uf[a],uf[a]=c,
+null!=zf[a]&&(d=zf[a]._config),b=B(d,b),c=new C(b),c.parentLocale=zf[a],zf[a]=c,
 // backwards compat for now: also set the locale
-Za(a)}else
+$a(a)}else
 // pass null for config to unupdate, useful for tests
-null!=uf[a]&&(null!=uf[a].parentLocale?uf[a]=uf[a].parentLocale:null!=uf[a]&&delete uf[a]);return uf[a]}
+null!=zf[a]&&(null!=zf[a].parentLocale?zf[a]=zf[a].parentLocale:null!=zf[a]&&delete zf[a]);return zf[a]}
 // returns locale data
-function ab(a){var b;if(a&&a._locale&&a._locale._abbr&&(a=a._locale._abbr),!a)return qf;if(!c(a)){if(
+function bb(a){var b;if(a&&a._locale&&a._locale._abbr&&(a=a._locale._abbr),!a)return vf;if(!c(a)){if(
 //short-circuit everything else
-b=Ya(a))return b;a=[a]}return Xa(a)}function bb(){return oe(uf)}function cb(a){var b,c=a._a;return c&&l(a).overflow===-2&&(b=c[We]<0||c[We]>11?We:c[Xe]<1||c[Xe]>da(c[Ve],c[We])?Xe:c[Ye]<0||c[Ye]>24||24===c[Ye]&&(0!==c[Ze]||0!==c[$e]||0!==c[_e])?Ye:c[Ze]<0||c[Ze]>59?Ze:c[$e]<0||c[$e]>59?$e:c[_e]<0||c[_e]>999?_e:-1,l(a)._overflowDayOfYear&&(b<Ve||b>Xe)&&(b=Xe),l(a)._overflowWeeks&&b===-1&&(b=af),l(a)._overflowWeekday&&b===-1&&(b=bf),l(a).overflow=b),a}
+b=Za(a))return b;a=[a]}return Ya(a)}function cb(){return te(zf)}function db(a){var b,c=a._a;return c&&m(a).overflow===-2&&(b=c[$e]<0||c[$e]>11?$e:c[_e]<1||c[_e]>ea(c[Ze],c[$e])?_e:c[af]<0||c[af]>24||24===c[af]&&(0!==c[bf]||0!==c[cf]||0!==c[df])?af:c[bf]<0||c[bf]>59?bf:c[cf]<0||c[cf]>59?cf:c[df]<0||c[df]>999?df:-1,m(a)._overflowDayOfYear&&(b<Ze||b>_e)&&(b=_e),m(a)._overflowWeeks&&b===-1&&(b=ef),m(a)._overflowWeekday&&b===-1&&(b=ff),m(a).overflow=b),a}
 // date from iso format
-function db(a){var b,c,d,e,f,g,h=a._i,i=vf.exec(h)||wf.exec(h);if(i){for(l(a).iso=!0,b=0,c=yf.length;b<c;b++)if(yf[b][1].exec(i[1])){e=yf[b][0],d=yf[b][2]!==!1;break}if(null==e)return void(a._isValid=!1);if(i[3]){for(b=0,c=zf.length;b<c;b++)if(zf[b][1].exec(i[3])){
+function eb(a){var b,c,d,e,f,g,h=a._i,i=Bf.exec(h)||Cf.exec(h);if(i){for(m(a).iso=!0,b=0,c=Ef.length;b<c;b++)if(Ef[b][1].exec(i[1])){e=Ef[b][0],d=Ef[b][2]!==!1;break}if(null==e)return void(a._isValid=!1);if(i[3]){for(b=0,c=Ff.length;b<c;b++)if(Ff[b][1].exec(i[3])){
 // match[2] should be 'T' or space
-f=(i[2]||" ")+zf[b][0];break}if(null==f)return void(a._isValid=!1)}if(!d&&null!=f)return void(a._isValid=!1);if(i[4]){if(!xf.exec(i[4]))return void(a._isValid=!1);g="Z"}a._f=e+(f||"")+(g||""),jb(a)}else a._isValid=!1}
+f=(i[2]||" ")+Ff[b][0];break}if(null==f)return void(a._isValid=!1)}if(!d&&null!=f)return void(a._isValid=!1);if(i[4]){if(!Df.exec(i[4]))return void(a._isValid=!1);g="Z"}a._f=e+(f||"")+(g||""),kb(a)}else a._isValid=!1}
 // date from iso format or fallback
-function eb(b){var c=Af.exec(b._i);return null!==c?void(b._d=new Date(+c[1])):(db(b),void(b._isValid===!1&&(delete b._isValid,a.createFromInputFallback(b))))}
+function fb(b){var c=Gf.exec(b._i);return null!==c?void(b._d=new Date(+c[1])):(eb(b),void(b._isValid===!1&&(delete b._isValid,a.createFromInputFallback(b))))}
 // Pick the first defined of two or three arguments.
-function fb(a,b,c){return null!=a?a:null!=b?b:c}function gb(b){
+function gb(a,b,c){return null!=a?a:null!=b?b:c}function hb(b){
 // hooks is actually the exported moment object
 var c=new Date(a.now());return b._useUTC?[c.getUTCFullYear(),c.getUTCMonth(),c.getUTCDate()]:[c.getFullYear(),c.getMonth(),c.getDate()]}
 // convert an array to a date.
 // the array should mirror the parameters below
 // note: all values past the year are optional and will default to the lowest possible value.
 // [year, month, day , hour, minute, second, millisecond]
-function hb(a){var b,c,d,e,f=[];if(!a._d){
+function ib(a){var b,c,d,e,f=[];if(!a._d){
 // Default to current date.
 // * if no year, month, day of month are given, default to today
 // * if day of month is given, default month and year
 // * if month is given, default only year
 // * if year is given, don't default anything
-for(d=gb(a),
+for(d=hb(a),
 //compute day of the year from weeks and weekdays
-a._w&&null==a._a[Xe]&&null==a._a[We]&&ib(a),
+a._w&&null==a._a[_e]&&null==a._a[$e]&&jb(a),
 //if the day of the year is set, figure out what it is
-a._dayOfYear&&(e=fb(a._a[Ve],d[Ve]),a._dayOfYear>oa(e)&&(l(a)._overflowDayOfYear=!0),c=sa(e,0,a._dayOfYear),a._a[We]=c.getUTCMonth(),a._a[Xe]=c.getUTCDate()),b=0;b<3&&null==a._a[b];++b)a._a[b]=f[b]=d[b];
+a._dayOfYear&&(e=gb(a._a[Ze],d[Ze]),a._dayOfYear>pa(e)&&(m(a)._overflowDayOfYear=!0),c=ta(e,0,a._dayOfYear),a._a[$e]=c.getUTCMonth(),a._a[_e]=c.getUTCDate()),b=0;b<3&&null==a._a[b];++b)a._a[b]=f[b]=d[b];
 // Zero out whatever was not defaulted, including time
 for(;b<7;b++)a._a[b]=f[b]=null==a._a[b]?2===b?1:0:a._a[b];
 // Check for 24:00:00.000
-24===a._a[Ye]&&0===a._a[Ze]&&0===a._a[$e]&&0===a._a[_e]&&(a._nextDay=!0,a._a[Ye]=0),a._d=(a._useUTC?sa:ra).apply(null,f),
+24===a._a[af]&&0===a._a[bf]&&0===a._a[cf]&&0===a._a[df]&&(a._nextDay=!0,a._a[af]=0),a._d=(a._useUTC?ta:sa).apply(null,f),
 // Apply timezone offset from input. The actual utcOffset can be changed
 // with parseZone.
-null!=a._tzm&&a._d.setUTCMinutes(a._d.getUTCMinutes()-a._tzm),a._nextDay&&(a._a[Ye]=24)}}function ib(a){var b,c,d,e,f,g,h,i;b=a._w,null!=b.GG||null!=b.W||null!=b.E?(f=1,g=4,
+null!=a._tzm&&a._d.setUTCMinutes(a._d.getUTCMinutes()-a._tzm),a._nextDay&&(a._a[af]=24)}}function jb(a){var b,c,d,e,f,g,h,i;if(b=a._w,null!=b.GG||null!=b.W||null!=b.E)f=1,g=4,
 // TODO: We need to take the current isoWeekYear, but that depends on
 // how we interpret now (local, utc, fixed offset). So create
 // a now version of current config (take local/utc/offset flags, and
 // create now).
-c=fb(b.GG,a._a[Ve],va(rb(),1,4).year),d=fb(b.W,1),e=fb(b.E,1),(e<1||e>7)&&(i=!0)):(f=a._locale._week.dow,g=a._locale._week.doy,c=fb(b.gg,a._a[Ve],va(rb(),f,g).year),d=fb(b.w,1),null!=b.d?(
+c=gb(b.GG,a._a[Ze],wa(sb(),1,4).year),d=gb(b.W,1),e=gb(b.E,1),(e<1||e>7)&&(i=!0);else{f=a._locale._week.dow,g=a._locale._week.doy;var j=wa(sb(),f,g);c=gb(b.gg,a._a[Ze],j.year),
+// Default to current week.
+d=gb(b.w,j.week),null!=b.d?(
 // weekday -- low day numbers are considered next week
 e=b.d,(e<0||e>6)&&(i=!0)):null!=b.e?(
 // local weekday -- counting starts from begining of week
 e=b.e+f,(b.e<0||b.e>6)&&(i=!0)):
 // default to begining of week
-e=f),d<1||d>wa(c,f,g)?l(a)._overflowWeeks=!0:null!=i?l(a)._overflowWeekday=!0:(h=ua(c,d,e,f,g),a._a[Ve]=h.year,a._dayOfYear=h.dayOfYear)}
+e=f}d<1||d>xa(c,f,g)?m(a)._overflowWeeks=!0:null!=i?m(a)._overflowWeekday=!0:(h=va(c,d,e,f,g),a._a[Ze]=h.year,a._dayOfYear=h.dayOfYear)}
 // date from string and format string
-function jb(b){
+function kb(b){
 // TODO: Move this to another part of the creation flow to prevent circular deps
-if(b._f===a.ISO_8601)return void db(b);b._a=[],l(b).empty=!0;
+if(b._f===a.ISO_8601)return void eb(b);b._a=[],m(b).empty=!0;
 // This array is used to make a Date, either with `new Date` or `Date.UTC`
-var c,d,e,f,g,h=""+b._i,i=h.length,j=0;for(e=X(b._f,b._locale).match(ye)||[],c=0;c<e.length;c++)f=e[c],d=(h.match(Z(f,b))||[])[0],
+var c,d,e,f,g,h=""+b._i,i=h.length,j=0;for(e=Y(b._f,b._locale).match(Ce)||[],c=0;c<e.length;c++)f=e[c],d=(h.match($(f,b))||[])[0],
 // console.log('token', token, 'parsedInput', parsedInput,
 //         'regex', getParseRegexForToken(token, config));
-d&&(g=h.substr(0,h.indexOf(d)),g.length>0&&l(b).unusedInput.push(g),h=h.slice(h.indexOf(d)+d.length),j+=d.length),
+d&&(g=h.substr(0,h.indexOf(d)),g.length>0&&m(b).unusedInput.push(g),h=h.slice(h.indexOf(d)+d.length),j+=d.length),
 // don't parse if it's not a known token
-Be[f]?(d?l(b).empty=!1:l(b).unusedTokens.push(f),ca(f,d,b)):b._strict&&!d&&l(b).unusedTokens.push(f);
+Fe[f]?(d?m(b).empty=!1:m(b).unusedTokens.push(f),da(f,d,b)):b._strict&&!d&&m(b).unusedTokens.push(f);
 // add remaining unparsed input length to the string
-l(b).charsLeftOver=i-j,h.length>0&&l(b).unusedInput.push(h),
+m(b).charsLeftOver=i-j,h.length>0&&m(b).unusedInput.push(h),
 // clear _12h flag if hour is <= 12
-b._a[Ye]<=12&&l(b).bigHour===!0&&b._a[Ye]>0&&(l(b).bigHour=void 0),l(b).parsedDateParts=b._a.slice(0),l(b).meridiem=b._meridiem,
+b._a[af]<=12&&m(b).bigHour===!0&&b._a[af]>0&&(m(b).bigHour=void 0),m(b).parsedDateParts=b._a.slice(0),m(b).meridiem=b._meridiem,
 // handle meridiem
-b._a[Ye]=kb(b._locale,b._a[Ye],b._meridiem),hb(b),cb(b)}function kb(a,b,c){var d;
+b._a[af]=lb(b._locale,b._a[af],b._meridiem),ib(b),db(b)}function lb(a,b,c){var d;
 // Fallback
 return null==c?b:null!=a.meridiemHour?a.meridiemHour(b,c):null!=a.isPM?(d=a.isPM(c),d&&b<12&&(b+=12),d||12!==b||(b=0),b):b}
 // date from string and array of format strings
-function lb(a){var b,c,d,e,f;if(0===a._f.length)return l(a).invalidFormat=!0,void(a._d=new Date(NaN));for(e=0;e<a._f.length;e++)f=0,b=p({},a),null!=a._useUTC&&(b._useUTC=a._useUTC),b._f=a._f[e],jb(b),m(b)&&(
+function mb(a){var b,c,d,e,f;if(0===a._f.length)return m(a).invalidFormat=!0,void(a._d=new Date(NaN));for(e=0;e<a._f.length;e++)f=0,b=q({},a),null!=a._useUTC&&(b._useUTC=a._useUTC),b._f=a._f[e],kb(b),n(b)&&(
 // if there is any input that was not parsed add a penalty for that format
-f+=l(b).charsLeftOver,
+f+=m(b).charsLeftOver,
 //or tokens
-f+=10*l(b).unusedTokens.length,l(b).score=f,(null==d||f<d)&&(d=f,c=b));i(a,c||b)}function mb(a){if(!a._d){var b=K(a._i);a._a=g([b.year,b.month,b.day||b.date,b.hour,b.minute,b.second,b.millisecond],function(a){return a&&parseInt(a,10)}),hb(a)}}function nb(a){var b=new q(cb(ob(a)));
+f+=10*m(b).unusedTokens.length,m(b).score=f,(null==d||f<d)&&(d=f,c=b));j(a,c||b)}function nb(a){if(!a._d){var b=L(a._i);a._a=h([b.year,b.month,b.day||b.date,b.hour,b.minute,b.second,b.millisecond],function(a){return a&&parseInt(a,10)}),ib(a)}}function ob(a){var b=new r(db(pb(a)));
 // Adding is smart enough around DST
-return b._nextDay&&(b.add(1,"d"),b._nextDay=void 0),b}function ob(a){var b=a._i,d=a._f;return a._locale=a._locale||ab(a._l),null===b||void 0===d&&""===b?n({nullInput:!0}):("string"==typeof b&&(a._i=b=a._locale.preparse(b)),r(b)?new q(cb(b)):(c(d)?lb(a):f(b)?a._d=b:d?jb(a):pb(a),m(a)||(a._d=null),a))}function pb(b){var d=b._i;void 0===d?b._d=new Date(a.now()):f(d)?b._d=new Date(d.valueOf()):"string"==typeof d?eb(b):c(d)?(b._a=g(d.slice(0),function(a){return parseInt(a,10)}),hb(b)):"object"==typeof d?mb(b):"number"==typeof d?
+return b._nextDay&&(b.add(1,"d"),b._nextDay=void 0),b}function pb(a){var b=a._i,d=a._f;return a._locale=a._locale||bb(a._l),null===b||void 0===d&&""===b?o({nullInput:!0}):("string"==typeof b&&(a._i=b=a._locale.preparse(b)),s(b)?new r(db(b)):(g(b)?a._d=b:c(d)?mb(a):d?kb(a):qb(a),n(a)||(a._d=null),a))}function qb(b){var d=b._i;void 0===d?b._d=new Date(a.now()):g(d)?b._d=new Date(d.valueOf()):"string"==typeof d?fb(b):c(d)?(b._a=h(d.slice(0),function(a){return parseInt(a,10)}),ib(b)):"object"==typeof d?nb(b):f(d)?
 // from milliseconds
-b._d=new Date(d):a.createFromInputFallback(b)}function qb(a,b,f,g,h){var i={};
+b._d=new Date(d):a.createFromInputFallback(b)}function rb(a,b,f,g,h){var i={};
 // object construction must be done this way.
 // https://github.com/moment/moment/issues/1423
-return"boolean"==typeof f&&(g=f,f=void 0),(d(a)&&e(a)||c(a)&&0===a.length)&&(a=void 0),i._isAMomentObject=!0,i._useUTC=i._isUTC=h,i._l=f,i._i=a,i._f=b,i._strict=g,nb(i)}function rb(a,b,c,d){return qb(a,b,c,d,!1)}
+return f!==!0&&f!==!1||(g=f,f=void 0),(d(a)&&e(a)||c(a)&&0===a.length)&&(a=void 0),i._isAMomentObject=!0,i._useUTC=i._isUTC=h,i._l=f,i._i=a,i._f=b,i._strict=g,ob(i)}function sb(a,b,c,d){return rb(a,b,c,d,!1)}
 // Pick a moment m from moments so that m[fn](other) is true for all
 // other. This relies on the function fn to be transitive.
 //
 // moments should either be an array of moment objects or an array, whose
 // first element is an array of moment objects.
-function sb(a,b){var d,e;if(1===b.length&&c(b[0])&&(b=b[0]),!b.length)return rb();for(d=b[0],e=1;e<b.length;++e)b[e].isValid()&&!b[e][a](d)||(d=b[e]);return d}
+function tb(a,b){var d,e;if(1===b.length&&c(b[0])&&(b=b[0]),!b.length)return sb();for(d=b[0],e=1;e<b.length;++e)b[e].isValid()&&!b[e][a](d)||(d=b[e]);return d}
 // TODO: Use [].sort instead?
-function tb(){var a=[].slice.call(arguments,0);return sb("isBefore",a)}function ub(){var a=[].slice.call(arguments,0);return sb("isAfter",a)}function vb(a){var b=K(a),c=b.year||0,d=b.quarter||0,e=b.month||0,f=b.week||0,g=b.day||0,h=b.hour||0,i=b.minute||0,j=b.second||0,k=b.millisecond||0;
+function ub(){var a=[].slice.call(arguments,0);return tb("isBefore",a)}function vb(){var a=[].slice.call(arguments,0);return tb("isAfter",a)}function wb(a){var b=L(a),c=b.year||0,d=b.quarter||0,e=b.month||0,f=b.week||0,g=b.day||0,h=b.hour||0,i=b.minute||0,j=b.second||0,k=b.millisecond||0;
 // representation for dateAddRemove
 this._milliseconds=+k+1e3*j+// 1000
 6e4*i+// 1000 * 60
@@ -2234,13 +273,13 @@ this._days=+g+7*f,
 // It is impossible translate months into days without knowing
 // which months you are are talking about, so we have to store
 // it separately.
-this._months=+e+3*d+12*c,this._data={},this._locale=ab(),this._bubble()}function wb(a){return a instanceof vb}function xb(a){return a<0?Math.round(-1*a)*-1:Math.round(a)}
+this._months=+e+3*d+12*c,this._data={},this._locale=bb(),this._bubble()}function xb(a){return a instanceof wb}function yb(a){return a<0?Math.round(-1*a)*-1:Math.round(a)}
 // FORMATTING
-function yb(a,b){T(a,0,0,function(){var a=this.utcOffset(),c="+";return a<0&&(a=-a,c="-"),c+S(~~(a/60),2)+b+S(~~a%60,2)})}function zb(a,b){var c=(b||"").match(a)||[],d=c[c.length-1]||[],e=(d+"").match(Ef)||["-",0,0],f=+(60*e[1])+t(e[2]);return"+"===e[0]?f:-f}
+function zb(a,b){U(a,0,0,function(){var a=this.utcOffset(),c="+";return a<0&&(a=-a,c="-"),c+T(~~(a/60),2)+b+T(~~a%60,2)})}function Ab(a,b){var c=(b||"").match(a);if(null===c)return null;var d=c[c.length-1]||[],e=(d+"").match(Kf)||["-",0,0],f=+(60*e[1])+u(e[2]);return 0===f?0:"+"===e[0]?f:-f}
 // Return a moment from input, that is local/utc/zone equivalent to model.
-function Ab(b,c){var d,e;
+function Bb(b,c){var d,e;
 // Use low-level api, because this fn is low-level api.
-return c._isUTC?(d=c.clone(),e=(r(b)||f(b)?b.valueOf():rb(b).valueOf())-d.valueOf(),d._d.setTime(d._d.valueOf()+e),a.updateOffset(d,!1),d):rb(b).local()}function Bb(a){
+return c._isUTC?(d=c.clone(),e=(s(b)||g(b)?b.valueOf():sb(b).valueOf())-d.valueOf(),d._d.setTime(d._d.valueOf()+e),a.updateOffset(d,!1),d):sb(b).local()}function Cb(a){
 // On Firefox.24 Date#getTimezoneOffset returns a floating point.
 // https://github.com/moment/moment/pull/1871
 return 15*-Math.round(a._d.getTimezoneOffset()/15)}
@@ -2255,28 +294,28 @@ return 15*-Math.round(a._d.getTimezoneOffset()/15)}
 // a second time. In case it wants us to change the offset again
 // _changeInProgress == true case, then we have to adjust, because
 // there is no such time in the given timezone.
-function Cb(b,c){var d,e=this._offset||0;return this.isValid()?null!=b?("string"==typeof b?b=zb(Qe,b):Math.abs(b)<16&&(b=60*b),!this._isUTC&&c&&(d=Bb(this)),this._offset=b,this._isUTC=!0,null!=d&&this.add(d,"m"),e!==b&&(!c||this._changeInProgress?Sb(this,Nb(b-e,"m"),1,!1):this._changeInProgress||(this._changeInProgress=!0,a.updateOffset(this,!0),this._changeInProgress=null)),this):this._isUTC?e:Bb(this):null!=b?this:NaN}function Db(a,b){return null!=a?("string"!=typeof a&&(a=-a),this.utcOffset(a,b),this):-this.utcOffset()}function Eb(a){return this.utcOffset(0,a)}function Fb(a){return this._isUTC&&(this.utcOffset(0,a),this._isUTC=!1,a&&this.subtract(Bb(this),"m")),this}function Gb(){if(this._tzm)this.utcOffset(this._tzm);else if("string"==typeof this._i){var a=zb(Pe,this._i);0===a?this.utcOffset(0,!0):this.utcOffset(zb(Pe,this._i))}return this}function Hb(a){return!!this.isValid()&&(a=a?rb(a).utcOffset():0,(this.utcOffset()-a)%60===0)}function Ib(){return this.utcOffset()>this.clone().month(0).utcOffset()||this.utcOffset()>this.clone().month(5).utcOffset()}function Jb(){if(!o(this._isDSTShifted))return this._isDSTShifted;var a={};if(p(a,this),a=ob(a),a._a){var b=a._isUTC?j(a._a):rb(a._a);this._isDSTShifted=this.isValid()&&u(a._a,b.toArray())>0}else this._isDSTShifted=!1;return this._isDSTShifted}function Kb(){return!!this.isValid()&&!this._isUTC}function Lb(){return!!this.isValid()&&this._isUTC}function Mb(){return!!this.isValid()&&(this._isUTC&&0===this._offset)}function Nb(a,b){var c,d,e,f=a,
+function Db(b,c){var d,e=this._offset||0;if(!this.isValid())return null!=b?this:NaN;if(null!=b){if("string"==typeof b){if(b=Ab(Ue,b),null===b)return this}else Math.abs(b)<16&&(b=60*b);return!this._isUTC&&c&&(d=Cb(this)),this._offset=b,this._isUTC=!0,null!=d&&this.add(d,"m"),e!==b&&(!c||this._changeInProgress?Tb(this,Ob(b-e,"m"),1,!1):this._changeInProgress||(this._changeInProgress=!0,a.updateOffset(this,!0),this._changeInProgress=null)),this}return this._isUTC?e:Cb(this)}function Eb(a,b){return null!=a?("string"!=typeof a&&(a=-a),this.utcOffset(a,b),this):-this.utcOffset()}function Fb(a){return this.utcOffset(0,a)}function Gb(a){return this._isUTC&&(this.utcOffset(0,a),this._isUTC=!1,a&&this.subtract(Cb(this),"m")),this}function Hb(){if(null!=this._tzm)this.utcOffset(this._tzm);else if("string"==typeof this._i){var a=Ab(Te,this._i);null!=a?this.utcOffset(a):this.utcOffset(0,!0)}return this}function Ib(a){return!!this.isValid()&&(a=a?sb(a).utcOffset():0,(this.utcOffset()-a)%60===0)}function Jb(){return this.utcOffset()>this.clone().month(0).utcOffset()||this.utcOffset()>this.clone().month(5).utcOffset()}function Kb(){if(!p(this._isDSTShifted))return this._isDSTShifted;var a={};if(q(a,this),a=pb(a),a._a){var b=a._isUTC?k(a._a):sb(a._a);this._isDSTShifted=this.isValid()&&v(a._a,b.toArray())>0}else this._isDSTShifted=!1;return this._isDSTShifted}function Lb(){return!!this.isValid()&&!this._isUTC}function Mb(){return!!this.isValid()&&this._isUTC}function Nb(){return!!this.isValid()&&(this._isUTC&&0===this._offset)}function Ob(a,b){var c,d,e,g=a,
 // matching against regexp is expensive, do it on demand
-g=null;// checks for null or undefined
-return wb(a)?f={ms:a._milliseconds,d:a._days,M:a._months}:"number"==typeof a?(f={},b?f[b]=a:f.milliseconds=a):(g=Ff.exec(a))?(c="-"===g[1]?-1:1,f={y:0,d:t(g[Xe])*c,h:t(g[Ye])*c,m:t(g[Ze])*c,s:t(g[$e])*c,ms:t(xb(1e3*g[_e]))*c}):(g=Gf.exec(a))?(c="-"===g[1]?-1:1,f={y:Ob(g[2],c),M:Ob(g[3],c),w:Ob(g[4],c),d:Ob(g[5],c),h:Ob(g[6],c),m:Ob(g[7],c),s:Ob(g[8],c)}):null==f?f={}:"object"==typeof f&&("from"in f||"to"in f)&&(e=Qb(rb(f.from),rb(f.to)),f={},f.ms=e.milliseconds,f.M=e.months),d=new vb(f),wb(a)&&h(a,"_locale")&&(d._locale=a._locale),d}function Ob(a,b){
+h=null;// checks for null or undefined
+return xb(a)?g={ms:a._milliseconds,d:a._days,M:a._months}:f(a)?(g={},b?g[b]=a:g.milliseconds=a):(h=Lf.exec(a))?(c="-"===h[1]?-1:1,g={y:0,d:u(h[_e])*c,h:u(h[af])*c,m:u(h[bf])*c,s:u(h[cf])*c,ms:u(yb(1e3*h[df]))*c}):(h=Mf.exec(a))?(c="-"===h[1]?-1:1,g={y:Pb(h[2],c),M:Pb(h[3],c),w:Pb(h[4],c),d:Pb(h[5],c),h:Pb(h[6],c),m:Pb(h[7],c),s:Pb(h[8],c)}):null==g?g={}:"object"==typeof g&&("from"in g||"to"in g)&&(e=Rb(sb(g.from),sb(g.to)),g={},g.ms=e.milliseconds,g.M=e.months),d=new wb(g),xb(a)&&i(a,"_locale")&&(d._locale=a._locale),d}function Pb(a,b){
 // We'd normally use ~~inp for this, but unfortunately it also
 // converts floats to ints.
 // inp may be undefined, so careful calling replace on it.
 var c=a&&parseFloat(a.replace(",","."));
 // apply sign while we're at it
-return(isNaN(c)?0:c)*b}function Pb(a,b){var c={milliseconds:0,months:0};return c.months=b.month()-a.month()+12*(b.year()-a.year()),a.clone().add(c.months,"M").isAfter(b)&&--c.months,c.milliseconds=+b-+a.clone().add(c.months,"M"),c}function Qb(a,b){var c;return a.isValid()&&b.isValid()?(b=Ab(b,a),a.isBefore(b)?c=Pb(a,b):(c=Pb(b,a),c.milliseconds=-c.milliseconds,c.months=-c.months),c):{milliseconds:0,months:0}}
+return(isNaN(c)?0:c)*b}function Qb(a,b){var c={milliseconds:0,months:0};return c.months=b.month()-a.month()+12*(b.year()-a.year()),a.clone().add(c.months,"M").isAfter(b)&&--c.months,c.milliseconds=+b-+a.clone().add(c.months,"M"),c}function Rb(a,b){var c;return a.isValid()&&b.isValid()?(b=Bb(b,a),a.isBefore(b)?c=Qb(a,b):(c=Qb(b,a),c.milliseconds=-c.milliseconds,c.months=-c.months),c):{milliseconds:0,months:0}}
 // TODO: remove 'name' arg after deprecation is removed
-function Rb(a,b){return function(c,d){var e,f;
+function Sb(a,b){return function(c,d){var e,f;
 //invert the arguments, but complain about it
-return null===d||isNaN(+d)||(x(b,"moment()."+b+"(period, number) is deprecated. Please use moment()."+b+"(number, period). See http://momentjs.com/guides/#/warnings/add-inverted-param/ for more info."),f=c,c=d,d=f),c="string"==typeof c?+c:c,e=Nb(c,d),Sb(this,e,a),this}}function Sb(b,c,d,e){var f=c._milliseconds,g=xb(c._days),h=xb(c._months);b.isValid()&&(e=null==e||e,f&&b._d.setTime(b._d.valueOf()+f*d),g&&P(b,"Date",O(b,"Date")+g*d),h&&ia(b,O(b,"Month")+h*d),e&&a.updateOffset(b,g||h))}function Tb(a,b){var c=a.diff(b,"days",!0);return c<-6?"sameElse":c<-1?"lastWeek":c<0?"lastDay":c<1?"sameDay":c<2?"nextDay":c<7?"nextWeek":"sameElse"}function Ub(b,c){
+return null===d||isNaN(+d)||(y(b,"moment()."+b+"(period, number) is deprecated. Please use moment()."+b+"(number, period). See http://momentjs.com/guides/#/warnings/add-inverted-param/ for more info."),f=c,c=d,d=f),c="string"==typeof c?+c:c,e=Ob(c,d),Tb(this,e,a),this}}function Tb(b,c,d,e){var f=c._milliseconds,g=yb(c._days),h=yb(c._months);b.isValid()&&(e=null==e||e,f&&b._d.setTime(b._d.valueOf()+f*d),g&&Q(b,"Date",P(b,"Date")+g*d),h&&ja(b,P(b,"Month")+h*d),e&&a.updateOffset(b,g||h))}function Ub(a,b){var c=a.diff(b,"days",!0);return c<-6?"sameElse":c<-1?"lastWeek":c<0?"lastDay":c<1?"sameDay":c<2?"nextDay":c<7?"nextWeek":"sameElse"}function Vb(b,c){
 // We want to compare the start of today, vs this.
 // Getting start-of-today depends on whether we're local/utc/offset or not.
-var d=b||rb(),e=Ab(d,this).startOf("day"),f=a.calendarFormat(this,e)||"sameElse",g=c&&(y(c[f])?c[f].call(this,d):c[f]);return this.format(g||this.localeData().calendar(f,this,rb(d)))}function Vb(){return new q(this)}function Wb(a,b){var c=r(a)?a:rb(a);return!(!this.isValid()||!c.isValid())&&(b=J(o(b)?"millisecond":b),"millisecond"===b?this.valueOf()>c.valueOf():c.valueOf()<this.clone().startOf(b).valueOf())}function Xb(a,b){var c=r(a)?a:rb(a);return!(!this.isValid()||!c.isValid())&&(b=J(o(b)?"millisecond":b),"millisecond"===b?this.valueOf()<c.valueOf():this.clone().endOf(b).valueOf()<c.valueOf())}function Yb(a,b,c,d){return d=d||"()",("("===d[0]?this.isAfter(a,c):!this.isBefore(a,c))&&(")"===d[1]?this.isBefore(b,c):!this.isAfter(b,c))}function Zb(a,b){var c,d=r(a)?a:rb(a);return!(!this.isValid()||!d.isValid())&&(b=J(b||"millisecond"),"millisecond"===b?this.valueOf()===d.valueOf():(c=d.valueOf(),this.clone().startOf(b).valueOf()<=c&&c<=this.clone().endOf(b).valueOf()))}function $b(a,b){return this.isSame(a,b)||this.isAfter(a,b)}function _b(a,b){return this.isSame(a,b)||this.isBefore(a,b)}function ac(a,b,c){var d,e,f,g;// 1000
+var d=b||sb(),e=Bb(d,this).startOf("day"),f=a.calendarFormat(this,e)||"sameElse",g=c&&(z(c[f])?c[f].call(this,d):c[f]);return this.format(g||this.localeData().calendar(f,this,sb(d)))}function Wb(){return new r(this)}function Xb(a,b){var c=s(a)?a:sb(a);return!(!this.isValid()||!c.isValid())&&(b=K(p(b)?"millisecond":b),"millisecond"===b?this.valueOf()>c.valueOf():c.valueOf()<this.clone().startOf(b).valueOf())}function Yb(a,b){var c=s(a)?a:sb(a);return!(!this.isValid()||!c.isValid())&&(b=K(p(b)?"millisecond":b),"millisecond"===b?this.valueOf()<c.valueOf():this.clone().endOf(b).valueOf()<c.valueOf())}function Zb(a,b,c,d){return d=d||"()",("("===d[0]?this.isAfter(a,c):!this.isBefore(a,c))&&(")"===d[1]?this.isBefore(b,c):!this.isAfter(b,c))}function $b(a,b){var c,d=s(a)?a:sb(a);return!(!this.isValid()||!d.isValid())&&(b=K(b||"millisecond"),"millisecond"===b?this.valueOf()===d.valueOf():(c=d.valueOf(),this.clone().startOf(b).valueOf()<=c&&c<=this.clone().endOf(b).valueOf()))}function _b(a,b){return this.isSame(a,b)||this.isAfter(a,b)}function ac(a,b){return this.isSame(a,b)||this.isBefore(a,b)}function bc(a,b,c){var d,e,f,g;// 1000
 // 1000 * 60
 // 1000 * 60 * 60
 // 1000 * 60 * 60 * 24, negate dst
 // 1000 * 60 * 60 * 24 * 7, negate dst
-return this.isValid()?(d=Ab(a,this),d.isValid()?(e=6e4*(d.utcOffset()-this.utcOffset()),b=J(b),"year"===b||"month"===b||"quarter"===b?(g=bc(this,d),"quarter"===b?g/=3:"year"===b&&(g/=12)):(f=this-d,g="second"===b?f/1e3:"minute"===b?f/6e4:"hour"===b?f/36e5:"day"===b?(f-e)/864e5:"week"===b?(f-e)/6048e5:f),c?g:s(g)):NaN):NaN}function bc(a,b){
+return this.isValid()?(d=Bb(a,this),d.isValid()?(e=6e4*(d.utcOffset()-this.utcOffset()),b=K(b),"year"===b||"month"===b||"quarter"===b?(g=cc(this,d),"quarter"===b?g/=3:"year"===b&&(g/=12)):(f=this-d,g="second"===b?f/1e3:"minute"===b?f/6e4:"hour"===b?f/36e5:"day"===b?(f-e)/864e5:"week"===b?(f-e)/6048e5:f),c?g:t(g)):NaN):NaN}function cc(a,b){
 // difference in months
 var c,d,e=12*(b.year()-a.year())+(b.month()-a.month()),
 // b is in (anchor - 1 month, anchor + 1 month)
@@ -2284,14 +323,20 @@ f=a.clone().add(e,"months");
 //check for negative zero, return zero if negative zero
 // linear across the month
 // linear across the month
-return b-f<0?(c=a.clone().add(e-1,"months"),d=(b-f)/(f-c)):(c=a.clone().add(e+1,"months"),d=(b-f)/(c-f)),-(e+d)||0}function cc(){return this.clone().locale("en").format("ddd MMM DD YYYY HH:mm:ss [GMT]ZZ")}function dc(){var a=this.clone().utc();return 0<a.year()&&a.year()<=9999?y(Date.prototype.toISOString)?this.toDate().toISOString():W(a,"YYYY-MM-DD[T]HH:mm:ss.SSS[Z]"):W(a,"YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]")}function ec(b){b||(b=this.isUtc()?a.defaultFormatUtc:a.defaultFormat);var c=W(this,b);return this.localeData().postformat(c)}function fc(a,b){return this.isValid()&&(r(a)&&a.isValid()||rb(a).isValid())?Nb({to:this,from:a}).locale(this.locale()).humanize(!b):this.localeData().invalidDate()}function gc(a){return this.from(rb(),a)}function hc(a,b){return this.isValid()&&(r(a)&&a.isValid()||rb(a).isValid())?Nb({from:this,to:a}).locale(this.locale()).humanize(!b):this.localeData().invalidDate()}function ic(a){return this.to(rb(),a)}
+return b-f<0?(c=a.clone().add(e-1,"months"),d=(b-f)/(f-c)):(c=a.clone().add(e+1,"months"),d=(b-f)/(c-f)),-(e+d)||0}function dc(){return this.clone().locale("en").format("ddd MMM DD YYYY HH:mm:ss [GMT]ZZ")}function ec(){var a=this.clone().utc();return 0<a.year()&&a.year()<=9999?z(Date.prototype.toISOString)?this.toDate().toISOString():X(a,"YYYY-MM-DD[T]HH:mm:ss.SSS[Z]"):X(a,"YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]")}/**
+ * Return a human readable representation of a moment that can
+ * also be evaluated to get a new moment which is the same
+ *
+ * @link https://nodejs.org/dist/latest/docs/api/util.html#util_custom_inspect_function_on_objects
+ */
+function fc(){if(!this.isValid())return"moment.invalid(/* "+this._i+" */)";var a="moment",b="";this.isLocal()||(a=0===this.utcOffset()?"moment.utc":"moment.parseZone",b="Z");var c="["+a+'("]',d=0<this.year()&&this.year()<=9999?"YYYY":"YYYYYY",e="-MM-DD[T]HH:mm:ss.SSS",f=b+'[")]';return this.format(c+d+e+f)}function gc(b){b||(b=this.isUtc()?a.defaultFormatUtc:a.defaultFormat);var c=X(this,b);return this.localeData().postformat(c)}function hc(a,b){return this.isValid()&&(s(a)&&a.isValid()||sb(a).isValid())?Ob({to:this,from:a}).locale(this.locale()).humanize(!b):this.localeData().invalidDate()}function ic(a){return this.from(sb(),a)}function jc(a,b){return this.isValid()&&(s(a)&&a.isValid()||sb(a).isValid())?Ob({from:this,to:a}).locale(this.locale()).humanize(!b):this.localeData().invalidDate()}function kc(a){return this.to(sb(),a)}
 // If passed a locale key, it will set the locale for this
 // instance.  Otherwise, it will return the locale configuration
 // variables for this instance.
-function jc(a){var b;return void 0===a?this._locale._abbr:(b=ab(a),null!=b&&(this._locale=b),this)}function kc(){return this._locale}function lc(a){
+function lc(a){var b;return void 0===a?this._locale._abbr:(b=bb(a),null!=b&&(this._locale=b),this)}function mc(){return this._locale}function nc(a){
 // the following switch intentionally omits break keywords
 // to utilize falling through the cases.
-switch(a=J(a)){case"year":this.month(0);/* falls through */
+switch(a=K(a)){case"year":this.month(0);/* falls through */
 case"quarter":case"month":this.date(1);/* falls through */
 case"week":case"isoWeek":case"day":case"date":this.hours(0);/* falls through */
 case"hour":this.minutes(0);/* falls through */
@@ -2299,20 +344,20 @@ case"minute":this.seconds(0);/* falls through */
 case"second":this.milliseconds(0)}
 // weeks are a special case
 // quarters are also special
-return"week"===a&&this.weekday(0),"isoWeek"===a&&this.isoWeekday(1),"quarter"===a&&this.month(3*Math.floor(this.month()/3)),this}function mc(a){
+return"week"===a&&this.weekday(0),"isoWeek"===a&&this.isoWeekday(1),"quarter"===a&&this.month(3*Math.floor(this.month()/3)),this}function oc(a){
 // 'date' is an alias for 'day', so it should be considered as such.
-return a=J(a),void 0===a||"millisecond"===a?this:("date"===a&&(a="day"),this.startOf(a).add(1,"isoWeek"===a?"week":a).subtract(1,"ms"))}function nc(){return this._d.valueOf()-6e4*(this._offset||0)}function oc(){return Math.floor(this.valueOf()/1e3)}function pc(){return new Date(this.valueOf())}function qc(){var a=this;return[a.year(),a.month(),a.date(),a.hour(),a.minute(),a.second(),a.millisecond()]}function rc(){var a=this;return{years:a.year(),months:a.month(),date:a.date(),hours:a.hours(),minutes:a.minutes(),seconds:a.seconds(),milliseconds:a.milliseconds()}}function sc(){
+return a=K(a),void 0===a||"millisecond"===a?this:("date"===a&&(a="day"),this.startOf(a).add(1,"isoWeek"===a?"week":a).subtract(1,"ms"))}function pc(){return this._d.valueOf()-6e4*(this._offset||0)}function qc(){return Math.floor(this.valueOf()/1e3)}function rc(){return new Date(this.valueOf())}function sc(){var a=this;return[a.year(),a.month(),a.date(),a.hour(),a.minute(),a.second(),a.millisecond()]}function tc(){var a=this;return{years:a.year(),months:a.month(),date:a.date(),hours:a.hours(),minutes:a.minutes(),seconds:a.seconds(),milliseconds:a.milliseconds()}}function uc(){
 // new Date(NaN).toJSON() === null
-return this.isValid()?this.toISOString():null}function tc(){return m(this)}function uc(){return i({},l(this))}function vc(){return l(this).overflow}function wc(){return{input:this._i,format:this._f,locale:this._locale,isUTC:this._isUTC,strict:this._strict}}function xc(a,b){T(0,[a,a.length],0,b)}
+return this.isValid()?this.toISOString():null}function vc(){return n(this)}function wc(){return j({},m(this))}function xc(){return m(this).overflow}function yc(){return{input:this._i,format:this._f,locale:this._locale,isUTC:this._isUTC,strict:this._strict}}function zc(a,b){U(0,[a,a.length],0,b)}
 // MOMENTS
-function yc(a){return Cc.call(this,a,this.week(),this.weekday(),this.localeData()._week.dow,this.localeData()._week.doy)}function zc(a){return Cc.call(this,a,this.isoWeek(),this.isoWeekday(),1,4)}function Ac(){return wa(this.year(),1,4)}function Bc(){var a=this.localeData()._week;return wa(this.year(),a.dow,a.doy)}function Cc(a,b,c,d,e){var f;return null==a?va(this,d,e).year:(f=wa(a,d,e),b>f&&(b=f),Dc.call(this,a,b,c,d,e))}function Dc(a,b,c,d,e){var f=ua(a,b,c,d,e),g=sa(f.year,0,f.dayOfYear);return this.year(g.getUTCFullYear()),this.month(g.getUTCMonth()),this.date(g.getUTCDate()),this}
+function Ac(a){return Ec.call(this,a,this.week(),this.weekday(),this.localeData()._week.dow,this.localeData()._week.doy)}function Bc(a){return Ec.call(this,a,this.isoWeek(),this.isoWeekday(),1,4)}function Cc(){return xa(this.year(),1,4)}function Dc(){var a=this.localeData()._week;return xa(this.year(),a.dow,a.doy)}function Ec(a,b,c,d,e){var f;return null==a?wa(this,d,e).year:(f=xa(a,d,e),b>f&&(b=f),Fc.call(this,a,b,c,d,e))}function Fc(a,b,c,d,e){var f=va(a,b,c,d,e),g=ta(f.year,0,f.dayOfYear);return this.year(g.getUTCFullYear()),this.month(g.getUTCMonth()),this.date(g.getUTCDate()),this}
 // MOMENTS
-function Ec(a){return null==a?Math.ceil((this.month()+1)/3):this.month(3*(a-1)+this.month()%3)}
+function Gc(a){return null==a?Math.ceil((this.month()+1)/3):this.month(3*(a-1)+this.month()%3)}
 // HELPERS
 // MOMENTS
-function Fc(a){var b=Math.round((this.clone().startOf("day")-this.clone().startOf("year"))/864e5)+1;return null==a?b:this.add(a-b,"d")}function Gc(a,b){b[_e]=t(1e3*("0."+a))}
+function Hc(a){var b=Math.round((this.clone().startOf("day")-this.clone().startOf("year"))/864e5)+1;return null==a?b:this.add(a-b,"d")}function Ic(a,b){b[df]=u(1e3*("0."+a))}
 // MOMENTS
-function Hc(){return this._isUTC?"UTC":""}function Ic(){return this._isUTC?"Coordinated Universal Time":""}function Jc(a){return rb(1e3*a)}function Kc(){return rb.apply(null,arguments).parseZone()}function Lc(a){return a}function Mc(a,b,c,d){var e=ab(),f=j().set(d,b);return e[c](f,a)}function Nc(a,b,c){if("number"==typeof a&&(b=a,a=void 0),a=a||"",null!=b)return Mc(a,b,c,"month");var d,e=[];for(d=0;d<12;d++)e[d]=Mc(a,d,c,"month");return e}
+function Jc(){return this._isUTC?"UTC":""}function Kc(){return this._isUTC?"Coordinated Universal Time":""}function Lc(a){return sb(1e3*a)}function Mc(){return sb.apply(null,arguments).parseZone()}function Nc(a){return a}function Oc(a,b,c,d){var e=bb(),f=k().set(d,b);return e[c](f,a)}function Pc(a,b,c){if(f(a)&&(b=a,a=void 0),a=a||"",null!=b)return Oc(a,b,c,"month");var d,e=[];for(d=0;d<12;d++)e[d]=Oc(a,d,c,"month");return e}
 // ()
 // (5)
 // (fmt, 5)
@@ -2321,35 +366,35 @@ function Hc(){return this._isUTC?"UTC":""}function Ic(){return this._isUTC?"Coor
 // (true, 5)
 // (true, fmt, 5)
 // (true, fmt)
-function Oc(a,b,c,d){"boolean"==typeof a?("number"==typeof b&&(c=b,b=void 0),b=b||""):(b=a,c=b,a=!1,"number"==typeof b&&(c=b,b=void 0),b=b||"");var e=ab(),f=a?e._week.dow:0;if(null!=c)return Mc(b,(c+f)%7,d,"day");var g,h=[];for(g=0;g<7;g++)h[g]=Mc(b,(g+f)%7,d,"day");return h}function Pc(a,b){return Nc(a,b,"months")}function Qc(a,b){return Nc(a,b,"monthsShort")}function Rc(a,b,c){return Oc(a,b,c,"weekdays")}function Sc(a,b,c){return Oc(a,b,c,"weekdaysShort")}function Tc(a,b,c){return Oc(a,b,c,"weekdaysMin")}function Uc(){var a=this._data;return this._milliseconds=Sf(this._milliseconds),this._days=Sf(this._days),this._months=Sf(this._months),a.milliseconds=Sf(a.milliseconds),a.seconds=Sf(a.seconds),a.minutes=Sf(a.minutes),a.hours=Sf(a.hours),a.months=Sf(a.months),a.years=Sf(a.years),this}function Vc(a,b,c,d){var e=Nb(b,c);return a._milliseconds+=d*e._milliseconds,a._days+=d*e._days,a._months+=d*e._months,a._bubble()}
+function Qc(a,b,c,d){"boolean"==typeof a?(f(b)&&(c=b,b=void 0),b=b||""):(b=a,c=b,a=!1,f(b)&&(c=b,b=void 0),b=b||"");var e=bb(),g=a?e._week.dow:0;if(null!=c)return Oc(b,(c+g)%7,d,"day");var h,i=[];for(h=0;h<7;h++)i[h]=Oc(b,(h+g)%7,d,"day");return i}function Rc(a,b){return Pc(a,b,"months")}function Sc(a,b){return Pc(a,b,"monthsShort")}function Tc(a,b,c){return Qc(a,b,c,"weekdays")}function Uc(a,b,c){return Qc(a,b,c,"weekdaysShort")}function Vc(a,b,c){return Qc(a,b,c,"weekdaysMin")}function Wc(){var a=this._data;return this._milliseconds=Xf(this._milliseconds),this._days=Xf(this._days),this._months=Xf(this._months),a.milliseconds=Xf(a.milliseconds),a.seconds=Xf(a.seconds),a.minutes=Xf(a.minutes),a.hours=Xf(a.hours),a.months=Xf(a.months),a.years=Xf(a.years),this}function Xc(a,b,c,d){var e=Ob(b,c);return a._milliseconds+=d*e._milliseconds,a._days+=d*e._days,a._months+=d*e._months,a._bubble()}
 // supports only 2.0-style add(1, 's') or add(duration)
-function Wc(a,b){return Vc(this,a,b,1)}
+function Yc(a,b){return Xc(this,a,b,1)}
 // supports only 2.0-style subtract(1, 's') or subtract(duration)
-function Xc(a,b){return Vc(this,a,b,-1)}function Yc(a){return a<0?Math.floor(a):Math.ceil(a)}function Zc(){var a,b,c,d,e,f=this._milliseconds,g=this._days,h=this._months,i=this._data;
+function Zc(a,b){return Xc(this,a,b,-1)}function $c(a){return a<0?Math.floor(a):Math.ceil(a)}function _c(){var a,b,c,d,e,f=this._milliseconds,g=this._days,h=this._months,i=this._data;
 // if we have a mix of positive and negative values, bubble down first
 // check: https://github.com/moment/moment/issues/2166
 // The following code bubbles up values, see the tests for
 // examples of what that means.
 // convert days to months
 // 12 months -> 1 year
-return f>=0&&g>=0&&h>=0||f<=0&&g<=0&&h<=0||(f+=864e5*Yc(_c(h)+g),g=0,h=0),i.milliseconds=f%1e3,a=s(f/1e3),i.seconds=a%60,b=s(a/60),i.minutes=b%60,c=s(b/60),i.hours=c%24,g+=s(c/24),e=s($c(g)),h+=e,g-=Yc(_c(e)),d=s(h/12),h%=12,i.days=g,i.months=h,i.years=d,this}function $c(a){
+return f>=0&&g>=0&&h>=0||f<=0&&g<=0&&h<=0||(f+=864e5*$c(bd(h)+g),g=0,h=0),i.milliseconds=f%1e3,a=t(f/1e3),i.seconds=a%60,b=t(a/60),i.minutes=b%60,c=t(b/60),i.hours=c%24,g+=t(c/24),e=t(ad(g)),h+=e,g-=$c(bd(e)),d=t(h/12),h%=12,i.days=g,i.months=h,i.years=d,this}function ad(a){
 // 400 years have 146097 days (taking into account leap year rules)
 // 400 years have 12 months === 4800
-return 4800*a/146097}function _c(a){
+return 4800*a/146097}function bd(a){
 // the reverse of daysToMonths
-return 146097*a/4800}function ad(a){var b,c,d=this._milliseconds;if(a=J(a),"month"===a||"year"===a)return b=this._days+d/864e5,c=this._months+$c(b),"month"===a?c:c/12;switch(
+return 146097*a/4800}function cd(a){var b,c,d=this._milliseconds;if(a=K(a),"month"===a||"year"===a)return b=this._days+d/864e5,c=this._months+ad(b),"month"===a?c:c/12;switch(
 // handle milliseconds separately because of floating point math errors (issue #1867)
-b=this._days+Math.round(_c(this._months)),a){case"week":return b/7+d/6048e5;case"day":return b+d/864e5;case"hour":return 24*b+d/36e5;case"minute":return 1440*b+d/6e4;case"second":return 86400*b+d/1e3;
+b=this._days+Math.round(bd(this._months)),a){case"week":return b/7+d/6048e5;case"day":return b+d/864e5;case"hour":return 24*b+d/36e5;case"minute":return 1440*b+d/6e4;case"second":return 86400*b+d/1e3;
 // Math.floor prevents floating point math errors here
 case"millisecond":return Math.floor(864e5*b)+d;default:throw new Error("Unknown unit "+a)}}
 // TODO: Use this.as('ms')?
-function bd(){return this._milliseconds+864e5*this._days+this._months%12*2592e6+31536e6*t(this._months/12)}function cd(a){return function(){return this.as(a)}}function dd(a){return a=J(a),this[a+"s"]()}function ed(a){return function(){return this._data[a]}}function fd(){return s(this.days()/7)}
+function dd(){return this._milliseconds+864e5*this._days+this._months%12*2592e6+31536e6*u(this._months/12)}function ed(a){return function(){return this.as(a)}}function fd(a){return a=K(a),this[a+"s"]()}function gd(a){return function(){return this._data[a]}}function hd(){return t(this.days()/7)}
 // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
-function gd(a,b,c,d,e){return e.relativeTime(b||1,!!c,a,d)}function hd(a,b,c){var d=Nb(a).abs(),e=gg(d.as("s")),f=gg(d.as("m")),g=gg(d.as("h")),h=gg(d.as("d")),i=gg(d.as("M")),j=gg(d.as("y")),k=e<hg.s&&["s",e]||f<=1&&["m"]||f<hg.m&&["mm",f]||g<=1&&["h"]||g<hg.h&&["hh",g]||h<=1&&["d"]||h<hg.d&&["dd",h]||i<=1&&["M"]||i<hg.M&&["MM",i]||j<=1&&["y"]||["yy",j];return k[2]=b,k[3]=+a>0,k[4]=c,gd.apply(null,k)}
+function id(a,b,c,d,e){return e.relativeTime(b||1,!!c,a,d)}function jd(a,b,c){var d=Ob(a).abs(),e=lg(d.as("s")),f=lg(d.as("m")),g=lg(d.as("h")),h=lg(d.as("d")),i=lg(d.as("M")),j=lg(d.as("y")),k=e<mg.s&&["s",e]||f<=1&&["m"]||f<mg.m&&["mm",f]||g<=1&&["h"]||g<mg.h&&["hh",g]||h<=1&&["d"]||h<mg.d&&["dd",h]||i<=1&&["M"]||i<mg.M&&["MM",i]||j<=1&&["y"]||["yy",j];return k[2]=b,k[3]=+a>0,k[4]=c,id.apply(null,k)}
 // This function allows you to set the rounding function for relative time strings
-function id(a){return void 0===a?gg:"function"==typeof a&&(gg=a,!0)}
+function kd(a){return void 0===a?lg:"function"==typeof a&&(lg=a,!0)}
 // This function allows you to set a threshold for relative time strings
-function jd(a,b){return void 0!==hg[a]&&(void 0===b?hg[a]:(hg[a]=b,!0))}function kd(a){var b=this.localeData(),c=hd(this,!a,b);return a&&(c=b.pastFuture(+this,c)),b.postformat(c)}function ld(){
+function ld(a,b){return void 0!==mg[a]&&(void 0===b?mg[a]:(mg[a]=b,!0))}function md(a){var b=this.localeData(),c=jd(this,!a,b);return a&&(c=b.pastFuture(+this,c)),b.postformat(c)}function nd(){
 // for ISO strings we do not use the normal bubbling rules:
 //  * milliseconds bubble up until they become hours
 //  * days do not bubble at all
@@ -2357,341 +402,712 @@ function jd(a,b){return void 0!==hg[a]&&(void 0===b?hg[a]:(hg[a]=b,!0))}function
 // This is because there is no context-free conversion between hours and days
 // (think of clock changes)
 // and also not between days and months (28-31 days per month)
-var a,b,c,d=ig(this._milliseconds)/1e3,e=ig(this._days),f=ig(this._months);
+var a,b,c,d=ng(this._milliseconds)/1e3,e=ng(this._days),f=ng(this._months);
 // 3600 seconds -> 60 minutes -> 1 hour
-a=s(d/60),b=s(a/60),d%=60,a%=60,
+a=t(d/60),b=t(a/60),d%=60,a%=60,
 // 12 months -> 1 year
-c=s(f/12),f%=12;
+c=t(f/12),f%=12;
 // inspired by https://github.com/dordille/moment-isoduration/blob/master/moment.isoduration.js
-var g=c,h=f,i=e,j=b,k=a,l=d,m=this.asSeconds();return m?(m<0?"-":"")+"P"+(g?g+"Y":"")+(h?h+"M":"")+(i?i+"D":"")+(j||k||l?"T":"")+(j?j+"H":"")+(k?k+"M":"")+(l?l+"S":""):"P0D"}function md(a,b){var c=a.split("_");return b%10===1&&b%100!==11?c[0]:b%10>=2&&b%10<=4&&(b%100<10||b%100>=20)?c[1]:c[2]}function nd(a,b,c){var d={mm:b?"хвіліна_хвіліны_хвілін":"хвіліну_хвіліны_хвілін",hh:b?"гадзіна_гадзіны_гадзін":"гадзіну_гадзіны_гадзін",dd:"дзень_дні_дзён",MM:"месяц_месяцы_месяцаў",yy:"год_гады_гадоў"};return"m"===c?b?"хвіліна":"хвіліну":"h"===c?b?"гадзіна":"гадзіну":a+" "+md(d[c],+a)}function od(a,b,c){var d={mm:"munutenn",MM:"miz",dd:"devezh"};return a+" "+rd(d[c],a)}function pd(a){switch(qd(a)){case 1:case 3:case 4:case 5:case 9:return a+" bloaz";default:return a+" vloaz"}}function qd(a){return a>9?qd(a%10):a}function rd(a,b){return 2===b?sd(a):a}function sd(a){var b={m:"v",b:"v",d:"z"};return void 0===b[a.charAt(0)]?a:b[a.charAt(0)]+a.substring(1)}function td(a,b,c){var d=a+" ";switch(c){case"m":return b?"jedna minuta":"jedne minute";case"mm":return d+=1===a?"minuta":2===a||3===a||4===a?"minute":"minuta";case"h":return b?"jedan sat":"jednog sata";case"hh":return d+=1===a?"sat":2===a||3===a||4===a?"sata":"sati";case"dd":return d+=1===a?"dan":"dana";case"MM":return d+=1===a?"mjesec":2===a||3===a||4===a?"mjeseca":"mjeseci";case"yy":return d+=1===a?"godina":2===a||3===a||4===a?"godine":"godina"}}function ud(a){return a>1&&a<5&&1!==~~(a/10)}function vd(a,b,c,d){var e=a+" ";switch(c){case"s":// a few seconds / in a few seconds / a few seconds ago
+var g=c,h=f,i=e,j=b,k=a,l=d,m=this.asSeconds();return m?(m<0?"-":"")+"P"+(g?g+"Y":"")+(h?h+"M":"")+(i?i+"D":"")+(j||k||l?"T":"")+(j?j+"H":"")+(k?k+"M":"")+(l?l+"S":""):"P0D"}
+//! moment.js locale configuration
+//! locale : Belarusian [be]
+//! author : Dmitry Demidov : https://github.com/demidov91
+//! author: Praleska: http://praleska.pro/
+//! Author : Menelion Elensúle : https://github.com/Oire
+function od(a,b){var c=a.split("_");return b%10===1&&b%100!==11?c[0]:b%10>=2&&b%10<=4&&(b%100<10||b%100>=20)?c[1]:c[2]}function pd(a,b,c){var d={mm:b?"хвіліна_хвіліны_хвілін":"хвіліну_хвіліны_хвілін",hh:b?"гадзіна_гадзіны_гадзін":"гадзіну_гадзіны_гадзін",dd:"дзень_дні_дзён",MM:"месяц_месяцы_месяцаў",yy:"год_гады_гадоў"};return"m"===c?b?"хвіліна":"хвіліну":"h"===c?b?"гадзіна":"гадзіну":a+" "+od(d[c],+a)}
+//! moment.js locale configuration
+//! locale : Breton [br]
+//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
+function qd(a,b,c){var d={mm:"munutenn",MM:"miz",dd:"devezh"};return a+" "+td(d[c],a)}function rd(a){switch(sd(a)){case 1:case 3:case 4:case 5:case 9:return a+" bloaz";default:return a+" vloaz"}}function sd(a){return a>9?sd(a%10):a}function td(a,b){return 2===b?ud(a):a}function ud(a){var b={m:"v",b:"v",d:"z"};return void 0===b[a.charAt(0)]?a:b[a.charAt(0)]+a.substring(1)}
+//! moment.js locale configuration
+//! locale : Bosnian [bs]
+//! author : Nedim Cholich : https://github.com/frontyard
+//! based on (hr) translation by Bojan Marković
+function vd(a,b,c){var d=a+" ";switch(c){case"m":return b?"jedna minuta":"jedne minute";case"mm":return d+=1===a?"minuta":2===a||3===a||4===a?"minute":"minuta";case"h":return b?"jedan sat":"jednog sata";case"hh":return d+=1===a?"sat":2===a||3===a||4===a?"sata":"sati";case"dd":return d+=1===a?"dan":"dana";case"MM":return d+=1===a?"mjesec":2===a||3===a||4===a?"mjeseca":"mjeseci";case"yy":return d+=1===a?"godina":2===a||3===a||4===a?"godine":"godina"}}function wd(a){return a>1&&a<5&&1!==~~(a/10)}function xd(a,b,c,d){var e=a+" ";switch(c){case"s":// a few seconds / in a few seconds / a few seconds ago
 return b||d?"pár sekund":"pár sekundami";case"m":// a minute / in a minute / a minute ago
 return b?"minuta":d?"minutu":"minutou";case"mm":// 9 minutes / in 9 minutes / 9 minutes ago
 // 9 minutes / in 9 minutes / 9 minutes ago
-return b||d?e+(ud(a)?"minuty":"minut"):e+"minutami";break;case"h":// an hour / in an hour / an hour ago
+return b||d?e+(wd(a)?"minuty":"minut"):e+"minutami";break;case"h":// an hour / in an hour / an hour ago
 return b?"hodina":d?"hodinu":"hodinou";case"hh":// 9 hours / in 9 hours / 9 hours ago
 // 9 hours / in 9 hours / 9 hours ago
-return b||d?e+(ud(a)?"hodiny":"hodin"):e+"hodinami";break;case"d":// a day / in a day / a day ago
+return b||d?e+(wd(a)?"hodiny":"hodin"):e+"hodinami";break;case"d":// a day / in a day / a day ago
 return b||d?"den":"dnem";case"dd":// 9 days / in 9 days / 9 days ago
 // 9 days / in 9 days / 9 days ago
-return b||d?e+(ud(a)?"dny":"dní"):e+"dny";break;case"M":// a month / in a month / a month ago
+return b||d?e+(wd(a)?"dny":"dní"):e+"dny";break;case"M":// a month / in a month / a month ago
 return b||d?"měsíc":"měsícem";case"MM":// 9 months / in 9 months / 9 months ago
 // 9 months / in 9 months / 9 months ago
-return b||d?e+(ud(a)?"měsíce":"měsíců"):e+"měsíci";break;case"y":// a year / in a year / a year ago
+return b||d?e+(wd(a)?"měsíce":"měsíců"):e+"měsíci";break;case"y":// a year / in a year / a year ago
 return b||d?"rok":"rokem";case"yy":// 9 years / in 9 years / 9 years ago
 // 9 years / in 9 years / 9 years ago
-return b||d?e+(ud(a)?"roky":"let"):e+"lety"}}function wd(a,b,c,d){var e={m:["eine Minute","einer Minute"],h:["eine Stunde","einer Stunde"],d:["ein Tag","einem Tag"],dd:[a+" Tage",a+" Tagen"],M:["ein Monat","einem Monat"],MM:[a+" Monate",a+" Monaten"],y:["ein Jahr","einem Jahr"],yy:[a+" Jahre",a+" Jahren"]};return b?e[c][0]:e[c][1]}function xd(a,b,c,d){var e={m:["eine Minute","einer Minute"],h:["eine Stunde","einer Stunde"],d:["ein Tag","einem Tag"],dd:[a+" Tage",a+" Tagen"],M:["ein Monat","einem Monat"],MM:[a+" Monate",a+" Monaten"],y:["ein Jahr","einem Jahr"],yy:[a+" Jahre",a+" Jahren"]};return b?e[c][0]:e[c][1]}function yd(a,b,c,d){var e={s:["mõne sekundi","mõni sekund","paar sekundit"],m:["ühe minuti","üks minut"],mm:[a+" minuti",a+" minutit"],h:["ühe tunni","tund aega","üks tund"],hh:[a+" tunni",a+" tundi"],d:["ühe päeva","üks päev"],M:["kuu aja","kuu aega","üks kuu"],MM:[a+" kuu",a+" kuud"],y:["ühe aasta","aasta","üks aasta"],yy:[a+" aasta",a+" aastat"]};return b?e[c][2]?e[c][2]:e[c][1]:d?e[c][0]:e[c][1]}function zd(a,b,c,d){var e="";switch(c){case"s":return d?"muutaman sekunnin":"muutama sekunti";case"m":return d?"minuutin":"minuutti";case"mm":e=d?"minuutin":"minuuttia";break;case"h":return d?"tunnin":"tunti";case"hh":e=d?"tunnin":"tuntia";break;case"d":return d?"päivän":"päivä";case"dd":e=d?"päivän":"päivää";break;case"M":return d?"kuukauden":"kuukausi";case"MM":e=d?"kuukauden":"kuukautta";break;case"y":return d?"vuoden":"vuosi";case"yy":e=d?"vuoden":"vuotta"}return e=Ad(a,d)+" "+e}function Ad(a,b){return a<10?b?Og[a]:Ng[a]:a}function Bd(a,b,c){var d=a+" ";switch(c){case"m":return b?"jedna minuta":"jedne minute";case"mm":return d+=1===a?"minuta":2===a||3===a||4===a?"minute":"minuta";case"h":return b?"jedan sat":"jednog sata";case"hh":return d+=1===a?"sat":2===a||3===a||4===a?"sata":"sati";case"dd":return d+=1===a?"dan":"dana";case"MM":return d+=1===a?"mjesec":2===a||3===a||4===a?"mjeseca":"mjeseci";case"yy":return d+=1===a?"godina":2===a||3===a||4===a?"godine":"godina"}}function Cd(a,b,c,d){var e=a;switch(c){case"s":return d||b?"néhány másodperc":"néhány másodperce";case"m":return"egy"+(d||b?" perc":" perce");case"mm":return e+(d||b?" perc":" perce");case"h":return"egy"+(d||b?" óra":" órája");case"hh":return e+(d||b?" óra":" órája");case"d":return"egy"+(d||b?" nap":" napja");case"dd":return e+(d||b?" nap":" napja");case"M":return"egy"+(d||b?" hónap":" hónapja");case"MM":return e+(d||b?" hónap":" hónapja");case"y":return"egy"+(d||b?" év":" éve");case"yy":return e+(d||b?" év":" éve")}return""}function Dd(a){return(a?"":"[múlt] ")+"["+Yg[this.day()]+"] LT[-kor]"}function Ed(a){return a%100===11||a%10!==1}function Fd(a,b,c,d){var e=a+" ";switch(c){case"s":return b||d?"nokkrar sekúndur":"nokkrum sekúndum";case"m":return b?"mínúta":"mínútu";case"mm":return Ed(a)?e+(b||d?"mínútur":"mínútum"):b?e+"mínúta":e+"mínútu";case"hh":return Ed(a)?e+(b||d?"klukkustundir":"klukkustundum"):e+"klukkustund";case"d":return b?"dagur":d?"dag":"degi";case"dd":return Ed(a)?b?e+"dagar":e+(d?"daga":"dögum"):b?e+"dagur":e+(d?"dag":"degi");case"M":return b?"mánuður":d?"mánuð":"mánuði";case"MM":return Ed(a)?b?e+"mánuðir":e+(d?"mánuði":"mánuðum"):b?e+"mánuður":e+(d?"mánuð":"mánuði");case"y":return b||d?"ár":"ári";case"yy":return Ed(a)?e+(b||d?"ár":"árum"):e+(b||d?"ár":"ári")}}function Gd(a,b,c,d){var e={m:["eng Minutt","enger Minutt"],h:["eng Stonn","enger Stonn"],d:["een Dag","engem Dag"],M:["ee Mount","engem Mount"],y:["ee Joer","engem Joer"]};return b?e[c][0]:e[c][1]}function Hd(a){var b=a.substr(0,a.indexOf(" "));return Jd(b)?"a "+a:"an "+a}function Id(a){var b=a.substr(0,a.indexOf(" "));return Jd(b)?"viru "+a:"virun "+a}/**
-     * Returns true if the word before the given number loses the '-n' ending.
-     * e.g. 'an 10 Deeg' but 'a 5 Deeg'
-     *
-     * @param number {integer}
-     * @returns {boolean}
-     */
-function Jd(a){if(a=parseInt(a,10),isNaN(a))return!1;if(a<0)
+return b||d?e+(wd(a)?"roky":"let"):e+"lety"}}
+//! moment.js locale configuration
+//! locale : German (Austria) [de-at]
+//! author : lluchs : https://github.com/lluchs
+//! author: Menelion Elensúle: https://github.com/Oire
+//! author : Martin Groller : https://github.com/MadMG
+//! author : Mikolaj Dadela : https://github.com/mik01aj
+function yd(a,b,c,d){var e={m:["eine Minute","einer Minute"],h:["eine Stunde","einer Stunde"],d:["ein Tag","einem Tag"],dd:[a+" Tage",a+" Tagen"],M:["ein Monat","einem Monat"],MM:[a+" Monate",a+" Monaten"],y:["ein Jahr","einem Jahr"],yy:[a+" Jahre",a+" Jahren"]};return b?e[c][0]:e[c][1]}
+//! moment.js locale configuration
+//! locale : German [de]
+//! author : lluchs : https://github.com/lluchs
+//! author: Menelion Elensúle: https://github.com/Oire
+//! author : Mikolaj Dadela : https://github.com/mik01aj
+function zd(a,b,c,d){var e={m:["eine Minute","einer Minute"],h:["eine Stunde","einer Stunde"],d:["ein Tag","einem Tag"],dd:[a+" Tage",a+" Tagen"],M:["ein Monat","einem Monat"],MM:[a+" Monate",a+" Monaten"],y:["ein Jahr","einem Jahr"],yy:[a+" Jahre",a+" Jahren"]};return b?e[c][0]:e[c][1]}
+//! moment.js locale configuration
+//! locale : Estonian [et]
+//! author : Henry Kehlmann : https://github.com/madhenry
+//! improvements : Illimar Tambek : https://github.com/ragulka
+function Ad(a,b,c,d){var e={s:["mõne sekundi","mõni sekund","paar sekundit"],m:["ühe minuti","üks minut"],mm:[a+" minuti",a+" minutit"],h:["ühe tunni","tund aega","üks tund"],hh:[a+" tunni",a+" tundi"],d:["ühe päeva","üks päev"],M:["kuu aja","kuu aega","üks kuu"],MM:[a+" kuu",a+" kuud"],y:["ühe aasta","aasta","üks aasta"],yy:[a+" aasta",a+" aastat"]};return b?e[c][2]?e[c][2]:e[c][1]:d?e[c][0]:e[c][1]}function Bd(a,b,c,d){var e="";switch(c){case"s":return d?"muutaman sekunnin":"muutama sekunti";case"m":return d?"minuutin":"minuutti";case"mm":e=d?"minuutin":"minuuttia";break;case"h":return d?"tunnin":"tunti";case"hh":e=d?"tunnin":"tuntia";break;case"d":return d?"päivän":"päivä";case"dd":e=d?"päivän":"päivää";break;case"M":return d?"kuukauden":"kuukausi";case"MM":e=d?"kuukauden":"kuukautta";break;case"y":return d?"vuoden":"vuosi";case"yy":e=d?"vuoden":"vuotta"}return e=Cd(a,d)+" "+e}function Cd(a,b){return a<10?b?Sg[a]:Rg[a]:a}
+//! moment.js locale configuration
+//! locale : Croatian [hr]
+//! author : Bojan Marković : https://github.com/bmarkovic
+function Dd(a,b,c){var d=a+" ";switch(c){case"m":return b?"jedna minuta":"jedne minute";case"mm":return d+=1===a?"minuta":2===a||3===a||4===a?"minute":"minuta";case"h":return b?"jedan sat":"jednog sata";case"hh":return d+=1===a?"sat":2===a||3===a||4===a?"sata":"sati";case"dd":return d+=1===a?"dan":"dana";case"MM":return d+=1===a?"mjesec":2===a||3===a||4===a?"mjeseca":"mjeseci";case"yy":return d+=1===a?"godina":2===a||3===a||4===a?"godine":"godina"}}function Ed(a,b,c,d){var e=a;switch(c){case"s":return d||b?"néhány másodperc":"néhány másodperce";case"m":return"egy"+(d||b?" perc":" perce");case"mm":return e+(d||b?" perc":" perce");case"h":return"egy"+(d||b?" óra":" órája");case"hh":return e+(d||b?" óra":" órája");case"d":return"egy"+(d||b?" nap":" napja");case"dd":return e+(d||b?" nap":" napja");case"M":return"egy"+(d||b?" hónap":" hónapja");case"MM":return e+(d||b?" hónap":" hónapja");case"y":return"egy"+(d||b?" év":" éve");case"yy":return e+(d||b?" év":" éve")}return""}function Fd(a){return(a?"":"[múlt] ")+"["+ah[this.day()]+"] LT[-kor]"}
+//! moment.js locale configuration
+//! locale : Icelandic [is]
+//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
+function Gd(a){return a%100===11||a%10!==1}function Hd(a,b,c,d){var e=a+" ";switch(c){case"s":return b||d?"nokkrar sekúndur":"nokkrum sekúndum";case"m":return b?"mínúta":"mínútu";case"mm":return Gd(a)?e+(b||d?"mínútur":"mínútum"):b?e+"mínúta":e+"mínútu";case"hh":return Gd(a)?e+(b||d?"klukkustundir":"klukkustundum"):e+"klukkustund";case"d":return b?"dagur":d?"dag":"degi";case"dd":return Gd(a)?b?e+"dagar":e+(d?"daga":"dögum"):b?e+"dagur":e+(d?"dag":"degi");case"M":return b?"mánuður":d?"mánuð":"mánuði";case"MM":return Gd(a)?b?e+"mánuðir":e+(d?"mánuði":"mánuðum"):b?e+"mánuður":e+(d?"mánuð":"mánuði");case"y":return b||d?"ár":"ári";case"yy":return Gd(a)?e+(b||d?"ár":"árum"):e+(b||d?"ár":"ári")}}
+//! moment.js locale configuration
+//! locale : Luxembourgish [lb]
+//! author : mweimerskirch : https://github.com/mweimerskirch
+//! author : David Raison : https://github.com/kwisatz
+function Id(a,b,c,d){var e={m:["eng Minutt","enger Minutt"],h:["eng Stonn","enger Stonn"],d:["een Dag","engem Dag"],M:["ee Mount","engem Mount"],y:["ee Joer","engem Joer"]};return b?e[c][0]:e[c][1]}function Jd(a){var b=a.substr(0,a.indexOf(" "));return Ld(b)?"a "+a:"an "+a}function Kd(a){var b=a.substr(0,a.indexOf(" "));return Ld(b)?"viru "+a:"virun "+a}/**
+ * Returns true if the word before the given number loses the '-n' ending.
+ * e.g. 'an 10 Deeg' but 'a 5 Deeg'
+ *
+ * @param number {integer}
+ * @returns {boolean}
+ */
+function Ld(a){if(a=parseInt(a,10),isNaN(a))return!1;if(a<0)
 // Negative Number --> always true
 return!0;if(a<10)
 // Only 1 digit
 return 4<=a&&a<=7;if(a<100){
 // 2 digits
-var b=a%10,c=a/10;return Jd(0===b?c:b)}if(a<1e4){
+var b=a%10,c=a/10;return Ld(0===b?c:b)}if(a<1e4){
 // 3 or 4 digits --> recursively check first digit
-for(;a>=10;)a/=10;return Jd(a)}
+for(;a>=10;)a/=10;return Ld(a)}
 // Anything larger than 4 digits: recursively check first n-3 digits
-return a/=1e3,Jd(a)}function Kd(a,b,c,d){return b?"kelios sekundės":d?"kelių sekundžių":"kelias sekundes"}function Ld(a,b,c,d){return b?Nd(c)[0]:d?Nd(c)[1]:Nd(c)[2]}function Md(a){return a%10===0||a>10&&a<20}function Nd(a){return _g[a].split("_")}function Od(a,b,c,d){var e=a+" ";return 1===a?e+Ld(a,b,c[0],d):b?e+(Md(a)?Nd(c)[1]:Nd(c)[0]):d?e+Nd(c)[1]:e+(Md(a)?Nd(c)[1]:Nd(c)[2])}/**
-     * @param withoutSuffix boolean true = a length of time; false = before/after a period of time.
-     */
-function Pd(a,b,c){return c?b%10===1&&b%100!==11?a[2]:a[3]:b%10===1&&b%100!==11?a[0]:a[1]}function Qd(a,b,c){return a+" "+Pd(ah[c],a,b)}function Rd(a,b,c){return Pd(ah[c],a,b)}function Sd(a,b){return b?"dažas sekundes":"dažām sekundēm"}function Td(a,b,c,d){var e="";if(b)switch(c){case"s":e="काही सेकंद";break;case"m":e="एक मिनिट";break;case"mm":e="%d मिनिटे";break;case"h":e="एक तास";break;case"hh":e="%d तास";break;case"d":e="एक दिवस";break;case"dd":e="%d दिवस";break;case"M":e="एक महिना";break;case"MM":e="%d महिने";break;case"y":e="एक वर्ष";break;case"yy":e="%d वर्षे"}else switch(c){case"s":e="काही सेकंदां";break;case"m":e="एका मिनिटा";break;case"mm":e="%d मिनिटां";break;case"h":e="एका तासा";break;case"hh":e="%d तासां";break;case"d":e="एका दिवसा";break;case"dd":e="%d दिवसां";break;case"M":e="एका महिन्या";break;case"MM":e="%d महिन्यां";break;case"y":e="एका वर्षा";break;case"yy":e="%d वर्षां"}return e.replace(/%d/i,a)}function Ud(a){return a%10<5&&a%10>1&&~~(a/10)%10!==1}function Vd(a,b,c){var d=a+" ";switch(c){case"m":return b?"minuta":"minutę";case"mm":return d+(Ud(a)?"minuty":"minut");case"h":return b?"godzina":"godzinę";case"hh":return d+(Ud(a)?"godziny":"godzin");case"MM":return d+(Ud(a)?"miesiące":"miesięcy");case"yy":return d+(Ud(a)?"lata":"lat")}}function Wd(a,b,c){var d={mm:"minute",hh:"ore",dd:"zile",MM:"luni",yy:"ani"},e=" ";return(a%100>=20||a>=100&&a%100===0)&&(e=" de "),a+e+d[c]}function Xd(a,b){var c=a.split("_");return b%10===1&&b%100!==11?c[0]:b%10>=2&&b%10<=4&&(b%100<10||b%100>=20)?c[1]:c[2]}function Yd(a,b,c){var d={mm:b?"минута_минуты_минут":"минуту_минуты_минут",hh:"час_часа_часов",dd:"день_дня_дней",MM:"месяц_месяца_месяцев",yy:"год_года_лет"};return"m"===c?b?"минута":"минуту":a+" "+Xd(d[c],+a)}function Zd(a){return a>1&&a<5}function $d(a,b,c,d){var e=a+" ";switch(c){case"s":// a few seconds / in a few seconds / a few seconds ago
+return a/=1e3,Ld(a)}function Md(a,b,c,d){return b?"kelios sekundės":d?"kelių sekundžių":"kelias sekundes"}function Nd(a,b,c,d){return b?Pd(c)[0]:d?Pd(c)[1]:Pd(c)[2]}function Od(a){return a%10===0||a>10&&a<20}function Pd(a){return dh[a].split("_")}function Qd(a,b,c,d){var e=a+" ";return 1===a?e+Nd(a,b,c[0],d):b?e+(Od(a)?Pd(c)[1]:Pd(c)[0]):d?e+Pd(c)[1]:e+(Od(a)?Pd(c)[1]:Pd(c)[2])}/**
+ * @param withoutSuffix boolean true = a length of time; false = before/after a period of time.
+ */
+function Rd(a,b,c){return c?b%10===1&&b%100!==11?a[2]:a[3]:b%10===1&&b%100!==11?a[0]:a[1]}function Sd(a,b,c){return a+" "+Rd(eh[c],a,b)}function Td(a,b,c){return Rd(eh[c],a,b)}function Ud(a,b){return b?"dažas sekundes":"dažām sekundēm"}function Vd(a,b,c,d){var e="";if(b)switch(c){case"s":e="काही सेकंद";break;case"m":e="एक मिनिट";break;case"mm":e="%d मिनिटे";break;case"h":e="एक तास";break;case"hh":e="%d तास";break;case"d":e="एक दिवस";break;case"dd":e="%d दिवस";break;case"M":e="एक महिना";break;case"MM":e="%d महिने";break;case"y":e="एक वर्ष";break;case"yy":e="%d वर्षे"}else switch(c){case"s":e="काही सेकंदां";break;case"m":e="एका मिनिटा";break;case"mm":e="%d मिनिटां";break;case"h":e="एका तासा";break;case"hh":e="%d तासां";break;case"d":e="एका दिवसा";break;case"dd":e="%d दिवसां";break;case"M":e="एका महिन्या";break;case"MM":e="%d महिन्यां";break;case"y":e="एका वर्षा";break;case"yy":e="%d वर्षां"}return e.replace(/%d/i,a)}function Wd(a){return a%10<5&&a%10>1&&~~(a/10)%10!==1}function Xd(a,b,c){var d=a+" ";switch(c){case"m":return b?"minuta":"minutę";case"mm":return d+(Wd(a)?"minuty":"minut");case"h":return b?"godzina":"godzinę";case"hh":return d+(Wd(a)?"godziny":"godzin");case"MM":return d+(Wd(a)?"miesiące":"miesięcy");case"yy":return d+(Wd(a)?"lata":"lat")}}
+//! moment.js locale configuration
+//! locale : Romanian [ro]
+//! author : Vlad Gurdiga : https://github.com/gurdiga
+//! author : Valentin Agachi : https://github.com/avaly
+function Yd(a,b,c){var d={mm:"minute",hh:"ore",dd:"zile",MM:"luni",yy:"ani"},e=" ";return(a%100>=20||a>=100&&a%100===0)&&(e=" de "),a+e+d[c]}
+//! moment.js locale configuration
+//! locale : Russian [ru]
+//! author : Viktorminator : https://github.com/Viktorminator
+//! Author : Menelion Elensúle : https://github.com/Oire
+//! author : Коренберг Марк : https://github.com/socketpair
+function Zd(a,b){var c=a.split("_");return b%10===1&&b%100!==11?c[0]:b%10>=2&&b%10<=4&&(b%100<10||b%100>=20)?c[1]:c[2]}function $d(a,b,c){var d={mm:b?"минута_минуты_минут":"минуту_минуты_минут",hh:"час_часа_часов",dd:"день_дня_дней",MM:"месяц_месяца_месяцев",yy:"год_года_лет"};return"m"===c?b?"минута":"минуту":a+" "+Zd(d[c],+a)}function _d(a){return a>1&&a<5}function ae(a,b,c,d){var e=a+" ";switch(c){case"s":// a few seconds / in a few seconds / a few seconds ago
 return b||d?"pár sekúnd":"pár sekundami";case"m":// a minute / in a minute / a minute ago
 return b?"minúta":d?"minútu":"minútou";case"mm":// 9 minutes / in 9 minutes / 9 minutes ago
 // 9 minutes / in 9 minutes / 9 minutes ago
-return b||d?e+(Zd(a)?"minúty":"minút"):e+"minútami";break;case"h":// an hour / in an hour / an hour ago
+return b||d?e+(_d(a)?"minúty":"minút"):e+"minútami";break;case"h":// an hour / in an hour / an hour ago
 return b?"hodina":d?"hodinu":"hodinou";case"hh":// 9 hours / in 9 hours / 9 hours ago
 // 9 hours / in 9 hours / 9 hours ago
-return b||d?e+(Zd(a)?"hodiny":"hodín"):e+"hodinami";break;case"d":// a day / in a day / a day ago
+return b||d?e+(_d(a)?"hodiny":"hodín"):e+"hodinami";break;case"d":// a day / in a day / a day ago
 return b||d?"deň":"dňom";case"dd":// 9 days / in 9 days / 9 days ago
 // 9 days / in 9 days / 9 days ago
-return b||d?e+(Zd(a)?"dni":"dní"):e+"dňami";break;case"M":// a month / in a month / a month ago
+return b||d?e+(_d(a)?"dni":"dní"):e+"dňami";break;case"M":// a month / in a month / a month ago
 return b||d?"mesiac":"mesiacom";case"MM":// 9 months / in 9 months / 9 months ago
 // 9 months / in 9 months / 9 months ago
-return b||d?e+(Zd(a)?"mesiace":"mesiacov"):e+"mesiacmi";break;case"y":// a year / in a year / a year ago
+return b||d?e+(_d(a)?"mesiace":"mesiacov"):e+"mesiacmi";break;case"y":// a year / in a year / a year ago
 return b||d?"rok":"rokom";case"yy":// 9 years / in 9 years / 9 years ago
 // 9 years / in 9 years / 9 years ago
-return b||d?e+(Zd(a)?"roky":"rokov"):e+"rokmi"}}function _d(a,b,c,d){var e=a+" ";switch(c){case"s":return b||d?"nekaj sekund":"nekaj sekundami";case"m":return b?"ena minuta":"eno minuto";case"mm":return e+=1===a?b?"minuta":"minuto":2===a?b||d?"minuti":"minutama":a<5?b||d?"minute":"minutami":b||d?"minut":"minutami";case"h":return b?"ena ura":"eno uro";case"hh":return e+=1===a?b?"ura":"uro":2===a?b||d?"uri":"urama":a<5?b||d?"ure":"urami":b||d?"ur":"urami";case"d":return b||d?"en dan":"enim dnem";case"dd":return e+=1===a?b||d?"dan":"dnem":2===a?b||d?"dni":"dnevoma":b||d?"dni":"dnevi";case"M":return b||d?"en mesec":"enim mesecem";case"MM":return e+=1===a?b||d?"mesec":"mesecem":2===a?b||d?"meseca":"mesecema":a<5?b||d?"mesece":"meseci":b||d?"mesecev":"meseci";case"y":return b||d?"eno leto":"enim letom";case"yy":return e+=1===a?b||d?"leto":"letom":2===a?b||d?"leti":"letoma":a<5?b||d?"leta":"leti":b||d?"let":"leti"}}function ae(a){var b=a;return b=a.indexOf("jaj")!==-1?b.slice(0,-3)+"leS":a.indexOf("jar")!==-1?b.slice(0,-3)+"waQ":a.indexOf("DIS")!==-1?b.slice(0,-3)+"nem":b+" pIq"}function be(a){var b=a;return b=a.indexOf("jaj")!==-1?b.slice(0,-3)+"Hu’":a.indexOf("jar")!==-1?b.slice(0,-3)+"wen":a.indexOf("DIS")!==-1?b.slice(0,-3)+"ben":b+" ret"}function ce(a,b,c,d){var e=de(a);switch(c){case"mm":return e+" tup";case"hh":return e+" rep";case"dd":return e+" jaj";case"MM":return e+" jar";case"yy":return e+" DIS"}}function de(a){var b=Math.floor(a%1e3/100),c=Math.floor(a%100/10),d=a%10,e="";return b>0&&(e+=xh[b]+"vatlh"),c>0&&(e+=(""!==e?" ":"")+xh[c]+"maH"),d>0&&(e+=(""!==e?" ":"")+xh[d]),""===e?"pagh":e}function ee(a,b,c,d){var e={s:["viensas secunds","'iensas secunds"],m:["'n míut","'iens míut"],mm:[a+" míuts",""+a+" míuts"],h:["'n þora","'iensa þora"],hh:[a+" þoras",""+a+" þoras"],d:["'n ziua","'iensa ziua"],dd:[a+" ziuas",""+a+" ziuas"],M:["'n mes","'iens mes"],MM:[a+" mesen",""+a+" mesen"],y:["'n ar","'iens ar"],yy:[a+" ars",""+a+" ars"]};return d?e[c][0]:b?e[c][0]:e[c][1]}function fe(a,b){var c=a.split("_");return b%10===1&&b%100!==11?c[0]:b%10>=2&&b%10<=4&&(b%100<10||b%100>=20)?c[1]:c[2]}function ge(a,b,c){var d={mm:b?"хвилина_хвилини_хвилин":"хвилину_хвилини_хвилин",hh:b?"година_години_годин":"годину_години_годин",dd:"день_дні_днів",MM:"місяць_місяці_місяців",yy:"рік_роки_років"};return"m"===c?b?"хвилина":"хвилину":"h"===c?b?"година":"годину":a+" "+fe(d[c],+a)}function he(a,b){var c={nominative:"неділя_понеділок_вівторок_середа_четвер_п’ятниця_субота".split("_"),accusative:"неділю_понеділок_вівторок_середу_четвер_п’ятницю_суботу".split("_"),genitive:"неділі_понеділка_вівторка_середи_четверга_п’ятниці_суботи".split("_")},d=/(\[[ВвУу]\]) ?dddd/.test(b)?"accusative":/\[?(?:минулої|наступної)? ?\] ?dddd/.test(b)?"genitive":"nominative";return c[d][a.day()]}function ie(a){return function(){return a+"о"+(11===this.hours()?"б":"")+"] LT"}}var je,ke;ke=Array.prototype.some?Array.prototype.some:function(a){for(var b=Object(this),c=b.length>>>0,d=0;d<c;d++)if(d in b&&a.call(this,b[d],d,b))return!0;return!1};
-// Plugins that add properties should also add the key here (null value),
-// so we can properly clone ourselves.
-var le=a.momentProperties=[],me=!1,ne={};a.suppressDeprecationWarnings=!1,a.deprecationHandler=null;var oe;oe=Object.keys?Object.keys:function(a){var b,c=[];for(b in a)h(a,b)&&c.push(b);return c};var pe,qe={sameDay:"[Today at] LT",nextDay:"[Tomorrow at] LT",nextWeek:"dddd [at] LT",lastDay:"[Yesterday at] LT",lastWeek:"[Last] dddd [at] LT",sameElse:"L"},re={LTS:"h:mm:ss A",LT:"h:mm A",L:"MM/DD/YYYY",LL:"MMMM D, YYYY",LLL:"MMMM D, YYYY h:mm A",LLLL:"dddd, MMMM D, YYYY h:mm A"},se="Invalid date",te="%d",ue=/\d{1,2}/,ve={future:"in %s",past:"%s ago",s:"a few seconds",m:"a minute",mm:"%d minutes",h:"an hour",hh:"%d hours",d:"a day",dd:"%d days",M:"a month",MM:"%d months",y:"a year",yy:"%d years"},we={},xe={},ye=/(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|kk?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g,ze=/(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g,Ae={},Be={},Ce=/\d/,De=/\d\d/,Ee=/\d{3}/,Fe=/\d{4}/,Ge=/[+-]?\d{6}/,He=/\d\d?/,Ie=/\d\d\d\d?/,Je=/\d\d\d\d\d\d?/,Ke=/\d{1,3}/,Le=/\d{1,4}/,Me=/[+-]?\d{1,6}/,Ne=/\d+/,Oe=/[+-]?\d+/,Pe=/Z|[+-]\d\d:?\d\d/gi,Qe=/Z|[+-]\d\d(?::?\d\d)?/gi,Re=/[+-]?\d+(\.\d{1,3})?/,Se=/[0-9]*['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF\/]+(\s*?[\u0600-\u06FF]+){1,2}/i,Te={},Ue={},Ve=0,We=1,Xe=2,Ye=3,Ze=4,$e=5,_e=6,af=7,bf=8;pe=Array.prototype.indexOf?Array.prototype.indexOf:function(a){
+return b||d?e+(_d(a)?"roky":"rokov"):e+"rokmi"}}
+//! moment.js locale configuration
+//! locale : Slovenian [sl]
+//! author : Robert Sedovšek : https://github.com/sedovsek
+function be(a,b,c,d){var e=a+" ";switch(c){case"s":return b||d?"nekaj sekund":"nekaj sekundami";case"m":return b?"ena minuta":"eno minuto";case"mm":return e+=1===a?b?"minuta":"minuto":2===a?b||d?"minuti":"minutama":a<5?b||d?"minute":"minutami":b||d?"minut":"minutami";case"h":return b?"ena ura":"eno uro";case"hh":return e+=1===a?b?"ura":"uro":2===a?b||d?"uri":"urama":a<5?b||d?"ure":"urami":b||d?"ur":"urami";case"d":return b||d?"en dan":"enim dnem";case"dd":return e+=1===a?b||d?"dan":"dnem":2===a?b||d?"dni":"dnevoma":b||d?"dni":"dnevi";case"M":return b||d?"en mesec":"enim mesecem";case"MM":return e+=1===a?b||d?"mesec":"mesecem":2===a?b||d?"meseca":"mesecema":a<5?b||d?"mesece":"meseci":b||d?"mesecev":"meseci";case"y":return b||d?"eno leto":"enim letom";case"yy":return e+=1===a?b||d?"leto":"letom":2===a?b||d?"leti":"letoma":a<5?b||d?"leta":"leti":b||d?"let":"leti"}}function ce(a){var b=a;return b=a.indexOf("jaj")!==-1?b.slice(0,-3)+"leS":a.indexOf("jar")!==-1?b.slice(0,-3)+"waQ":a.indexOf("DIS")!==-1?b.slice(0,-3)+"nem":b+" pIq"}function de(a){var b=a;return b=a.indexOf("jaj")!==-1?b.slice(0,-3)+"Hu’":a.indexOf("jar")!==-1?b.slice(0,-3)+"wen":a.indexOf("DIS")!==-1?b.slice(0,-3)+"ben":b+" ret"}function ee(a,b,c,d){var e=fe(a);switch(c){case"mm":return e+" tup";case"hh":return e+" rep";case"dd":return e+" jaj";case"MM":return e+" jar";case"yy":return e+" DIS"}}function fe(a){var b=Math.floor(a%1e3/100),c=Math.floor(a%100/10),d=a%10,e="";return b>0&&(e+=Fh[b]+"vatlh"),c>0&&(e+=(""!==e?" ":"")+Fh[c]+"maH"),d>0&&(e+=(""!==e?" ":"")+Fh[d]),""===e?"pagh":e}function ge(a,b,c,d){var e={s:["viensas secunds","'iensas secunds"],m:["'n míut","'iens míut"],mm:[a+" míuts",""+a+" míuts"],h:["'n þora","'iensa þora"],hh:[a+" þoras",""+a+" þoras"],d:["'n ziua","'iensa ziua"],dd:[a+" ziuas",""+a+" ziuas"],M:["'n mes","'iens mes"],MM:[a+" mesen",""+a+" mesen"],y:["'n ar","'iens ar"],yy:[a+" ars",""+a+" ars"]};return d?e[c][0]:b?e[c][0]:e[c][1]}
+//! moment.js locale configuration
+//! locale : Ukrainian [uk]
+//! author : zemlanin : https://github.com/zemlanin
+//! Author : Menelion Elensúle : https://github.com/Oire
+function he(a,b){var c=a.split("_");return b%10===1&&b%100!==11?c[0]:b%10>=2&&b%10<=4&&(b%100<10||b%100>=20)?c[1]:c[2]}function ie(a,b,c){var d={mm:b?"хвилина_хвилини_хвилин":"хвилину_хвилини_хвилин",hh:b?"година_години_годин":"годину_години_годин",dd:"день_дні_днів",MM:"місяць_місяці_місяців",yy:"рік_роки_років"};return"m"===c?b?"хвилина":"хвилину":"h"===c?b?"година":"годину":a+" "+he(d[c],+a)}function je(a,b){var c={nominative:"неділя_понеділок_вівторок_середа_четвер_п’ятниця_субота".split("_"),accusative:"неділю_понеділок_вівторок_середу_четвер_п’ятницю_суботу".split("_"),genitive:"неділі_понеділка_вівторка_середи_четверга_п’ятниці_суботи".split("_")},d=/(\[[ВвУу]\]) ?dddd/.test(b)?"accusative":/\[?(?:минулої|наступної)? ?\] ?dddd/.test(b)?"genitive":"nominative";return c[d][a.day()]}function ke(a){return function(){return a+"о"+(11===this.hours()?"б":"")+"] LT"}}var le,me;me=Array.prototype.some?Array.prototype.some:function(a){for(var b=Object(this),c=b.length>>>0,d=0;d<c;d++)if(d in b&&a.call(this,b[d],d,b))return!0;return!1};var ne=me,oe=a.momentProperties=[],pe=!1,qe={};a.suppressDeprecationWarnings=!1,a.deprecationHandler=null;var re;re=Object.keys?Object.keys:function(a){var b,c=[];for(b in a)i(a,b)&&c.push(b);return c};var se,te=re,ue={sameDay:"[Today at] LT",nextDay:"[Tomorrow at] LT",nextWeek:"dddd [at] LT",lastDay:"[Yesterday at] LT",lastWeek:"[Last] dddd [at] LT",sameElse:"L"},ve={LTS:"h:mm:ss A",LT:"h:mm A",L:"MM/DD/YYYY",LL:"MMMM D, YYYY",LLL:"MMMM D, YYYY h:mm A",LLLL:"dddd, MMMM D, YYYY h:mm A"},we="Invalid date",xe="%d",ye=/\d{1,2}/,ze={future:"in %s",past:"%s ago",s:"a few seconds",m:"a minute",mm:"%d minutes",h:"an hour",hh:"%d hours",d:"a day",dd:"%d days",M:"a month",MM:"%d months",y:"a year",yy:"%d years"},Ae={},Be={},Ce=/(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|kk?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g,De=/(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g,Ee={},Fe={},Ge=/\d/,He=/\d\d/,Ie=/\d{3}/,Je=/\d{4}/,Ke=/[+-]?\d{6}/,Le=/\d\d?/,Me=/\d\d\d\d?/,Ne=/\d\d\d\d\d\d?/,Oe=/\d{1,3}/,Pe=/\d{1,4}/,Qe=/[+-]?\d{1,6}/,Re=/\d+/,Se=/[+-]?\d+/,Te=/Z|[+-]\d\d:?\d\d/gi,Ue=/Z|[+-]\d\d(?::?\d\d)?/gi,Ve=/[+-]?\d+(\.\d{1,3})?/,We=/[0-9]*['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF\/]+(\s*?[\u0600-\u06FF]+){1,2}/i,Xe={},Ye={},Ze=0,$e=1,_e=2,af=3,bf=4,cf=5,df=6,ef=7,ff=8;se=Array.prototype.indexOf?Array.prototype.indexOf:function(a){
 // I know
-var b;for(b=0;b<this.length;++b)if(this[b]===a)return b;return-1},
+var b;for(b=0;b<this.length;++b)if(this[b]===a)return b;return-1};var gf=se;
 // FORMATTING
-T("M",["MM",2],"Mo",function(){return this.month()+1}),T("MMM",0,0,function(a){return this.localeData().monthsShort(this,a)}),T("MMMM",0,0,function(a){return this.localeData().months(this,a)}),
+U("M",["MM",2],"Mo",function(){return this.month()+1}),U("MMM",0,0,function(a){return this.localeData().monthsShort(this,a)}),U("MMMM",0,0,function(a){return this.localeData().months(this,a)}),
 // ALIASES
-I("month","M"),
+J("month","M"),
 // PRIORITY
-L("month",8),
+M("month",8),
 // PARSING
-Y("M",He),Y("MM",He,De),Y("MMM",function(a,b){return b.monthsShortRegex(a)}),Y("MMMM",function(a,b){return b.monthsRegex(a)}),aa(["M","MM"],function(a,b){b[We]=t(a)-1}),aa(["MMM","MMMM"],function(a,b,c,d){var e=c._locale.monthsParse(a,d,c._strict);
+Z("M",Le),Z("MM",Le,He),Z("MMM",function(a,b){return b.monthsShortRegex(a)}),Z("MMMM",function(a,b){return b.monthsRegex(a)}),ba(["M","MM"],function(a,b){b[$e]=u(a)-1}),ba(["MMM","MMMM"],function(a,b,c,d){var e=c._locale.monthsParse(a,d,c._strict);
 // if we didn't find a month name, mark the date as invalid.
-null!=e?b[We]=e:l(c).invalidMonth=a});
+null!=e?b[$e]=e:m(c).invalidMonth=a});
 // LOCALES
-var cf=/D[oD]?(\[[^\[\]]*\]|\s)+MMMM?/,df="January_February_March_April_May_June_July_August_September_October_November_December".split("_"),ef="Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),ff=Se,gf=Se;
+var hf=/D[oD]?(\[[^\[\]]*\]|\s)+MMMM?/,jf="January_February_March_April_May_June_July_August_September_October_November_December".split("_"),kf="Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),lf=We,mf=We;
 // FORMATTING
-T("Y",0,0,function(){var a=this.year();return a<=9999?""+a:"+"+a}),T(0,["YY",2],0,function(){return this.year()%100}),T(0,["YYYY",4],0,"year"),T(0,["YYYYY",5],0,"year"),T(0,["YYYYYY",6,!0],0,"year"),
+U("Y",0,0,function(){var a=this.year();return a<=9999?""+a:"+"+a}),U(0,["YY",2],0,function(){return this.year()%100}),U(0,["YYYY",4],0,"year"),U(0,["YYYYY",5],0,"year"),U(0,["YYYYYY",6,!0],0,"year"),
 // ALIASES
-I("year","y"),
+J("year","y"),
 // PRIORITIES
-L("year",1),
+M("year",1),
 // PARSING
-Y("Y",Oe),Y("YY",He,De),Y("YYYY",Le,Fe),Y("YYYYY",Me,Ge),Y("YYYYYY",Me,Ge),aa(["YYYYY","YYYYYY"],Ve),aa("YYYY",function(b,c){c[Ve]=2===b.length?a.parseTwoDigitYear(b):t(b)}),aa("YY",function(b,c){c[Ve]=a.parseTwoDigitYear(b)}),aa("Y",function(a,b){b[Ve]=parseInt(a,10)}),
+Z("Y",Se),Z("YY",Le,He),Z("YYYY",Pe,Je),Z("YYYYY",Qe,Ke),Z("YYYYYY",Qe,Ke),ba(["YYYYY","YYYYYY"],Ze),ba("YYYY",function(b,c){c[Ze]=2===b.length?a.parseTwoDigitYear(b):u(b)}),ba("YY",function(b,c){c[Ze]=a.parseTwoDigitYear(b)}),ba("Y",function(a,b){b[Ze]=parseInt(a,10)}),
 // HOOKS
-a.parseTwoDigitYear=function(a){return t(a)+(t(a)>68?1900:2e3)};
+a.parseTwoDigitYear=function(a){return u(a)+(u(a)>68?1900:2e3)};
 // MOMENTS
-var hf=N("FullYear",!0);
+var nf=O("FullYear",!0);
 // FORMATTING
-T("w",["ww",2],"wo","week"),T("W",["WW",2],"Wo","isoWeek"),
+U("w",["ww",2],"wo","week"),U("W",["WW",2],"Wo","isoWeek"),
 // ALIASES
-I("week","w"),I("isoWeek","W"),
+J("week","w"),J("isoWeek","W"),
 // PRIORITIES
-L("week",5),L("isoWeek",5),
+M("week",5),M("isoWeek",5),
 // PARSING
-Y("w",He),Y("ww",He,De),Y("W",He),Y("WW",He,De),ba(["w","ww","W","WW"],function(a,b,c,d){b[d.substr(0,1)]=t(a)});var jf={dow:0,// Sunday is the first day of the week.
+Z("w",Le),Z("ww",Le,He),Z("W",Le),Z("WW",Le,He),ca(["w","ww","W","WW"],function(a,b,c,d){b[d.substr(0,1)]=u(a)});var of={dow:0,// Sunday is the first day of the week.
 doy:6};
 // FORMATTING
-T("d",0,"do","day"),T("dd",0,0,function(a){return this.localeData().weekdaysMin(this,a)}),T("ddd",0,0,function(a){return this.localeData().weekdaysShort(this,a)}),T("dddd",0,0,function(a){return this.localeData().weekdays(this,a)}),T("e",0,0,"weekday"),T("E",0,0,"isoWeekday"),
+U("d",0,"do","day"),U("dd",0,0,function(a){return this.localeData().weekdaysMin(this,a)}),U("ddd",0,0,function(a){return this.localeData().weekdaysShort(this,a)}),U("dddd",0,0,function(a){return this.localeData().weekdays(this,a)}),U("e",0,0,"weekday"),U("E",0,0,"isoWeekday"),
 // ALIASES
-I("day","d"),I("weekday","e"),I("isoWeekday","E"),
+J("day","d"),J("weekday","e"),J("isoWeekday","E"),
 // PRIORITY
-L("day",11),L("weekday",11),L("isoWeekday",11),
+M("day",11),M("weekday",11),M("isoWeekday",11),
 // PARSING
-Y("d",He),Y("e",He),Y("E",He),Y("dd",function(a,b){return b.weekdaysMinRegex(a)}),Y("ddd",function(a,b){return b.weekdaysShortRegex(a)}),Y("dddd",function(a,b){return b.weekdaysRegex(a)}),ba(["dd","ddd","dddd"],function(a,b,c,d){var e=c._locale.weekdaysParse(a,d,c._strict);
+Z("d",Le),Z("e",Le),Z("E",Le),Z("dd",function(a,b){return b.weekdaysMinRegex(a)}),Z("ddd",function(a,b){return b.weekdaysShortRegex(a)}),Z("dddd",function(a,b){return b.weekdaysRegex(a)}),ca(["dd","ddd","dddd"],function(a,b,c,d){var e=c._locale.weekdaysParse(a,d,c._strict);
 // if we didn't get a weekday name, mark the date as invalid
-null!=e?b.d=e:l(c).invalidWeekday=a}),ba(["d","e","E"],function(a,b,c,d){b[d]=t(a)});
+null!=e?b.d=e:m(c).invalidWeekday=a}),ca(["d","e","E"],function(a,b,c,d){b[d]=u(a)});
 // LOCALES
-var kf="Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),lf="Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),mf="Su_Mo_Tu_We_Th_Fr_Sa".split("_"),nf=Se,of=Se,pf=Se;T("H",["HH",2],0,"hour"),T("h",["hh",2],0,Qa),T("k",["kk",2],0,Ra),T("hmm",0,0,function(){return""+Qa.apply(this)+S(this.minutes(),2)}),T("hmmss",0,0,function(){return""+Qa.apply(this)+S(this.minutes(),2)+S(this.seconds(),2)}),T("Hmm",0,0,function(){return""+this.hours()+S(this.minutes(),2)}),T("Hmmss",0,0,function(){return""+this.hours()+S(this.minutes(),2)+S(this.seconds(),2)}),Sa("a",!0),Sa("A",!1),
+var pf="Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),qf="Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),rf="Su_Mo_Tu_We_Th_Fr_Sa".split("_"),sf=We,tf=We,uf=We;U("H",["HH",2],0,"hour"),U("h",["hh",2],0,Ra),U("k",["kk",2],0,Sa),U("hmm",0,0,function(){return""+Ra.apply(this)+T(this.minutes(),2)}),U("hmmss",0,0,function(){return""+Ra.apply(this)+T(this.minutes(),2)+T(this.seconds(),2)}),U("Hmm",0,0,function(){return""+this.hours()+T(this.minutes(),2)}),U("Hmmss",0,0,function(){return""+this.hours()+T(this.minutes(),2)+T(this.seconds(),2)}),Ta("a",!0),Ta("A",!1),
 // ALIASES
-I("hour","h"),
+J("hour","h"),
 // PRIORITY
-L("hour",13),Y("a",Ta),Y("A",Ta),Y("H",He),Y("h",He),Y("HH",He,De),Y("hh",He,De),Y("hmm",Ie),Y("hmmss",Je),Y("Hmm",Ie),Y("Hmmss",Je),aa(["H","HH"],Ye),aa(["a","A"],function(a,b,c){c._isPm=c._locale.isPM(a),c._meridiem=a}),aa(["h","hh"],function(a,b,c){b[Ye]=t(a),l(c).bigHour=!0}),aa("hmm",function(a,b,c){var d=a.length-2;b[Ye]=t(a.substr(0,d)),b[Ze]=t(a.substr(d)),l(c).bigHour=!0}),aa("hmmss",function(a,b,c){var d=a.length-4,e=a.length-2;b[Ye]=t(a.substr(0,d)),b[Ze]=t(a.substr(d,2)),b[$e]=t(a.substr(e)),l(c).bigHour=!0}),aa("Hmm",function(a,b,c){var d=a.length-2;b[Ye]=t(a.substr(0,d)),b[Ze]=t(a.substr(d))}),aa("Hmmss",function(a,b,c){var d=a.length-4,e=a.length-2;b[Ye]=t(a.substr(0,d)),b[Ze]=t(a.substr(d,2)),b[$e]=t(a.substr(e))});var qf,rf=/[ap]\.?m?\.?/i,sf=N("Hours",!0),tf={calendar:qe,longDateFormat:re,invalidDate:se,ordinal:te,ordinalParse:ue,relativeTime:ve,months:df,monthsShort:ef,week:jf,weekdays:kf,weekdaysMin:mf,weekdaysShort:lf,meridiemParse:rf},uf={},vf=/^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/,wf=/^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?/,xf=/Z|[+-]\d\d(?::?\d\d)?/,yf=[["YYYYYY-MM-DD",/[+-]\d{6}-\d\d-\d\d/],["YYYY-MM-DD",/\d{4}-\d\d-\d\d/],["GGGG-[W]WW-E",/\d{4}-W\d\d-\d/],["GGGG-[W]WW",/\d{4}-W\d\d/,!1],["YYYY-DDD",/\d{4}-\d{3}/],["YYYY-MM",/\d{4}-\d\d/,!1],["YYYYYYMMDD",/[+-]\d{10}/],["YYYYMMDD",/\d{8}/],
+M("hour",13),Z("a",Ua),Z("A",Ua),Z("H",Le),Z("h",Le),Z("HH",Le,He),Z("hh",Le,He),Z("hmm",Me),Z("hmmss",Ne),Z("Hmm",Me),Z("Hmmss",Ne),ba(["H","HH"],af),ba(["a","A"],function(a,b,c){c._isPm=c._locale.isPM(a),c._meridiem=a}),ba(["h","hh"],function(a,b,c){b[af]=u(a),m(c).bigHour=!0}),ba("hmm",function(a,b,c){var d=a.length-2;b[af]=u(a.substr(0,d)),b[bf]=u(a.substr(d)),m(c).bigHour=!0}),ba("hmmss",function(a,b,c){var d=a.length-4,e=a.length-2;b[af]=u(a.substr(0,d)),b[bf]=u(a.substr(d,2)),b[cf]=u(a.substr(e)),m(c).bigHour=!0}),ba("Hmm",function(a,b,c){var d=a.length-2;b[af]=u(a.substr(0,d)),b[bf]=u(a.substr(d))}),ba("Hmmss",function(a,b,c){var d=a.length-4,e=a.length-2;b[af]=u(a.substr(0,d)),b[bf]=u(a.substr(d,2)),b[cf]=u(a.substr(e))});var vf,wf=/[ap]\.?m?\.?/i,xf=O("Hours",!0),yf={calendar:ue,longDateFormat:ve,invalidDate:we,ordinal:xe,ordinalParse:ye,relativeTime:ze,months:jf,monthsShort:kf,week:of,weekdays:pf,weekdaysMin:rf,weekdaysShort:qf,meridiemParse:wf},zf={},Af={},Bf=/^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?$/,Cf=/^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?$/,Df=/Z|[+-]\d\d(?::?\d\d)?/,Ef=[["YYYYYY-MM-DD",/[+-]\d{6}-\d\d-\d\d/],["YYYY-MM-DD",/\d{4}-\d\d-\d\d/],["GGGG-[W]WW-E",/\d{4}-W\d\d-\d/],["GGGG-[W]WW",/\d{4}-W\d\d/,!1],["YYYY-DDD",/\d{4}-\d{3}/],["YYYY-MM",/\d{4}-\d\d/,!1],["YYYYYYMMDD",/[+-]\d{10}/],["YYYYMMDD",/\d{8}/],
 // YYYYMM is NOT allowed by the standard
-["GGGG[W]WWE",/\d{4}W\d{3}/],["GGGG[W]WW",/\d{4}W\d{2}/,!1],["YYYYDDD",/\d{7}/]],zf=[["HH:mm:ss.SSSS",/\d\d:\d\d:\d\d\.\d+/],["HH:mm:ss,SSSS",/\d\d:\d\d:\d\d,\d+/],["HH:mm:ss",/\d\d:\d\d:\d\d/],["HH:mm",/\d\d:\d\d/],["HHmmss.SSSS",/\d\d\d\d\d\d\.\d+/],["HHmmss,SSSS",/\d\d\d\d\d\d,\d+/],["HHmmss",/\d\d\d\d\d\d/],["HHmm",/\d\d\d\d/],["HH",/\d\d/]],Af=/^\/?Date\((\-?\d+)/i;a.createFromInputFallback=w("value provided is not in a recognized ISO format. moment construction falls back to js Date(), which is not reliable across all browsers and versions. Non ISO date formats are discouraged and will be removed in an upcoming major release. Please refer to http://momentjs.com/guides/#/warnings/js-date/ for more info.",function(a){a._d=new Date(a._i+(a._useUTC?" UTC":""))}),
+["GGGG[W]WWE",/\d{4}W\d{3}/],["GGGG[W]WW",/\d{4}W\d{2}/,!1],["YYYYDDD",/\d{7}/]],Ff=[["HH:mm:ss.SSSS",/\d\d:\d\d:\d\d\.\d+/],["HH:mm:ss,SSSS",/\d\d:\d\d:\d\d,\d+/],["HH:mm:ss",/\d\d:\d\d:\d\d/],["HH:mm",/\d\d:\d\d/],["HHmmss.SSSS",/\d\d\d\d\d\d\.\d+/],["HHmmss,SSSS",/\d\d\d\d\d\d,\d+/],["HHmmss",/\d\d\d\d\d\d/],["HHmm",/\d\d\d\d/],["HH",/\d\d/]],Gf=/^\/?Date\((\-?\d+)/i;a.createFromInputFallback=x("value provided is not in a recognized ISO format. moment construction falls back to js Date(), which is not reliable across all browsers and versions. Non ISO date formats are discouraged and will be removed in an upcoming major release. Please refer to http://momentjs.com/guides/#/warnings/js-date/ for more info.",function(a){a._d=new Date(a._i+(a._useUTC?" UTC":""))}),
 // constant that refers to the ISO standard
-a.ISO_8601=function(){};var Bf=w("moment().min is deprecated, use moment.max instead. http://momentjs.com/guides/#/warnings/min-max/",function(){var a=rb.apply(null,arguments);return this.isValid()&&a.isValid()?a<this?this:a:n()}),Cf=w("moment().max is deprecated, use moment.min instead. http://momentjs.com/guides/#/warnings/min-max/",function(){var a=rb.apply(null,arguments);return this.isValid()&&a.isValid()?a>this?this:a:n()}),Df=function(){return Date.now?Date.now():+new Date};yb("Z",":"),yb("ZZ",""),
+a.ISO_8601=function(){};var Hf=x("moment().min is deprecated, use moment.max instead. http://momentjs.com/guides/#/warnings/min-max/",function(){var a=sb.apply(null,arguments);return this.isValid()&&a.isValid()?a<this?this:a:o()}),If=x("moment().max is deprecated, use moment.min instead. http://momentjs.com/guides/#/warnings/min-max/",function(){var a=sb.apply(null,arguments);return this.isValid()&&a.isValid()?a>this?this:a:o()}),Jf=function(){return Date.now?Date.now():+new Date};zb("Z",":"),zb("ZZ",""),
 // PARSING
-Y("Z",Qe),Y("ZZ",Qe),aa(["Z","ZZ"],function(a,b,c){c._useUTC=!0,c._tzm=zb(Qe,a)});
+Z("Z",Ue),Z("ZZ",Ue),ba(["Z","ZZ"],function(a,b,c){c._useUTC=!0,c._tzm=Ab(Ue,a)});
 // HELPERS
 // timezone chunker
 // '+10:00' > ['10',  '00']
 // '-1530'  > ['-15', '30']
-var Ef=/([\+\-]|\d\d)/gi;
+var Kf=/([\+\-]|\d\d)/gi;
 // HOOKS
 // This function will be called whenever a moment is mutated.
 // It is intended to keep the offset in sync with the timezone.
 a.updateOffset=function(){};
 // ASP.NET json date format regex
-var Ff=/^(\-)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)(\.\d*)?)?$/,Gf=/^(-)?P(?:(-?[0-9,.]*)Y)?(?:(-?[0-9,.]*)M)?(?:(-?[0-9,.]*)W)?(?:(-?[0-9,.]*)D)?(?:T(?:(-?[0-9,.]*)H)?(?:(-?[0-9,.]*)M)?(?:(-?[0-9,.]*)S)?)?$/;Nb.fn=vb.prototype;var Hf=Rb(1,"add"),If=Rb(-1,"subtract");a.defaultFormat="YYYY-MM-DDTHH:mm:ssZ",a.defaultFormatUtc="YYYY-MM-DDTHH:mm:ss[Z]";var Jf=w("moment().lang() is deprecated. Instead, use moment().localeData() to get the language configuration. Use moment().locale() to change languages.",function(a){return void 0===a?this.localeData():this.locale(a)});
+var Lf=/^(\-)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)(\.\d*)?)?$/,Mf=/^(-)?P(?:(-?[0-9,.]*)Y)?(?:(-?[0-9,.]*)M)?(?:(-?[0-9,.]*)W)?(?:(-?[0-9,.]*)D)?(?:T(?:(-?[0-9,.]*)H)?(?:(-?[0-9,.]*)M)?(?:(-?[0-9,.]*)S)?)?$/;Ob.fn=wb.prototype;var Nf=Sb(1,"add"),Of=Sb(-1,"subtract");a.defaultFormat="YYYY-MM-DDTHH:mm:ssZ",a.defaultFormatUtc="YYYY-MM-DDTHH:mm:ss[Z]";var Pf=x("moment().lang() is deprecated. Instead, use moment().localeData() to get the language configuration. Use moment().locale() to change languages.",function(a){return void 0===a?this.localeData():this.locale(a)});
 // FORMATTING
-T(0,["gg",2],0,function(){return this.weekYear()%100}),T(0,["GG",2],0,function(){return this.isoWeekYear()%100}),xc("gggg","weekYear"),xc("ggggg","weekYear"),xc("GGGG","isoWeekYear"),xc("GGGGG","isoWeekYear"),
+U(0,["gg",2],0,function(){return this.weekYear()%100}),U(0,["GG",2],0,function(){return this.isoWeekYear()%100}),zc("gggg","weekYear"),zc("ggggg","weekYear"),zc("GGGG","isoWeekYear"),zc("GGGGG","isoWeekYear"),
 // ALIASES
-I("weekYear","gg"),I("isoWeekYear","GG"),
+J("weekYear","gg"),J("isoWeekYear","GG"),
 // PRIORITY
-L("weekYear",1),L("isoWeekYear",1),
+M("weekYear",1),M("isoWeekYear",1),
 // PARSING
-Y("G",Oe),Y("g",Oe),Y("GG",He,De),Y("gg",He,De),Y("GGGG",Le,Fe),Y("gggg",Le,Fe),Y("GGGGG",Me,Ge),Y("ggggg",Me,Ge),ba(["gggg","ggggg","GGGG","GGGGG"],function(a,b,c,d){b[d.substr(0,2)]=t(a)}),ba(["gg","GG"],function(b,c,d,e){c[e]=a.parseTwoDigitYear(b)}),
+Z("G",Se),Z("g",Se),Z("GG",Le,He),Z("gg",Le,He),Z("GGGG",Pe,Je),Z("gggg",Pe,Je),Z("GGGGG",Qe,Ke),Z("ggggg",Qe,Ke),ca(["gggg","ggggg","GGGG","GGGGG"],function(a,b,c,d){b[d.substr(0,2)]=u(a)}),ca(["gg","GG"],function(b,c,d,e){c[e]=a.parseTwoDigitYear(b)}),
 // FORMATTING
-T("Q",0,"Qo","quarter"),
+U("Q",0,"Qo","quarter"),
 // ALIASES
-I("quarter","Q"),
+J("quarter","Q"),
 // PRIORITY
-L("quarter",7),
+M("quarter",7),
 // PARSING
-Y("Q",Ce),aa("Q",function(a,b){b[We]=3*(t(a)-1)}),
+Z("Q",Ge),ba("Q",function(a,b){b[$e]=3*(u(a)-1)}),
 // FORMATTING
-T("D",["DD",2],"Do","date"),
+U("D",["DD",2],"Do","date"),
 // ALIASES
-I("date","D"),
+J("date","D"),
 // PRIOROITY
-L("date",9),
+M("date",9),
 // PARSING
-Y("D",He),Y("DD",He,De),Y("Do",function(a,b){return a?b._ordinalParse:b._ordinalParseLenient}),aa(["D","DD"],Xe),aa("Do",function(a,b){b[Xe]=t(a.match(He)[0],10)});
+Z("D",Le),Z("DD",Le,He),Z("Do",function(a,b){return a?b._ordinalParse:b._ordinalParseLenient}),ba(["D","DD"],_e),ba("Do",function(a,b){b[_e]=u(a.match(Le)[0],10)});
 // MOMENTS
-var Kf=N("Date",!0);
+var Qf=O("Date",!0);
 // FORMATTING
-T("DDD",["DDDD",3],"DDDo","dayOfYear"),
+U("DDD",["DDDD",3],"DDDo","dayOfYear"),
 // ALIASES
-I("dayOfYear","DDD"),
+J("dayOfYear","DDD"),
 // PRIORITY
-L("dayOfYear",4),
+M("dayOfYear",4),
 // PARSING
-Y("DDD",Ke),Y("DDDD",Ee),aa(["DDD","DDDD"],function(a,b,c){c._dayOfYear=t(a)}),
+Z("DDD",Oe),Z("DDDD",Ie),ba(["DDD","DDDD"],function(a,b,c){c._dayOfYear=u(a)}),
 // FORMATTING
-T("m",["mm",2],0,"minute"),
+U("m",["mm",2],0,"minute"),
 // ALIASES
-I("minute","m"),
+J("minute","m"),
 // PRIORITY
-L("minute",14),
+M("minute",14),
 // PARSING
-Y("m",He),Y("mm",He,De),aa(["m","mm"],Ze);
+Z("m",Le),Z("mm",Le,He),ba(["m","mm"],bf);
 // MOMENTS
-var Lf=N("Minutes",!1);
+var Rf=O("Minutes",!1);
 // FORMATTING
-T("s",["ss",2],0,"second"),
+U("s",["ss",2],0,"second"),
 // ALIASES
-I("second","s"),
+J("second","s"),
 // PRIORITY
-L("second",15),
+M("second",15),
 // PARSING
-Y("s",He),Y("ss",He,De),aa(["s","ss"],$e);
+Z("s",Le),Z("ss",Le,He),ba(["s","ss"],cf);
 // MOMENTS
-var Mf=N("Seconds",!1);
+var Sf=O("Seconds",!1);
 // FORMATTING
-T("S",0,0,function(){return~~(this.millisecond()/100)}),T(0,["SS",2],0,function(){return~~(this.millisecond()/10)}),T(0,["SSS",3],0,"millisecond"),T(0,["SSSS",4],0,function(){return 10*this.millisecond()}),T(0,["SSSSS",5],0,function(){return 100*this.millisecond()}),T(0,["SSSSSS",6],0,function(){return 1e3*this.millisecond()}),T(0,["SSSSSSS",7],0,function(){return 1e4*this.millisecond()}),T(0,["SSSSSSSS",8],0,function(){return 1e5*this.millisecond()}),T(0,["SSSSSSSSS",9],0,function(){return 1e6*this.millisecond()}),
+U("S",0,0,function(){return~~(this.millisecond()/100)}),U(0,["SS",2],0,function(){return~~(this.millisecond()/10)}),U(0,["SSS",3],0,"millisecond"),U(0,["SSSS",4],0,function(){return 10*this.millisecond()}),U(0,["SSSSS",5],0,function(){return 100*this.millisecond()}),U(0,["SSSSSS",6],0,function(){return 1e3*this.millisecond()}),U(0,["SSSSSSS",7],0,function(){return 1e4*this.millisecond()}),U(0,["SSSSSSSS",8],0,function(){return 1e5*this.millisecond()}),U(0,["SSSSSSSSS",9],0,function(){return 1e6*this.millisecond()}),
 // ALIASES
-I("millisecond","ms"),
+J("millisecond","ms"),
 // PRIORITY
-L("millisecond",16),
+M("millisecond",16),
 // PARSING
-Y("S",Ke,Ce),Y("SS",Ke,De),Y("SSS",Ke,Ee);var Nf;for(Nf="SSSS";Nf.length<=9;Nf+="S")Y(Nf,Ne);for(Nf="S";Nf.length<=9;Nf+="S")aa(Nf,Gc);
+Z("S",Oe,Ge),Z("SS",Oe,He),Z("SSS",Oe,Ie);var Tf;for(Tf="SSSS";Tf.length<=9;Tf+="S")Z(Tf,Re);for(Tf="S";Tf.length<=9;Tf+="S")ba(Tf,Ic);
 // MOMENTS
-var Of=N("Milliseconds",!1);
+var Uf=O("Milliseconds",!1);
 // FORMATTING
-T("z",0,0,"zoneAbbr"),T("zz",0,0,"zoneName");var Pf=q.prototype;Pf.add=Hf,Pf.calendar=Ub,Pf.clone=Vb,Pf.diff=ac,Pf.endOf=mc,Pf.format=ec,Pf.from=fc,Pf.fromNow=gc,Pf.to=hc,Pf.toNow=ic,Pf.get=Q,Pf.invalidAt=vc,Pf.isAfter=Wb,Pf.isBefore=Xb,Pf.isBetween=Yb,Pf.isSame=Zb,Pf.isSameOrAfter=$b,Pf.isSameOrBefore=_b,Pf.isValid=tc,Pf.lang=Jf,Pf.locale=jc,Pf.localeData=kc,Pf.max=Cf,Pf.min=Bf,Pf.parsingFlags=uc,Pf.set=R,Pf.startOf=lc,Pf.subtract=If,Pf.toArray=qc,Pf.toObject=rc,Pf.toDate=pc,Pf.toISOString=dc,Pf.toJSON=sc,Pf.toString=cc,Pf.unix=oc,Pf.valueOf=nc,Pf.creationData=wc,
+U("z",0,0,"zoneAbbr"),U("zz",0,0,"zoneName");var Vf=r.prototype;Vf.add=Nf,Vf.calendar=Vb,Vf.clone=Wb,Vf.diff=bc,Vf.endOf=oc,Vf.format=gc,Vf.from=hc,Vf.fromNow=ic,Vf.to=jc,Vf.toNow=kc,Vf.get=R,Vf.invalidAt=xc,Vf.isAfter=Xb,Vf.isBefore=Yb,Vf.isBetween=Zb,Vf.isSame=$b,Vf.isSameOrAfter=_b,Vf.isSameOrBefore=ac,Vf.isValid=vc,Vf.lang=Pf,Vf.locale=lc,Vf.localeData=mc,Vf.max=If,Vf.min=Hf,Vf.parsingFlags=wc,Vf.set=S,Vf.startOf=nc,Vf.subtract=Of,Vf.toArray=sc,Vf.toObject=tc,Vf.toDate=rc,Vf.toISOString=ec,Vf.inspect=fc,Vf.toJSON=uc,Vf.toString=dc,Vf.unix=qc,Vf.valueOf=pc,Vf.creationData=yc,
 // Year
-Pf.year=hf,Pf.isLeapYear=qa,
+Vf.year=nf,Vf.isLeapYear=ra,
 // Week Year
-Pf.weekYear=yc,Pf.isoWeekYear=zc,
+Vf.weekYear=Ac,Vf.isoWeekYear=Bc,
 // Quarter
-Pf.quarter=Pf.quarters=Ec,
+Vf.quarter=Vf.quarters=Gc,
 // Month
-Pf.month=ja,Pf.daysInMonth=ka,
+Vf.month=ka,Vf.daysInMonth=la,
 // Week
-Pf.week=Pf.weeks=Aa,Pf.isoWeek=Pf.isoWeeks=Ba,Pf.weeksInYear=Bc,Pf.isoWeeksInYear=Ac,
+Vf.week=Vf.weeks=Ba,Vf.isoWeek=Vf.isoWeeks=Ca,Vf.weeksInYear=Dc,Vf.isoWeeksInYear=Cc,
 // Day
-Pf.date=Kf,Pf.day=Pf.days=Ja,Pf.weekday=Ka,Pf.isoWeekday=La,Pf.dayOfYear=Fc,
+Vf.date=Qf,Vf.day=Vf.days=Ka,Vf.weekday=La,Vf.isoWeekday=Ma,Vf.dayOfYear=Hc,
 // Hour
-Pf.hour=Pf.hours=sf,
+Vf.hour=Vf.hours=xf,
 // Minute
-Pf.minute=Pf.minutes=Lf,
+Vf.minute=Vf.minutes=Rf,
 // Second
-Pf.second=Pf.seconds=Mf,
+Vf.second=Vf.seconds=Sf,
 // Millisecond
-Pf.millisecond=Pf.milliseconds=Of,
+Vf.millisecond=Vf.milliseconds=Uf,
 // Offset
-Pf.utcOffset=Cb,Pf.utc=Eb,Pf.local=Fb,Pf.parseZone=Gb,Pf.hasAlignedHourOffset=Hb,Pf.isDST=Ib,Pf.isLocal=Kb,Pf.isUtcOffset=Lb,Pf.isUtc=Mb,Pf.isUTC=Mb,
+Vf.utcOffset=Db,Vf.utc=Fb,Vf.local=Gb,Vf.parseZone=Hb,Vf.hasAlignedHourOffset=Ib,Vf.isDST=Jb,Vf.isLocal=Lb,Vf.isUtcOffset=Mb,Vf.isUtc=Nb,Vf.isUTC=Nb,
 // Timezone
-Pf.zoneAbbr=Hc,Pf.zoneName=Ic,
+Vf.zoneAbbr=Jc,Vf.zoneName=Kc,
 // Deprecations
-Pf.dates=w("dates accessor is deprecated. Use date instead.",Kf),Pf.months=w("months accessor is deprecated. Use month instead",ja),Pf.years=w("years accessor is deprecated. Use year instead",hf),Pf.zone=w("moment().zone is deprecated, use moment().utcOffset instead. http://momentjs.com/guides/#/warnings/zone/",Db),Pf.isDSTShifted=w("isDSTShifted is deprecated. See http://momentjs.com/guides/#/warnings/dst-shifted/ for more information",Jb);var Qf=Pf,Rf=B.prototype;Rf.calendar=C,Rf.longDateFormat=D,Rf.invalidDate=E,Rf.ordinal=F,Rf.preparse=Lc,Rf.postformat=Lc,Rf.relativeTime=G,Rf.pastFuture=H,Rf.set=z,
+Vf.dates=x("dates accessor is deprecated. Use date instead.",Qf),Vf.months=x("months accessor is deprecated. Use month instead",ka),Vf.years=x("years accessor is deprecated. Use year instead",nf),Vf.zone=x("moment().zone is deprecated, use moment().utcOffset instead. http://momentjs.com/guides/#/warnings/zone/",Eb),Vf.isDSTShifted=x("isDSTShifted is deprecated. See http://momentjs.com/guides/#/warnings/dst-shifted/ for more information",Kb);var Wf=C.prototype;Wf.calendar=D,Wf.longDateFormat=E,Wf.invalidDate=F,Wf.ordinal=G,Wf.preparse=Nc,Wf.postformat=Nc,Wf.relativeTime=H,Wf.pastFuture=I,Wf.set=A,
 // Month
-Rf.months=ea,Rf.monthsShort=fa,Rf.monthsParse=ha,Rf.monthsRegex=ma,Rf.monthsShortRegex=la,
+Wf.months=fa,Wf.monthsShort=ga,Wf.monthsParse=ia,Wf.monthsRegex=na,Wf.monthsShortRegex=ma,
 // Week
-Rf.week=xa,Rf.firstDayOfYear=za,Rf.firstDayOfWeek=ya,
+Wf.week=ya,Wf.firstDayOfYear=Aa,Wf.firstDayOfWeek=za,
 // Day of Week
-Rf.weekdays=Ea,Rf.weekdaysMin=Ga,Rf.weekdaysShort=Fa,Rf.weekdaysParse=Ia,Rf.weekdaysRegex=Ma,Rf.weekdaysShortRegex=Na,Rf.weekdaysMinRegex=Oa,
+Wf.weekdays=Fa,Wf.weekdaysMin=Ha,Wf.weekdaysShort=Ga,Wf.weekdaysParse=Ja,Wf.weekdaysRegex=Na,Wf.weekdaysShortRegex=Oa,Wf.weekdaysMinRegex=Pa,
 // Hours
-Rf.isPM=Ua,Rf.meridiem=Va,Za("en",{ordinalParse:/\d{1,2}(th|st|nd|rd)/,ordinal:function(a){var b=a%10,c=1===t(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c}}),
+Wf.isPM=Va,Wf.meridiem=Wa,$a("en",{ordinalParse:/\d{1,2}(th|st|nd|rd)/,ordinal:function(a){var b=a%10,c=1===u(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c}}),
 // Side effect imports
-a.lang=w("moment.lang is deprecated. Use moment.locale instead.",Za),a.langData=w("moment.langData is deprecated. Use moment.localeData instead.",ab);var Sf=Math.abs,Tf=cd("ms"),Uf=cd("s"),Vf=cd("m"),Wf=cd("h"),Xf=cd("d"),Yf=cd("w"),Zf=cd("M"),$f=cd("y"),_f=ed("milliseconds"),ag=ed("seconds"),bg=ed("minutes"),cg=ed("hours"),dg=ed("days"),eg=ed("months"),fg=ed("years"),gg=Math.round,hg={s:45,// seconds to minute
+a.lang=x("moment.lang is deprecated. Use moment.locale instead.",$a),a.langData=x("moment.langData is deprecated. Use moment.localeData instead.",bb);var Xf=Math.abs,Yf=ed("ms"),Zf=ed("s"),$f=ed("m"),_f=ed("h"),ag=ed("d"),bg=ed("w"),cg=ed("M"),dg=ed("y"),eg=gd("milliseconds"),fg=gd("seconds"),gg=gd("minutes"),hg=gd("hours"),ig=gd("days"),jg=gd("months"),kg=gd("years"),lg=Math.round,mg={s:45,// seconds to minute
 m:45,// minutes to hour
 h:22,// hours to day
 d:26,// days to month
-M:11},ig=Math.abs,jg=vb.prototype;jg.abs=Uc,jg.add=Wc,jg.subtract=Xc,jg.as=ad,jg.asMilliseconds=Tf,jg.asSeconds=Uf,jg.asMinutes=Vf,jg.asHours=Wf,jg.asDays=Xf,jg.asWeeks=Yf,jg.asMonths=Zf,jg.asYears=$f,jg.valueOf=bd,jg._bubble=Zc,jg.get=dd,jg.milliseconds=_f,jg.seconds=ag,jg.minutes=bg,jg.hours=cg,jg.days=dg,jg.weeks=fd,jg.months=eg,jg.years=fg,jg.humanize=kd,jg.toISOString=ld,jg.toString=ld,jg.toJSON=ld,jg.locale=jc,jg.localeData=kc,
+M:11},ng=Math.abs,og=wb.prototype;og.abs=Wc,og.add=Yc,og.subtract=Zc,og.as=cd,og.asMilliseconds=Yf,og.asSeconds=Zf,og.asMinutes=$f,og.asHours=_f,og.asDays=ag,og.asWeeks=bg,og.asMonths=cg,og.asYears=dg,og.valueOf=dd,og._bubble=_c,og.get=fd,og.milliseconds=eg,og.seconds=fg,og.minutes=gg,og.hours=hg,og.days=ig,og.weeks=hd,og.months=jg,og.years=kg,og.humanize=md,og.toISOString=nd,og.toString=nd,og.toJSON=nd,og.locale=lc,og.localeData=mc,
 // Deprecations
-jg.toIsoString=w("toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)",ld),jg.lang=Jf,
+og.toIsoString=x("toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)",nd),og.lang=Pf,
 // Side effect imports
 // FORMATTING
-T("X",0,0,"unix"),T("x",0,0,"valueOf"),
+U("X",0,0,"unix"),U("x",0,0,"valueOf"),
 // PARSING
-Y("x",Oe),Y("X",Re),aa("X",function(a,b,c){c._d=new Date(1e3*parseFloat(a,10))}),aa("x",function(a,b,c){c._d=new Date(t(a))}),a.version="2.15.2",b(rb),a.fn=Qf,a.min=tb,a.max=ub,a.now=Df,a.utc=j,a.unix=Jc,a.months=Pc,a.isDate=f,a.locale=Za,a.invalid=n,a.duration=Nb,a.isMoment=r,a.weekdays=Rc,a.parseZone=Kc,a.localeData=ab,a.isDuration=wb,a.monthsShort=Qc,a.weekdaysMin=Tc,a.defineLocale=$a,a.updateLocale=_a,a.locales=bb,a.weekdaysShort=Sc,a.normalizeUnits=J,a.relativeTimeRounding=id,a.relativeTimeThreshold=jd,a.calendarFormat=Tb,a.prototype=Qf;var kg=a,lg=(kg.defineLocale("af",{months:"Januarie_Februarie_Maart_April_Mei_Junie_Julie_Augustus_September_Oktober_November_Desember".split("_"),monthsShort:"Jan_Feb_Mrt_Apr_Mei_Jun_Jul_Aug_Sep_Okt_Nov_Des".split("_"),weekdays:"Sondag_Maandag_Dinsdag_Woensdag_Donderdag_Vrydag_Saterdag".split("_"),weekdaysShort:"Son_Maa_Din_Woe_Don_Vry_Sat".split("_"),weekdaysMin:"So_Ma_Di_Wo_Do_Vr_Sa".split("_"),meridiemParse:/vm|nm/i,isPM:function(a){return/^nm$/i.test(a)},meridiem:function(a,b,c){return a<12?c?"vm":"VM":c?"nm":"NM"},longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Vandag om] LT",nextDay:"[Môre om] LT",nextWeek:"dddd [om] LT",lastDay:"[Gister om] LT",lastWeek:"[Laas] dddd [om] LT",sameElse:"L"},relativeTime:{future:"oor %s",past:"%s gelede",s:"'n paar sekondes",m:"'n minuut",mm:"%d minute",h:"'n uur",hh:"%d ure",d:"'n dag",dd:"%d dae",M:"'n maand",MM:"%d maande",y:"'n jaar",yy:"%d jaar"},ordinalParse:/\d{1,2}(ste|de)/,ordinal:function(a){return a+(1===a||8===a||a>=20?"ste":"de")},week:{dow:1,// Maandag is die eerste dag van die week.
-doy:4}}),{1:"1",2:"2",3:"3",4:"4",5:"5",6:"6",7:"7",8:"8",9:"9",0:"0"}),mg=function(a){return 0===a?0:1===a?1:2===a?2:a%100>=3&&a%100<=10?3:a%100>=11?4:5},ng={s:["أقل من ثانية","ثانية واحدة",["ثانيتان","ثانيتين"],"%d ثوان","%d ثانية","%d ثانية"],m:["أقل من دقيقة","دقيقة واحدة",["دقيقتان","دقيقتين"],"%d دقائق","%d دقيقة","%d دقيقة"],h:["أقل من ساعة","ساعة واحدة",["ساعتان","ساعتين"],"%d ساعات","%d ساعة","%d ساعة"],d:["أقل من يوم","يوم واحد",["يومان","يومين"],"%d أيام","%d يومًا","%d يوم"],M:["أقل من شهر","شهر واحد",["شهران","شهرين"],"%d أشهر","%d شهرا","%d شهر"],y:["أقل من عام","عام واحد",["عامان","عامين"],"%d أعوام","%d عامًا","%d عام"]},og=function(a){return function(b,c,d,e){var f=mg(b),g=ng[a][mg(b)];return 2===f&&(g=g[c?0:1]),g.replace(/%d/i,b)}},pg=["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"],qg=(kg.defineLocale("ar-ly",{months:pg,monthsShort:pg,weekdays:"الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت".split("_"),weekdaysShort:"أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت".split("_"),weekdaysMin:"ح_ن_ث_ر_خ_ج_س".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"D/‏M/‏YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},meridiemParse:/ص|م/,isPM:function(a){return"م"===a},meridiem:function(a,b,c){return a<12?"ص":"م"},calendar:{sameDay:"[اليوم عند الساعة] LT",nextDay:"[غدًا عند الساعة] LT",nextWeek:"dddd [عند الساعة] LT",lastDay:"[أمس عند الساعة] LT",lastWeek:"dddd [عند الساعة] LT",sameElse:"L"},relativeTime:{future:"بعد %s",past:"منذ %s",s:og("s"),m:og("m"),mm:og("m"),h:og("h"),hh:og("h"),d:og("d"),dd:og("d"),M:og("M"),MM:og("M"),y:og("y"),yy:og("y")},preparse:function(a){return a.replace(/\u200f/g,"").replace(/،/g,",")},postformat:function(a){return a.replace(/\d/g,function(a){return lg[a]}).replace(/,/g,"،")},week:{dow:6,// Saturday is the first day of the week.
-doy:12}}),kg.defineLocale("ar-ma",{months:"يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر".split("_"),monthsShort:"يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر".split("_"),weekdays:"الأحد_الإتنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت".split("_"),weekdaysShort:"احد_اتنين_ثلاثاء_اربعاء_خميس_جمعة_سبت".split("_"),weekdaysMin:"ح_ن_ث_ر_خ_ج_س".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[اليوم على الساعة] LT",nextDay:"[غدا على الساعة] LT",nextWeek:"dddd [على الساعة] LT",lastDay:"[أمس على الساعة] LT",lastWeek:"dddd [على الساعة] LT",sameElse:"L"},relativeTime:{future:"في %s",past:"منذ %s",s:"ثوان",m:"دقيقة",mm:"%d دقائق",h:"ساعة",hh:"%d ساعات",d:"يوم",dd:"%d أيام",M:"شهر",MM:"%d أشهر",y:"سنة",yy:"%d سنوات"},week:{dow:6,// Saturday is the first day of the week.
-doy:12}}),{1:"١",2:"٢",3:"٣",4:"٤",5:"٥",6:"٦",7:"٧",8:"٨",9:"٩",0:"٠"}),rg={"١":"1","٢":"2","٣":"3","٤":"4","٥":"5","٦":"6","٧":"7","٨":"8","٩":"9","٠":"0"},sg=(kg.defineLocale("ar-sa",{months:"يناير_فبراير_مارس_أبريل_مايو_يونيو_يوليو_أغسطس_سبتمبر_أكتوبر_نوفمبر_ديسمبر".split("_"),monthsShort:"يناير_فبراير_مارس_أبريل_مايو_يونيو_يوليو_أغسطس_سبتمبر_أكتوبر_نوفمبر_ديسمبر".split("_"),weekdays:"الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت".split("_"),weekdaysShort:"أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت".split("_"),weekdaysMin:"ح_ن_ث_ر_خ_ج_س".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},meridiemParse:/ص|م/,isPM:function(a){return"م"===a},meridiem:function(a,b,c){return a<12?"ص":"م"},calendar:{sameDay:"[اليوم على الساعة] LT",nextDay:"[غدا على الساعة] LT",nextWeek:"dddd [على الساعة] LT",lastDay:"[أمس على الساعة] LT",lastWeek:"dddd [على الساعة] LT",sameElse:"L"},relativeTime:{future:"في %s",past:"منذ %s",s:"ثوان",m:"دقيقة",mm:"%d دقائق",h:"ساعة",hh:"%d ساعات",d:"يوم",dd:"%d أيام",M:"شهر",MM:"%d أشهر",y:"سنة",yy:"%d سنوات"},preparse:function(a){return a.replace(/[١٢٣٤٥٦٧٨٩٠]/g,function(a){return rg[a]}).replace(/،/g,",")},postformat:function(a){return a.replace(/\d/g,function(a){return qg[a]}).replace(/,/g,"،")},week:{dow:6,// Saturday is the first day of the week.
-doy:12}}),kg.defineLocale("ar-tn",{months:"جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر".split("_"),monthsShort:"جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر".split("_"),weekdays:"الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت".split("_"),weekdaysShort:"أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت".split("_"),weekdaysMin:"ح_ن_ث_ر_خ_ج_س".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[اليوم على الساعة] LT",nextDay:"[غدا على الساعة] LT",nextWeek:"dddd [على الساعة] LT",lastDay:"[أمس على الساعة] LT",lastWeek:"dddd [على الساعة] LT",sameElse:"L"},relativeTime:{future:"في %s",past:"منذ %s",s:"ثوان",m:"دقيقة",mm:"%d دقائق",h:"ساعة",hh:"%d ساعات",d:"يوم",dd:"%d أيام",M:"شهر",MM:"%d أشهر",y:"سنة",yy:"%d سنوات"},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),{1:"١",2:"٢",3:"٣",4:"٤",5:"٥",6:"٦",7:"٧",8:"٨",9:"٩",0:"٠"}),tg={"١":"1","٢":"2","٣":"3","٤":"4","٥":"5","٦":"6","٧":"7","٨":"8","٩":"9","٠":"0"},ug=function(a){return 0===a?0:1===a?1:2===a?2:a%100>=3&&a%100<=10?3:a%100>=11?4:5},vg={s:["أقل من ثانية","ثانية واحدة",["ثانيتان","ثانيتين"],"%d ثوان","%d ثانية","%d ثانية"],m:["أقل من دقيقة","دقيقة واحدة",["دقيقتان","دقيقتين"],"%d دقائق","%d دقيقة","%d دقيقة"],h:["أقل من ساعة","ساعة واحدة",["ساعتان","ساعتين"],"%d ساعات","%d ساعة","%d ساعة"],d:["أقل من يوم","يوم واحد",["يومان","يومين"],"%d أيام","%d يومًا","%d يوم"],M:["أقل من شهر","شهر واحد",["شهران","شهرين"],"%d أشهر","%d شهرا","%d شهر"],y:["أقل من عام","عام واحد",["عامان","عامين"],"%d أعوام","%d عامًا","%d عام"]},wg=function(a){return function(b,c,d,e){var f=ug(b),g=vg[a][ug(b)];return 2===f&&(g=g[c?0:1]),g.replace(/%d/i,b)}},xg=["كانون الثاني يناير","شباط فبراير","آذار مارس","نيسان أبريل","أيار مايو","حزيران يونيو","تموز يوليو","آب أغسطس","أيلول سبتمبر","تشرين الأول أكتوبر","تشرين الثاني نوفمبر","كانون الأول ديسمبر"],yg=(kg.defineLocale("ar",{months:xg,monthsShort:xg,weekdays:"الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت".split("_"),weekdaysShort:"أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت".split("_"),weekdaysMin:"ح_ن_ث_ر_خ_ج_س".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"D/‏M/‏YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},meridiemParse:/ص|م/,isPM:function(a){return"م"===a},meridiem:function(a,b,c){return a<12?"ص":"م"},calendar:{sameDay:"[اليوم عند الساعة] LT",nextDay:"[غدًا عند الساعة] LT",nextWeek:"dddd [عند الساعة] LT",lastDay:"[أمس عند الساعة] LT",lastWeek:"dddd [عند الساعة] LT",sameElse:"L"},relativeTime:{future:"بعد %s",past:"منذ %s",s:wg("s"),m:wg("m"),mm:wg("m"),h:wg("h"),hh:wg("h"),d:wg("d"),dd:wg("d"),M:wg("M"),MM:wg("M"),y:wg("y"),yy:wg("y")},preparse:function(a){return a.replace(/\u200f/g,"").replace(/[١٢٣٤٥٦٧٨٩٠]/g,function(a){return tg[a]}).replace(/،/g,",")},postformat:function(a){return a.replace(/\d/g,function(a){return sg[a]}).replace(/,/g,"،")},week:{dow:6,// Saturday is the first day of the week.
-doy:12}}),{1:"-inci",5:"-inci",8:"-inci",70:"-inci",80:"-inci",2:"-nci",7:"-nci",20:"-nci",50:"-nci",3:"-üncü",4:"-üncü",100:"-üncü",6:"-ncı",9:"-uncu",10:"-uncu",30:"-uncu",60:"-ıncı",90:"-ıncı"}),zg=(kg.defineLocale("az",{months:"yanvar_fevral_mart_aprel_may_iyun_iyul_avqust_sentyabr_oktyabr_noyabr_dekabr".split("_"),monthsShort:"yan_fev_mar_apr_may_iyn_iyl_avq_sen_okt_noy_dek".split("_"),weekdays:"Bazar_Bazar ertəsi_Çərşənbə axşamı_Çərşənbə_Cümə axşamı_Cümə_Şənbə".split("_"),weekdaysShort:"Baz_BzE_ÇAx_Çər_CAx_Cüm_Şən".split("_"),weekdaysMin:"Bz_BE_ÇA_Çə_CA_Cü_Şə".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[bugün saat] LT",nextDay:"[sabah saat] LT",nextWeek:"[gələn həftə] dddd [saat] LT",lastDay:"[dünən] LT",lastWeek:"[keçən həftə] dddd [saat] LT",sameElse:"L"},relativeTime:{future:"%s sonra",past:"%s əvvəl",s:"birneçə saniyyə",m:"bir dəqiqə",mm:"%d dəqiqə",h:"bir saat",hh:"%d saat",d:"bir gün",dd:"%d gün",M:"bir ay",MM:"%d ay",y:"bir il",yy:"%d il"},meridiemParse:/gecə|səhər|gündüz|axşam/,isPM:function(a){return/^(gündüz|axşam)$/.test(a)},meridiem:function(a,b,c){return a<4?"gecə":a<12?"səhər":a<17?"gündüz":"axşam"},ordinalParse:/\d{1,2}-(ıncı|inci|nci|üncü|ncı|uncu)/,ordinal:function(a){if(0===a)// special case for zero
-return a+"-ıncı";var b=a%10,c=a%100-b,d=a>=100?100:null;return a+(yg[b]||yg[c]||yg[d])},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("be",{months:{format:"студзеня_лютага_сакавіка_красавіка_траўня_чэрвеня_ліпеня_жніўня_верасня_кастрычніка_лістапада_снежня".split("_"),standalone:"студзень_люты_сакавік_красавік_травень_чэрвень_ліпень_жнівень_верасень_кастрычнік_лістапад_снежань".split("_")},monthsShort:"студ_лют_сак_крас_трав_чэрв_ліп_жнів_вер_каст_ліст_снеж".split("_"),weekdays:{format:"нядзелю_панядзелак_аўторак_сераду_чацвер_пятніцу_суботу".split("_"),standalone:"нядзеля_панядзелак_аўторак_серада_чацвер_пятніца_субота".split("_"),isFormat:/\[ ?[Вв] ?(?:мінулую|наступную)? ?\] ?dddd/},weekdaysShort:"нд_пн_ат_ср_чц_пт_сб".split("_"),weekdaysMin:"нд_пн_ат_ср_чц_пт_сб".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY г.",LLL:"D MMMM YYYY г., HH:mm",LLLL:"dddd, D MMMM YYYY г., HH:mm"},calendar:{sameDay:"[Сёння ў] LT",nextDay:"[Заўтра ў] LT",lastDay:"[Учора ў] LT",nextWeek:function(){return"[У] dddd [ў] LT"},lastWeek:function(){switch(this.day()){case 0:case 3:case 5:case 6:return"[У мінулую] dddd [ў] LT";case 1:case 2:case 4:return"[У мінулы] dddd [ў] LT"}},sameElse:"L"},relativeTime:{future:"праз %s",past:"%s таму",s:"некалькі секунд",m:nd,mm:nd,h:nd,hh:nd,d:"дзень",dd:nd,M:"месяц",MM:nd,y:"год",yy:nd},meridiemParse:/ночы|раніцы|дня|вечара/,isPM:function(a){return/^(дня|вечара)$/.test(a)},meridiem:function(a,b,c){return a<4?"ночы":a<12?"раніцы":a<17?"дня":"вечара"},ordinalParse:/\d{1,2}-(і|ы|га)/,ordinal:function(a,b){switch(b){case"M":case"d":case"DDD":case"w":case"W":return a%10!==2&&a%10!==3||a%100===12||a%100===13?a+"-ы":a+"-і";case"D":return a+"-га";default:return a}},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("bg",{months:"януари_февруари_март_април_май_юни_юли_август_септември_октомври_ноември_декември".split("_"),monthsShort:"янр_фев_мар_апр_май_юни_юли_авг_сеп_окт_ное_дек".split("_"),weekdays:"неделя_понеделник_вторник_сряда_четвъртък_петък_събота".split("_"),weekdaysShort:"нед_пон_вто_сря_чет_пет_съб".split("_"),weekdaysMin:"нд_пн_вт_ср_чт_пт_сб".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"D.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY H:mm",LLLL:"dddd, D MMMM YYYY H:mm"},calendar:{sameDay:"[Днес в] LT",nextDay:"[Утре в] LT",nextWeek:"dddd [в] LT",lastDay:"[Вчера в] LT",lastWeek:function(){switch(this.day()){case 0:case 3:case 6:return"[В изминалата] dddd [в] LT";case 1:case 2:case 4:case 5:return"[В изминалия] dddd [в] LT"}},sameElse:"L"},relativeTime:{future:"след %s",past:"преди %s",s:"няколко секунди",m:"минута",mm:"%d минути",h:"час",hh:"%d часа",d:"ден",dd:"%d дни",M:"месец",MM:"%d месеца",y:"година",yy:"%d години"},ordinalParse:/\d{1,2}-(ев|ен|ти|ви|ри|ми)/,ordinal:function(a){var b=a%10,c=a%100;return 0===a?a+"-ев":0===c?a+"-ен":c>10&&c<20?a+"-ти":1===b?a+"-ви":2===b?a+"-ри":7===b||8===b?a+"-ми":a+"-ти"},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),{1:"১",2:"২",3:"৩",4:"৪",5:"৫",6:"৬",7:"৭",8:"৮",9:"৯",0:"০"}),Ag={"১":"1","২":"2","৩":"3","৪":"4","৫":"5","৬":"6","৭":"7","৮":"8","৯":"9","০":"0"},Bg=(kg.defineLocale("bn",{months:"জানুয়ারী_ফেব্রুয়ারি_মার্চ_এপ্রিল_মে_জুন_জুলাই_আগস্ট_সেপ্টেম্বর_অক্টোবর_নভেম্বর_ডিসেম্বর".split("_"),monthsShort:"জানু_ফেব_মার্চ_এপ্র_মে_জুন_জুল_আগ_সেপ্ট_অক্টো_নভে_ডিসে".split("_"),weekdays:"রবিবার_সোমবার_মঙ্গলবার_বুধবার_বৃহস্পতিবার_শুক্রবার_শনিবার".split("_"),weekdaysShort:"রবি_সোম_মঙ্গল_বুধ_বৃহস্পতি_শুক্র_শনি".split("_"),weekdaysMin:"রবি_সোম_মঙ্গ_বুধ_বৃহঃ_শুক্র_শনি".split("_"),longDateFormat:{LT:"A h:mm সময়",LTS:"A h:mm:ss সময়",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, A h:mm সময়",LLLL:"dddd, D MMMM YYYY, A h:mm সময়"},calendar:{sameDay:"[আজ] LT",nextDay:"[আগামীকাল] LT",nextWeek:"dddd, LT",lastDay:"[গতকাল] LT",lastWeek:"[গত] dddd, LT",sameElse:"L"},relativeTime:{future:"%s পরে",past:"%s আগে",s:"কয়েক সেকেন্ড",m:"এক মিনিট",mm:"%d মিনিট",h:"এক ঘন্টা",hh:"%d ঘন্টা",d:"এক দিন",dd:"%d দিন",M:"এক মাস",MM:"%d মাস",y:"এক বছর",yy:"%d বছর"},preparse:function(a){return a.replace(/[১২৩৪৫৬৭৮৯০]/g,function(a){return Ag[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return zg[a]})},meridiemParse:/রাত|সকাল|দুপুর|বিকাল|রাত/,meridiemHour:function(a,b){return 12===a&&(a=0),"রাত"===b&&a>=4||"দুপুর"===b&&a<5||"বিকাল"===b?a+12:a},meridiem:function(a,b,c){return a<4?"রাত":a<10?"সকাল":a<17?"দুপুর":a<20?"বিকাল":"রাত"},week:{dow:0,// Sunday is the first day of the week.
-doy:6}}),{1:"༡",2:"༢",3:"༣",4:"༤",5:"༥",6:"༦",7:"༧",8:"༨",9:"༩",0:"༠"}),Cg={"༡":"1","༢":"2","༣":"3","༤":"4","༥":"5","༦":"6","༧":"7","༨":"8","༩":"9","༠":"0"},Dg=(kg.defineLocale("bo",{months:"ཟླ་བ་དང་པོ_ཟླ་བ་གཉིས་པ_ཟླ་བ་གསུམ་པ_ཟླ་བ་བཞི་པ_ཟླ་བ་ལྔ་པ_ཟླ་བ་དྲུག་པ_ཟླ་བ་བདུན་པ_ཟླ་བ་བརྒྱད་པ_ཟླ་བ་དགུ་པ_ཟླ་བ་བཅུ་པ_ཟླ་བ་བཅུ་གཅིག་པ_ཟླ་བ་བཅུ་གཉིས་པ".split("_"),monthsShort:"ཟླ་བ་དང་པོ_ཟླ་བ་གཉིས་པ_ཟླ་བ་གསུམ་པ_ཟླ་བ་བཞི་པ_ཟླ་བ་ལྔ་པ_ཟླ་བ་དྲུག་པ_ཟླ་བ་བདུན་པ_ཟླ་བ་བརྒྱད་པ_ཟླ་བ་དགུ་པ_ཟླ་བ་བཅུ་པ_ཟླ་བ་བཅུ་གཅིག་པ_ཟླ་བ་བཅུ་གཉིས་པ".split("_"),weekdays:"གཟའ་ཉི་མ་_གཟའ་ཟླ་བ་_གཟའ་མིག་དམར་_གཟའ་ལྷག་པ་_གཟའ་ཕུར་བུ_གཟའ་པ་སངས་_གཟའ་སྤེན་པ་".split("_"),weekdaysShort:"ཉི་མ་_ཟླ་བ་_མིག་དམར་_ལྷག་པ་_ཕུར་བུ_པ་སངས་_སྤེན་པ་".split("_"),weekdaysMin:"ཉི་མ་_ཟླ་བ་_མིག་དམར་_ལྷག་པ་_ཕུར་བུ_པ་སངས་_སྤེན་པ་".split("_"),longDateFormat:{LT:"A h:mm",LTS:"A h:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, A h:mm",LLLL:"dddd, D MMMM YYYY, A h:mm"},calendar:{sameDay:"[དི་རིང] LT",nextDay:"[སང་ཉིན] LT",nextWeek:"[བདུན་ཕྲག་རྗེས་མ], LT",lastDay:"[ཁ་སང] LT",lastWeek:"[བདུན་ཕྲག་མཐའ་མ] dddd, LT",sameElse:"L"},relativeTime:{future:"%s ལ་",past:"%s སྔན་ལ",s:"ལམ་སང",m:"སྐར་མ་གཅིག",mm:"%d སྐར་མ",h:"ཆུ་ཚོད་གཅིག",hh:"%d ཆུ་ཚོད",d:"ཉིན་གཅིག",dd:"%d ཉིན་",M:"ཟླ་བ་གཅིག",MM:"%d ཟླ་བ",y:"ལོ་གཅིག",yy:"%d ལོ"},preparse:function(a){return a.replace(/[༡༢༣༤༥༦༧༨༩༠]/g,function(a){return Cg[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return Bg[a]})},meridiemParse:/མཚན་མོ|ཞོགས་ཀས|ཉིན་གུང|དགོང་དག|མཚན་མོ/,meridiemHour:function(a,b){return 12===a&&(a=0),"མཚན་མོ"===b&&a>=4||"ཉིན་གུང"===b&&a<5||"དགོང་དག"===b?a+12:a},meridiem:function(a,b,c){return a<4?"མཚན་མོ":a<10?"ཞོགས་ཀས":a<17?"ཉིན་གུང":a<20?"དགོང་དག":"མཚན་མོ"},week:{dow:0,// Sunday is the first day of the week.
-doy:6}}),kg.defineLocale("br",{months:"Genver_C'hwevrer_Meurzh_Ebrel_Mae_Mezheven_Gouere_Eost_Gwengolo_Here_Du_Kerzu".split("_"),monthsShort:"Gen_C'hwe_Meu_Ebr_Mae_Eve_Gou_Eos_Gwe_Her_Du_Ker".split("_"),weekdays:"Sul_Lun_Meurzh_Merc'her_Yaou_Gwener_Sadorn".split("_"),weekdaysShort:"Sul_Lun_Meu_Mer_Yao_Gwe_Sad".split("_"),weekdaysMin:"Su_Lu_Me_Mer_Ya_Gw_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"h[e]mm A",LTS:"h[e]mm:ss A",L:"DD/MM/YYYY",LL:"D [a viz] MMMM YYYY",LLL:"D [a viz] MMMM YYYY h[e]mm A",LLLL:"dddd, D [a viz] MMMM YYYY h[e]mm A"},calendar:{sameDay:"[Hiziv da] LT",nextDay:"[Warc'hoazh da] LT",nextWeek:"dddd [da] LT",lastDay:"[Dec'h da] LT",lastWeek:"dddd [paset da] LT",sameElse:"L"},relativeTime:{future:"a-benn %s",past:"%s 'zo",s:"un nebeud segondennoù",m:"ur vunutenn",mm:od,h:"un eur",hh:"%d eur",d:"un devezh",dd:od,M:"ur miz",MM:od,y:"ur bloaz",yy:pd},ordinalParse:/\d{1,2}(añ|vet)/,ordinal:function(a){var b=1===a?"añ":"vet";return a+b},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("bs",{months:"januar_februar_mart_april_maj_juni_juli_august_septembar_oktobar_novembar_decembar".split("_"),monthsShort:"jan._feb._mar._apr._maj._jun._jul._aug._sep._okt._nov._dec.".split("_"),monthsParseExact:!0,weekdays:"nedjelja_ponedjeljak_utorak_srijeda_četvrtak_petak_subota".split("_"),weekdaysShort:"ned._pon._uto._sri._čet._pet._sub.".split("_"),weekdaysMin:"ne_po_ut_sr_če_pe_su".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd, D. MMMM YYYY H:mm"},calendar:{sameDay:"[danas u] LT",nextDay:"[sutra u] LT",nextWeek:function(){switch(this.day()){case 0:return"[u] [nedjelju] [u] LT";case 3:return"[u] [srijedu] [u] LT";case 6:return"[u] [subotu] [u] LT";case 1:case 2:case 4:case 5:return"[u] dddd [u] LT"}},lastDay:"[jučer u] LT",lastWeek:function(){switch(this.day()){case 0:case 3:return"[prošlu] dddd [u] LT";case 6:return"[prošle] [subote] [u] LT";case 1:case 2:case 4:case 5:return"[prošli] dddd [u] LT"}},sameElse:"L"},relativeTime:{future:"za %s",past:"prije %s",s:"par sekundi",m:td,mm:td,h:td,hh:td,d:"dan",dd:td,M:"mjesec",MM:td,y:"godinu",yy:td},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("ca",{months:"gener_febrer_març_abril_maig_juny_juliol_agost_setembre_octubre_novembre_desembre".split("_"),monthsShort:"gen._febr._mar._abr._mai._jun._jul._ag._set._oct._nov._des.".split("_"),monthsParseExact:!0,weekdays:"diumenge_dilluns_dimarts_dimecres_dijous_divendres_dissabte".split("_"),weekdaysShort:"dg._dl._dt._dc._dj._dv._ds.".split("_"),weekdaysMin:"Dg_Dl_Dt_Dc_Dj_Dv_Ds".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY H:mm",LLLL:"dddd D MMMM YYYY H:mm"},calendar:{sameDay:function(){return"[avui a "+(1!==this.hours()?"les":"la")+"] LT"},nextDay:function(){return"[demà a "+(1!==this.hours()?"les":"la")+"] LT"},nextWeek:function(){return"dddd [a "+(1!==this.hours()?"les":"la")+"] LT"},lastDay:function(){return"[ahir a "+(1!==this.hours()?"les":"la")+"] LT"},lastWeek:function(){return"[el] dddd [passat a "+(1!==this.hours()?"les":"la")+"] LT"},sameElse:"L"},relativeTime:{future:"en %s",past:"fa %s",s:"uns segons",m:"un minut",mm:"%d minuts",h:"una hora",hh:"%d hores",d:"un dia",dd:"%d dies",M:"un mes",MM:"%d mesos",y:"un any",yy:"%d anys"},ordinalParse:/\d{1,2}(r|n|t|è|a)/,ordinal:function(a,b){var c=1===a?"r":2===a?"n":3===a?"r":4===a?"t":"è";return"w"!==b&&"W"!==b||(c="a"),a+c},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),"leden_únor_březen_duben_květen_červen_červenec_srpen_září_říjen_listopad_prosinec".split("_")),Eg="led_úno_bře_dub_kvě_čvn_čvc_srp_zář_říj_lis_pro".split("_"),Fg=(kg.defineLocale("cs",{months:Dg,monthsShort:Eg,monthsParse:function(a,b){var c,d=[];for(c=0;c<12;c++)
+Z("x",Se),Z("X",Ve),ba("X",function(a,b,c){c._d=new Date(1e3*parseFloat(a,10))}),ba("x",function(a,b,c){c._d=new Date(u(a))}),
+// Side effect imports
+//! moment.js
+//! version : 2.17.0
+//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
+//! license : MIT
+//! momentjs.com
+a.version="2.17.0",b(sb),a.fn=Vf,a.min=ub,a.max=vb,a.now=Jf,a.utc=k,a.unix=Lc,a.months=Rc,a.isDate=g,a.locale=$a,a.invalid=o,a.duration=Ob,a.isMoment=s,a.weekdays=Tc,a.parseZone=Mc,a.localeData=bb,a.isDuration=xb,a.monthsShort=Sc,a.weekdaysMin=Vc,a.defineLocale=_a,a.updateLocale=ab,a.locales=cb,a.weekdaysShort=Uc,a.normalizeUnits=K,a.relativeTimeRounding=kd,a.relativeTimeThreshold=ld,a.calendarFormat=Ub,a.prototype=Vf,
+//! moment.js locale configuration
+//! locale : Afrikaans [af]
+//! author : Werner Mollentze : https://github.com/wernerm
+a.defineLocale("af",{months:"Januarie_Februarie_Maart_April_Mei_Junie_Julie_Augustus_September_Oktober_November_Desember".split("_"),monthsShort:"Jan_Feb_Mrt_Apr_Mei_Jun_Jul_Aug_Sep_Okt_Nov_Des".split("_"),weekdays:"Sondag_Maandag_Dinsdag_Woensdag_Donderdag_Vrydag_Saterdag".split("_"),weekdaysShort:"Son_Maa_Din_Woe_Don_Vry_Sat".split("_"),weekdaysMin:"So_Ma_Di_Wo_Do_Vr_Sa".split("_"),meridiemParse:/vm|nm/i,isPM:function(a){return/^nm$/i.test(a)},meridiem:function(a,b,c){return a<12?c?"vm":"VM":c?"nm":"NM"},longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Vandag om] LT",nextDay:"[Môre om] LT",nextWeek:"dddd [om] LT",lastDay:"[Gister om] LT",lastWeek:"[Laas] dddd [om] LT",sameElse:"L"},relativeTime:{future:"oor %s",past:"%s gelede",s:"'n paar sekondes",m:"'n minuut",mm:"%d minute",h:"'n uur",hh:"%d ure",d:"'n dag",dd:"%d dae",M:"'n maand",MM:"%d maande",y:"'n jaar",yy:"%d jaar"},ordinalParse:/\d{1,2}(ste|de)/,ordinal:function(a){return a+(1===a||8===a||a>=20?"ste":"de")},week:{dow:1,// Maandag is die eerste dag van die week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Arabic (Algeria) [ar-dz]
+//! author : Noureddine LOUAHEDJ : https://github.com/noureddineme
+a.defineLocale("ar-dz",{months:"جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر".split("_"),monthsShort:"جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر".split("_"),weekdays:"الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت".split("_"),weekdaysShort:"احد_اثنين_ثلاثاء_اربعاء_خميس_جمعة_سبت".split("_"),weekdaysMin:"أح_إث_ثلا_أر_خم_جم_سب".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[اليوم على الساعة] LT",nextDay:"[غدا على الساعة] LT",nextWeek:"dddd [على الساعة] LT",lastDay:"[أمس على الساعة] LT",lastWeek:"dddd [على الساعة] LT",sameElse:"L"},relativeTime:{future:"في %s",past:"منذ %s",s:"ثوان",m:"دقيقة",mm:"%d دقائق",h:"ساعة",hh:"%d ساعات",d:"يوم",dd:"%d أيام",M:"شهر",MM:"%d أشهر",y:"سنة",yy:"%d سنوات"},week:{dow:0,// Sunday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Arabic (Lybia) [ar-ly]
+//! author : Ali Hmer: https://github.com/kikoanis
+var pg={1:"1",2:"2",3:"3",4:"4",5:"5",6:"6",7:"7",8:"8",9:"9",0:"0"},qg=function(a){return 0===a?0:1===a?1:2===a?2:a%100>=3&&a%100<=10?3:a%100>=11?4:5},rg={s:["أقل من ثانية","ثانية واحدة",["ثانيتان","ثانيتين"],"%d ثوان","%d ثانية","%d ثانية"],m:["أقل من دقيقة","دقيقة واحدة",["دقيقتان","دقيقتين"],"%d دقائق","%d دقيقة","%d دقيقة"],h:["أقل من ساعة","ساعة واحدة",["ساعتان","ساعتين"],"%d ساعات","%d ساعة","%d ساعة"],d:["أقل من يوم","يوم واحد",["يومان","يومين"],"%d أيام","%d يومًا","%d يوم"],M:["أقل من شهر","شهر واحد",["شهران","شهرين"],"%d أشهر","%d شهرا","%d شهر"],y:["أقل من عام","عام واحد",["عامان","عامين"],"%d أعوام","%d عامًا","%d عام"]},sg=function(a){return function(b,c,d,e){var f=qg(b),g=rg[a][qg(b)];return 2===f&&(g=g[c?0:1]),g.replace(/%d/i,b)}},tg=["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];a.defineLocale("ar-ly",{months:tg,monthsShort:tg,weekdays:"الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت".split("_"),weekdaysShort:"أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت".split("_"),weekdaysMin:"ح_ن_ث_ر_خ_ج_س".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"D/‏M/‏YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},meridiemParse:/ص|م/,isPM:function(a){return"م"===a},meridiem:function(a,b,c){return a<12?"ص":"م"},calendar:{sameDay:"[اليوم عند الساعة] LT",nextDay:"[غدًا عند الساعة] LT",nextWeek:"dddd [عند الساعة] LT",lastDay:"[أمس عند الساعة] LT",lastWeek:"dddd [عند الساعة] LT",sameElse:"L"},relativeTime:{future:"بعد %s",past:"منذ %s",s:sg("s"),m:sg("m"),mm:sg("m"),h:sg("h"),hh:sg("h"),d:sg("d"),dd:sg("d"),M:sg("M"),MM:sg("M"),y:sg("y"),yy:sg("y")},preparse:function(a){return a.replace(/\u200f/g,"").replace(/،/g,",")},postformat:function(a){return a.replace(/\d/g,function(a){return pg[a]}).replace(/,/g,"،")},week:{dow:6,// Saturday is the first day of the week.
+doy:12}}),
+//! moment.js locale configuration
+//! locale : Arabic (Morocco) [ar-ma]
+//! author : ElFadili Yassine : https://github.com/ElFadiliY
+//! author : Abdel Said : https://github.com/abdelsaid
+a.defineLocale("ar-ma",{months:"يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر".split("_"),monthsShort:"يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر".split("_"),weekdays:"الأحد_الإتنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت".split("_"),weekdaysShort:"احد_اتنين_ثلاثاء_اربعاء_خميس_جمعة_سبت".split("_"),weekdaysMin:"ح_ن_ث_ر_خ_ج_س".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[اليوم على الساعة] LT",nextDay:"[غدا على الساعة] LT",nextWeek:"dddd [على الساعة] LT",lastDay:"[أمس على الساعة] LT",lastWeek:"dddd [على الساعة] LT",sameElse:"L"},relativeTime:{future:"في %s",past:"منذ %s",s:"ثوان",m:"دقيقة",mm:"%d دقائق",h:"ساعة",hh:"%d ساعات",d:"يوم",dd:"%d أيام",M:"شهر",MM:"%d أشهر",y:"سنة",yy:"%d سنوات"},week:{dow:6,// Saturday is the first day of the week.
+doy:12}});
+//! moment.js locale configuration
+//! locale : Arabic (Saudi Arabia) [ar-sa]
+//! author : Suhail Alkowaileet : https://github.com/xsoh
+var ug={1:"١",2:"٢",3:"٣",4:"٤",5:"٥",6:"٦",7:"٧",8:"٨",9:"٩",0:"٠"},vg={"١":"1","٢":"2","٣":"3","٤":"4","٥":"5","٦":"6","٧":"7","٨":"8","٩":"9","٠":"0"};a.defineLocale("ar-sa",{months:"يناير_فبراير_مارس_أبريل_مايو_يونيو_يوليو_أغسطس_سبتمبر_أكتوبر_نوفمبر_ديسمبر".split("_"),monthsShort:"يناير_فبراير_مارس_أبريل_مايو_يونيو_يوليو_أغسطس_سبتمبر_أكتوبر_نوفمبر_ديسمبر".split("_"),weekdays:"الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت".split("_"),weekdaysShort:"أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت".split("_"),weekdaysMin:"ح_ن_ث_ر_خ_ج_س".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},meridiemParse:/ص|م/,isPM:function(a){return"م"===a},meridiem:function(a,b,c){return a<12?"ص":"م"},calendar:{sameDay:"[اليوم على الساعة] LT",nextDay:"[غدا على الساعة] LT",nextWeek:"dddd [على الساعة] LT",lastDay:"[أمس على الساعة] LT",lastWeek:"dddd [على الساعة] LT",sameElse:"L"},relativeTime:{future:"في %s",past:"منذ %s",s:"ثوان",m:"دقيقة",mm:"%d دقائق",h:"ساعة",hh:"%d ساعات",d:"يوم",dd:"%d أيام",M:"شهر",MM:"%d أشهر",y:"سنة",yy:"%d سنوات"},preparse:function(a){return a.replace(/[١٢٣٤٥٦٧٨٩٠]/g,function(a){return vg[a]}).replace(/،/g,",")},postformat:function(a){return a.replace(/\d/g,function(a){return ug[a]}).replace(/,/g,"،")},week:{dow:0,// Sunday is the first day of the week.
+doy:6}}),
+//! moment.js locale configuration
+//! locale  :  Arabic (Tunisia) [ar-tn]
+//! author : Nader Toukabri : https://github.com/naderio
+a.defineLocale("ar-tn",{months:"جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر".split("_"),monthsShort:"جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر".split("_"),weekdays:"الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت".split("_"),weekdaysShort:"أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت".split("_"),weekdaysMin:"ح_ن_ث_ر_خ_ج_س".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[اليوم على الساعة] LT",nextDay:"[غدا على الساعة] LT",nextWeek:"dddd [على الساعة] LT",lastDay:"[أمس على الساعة] LT",lastWeek:"dddd [على الساعة] LT",sameElse:"L"},relativeTime:{future:"في %s",past:"منذ %s",s:"ثوان",m:"دقيقة",mm:"%d دقائق",h:"ساعة",hh:"%d ساعات",d:"يوم",dd:"%d أيام",M:"شهر",MM:"%d أشهر",y:"سنة",yy:"%d سنوات"},week:{dow:1,// Monday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Arabic [ar]
+//! author : Abdel Said: https://github.com/abdelsaid
+//! author : Ahmed Elkhatib
+//! author : forabi https://github.com/forabi
+var wg={1:"١",2:"٢",3:"٣",4:"٤",5:"٥",6:"٦",7:"٧",8:"٨",9:"٩",0:"٠"},xg={"١":"1","٢":"2","٣":"3","٤":"4","٥":"5","٦":"6","٧":"7","٨":"8","٩":"9","٠":"0"},yg=function(a){return 0===a?0:1===a?1:2===a?2:a%100>=3&&a%100<=10?3:a%100>=11?4:5},zg={s:["أقل من ثانية","ثانية واحدة",["ثانيتان","ثانيتين"],"%d ثوان","%d ثانية","%d ثانية"],m:["أقل من دقيقة","دقيقة واحدة",["دقيقتان","دقيقتين"],"%d دقائق","%d دقيقة","%d دقيقة"],h:["أقل من ساعة","ساعة واحدة",["ساعتان","ساعتين"],"%d ساعات","%d ساعة","%d ساعة"],d:["أقل من يوم","يوم واحد",["يومان","يومين"],"%d أيام","%d يومًا","%d يوم"],M:["أقل من شهر","شهر واحد",["شهران","شهرين"],"%d أشهر","%d شهرا","%d شهر"],y:["أقل من عام","عام واحد",["عامان","عامين"],"%d أعوام","%d عامًا","%d عام"]},Ag=function(a){return function(b,c,d,e){var f=yg(b),g=zg[a][yg(b)];return 2===f&&(g=g[c?0:1]),g.replace(/%d/i,b)}},Bg=["كانون الثاني يناير","شباط فبراير","آذار مارس","نيسان أبريل","أيار مايو","حزيران يونيو","تموز يوليو","آب أغسطس","أيلول سبتمبر","تشرين الأول أكتوبر","تشرين الثاني نوفمبر","كانون الأول ديسمبر"];a.defineLocale("ar",{months:Bg,monthsShort:Bg,weekdays:"الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت".split("_"),weekdaysShort:"أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت".split("_"),weekdaysMin:"ح_ن_ث_ر_خ_ج_س".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"D/‏M/‏YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},meridiemParse:/ص|م/,isPM:function(a){return"م"===a},meridiem:function(a,b,c){return a<12?"ص":"م"},calendar:{sameDay:"[اليوم عند الساعة] LT",nextDay:"[غدًا عند الساعة] LT",nextWeek:"dddd [عند الساعة] LT",lastDay:"[أمس عند الساعة] LT",lastWeek:"dddd [عند الساعة] LT",sameElse:"L"},relativeTime:{future:"بعد %s",past:"منذ %s",s:Ag("s"),m:Ag("m"),mm:Ag("m"),h:Ag("h"),hh:Ag("h"),d:Ag("d"),dd:Ag("d"),M:Ag("M"),MM:Ag("M"),y:Ag("y"),yy:Ag("y")},preparse:function(a){return a.replace(/\u200f/g,"").replace(/[١٢٣٤٥٦٧٨٩٠]/g,function(a){return xg[a]}).replace(/،/g,",")},postformat:function(a){return a.replace(/\d/g,function(a){return wg[a]}).replace(/,/g,"،")},week:{dow:6,// Saturday is the first day of the week.
+doy:12}});
+//! moment.js locale configuration
+//! locale : Azerbaijani [az]
+//! author : topchiyev : https://github.com/topchiyev
+var Cg={1:"-inci",5:"-inci",8:"-inci",70:"-inci",80:"-inci",2:"-nci",7:"-nci",20:"-nci",50:"-nci",3:"-üncü",4:"-üncü",100:"-üncü",6:"-ncı",9:"-uncu",10:"-uncu",30:"-uncu",60:"-ıncı",90:"-ıncı"};a.defineLocale("az",{months:"yanvar_fevral_mart_aprel_may_iyun_iyul_avqust_sentyabr_oktyabr_noyabr_dekabr".split("_"),monthsShort:"yan_fev_mar_apr_may_iyn_iyl_avq_sen_okt_noy_dek".split("_"),weekdays:"Bazar_Bazar ertəsi_Çərşənbə axşamı_Çərşənbə_Cümə axşamı_Cümə_Şənbə".split("_"),weekdaysShort:"Baz_BzE_ÇAx_Çər_CAx_Cüm_Şən".split("_"),weekdaysMin:"Bz_BE_ÇA_Çə_CA_Cü_Şə".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[bugün saat] LT",nextDay:"[sabah saat] LT",nextWeek:"[gələn həftə] dddd [saat] LT",lastDay:"[dünən] LT",lastWeek:"[keçən həftə] dddd [saat] LT",sameElse:"L"},relativeTime:{future:"%s sonra",past:"%s əvvəl",s:"birneçə saniyyə",m:"bir dəqiqə",mm:"%d dəqiqə",h:"bir saat",hh:"%d saat",d:"bir gün",dd:"%d gün",M:"bir ay",MM:"%d ay",y:"bir il",yy:"%d il"},meridiemParse:/gecə|səhər|gündüz|axşam/,isPM:function(a){return/^(gündüz|axşam)$/.test(a)},meridiem:function(a,b,c){return a<4?"gecə":a<12?"səhər":a<17?"gündüz":"axşam"},ordinalParse:/\d{1,2}-(ıncı|inci|nci|üncü|ncı|uncu)/,ordinal:function(a){if(0===a)// special case for zero
+return a+"-ıncı";var b=a%10,c=a%100-b,d=a>=100?100:null;return a+(Cg[b]||Cg[c]||Cg[d])},week:{dow:1,// Monday is the first day of the week.
+doy:7}}),a.defineLocale("be",{months:{format:"студзеня_лютага_сакавіка_красавіка_траўня_чэрвеня_ліпеня_жніўня_верасня_кастрычніка_лістапада_снежня".split("_"),standalone:"студзень_люты_сакавік_красавік_травень_чэрвень_ліпень_жнівень_верасень_кастрычнік_лістапад_снежань".split("_")},monthsShort:"студ_лют_сак_крас_трав_чэрв_ліп_жнів_вер_каст_ліст_снеж".split("_"),weekdays:{format:"нядзелю_панядзелак_аўторак_сераду_чацвер_пятніцу_суботу".split("_"),standalone:"нядзеля_панядзелак_аўторак_серада_чацвер_пятніца_субота".split("_"),isFormat:/\[ ?[Вв] ?(?:мінулую|наступную)? ?\] ?dddd/},weekdaysShort:"нд_пн_ат_ср_чц_пт_сб".split("_"),weekdaysMin:"нд_пн_ат_ср_чц_пт_сб".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY г.",LLL:"D MMMM YYYY г., HH:mm",LLLL:"dddd, D MMMM YYYY г., HH:mm"},calendar:{sameDay:"[Сёння ў] LT",nextDay:"[Заўтра ў] LT",lastDay:"[Учора ў] LT",nextWeek:function(){return"[У] dddd [ў] LT"},lastWeek:function(){switch(this.day()){case 0:case 3:case 5:case 6:return"[У мінулую] dddd [ў] LT";case 1:case 2:case 4:return"[У мінулы] dddd [ў] LT"}},sameElse:"L"},relativeTime:{future:"праз %s",past:"%s таму",s:"некалькі секунд",m:pd,mm:pd,h:pd,hh:pd,d:"дзень",dd:pd,M:"месяц",MM:pd,y:"год",yy:pd},meridiemParse:/ночы|раніцы|дня|вечара/,isPM:function(a){return/^(дня|вечара)$/.test(a)},meridiem:function(a,b,c){return a<4?"ночы":a<12?"раніцы":a<17?"дня":"вечара"},ordinalParse:/\d{1,2}-(і|ы|га)/,ordinal:function(a,b){switch(b){case"M":case"d":case"DDD":case"w":case"W":return a%10!==2&&a%10!==3||a%100===12||a%100===13?a+"-ы":a+"-і";case"D":return a+"-га";default:return a}},week:{dow:1,// Monday is the first day of the week.
+doy:7}}),a.defineLocale("bg-x",{parentLocale:"bg"}),
+//! moment.js locale configuration
+//! locale : Bulgarian [bg]
+//! author : Krasen Borisov : https://github.com/kraz
+a.defineLocale("bg",{months:"януари_февруари_март_април_май_юни_юли_август_септември_октомври_ноември_декември".split("_"),monthsShort:"янр_фев_мар_апр_май_юни_юли_авг_сеп_окт_ное_дек".split("_"),weekdays:"неделя_понеделник_вторник_сряда_четвъртък_петък_събота".split("_"),weekdaysShort:"нед_пон_вто_сря_чет_пет_съб".split("_"),weekdaysMin:"нд_пн_вт_ср_чт_пт_сб".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"D.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY H:mm",LLLL:"dddd, D MMMM YYYY H:mm"},calendar:{sameDay:"[Днес в] LT",nextDay:"[Утре в] LT",nextWeek:"dddd [в] LT",lastDay:"[Вчера в] LT",lastWeek:function(){switch(this.day()){case 0:case 3:case 6:return"[В изминалата] dddd [в] LT";case 1:case 2:case 4:case 5:return"[В изминалия] dddd [в] LT"}},sameElse:"L"},relativeTime:{future:"след %s",past:"преди %s",s:"няколко секунди",m:"минута",mm:"%d минути",h:"час",hh:"%d часа",d:"ден",dd:"%d дни",M:"месец",MM:"%d месеца",y:"година",yy:"%d години"},ordinalParse:/\d{1,2}-(ев|ен|ти|ви|ри|ми)/,ordinal:function(a){var b=a%10,c=a%100;return 0===a?a+"-ев":0===c?a+"-ен":c>10&&c<20?a+"-ти":1===b?a+"-ви":2===b?a+"-ри":7===b||8===b?a+"-ми":a+"-ти"},week:{dow:1,// Monday is the first day of the week.
+doy:7}});
+//! moment.js locale configuration
+//! locale : Bengali [bn]
+//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
+var Dg={1:"১",2:"২",3:"৩",4:"৪",5:"৫",6:"৬",7:"৭",8:"৮",9:"৯",0:"০"},Eg={"১":"1","২":"2","৩":"3","৪":"4","৫":"5","৬":"6","৭":"7","৮":"8","৯":"9","০":"0"};a.defineLocale("bn",{months:"জানুয়ারী_ফেব্রুয়ারি_মার্চ_এপ্রিল_মে_জুন_জুলাই_আগস্ট_সেপ্টেম্বর_অক্টোবর_নভেম্বর_ডিসেম্বর".split("_"),monthsShort:"জানু_ফেব_মার্চ_এপ্র_মে_জুন_জুল_আগ_সেপ্ট_অক্টো_নভে_ডিসে".split("_"),weekdays:"রবিবার_সোমবার_মঙ্গলবার_বুধবার_বৃহস্পতিবার_শুক্রবার_শনিবার".split("_"),weekdaysShort:"রবি_সোম_মঙ্গল_বুধ_বৃহস্পতি_শুক্র_শনি".split("_"),weekdaysMin:"রবি_সোম_মঙ্গ_বুধ_বৃহঃ_শুক্র_শনি".split("_"),longDateFormat:{LT:"A h:mm সময়",LTS:"A h:mm:ss সময়",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, A h:mm সময়",LLLL:"dddd, D MMMM YYYY, A h:mm সময়"},calendar:{sameDay:"[আজ] LT",nextDay:"[আগামীকাল] LT",nextWeek:"dddd, LT",lastDay:"[গতকাল] LT",lastWeek:"[গত] dddd, LT",sameElse:"L"},relativeTime:{future:"%s পরে",past:"%s আগে",s:"কয়েক সেকেন্ড",m:"এক মিনিট",mm:"%d মিনিট",h:"এক ঘন্টা",hh:"%d ঘন্টা",d:"এক দিন",dd:"%d দিন",M:"এক মাস",MM:"%d মাস",y:"এক বছর",yy:"%d বছর"},preparse:function(a){return a.replace(/[১২৩৪৫৬৭৮৯০]/g,function(a){return Eg[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return Dg[a]})},meridiemParse:/রাত|সকাল|দুপুর|বিকাল|রাত/,meridiemHour:function(a,b){return 12===a&&(a=0),"রাত"===b&&a>=4||"দুপুর"===b&&a<5||"বিকাল"===b?a+12:a},meridiem:function(a,b,c){return a<4?"রাত":a<10?"সকাল":a<17?"দুপুর":a<20?"বিকাল":"রাত"},week:{dow:0,// Sunday is the first day of the week.
+doy:6}});
+//! moment.js locale configuration
+//! locale : Tibetan [bo]
+//! author : Thupten N. Chakrishar : https://github.com/vajradog
+var Fg={1:"༡",2:"༢",3:"༣",4:"༤",5:"༥",6:"༦",7:"༧",8:"༨",9:"༩",0:"༠"},Gg={"༡":"1","༢":"2","༣":"3","༤":"4","༥":"5","༦":"6","༧":"7","༨":"8","༩":"9","༠":"0"};a.defineLocale("bo",{months:"ཟླ་བ་དང་པོ_ཟླ་བ་གཉིས་པ_ཟླ་བ་གསུམ་པ_ཟླ་བ་བཞི་པ_ཟླ་བ་ལྔ་པ_ཟླ་བ་དྲུག་པ_ཟླ་བ་བདུན་པ_ཟླ་བ་བརྒྱད་པ_ཟླ་བ་དགུ་པ_ཟླ་བ་བཅུ་པ_ཟླ་བ་བཅུ་གཅིག་པ_ཟླ་བ་བཅུ་གཉིས་པ".split("_"),monthsShort:"ཟླ་བ་དང་པོ_ཟླ་བ་གཉིས་པ_ཟླ་བ་གསུམ་པ_ཟླ་བ་བཞི་པ_ཟླ་བ་ལྔ་པ_ཟླ་བ་དྲུག་པ_ཟླ་བ་བདུན་པ_ཟླ་བ་བརྒྱད་པ_ཟླ་བ་དགུ་པ_ཟླ་བ་བཅུ་པ_ཟླ་བ་བཅུ་གཅིག་པ_ཟླ་བ་བཅུ་གཉིས་པ".split("_"),weekdays:"གཟའ་ཉི་མ་_གཟའ་ཟླ་བ་_གཟའ་མིག་དམར་_གཟའ་ལྷག་པ་_གཟའ་ཕུར་བུ_གཟའ་པ་སངས་_གཟའ་སྤེན་པ་".split("_"),weekdaysShort:"ཉི་མ་_ཟླ་བ་_མིག་དམར་_ལྷག་པ་_ཕུར་བུ_པ་སངས་_སྤེན་པ་".split("_"),weekdaysMin:"ཉི་མ་_ཟླ་བ་_མིག་དམར་_ལྷག་པ་_ཕུར་བུ_པ་སངས་_སྤེན་པ་".split("_"),longDateFormat:{LT:"A h:mm",LTS:"A h:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, A h:mm",LLLL:"dddd, D MMMM YYYY, A h:mm"},calendar:{sameDay:"[དི་རིང] LT",nextDay:"[སང་ཉིན] LT",nextWeek:"[བདུན་ཕྲག་རྗེས་མ], LT",lastDay:"[ཁ་སང] LT",lastWeek:"[བདུན་ཕྲག་མཐའ་མ] dddd, LT",sameElse:"L"},relativeTime:{future:"%s ལ་",past:"%s སྔན་ལ",s:"ལམ་སང",m:"སྐར་མ་གཅིག",mm:"%d སྐར་མ",h:"ཆུ་ཚོད་གཅིག",hh:"%d ཆུ་ཚོད",d:"ཉིན་གཅིག",dd:"%d ཉིན་",M:"ཟླ་བ་གཅིག",MM:"%d ཟླ་བ",y:"ལོ་གཅིག",yy:"%d ལོ"},preparse:function(a){return a.replace(/[༡༢༣༤༥༦༧༨༩༠]/g,function(a){return Gg[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return Fg[a]})},meridiemParse:/མཚན་མོ|ཞོགས་ཀས|ཉིན་གུང|དགོང་དག|མཚན་མོ/,meridiemHour:function(a,b){return 12===a&&(a=0),"མཚན་མོ"===b&&a>=4||"ཉིན་གུང"===b&&a<5||"དགོང་དག"===b?a+12:a},meridiem:function(a,b,c){return a<4?"མཚན་མོ":a<10?"ཞོགས་ཀས":a<17?"ཉིན་གུང":a<20?"དགོང་དག":"མཚན་མོ"},week:{dow:0,// Sunday is the first day of the week.
+doy:6}}),a.defineLocale("br",{months:"Genver_C'hwevrer_Meurzh_Ebrel_Mae_Mezheven_Gouere_Eost_Gwengolo_Here_Du_Kerzu".split("_"),monthsShort:"Gen_C'hwe_Meu_Ebr_Mae_Eve_Gou_Eos_Gwe_Her_Du_Ker".split("_"),weekdays:"Sul_Lun_Meurzh_Merc'her_Yaou_Gwener_Sadorn".split("_"),weekdaysShort:"Sul_Lun_Meu_Mer_Yao_Gwe_Sad".split("_"),weekdaysMin:"Su_Lu_Me_Mer_Ya_Gw_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"h[e]mm A",LTS:"h[e]mm:ss A",L:"DD/MM/YYYY",LL:"D [a viz] MMMM YYYY",LLL:"D [a viz] MMMM YYYY h[e]mm A",LLLL:"dddd, D [a viz] MMMM YYYY h[e]mm A"},calendar:{sameDay:"[Hiziv da] LT",nextDay:"[Warc'hoazh da] LT",nextWeek:"dddd [da] LT",lastDay:"[Dec'h da] LT",lastWeek:"dddd [paset da] LT",sameElse:"L"},relativeTime:{future:"a-benn %s",past:"%s 'zo",s:"un nebeud segondennoù",m:"ur vunutenn",mm:qd,h:"un eur",hh:"%d eur",d:"un devezh",dd:qd,M:"ur miz",MM:qd,y:"ur bloaz",yy:rd},ordinalParse:/\d{1,2}(añ|vet)/,ordinal:function(a){var b=1===a?"añ":"vet";return a+b},week:{dow:1,// Monday is the first day of the week.
+doy:4}}),a.defineLocale("bs",{months:"januar_februar_mart_april_maj_juni_juli_august_septembar_oktobar_novembar_decembar".split("_"),monthsShort:"jan._feb._mar._apr._maj._jun._jul._aug._sep._okt._nov._dec.".split("_"),monthsParseExact:!0,weekdays:"nedjelja_ponedjeljak_utorak_srijeda_četvrtak_petak_subota".split("_"),weekdaysShort:"ned._pon._uto._sri._čet._pet._sub.".split("_"),weekdaysMin:"ne_po_ut_sr_če_pe_su".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd, D. MMMM YYYY H:mm"},calendar:{sameDay:"[danas u] LT",nextDay:"[sutra u] LT",nextWeek:function(){switch(this.day()){case 0:return"[u] [nedjelju] [u] LT";case 3:return"[u] [srijedu] [u] LT";case 6:return"[u] [subotu] [u] LT";case 1:case 2:case 4:case 5:return"[u] dddd [u] LT"}},lastDay:"[jučer u] LT",lastWeek:function(){switch(this.day()){case 0:case 3:return"[prošlu] dddd [u] LT";case 6:return"[prošle] [subote] [u] LT";case 1:case 2:case 4:case 5:return"[prošli] dddd [u] LT"}},sameElse:"L"},relativeTime:{future:"za %s",past:"prije %s",s:"par sekundi",m:vd,mm:vd,h:vd,hh:vd,d:"dan",dd:vd,M:"mjesec",MM:vd,y:"godinu",yy:vd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:7}}),
+//! moment.js locale configuration
+//! locale : Catalan [ca]
+//! author : Juan G. Hurtado : https://github.com/juanghurtado
+a.defineLocale("ca",{months:"gener_febrer_març_abril_maig_juny_juliol_agost_setembre_octubre_novembre_desembre".split("_"),monthsShort:"gen._febr._mar._abr._mai._jun._jul._ag._set._oct._nov._des.".split("_"),monthsParseExact:!0,weekdays:"diumenge_dilluns_dimarts_dimecres_dijous_divendres_dissabte".split("_"),weekdaysShort:"dg._dl._dt._dc._dj._dv._ds.".split("_"),weekdaysMin:"Dg_Dl_Dt_Dc_Dj_Dv_Ds".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY H:mm",LLLL:"dddd D MMMM YYYY H:mm"},calendar:{sameDay:function(){return"[avui a "+(1!==this.hours()?"les":"la")+"] LT"},nextDay:function(){return"[demà a "+(1!==this.hours()?"les":"la")+"] LT"},nextWeek:function(){return"dddd [a "+(1!==this.hours()?"les":"la")+"] LT"},lastDay:function(){return"[ahir a "+(1!==this.hours()?"les":"la")+"] LT"},lastWeek:function(){return"[el] dddd [passat a "+(1!==this.hours()?"les":"la")+"] LT"},sameElse:"L"},relativeTime:{future:"d'aquí %s",past:"fa %s",s:"uns segons",m:"un minut",mm:"%d minuts",h:"una hora",hh:"%d hores",d:"un dia",dd:"%d dies",M:"un mes",MM:"%d mesos",y:"un any",yy:"%d anys"},ordinalParse:/\d{1,2}(r|n|t|è|a)/,ordinal:function(a,b){var c=1===a?"r":2===a?"n":3===a?"r":4===a?"t":"è";return"w"!==b&&"W"!==b||(c="a"),a+c},week:{dow:1,// Monday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Czech [cs]
+//! author : petrbela : https://github.com/petrbela
+var Hg="leden_únor_březen_duben_květen_červen_červenec_srpen_září_říjen_listopad_prosinec".split("_"),Ig="led_úno_bře_dub_kvě_čvn_čvc_srp_zář_říj_lis_pro".split("_");a.defineLocale("cs",{months:Hg,monthsShort:Ig,monthsParse:function(a,b){var c,d=[];for(c=0;c<12;c++)
 // use custom parser to solve problem with July (červenec)
-d[c]=new RegExp("^"+a[c]+"$|^"+b[c]+"$","i");return d}(Dg,Eg),shortMonthsParse:function(a){var b,c=[];for(b=0;b<12;b++)c[b]=new RegExp("^"+a[b]+"$","i");return c}(Eg),longMonthsParse:function(a){var b,c=[];for(b=0;b<12;b++)c[b]=new RegExp("^"+a[b]+"$","i");return c}(Dg),weekdays:"neděle_pondělí_úterý_středa_čtvrtek_pátek_sobota".split("_"),weekdaysShort:"ne_po_út_st_čt_pá_so".split("_"),weekdaysMin:"ne_po_út_st_čt_pá_so".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd D. MMMM YYYY H:mm",l:"D. M. YYYY"},calendar:{sameDay:"[dnes v] LT",nextDay:"[zítra v] LT",nextWeek:function(){switch(this.day()){case 0:return"[v neděli v] LT";case 1:case 2:return"[v] dddd [v] LT";case 3:return"[ve středu v] LT";case 4:return"[ve čtvrtek v] LT";case 5:return"[v pátek v] LT";case 6:return"[v sobotu v] LT"}},lastDay:"[včera v] LT",lastWeek:function(){switch(this.day()){case 0:return"[minulou neděli v] LT";case 1:case 2:return"[minulé] dddd [v] LT";case 3:return"[minulou středu v] LT";case 4:case 5:return"[minulý] dddd [v] LT";case 6:return"[minulou sobotu v] LT"}},sameElse:"L"},relativeTime:{future:"za %s",past:"před %s",s:vd,m:vd,mm:vd,h:vd,hh:vd,d:vd,dd:vd,M:vd,MM:vd,y:vd,yy:vd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("cv",{months:"кӑрлач_нарӑс_пуш_ака_май_ҫӗртме_утӑ_ҫурла_авӑн_юпа_чӳк_раштав".split("_"),monthsShort:"кӑр_нар_пуш_ака_май_ҫӗр_утӑ_ҫур_авн_юпа_чӳк_раш".split("_"),weekdays:"вырсарникун_тунтикун_ытларикун_юнкун_кӗҫнерникун_эрнекун_шӑматкун".split("_"),weekdaysShort:"выр_тун_ытл_юн_кӗҫ_эрн_шӑм".split("_"),weekdaysMin:"вр_тн_ыт_юн_кҫ_эр_шм".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD-MM-YYYY",LL:"YYYY [ҫулхи] MMMM [уйӑхӗн] D[-мӗшӗ]",LLL:"YYYY [ҫулхи] MMMM [уйӑхӗн] D[-мӗшӗ], HH:mm",LLLL:"dddd, YYYY [ҫулхи] MMMM [уйӑхӗн] D[-мӗшӗ], HH:mm"},calendar:{sameDay:"[Паян] LT [сехетре]",nextDay:"[Ыран] LT [сехетре]",lastDay:"[Ӗнер] LT [сехетре]",nextWeek:"[Ҫитес] dddd LT [сехетре]",lastWeek:"[Иртнӗ] dddd LT [сехетре]",sameElse:"L"},relativeTime:{future:function(a){var b=/сехет$/i.exec(a)?"рен":/ҫул$/i.exec(a)?"тан":"ран";return a+b},past:"%s каялла",s:"пӗр-ик ҫеккунт",m:"пӗр минут",mm:"%d минут",h:"пӗр сехет",hh:"%d сехет",d:"пӗр кун",dd:"%d кун",M:"пӗр уйӑх",MM:"%d уйӑх",y:"пӗр ҫул",yy:"%d ҫул"},ordinalParse:/\d{1,2}-мӗш/,ordinal:"%d-мӗш",week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("cy",{months:"Ionawr_Chwefror_Mawrth_Ebrill_Mai_Mehefin_Gorffennaf_Awst_Medi_Hydref_Tachwedd_Rhagfyr".split("_"),monthsShort:"Ion_Chwe_Maw_Ebr_Mai_Meh_Gor_Aws_Med_Hyd_Tach_Rhag".split("_"),weekdays:"Dydd Sul_Dydd Llun_Dydd Mawrth_Dydd Mercher_Dydd Iau_Dydd Gwener_Dydd Sadwrn".split("_"),weekdaysShort:"Sul_Llun_Maw_Mer_Iau_Gwe_Sad".split("_"),weekdaysMin:"Su_Ll_Ma_Me_Ia_Gw_Sa".split("_"),weekdaysParseExact:!0,
+d[c]=new RegExp("^"+a[c]+"$|^"+b[c]+"$","i");return d}(Hg,Ig),shortMonthsParse:function(a){var b,c=[];for(b=0;b<12;b++)c[b]=new RegExp("^"+a[b]+"$","i");return c}(Ig),longMonthsParse:function(a){var b,c=[];for(b=0;b<12;b++)c[b]=new RegExp("^"+a[b]+"$","i");return c}(Hg),weekdays:"neděle_pondělí_úterý_středa_čtvrtek_pátek_sobota".split("_"),weekdaysShort:"ne_po_út_st_čt_pá_so".split("_"),weekdaysMin:"ne_po_út_st_čt_pá_so".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd D. MMMM YYYY H:mm",l:"D. M. YYYY"},calendar:{sameDay:"[dnes v] LT",nextDay:"[zítra v] LT",nextWeek:function(){switch(this.day()){case 0:return"[v neděli v] LT";case 1:case 2:return"[v] dddd [v] LT";case 3:return"[ve středu v] LT";case 4:return"[ve čtvrtek v] LT";case 5:return"[v pátek v] LT";case 6:return"[v sobotu v] LT"}},lastDay:"[včera v] LT",lastWeek:function(){switch(this.day()){case 0:return"[minulou neděli v] LT";case 1:case 2:return"[minulé] dddd [v] LT";case 3:return"[minulou středu v] LT";case 4:case 5:return"[minulý] dddd [v] LT";case 6:return"[minulou sobotu v] LT"}},sameElse:"L"},relativeTime:{future:"za %s",past:"před %s",s:xd,m:xd,mm:xd,h:xd,hh:xd,d:xd,dd:xd,M:xd,MM:xd,y:xd,yy:xd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Chuvash [cv]
+//! author : Anatoly Mironov : https://github.com/mirontoli
+a.defineLocale("cv",{months:"кӑрлач_нарӑс_пуш_ака_май_ҫӗртме_утӑ_ҫурла_авӑн_юпа_чӳк_раштав".split("_"),monthsShort:"кӑр_нар_пуш_ака_май_ҫӗр_утӑ_ҫур_авн_юпа_чӳк_раш".split("_"),weekdays:"вырсарникун_тунтикун_ытларикун_юнкун_кӗҫнерникун_эрнекун_шӑматкун".split("_"),weekdaysShort:"выр_тун_ытл_юн_кӗҫ_эрн_шӑм".split("_"),weekdaysMin:"вр_тн_ыт_юн_кҫ_эр_шм".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD-MM-YYYY",LL:"YYYY [ҫулхи] MMMM [уйӑхӗн] D[-мӗшӗ]",LLL:"YYYY [ҫулхи] MMMM [уйӑхӗн] D[-мӗшӗ], HH:mm",LLLL:"dddd, YYYY [ҫулхи] MMMM [уйӑхӗн] D[-мӗшӗ], HH:mm"},calendar:{sameDay:"[Паян] LT [сехетре]",nextDay:"[Ыран] LT [сехетре]",lastDay:"[Ӗнер] LT [сехетре]",nextWeek:"[Ҫитес] dddd LT [сехетре]",lastWeek:"[Иртнӗ] dddd LT [сехетре]",sameElse:"L"},relativeTime:{future:function(a){var b=/сехет$/i.exec(a)?"рен":/ҫул$/i.exec(a)?"тан":"ран";return a+b},past:"%s каялла",s:"пӗр-ик ҫеккунт",m:"пӗр минут",mm:"%d минут",h:"пӗр сехет",hh:"%d сехет",d:"пӗр кун",dd:"%d кун",M:"пӗр уйӑх",MM:"%d уйӑх",y:"пӗр ҫул",yy:"%d ҫул"},ordinalParse:/\d{1,2}-мӗш/,ordinal:"%d-мӗш",week:{dow:1,// Monday is the first day of the week.
+doy:7}}),
+//! moment.js locale configuration
+//! locale : Welsh [cy]
+//! author : Robert Allen : https://github.com/robgallen
+//! author : https://github.com/ryangreaves
+a.defineLocale("cy",{months:"Ionawr_Chwefror_Mawrth_Ebrill_Mai_Mehefin_Gorffennaf_Awst_Medi_Hydref_Tachwedd_Rhagfyr".split("_"),monthsShort:"Ion_Chwe_Maw_Ebr_Mai_Meh_Gor_Aws_Med_Hyd_Tach_Rhag".split("_"),weekdays:"Dydd Sul_Dydd Llun_Dydd Mawrth_Dydd Mercher_Dydd Iau_Dydd Gwener_Dydd Sadwrn".split("_"),weekdaysShort:"Sul_Llun_Maw_Mer_Iau_Gwe_Sad".split("_"),weekdaysMin:"Su_Ll_Ma_Me_Ia_Gw_Sa".split("_"),weekdaysParseExact:!0,
 // time formats are the same as en-gb
 longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Heddiw am] LT",nextDay:"[Yfory am] LT",nextWeek:"dddd [am] LT",lastDay:"[Ddoe am] LT",lastWeek:"dddd [diwethaf am] LT",sameElse:"L"},relativeTime:{future:"mewn %s",past:"%s yn ôl",s:"ychydig eiliadau",m:"munud",mm:"%d munud",h:"awr",hh:"%d awr",d:"diwrnod",dd:"%d diwrnod",M:"mis",MM:"%d mis",y:"blwyddyn",yy:"%d flynedd"},ordinalParse:/\d{1,2}(fed|ain|af|il|ydd|ed|eg)/,
 // traditional ordinal numbers above 31 are not commonly used in colloquial Welsh
 ordinal:function(a){var b=a,c="",d=["","af","il","ydd","ydd","ed","ed","ed","fed","fed","fed",// 1af to 10fed
 "eg","fed","eg","eg","fed","eg","eg","fed","eg","fed"];return b>20?c=40===b||50===b||60===b||80===b||100===b?"fed":"ain":b>0&&(c=d[b]),a+c},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("da",{months:"januar_februar_marts_april_maj_juni_juli_august_september_oktober_november_december".split("_"),monthsShort:"jan_feb_mar_apr_maj_jun_jul_aug_sep_okt_nov_dec".split("_"),weekdays:"søndag_mandag_tirsdag_onsdag_torsdag_fredag_lørdag".split("_"),weekdaysShort:"søn_man_tir_ons_tor_fre_lør".split("_"),weekdaysMin:"sø_ma_ti_on_to_fr_lø".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY HH:mm",LLLL:"dddd [d.] D. MMMM YYYY HH:mm"},calendar:{sameDay:"[I dag kl.] LT",nextDay:"[I morgen kl.] LT",nextWeek:"dddd [kl.] LT",lastDay:"[I går kl.] LT",lastWeek:"[sidste] dddd [kl] LT",sameElse:"L"},relativeTime:{future:"om %s",past:"%s siden",s:"få sekunder",m:"et minut",mm:"%d minutter",h:"en time",hh:"%d timer",d:"en dag",dd:"%d dage",M:"en måned",MM:"%d måneder",y:"et år",yy:"%d år"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("de-at",{months:"Jänner_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember".split("_"),monthsShort:"Jän._Febr._Mrz._Apr._Mai_Jun._Jul._Aug._Sept._Okt._Nov._Dez.".split("_"),monthsParseExact:!0,weekdays:"Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag".split("_"),weekdaysShort:"So._Mo._Di._Mi._Do._Fr._Sa.".split("_"),weekdaysMin:"So_Mo_Di_Mi_Do_Fr_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY HH:mm",LLLL:"dddd, D. MMMM YYYY HH:mm"},calendar:{sameDay:"[heute um] LT [Uhr]",sameElse:"L",nextDay:"[morgen um] LT [Uhr]",nextWeek:"dddd [um] LT [Uhr]",lastDay:"[gestern um] LT [Uhr]",lastWeek:"[letzten] dddd [um] LT [Uhr]"},relativeTime:{future:"in %s",past:"vor %s",s:"ein paar Sekunden",m:wd,mm:"%d Minuten",h:wd,hh:"%d Stunden",d:wd,dd:wd,M:wd,MM:wd,y:wd,yy:wd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("de",{months:"Januar_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember".split("_"),monthsShort:"Jan._Febr._Mrz._Apr._Mai_Jun._Jul._Aug._Sept._Okt._Nov._Dez.".split("_"),monthsParseExact:!0,weekdays:"Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag".split("_"),weekdaysShort:"So._Mo._Di._Mi._Do._Fr._Sa.".split("_"),weekdaysMin:"So_Mo_Di_Mi_Do_Fr_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY HH:mm",LLLL:"dddd, D. MMMM YYYY HH:mm"},calendar:{sameDay:"[heute um] LT [Uhr]",sameElse:"L",nextDay:"[morgen um] LT [Uhr]",nextWeek:"dddd [um] LT [Uhr]",lastDay:"[gestern um] LT [Uhr]",lastWeek:"[letzten] dddd [um] LT [Uhr]"},relativeTime:{future:"in %s",past:"vor %s",s:"ein paar Sekunden",m:xd,mm:"%d Minuten",h:xd,hh:"%d Stunden",d:xd,dd:xd,M:xd,MM:xd,y:xd,yy:xd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),["ޖެނުއަރީ","ފެބްރުއަރީ","މާރިޗު","އޭޕްރީލު","މޭ","ޖޫން","ޖުލައި","އޯގަސްޓު","ސެޕްޓެމްބަރު","އޮކްޓޯބަރު","ނޮވެމްބަރު","ޑިސެމްބަރު"]),Gg=["އާދިއްތަ","ހޯމަ","އަންގާރަ","ބުދަ","ބުރާސްފަތި","ހުކުރު","ހޮނިހިރު"],Hg=(kg.defineLocale("dv",{months:Fg,monthsShort:Fg,weekdays:Gg,weekdaysShort:Gg,weekdaysMin:"އާދި_ހޯމަ_އަން_ބުދަ_ބުރާ_ހުކު_ހޮނި".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"D/M/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},meridiemParse:/މކ|މފ/,isPM:function(a){return"މފ"===a},meridiem:function(a,b,c){return a<12?"މކ":"މފ"},calendar:{sameDay:"[މިއަދު] LT",nextDay:"[މާދަމާ] LT",nextWeek:"dddd LT",lastDay:"[އިއްޔެ] LT",lastWeek:"[ފާއިތުވި] dddd LT",sameElse:"L"},relativeTime:{future:"ތެރޭގައި %s",past:"ކުރިން %s",s:"ސިކުންތުކޮޅެއް",m:"މިނިޓެއް",mm:"މިނިޓު %d",h:"ގަޑިއިރެއް",hh:"ގަޑިއިރު %d",d:"ދުވަހެއް",dd:"ދުވަސް %d",M:"މަހެއް",MM:"މަސް %d",y:"އަހަރެއް",yy:"އަހަރު %d"},preparse:function(a){return a.replace(/،/g,",")},postformat:function(a){return a.replace(/,/g,"،")},week:{dow:7,// Sunday is the first day of the week.
-doy:12}}),kg.defineLocale("el",{monthsNominativeEl:"Ιανουάριος_Φεβρουάριος_Μάρτιος_Απρίλιος_Μάιος_Ιούνιος_Ιούλιος_Αύγουστος_Σεπτέμβριος_Οκτώβριος_Νοέμβριος_Δεκέμβριος".split("_"),monthsGenitiveEl:"Ιανουαρίου_Φεβρουαρίου_Μαρτίου_Απριλίου_Μαΐου_Ιουνίου_Ιουλίου_Αυγούστου_Σεπτεμβρίου_Οκτωβρίου_Νοεμβρίου_Δεκεμβρίου".split("_"),months:function(a,b){return/D/.test(b.substring(0,b.indexOf("MMMM")))?this._monthsGenitiveEl[a.month()]:this._monthsNominativeEl[a.month()]},monthsShort:"Ιαν_Φεβ_Μαρ_Απρ_Μαϊ_Ιουν_Ιουλ_Αυγ_Σεπ_Οκτ_Νοε_Δεκ".split("_"),weekdays:"Κυριακή_Δευτέρα_Τρίτη_Τετάρτη_Πέμπτη_Παρασκευή_Σάββατο".split("_"),weekdaysShort:"Κυρ_Δευ_Τρι_Τετ_Πεμ_Παρ_Σαβ".split("_"),weekdaysMin:"Κυ_Δε_Τρ_Τε_Πε_Πα_Σα".split("_"),meridiem:function(a,b,c){return a>11?c?"μμ":"ΜΜ":c?"πμ":"ΠΜ"},isPM:function(a){return"μ"===(a+"").toLowerCase()[0]},meridiemParse:/[ΠΜ]\.?Μ?\.?/i,longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY h:mm A",LLLL:"dddd, D MMMM YYYY h:mm A"},calendarEl:{sameDay:"[Σήμερα {}] LT",nextDay:"[Αύριο {}] LT",nextWeek:"dddd [{}] LT",lastDay:"[Χθες {}] LT",lastWeek:function(){switch(this.day()){case 6:return"[το προηγούμενο] dddd [{}] LT";default:return"[την προηγούμενη] dddd [{}] LT"}},sameElse:"L"},calendar:function(a,b){var c=this._calendarEl[a],d=b&&b.hours();return y(c)&&(c=c.apply(b)),c.replace("{}",d%12===1?"στη":"στις")},relativeTime:{future:"σε %s",past:"%s πριν",s:"λίγα δευτερόλεπτα",m:"ένα λεπτό",mm:"%d λεπτά",h:"μία ώρα",hh:"%d ώρες",d:"μία μέρα",dd:"%d μέρες",M:"ένας μήνας",MM:"%d μήνες",y:"ένας χρόνος",yy:"%d χρόνια"},ordinalParse:/\d{1,2}η/,ordinal:"%dη",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("en-au",{months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_"),monthsShort:"Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),weekdaysShort:"Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),weekdaysMin:"Su_Mo_Tu_We_Th_Fr_Sa".split("_"),longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY h:mm A",LLLL:"dddd, D MMMM YYYY h:mm A"},calendar:{sameDay:"[Today at] LT",nextDay:"[Tomorrow at] LT",nextWeek:"dddd [at] LT",lastDay:"[Yesterday at] LT",lastWeek:"[Last] dddd [at] LT",sameElse:"L"},relativeTime:{future:"in %s",past:"%s ago",s:"a few seconds",m:"a minute",mm:"%d minutes",h:"an hour",hh:"%d hours",d:"a day",dd:"%d days",M:"a month",MM:"%d months",y:"a year",yy:"%d years"},ordinalParse:/\d{1,2}(st|nd|rd|th)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("en-ca",{months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_"),monthsShort:"Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),weekdaysShort:"Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),weekdaysMin:"Su_Mo_Tu_We_Th_Fr_Sa".split("_"),longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"YYYY-MM-DD",LL:"MMMM D, YYYY",LLL:"MMMM D, YYYY h:mm A",LLLL:"dddd, MMMM D, YYYY h:mm A"},calendar:{sameDay:"[Today at] LT",nextDay:"[Tomorrow at] LT",nextWeek:"dddd [at] LT",lastDay:"[Yesterday at] LT",lastWeek:"[Last] dddd [at] LT",sameElse:"L"},relativeTime:{future:"in %s",past:"%s ago",s:"a few seconds",m:"a minute",mm:"%d minutes",h:"an hour",hh:"%d hours",d:"a day",dd:"%d days",M:"a month",MM:"%d months",y:"a year",yy:"%d years"},ordinalParse:/\d{1,2}(st|nd|rd|th)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c}}),kg.defineLocale("en-gb",{months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_"),monthsShort:"Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),weekdaysShort:"Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),weekdaysMin:"Su_Mo_Tu_We_Th_Fr_Sa".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Today at] LT",nextDay:"[Tomorrow at] LT",nextWeek:"dddd [at] LT",lastDay:"[Yesterday at] LT",lastWeek:"[Last] dddd [at] LT",sameElse:"L"},relativeTime:{future:"in %s",past:"%s ago",s:"a few seconds",m:"a minute",mm:"%d minutes",h:"an hour",hh:"%d hours",d:"a day",dd:"%d days",M:"a month",MM:"%d months",y:"a year",yy:"%d years"},ordinalParse:/\d{1,2}(st|nd|rd|th)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("en-ie",{months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_"),monthsShort:"Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),weekdaysShort:"Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),weekdaysMin:"Su_Mo_Tu_We_Th_Fr_Sa".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD-MM-YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[Today at] LT",nextDay:"[Tomorrow at] LT",nextWeek:"dddd [at] LT",lastDay:"[Yesterday at] LT",lastWeek:"[Last] dddd [at] LT",sameElse:"L"},relativeTime:{future:"in %s",past:"%s ago",s:"a few seconds",m:"a minute",mm:"%d minutes",h:"an hour",hh:"%d hours",d:"a day",dd:"%d days",M:"a month",MM:"%d months",y:"a year",yy:"%d years"},ordinalParse:/\d{1,2}(st|nd|rd|th)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("en-nz",{months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_"),monthsShort:"Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),weekdaysShort:"Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),weekdaysMin:"Su_Mo_Tu_We_Th_Fr_Sa".split("_"),longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY h:mm A",LLLL:"dddd, D MMMM YYYY h:mm A"},calendar:{sameDay:"[Today at] LT",nextDay:"[Tomorrow at] LT",nextWeek:"dddd [at] LT",lastDay:"[Yesterday at] LT",lastWeek:"[Last] dddd [at] LT",sameElse:"L"},relativeTime:{future:"in %s",past:"%s ago",s:"a few seconds",m:"a minute",mm:"%d minutes",h:"an hour",hh:"%d hours",d:"a day",dd:"%d days",M:"a month",MM:"%d months",y:"a year",yy:"%d years"},ordinalParse:/\d{1,2}(st|nd|rd|th)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("eo",{months:"januaro_februaro_marto_aprilo_majo_junio_julio_aŭgusto_septembro_oktobro_novembro_decembro".split("_"),monthsShort:"jan_feb_mar_apr_maj_jun_jul_aŭg_sep_okt_nov_dec".split("_"),weekdays:"Dimanĉo_Lundo_Mardo_Merkredo_Ĵaŭdo_Vendredo_Sabato".split("_"),weekdaysShort:"Dim_Lun_Mard_Merk_Ĵaŭ_Ven_Sab".split("_"),weekdaysMin:"Di_Lu_Ma_Me_Ĵa_Ve_Sa".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"YYYY-MM-DD",LL:"D[-an de] MMMM, YYYY",LLL:"D[-an de] MMMM, YYYY HH:mm",LLLL:"dddd, [la] D[-an de] MMMM, YYYY HH:mm"},meridiemParse:/[ap]\.t\.m/i,isPM:function(a){return"p"===a.charAt(0).toLowerCase()},meridiem:function(a,b,c){return a>11?c?"p.t.m.":"P.T.M.":c?"a.t.m.":"A.T.M."},calendar:{sameDay:"[Hodiaŭ je] LT",nextDay:"[Morgaŭ je] LT",nextWeek:"dddd [je] LT",lastDay:"[Hieraŭ je] LT",lastWeek:"[pasinta] dddd [je] LT",sameElse:"L"},relativeTime:{future:"je %s",past:"antaŭ %s",s:"sekundoj",m:"minuto",mm:"%d minutoj",h:"horo",hh:"%d horoj",d:"tago",//ne 'diurno', ĉar estas uzita por proksimumo
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Danish [da]
+//! author : Ulrik Nielsen : https://github.com/mrbase
+a.defineLocale("da",{months:"januar_februar_marts_april_maj_juni_juli_august_september_oktober_november_december".split("_"),monthsShort:"jan_feb_mar_apr_maj_jun_jul_aug_sep_okt_nov_dec".split("_"),weekdays:"søndag_mandag_tirsdag_onsdag_torsdag_fredag_lørdag".split("_"),weekdaysShort:"søn_man_tir_ons_tor_fre_lør".split("_"),weekdaysMin:"sø_ma_ti_on_to_fr_lø".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY HH:mm",LLLL:"dddd [d.] D. MMMM YYYY HH:mm"},calendar:{sameDay:"[I dag kl.] LT",nextDay:"[I morgen kl.] LT",nextWeek:"dddd [kl.] LT",lastDay:"[I går kl.] LT",lastWeek:"[sidste] dddd [kl] LT",sameElse:"L"},relativeTime:{future:"om %s",past:"%s siden",s:"få sekunder",m:"et minut",mm:"%d minutter",h:"en time",hh:"%d timer",d:"en dag",dd:"%d dage",M:"en måned",MM:"%d måneder",y:"et år",yy:"%d år"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),a.defineLocale("de-at",{months:"Jänner_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember".split("_"),monthsShort:"Jän._Febr._Mrz._Apr._Mai_Jun._Jul._Aug._Sept._Okt._Nov._Dez.".split("_"),monthsParseExact:!0,weekdays:"Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag".split("_"),weekdaysShort:"So._Mo._Di._Mi._Do._Fr._Sa.".split("_"),weekdaysMin:"So_Mo_Di_Mi_Do_Fr_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY HH:mm",LLLL:"dddd, D. MMMM YYYY HH:mm"},calendar:{sameDay:"[heute um] LT [Uhr]",sameElse:"L",nextDay:"[morgen um] LT [Uhr]",nextWeek:"dddd [um] LT [Uhr]",lastDay:"[gestern um] LT [Uhr]",lastWeek:"[letzten] dddd [um] LT [Uhr]"},relativeTime:{future:"in %s",past:"vor %s",s:"ein paar Sekunden",m:yd,mm:"%d Minuten",h:yd,hh:"%d Stunden",d:yd,dd:yd,M:yd,MM:yd,y:yd,yy:yd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),a.defineLocale("de",{months:"Januar_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember".split("_"),monthsShort:"Jan._Febr._Mrz._Apr._Mai_Jun._Jul._Aug._Sept._Okt._Nov._Dez.".split("_"),monthsParseExact:!0,weekdays:"Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag".split("_"),weekdaysShort:"So._Mo._Di._Mi._Do._Fr._Sa.".split("_"),weekdaysMin:"So_Mo_Di_Mi_Do_Fr_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY HH:mm",LLLL:"dddd, D. MMMM YYYY HH:mm"},calendar:{sameDay:"[heute um] LT [Uhr]",sameElse:"L",nextDay:"[morgen um] LT [Uhr]",nextWeek:"dddd [um] LT [Uhr]",lastDay:"[gestern um] LT [Uhr]",lastWeek:"[letzten] dddd [um] LT [Uhr]"},relativeTime:{future:"in %s",past:"vor %s",s:"ein paar Sekunden",m:zd,mm:"%d Minuten",h:zd,hh:"%d Stunden",d:zd,dd:zd,M:zd,MM:zd,y:zd,yy:zd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Maldivian [dv]
+//! author : Jawish Hameed : https://github.com/jawish
+var Jg=["ޖެނުއަރީ","ފެބްރުއަރީ","މާރިޗު","އޭޕްރީލު","މޭ","ޖޫން","ޖުލައި","އޯގަސްޓު","ސެޕްޓެމްބަރު","އޮކްޓޯބަރު","ނޮވެމްބަރު","ޑިސެމްބަރު"],Kg=["އާދިއްތަ","ހޯމަ","އަންގާރަ","ބުދަ","ބުރާސްފަތި","ހުކުރު","ހޮނިހިރު"];a.defineLocale("dv",{months:Jg,monthsShort:Jg,weekdays:Kg,weekdaysShort:Kg,weekdaysMin:"އާދި_ހޯމަ_އަން_ބުދަ_ބުރާ_ހުކު_ހޮނި".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"D/M/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},meridiemParse:/މކ|މފ/,isPM:function(a){return"މފ"===a},meridiem:function(a,b,c){return a<12?"މކ":"މފ"},calendar:{sameDay:"[މިއަދު] LT",nextDay:"[މާދަމާ] LT",nextWeek:"dddd LT",lastDay:"[އިއްޔެ] LT",lastWeek:"[ފާއިތުވި] dddd LT",sameElse:"L"},relativeTime:{future:"ތެރޭގައި %s",past:"ކުރިން %s",s:"ސިކުންތުކޮޅެއް",m:"މިނިޓެއް",mm:"މިނިޓު %d",h:"ގަޑިއިރެއް",hh:"ގަޑިއިރު %d",d:"ދުވަހެއް",dd:"ދުވަސް %d",M:"މަހެއް",MM:"މަސް %d",y:"އަހަރެއް",yy:"އަހަރު %d"},preparse:function(a){return a.replace(/،/g,",")},postformat:function(a){return a.replace(/,/g,"،")},week:{dow:7,// Sunday is the first day of the week.
+doy:12}}),
+//! moment.js locale configuration
+//! locale : Greek [el]
+//! author : Aggelos Karalias : https://github.com/mehiel
+a.defineLocale("el",{monthsNominativeEl:"Ιανουάριος_Φεβρουάριος_Μάρτιος_Απρίλιος_Μάιος_Ιούνιος_Ιούλιος_Αύγουστος_Σεπτέμβριος_Οκτώβριος_Νοέμβριος_Δεκέμβριος".split("_"),monthsGenitiveEl:"Ιανουαρίου_Φεβρουαρίου_Μαρτίου_Απριλίου_Μαΐου_Ιουνίου_Ιουλίου_Αυγούστου_Σεπτεμβρίου_Οκτωβρίου_Νοεμβρίου_Δεκεμβρίου".split("_"),months:function(a,b){return/D/.test(b.substring(0,b.indexOf("MMMM")))?this._monthsGenitiveEl[a.month()]:this._monthsNominativeEl[a.month()]},monthsShort:"Ιαν_Φεβ_Μαρ_Απρ_Μαϊ_Ιουν_Ιουλ_Αυγ_Σεπ_Οκτ_Νοε_Δεκ".split("_"),weekdays:"Κυριακή_Δευτέρα_Τρίτη_Τετάρτη_Πέμπτη_Παρασκευή_Σάββατο".split("_"),weekdaysShort:"Κυρ_Δευ_Τρι_Τετ_Πεμ_Παρ_Σαβ".split("_"),weekdaysMin:"Κυ_Δε_Τρ_Τε_Πε_Πα_Σα".split("_"),meridiem:function(a,b,c){return a>11?c?"μμ":"ΜΜ":c?"πμ":"ΠΜ"},isPM:function(a){return"μ"===(a+"").toLowerCase()[0]},meridiemParse:/[ΠΜ]\.?Μ?\.?/i,longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY h:mm A",LLLL:"dddd, D MMMM YYYY h:mm A"},calendarEl:{sameDay:"[Σήμερα {}] LT",nextDay:"[Αύριο {}] LT",nextWeek:"dddd [{}] LT",lastDay:"[Χθες {}] LT",lastWeek:function(){switch(this.day()){case 6:return"[το προηγούμενο] dddd [{}] LT";default:return"[την προηγούμενη] dddd [{}] LT"}},sameElse:"L"},calendar:function(a,b){var c=this._calendarEl[a],d=b&&b.hours();return z(c)&&(c=c.apply(b)),c.replace("{}",d%12===1?"στη":"στις")},relativeTime:{future:"σε %s",past:"%s πριν",s:"λίγα δευτερόλεπτα",m:"ένα λεπτό",mm:"%d λεπτά",h:"μία ώρα",hh:"%d ώρες",d:"μία μέρα",dd:"%d μέρες",M:"ένας μήνας",MM:"%d μήνες",y:"ένας χρόνος",yy:"%d χρόνια"},ordinalParse:/\d{1,2}η/,ordinal:"%dη",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : English (Australia) [en-au]
+//! author : Jared Morse : https://github.com/jarcoal
+a.defineLocale("en-au",{months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_"),monthsShort:"Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),weekdaysShort:"Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),weekdaysMin:"Su_Mo_Tu_We_Th_Fr_Sa".split("_"),longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY h:mm A",LLLL:"dddd, D MMMM YYYY h:mm A"},calendar:{sameDay:"[Today at] LT",nextDay:"[Tomorrow at] LT",nextWeek:"dddd [at] LT",lastDay:"[Yesterday at] LT",lastWeek:"[Last] dddd [at] LT",sameElse:"L"},relativeTime:{future:"in %s",past:"%s ago",s:"a few seconds",m:"a minute",mm:"%d minutes",h:"an hour",hh:"%d hours",d:"a day",dd:"%d days",M:"a month",MM:"%d months",y:"a year",yy:"%d years"},ordinalParse:/\d{1,2}(st|nd|rd|th)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c},week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : English (Canada) [en-ca]
+//! author : Jonathan Abourbih : https://github.com/jonbca
+a.defineLocale("en-ca",{months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_"),monthsShort:"Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),weekdaysShort:"Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),weekdaysMin:"Su_Mo_Tu_We_Th_Fr_Sa".split("_"),longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"YYYY-MM-DD",LL:"MMMM D, YYYY",LLL:"MMMM D, YYYY h:mm A",LLLL:"dddd, MMMM D, YYYY h:mm A"},calendar:{sameDay:"[Today at] LT",nextDay:"[Tomorrow at] LT",nextWeek:"dddd [at] LT",lastDay:"[Yesterday at] LT",lastWeek:"[Last] dddd [at] LT",sameElse:"L"},relativeTime:{future:"in %s",past:"%s ago",s:"a few seconds",m:"a minute",mm:"%d minutes",h:"an hour",hh:"%d hours",d:"a day",dd:"%d days",M:"a month",MM:"%d months",y:"a year",yy:"%d years"},ordinalParse:/\d{1,2}(st|nd|rd|th)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c}}),
+//! moment.js locale configuration
+//! locale : English (United Kingdom) [en-gb]
+//! author : Chris Gedrim : https://github.com/chrisgedrim
+a.defineLocale("en-gb",{months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_"),monthsShort:"Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),weekdaysShort:"Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),weekdaysMin:"Su_Mo_Tu_We_Th_Fr_Sa".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Today at] LT",nextDay:"[Tomorrow at] LT",nextWeek:"dddd [at] LT",lastDay:"[Yesterday at] LT",lastWeek:"[Last] dddd [at] LT",sameElse:"L"},relativeTime:{future:"in %s",past:"%s ago",s:"a few seconds",m:"a minute",mm:"%d minutes",h:"an hour",hh:"%d hours",d:"a day",dd:"%d days",M:"a month",MM:"%d months",y:"a year",yy:"%d years"},ordinalParse:/\d{1,2}(st|nd|rd|th)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c},week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : English (Ireland) [en-ie]
+//! author : Chris Cartlidge : https://github.com/chriscartlidge
+a.defineLocale("en-ie",{months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_"),monthsShort:"Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),weekdaysShort:"Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),weekdaysMin:"Su_Mo_Tu_We_Th_Fr_Sa".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD-MM-YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[Today at] LT",nextDay:"[Tomorrow at] LT",nextWeek:"dddd [at] LT",lastDay:"[Yesterday at] LT",lastWeek:"[Last] dddd [at] LT",sameElse:"L"},relativeTime:{future:"in %s",past:"%s ago",s:"a few seconds",m:"a minute",mm:"%d minutes",h:"an hour",hh:"%d hours",d:"a day",dd:"%d days",M:"a month",MM:"%d months",y:"a year",yy:"%d years"},ordinalParse:/\d{1,2}(st|nd|rd|th)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c},week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : English (New Zealand) [en-nz]
+//! author : Luke McGregor : https://github.com/lukemcgregor
+a.defineLocale("en-nz",{months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_"),monthsShort:"Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),weekdaysShort:"Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),weekdaysMin:"Su_Mo_Tu_We_Th_Fr_Sa".split("_"),longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY h:mm A",LLLL:"dddd, D MMMM YYYY h:mm A"},calendar:{sameDay:"[Today at] LT",nextDay:"[Tomorrow at] LT",nextWeek:"dddd [at] LT",lastDay:"[Yesterday at] LT",lastWeek:"[Last] dddd [at] LT",sameElse:"L"},relativeTime:{future:"in %s",past:"%s ago",s:"a few seconds",m:"a minute",mm:"%d minutes",h:"an hour",hh:"%d hours",d:"a day",dd:"%d days",M:"a month",MM:"%d months",y:"a year",yy:"%d years"},ordinalParse:/\d{1,2}(st|nd|rd|th)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c},week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Esperanto [eo]
+//! author : Colin Dean : https://github.com/colindean
+//! komento: Mi estas malcerta se mi korekte traktis akuzativojn en tiu traduko.
+//!          Se ne, bonvolu korekti kaj avizi min por ke mi povas lerni!
+a.defineLocale("eo",{months:"januaro_februaro_marto_aprilo_majo_junio_julio_aŭgusto_septembro_oktobro_novembro_decembro".split("_"),monthsShort:"jan_feb_mar_apr_maj_jun_jul_aŭg_sep_okt_nov_dec".split("_"),weekdays:"Dimanĉo_Lundo_Mardo_Merkredo_Ĵaŭdo_Vendredo_Sabato".split("_"),weekdaysShort:"Dim_Lun_Mard_Merk_Ĵaŭ_Ven_Sab".split("_"),weekdaysMin:"Di_Lu_Ma_Me_Ĵa_Ve_Sa".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"YYYY-MM-DD",LL:"D[-an de] MMMM, YYYY",LLL:"D[-an de] MMMM, YYYY HH:mm",LLLL:"dddd, [la] D[-an de] MMMM, YYYY HH:mm"},meridiemParse:/[ap]\.t\.m/i,isPM:function(a){return"p"===a.charAt(0).toLowerCase()},meridiem:function(a,b,c){return a>11?c?"p.t.m.":"P.T.M.":c?"a.t.m.":"A.T.M."},calendar:{sameDay:"[Hodiaŭ je] LT",nextDay:"[Morgaŭ je] LT",nextWeek:"dddd [je] LT",lastDay:"[Hieraŭ je] LT",lastWeek:"[pasinta] dddd [je] LT",sameElse:"L"},relativeTime:{future:"je %s",past:"antaŭ %s",s:"sekundoj",m:"minuto",mm:"%d minutoj",h:"horo",hh:"%d horoj",d:"tago",//ne 'diurno', ĉar estas uzita por proksimumo
 dd:"%d tagoj",M:"monato",MM:"%d monatoj",y:"jaro",yy:"%d jaroj"},ordinalParse:/\d{1,2}a/,ordinal:"%da",week:{dow:1,// Monday is the first day of the week.
-doy:7}}),"ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.".split("_")),Ig="ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic".split("_"),Jg=(kg.defineLocale("es-do",{months:"enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre".split("_"),monthsShort:function(a,b){return/-MMM-/.test(b)?Ig[a.month()]:Hg[a.month()]},monthsParseExact:!0,weekdays:"domingo_lunes_martes_miércoles_jueves_viernes_sábado".split("_"),weekdaysShort:"dom._lun._mar._mié._jue._vie._sáb.".split("_"),weekdaysMin:"do_lu_ma_mi_ju_vi_sá".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"DD/MM/YYYY",LL:"D [de] MMMM [de] YYYY",LLL:"D [de] MMMM [de] YYYY h:mm A",LLLL:"dddd, D [de] MMMM [de] YYYY h:mm A"},calendar:{sameDay:function(){return"[hoy a la"+(1!==this.hours()?"s":"")+"] LT"},nextDay:function(){return"[mañana a la"+(1!==this.hours()?"s":"")+"] LT"},nextWeek:function(){return"dddd [a la"+(1!==this.hours()?"s":"")+"] LT"},lastDay:function(){return"[ayer a la"+(1!==this.hours()?"s":"")+"] LT"},lastWeek:function(){return"[el] dddd [pasado a la"+(1!==this.hours()?"s":"")+"] LT"},sameElse:"L"},relativeTime:{future:"en %s",past:"hace %s",s:"unos segundos",m:"un minuto",mm:"%d minutos",h:"una hora",hh:"%d horas",d:"un día",dd:"%d días",M:"un mes",MM:"%d meses",y:"un año",yy:"%d años"},ordinalParse:/\d{1,2}º/,ordinal:"%dº",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),"ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.".split("_")),Kg="ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic".split("_"),Lg=(kg.defineLocale("es",{months:"enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre".split("_"),monthsShort:function(a,b){return/-MMM-/.test(b)?Kg[a.month()]:Jg[a.month()]},monthsParseExact:!0,weekdays:"domingo_lunes_martes_miércoles_jueves_viernes_sábado".split("_"),weekdaysShort:"dom._lun._mar._mié._jue._vie._sáb.".split("_"),weekdaysMin:"do_lu_ma_mi_ju_vi_sá".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD/MM/YYYY",LL:"D [de] MMMM [de] YYYY",LLL:"D [de] MMMM [de] YYYY H:mm",LLLL:"dddd, D [de] MMMM [de] YYYY H:mm"},calendar:{sameDay:function(){return"[hoy a la"+(1!==this.hours()?"s":"")+"] LT"},nextDay:function(){return"[mañana a la"+(1!==this.hours()?"s":"")+"] LT"},nextWeek:function(){return"dddd [a la"+(1!==this.hours()?"s":"")+"] LT"},lastDay:function(){return"[ayer a la"+(1!==this.hours()?"s":"")+"] LT"},lastWeek:function(){return"[el] dddd [pasado a la"+(1!==this.hours()?"s":"")+"] LT"},sameElse:"L"},relativeTime:{future:"en %s",past:"hace %s",s:"unos segundos",m:"un minuto",mm:"%d minutos",h:"una hora",hh:"%d horas",d:"un día",dd:"%d días",M:"un mes",MM:"%d meses",y:"un año",yy:"%d años"},ordinalParse:/\d{1,2}º/,ordinal:"%dº",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("et",{months:"jaanuar_veebruar_märts_aprill_mai_juuni_juuli_august_september_oktoober_november_detsember".split("_"),monthsShort:"jaan_veebr_märts_apr_mai_juuni_juuli_aug_sept_okt_nov_dets".split("_"),weekdays:"pühapäev_esmaspäev_teisipäev_kolmapäev_neljapäev_reede_laupäev".split("_"),weekdaysShort:"P_E_T_K_N_R_L".split("_"),weekdaysMin:"P_E_T_K_N_R_L".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd, D. MMMM YYYY H:mm"},calendar:{sameDay:"[Täna,] LT",nextDay:"[Homme,] LT",nextWeek:"[Järgmine] dddd LT",lastDay:"[Eile,] LT",lastWeek:"[Eelmine] dddd LT",sameElse:"L"},relativeTime:{future:"%s pärast",past:"%s tagasi",s:yd,m:yd,mm:yd,h:yd,hh:yd,d:yd,dd:"%d päeva",M:yd,MM:yd,y:yd,yy:yd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("eu",{months:"urtarrila_otsaila_martxoa_apirila_maiatza_ekaina_uztaila_abuztua_iraila_urria_azaroa_abendua".split("_"),monthsShort:"urt._ots._mar._api._mai._eka._uzt._abu._ira._urr._aza._abe.".split("_"),monthsParseExact:!0,weekdays:"igandea_astelehena_asteartea_asteazkena_osteguna_ostirala_larunbata".split("_"),weekdaysShort:"ig._al._ar._az._og._ol._lr.".split("_"),weekdaysMin:"ig_al_ar_az_og_ol_lr".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"YYYY-MM-DD",LL:"YYYY[ko] MMMM[ren] D[a]",LLL:"YYYY[ko] MMMM[ren] D[a] HH:mm",LLLL:"dddd, YYYY[ko] MMMM[ren] D[a] HH:mm",l:"YYYY-M-D",ll:"YYYY[ko] MMM D[a]",lll:"YYYY[ko] MMM D[a] HH:mm",llll:"ddd, YYYY[ko] MMM D[a] HH:mm"},calendar:{sameDay:"[gaur] LT[etan]",nextDay:"[bihar] LT[etan]",nextWeek:"dddd LT[etan]",lastDay:"[atzo] LT[etan]",lastWeek:"[aurreko] dddd LT[etan]",sameElse:"L"},relativeTime:{future:"%s barru",past:"duela %s",s:"segundo batzuk",m:"minutu bat",mm:"%d minutu",h:"ordu bat",hh:"%d ordu",d:"egun bat",dd:"%d egun",M:"hilabete bat",MM:"%d hilabete",y:"urte bat",yy:"%d urte"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:7}}),{1:"۱",2:"۲",3:"۳",4:"۴",5:"۵",6:"۶",7:"۷",8:"۸",9:"۹",0:"۰"}),Mg={"۱":"1","۲":"2","۳":"3","۴":"4","۵":"5","۶":"6","۷":"7","۸":"8","۹":"9","۰":"0"},Ng=(kg.defineLocale("fa",{months:"ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر".split("_"),monthsShort:"ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر".split("_"),weekdays:"یک‌شنبه_دوشنبه_سه‌شنبه_چهارشنبه_پنج‌شنبه_جمعه_شنبه".split("_"),weekdaysShort:"یک‌شنبه_دوشنبه_سه‌شنبه_چهارشنبه_پنج‌شنبه_جمعه_شنبه".split("_"),weekdaysMin:"ی_د_س_چ_پ_ج_ش".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},meridiemParse:/قبل از ظهر|بعد از ظهر/,isPM:function(a){return/بعد از ظهر/.test(a)},meridiem:function(a,b,c){return a<12?"قبل از ظهر":"بعد از ظهر"},calendar:{sameDay:"[امروز ساعت] LT",nextDay:"[فردا ساعت] LT",nextWeek:"dddd [ساعت] LT",lastDay:"[دیروز ساعت] LT",lastWeek:"dddd [پیش] [ساعت] LT",sameElse:"L"},relativeTime:{future:"در %s",past:"%s پیش",s:"چندین ثانیه",m:"یک دقیقه",mm:"%d دقیقه",h:"یک ساعت",hh:"%d ساعت",d:"یک روز",dd:"%d روز",M:"یک ماه",MM:"%d ماه",y:"یک سال",yy:"%d سال"},preparse:function(a){return a.replace(/[۰-۹]/g,function(a){return Mg[a]}).replace(/،/g,",")},postformat:function(a){return a.replace(/\d/g,function(a){return Lg[a]}).replace(/,/g,"،")},ordinalParse:/\d{1,2}م/,ordinal:"%dم",week:{dow:6,// Saturday is the first day of the week.
-doy:12}}),"nolla yksi kaksi kolme neljä viisi kuusi seitsemän kahdeksan yhdeksän".split(" ")),Og=["nolla","yhden","kahden","kolmen","neljän","viiden","kuuden",Ng[7],Ng[8],Ng[9]],Pg=(kg.defineLocale("fi",{months:"tammikuu_helmikuu_maaliskuu_huhtikuu_toukokuu_kesäkuu_heinäkuu_elokuu_syyskuu_lokakuu_marraskuu_joulukuu".split("_"),monthsShort:"tammi_helmi_maalis_huhti_touko_kesä_heinä_elo_syys_loka_marras_joulu".split("_"),weekdays:"sunnuntai_maanantai_tiistai_keskiviikko_torstai_perjantai_lauantai".split("_"),weekdaysShort:"su_ma_ti_ke_to_pe_la".split("_"),weekdaysMin:"su_ma_ti_ke_to_pe_la".split("_"),longDateFormat:{LT:"HH.mm",LTS:"HH.mm.ss",L:"DD.MM.YYYY",LL:"Do MMMM[ta] YYYY",LLL:"Do MMMM[ta] YYYY, [klo] HH.mm",LLLL:"dddd, Do MMMM[ta] YYYY, [klo] HH.mm",l:"D.M.YYYY",ll:"Do MMM YYYY",lll:"Do MMM YYYY, [klo] HH.mm",llll:"ddd, Do MMM YYYY, [klo] HH.mm"},calendar:{sameDay:"[tänään] [klo] LT",nextDay:"[huomenna] [klo] LT",nextWeek:"dddd [klo] LT",lastDay:"[eilen] [klo] LT",lastWeek:"[viime] dddd[na] [klo] LT",sameElse:"L"},relativeTime:{future:"%s päästä",past:"%s sitten",s:zd,m:zd,mm:zd,h:zd,hh:zd,d:zd,dd:zd,M:zd,MM:zd,y:zd,yy:zd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("fo",{months:"januar_februar_mars_apríl_mai_juni_juli_august_september_oktober_november_desember".split("_"),monthsShort:"jan_feb_mar_apr_mai_jun_jul_aug_sep_okt_nov_des".split("_"),weekdays:"sunnudagur_mánadagur_týsdagur_mikudagur_hósdagur_fríggjadagur_leygardagur".split("_"),weekdaysShort:"sun_mán_týs_mik_hós_frí_ley".split("_"),weekdaysMin:"su_má_tý_mi_hó_fr_le".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D. MMMM, YYYY HH:mm"},calendar:{sameDay:"[Í dag kl.] LT",nextDay:"[Í morgin kl.] LT",nextWeek:"dddd [kl.] LT",lastDay:"[Í gjár kl.] LT",lastWeek:"[síðstu] dddd [kl] LT",sameElse:"L"},relativeTime:{future:"um %s",past:"%s síðani",s:"fá sekund",m:"ein minutt",mm:"%d minuttir",h:"ein tími",hh:"%d tímar",d:"ein dagur",dd:"%d dagar",M:"ein mánaði",MM:"%d mánaðir",y:"eitt ár",yy:"%d ár"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("fr-ca",{months:"janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),monthsShort:"janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),monthsParseExact:!0,weekdays:"dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),weekdaysShort:"dim._lun._mar._mer._jeu._ven._sam.".split("_"),weekdaysMin:"Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"YYYY-MM-DD",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[Aujourd'hui à] LT",nextDay:"[Demain à] LT",nextWeek:"dddd [à] LT",lastDay:"[Hier à] LT",lastWeek:"dddd [dernier à] LT",sameElse:"L"},relativeTime:{future:"dans %s",past:"il y a %s",s:"quelques secondes",m:"une minute",mm:"%d minutes",h:"une heure",hh:"%d heures",d:"un jour",dd:"%d jours",M:"un mois",MM:"%d mois",y:"un an",yy:"%d ans"},ordinalParse:/\d{1,2}(er|e)/,ordinal:function(a){return a+(1===a?"er":"e")}}),kg.defineLocale("fr-ch",{months:"janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),monthsShort:"janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),monthsParseExact:!0,weekdays:"dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),weekdaysShort:"dim._lun._mar._mer._jeu._ven._sam.".split("_"),weekdaysMin:"Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[Aujourd'hui à] LT",nextDay:"[Demain à] LT",nextWeek:"dddd [à] LT",lastDay:"[Hier à] LT",lastWeek:"dddd [dernier à] LT",sameElse:"L"},relativeTime:{future:"dans %s",past:"il y a %s",s:"quelques secondes",m:"une minute",mm:"%d minutes",h:"une heure",hh:"%d heures",d:"un jour",dd:"%d jours",M:"un mois",MM:"%d mois",y:"un an",yy:"%d ans"},ordinalParse:/\d{1,2}(er|e)/,ordinal:function(a){return a+(1===a?"er":"e")},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("fr",{months:"janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),monthsShort:"janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),monthsParseExact:!0,weekdays:"dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),weekdaysShort:"dim._lun._mar._mer._jeu._ven._sam.".split("_"),weekdaysMin:"Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[Aujourd'hui à] LT",nextDay:"[Demain à] LT",nextWeek:"dddd [à] LT",lastDay:"[Hier à] LT",lastWeek:"dddd [dernier à] LT",sameElse:"L"},relativeTime:{future:"dans %s",past:"il y a %s",s:"quelques secondes",m:"une minute",mm:"%d minutes",h:"une heure",hh:"%d heures",d:"un jour",dd:"%d jours",M:"un mois",MM:"%d mois",y:"un an",yy:"%d ans"},ordinalParse:/\d{1,2}(er|)/,ordinal:function(a){return a+(1===a?"er":"")},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),"jan._feb._mrt._apr._mai_jun._jul._aug._sep._okt._nov._des.".split("_")),Qg="jan_feb_mrt_apr_mai_jun_jul_aug_sep_okt_nov_des".split("_"),Rg=(kg.defineLocale("fy",{months:"jannewaris_febrewaris_maart_april_maaie_juny_july_augustus_septimber_oktober_novimber_desimber".split("_"),monthsShort:function(a,b){return/-MMM-/.test(b)?Qg[a.month()]:Pg[a.month()]},monthsParseExact:!0,weekdays:"snein_moandei_tiisdei_woansdei_tongersdei_freed_sneon".split("_"),weekdaysShort:"si._mo._ti._wo._to._fr._so.".split("_"),weekdaysMin:"Si_Mo_Ti_Wo_To_Fr_So".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD-MM-YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[hjoed om] LT",nextDay:"[moarn om] LT",nextWeek:"dddd [om] LT",lastDay:"[juster om] LT",lastWeek:"[ôfrûne] dddd [om] LT",sameElse:"L"},relativeTime:{future:"oer %s",past:"%s lyn",s:"in pear sekonden",m:"ien minút",mm:"%d minuten",h:"ien oere",hh:"%d oeren",d:"ien dei",dd:"%d dagen",M:"ien moanne",MM:"%d moannen",y:"ien jier",yy:"%d jierren"},ordinalParse:/\d{1,2}(ste|de)/,ordinal:function(a){return a+(1===a||8===a||a>=20?"ste":"de")},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),["Am Faoilleach","An Gearran","Am Màrt","An Giblean","An Cèitean","An t-Ògmhios","An t-Iuchar","An Lùnastal","An t-Sultain","An Dàmhair","An t-Samhain","An Dùbhlachd"]),Sg=["Faoi","Gear","Màrt","Gibl","Cèit","Ògmh","Iuch","Lùn","Sult","Dàmh","Samh","Dùbh"],Tg=["Didòmhnaich","Diluain","Dimàirt","Diciadain","Diardaoin","Dihaoine","Disathairne"],Ug=["Did","Dil","Dim","Dic","Dia","Dih","Dis"],Vg=["Dò","Lu","Mà","Ci","Ar","Ha","Sa"],Wg=(kg.defineLocale("gd",{months:Rg,monthsShort:Sg,monthsParseExact:!0,weekdays:Tg,weekdaysShort:Ug,weekdaysMin:Vg,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[An-diugh aig] LT",nextDay:"[A-màireach aig] LT",nextWeek:"dddd [aig] LT",lastDay:"[An-dè aig] LT",lastWeek:"dddd [seo chaidh] [aig] LT",sameElse:"L"},relativeTime:{future:"ann an %s",past:"bho chionn %s",s:"beagan diogan",m:"mionaid",mm:"%d mionaidean",h:"uair",hh:"%d uairean",d:"latha",dd:"%d latha",M:"mìos",MM:"%d mìosan",y:"bliadhna",yy:"%d bliadhna"},ordinalParse:/\d{1,2}(d|na|mh)/,ordinal:function(a){var b=1===a?"d":a%10===2?"na":"mh";return a+b},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("gl",{months:"xaneiro_febreiro_marzo_abril_maio_xuño_xullo_agosto_setembro_outubro_novembro_decembro".split("_"),monthsShort:"xan._feb._mar._abr._mai._xuñ._xul._ago._set._out._nov._dec.".split("_"),monthsParseExact:!0,weekdays:"domingo_luns_martes_mércores_xoves_venres_sábado".split("_"),weekdaysShort:"dom._lun._mar._mér._xov._ven._sáb.".split("_"),weekdaysMin:"do_lu_ma_mé_xo_ve_sá".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD/MM/YYYY",LL:"D [de] MMMM [de] YYYY",LLL:"D [de] MMMM [de] YYYY H:mm",LLLL:"dddd, D [de] MMMM [de] YYYY H:mm"},calendar:{sameDay:function(){return"[hoxe "+(1!==this.hours()?"ás":"á")+"] LT"},nextDay:function(){return"[mañá "+(1!==this.hours()?"ás":"á")+"] LT"},nextWeek:function(){return"dddd ["+(1!==this.hours()?"ás":"a")+"] LT"},lastDay:function(){return"[onte "+(1!==this.hours()?"á":"a")+"] LT"},lastWeek:function(){return"[o] dddd [pasado "+(1!==this.hours()?"ás":"a")+"] LT"},sameElse:"L"},relativeTime:{future:function(a){return 0===a.indexOf("un")?"n"+a:"en "+a},past:"hai %s",s:"uns segundos",m:"un minuto",mm:"%d minutos",h:"unha hora",hh:"%d horas",d:"un día",dd:"%d días",M:"un mes",MM:"%d meses",y:"un ano",yy:"%d anos"},ordinalParse:/\d{1,2}º/,ordinal:"%dº",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("he",{months:"ינואר_פברואר_מרץ_אפריל_מאי_יוני_יולי_אוגוסט_ספטמבר_אוקטובר_נובמבר_דצמבר".split("_"),monthsShort:"ינו׳_פבר׳_מרץ_אפר׳_מאי_יוני_יולי_אוג׳_ספט׳_אוק׳_נוב׳_דצמ׳".split("_"),weekdays:"ראשון_שני_שלישי_רביעי_חמישי_שישי_שבת".split("_"),weekdaysShort:"א׳_ב׳_ג׳_ד׳_ה׳_ו׳_ש׳".split("_"),weekdaysMin:"א_ב_ג_ד_ה_ו_ש".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D [ב]MMMM YYYY",LLL:"D [ב]MMMM YYYY HH:mm",LLLL:"dddd, D [ב]MMMM YYYY HH:mm",l:"D/M/YYYY",ll:"D MMM YYYY",lll:"D MMM YYYY HH:mm",llll:"ddd, D MMM YYYY HH:mm"},calendar:{sameDay:"[היום ב־]LT",nextDay:"[מחר ב־]LT",nextWeek:"dddd [בשעה] LT",lastDay:"[אתמול ב־]LT",lastWeek:"[ביום] dddd [האחרון בשעה] LT",sameElse:"L"},relativeTime:{future:"בעוד %s",past:"לפני %s",s:"מספר שניות",m:"דקה",mm:"%d דקות",h:"שעה",hh:function(a){return 2===a?"שעתיים":a+" שעות"},d:"יום",dd:function(a){return 2===a?"יומיים":a+" ימים"},M:"חודש",MM:function(a){return 2===a?"חודשיים":a+" חודשים"},y:"שנה",yy:function(a){return 2===a?"שנתיים":a%10===0&&10!==a?a+" שנה":a+" שנים"}},meridiemParse:/אחה"צ|לפנה"צ|אחרי הצהריים|לפני הצהריים|לפנות בוקר|בבוקר|בערב/i,isPM:function(a){return/^(אחה"צ|אחרי הצהריים|בערב)$/.test(a)},meridiem:function(a,b,c){return a<5?"לפנות בוקר":a<10?"בבוקר":a<12?c?'לפנה"צ':"לפני הצהריים":a<18?c?'אחה"צ':"אחרי הצהריים":"בערב"}}),{1:"१",2:"२",3:"३",4:"४",5:"५",6:"६",7:"७",8:"८",9:"९",0:"०"}),Xg={"१":"1","२":"2","३":"3","४":"4","५":"5","६":"6","७":"7","८":"8","९":"9","०":"0"},Yg=(kg.defineLocale("hi",{months:"जनवरी_फ़रवरी_मार्च_अप्रैल_मई_जून_जुलाई_अगस्त_सितम्बर_अक्टूबर_नवम्बर_दिसम्बर".split("_"),monthsShort:"जन._फ़र._मार्च_अप्रै._मई_जून_जुल._अग._सित._अक्टू._नव._दिस.".split("_"),monthsParseExact:!0,weekdays:"रविवार_सोमवार_मंगलवार_बुधवार_गुरूवार_शुक्रवार_शनिवार".split("_"),weekdaysShort:"रवि_सोम_मंगल_बुध_गुरू_शुक्र_शनि".split("_"),weekdaysMin:"र_सो_मं_बु_गु_शु_श".split("_"),longDateFormat:{LT:"A h:mm बजे",LTS:"A h:mm:ss बजे",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, A h:mm बजे",LLLL:"dddd, D MMMM YYYY, A h:mm बजे"},calendar:{sameDay:"[आज] LT",nextDay:"[कल] LT",nextWeek:"dddd, LT",lastDay:"[कल] LT",lastWeek:"[पिछले] dddd, LT",sameElse:"L"},relativeTime:{future:"%s में",past:"%s पहले",s:"कुछ ही क्षण",m:"एक मिनट",mm:"%d मिनट",h:"एक घंटा",hh:"%d घंटे",d:"एक दिन",dd:"%d दिन",M:"एक महीने",MM:"%d महीने",y:"एक वर्ष",yy:"%d वर्ष"},preparse:function(a){return a.replace(/[१२३४५६७८९०]/g,function(a){return Xg[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return Wg[a]})},
+doy:7}});
+//! moment.js locale configuration
+//! locale : Spanish (Dominican Republic) [es-do]
+var Lg="ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.".split("_"),Mg="ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic".split("_");a.defineLocale("es-do",{months:"enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre".split("_"),monthsShort:function(a,b){return/-MMM-/.test(b)?Mg[a.month()]:Lg[a.month()]},monthsParseExact:!0,weekdays:"domingo_lunes_martes_miércoles_jueves_viernes_sábado".split("_"),weekdaysShort:"dom._lun._mar._mié._jue._vie._sáb.".split("_"),weekdaysMin:"do_lu_ma_mi_ju_vi_sá".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"DD/MM/YYYY",LL:"D [de] MMMM [de] YYYY",LLL:"D [de] MMMM [de] YYYY h:mm A",LLLL:"dddd, D [de] MMMM [de] YYYY h:mm A"},calendar:{sameDay:function(){return"[hoy a la"+(1!==this.hours()?"s":"")+"] LT"},nextDay:function(){return"[mañana a la"+(1!==this.hours()?"s":"")+"] LT"},nextWeek:function(){return"dddd [a la"+(1!==this.hours()?"s":"")+"] LT"},lastDay:function(){return"[ayer a la"+(1!==this.hours()?"s":"")+"] LT"},lastWeek:function(){return"[el] dddd [pasado a la"+(1!==this.hours()?"s":"")+"] LT"},sameElse:"L"},relativeTime:{future:"en %s",past:"hace %s",s:"unos segundos",m:"un minuto",mm:"%d minutos",h:"una hora",hh:"%d horas",d:"un día",dd:"%d días",M:"un mes",MM:"%d meses",y:"un año",yy:"%d años"},ordinalParse:/\d{1,2}º/,ordinal:"%dº",week:{dow:1,// Monday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Spanish [es]
+//! author : Julio Napurí : https://github.com/julionc
+var Ng="ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.".split("_"),Og="ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic".split("_");a.defineLocale("es",{months:"enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre".split("_"),monthsShort:function(a,b){return/-MMM-/.test(b)?Og[a.month()]:Ng[a.month()]},monthsParseExact:!0,weekdays:"domingo_lunes_martes_miércoles_jueves_viernes_sábado".split("_"),weekdaysShort:"dom._lun._mar._mié._jue._vie._sáb.".split("_"),weekdaysMin:"do_lu_ma_mi_ju_vi_sá".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD/MM/YYYY",LL:"D [de] MMMM [de] YYYY",LLL:"D [de] MMMM [de] YYYY H:mm",LLLL:"dddd, D [de] MMMM [de] YYYY H:mm"},calendar:{sameDay:function(){return"[hoy a la"+(1!==this.hours()?"s":"")+"] LT"},nextDay:function(){return"[mañana a la"+(1!==this.hours()?"s":"")+"] LT"},nextWeek:function(){return"dddd [a la"+(1!==this.hours()?"s":"")+"] LT"},lastDay:function(){return"[ayer a la"+(1!==this.hours()?"s":"")+"] LT"},lastWeek:function(){return"[el] dddd [pasado a la"+(1!==this.hours()?"s":"")+"] LT"},sameElse:"L"},relativeTime:{future:"en %s",past:"hace %s",s:"unos segundos",m:"un minuto",mm:"%d minutos",h:"una hora",hh:"%d horas",d:"un día",dd:"%d días",M:"un mes",MM:"%d meses",y:"un año",yy:"%d años"},ordinalParse:/\d{1,2}º/,ordinal:"%dº",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),a.defineLocale("et",{months:"jaanuar_veebruar_märts_aprill_mai_juuni_juuli_august_september_oktoober_november_detsember".split("_"),monthsShort:"jaan_veebr_märts_apr_mai_juuni_juuli_aug_sept_okt_nov_dets".split("_"),weekdays:"pühapäev_esmaspäev_teisipäev_kolmapäev_neljapäev_reede_laupäev".split("_"),weekdaysShort:"P_E_T_K_N_R_L".split("_"),weekdaysMin:"P_E_T_K_N_R_L".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd, D. MMMM YYYY H:mm"},calendar:{sameDay:"[Täna,] LT",nextDay:"[Homme,] LT",nextWeek:"[Järgmine] dddd LT",lastDay:"[Eile,] LT",lastWeek:"[Eelmine] dddd LT",sameElse:"L"},relativeTime:{future:"%s pärast",past:"%s tagasi",s:Ad,m:Ad,mm:Ad,h:Ad,hh:Ad,d:Ad,dd:"%d päeva",M:Ad,MM:Ad,y:Ad,yy:Ad},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Basque [eu]
+//! author : Eneko Illarramendi : https://github.com/eillarra
+a.defineLocale("eu",{months:"urtarrila_otsaila_martxoa_apirila_maiatza_ekaina_uztaila_abuztua_iraila_urria_azaroa_abendua".split("_"),monthsShort:"urt._ots._mar._api._mai._eka._uzt._abu._ira._urr._aza._abe.".split("_"),monthsParseExact:!0,weekdays:"igandea_astelehena_asteartea_asteazkena_osteguna_ostirala_larunbata".split("_"),weekdaysShort:"ig._al._ar._az._og._ol._lr.".split("_"),weekdaysMin:"ig_al_ar_az_og_ol_lr".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"YYYY-MM-DD",LL:"YYYY[ko] MMMM[ren] D[a]",LLL:"YYYY[ko] MMMM[ren] D[a] HH:mm",LLLL:"dddd, YYYY[ko] MMMM[ren] D[a] HH:mm",l:"YYYY-M-D",ll:"YYYY[ko] MMM D[a]",lll:"YYYY[ko] MMM D[a] HH:mm",llll:"ddd, YYYY[ko] MMM D[a] HH:mm"},calendar:{sameDay:"[gaur] LT[etan]",nextDay:"[bihar] LT[etan]",nextWeek:"dddd LT[etan]",lastDay:"[atzo] LT[etan]",lastWeek:"[aurreko] dddd LT[etan]",sameElse:"L"},relativeTime:{future:"%s barru",past:"duela %s",s:"segundo batzuk",m:"minutu bat",mm:"%d minutu",h:"ordu bat",hh:"%d ordu",d:"egun bat",dd:"%d egun",M:"hilabete bat",MM:"%d hilabete",y:"urte bat",yy:"%d urte"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:7}});
+//! moment.js locale configuration
+//! locale : Persian [fa]
+//! author : Ebrahim Byagowi : https://github.com/ebraminio
+var Pg={1:"۱",2:"۲",3:"۳",4:"۴",5:"۵",6:"۶",7:"۷",8:"۸",9:"۹",0:"۰"},Qg={"۱":"1","۲":"2","۳":"3","۴":"4","۵":"5","۶":"6","۷":"7","۸":"8","۹":"9","۰":"0"};a.defineLocale("fa",{months:"ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر".split("_"),monthsShort:"ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر".split("_"),weekdays:"یک‌شنبه_دوشنبه_سه‌شنبه_چهارشنبه_پنج‌شنبه_جمعه_شنبه".split("_"),weekdaysShort:"یک‌شنبه_دوشنبه_سه‌شنبه_چهارشنبه_پنج‌شنبه_جمعه_شنبه".split("_"),weekdaysMin:"ی_د_س_چ_پ_ج_ش".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},meridiemParse:/قبل از ظهر|بعد از ظهر/,isPM:function(a){return/بعد از ظهر/.test(a)},meridiem:function(a,b,c){return a<12?"قبل از ظهر":"بعد از ظهر"},calendar:{sameDay:"[امروز ساعت] LT",nextDay:"[فردا ساعت] LT",nextWeek:"dddd [ساعت] LT",lastDay:"[دیروز ساعت] LT",lastWeek:"dddd [پیش] [ساعت] LT",sameElse:"L"},relativeTime:{future:"در %s",past:"%s پیش",s:"چندین ثانیه",m:"یک دقیقه",mm:"%d دقیقه",h:"یک ساعت",hh:"%d ساعت",d:"یک روز",dd:"%d روز",M:"یک ماه",MM:"%d ماه",y:"یک سال",yy:"%d سال"},preparse:function(a){return a.replace(/[۰-۹]/g,function(a){return Qg[a]}).replace(/،/g,",")},postformat:function(a){return a.replace(/\d/g,function(a){return Pg[a]}).replace(/,/g,"،")},ordinalParse:/\d{1,2}م/,ordinal:"%dم",week:{dow:6,// Saturday is the first day of the week.
+doy:12}});
+//! moment.js locale configuration
+//! locale : Finnish [fi]
+//! author : Tarmo Aidantausta : https://github.com/bleadof
+var Rg="nolla yksi kaksi kolme neljä viisi kuusi seitsemän kahdeksan yhdeksän".split(" "),Sg=["nolla","yhden","kahden","kolmen","neljän","viiden","kuuden",Rg[7],Rg[8],Rg[9]];a.defineLocale("fi",{months:"tammikuu_helmikuu_maaliskuu_huhtikuu_toukokuu_kesäkuu_heinäkuu_elokuu_syyskuu_lokakuu_marraskuu_joulukuu".split("_"),monthsShort:"tammi_helmi_maalis_huhti_touko_kesä_heinä_elo_syys_loka_marras_joulu".split("_"),weekdays:"sunnuntai_maanantai_tiistai_keskiviikko_torstai_perjantai_lauantai".split("_"),weekdaysShort:"su_ma_ti_ke_to_pe_la".split("_"),weekdaysMin:"su_ma_ti_ke_to_pe_la".split("_"),longDateFormat:{LT:"HH.mm",LTS:"HH.mm.ss",L:"DD.MM.YYYY",LL:"Do MMMM[ta] YYYY",LLL:"Do MMMM[ta] YYYY, [klo] HH.mm",LLLL:"dddd, Do MMMM[ta] YYYY, [klo] HH.mm",l:"D.M.YYYY",ll:"Do MMM YYYY",lll:"Do MMM YYYY, [klo] HH.mm",llll:"ddd, Do MMM YYYY, [klo] HH.mm"},calendar:{sameDay:"[tänään] [klo] LT",nextDay:"[huomenna] [klo] LT",nextWeek:"dddd [klo] LT",lastDay:"[eilen] [klo] LT",lastWeek:"[viime] dddd[na] [klo] LT",sameElse:"L"},relativeTime:{future:"%s päästä",past:"%s sitten",s:Bd,m:Bd,mm:Bd,h:Bd,hh:Bd,d:Bd,dd:Bd,M:Bd,MM:Bd,y:Bd,yy:Bd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Faroese [fo]
+//! author : Ragnar Johannesen : https://github.com/ragnar123
+a.defineLocale("fo",{months:"januar_februar_mars_apríl_mai_juni_juli_august_september_oktober_november_desember".split("_"),monthsShort:"jan_feb_mar_apr_mai_jun_jul_aug_sep_okt_nov_des".split("_"),weekdays:"sunnudagur_mánadagur_týsdagur_mikudagur_hósdagur_fríggjadagur_leygardagur".split("_"),weekdaysShort:"sun_mán_týs_mik_hós_frí_ley".split("_"),weekdaysMin:"su_má_tý_mi_hó_fr_le".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D. MMMM, YYYY HH:mm"},calendar:{sameDay:"[Í dag kl.] LT",nextDay:"[Í morgin kl.] LT",nextWeek:"dddd [kl.] LT",lastDay:"[Í gjár kl.] LT",lastWeek:"[síðstu] dddd [kl] LT",sameElse:"L"},relativeTime:{future:"um %s",past:"%s síðani",s:"fá sekund",m:"ein minutt",mm:"%d minuttir",h:"ein tími",hh:"%d tímar",d:"ein dagur",dd:"%d dagar",M:"ein mánaði",MM:"%d mánaðir",y:"eitt ár",yy:"%d ár"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : French (Canada) [fr-ca]
+//! author : Jonathan Abourbih : https://github.com/jonbca
+a.defineLocale("fr-ca",{months:"janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),monthsShort:"janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),monthsParseExact:!0,weekdays:"dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),weekdaysShort:"dim._lun._mar._mer._jeu._ven._sam.".split("_"),weekdaysMin:"Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"YYYY-MM-DD",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[Aujourd'hui à] LT",nextDay:"[Demain à] LT",nextWeek:"dddd [à] LT",lastDay:"[Hier à] LT",lastWeek:"dddd [dernier à] LT",sameElse:"L"},relativeTime:{future:"dans %s",past:"il y a %s",s:"quelques secondes",m:"une minute",mm:"%d minutes",h:"une heure",hh:"%d heures",d:"un jour",dd:"%d jours",M:"un mois",MM:"%d mois",y:"un an",yy:"%d ans"},ordinalParse:/\d{1,2}(er|e)/,ordinal:function(a){return a+(1===a?"er":"e")}}),
+//! moment.js locale configuration
+//! locale : French (Switzerland) [fr-ch]
+//! author : Gaspard Bucher : https://github.com/gaspard
+a.defineLocale("fr-ch",{months:"janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),monthsShort:"janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),monthsParseExact:!0,weekdays:"dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),weekdaysShort:"dim._lun._mar._mer._jeu._ven._sam.".split("_"),weekdaysMin:"Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[Aujourd'hui à] LT",nextDay:"[Demain à] LT",nextWeek:"dddd [à] LT",lastDay:"[Hier à] LT",lastWeek:"dddd [dernier à] LT",sameElse:"L"},relativeTime:{future:"dans %s",past:"il y a %s",s:"quelques secondes",m:"une minute",mm:"%d minutes",h:"une heure",hh:"%d heures",d:"un jour",dd:"%d jours",M:"un mois",MM:"%d mois",y:"un an",yy:"%d ans"},ordinalParse:/\d{1,2}(er|e)/,ordinal:function(a){return a+(1===a?"er":"e")},week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : French [fr]
+//! author : John Fischer : https://github.com/jfroffice
+a.defineLocale("fr",{months:"janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),monthsShort:"janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),monthsParseExact:!0,weekdays:"dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),weekdaysShort:"dim._lun._mar._mer._jeu._ven._sam.".split("_"),weekdaysMin:"Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[Aujourd'hui à] LT",nextDay:"[Demain à] LT",nextWeek:"dddd [à] LT",lastDay:"[Hier à] LT",lastWeek:"dddd [dernier à] LT",sameElse:"L"},relativeTime:{future:"dans %s",past:"il y a %s",s:"quelques secondes",m:"une minute",mm:"%d minutes",h:"une heure",hh:"%d heures",d:"un jour",dd:"%d jours",M:"un mois",MM:"%d mois",y:"un an",yy:"%d ans"},ordinalParse:/\d{1,2}(er|)/,ordinal:function(a){return a+(1===a?"er":"")},week:{dow:1,// Monday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Frisian [fy]
+//! author : Robin van der Vliet : https://github.com/robin0van0der0v
+var Tg="jan._feb._mrt._apr._mai_jun._jul._aug._sep._okt._nov._des.".split("_"),Ug="jan_feb_mrt_apr_mai_jun_jul_aug_sep_okt_nov_des".split("_");a.defineLocale("fy",{months:"jannewaris_febrewaris_maart_april_maaie_juny_july_augustus_septimber_oktober_novimber_desimber".split("_"),monthsShort:function(a,b){return/-MMM-/.test(b)?Ug[a.month()]:Tg[a.month()]},monthsParseExact:!0,weekdays:"snein_moandei_tiisdei_woansdei_tongersdei_freed_sneon".split("_"),weekdaysShort:"si._mo._ti._wo._to._fr._so.".split("_"),weekdaysMin:"Si_Mo_Ti_Wo_To_Fr_So".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD-MM-YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[hjoed om] LT",nextDay:"[moarn om] LT",nextWeek:"dddd [om] LT",lastDay:"[juster om] LT",lastWeek:"[ôfrûne] dddd [om] LT",sameElse:"L"},relativeTime:{future:"oer %s",past:"%s lyn",s:"in pear sekonden",m:"ien minút",mm:"%d minuten",h:"ien oere",hh:"%d oeren",d:"ien dei",dd:"%d dagen",M:"ien moanne",MM:"%d moannen",y:"ien jier",yy:"%d jierren"},ordinalParse:/\d{1,2}(ste|de)/,ordinal:function(a){return a+(1===a||8===a||a>=20?"ste":"de")},week:{dow:1,// Monday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Scottish Gaelic [gd]
+//! author : Jon Ashdown : https://github.com/jonashdown
+var Vg=["Am Faoilleach","An Gearran","Am Màrt","An Giblean","An Cèitean","An t-Ògmhios","An t-Iuchar","An Lùnastal","An t-Sultain","An Dàmhair","An t-Samhain","An Dùbhlachd"],Wg=["Faoi","Gear","Màrt","Gibl","Cèit","Ògmh","Iuch","Lùn","Sult","Dàmh","Samh","Dùbh"],Xg=["Didòmhnaich","Diluain","Dimàirt","Diciadain","Diardaoin","Dihaoine","Disathairne"],Yg=["Did","Dil","Dim","Dic","Dia","Dih","Dis"],Zg=["Dò","Lu","Mà","Ci","Ar","Ha","Sa"];a.defineLocale("gd",{months:Vg,monthsShort:Wg,monthsParseExact:!0,weekdays:Xg,weekdaysShort:Yg,weekdaysMin:Zg,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[An-diugh aig] LT",nextDay:"[A-màireach aig] LT",nextWeek:"dddd [aig] LT",lastDay:"[An-dè aig] LT",lastWeek:"dddd [seo chaidh] [aig] LT",sameElse:"L"},relativeTime:{future:"ann an %s",past:"bho chionn %s",s:"beagan diogan",m:"mionaid",mm:"%d mionaidean",h:"uair",hh:"%d uairean",d:"latha",dd:"%d latha",M:"mìos",MM:"%d mìosan",y:"bliadhna",yy:"%d bliadhna"},ordinalParse:/\d{1,2}(d|na|mh)/,ordinal:function(a){var b=1===a?"d":a%10===2?"na":"mh";return a+b},week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Galician [gl]
+//! author : Juan G. Hurtado : https://github.com/juanghurtado
+a.defineLocale("gl",{months:"xaneiro_febreiro_marzo_abril_maio_xuño_xullo_agosto_setembro_outubro_novembro_decembro".split("_"),monthsShort:"xan._feb._mar._abr._mai._xuñ._xul._ago._set._out._nov._dec.".split("_"),monthsParseExact:!0,weekdays:"domingo_luns_martes_mércores_xoves_venres_sábado".split("_"),weekdaysShort:"dom._lun._mar._mér._xov._ven._sáb.".split("_"),weekdaysMin:"do_lu_ma_mé_xo_ve_sá".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD/MM/YYYY",LL:"D [de] MMMM [de] YYYY",LLL:"D [de] MMMM [de] YYYY H:mm",LLLL:"dddd, D [de] MMMM [de] YYYY H:mm"},calendar:{sameDay:function(){return"[hoxe "+(1!==this.hours()?"ás":"á")+"] LT"},nextDay:function(){return"[mañá "+(1!==this.hours()?"ás":"á")+"] LT"},nextWeek:function(){return"dddd ["+(1!==this.hours()?"ás":"a")+"] LT"},lastDay:function(){return"[onte "+(1!==this.hours()?"á":"a")+"] LT"},lastWeek:function(){return"[o] dddd [pasado "+(1!==this.hours()?"ás":"a")+"] LT"},sameElse:"L"},relativeTime:{future:function(a){return 0===a.indexOf("un")?"n"+a:"en "+a},past:"hai %s",s:"uns segundos",m:"un minuto",mm:"%d minutos",h:"unha hora",hh:"%d horas",d:"un día",dd:"%d días",M:"un mes",MM:"%d meses",y:"un ano",yy:"%d anos"},ordinalParse:/\d{1,2}º/,ordinal:"%dº",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Hebrew [he]
+//! author : Tomer Cohen : https://github.com/tomer
+//! author : Moshe Simantov : https://github.com/DevelopmentIL
+//! author : Tal Ater : https://github.com/TalAter
+a.defineLocale("he",{months:"ינואר_פברואר_מרץ_אפריל_מאי_יוני_יולי_אוגוסט_ספטמבר_אוקטובר_נובמבר_דצמבר".split("_"),monthsShort:"ינו׳_פבר׳_מרץ_אפר׳_מאי_יוני_יולי_אוג׳_ספט׳_אוק׳_נוב׳_דצמ׳".split("_"),weekdays:"ראשון_שני_שלישי_רביעי_חמישי_שישי_שבת".split("_"),weekdaysShort:"א׳_ב׳_ג׳_ד׳_ה׳_ו׳_ש׳".split("_"),weekdaysMin:"א_ב_ג_ד_ה_ו_ש".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D [ב]MMMM YYYY",LLL:"D [ב]MMMM YYYY HH:mm",LLLL:"dddd, D [ב]MMMM YYYY HH:mm",l:"D/M/YYYY",ll:"D MMM YYYY",lll:"D MMM YYYY HH:mm",llll:"ddd, D MMM YYYY HH:mm"},calendar:{sameDay:"[היום ב־]LT",nextDay:"[מחר ב־]LT",nextWeek:"dddd [בשעה] LT",lastDay:"[אתמול ב־]LT",lastWeek:"[ביום] dddd [האחרון בשעה] LT",sameElse:"L"},relativeTime:{future:"בעוד %s",past:"לפני %s",s:"מספר שניות",m:"דקה",mm:"%d דקות",h:"שעה",hh:function(a){return 2===a?"שעתיים":a+" שעות"},d:"יום",dd:function(a){return 2===a?"יומיים":a+" ימים"},M:"חודש",MM:function(a){return 2===a?"חודשיים":a+" חודשים"},y:"שנה",yy:function(a){return 2===a?"שנתיים":a%10===0&&10!==a?a+" שנה":a+" שנים"}},meridiemParse:/אחה"צ|לפנה"צ|אחרי הצהריים|לפני הצהריים|לפנות בוקר|בבוקר|בערב/i,isPM:function(a){return/^(אחה"צ|אחרי הצהריים|בערב)$/.test(a)},meridiem:function(a,b,c){return a<5?"לפנות בוקר":a<10?"בבוקר":a<12?c?'לפנה"צ':"לפני הצהריים":a<18?c?'אחה"צ':"אחרי הצהריים":"בערב"}});
+//! moment.js locale configuration
+//! locale : Hindi [hi]
+//! author : Mayank Singhal : https://github.com/mayanksinghal
+var $g={1:"१",2:"२",3:"३",4:"४",5:"५",6:"६",7:"७",8:"८",9:"९",0:"०"},_g={"१":"1","२":"2","३":"3","४":"4","५":"5","६":"6","७":"7","८":"8","९":"9","०":"0"};a.defineLocale("hi",{months:"जनवरी_फ़रवरी_मार्च_अप्रैल_मई_जून_जुलाई_अगस्त_सितम्बर_अक्टूबर_नवम्बर_दिसम्बर".split("_"),monthsShort:"जन._फ़र._मार्च_अप्रै._मई_जून_जुल._अग._सित._अक्टू._नव._दिस.".split("_"),monthsParseExact:!0,weekdays:"रविवार_सोमवार_मंगलवार_बुधवार_गुरूवार_शुक्रवार_शनिवार".split("_"),weekdaysShort:"रवि_सोम_मंगल_बुध_गुरू_शुक्र_शनि".split("_"),weekdaysMin:"र_सो_मं_बु_गु_शु_श".split("_"),longDateFormat:{LT:"A h:mm बजे",LTS:"A h:mm:ss बजे",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, A h:mm बजे",LLLL:"dddd, D MMMM YYYY, A h:mm बजे"},calendar:{sameDay:"[आज] LT",nextDay:"[कल] LT",nextWeek:"dddd, LT",lastDay:"[कल] LT",lastWeek:"[पिछले] dddd, LT",sameElse:"L"},relativeTime:{future:"%s में",past:"%s पहले",s:"कुछ ही क्षण",m:"एक मिनट",mm:"%d मिनट",h:"एक घंटा",hh:"%d घंटे",d:"एक दिन",dd:"%d दिन",M:"एक महीने",MM:"%d महीने",y:"एक वर्ष",yy:"%d वर्ष"},preparse:function(a){return a.replace(/[१२३४५६७८९०]/g,function(a){return _g[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return $g[a]})},
 // Hindi notation for meridiems are quite fuzzy in practice. While there exists
 // a rigid notion of a 'Pahar' it is not used as rigidly in modern Hindi.
 meridiemParse:/रात|सुबह|दोपहर|शाम/,meridiemHour:function(a,b){return 12===a&&(a=0),"रात"===b?a<4?a:a+12:"सुबह"===b?a:"दोपहर"===b?a>=10?a:a+12:"शाम"===b?a+12:void 0},meridiem:function(a,b,c){return a<4?"रात":a<10?"सुबह":a<17?"दोपहर":a<20?"शाम":"रात"},week:{dow:0,// Sunday is the first day of the week.
-doy:6}}),kg.defineLocale("hr",{months:{format:"siječnja_veljače_ožujka_travnja_svibnja_lipnja_srpnja_kolovoza_rujna_listopada_studenoga_prosinca".split("_"),standalone:"siječanj_veljača_ožujak_travanj_svibanj_lipanj_srpanj_kolovoz_rujan_listopad_studeni_prosinac".split("_")},monthsShort:"sij._velj._ožu._tra._svi._lip._srp._kol._ruj._lis._stu._pro.".split("_"),monthsParseExact:!0,weekdays:"nedjelja_ponedjeljak_utorak_srijeda_četvrtak_petak_subota".split("_"),weekdaysShort:"ned._pon._uto._sri._čet._pet._sub.".split("_"),weekdaysMin:"ne_po_ut_sr_če_pe_su".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd, D. MMMM YYYY H:mm"},calendar:{sameDay:"[danas u] LT",nextDay:"[sutra u] LT",nextWeek:function(){switch(this.day()){case 0:return"[u] [nedjelju] [u] LT";case 3:return"[u] [srijedu] [u] LT";case 6:return"[u] [subotu] [u] LT";case 1:case 2:case 4:case 5:return"[u] dddd [u] LT"}},lastDay:"[jučer u] LT",lastWeek:function(){switch(this.day()){case 0:case 3:return"[prošlu] dddd [u] LT";case 6:return"[prošle] [subote] [u] LT";case 1:case 2:case 4:case 5:return"[prošli] dddd [u] LT"}},sameElse:"L"},relativeTime:{future:"za %s",past:"prije %s",s:"par sekundi",m:Bd,mm:Bd,h:Bd,hh:Bd,d:"dan",dd:Bd,M:"mjesec",MM:Bd,y:"godinu",yy:Bd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:7}}),"vasárnap hétfőn kedden szerdán csütörtökön pénteken szombaton".split(" ")),Zg=(kg.defineLocale("hu",{months:"január_február_március_április_május_június_július_augusztus_szeptember_október_november_december".split("_"),monthsShort:"jan_feb_márc_ápr_máj_jún_júl_aug_szept_okt_nov_dec".split("_"),weekdays:"vasárnap_hétfő_kedd_szerda_csütörtök_péntek_szombat".split("_"),weekdaysShort:"vas_hét_kedd_sze_csüt_pén_szo".split("_"),weekdaysMin:"v_h_k_sze_cs_p_szo".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"YYYY.MM.DD.",LL:"YYYY. MMMM D.",LLL:"YYYY. MMMM D. H:mm",LLLL:"YYYY. MMMM D., dddd H:mm"},meridiemParse:/de|du/i,isPM:function(a){return"u"===a.charAt(1).toLowerCase()},meridiem:function(a,b,c){return a<12?c===!0?"de":"DE":c===!0?"du":"DU"},calendar:{sameDay:"[ma] LT[-kor]",nextDay:"[holnap] LT[-kor]",nextWeek:function(){return Dd.call(this,!0)},lastDay:"[tegnap] LT[-kor]",lastWeek:function(){return Dd.call(this,!1)},sameElse:"L"},relativeTime:{future:"%s múlva",past:"%s",s:Cd,m:Cd,mm:Cd,h:Cd,hh:Cd,d:Cd,dd:Cd,M:Cd,MM:Cd,y:Cd,yy:Cd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("hy-am",{months:{format:"հունվարի_փետրվարի_մարտի_ապրիլի_մայիսի_հունիսի_հուլիսի_օգոստոսի_սեպտեմբերի_հոկտեմբերի_նոյեմբերի_դեկտեմբերի".split("_"),standalone:"հունվար_փետրվար_մարտ_ապրիլ_մայիս_հունիս_հուլիս_օգոստոս_սեպտեմբեր_հոկտեմբեր_նոյեմբեր_դեկտեմբեր".split("_")},monthsShort:"հնվ_փտր_մրտ_ապր_մյս_հնս_հլս_օգս_սպտ_հկտ_նմբ_դկտ".split("_"),weekdays:"կիրակի_երկուշաբթի_երեքշաբթի_չորեքշաբթի_հինգշաբթի_ուրբաթ_շաբաթ".split("_"),weekdaysShort:"կրկ_երկ_երք_չրք_հնգ_ուրբ_շբթ".split("_"),weekdaysMin:"կրկ_երկ_երք_չրք_հնգ_ուրբ_շբթ".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY թ.",LLL:"D MMMM YYYY թ., HH:mm",LLLL:"dddd, D MMMM YYYY թ., HH:mm"},calendar:{sameDay:"[այսօր] LT",nextDay:"[վաղը] LT",lastDay:"[երեկ] LT",nextWeek:function(){return"dddd [օրը ժամը] LT"},lastWeek:function(){return"[անցած] dddd [օրը ժամը] LT"},sameElse:"L"},relativeTime:{future:"%s հետո",past:"%s առաջ",s:"մի քանի վայրկյան",m:"րոպե",mm:"%d րոպե",h:"ժամ",hh:"%d ժամ",d:"օր",dd:"%d օր",M:"ամիս",MM:"%d ամիս",y:"տարի",yy:"%d տարի"},meridiemParse:/գիշերվա|առավոտվա|ցերեկվա|երեկոյան/,isPM:function(a){return/^(ցերեկվա|երեկոյան)$/.test(a)},meridiem:function(a){return a<4?"գիշերվա":a<12?"առավոտվա":a<17?"ցերեկվա":"երեկոյան"},ordinalParse:/\d{1,2}|\d{1,2}-(ին|րդ)/,ordinal:function(a,b){switch(b){case"DDD":case"w":case"W":case"DDDo":return 1===a?a+"-ին":a+"-րդ";default:return a}},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("id",{months:"Januari_Februari_Maret_April_Mei_Juni_Juli_Agustus_September_Oktober_November_Desember".split("_"),monthsShort:"Jan_Feb_Mar_Apr_Mei_Jun_Jul_Ags_Sep_Okt_Nov_Des".split("_"),weekdays:"Minggu_Senin_Selasa_Rabu_Kamis_Jumat_Sabtu".split("_"),weekdaysShort:"Min_Sen_Sel_Rab_Kam_Jum_Sab".split("_"),weekdaysMin:"Mg_Sn_Sl_Rb_Km_Jm_Sb".split("_"),longDateFormat:{LT:"HH.mm",LTS:"HH.mm.ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY [pukul] HH.mm",LLLL:"dddd, D MMMM YYYY [pukul] HH.mm"},meridiemParse:/pagi|siang|sore|malam/,meridiemHour:function(a,b){return 12===a&&(a=0),"pagi"===b?a:"siang"===b?a>=11?a:a+12:"sore"===b||"malam"===b?a+12:void 0},meridiem:function(a,b,c){return a<11?"pagi":a<15?"siang":a<19?"sore":"malam"},calendar:{sameDay:"[Hari ini pukul] LT",nextDay:"[Besok pukul] LT",nextWeek:"dddd [pukul] LT",lastDay:"[Kemarin pukul] LT",lastWeek:"dddd [lalu pukul] LT",sameElse:"L"},relativeTime:{future:"dalam %s",past:"%s yang lalu",s:"beberapa detik",m:"semenit",mm:"%d menit",h:"sejam",hh:"%d jam",d:"sehari",dd:"%d hari",M:"sebulan",MM:"%d bulan",y:"setahun",yy:"%d tahun"},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("is",{months:"janúar_febrúar_mars_apríl_maí_júní_júlí_ágúst_september_október_nóvember_desember".split("_"),monthsShort:"jan_feb_mar_apr_maí_jún_júl_ágú_sep_okt_nóv_des".split("_"),weekdays:"sunnudagur_mánudagur_þriðjudagur_miðvikudagur_fimmtudagur_föstudagur_laugardagur".split("_"),weekdaysShort:"sun_mán_þri_mið_fim_fös_lau".split("_"),weekdaysMin:"Su_Má_Þr_Mi_Fi_Fö_La".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY [kl.] H:mm",LLLL:"dddd, D. MMMM YYYY [kl.] H:mm"},calendar:{sameDay:"[í dag kl.] LT",nextDay:"[á morgun kl.] LT",nextWeek:"dddd [kl.] LT",lastDay:"[í gær kl.] LT",lastWeek:"[síðasta] dddd [kl.] LT",sameElse:"L"},relativeTime:{future:"eftir %s",past:"fyrir %s síðan",s:Fd,m:Fd,mm:Fd,h:"klukkustund",hh:Fd,d:Fd,dd:Fd,M:Fd,MM:Fd,y:Fd,yy:Fd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("it",{months:"gennaio_febbraio_marzo_aprile_maggio_giugno_luglio_agosto_settembre_ottobre_novembre_dicembre".split("_"),monthsShort:"gen_feb_mar_apr_mag_giu_lug_ago_set_ott_nov_dic".split("_"),weekdays:"Domenica_Lunedì_Martedì_Mercoledì_Giovedì_Venerdì_Sabato".split("_"),weekdaysShort:"Dom_Lun_Mar_Mer_Gio_Ven_Sab".split("_"),weekdaysMin:"Do_Lu_Ma_Me_Gi_Ve_Sa".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Oggi alle] LT",nextDay:"[Domani alle] LT",nextWeek:"dddd [alle] LT",lastDay:"[Ieri alle] LT",lastWeek:function(){switch(this.day()){case 0:return"[la scorsa] dddd [alle] LT";default:return"[lo scorso] dddd [alle] LT"}},sameElse:"L"},relativeTime:{future:function(a){return(/^[0-9].+$/.test(a)?"tra":"in")+" "+a},past:"%s fa",s:"alcuni secondi",m:"un minuto",mm:"%d minuti",h:"un'ora",hh:"%d ore",d:"un giorno",dd:"%d giorni",M:"un mese",MM:"%d mesi",y:"un anno",yy:"%d anni"},ordinalParse:/\d{1,2}º/,ordinal:"%dº",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("ja",{months:"1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月".split("_"),monthsShort:"1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月".split("_"),weekdays:"日曜日_月曜日_火曜日_水曜日_木曜日_金曜日_土曜日".split("_"),weekdaysShort:"日_月_火_水_木_金_土".split("_"),weekdaysMin:"日_月_火_水_木_金_土".split("_"),longDateFormat:{LT:"Ah時m分",LTS:"Ah時m分s秒",L:"YYYY/MM/DD",LL:"YYYY年M月D日",LLL:"YYYY年M月D日Ah時m分",LLLL:"YYYY年M月D日Ah時m分 dddd"},meridiemParse:/午前|午後/i,isPM:function(a){return"午後"===a},meridiem:function(a,b,c){return a<12?"午前":"午後"},calendar:{sameDay:"[今日] LT",nextDay:"[明日] LT",nextWeek:"[来週]dddd LT",lastDay:"[昨日] LT",lastWeek:"[前週]dddd LT",sameElse:"L"},ordinalParse:/\d{1,2}日/,ordinal:function(a,b){switch(b){case"d":case"D":case"DDD":return a+"日";default:return a}},relativeTime:{future:"%s後",past:"%s前",s:"数秒",m:"1分",mm:"%d分",h:"1時間",hh:"%d時間",d:"1日",dd:"%d日",M:"1ヶ月",MM:"%dヶ月",y:"1年",yy:"%d年"}}),kg.defineLocale("jv",{months:"Januari_Februari_Maret_April_Mei_Juni_Juli_Agustus_September_Oktober_Nopember_Desember".split("_"),monthsShort:"Jan_Feb_Mar_Apr_Mei_Jun_Jul_Ags_Sep_Okt_Nop_Des".split("_"),weekdays:"Minggu_Senen_Seloso_Rebu_Kemis_Jemuwah_Septu".split("_"),weekdaysShort:"Min_Sen_Sel_Reb_Kem_Jem_Sep".split("_"),weekdaysMin:"Mg_Sn_Sl_Rb_Km_Jm_Sp".split("_"),longDateFormat:{LT:"HH.mm",LTS:"HH.mm.ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY [pukul] HH.mm",LLLL:"dddd, D MMMM YYYY [pukul] HH.mm"},meridiemParse:/enjing|siyang|sonten|ndalu/,meridiemHour:function(a,b){return 12===a&&(a=0),"enjing"===b?a:"siyang"===b?a>=11?a:a+12:"sonten"===b||"ndalu"===b?a+12:void 0},meridiem:function(a,b,c){return a<11?"enjing":a<15?"siyang":a<19?"sonten":"ndalu"},calendar:{sameDay:"[Dinten puniko pukul] LT",nextDay:"[Mbenjang pukul] LT",nextWeek:"dddd [pukul] LT",lastDay:"[Kala wingi pukul] LT",lastWeek:"dddd [kepengker pukul] LT",sameElse:"L"},relativeTime:{future:"wonten ing %s",past:"%s ingkang kepengker",s:"sawetawis detik",m:"setunggal menit",mm:"%d menit",h:"setunggal jam",hh:"%d jam",d:"sedinten",dd:"%d dinten",M:"sewulan",MM:"%d wulan",y:"setaun",yy:"%d taun"},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("ka",{months:{standalone:"იანვარი_თებერვალი_მარტი_აპრილი_მაისი_ივნისი_ივლისი_აგვისტო_სექტემბერი_ოქტომბერი_ნოემბერი_დეკემბერი".split("_"),format:"იანვარს_თებერვალს_მარტს_აპრილის_მაისს_ივნისს_ივლისს_აგვისტს_სექტემბერს_ოქტომბერს_ნოემბერს_დეკემბერს".split("_")},monthsShort:"იან_თებ_მარ_აპრ_მაი_ივნ_ივლ_აგვ_სექ_ოქტ_ნოე_დეკ".split("_"),weekdays:{standalone:"კვირა_ორშაბათი_სამშაბათი_ოთხშაბათი_ხუთშაბათი_პარასკევი_შაბათი".split("_"),format:"კვირას_ორშაბათს_სამშაბათს_ოთხშაბათს_ხუთშაბათს_პარასკევს_შაბათს".split("_"),isFormat:/(წინა|შემდეგ)/},weekdaysShort:"კვი_ორშ_სამ_ოთხ_ხუთ_პარ_შაბ".split("_"),weekdaysMin:"კვ_ორ_სა_ოთ_ხუ_პა_შა".split("_"),longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY h:mm A",LLLL:"dddd, D MMMM YYYY h:mm A"},calendar:{sameDay:"[დღეს] LT[-ზე]",nextDay:"[ხვალ] LT[-ზე]",lastDay:"[გუშინ] LT[-ზე]",nextWeek:"[შემდეგ] dddd LT[-ზე]",lastWeek:"[წინა] dddd LT-ზე",sameElse:"L"},relativeTime:{future:function(a){return/(წამი|წუთი|საათი|წელი)/.test(a)?a.replace(/ი$/,"ში"):a+"ში"},past:function(a){return/(წამი|წუთი|საათი|დღე|თვე)/.test(a)?a.replace(/(ი|ე)$/,"ის წინ"):/წელი/.test(a)?a.replace(/წელი$/,"წლის წინ"):void 0},s:"რამდენიმე წამი",m:"წუთი",mm:"%d წუთი",h:"საათი",hh:"%d საათი",d:"დღე",dd:"%d დღე",M:"თვე",MM:"%d თვე",y:"წელი",yy:"%d წელი"},ordinalParse:/0|1-ლი|მე-\d{1,2}|\d{1,2}-ე/,ordinal:function(a){return 0===a?a:1===a?a+"-ლი":a<20||a<=100&&a%20===0||a%100===0?"მე-"+a:a+"-ე"},week:{dow:1,doy:7}}),{0:"-ші",1:"-ші",2:"-ші",3:"-ші",4:"-ші",5:"-ші",6:"-шы",7:"-ші",8:"-ші",9:"-шы",10:"-шы",20:"-шы",30:"-шы",40:"-шы",50:"-ші",60:"-шы",70:"-ші",80:"-ші",90:"-шы",100:"-ші"}),$g=(kg.defineLocale("kk",{months:"қаңтар_ақпан_наурыз_сәуір_мамыр_маусым_шілде_тамыз_қыркүйек_қазан_қараша_желтоқсан".split("_"),monthsShort:"қаң_ақп_нау_сәу_мам_мау_шіл_там_қыр_қаз_қар_жел".split("_"),weekdays:"жексенбі_дүйсенбі_сейсенбі_сәрсенбі_бейсенбі_жұма_сенбі".split("_"),weekdaysShort:"жек_дүй_сей_сәр_бей_жұм_сен".split("_"),weekdaysMin:"жк_дй_сй_ср_бй_жм_сн".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Бүгін сағат] LT",nextDay:"[Ертең сағат] LT",nextWeek:"dddd [сағат] LT",lastDay:"[Кеше сағат] LT",lastWeek:"[Өткен аптаның] dddd [сағат] LT",sameElse:"L"},relativeTime:{future:"%s ішінде",past:"%s бұрын",s:"бірнеше секунд",m:"бір минут",mm:"%d минут",h:"бір сағат",hh:"%d сағат",d:"бір күн",dd:"%d күн",M:"бір ай",MM:"%d ай",y:"бір жыл",yy:"%d жыл"},ordinalParse:/\d{1,2}-(ші|шы)/,ordinal:function(a){var b=a%10,c=a>=100?100:null;return a+(Zg[a]||Zg[b]||Zg[c])},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("km",{months:"មករា_កុម្ភៈ_មីនា_មេសា_ឧសភា_មិថុនា_កក្កដា_សីហា_កញ្ញា_តុលា_វិច្ឆិកា_ធ្នូ".split("_"),monthsShort:"មករា_កុម្ភៈ_មីនា_មេសា_ឧសភា_មិថុនា_កក្កដា_សីហា_កញ្ញា_តុលា_វិច្ឆិកា_ធ្នូ".split("_"),weekdays:"អាទិត្យ_ច័ន្ទ_អង្គារ_ពុធ_ព្រហស្បតិ៍_សុក្រ_សៅរ៍".split("_"),weekdaysShort:"អាទិត្យ_ច័ន្ទ_អង្គារ_ពុធ_ព្រហស្បតិ៍_សុក្រ_សៅរ៍".split("_"),weekdaysMin:"អាទិត្យ_ច័ន្ទ_អង្គារ_ពុធ_ព្រហស្បតិ៍_សុក្រ_សៅរ៍".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[ថ្ងៃនេះ ម៉ោង] LT",nextDay:"[ស្អែក ម៉ោង] LT",nextWeek:"dddd [ម៉ោង] LT",lastDay:"[ម្សិលមិញ ម៉ោង] LT",lastWeek:"dddd [សប្តាហ៍មុន] [ម៉ោង] LT",sameElse:"L"},relativeTime:{future:"%sទៀត",past:"%sមុន",s:"ប៉ុន្មានវិនាទី",m:"មួយនាទី",mm:"%d នាទី",h:"មួយម៉ោង",hh:"%d ម៉ោង",d:"មួយថ្ងៃ",dd:"%d ថ្ងៃ",M:"មួយខែ",MM:"%d ខែ",y:"មួយឆ្នាំ",yy:"%d ឆ្នាំ"},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("ko",{months:"1월_2월_3월_4월_5월_6월_7월_8월_9월_10월_11월_12월".split("_"),monthsShort:"1월_2월_3월_4월_5월_6월_7월_8월_9월_10월_11월_12월".split("_"),weekdays:"일요일_월요일_화요일_수요일_목요일_금요일_토요일".split("_"),weekdaysShort:"일_월_화_수_목_금_토".split("_"),weekdaysMin:"일_월_화_수_목_금_토".split("_"),longDateFormat:{LT:"A h시 m분",LTS:"A h시 m분 s초",L:"YYYY.MM.DD",LL:"YYYY년 MMMM D일",LLL:"YYYY년 MMMM D일 A h시 m분",LLLL:"YYYY년 MMMM D일 dddd A h시 m분"},calendar:{sameDay:"오늘 LT",nextDay:"내일 LT",nextWeek:"dddd LT",lastDay:"어제 LT",lastWeek:"지난주 dddd LT",sameElse:"L"},relativeTime:{future:"%s 후",past:"%s 전",s:"몇 초",ss:"%d초",m:"일분",mm:"%d분",h:"한 시간",hh:"%d시간",d:"하루",dd:"%d일",M:"한 달",MM:"%d달",y:"일 년",yy:"%d년"},ordinalParse:/\d{1,2}일/,ordinal:"%d일",meridiemParse:/오전|오후/,isPM:function(a){return"오후"===a},meridiem:function(a,b,c){return a<12?"오전":"오후"}}),{0:"-чү",1:"-чи",2:"-чи",3:"-чү",4:"-чү",5:"-чи",6:"-чы",7:"-чи",8:"-чи",9:"-чу",10:"-чу",20:"-чы",30:"-чу",40:"-чы",50:"-чү",60:"-чы",70:"-чи",80:"-чи",90:"-чу",100:"-чү"}),_g=(kg.defineLocale("ky",{months:"январь_февраль_март_апрель_май_июнь_июль_август_сентябрь_октябрь_ноябрь_декабрь".split("_"),monthsShort:"янв_фев_март_апр_май_июнь_июль_авг_сен_окт_ноя_дек".split("_"),weekdays:"Жекшемби_Дүйшөмбү_Шейшемби_Шаршемби_Бейшемби_Жума_Ишемби".split("_"),weekdaysShort:"Жек_Дүй_Шей_Шар_Бей_Жум_Ише".split("_"),weekdaysMin:"Жк_Дй_Шй_Шр_Бй_Жм_Иш".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Бүгүн саат] LT",nextDay:"[Эртең саат] LT",nextWeek:"dddd [саат] LT",lastDay:"[Кече саат] LT",lastWeek:"[Өткен аптанын] dddd [күнү] [саат] LT",sameElse:"L"},relativeTime:{future:"%s ичинде",past:"%s мурун",s:"бирнече секунд",m:"бир мүнөт",mm:"%d мүнөт",h:"бир саат",hh:"%d саат",d:"бир күн",dd:"%d күн",M:"бир ай",MM:"%d ай",y:"бир жыл",yy:"%d жыл"},ordinalParse:/\d{1,2}-(чи|чы|чү|чу)/,ordinal:function(a){var b=a%10,c=a>=100?100:null;return a+($g[a]||$g[b]||$g[c])},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("lb",{months:"Januar_Februar_Mäerz_Abrëll_Mee_Juni_Juli_August_September_Oktober_November_Dezember".split("_"),monthsShort:"Jan._Febr._Mrz._Abr._Mee_Jun._Jul._Aug._Sept._Okt._Nov._Dez.".split("_"),monthsParseExact:!0,weekdays:"Sonndeg_Méindeg_Dënschdeg_Mëttwoch_Donneschdeg_Freideg_Samschdeg".split("_"),weekdaysShort:"So._Mé._Dë._Më._Do._Fr._Sa.".split("_"),weekdaysMin:"So_Mé_Dë_Më_Do_Fr_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm [Auer]",LTS:"H:mm:ss [Auer]",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm [Auer]",LLLL:"dddd, D. MMMM YYYY H:mm [Auer]"},calendar:{sameDay:"[Haut um] LT",sameElse:"L",nextDay:"[Muer um] LT",nextWeek:"dddd [um] LT",lastDay:"[Gëschter um] LT",lastWeek:function(){
+doy:6}}),a.defineLocale("hr",{months:{format:"siječnja_veljače_ožujka_travnja_svibnja_lipnja_srpnja_kolovoza_rujna_listopada_studenoga_prosinca".split("_"),standalone:"siječanj_veljača_ožujak_travanj_svibanj_lipanj_srpanj_kolovoz_rujan_listopad_studeni_prosinac".split("_")},monthsShort:"sij._velj._ožu._tra._svi._lip._srp._kol._ruj._lis._stu._pro.".split("_"),monthsParseExact:!0,weekdays:"nedjelja_ponedjeljak_utorak_srijeda_četvrtak_petak_subota".split("_"),weekdaysShort:"ned._pon._uto._sri._čet._pet._sub.".split("_"),weekdaysMin:"ne_po_ut_sr_če_pe_su".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd, D. MMMM YYYY H:mm"},calendar:{sameDay:"[danas u] LT",nextDay:"[sutra u] LT",nextWeek:function(){switch(this.day()){case 0:return"[u] [nedjelju] [u] LT";case 3:return"[u] [srijedu] [u] LT";case 6:return"[u] [subotu] [u] LT";case 1:case 2:case 4:case 5:return"[u] dddd [u] LT"}},lastDay:"[jučer u] LT",lastWeek:function(){switch(this.day()){case 0:case 3:return"[prošlu] dddd [u] LT";case 6:return"[prošle] [subote] [u] LT";case 1:case 2:case 4:case 5:return"[prošli] dddd [u] LT"}},sameElse:"L"},relativeTime:{future:"za %s",past:"prije %s",s:"par sekundi",m:Dd,mm:Dd,h:Dd,hh:Dd,d:"dan",dd:Dd,M:"mjesec",MM:Dd,y:"godinu",yy:Dd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:7}});
+//! moment.js locale configuration
+//! locale : Hungarian [hu]
+//! author : Adam Brunner : https://github.com/adambrunner
+var ah="vasárnap hétfőn kedden szerdán csütörtökön pénteken szombaton".split(" ");a.defineLocale("hu",{months:"január_február_március_április_május_június_július_augusztus_szeptember_október_november_december".split("_"),monthsShort:"jan_feb_márc_ápr_máj_jún_júl_aug_szept_okt_nov_dec".split("_"),weekdays:"vasárnap_hétfő_kedd_szerda_csütörtök_péntek_szombat".split("_"),weekdaysShort:"vas_hét_kedd_sze_csüt_pén_szo".split("_"),weekdaysMin:"v_h_k_sze_cs_p_szo".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"YYYY.MM.DD.",LL:"YYYY. MMMM D.",LLL:"YYYY. MMMM D. H:mm",LLLL:"YYYY. MMMM D., dddd H:mm"},meridiemParse:/de|du/i,isPM:function(a){return"u"===a.charAt(1).toLowerCase()},meridiem:function(a,b,c){return a<12?c===!0?"de":"DE":c===!0?"du":"DU"},calendar:{sameDay:"[ma] LT[-kor]",nextDay:"[holnap] LT[-kor]",nextWeek:function(){return Fd.call(this,!0)},lastDay:"[tegnap] LT[-kor]",lastWeek:function(){return Fd.call(this,!1)},sameElse:"L"},relativeTime:{future:"%s múlva",past:"%s",s:Ed,m:Ed,mm:Ed,h:Ed,hh:Ed,d:Ed,dd:Ed,M:Ed,MM:Ed,y:Ed,yy:Ed},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Armenian [hy-am]
+//! author : Armendarabyan : https://github.com/armendarabyan
+a.defineLocale("hy-am",{months:{format:"հունվարի_փետրվարի_մարտի_ապրիլի_մայիսի_հունիսի_հուլիսի_օգոստոսի_սեպտեմբերի_հոկտեմբերի_նոյեմբերի_դեկտեմբերի".split("_"),standalone:"հունվար_փետրվար_մարտ_ապրիլ_մայիս_հունիս_հուլիս_օգոստոս_սեպտեմբեր_հոկտեմբեր_նոյեմբեր_դեկտեմբեր".split("_")},monthsShort:"հնվ_փտր_մրտ_ապր_մյս_հնս_հլս_օգս_սպտ_հկտ_նմբ_դկտ".split("_"),weekdays:"կիրակի_երկուշաբթի_երեքշաբթի_չորեքշաբթի_հինգշաբթի_ուրբաթ_շաբաթ".split("_"),weekdaysShort:"կրկ_երկ_երք_չրք_հնգ_ուրբ_շբթ".split("_"),weekdaysMin:"կրկ_երկ_երք_չրք_հնգ_ուրբ_շբթ".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY թ.",LLL:"D MMMM YYYY թ., HH:mm",LLLL:"dddd, D MMMM YYYY թ., HH:mm"},calendar:{sameDay:"[այսօր] LT",nextDay:"[վաղը] LT",lastDay:"[երեկ] LT",nextWeek:function(){return"dddd [օրը ժամը] LT"},lastWeek:function(){return"[անցած] dddd [օրը ժամը] LT"},sameElse:"L"},relativeTime:{future:"%s հետո",past:"%s առաջ",s:"մի քանի վայրկյան",m:"րոպե",mm:"%d րոպե",h:"ժամ",hh:"%d ժամ",d:"օր",dd:"%d օր",M:"ամիս",MM:"%d ամիս",y:"տարի",yy:"%d տարի"},meridiemParse:/գիշերվա|առավոտվա|ցերեկվա|երեկոյան/,isPM:function(a){return/^(ցերեկվա|երեկոյան)$/.test(a)},meridiem:function(a){return a<4?"գիշերվա":a<12?"առավոտվա":a<17?"ցերեկվա":"երեկոյան"},ordinalParse:/\d{1,2}|\d{1,2}-(ին|րդ)/,ordinal:function(a,b){switch(b){case"DDD":case"w":case"W":case"DDDo":return 1===a?a+"-ին":a+"-րդ";default:return a}},week:{dow:1,// Monday is the first day of the week.
+doy:7}}),
+//! moment.js locale configuration
+//! locale : Indonesian [id]
+//! author : Mohammad Satrio Utomo : https://github.com/tyok
+//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
+a.defineLocale("id",{months:"Januari_Februari_Maret_April_Mei_Juni_Juli_Agustus_September_Oktober_November_Desember".split("_"),monthsShort:"Jan_Feb_Mar_Apr_Mei_Jun_Jul_Ags_Sep_Okt_Nov_Des".split("_"),weekdays:"Minggu_Senin_Selasa_Rabu_Kamis_Jumat_Sabtu".split("_"),weekdaysShort:"Min_Sen_Sel_Rab_Kam_Jum_Sab".split("_"),weekdaysMin:"Mg_Sn_Sl_Rb_Km_Jm_Sb".split("_"),longDateFormat:{LT:"HH.mm",LTS:"HH.mm.ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY [pukul] HH.mm",LLLL:"dddd, D MMMM YYYY [pukul] HH.mm"},meridiemParse:/pagi|siang|sore|malam/,meridiemHour:function(a,b){return 12===a&&(a=0),"pagi"===b?a:"siang"===b?a>=11?a:a+12:"sore"===b||"malam"===b?a+12:void 0},meridiem:function(a,b,c){return a<11?"pagi":a<15?"siang":a<19?"sore":"malam"},calendar:{sameDay:"[Hari ini pukul] LT",nextDay:"[Besok pukul] LT",nextWeek:"dddd [pukul] LT",lastDay:"[Kemarin pukul] LT",lastWeek:"dddd [lalu pukul] LT",sameElse:"L"},relativeTime:{future:"dalam %s",past:"%s yang lalu",s:"beberapa detik",m:"semenit",mm:"%d menit",h:"sejam",hh:"%d jam",d:"sehari",dd:"%d hari",M:"sebulan",MM:"%d bulan",y:"setahun",yy:"%d tahun"},week:{dow:1,// Monday is the first day of the week.
+doy:7}}),a.defineLocale("is",{months:"janúar_febrúar_mars_apríl_maí_júní_júlí_ágúst_september_október_nóvember_desember".split("_"),monthsShort:"jan_feb_mar_apr_maí_jún_júl_ágú_sep_okt_nóv_des".split("_"),weekdays:"sunnudagur_mánudagur_þriðjudagur_miðvikudagur_fimmtudagur_föstudagur_laugardagur".split("_"),weekdaysShort:"sun_mán_þri_mið_fim_fös_lau".split("_"),weekdaysMin:"Su_Má_Þr_Mi_Fi_Fö_La".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY [kl.] H:mm",LLLL:"dddd, D. MMMM YYYY [kl.] H:mm"},calendar:{sameDay:"[í dag kl.] LT",nextDay:"[á morgun kl.] LT",nextWeek:"dddd [kl.] LT",lastDay:"[í gær kl.] LT",lastWeek:"[síðasta] dddd [kl.] LT",sameElse:"L"},relativeTime:{future:"eftir %s",past:"fyrir %s síðan",s:Hd,m:Hd,mm:Hd,h:"klukkustund",hh:Hd,d:Hd,dd:Hd,M:Hd,MM:Hd,y:Hd,yy:Hd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Italian [it]
+//! author : Lorenzo : https://github.com/aliem
+//! author: Mattia Larentis: https://github.com/nostalgiaz
+a.defineLocale("it",{months:"gennaio_febbraio_marzo_aprile_maggio_giugno_luglio_agosto_settembre_ottobre_novembre_dicembre".split("_"),monthsShort:"gen_feb_mar_apr_mag_giu_lug_ago_set_ott_nov_dic".split("_"),weekdays:"Domenica_Lunedì_Martedì_Mercoledì_Giovedì_Venerdì_Sabato".split("_"),weekdaysShort:"Dom_Lun_Mar_Mer_Gio_Ven_Sab".split("_"),weekdaysMin:"Do_Lu_Ma_Me_Gi_Ve_Sa".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Oggi alle] LT",nextDay:"[Domani alle] LT",nextWeek:"dddd [alle] LT",lastDay:"[Ieri alle] LT",lastWeek:function(){switch(this.day()){case 0:return"[la scorsa] dddd [alle] LT";default:return"[lo scorso] dddd [alle] LT"}},sameElse:"L"},relativeTime:{future:function(a){return(/^[0-9].+$/.test(a)?"tra":"in")+" "+a},past:"%s fa",s:"alcuni secondi",m:"un minuto",mm:"%d minuti",h:"un'ora",hh:"%d ore",d:"un giorno",dd:"%d giorni",M:"un mese",MM:"%d mesi",y:"un anno",yy:"%d anni"},ordinalParse:/\d{1,2}º/,ordinal:"%dº",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Japanese [ja]
+//! author : LI Long : https://github.com/baryon
+a.defineLocale("ja",{months:"1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月".split("_"),monthsShort:"1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月".split("_"),weekdays:"日曜日_月曜日_火曜日_水曜日_木曜日_金曜日_土曜日".split("_"),weekdaysShort:"日_月_火_水_木_金_土".split("_"),weekdaysMin:"日_月_火_水_木_金_土".split("_"),longDateFormat:{LT:"Ah時m分",LTS:"Ah時m分s秒",L:"YYYY/MM/DD",LL:"YYYY年M月D日",LLL:"YYYY年M月D日Ah時m分",LLLL:"YYYY年M月D日Ah時m分 dddd"},meridiemParse:/午前|午後/i,isPM:function(a){return"午後"===a},meridiem:function(a,b,c){return a<12?"午前":"午後"},calendar:{sameDay:"[今日] LT",nextDay:"[明日] LT",nextWeek:"[来週]dddd LT",lastDay:"[昨日] LT",lastWeek:"[前週]dddd LT",sameElse:"L"},ordinalParse:/\d{1,2}日/,ordinal:function(a,b){switch(b){case"d":case"D":case"DDD":return a+"日";default:return a}},relativeTime:{future:"%s後",past:"%s前",s:"数秒",m:"1分",mm:"%d分",h:"1時間",hh:"%d時間",d:"1日",dd:"%d日",M:"1ヶ月",MM:"%dヶ月",y:"1年",yy:"%d年"}}),
+//! moment.js locale configuration
+//! locale : Javanese [jv]
+//! author : Rony Lantip : https://github.com/lantip
+//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
+a.defineLocale("jv",{months:"Januari_Februari_Maret_April_Mei_Juni_Juli_Agustus_September_Oktober_Nopember_Desember".split("_"),monthsShort:"Jan_Feb_Mar_Apr_Mei_Jun_Jul_Ags_Sep_Okt_Nop_Des".split("_"),weekdays:"Minggu_Senen_Seloso_Rebu_Kemis_Jemuwah_Septu".split("_"),weekdaysShort:"Min_Sen_Sel_Reb_Kem_Jem_Sep".split("_"),weekdaysMin:"Mg_Sn_Sl_Rb_Km_Jm_Sp".split("_"),longDateFormat:{LT:"HH.mm",LTS:"HH.mm.ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY [pukul] HH.mm",LLLL:"dddd, D MMMM YYYY [pukul] HH.mm"},meridiemParse:/enjing|siyang|sonten|ndalu/,meridiemHour:function(a,b){return 12===a&&(a=0),"enjing"===b?a:"siyang"===b?a>=11?a:a+12:"sonten"===b||"ndalu"===b?a+12:void 0},meridiem:function(a,b,c){return a<11?"enjing":a<15?"siyang":a<19?"sonten":"ndalu"},calendar:{sameDay:"[Dinten puniko pukul] LT",nextDay:"[Mbenjang pukul] LT",nextWeek:"dddd [pukul] LT",lastDay:"[Kala wingi pukul] LT",lastWeek:"dddd [kepengker pukul] LT",sameElse:"L"},relativeTime:{future:"wonten ing %s",past:"%s ingkang kepengker",s:"sawetawis detik",m:"setunggal menit",mm:"%d menit",h:"setunggal jam",hh:"%d jam",d:"sedinten",dd:"%d dinten",M:"sewulan",MM:"%d wulan",y:"setaun",yy:"%d taun"},week:{dow:1,// Monday is the first day of the week.
+doy:7}}),
+//! moment.js locale configuration
+//! locale : Georgian [ka]
+//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
+a.defineLocale("ka",{months:{standalone:"იანვარი_თებერვალი_მარტი_აპრილი_მაისი_ივნისი_ივლისი_აგვისტო_სექტემბერი_ოქტომბერი_ნოემბერი_დეკემბერი".split("_"),format:"იანვარს_თებერვალს_მარტს_აპრილის_მაისს_ივნისს_ივლისს_აგვისტს_სექტემბერს_ოქტომბერს_ნოემბერს_დეკემბერს".split("_")},monthsShort:"იან_თებ_მარ_აპრ_მაი_ივნ_ივლ_აგვ_სექ_ოქტ_ნოე_დეკ".split("_"),weekdays:{standalone:"კვირა_ორშაბათი_სამშაბათი_ოთხშაბათი_ხუთშაბათი_პარასკევი_შაბათი".split("_"),format:"კვირას_ორშაბათს_სამშაბათს_ოთხშაბათს_ხუთშაბათს_პარასკევს_შაბათს".split("_"),isFormat:/(წინა|შემდეგ)/},weekdaysShort:"კვი_ორშ_სამ_ოთხ_ხუთ_პარ_შაბ".split("_"),weekdaysMin:"კვ_ორ_სა_ოთ_ხუ_პა_შა".split("_"),longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY h:mm A",LLLL:"dddd, D MMMM YYYY h:mm A"},calendar:{sameDay:"[დღეს] LT[-ზე]",nextDay:"[ხვალ] LT[-ზე]",lastDay:"[გუშინ] LT[-ზე]",nextWeek:"[შემდეგ] dddd LT[-ზე]",lastWeek:"[წინა] dddd LT-ზე",sameElse:"L"},relativeTime:{future:function(a){return/(წამი|წუთი|საათი|წელი)/.test(a)?a.replace(/ი$/,"ში"):a+"ში"},past:function(a){return/(წამი|წუთი|საათი|დღე|თვე)/.test(a)?a.replace(/(ი|ე)$/,"ის წინ"):/წელი/.test(a)?a.replace(/წელი$/,"წლის წინ"):void 0},s:"რამდენიმე წამი",m:"წუთი",mm:"%d წუთი",h:"საათი",hh:"%d საათი",d:"დღე",dd:"%d დღე",M:"თვე",MM:"%d თვე",y:"წელი",yy:"%d წელი"},ordinalParse:/0|1-ლი|მე-\d{1,2}|\d{1,2}-ე/,ordinal:function(a){return 0===a?a:1===a?a+"-ლი":a<20||a<=100&&a%20===0||a%100===0?"მე-"+a:a+"-ე"},week:{dow:1,doy:7}});
+//! moment.js locale configuration
+//! locale : Kazakh [kk]
+//! authors : Nurlan Rakhimzhanov : https://github.com/nurlan
+var bh={0:"-ші",1:"-ші",2:"-ші",3:"-ші",4:"-ші",5:"-ші",6:"-шы",7:"-ші",8:"-ші",9:"-шы",10:"-шы",20:"-шы",30:"-шы",40:"-шы",50:"-ші",60:"-шы",70:"-ші",80:"-ші",90:"-шы",100:"-ші"};a.defineLocale("kk",{months:"қаңтар_ақпан_наурыз_сәуір_мамыр_маусым_шілде_тамыз_қыркүйек_қазан_қараша_желтоқсан".split("_"),monthsShort:"қаң_ақп_нау_сәу_мам_мау_шіл_там_қыр_қаз_қар_жел".split("_"),weekdays:"жексенбі_дүйсенбі_сейсенбі_сәрсенбі_бейсенбі_жұма_сенбі".split("_"),weekdaysShort:"жек_дүй_сей_сәр_бей_жұм_сен".split("_"),weekdaysMin:"жк_дй_сй_ср_бй_жм_сн".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Бүгін сағат] LT",nextDay:"[Ертең сағат] LT",nextWeek:"dddd [сағат] LT",lastDay:"[Кеше сағат] LT",lastWeek:"[Өткен аптаның] dddd [сағат] LT",sameElse:"L"},relativeTime:{future:"%s ішінде",past:"%s бұрын",s:"бірнеше секунд",m:"бір минут",mm:"%d минут",h:"бір сағат",hh:"%d сағат",d:"бір күн",dd:"%d күн",M:"бір ай",MM:"%d ай",y:"бір жыл",yy:"%d жыл"},ordinalParse:/\d{1,2}-(ші|шы)/,ordinal:function(a){var b=a%10,c=a>=100?100:null;return a+(bh[a]||bh[b]||bh[c])},week:{dow:1,// Monday is the first day of the week.
+doy:7}}),
+//! moment.js locale configuration
+//! locale : Cambodian [km]
+//! author : Kruy Vanna : https://github.com/kruyvanna
+a.defineLocale("km",{months:"មករា_កុម្ភៈ_មីនា_មេសា_ឧសភា_មិថុនា_កក្កដា_សីហា_កញ្ញា_តុលា_វិច្ឆិកា_ធ្នូ".split("_"),monthsShort:"មករា_កុម្ភៈ_មីនា_មេសា_ឧសភា_មិថុនា_កក្កដា_សីហា_កញ្ញា_តុលា_វិច្ឆិកា_ធ្នូ".split("_"),weekdays:"អាទិត្យ_ច័ន្ទ_អង្គារ_ពុធ_ព្រហស្បតិ៍_សុក្រ_សៅរ៍".split("_"),weekdaysShort:"អាទិត្យ_ច័ន្ទ_អង្គារ_ពុធ_ព្រហស្បតិ៍_សុក្រ_សៅរ៍".split("_"),weekdaysMin:"អាទិត្យ_ច័ន្ទ_អង្គារ_ពុធ_ព្រហស្បតិ៍_សុក្រ_សៅរ៍".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[ថ្ងៃនេះ ម៉ោង] LT",nextDay:"[ស្អែក ម៉ោង] LT",nextWeek:"dddd [ម៉ោង] LT",lastDay:"[ម្សិលមិញ ម៉ោង] LT",lastWeek:"dddd [សប្តាហ៍មុន] [ម៉ោង] LT",sameElse:"L"},relativeTime:{future:"%sទៀត",past:"%sមុន",s:"ប៉ុន្មានវិនាទី",m:"មួយនាទី",mm:"%d នាទី",h:"មួយម៉ោង",hh:"%d ម៉ោង",d:"មួយថ្ងៃ",dd:"%d ថ្ងៃ",M:"មួយខែ",MM:"%d ខែ",y:"មួយឆ្នាំ",yy:"%d ឆ្នាំ"},week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Korean [ko]
+//! author : Kyungwook, Park : https://github.com/kyungw00k
+//! author : Jeeeyul Lee <jeeeyul@gmail.com>
+a.defineLocale("ko",{months:"1월_2월_3월_4월_5월_6월_7월_8월_9월_10월_11월_12월".split("_"),monthsShort:"1월_2월_3월_4월_5월_6월_7월_8월_9월_10월_11월_12월".split("_"),weekdays:"일요일_월요일_화요일_수요일_목요일_금요일_토요일".split("_"),weekdaysShort:"일_월_화_수_목_금_토".split("_"),weekdaysMin:"일_월_화_수_목_금_토".split("_"),longDateFormat:{LT:"A h시 m분",LTS:"A h시 m분 s초",L:"YYYY.MM.DD",LL:"YYYY년 MMMM D일",LLL:"YYYY년 MMMM D일 A h시 m분",LLLL:"YYYY년 MMMM D일 dddd A h시 m분"},calendar:{sameDay:"오늘 LT",nextDay:"내일 LT",nextWeek:"dddd LT",lastDay:"어제 LT",lastWeek:"지난주 dddd LT",sameElse:"L"},relativeTime:{future:"%s 후",past:"%s 전",s:"몇 초",ss:"%d초",m:"일분",mm:"%d분",h:"한 시간",hh:"%d시간",d:"하루",dd:"%d일",M:"한 달",MM:"%d달",y:"일 년",yy:"%d년"},ordinalParse:/\d{1,2}일/,ordinal:"%d일",meridiemParse:/오전|오후/,isPM:function(a){return"오후"===a},meridiem:function(a,b,c){return a<12?"오전":"오후"}});
+//! moment.js locale configuration
+//! locale : Kyrgyz [ky]
+//! author : Chyngyz Arystan uulu : https://github.com/chyngyz
+var ch={0:"-чү",1:"-чи",2:"-чи",3:"-чү",4:"-чү",5:"-чи",6:"-чы",7:"-чи",8:"-чи",9:"-чу",10:"-чу",20:"-чы",30:"-чу",40:"-чы",50:"-чү",60:"-чы",70:"-чи",80:"-чи",90:"-чу",100:"-чү"};a.defineLocale("ky",{months:"январь_февраль_март_апрель_май_июнь_июль_август_сентябрь_октябрь_ноябрь_декабрь".split("_"),monthsShort:"янв_фев_март_апр_май_июнь_июль_авг_сен_окт_ноя_дек".split("_"),weekdays:"Жекшемби_Дүйшөмбү_Шейшемби_Шаршемби_Бейшемби_Жума_Ишемби".split("_"),weekdaysShort:"Жек_Дүй_Шей_Шар_Бей_Жум_Ише".split("_"),weekdaysMin:"Жк_Дй_Шй_Шр_Бй_Жм_Иш".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Бүгүн саат] LT",nextDay:"[Эртең саат] LT",nextWeek:"dddd [саат] LT",lastDay:"[Кече саат] LT",lastWeek:"[Өткен аптанын] dddd [күнү] [саат] LT",sameElse:"L"},relativeTime:{future:"%s ичинде",past:"%s мурун",s:"бирнече секунд",m:"бир мүнөт",mm:"%d мүнөт",h:"бир саат",hh:"%d саат",d:"бир күн",dd:"%d күн",M:"бир ай",MM:"%d ай",y:"бир жыл",yy:"%d жыл"},ordinalParse:/\d{1,2}-(чи|чы|чү|чу)/,ordinal:function(a){var b=a%10,c=a>=100?100:null;return a+(ch[a]||ch[b]||ch[c])},week:{dow:1,// Monday is the first day of the week.
+doy:7}}),a.defineLocale("lb",{months:"Januar_Februar_Mäerz_Abrëll_Mee_Juni_Juli_August_September_Oktober_November_Dezember".split("_"),monthsShort:"Jan._Febr._Mrz._Abr._Mee_Jun._Jul._Aug._Sept._Okt._Nov._Dez.".split("_"),monthsParseExact:!0,weekdays:"Sonndeg_Méindeg_Dënschdeg_Mëttwoch_Donneschdeg_Freideg_Samschdeg".split("_"),weekdaysShort:"So._Mé._Dë._Më._Do._Fr._Sa.".split("_"),weekdaysMin:"So_Mé_Dë_Më_Do_Fr_Sa".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm [Auer]",LTS:"H:mm:ss [Auer]",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm [Auer]",LLLL:"dddd, D. MMMM YYYY H:mm [Auer]"},calendar:{sameDay:"[Haut um] LT",sameElse:"L",nextDay:"[Muer um] LT",nextWeek:"dddd [um] LT",lastDay:"[Gëschter um] LT",lastWeek:function(){
 // Different date string for 'Dënschdeg' (Tuesday) and 'Donneschdeg' (Thursday) due to phonological rule
-switch(this.day()){case 2:case 4:return"[Leschten] dddd [um] LT";default:return"[Leschte] dddd [um] LT"}}},relativeTime:{future:Hd,past:Id,s:"e puer Sekonnen",m:Gd,mm:"%d Minutten",h:Gd,hh:"%d Stonnen",d:Gd,dd:"%d Deeg",M:Gd,MM:"%d Méint",y:Gd,yy:"%d Joer"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("lo",{months:"ມັງກອນ_ກຸມພາ_ມີນາ_ເມສາ_ພຶດສະພາ_ມິຖຸນາ_ກໍລະກົດ_ສິງຫາ_ກັນຍາ_ຕຸລາ_ພະຈິກ_ທັນວາ".split("_"),monthsShort:"ມັງກອນ_ກຸມພາ_ມີນາ_ເມສາ_ພຶດສະພາ_ມິຖຸນາ_ກໍລະກົດ_ສິງຫາ_ກັນຍາ_ຕຸລາ_ພະຈິກ_ທັນວາ".split("_"),weekdays:"ອາທິດ_ຈັນ_ອັງຄານ_ພຸດ_ພະຫັດ_ສຸກ_ເສົາ".split("_"),weekdaysShort:"ທິດ_ຈັນ_ອັງຄານ_ພຸດ_ພະຫັດ_ສຸກ_ເສົາ".split("_"),weekdaysMin:"ທ_ຈ_ອຄ_ພ_ພຫ_ສກ_ສ".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"ວັນdddd D MMMM YYYY HH:mm"},meridiemParse:/ຕອນເຊົ້າ|ຕອນແລງ/,isPM:function(a){return"ຕອນແລງ"===a},meridiem:function(a,b,c){return a<12?"ຕອນເຊົ້າ":"ຕອນແລງ"},calendar:{sameDay:"[ມື້ນີ້ເວລາ] LT",nextDay:"[ມື້ອື່ນເວລາ] LT",nextWeek:"[ວັນ]dddd[ໜ້າເວລາ] LT",lastDay:"[ມື້ວານນີ້ເວລາ] LT",lastWeek:"[ວັນ]dddd[ແລ້ວນີ້ເວລາ] LT",sameElse:"L"},relativeTime:{future:"ອີກ %s",past:"%sຜ່ານມາ",s:"ບໍ່ເທົ່າໃດວິນາທີ",m:"1 ນາທີ",mm:"%d ນາທີ",h:"1 ຊົ່ວໂມງ",hh:"%d ຊົ່ວໂມງ",d:"1 ມື້",dd:"%d ມື້",M:"1 ເດືອນ",MM:"%d ເດືອນ",y:"1 ປີ",yy:"%d ປີ"},ordinalParse:/(ທີ່)\d{1,2}/,ordinal:function(a){return"ທີ່"+a}}),{m:"minutė_minutės_minutę",mm:"minutės_minučių_minutes",h:"valanda_valandos_valandą",hh:"valandos_valandų_valandas",d:"diena_dienos_dieną",dd:"dienos_dienų_dienas",M:"mėnuo_mėnesio_mėnesį",MM:"mėnesiai_mėnesių_mėnesius",y:"metai_metų_metus",yy:"metai_metų_metus"}),ah=(kg.defineLocale("lt",{months:{format:"sausio_vasario_kovo_balandžio_gegužės_birželio_liepos_rugpjūčio_rugsėjo_spalio_lapkričio_gruodžio".split("_"),standalone:"sausis_vasaris_kovas_balandis_gegužė_birželis_liepa_rugpjūtis_rugsėjis_spalis_lapkritis_gruodis".split("_"),isFormat:/D[oD]?(\[[^\[\]]*\]|\s)+MMMM?|MMMM?(\[[^\[\]]*\]|\s)+D[oD]?/},monthsShort:"sau_vas_kov_bal_geg_bir_lie_rgp_rgs_spa_lap_grd".split("_"),weekdays:{format:"sekmadienį_pirmadienį_antradienį_trečiadienį_ketvirtadienį_penktadienį_šeštadienį".split("_"),standalone:"sekmadienis_pirmadienis_antradienis_trečiadienis_ketvirtadienis_penktadienis_šeštadienis".split("_"),isFormat:/dddd HH:mm/},weekdaysShort:"Sek_Pir_Ant_Tre_Ket_Pen_Šeš".split("_"),weekdaysMin:"S_P_A_T_K_Pn_Š".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"YYYY-MM-DD",LL:"YYYY [m.] MMMM D [d.]",LLL:"YYYY [m.] MMMM D [d.], HH:mm [val.]",LLLL:"YYYY [m.] MMMM D [d.], dddd, HH:mm [val.]",l:"YYYY-MM-DD",ll:"YYYY [m.] MMMM D [d.]",lll:"YYYY [m.] MMMM D [d.], HH:mm [val.]",llll:"YYYY [m.] MMMM D [d.], ddd, HH:mm [val.]"},calendar:{sameDay:"[Šiandien] LT",nextDay:"[Rytoj] LT",nextWeek:"dddd LT",lastDay:"[Vakar] LT",lastWeek:"[Praėjusį] dddd LT",sameElse:"L"},relativeTime:{future:"po %s",past:"prieš %s",s:Kd,m:Ld,mm:Od,h:Ld,hh:Od,d:Ld,dd:Od,M:Ld,MM:Od,y:Ld,yy:Od},ordinalParse:/\d{1,2}-oji/,ordinal:function(a){return a+"-oji"},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),{m:"minūtes_minūtēm_minūte_minūtes".split("_"),mm:"minūtes_minūtēm_minūte_minūtes".split("_"),h:"stundas_stundām_stunda_stundas".split("_"),hh:"stundas_stundām_stunda_stundas".split("_"),d:"dienas_dienām_diena_dienas".split("_"),dd:"dienas_dienām_diena_dienas".split("_"),M:"mēneša_mēnešiem_mēnesis_mēneši".split("_"),MM:"mēneša_mēnešiem_mēnesis_mēneši".split("_"),y:"gada_gadiem_gads_gadi".split("_"),yy:"gada_gadiem_gads_gadi".split("_")}),bh=(kg.defineLocale("lv",{months:"janvāris_februāris_marts_aprīlis_maijs_jūnijs_jūlijs_augusts_septembris_oktobris_novembris_decembris".split("_"),monthsShort:"jan_feb_mar_apr_mai_jūn_jūl_aug_sep_okt_nov_dec".split("_"),weekdays:"svētdiena_pirmdiena_otrdiena_trešdiena_ceturtdiena_piektdiena_sestdiena".split("_"),weekdaysShort:"Sv_P_O_T_C_Pk_S".split("_"),weekdaysMin:"Sv_P_O_T_C_Pk_S".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY.",LL:"YYYY. [gada] D. MMMM",LLL:"YYYY. [gada] D. MMMM, HH:mm",LLLL:"YYYY. [gada] D. MMMM, dddd, HH:mm"},calendar:{sameDay:"[Šodien pulksten] LT",nextDay:"[Rīt pulksten] LT",nextWeek:"dddd [pulksten] LT",lastDay:"[Vakar pulksten] LT",lastWeek:"[Pagājušā] dddd [pulksten] LT",sameElse:"L"},relativeTime:{future:"pēc %s",past:"pirms %s",s:Sd,m:Rd,mm:Qd,h:Rd,hh:Qd,d:Rd,dd:Qd,M:Rd,MM:Qd,y:Rd,yy:Qd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),{words:{//Different grammatical cases
-m:["jedan minut","jednog minuta"],mm:["minut","minuta","minuta"],h:["jedan sat","jednog sata"],hh:["sat","sata","sati"],dd:["dan","dana","dana"],MM:["mjesec","mjeseca","mjeseci"],yy:["godina","godine","godina"]},correctGrammaticalCase:function(a,b){return 1===a?b[0]:a>=2&&a<=4?b[1]:b[2]},translate:function(a,b,c){var d=bh.words[c];return 1===c.length?b?d[0]:d[1]:a+" "+bh.correctGrammaticalCase(a,d)}}),ch=(kg.defineLocale("me",{months:"januar_februar_mart_april_maj_jun_jul_avgust_septembar_oktobar_novembar_decembar".split("_"),monthsShort:"jan._feb._mar._apr._maj_jun_jul_avg._sep._okt._nov._dec.".split("_"),monthsParseExact:!0,weekdays:"nedjelja_ponedjeljak_utorak_srijeda_četvrtak_petak_subota".split("_"),weekdaysShort:"ned._pon._uto._sri._čet._pet._sub.".split("_"),weekdaysMin:"ne_po_ut_sr_če_pe_su".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd, D. MMMM YYYY H:mm"},calendar:{sameDay:"[danas u] LT",nextDay:"[sjutra u] LT",nextWeek:function(){switch(this.day()){case 0:return"[u] [nedjelju] [u] LT";case 3:return"[u] [srijedu] [u] LT";case 6:return"[u] [subotu] [u] LT";case 1:case 2:case 4:case 5:return"[u] dddd [u] LT"}},lastDay:"[juče u] LT",lastWeek:function(){var a=["[prošle] [nedjelje] [u] LT","[prošlog] [ponedjeljka] [u] LT","[prošlog] [utorka] [u] LT","[prošle] [srijede] [u] LT","[prošlog] [četvrtka] [u] LT","[prošlog] [petka] [u] LT","[prošle] [subote] [u] LT"];return a[this.day()]},sameElse:"L"},relativeTime:{future:"za %s",past:"prije %s",s:"nekoliko sekundi",m:bh.translate,mm:bh.translate,h:bh.translate,hh:bh.translate,d:"dan",dd:bh.translate,M:"mjesec",MM:bh.translate,y:"godinu",yy:bh.translate},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("mi",{months:"Kohi-tāte_Hui-tanguru_Poutū-te-rangi_Paenga-whāwhā_Haratua_Pipiri_Hōngoingoi_Here-turi-kōkā_Mahuru_Whiringa-ā-nuku_Whiringa-ā-rangi_Hakihea".split("_"),monthsShort:"Kohi_Hui_Pou_Pae_Hara_Pipi_Hōngoi_Here_Mahu_Whi-nu_Whi-ra_Haki".split("_"),monthsRegex:/(?:['a-z\u0101\u014D\u016B]+\-?){1,3}/i,monthsStrictRegex:/(?:['a-z\u0101\u014D\u016B]+\-?){1,3}/i,monthsShortRegex:/(?:['a-z\u0101\u014D\u016B]+\-?){1,3}/i,monthsShortStrictRegex:/(?:['a-z\u0101\u014D\u016B]+\-?){1,2}/i,weekdays:"Rātapu_Mane_Tūrei_Wenerei_Tāite_Paraire_Hātarei".split("_"),weekdaysShort:"Ta_Ma_Tū_We_Tāi_Pa_Hā".split("_"),weekdaysMin:"Ta_Ma_Tū_We_Tāi_Pa_Hā".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY [i] HH:mm",LLLL:"dddd, D MMMM YYYY [i] HH:mm"},calendar:{sameDay:"[i teie mahana, i] LT",nextDay:"[apopo i] LT",nextWeek:"dddd [i] LT",lastDay:"[inanahi i] LT",lastWeek:"dddd [whakamutunga i] LT",sameElse:"L"},relativeTime:{future:"i roto i %s",past:"%s i mua",s:"te hēkona ruarua",m:"he meneti",mm:"%d meneti",h:"te haora",hh:"%d haora",d:"he ra",dd:"%d ra",M:"he marama",MM:"%d marama",y:"he tau",yy:"%d tau"},ordinalParse:/\d{1,2}º/,ordinal:"%dº",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("mk",{months:"јануари_февруари_март_април_мај_јуни_јули_август_септември_октомври_ноември_декември".split("_"),monthsShort:"јан_фев_мар_апр_мај_јун_јул_авг_сеп_окт_ное_дек".split("_"),weekdays:"недела_понеделник_вторник_среда_четврток_петок_сабота".split("_"),weekdaysShort:"нед_пон_вто_сре_чет_пет_саб".split("_"),weekdaysMin:"нe_пo_вт_ср_че_пе_сa".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"D.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY H:mm",LLLL:"dddd, D MMMM YYYY H:mm"},calendar:{sameDay:"[Денес во] LT",nextDay:"[Утре во] LT",nextWeek:"[Во] dddd [во] LT",lastDay:"[Вчера во] LT",lastWeek:function(){switch(this.day()){case 0:case 3:case 6:return"[Изминатата] dddd [во] LT";case 1:case 2:case 4:case 5:return"[Изминатиот] dddd [во] LT"}},sameElse:"L"},relativeTime:{future:"после %s",past:"пред %s",s:"неколку секунди",m:"минута",mm:"%d минути",h:"час",hh:"%d часа",d:"ден",dd:"%d дена",M:"месец",MM:"%d месеци",y:"година",yy:"%d години"},ordinalParse:/\d{1,2}-(ев|ен|ти|ви|ри|ми)/,ordinal:function(a){var b=a%10,c=a%100;return 0===a?a+"-ев":0===c?a+"-ен":c>10&&c<20?a+"-ти":1===b?a+"-ви":2===b?a+"-ри":7===b||8===b?a+"-ми":a+"-ти"},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("ml",{months:"ജനുവരി_ഫെബ്രുവരി_മാർച്ച്_ഏപ്രിൽ_മേയ്_ജൂൺ_ജൂലൈ_ഓഗസ്റ്റ്_സെപ്റ്റംബർ_ഒക്ടോബർ_നവംബർ_ഡിസംബർ".split("_"),monthsShort:"ജനു._ഫെബ്രു._മാർ._ഏപ്രി._മേയ്_ജൂൺ_ജൂലൈ._ഓഗ._സെപ്റ്റ._ഒക്ടോ._നവം._ഡിസം.".split("_"),monthsParseExact:!0,weekdays:"ഞായറാഴ്ച_തിങ്കളാഴ്ച_ചൊവ്വാഴ്ച_ബുധനാഴ്ച_വ്യാഴാഴ്ച_വെള്ളിയാഴ്ച_ശനിയാഴ്ച".split("_"),weekdaysShort:"ഞായർ_തിങ്കൾ_ചൊവ്വ_ബുധൻ_വ്യാഴം_വെള്ളി_ശനി".split("_"),weekdaysMin:"ഞാ_തി_ചൊ_ബു_വ്യാ_വെ_ശ".split("_"),longDateFormat:{LT:"A h:mm -നു",LTS:"A h:mm:ss -നു",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, A h:mm -നു",LLLL:"dddd, D MMMM YYYY, A h:mm -നു"},calendar:{sameDay:"[ഇന്ന്] LT",nextDay:"[നാളെ] LT",nextWeek:"dddd, LT",lastDay:"[ഇന്നലെ] LT",lastWeek:"[കഴിഞ്ഞ] dddd, LT",sameElse:"L"},relativeTime:{future:"%s കഴിഞ്ഞ്",past:"%s മുൻപ്",s:"അൽപ നിമിഷങ്ങൾ",m:"ഒരു മിനിറ്റ്",mm:"%d മിനിറ്റ്",h:"ഒരു മണിക്കൂർ",hh:"%d മണിക്കൂർ",d:"ഒരു ദിവസം",dd:"%d ദിവസം",M:"ഒരു മാസം",MM:"%d മാസം",y:"ഒരു വർഷം",yy:"%d വർഷം"},meridiemParse:/രാത്രി|രാവിലെ|ഉച്ച കഴിഞ്ഞ്|വൈകുന്നേരം|രാത്രി/i,meridiemHour:function(a,b){return 12===a&&(a=0),"രാത്രി"===b&&a>=4||"ഉച്ച കഴിഞ്ഞ്"===b||"വൈകുന്നേരം"===b?a+12:a},meridiem:function(a,b,c){return a<4?"രാത്രി":a<12?"രാവിലെ":a<17?"ഉച്ച കഴിഞ്ഞ്":a<20?"വൈകുന്നേരം":"രാത്രി"}}),{1:"१",2:"२",3:"३",4:"४",5:"५",6:"६",7:"७",8:"८",9:"९",0:"०"}),dh={"१":"1","२":"2","३":"3","४":"4","५":"5","६":"6","७":"7","८":"8","९":"9","०":"0"},eh=(kg.defineLocale("mr",{months:"जानेवारी_फेब्रुवारी_मार्च_एप्रिल_मे_जून_जुलै_ऑगस्ट_सप्टेंबर_ऑक्टोबर_नोव्हेंबर_डिसेंबर".split("_"),monthsShort:"जाने._फेब्रु._मार्च._एप्रि._मे._जून._जुलै._ऑग._सप्टें._ऑक्टो._नोव्हें._डिसें.".split("_"),monthsParseExact:!0,weekdays:"रविवार_सोमवार_मंगळवार_बुधवार_गुरूवार_शुक्रवार_शनिवार".split("_"),weekdaysShort:"रवि_सोम_मंगळ_बुध_गुरू_शुक्र_शनि".split("_"),weekdaysMin:"र_सो_मं_बु_गु_शु_श".split("_"),longDateFormat:{LT:"A h:mm वाजता",LTS:"A h:mm:ss वाजता",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, A h:mm वाजता",LLLL:"dddd, D MMMM YYYY, A h:mm वाजता"},calendar:{sameDay:"[आज] LT",nextDay:"[उद्या] LT",nextWeek:"dddd, LT",lastDay:"[काल] LT",lastWeek:"[मागील] dddd, LT",sameElse:"L"},relativeTime:{future:"%sमध्ये",past:"%sपूर्वी",s:Td,m:Td,mm:Td,h:Td,hh:Td,d:Td,dd:Td,M:Td,MM:Td,y:Td,yy:Td},preparse:function(a){return a.replace(/[१२३४५६७८९०]/g,function(a){return dh[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return ch[a]})},meridiemParse:/रात्री|सकाळी|दुपारी|सायंकाळी/,meridiemHour:function(a,b){return 12===a&&(a=0),"रात्री"===b?a<4?a:a+12:"सकाळी"===b?a:"दुपारी"===b?a>=10?a:a+12:"सायंकाळी"===b?a+12:void 0},meridiem:function(a,b,c){return a<4?"रात्री":a<10?"सकाळी":a<17?"दुपारी":a<20?"सायंकाळी":"रात्री"},week:{dow:0,// Sunday is the first day of the week.
-doy:6}}),kg.defineLocale("ms-my",{months:"Januari_Februari_Mac_April_Mei_Jun_Julai_Ogos_September_Oktober_November_Disember".split("_"),monthsShort:"Jan_Feb_Mac_Apr_Mei_Jun_Jul_Ogs_Sep_Okt_Nov_Dis".split("_"),weekdays:"Ahad_Isnin_Selasa_Rabu_Khamis_Jumaat_Sabtu".split("_"),weekdaysShort:"Ahd_Isn_Sel_Rab_Kha_Jum_Sab".split("_"),weekdaysMin:"Ah_Is_Sl_Rb_Km_Jm_Sb".split("_"),longDateFormat:{LT:"HH.mm",LTS:"HH.mm.ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY [pukul] HH.mm",LLLL:"dddd, D MMMM YYYY [pukul] HH.mm"},meridiemParse:/pagi|tengahari|petang|malam/,meridiemHour:function(a,b){return 12===a&&(a=0),"pagi"===b?a:"tengahari"===b?a>=11?a:a+12:"petang"===b||"malam"===b?a+12:void 0},meridiem:function(a,b,c){return a<11?"pagi":a<15?"tengahari":a<19?"petang":"malam"},calendar:{sameDay:"[Hari ini pukul] LT",nextDay:"[Esok pukul] LT",nextWeek:"dddd [pukul] LT",lastDay:"[Kelmarin pukul] LT",lastWeek:"dddd [lepas pukul] LT",sameElse:"L"},relativeTime:{future:"dalam %s",past:"%s yang lepas",s:"beberapa saat",m:"seminit",mm:"%d minit",h:"sejam",hh:"%d jam",d:"sehari",dd:"%d hari",M:"sebulan",MM:"%d bulan",y:"setahun",yy:"%d tahun"},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("ms",{months:"Januari_Februari_Mac_April_Mei_Jun_Julai_Ogos_September_Oktober_November_Disember".split("_"),monthsShort:"Jan_Feb_Mac_Apr_Mei_Jun_Jul_Ogs_Sep_Okt_Nov_Dis".split("_"),weekdays:"Ahad_Isnin_Selasa_Rabu_Khamis_Jumaat_Sabtu".split("_"),weekdaysShort:"Ahd_Isn_Sel_Rab_Kha_Jum_Sab".split("_"),weekdaysMin:"Ah_Is_Sl_Rb_Km_Jm_Sb".split("_"),longDateFormat:{LT:"HH.mm",LTS:"HH.mm.ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY [pukul] HH.mm",LLLL:"dddd, D MMMM YYYY [pukul] HH.mm"},meridiemParse:/pagi|tengahari|petang|malam/,meridiemHour:function(a,b){return 12===a&&(a=0),"pagi"===b?a:"tengahari"===b?a>=11?a:a+12:"petang"===b||"malam"===b?a+12:void 0},meridiem:function(a,b,c){return a<11?"pagi":a<15?"tengahari":a<19?"petang":"malam"},calendar:{sameDay:"[Hari ini pukul] LT",nextDay:"[Esok pukul] LT",nextWeek:"dddd [pukul] LT",lastDay:"[Kelmarin pukul] LT",lastWeek:"dddd [lepas pukul] LT",sameElse:"L"},relativeTime:{future:"dalam %s",past:"%s yang lepas",s:"beberapa saat",m:"seminit",mm:"%d minit",h:"sejam",hh:"%d jam",d:"sehari",dd:"%d hari",M:"sebulan",MM:"%d bulan",y:"setahun",yy:"%d tahun"},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),{1:"၁",2:"၂",3:"၃",4:"၄",5:"၅",6:"၆",7:"၇",8:"၈",9:"၉",0:"၀"}),fh={"၁":"1","၂":"2","၃":"3","၄":"4","၅":"5","၆":"6","၇":"7","၈":"8","၉":"9","၀":"0"},gh=(kg.defineLocale("my",{months:"ဇန်နဝါရီ_ဖေဖော်ဝါရီ_မတ်_ဧပြီ_မေ_ဇွန်_ဇူလိုင်_သြဂုတ်_စက်တင်ဘာ_အောက်တိုဘာ_နိုဝင်ဘာ_ဒီဇင်ဘာ".split("_"),monthsShort:"ဇန်_ဖေ_မတ်_ပြီ_မေ_ဇွန်_လိုင်_သြ_စက်_အောက်_နို_ဒီ".split("_"),weekdays:"တနင်္ဂနွေ_တနင်္လာ_အင်္ဂါ_ဗုဒ္ဓဟူး_ကြာသပတေး_သောကြာ_စနေ".split("_"),weekdaysShort:"နွေ_လာ_ဂါ_ဟူး_ကြာ_သော_နေ".split("_"),weekdaysMin:"နွေ_လာ_ဂါ_ဟူး_ကြာ_သော_နေ".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[ယနေ.] LT [မှာ]",nextDay:"[မနက်ဖြန်] LT [မှာ]",nextWeek:"dddd LT [မှာ]",lastDay:"[မနေ.က] LT [မှာ]",lastWeek:"[ပြီးခဲ့သော] dddd LT [မှာ]",sameElse:"L"},relativeTime:{future:"လာမည့် %s မှာ",past:"လွန်ခဲ့သော %s က",s:"စက္ကန်.အနည်းငယ်",m:"တစ်မိနစ်",mm:"%d မိနစ်",h:"တစ်နာရီ",hh:"%d နာရီ",d:"တစ်ရက်",dd:"%d ရက်",M:"တစ်လ",MM:"%d လ",y:"တစ်နှစ်",yy:"%d နှစ်"},preparse:function(a){return a.replace(/[၁၂၃၄၅၆၇၈၉၀]/g,function(a){return fh[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return eh[a]})},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("nb",{months:"januar_februar_mars_april_mai_juni_juli_august_september_oktober_november_desember".split("_"),monthsShort:"jan._feb._mars_april_mai_juni_juli_aug._sep._okt._nov._des.".split("_"),monthsParseExact:!0,weekdays:"søndag_mandag_tirsdag_onsdag_torsdag_fredag_lørdag".split("_"),weekdaysShort:"sø._ma._ti._on._to._fr._lø.".split("_"),weekdaysMin:"sø_ma_ti_on_to_fr_lø".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY [kl.] HH:mm",LLLL:"dddd D. MMMM YYYY [kl.] HH:mm"},calendar:{sameDay:"[i dag kl.] LT",nextDay:"[i morgen kl.] LT",nextWeek:"dddd [kl.] LT",lastDay:"[i går kl.] LT",lastWeek:"[forrige] dddd [kl.] LT",sameElse:"L"},relativeTime:{future:"om %s",past:"%s siden",s:"noen sekunder",m:"ett minutt",mm:"%d minutter",h:"en time",hh:"%d timer",d:"en dag",dd:"%d dager",M:"en måned",MM:"%d måneder",y:"ett år",yy:"%d år"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),{1:"१",2:"२",3:"३",4:"४",5:"५",6:"६",7:"७",8:"८",9:"९",0:"०"}),hh={"१":"1","२":"2","३":"3","४":"4","५":"5","६":"6","७":"7","८":"8","९":"9","०":"0"},ih=(kg.defineLocale("ne",{months:"जनवरी_फेब्रुवरी_मार्च_अप्रिल_मई_जुन_जुलाई_अगष्ट_सेप्टेम्बर_अक्टोबर_नोभेम्बर_डिसेम्बर".split("_"),monthsShort:"जन._फेब्रु._मार्च_अप्रि._मई_जुन_जुलाई._अग._सेप्ट._अक्टो._नोभे._डिसे.".split("_"),monthsParseExact:!0,weekdays:"आइतबार_सोमबार_मङ्गलबार_बुधबार_बिहिबार_शुक्रबार_शनिबार".split("_"),weekdaysShort:"आइत._सोम._मङ्गल._बुध._बिहि._शुक्र._शनि.".split("_"),weekdaysMin:"आ._सो._मं._बु._बि._शु._श.".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"Aको h:mm बजे",LTS:"Aको h:mm:ss बजे",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, Aको h:mm बजे",LLLL:"dddd, D MMMM YYYY, Aको h:mm बजे"},preparse:function(a){return a.replace(/[१२३४५६७८९०]/g,function(a){return hh[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return gh[a]})},meridiemParse:/राति|बिहान|दिउँसो|साँझ/,meridiemHour:function(a,b){return 12===a&&(a=0),"राति"===b?a<4?a:a+12:"बिहान"===b?a:"दिउँसो"===b?a>=10?a:a+12:"साँझ"===b?a+12:void 0},meridiem:function(a,b,c){return a<3?"राति":a<12?"बिहान":a<16?"दिउँसो":a<20?"साँझ":"राति"},calendar:{sameDay:"[आज] LT",nextDay:"[भोलि] LT",nextWeek:"[आउँदो] dddd[,] LT",lastDay:"[हिजो] LT",lastWeek:"[गएको] dddd[,] LT",sameElse:"L"},relativeTime:{future:"%sमा",past:"%s अगाडि",s:"केही क्षण",m:"एक मिनेट",mm:"%d मिनेट",h:"एक घण्टा",hh:"%d घण्टा",d:"एक दिन",dd:"%d दिन",M:"एक महिना",MM:"%d महिना",y:"एक बर्ष",yy:"%d बर्ष"},week:{dow:0,// Sunday is the first day of the week.
-doy:6}}),"jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.".split("_")),jh="jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec".split("_"),kh=[/^jan/i,/^feb/i,/^maart|mrt.?$/i,/^apr/i,/^mei$/i,/^jun[i.]?$/i,/^jul[i.]?$/i,/^aug/i,/^sep/i,/^okt/i,/^nov/i,/^dec/i],lh=/^(januari|februari|maart|april|mei|april|ju[nl]i|augustus|september|oktober|november|december|jan\.?|feb\.?|mrt\.?|apr\.?|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i,mh=(kg.defineLocale("nl",{months:"januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december".split("_"),monthsShort:function(a,b){return/-MMM-/.test(b)?jh[a.month()]:ih[a.month()]},monthsRegex:lh,monthsShortRegex:lh,monthsStrictRegex:/^(januari|februari|maart|mei|ju[nl]i|april|augustus|september|oktober|november|december)/i,monthsShortStrictRegex:/^(jan\.?|feb\.?|mrt\.?|apr\.?|mei|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i,monthsParse:kh,longMonthsParse:kh,shortMonthsParse:kh,weekdays:"zondag_maandag_dinsdag_woensdag_donderdag_vrijdag_zaterdag".split("_"),weekdaysShort:"zo._ma._di._wo._do._vr._za.".split("_"),weekdaysMin:"Zo_Ma_Di_Wo_Do_Vr_Za".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD-MM-YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[vandaag om] LT",nextDay:"[morgen om] LT",nextWeek:"dddd [om] LT",lastDay:"[gisteren om] LT",lastWeek:"[afgelopen] dddd [om] LT",sameElse:"L"},relativeTime:{future:"over %s",past:"%s geleden",s:"een paar seconden",m:"één minuut",mm:"%d minuten",h:"één uur",hh:"%d uur",d:"één dag",dd:"%d dagen",M:"één maand",MM:"%d maanden",y:"één jaar",yy:"%d jaar"},ordinalParse:/\d{1,2}(ste|de)/,ordinal:function(a){return a+(1===a||8===a||a>=20?"ste":"de")},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("nn",{months:"januar_februar_mars_april_mai_juni_juli_august_september_oktober_november_desember".split("_"),monthsShort:"jan_feb_mar_apr_mai_jun_jul_aug_sep_okt_nov_des".split("_"),weekdays:"sundag_måndag_tysdag_onsdag_torsdag_fredag_laurdag".split("_"),weekdaysShort:"sun_mån_tys_ons_tor_fre_lau".split("_"),weekdaysMin:"su_må_ty_on_to_fr_lø".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY [kl.] H:mm",LLLL:"dddd D. MMMM YYYY [kl.] HH:mm"},calendar:{sameDay:"[I dag klokka] LT",nextDay:"[I morgon klokka] LT",nextWeek:"dddd [klokka] LT",lastDay:"[I går klokka] LT",lastWeek:"[Føregåande] dddd [klokka] LT",sameElse:"L"},relativeTime:{future:"om %s",past:"%s sidan",s:"nokre sekund",m:"eit minutt",mm:"%d minutt",h:"ein time",hh:"%d timar",d:"ein dag",dd:"%d dagar",M:"ein månad",MM:"%d månader",y:"eit år",yy:"%d år"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),{1:"੧",2:"੨",3:"੩",4:"੪",5:"੫",6:"੬",7:"੭",8:"੮",9:"੯",0:"੦"}),nh={"੧":"1","੨":"2","੩":"3","੪":"4","੫":"5","੬":"6","੭":"7","੮":"8","੯":"9","੦":"0"},oh=(kg.defineLocale("pa-in",{
+switch(this.day()){case 2:case 4:return"[Leschten] dddd [um] LT";default:return"[Leschte] dddd [um] LT"}}},relativeTime:{future:Jd,past:Kd,s:"e puer Sekonnen",m:Id,mm:"%d Minutten",h:Id,hh:"%d Stonnen",d:Id,dd:"%d Deeg",M:Id,MM:"%d Méint",y:Id,yy:"%d Joer"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Lao [lo]
+//! author : Ryan Hart : https://github.com/ryanhart2
+a.defineLocale("lo",{months:"ມັງກອນ_ກຸມພາ_ມີນາ_ເມສາ_ພຶດສະພາ_ມິຖຸນາ_ກໍລະກົດ_ສິງຫາ_ກັນຍາ_ຕຸລາ_ພະຈິກ_ທັນວາ".split("_"),monthsShort:"ມັງກອນ_ກຸມພາ_ມີນາ_ເມສາ_ພຶດສະພາ_ມິຖຸນາ_ກໍລະກົດ_ສິງຫາ_ກັນຍາ_ຕຸລາ_ພະຈິກ_ທັນວາ".split("_"),weekdays:"ອາທິດ_ຈັນ_ອັງຄານ_ພຸດ_ພະຫັດ_ສຸກ_ເສົາ".split("_"),weekdaysShort:"ທິດ_ຈັນ_ອັງຄານ_ພຸດ_ພະຫັດ_ສຸກ_ເສົາ".split("_"),weekdaysMin:"ທ_ຈ_ອຄ_ພ_ພຫ_ສກ_ສ".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"ວັນdddd D MMMM YYYY HH:mm"},meridiemParse:/ຕອນເຊົ້າ|ຕອນແລງ/,isPM:function(a){return"ຕອນແລງ"===a},meridiem:function(a,b,c){return a<12?"ຕອນເຊົ້າ":"ຕອນແລງ"},calendar:{sameDay:"[ມື້ນີ້ເວລາ] LT",nextDay:"[ມື້ອື່ນເວລາ] LT",nextWeek:"[ວັນ]dddd[ໜ້າເວລາ] LT",lastDay:"[ມື້ວານນີ້ເວລາ] LT",lastWeek:"[ວັນ]dddd[ແລ້ວນີ້ເວລາ] LT",sameElse:"L"},relativeTime:{future:"ອີກ %s",past:"%sຜ່ານມາ",s:"ບໍ່ເທົ່າໃດວິນາທີ",m:"1 ນາທີ",mm:"%d ນາທີ",h:"1 ຊົ່ວໂມງ",hh:"%d ຊົ່ວໂມງ",d:"1 ມື້",dd:"%d ມື້",M:"1 ເດືອນ",MM:"%d ເດືອນ",y:"1 ປີ",yy:"%d ປີ"},ordinalParse:/(ທີ່)\d{1,2}/,ordinal:function(a){return"ທີ່"+a}});
+//! moment.js locale configuration
+//! locale : Lithuanian [lt]
+//! author : Mindaugas Mozūras : https://github.com/mmozuras
+var dh={m:"minutė_minutės_minutę",mm:"minutės_minučių_minutes",h:"valanda_valandos_valandą",hh:"valandos_valandų_valandas",d:"diena_dienos_dieną",dd:"dienos_dienų_dienas",M:"mėnuo_mėnesio_mėnesį",MM:"mėnesiai_mėnesių_mėnesius",y:"metai_metų_metus",yy:"metai_metų_metus"};a.defineLocale("lt",{months:{format:"sausio_vasario_kovo_balandžio_gegužės_birželio_liepos_rugpjūčio_rugsėjo_spalio_lapkričio_gruodžio".split("_"),standalone:"sausis_vasaris_kovas_balandis_gegužė_birželis_liepa_rugpjūtis_rugsėjis_spalis_lapkritis_gruodis".split("_"),isFormat:/D[oD]?(\[[^\[\]]*\]|\s)+MMMM?|MMMM?(\[[^\[\]]*\]|\s)+D[oD]?/},monthsShort:"sau_vas_kov_bal_geg_bir_lie_rgp_rgs_spa_lap_grd".split("_"),weekdays:{format:"sekmadienį_pirmadienį_antradienį_trečiadienį_ketvirtadienį_penktadienį_šeštadienį".split("_"),standalone:"sekmadienis_pirmadienis_antradienis_trečiadienis_ketvirtadienis_penktadienis_šeštadienis".split("_"),isFormat:/dddd HH:mm/},weekdaysShort:"Sek_Pir_Ant_Tre_Ket_Pen_Šeš".split("_"),weekdaysMin:"S_P_A_T_K_Pn_Š".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"YYYY-MM-DD",LL:"YYYY [m.] MMMM D [d.]",LLL:"YYYY [m.] MMMM D [d.], HH:mm [val.]",LLLL:"YYYY [m.] MMMM D [d.], dddd, HH:mm [val.]",l:"YYYY-MM-DD",ll:"YYYY [m.] MMMM D [d.]",lll:"YYYY [m.] MMMM D [d.], HH:mm [val.]",llll:"YYYY [m.] MMMM D [d.], ddd, HH:mm [val.]"},calendar:{sameDay:"[Šiandien] LT",nextDay:"[Rytoj] LT",nextWeek:"dddd LT",lastDay:"[Vakar] LT",lastWeek:"[Praėjusį] dddd LT",sameElse:"L"},relativeTime:{future:"po %s",past:"prieš %s",s:Md,m:Nd,mm:Qd,h:Nd,hh:Qd,d:Nd,dd:Qd,M:Nd,MM:Qd,y:Nd,yy:Qd},ordinalParse:/\d{1,2}-oji/,ordinal:function(a){return a+"-oji"},week:{dow:1,// Monday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Latvian [lv]
+//! author : Kristaps Karlsons : https://github.com/skakri
+//! author : Jānis Elmeris : https://github.com/JanisE
+var eh={m:"minūtes_minūtēm_minūte_minūtes".split("_"),mm:"minūtes_minūtēm_minūte_minūtes".split("_"),h:"stundas_stundām_stunda_stundas".split("_"),hh:"stundas_stundām_stunda_stundas".split("_"),d:"dienas_dienām_diena_dienas".split("_"),dd:"dienas_dienām_diena_dienas".split("_"),M:"mēneša_mēnešiem_mēnesis_mēneši".split("_"),MM:"mēneša_mēnešiem_mēnesis_mēneši".split("_"),y:"gada_gadiem_gads_gadi".split("_"),yy:"gada_gadiem_gads_gadi".split("_")};a.defineLocale("lv",{months:"janvāris_februāris_marts_aprīlis_maijs_jūnijs_jūlijs_augusts_septembris_oktobris_novembris_decembris".split("_"),monthsShort:"jan_feb_mar_apr_mai_jūn_jūl_aug_sep_okt_nov_dec".split("_"),weekdays:"svētdiena_pirmdiena_otrdiena_trešdiena_ceturtdiena_piektdiena_sestdiena".split("_"),weekdaysShort:"Sv_P_O_T_C_Pk_S".split("_"),weekdaysMin:"Sv_P_O_T_C_Pk_S".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY.",LL:"YYYY. [gada] D. MMMM",LLL:"YYYY. [gada] D. MMMM, HH:mm",LLLL:"YYYY. [gada] D. MMMM, dddd, HH:mm"},calendar:{sameDay:"[Šodien pulksten] LT",nextDay:"[Rīt pulksten] LT",nextWeek:"dddd [pulksten] LT",lastDay:"[Vakar pulksten] LT",lastWeek:"[Pagājušā] dddd [pulksten] LT",sameElse:"L"},relativeTime:{future:"pēc %s",past:"pirms %s",s:Ud,m:Td,mm:Sd,h:Td,hh:Sd,d:Td,dd:Sd,M:Td,MM:Sd,y:Td,yy:Sd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Montenegrin [me]
+//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
+var fh={words:{//Different grammatical cases
+m:["jedan minut","jednog minuta"],mm:["minut","minuta","minuta"],h:["jedan sat","jednog sata"],hh:["sat","sata","sati"],dd:["dan","dana","dana"],MM:["mjesec","mjeseca","mjeseci"],yy:["godina","godine","godina"]},correctGrammaticalCase:function(a,b){return 1===a?b[0]:a>=2&&a<=4?b[1]:b[2]},translate:function(a,b,c){var d=fh.words[c];return 1===c.length?b?d[0]:d[1]:a+" "+fh.correctGrammaticalCase(a,d)}};a.defineLocale("me",{months:"januar_februar_mart_april_maj_jun_jul_avgust_septembar_oktobar_novembar_decembar".split("_"),monthsShort:"jan._feb._mar._apr._maj_jun_jul_avg._sep._okt._nov._dec.".split("_"),monthsParseExact:!0,weekdays:"nedjelja_ponedjeljak_utorak_srijeda_četvrtak_petak_subota".split("_"),weekdaysShort:"ned._pon._uto._sri._čet._pet._sub.".split("_"),weekdaysMin:"ne_po_ut_sr_če_pe_su".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd, D. MMMM YYYY H:mm"},calendar:{sameDay:"[danas u] LT",nextDay:"[sjutra u] LT",nextWeek:function(){switch(this.day()){case 0:return"[u] [nedjelju] [u] LT";case 3:return"[u] [srijedu] [u] LT";case 6:return"[u] [subotu] [u] LT";case 1:case 2:case 4:case 5:return"[u] dddd [u] LT"}},lastDay:"[juče u] LT",lastWeek:function(){var a=["[prošle] [nedjelje] [u] LT","[prošlog] [ponedjeljka] [u] LT","[prošlog] [utorka] [u] LT","[prošle] [srijede] [u] LT","[prošlog] [četvrtka] [u] LT","[prošlog] [petka] [u] LT","[prošle] [subote] [u] LT"];return a[this.day()]},sameElse:"L"},relativeTime:{future:"za %s",past:"prije %s",s:"nekoliko sekundi",m:fh.translate,mm:fh.translate,h:fh.translate,hh:fh.translate,d:"dan",dd:fh.translate,M:"mjesec",MM:fh.translate,y:"godinu",yy:fh.translate},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:7}}),
+//! moment.js locale configuration
+//! locale : Maori [mi]
+//! author : John Corrigan <robbiecloset@gmail.com> : https://github.com/johnideal
+a.defineLocale("mi",{months:"Kohi-tāte_Hui-tanguru_Poutū-te-rangi_Paenga-whāwhā_Haratua_Pipiri_Hōngoingoi_Here-turi-kōkā_Mahuru_Whiringa-ā-nuku_Whiringa-ā-rangi_Hakihea".split("_"),monthsShort:"Kohi_Hui_Pou_Pae_Hara_Pipi_Hōngoi_Here_Mahu_Whi-nu_Whi-ra_Haki".split("_"),monthsRegex:/(?:['a-z\u0101\u014D\u016B]+\-?){1,3}/i,monthsStrictRegex:/(?:['a-z\u0101\u014D\u016B]+\-?){1,3}/i,monthsShortRegex:/(?:['a-z\u0101\u014D\u016B]+\-?){1,3}/i,monthsShortStrictRegex:/(?:['a-z\u0101\u014D\u016B]+\-?){1,2}/i,weekdays:"Rātapu_Mane_Tūrei_Wenerei_Tāite_Paraire_Hātarei".split("_"),weekdaysShort:"Ta_Ma_Tū_We_Tāi_Pa_Hā".split("_"),weekdaysMin:"Ta_Ma_Tū_We_Tāi_Pa_Hā".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY [i] HH:mm",LLLL:"dddd, D MMMM YYYY [i] HH:mm"},calendar:{sameDay:"[i teie mahana, i] LT",nextDay:"[apopo i] LT",nextWeek:"dddd [i] LT",lastDay:"[inanahi i] LT",lastWeek:"dddd [whakamutunga i] LT",sameElse:"L"},relativeTime:{future:"i roto i %s",past:"%s i mua",s:"te hēkona ruarua",m:"he meneti",mm:"%d meneti",h:"te haora",hh:"%d haora",d:"he ra",dd:"%d ra",M:"he marama",MM:"%d marama",y:"he tau",yy:"%d tau"},ordinalParse:/\d{1,2}º/,ordinal:"%dº",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Macedonian [mk]
+//! author : Borislav Mickov : https://github.com/B0k0
+a.defineLocale("mk",{months:"јануари_февруари_март_април_мај_јуни_јули_август_септември_октомври_ноември_декември".split("_"),monthsShort:"јан_фев_мар_апр_мај_јун_јул_авг_сеп_окт_ное_дек".split("_"),weekdays:"недела_понеделник_вторник_среда_четврток_петок_сабота".split("_"),weekdaysShort:"нед_пон_вто_сре_чет_пет_саб".split("_"),weekdaysMin:"нe_пo_вт_ср_че_пе_сa".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"D.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY H:mm",LLLL:"dddd, D MMMM YYYY H:mm"},calendar:{sameDay:"[Денес во] LT",nextDay:"[Утре во] LT",nextWeek:"[Во] dddd [во] LT",lastDay:"[Вчера во] LT",lastWeek:function(){switch(this.day()){case 0:case 3:case 6:return"[Изминатата] dddd [во] LT";case 1:case 2:case 4:case 5:return"[Изминатиот] dddd [во] LT"}},sameElse:"L"},relativeTime:{future:"после %s",past:"пред %s",s:"неколку секунди",m:"минута",mm:"%d минути",h:"час",hh:"%d часа",d:"ден",dd:"%d дена",M:"месец",MM:"%d месеци",y:"година",yy:"%d години"},ordinalParse:/\d{1,2}-(ев|ен|ти|ви|ри|ми)/,ordinal:function(a){var b=a%10,c=a%100;return 0===a?a+"-ев":0===c?a+"-ен":c>10&&c<20?a+"-ти":1===b?a+"-ви":2===b?a+"-ри":7===b||8===b?a+"-ми":a+"-ти"},week:{dow:1,// Monday is the first day of the week.
+doy:7}}),
+//! moment.js locale configuration
+//! locale : Malayalam [ml]
+//! author : Floyd Pink : https://github.com/floydpink
+a.defineLocale("ml",{months:"ജനുവരി_ഫെബ്രുവരി_മാർച്ച്_ഏപ്രിൽ_മേയ്_ജൂൺ_ജൂലൈ_ഓഗസ്റ്റ്_സെപ്റ്റംബർ_ഒക്ടോബർ_നവംബർ_ഡിസംബർ".split("_"),monthsShort:"ജനു._ഫെബ്രു._മാർ._ഏപ്രി._മേയ്_ജൂൺ_ജൂലൈ._ഓഗ._സെപ്റ്റ._ഒക്ടോ._നവം._ഡിസം.".split("_"),monthsParseExact:!0,weekdays:"ഞായറാഴ്ച_തിങ്കളാഴ്ച_ചൊവ്വാഴ്ച_ബുധനാഴ്ച_വ്യാഴാഴ്ച_വെള്ളിയാഴ്ച_ശനിയാഴ്ച".split("_"),weekdaysShort:"ഞായർ_തിങ്കൾ_ചൊവ്വ_ബുധൻ_വ്യാഴം_വെള്ളി_ശനി".split("_"),weekdaysMin:"ഞാ_തി_ചൊ_ബു_വ്യാ_വെ_ശ".split("_"),longDateFormat:{LT:"A h:mm -നു",LTS:"A h:mm:ss -നു",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, A h:mm -നു",LLLL:"dddd, D MMMM YYYY, A h:mm -നു"},calendar:{sameDay:"[ഇന്ന്] LT",nextDay:"[നാളെ] LT",nextWeek:"dddd, LT",lastDay:"[ഇന്നലെ] LT",lastWeek:"[കഴിഞ്ഞ] dddd, LT",sameElse:"L"},relativeTime:{future:"%s കഴിഞ്ഞ്",past:"%s മുൻപ്",s:"അൽപ നിമിഷങ്ങൾ",m:"ഒരു മിനിറ്റ്",mm:"%d മിനിറ്റ്",h:"ഒരു മണിക്കൂർ",hh:"%d മണിക്കൂർ",d:"ഒരു ദിവസം",dd:"%d ദിവസം",M:"ഒരു മാസം",MM:"%d മാസം",y:"ഒരു വർഷം",yy:"%d വർഷം"},meridiemParse:/രാത്രി|രാവിലെ|ഉച്ച കഴിഞ്ഞ്|വൈകുന്നേരം|രാത്രി/i,meridiemHour:function(a,b){return 12===a&&(a=0),"രാത്രി"===b&&a>=4||"ഉച്ച കഴിഞ്ഞ്"===b||"വൈകുന്നേരം"===b?a+12:a},meridiem:function(a,b,c){return a<4?"രാത്രി":a<12?"രാവിലെ":a<17?"ഉച്ച കഴിഞ്ഞ്":a<20?"വൈകുന്നേരം":"രാത്രി"}});
+//! moment.js locale configuration
+//! locale : Marathi [mr]
+//! author : Harshad Kale : https://github.com/kalehv
+//! author : Vivek Athalye : https://github.com/vnathalye
+var gh={1:"१",2:"२",3:"३",4:"४",5:"५",6:"६",7:"७",8:"८",9:"९",0:"०"},hh={"१":"1","२":"2","३":"3","४":"4","५":"5","६":"6","७":"7","८":"8","९":"9","०":"0"};a.defineLocale("mr",{months:"जानेवारी_फेब्रुवारी_मार्च_एप्रिल_मे_जून_जुलै_ऑगस्ट_सप्टेंबर_ऑक्टोबर_नोव्हेंबर_डिसेंबर".split("_"),monthsShort:"जाने._फेब्रु._मार्च._एप्रि._मे._जून._जुलै._ऑग._सप्टें._ऑक्टो._नोव्हें._डिसें.".split("_"),monthsParseExact:!0,weekdays:"रविवार_सोमवार_मंगळवार_बुधवार_गुरूवार_शुक्रवार_शनिवार".split("_"),weekdaysShort:"रवि_सोम_मंगळ_बुध_गुरू_शुक्र_शनि".split("_"),weekdaysMin:"र_सो_मं_बु_गु_शु_श".split("_"),longDateFormat:{LT:"A h:mm वाजता",LTS:"A h:mm:ss वाजता",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, A h:mm वाजता",LLLL:"dddd, D MMMM YYYY, A h:mm वाजता"},calendar:{sameDay:"[आज] LT",nextDay:"[उद्या] LT",nextWeek:"dddd, LT",lastDay:"[काल] LT",lastWeek:"[मागील] dddd, LT",sameElse:"L"},relativeTime:{future:"%sमध्ये",past:"%sपूर्वी",s:Vd,m:Vd,mm:Vd,h:Vd,hh:Vd,d:Vd,dd:Vd,M:Vd,MM:Vd,y:Vd,yy:Vd},preparse:function(a){return a.replace(/[१२३४५६७८९०]/g,function(a){return hh[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return gh[a]})},meridiemParse:/रात्री|सकाळी|दुपारी|सायंकाळी/,meridiemHour:function(a,b){return 12===a&&(a=0),"रात्री"===b?a<4?a:a+12:"सकाळी"===b?a:"दुपारी"===b?a>=10?a:a+12:"सायंकाळी"===b?a+12:void 0},meridiem:function(a,b,c){return a<4?"रात्री":a<10?"सकाळी":a<17?"दुपारी":a<20?"सायंकाळी":"रात्री"},week:{dow:0,// Sunday is the first day of the week.
+doy:6}}),
+//! moment.js locale configuration
+//! locale : Malay [ms-my]
+//! note : DEPRECATED, the correct one is [ms]
+//! author : Weldan Jamili : https://github.com/weldan
+a.defineLocale("ms-my",{months:"Januari_Februari_Mac_April_Mei_Jun_Julai_Ogos_September_Oktober_November_Disember".split("_"),monthsShort:"Jan_Feb_Mac_Apr_Mei_Jun_Jul_Ogs_Sep_Okt_Nov_Dis".split("_"),weekdays:"Ahad_Isnin_Selasa_Rabu_Khamis_Jumaat_Sabtu".split("_"),weekdaysShort:"Ahd_Isn_Sel_Rab_Kha_Jum_Sab".split("_"),weekdaysMin:"Ah_Is_Sl_Rb_Km_Jm_Sb".split("_"),longDateFormat:{LT:"HH.mm",LTS:"HH.mm.ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY [pukul] HH.mm",LLLL:"dddd, D MMMM YYYY [pukul] HH.mm"},meridiemParse:/pagi|tengahari|petang|malam/,meridiemHour:function(a,b){return 12===a&&(a=0),"pagi"===b?a:"tengahari"===b?a>=11?a:a+12:"petang"===b||"malam"===b?a+12:void 0},meridiem:function(a,b,c){return a<11?"pagi":a<15?"tengahari":a<19?"petang":"malam"},calendar:{sameDay:"[Hari ini pukul] LT",nextDay:"[Esok pukul] LT",nextWeek:"dddd [pukul] LT",lastDay:"[Kelmarin pukul] LT",lastWeek:"dddd [lepas pukul] LT",sameElse:"L"},relativeTime:{future:"dalam %s",past:"%s yang lepas",s:"beberapa saat",m:"seminit",mm:"%d minit",h:"sejam",hh:"%d jam",d:"sehari",dd:"%d hari",M:"sebulan",MM:"%d bulan",y:"setahun",yy:"%d tahun"},week:{dow:1,// Monday is the first day of the week.
+doy:7}}),
+//! moment.js locale configuration
+//! locale : Malay [ms]
+//! author : Weldan Jamili : https://github.com/weldan
+a.defineLocale("ms",{months:"Januari_Februari_Mac_April_Mei_Jun_Julai_Ogos_September_Oktober_November_Disember".split("_"),monthsShort:"Jan_Feb_Mac_Apr_Mei_Jun_Jul_Ogs_Sep_Okt_Nov_Dis".split("_"),weekdays:"Ahad_Isnin_Selasa_Rabu_Khamis_Jumaat_Sabtu".split("_"),weekdaysShort:"Ahd_Isn_Sel_Rab_Kha_Jum_Sab".split("_"),weekdaysMin:"Ah_Is_Sl_Rb_Km_Jm_Sb".split("_"),longDateFormat:{LT:"HH.mm",LTS:"HH.mm.ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY [pukul] HH.mm",LLLL:"dddd, D MMMM YYYY [pukul] HH.mm"},meridiemParse:/pagi|tengahari|petang|malam/,meridiemHour:function(a,b){return 12===a&&(a=0),"pagi"===b?a:"tengahari"===b?a>=11?a:a+12:"petang"===b||"malam"===b?a+12:void 0},meridiem:function(a,b,c){return a<11?"pagi":a<15?"tengahari":a<19?"petang":"malam"},calendar:{sameDay:"[Hari ini pukul] LT",nextDay:"[Esok pukul] LT",nextWeek:"dddd [pukul] LT",lastDay:"[Kelmarin pukul] LT",lastWeek:"dddd [lepas pukul] LT",sameElse:"L"},relativeTime:{future:"dalam %s",past:"%s yang lepas",s:"beberapa saat",m:"seminit",mm:"%d minit",h:"sejam",hh:"%d jam",d:"sehari",dd:"%d hari",M:"sebulan",MM:"%d bulan",y:"setahun",yy:"%d tahun"},week:{dow:1,// Monday is the first day of the week.
+doy:7}});
+//! moment.js locale configuration
+//! locale : Burmese [my]
+//! author : Squar team, mysquar.com
+//! author : David Rossellat : https://github.com/gholadr
+//! author : Tin Aung Lin : https://github.com/thanyawzinmin
+var ih={1:"၁",2:"၂",3:"၃",4:"၄",5:"၅",6:"၆",7:"၇",8:"၈",9:"၉",0:"၀"},jh={"၁":"1","၂":"2","၃":"3","၄":"4","၅":"5","၆":"6","၇":"7","၈":"8","၉":"9","၀":"0"};a.defineLocale("my",{months:"ဇန်နဝါရီ_ဖေဖော်ဝါရီ_မတ်_ဧပြီ_မေ_ဇွန်_ဇူလိုင်_သြဂုတ်_စက်တင်ဘာ_အောက်တိုဘာ_နိုဝင်ဘာ_ဒီဇင်ဘာ".split("_"),monthsShort:"ဇန်_ဖေ_မတ်_ပြီ_မေ_ဇွန်_လိုင်_သြ_စက်_အောက်_နို_ဒီ".split("_"),weekdays:"တနင်္ဂနွေ_တနင်္လာ_အင်္ဂါ_ဗုဒ္ဓဟူး_ကြာသပတေး_သောကြာ_စနေ".split("_"),weekdaysShort:"နွေ_လာ_ဂါ_ဟူး_ကြာ_သော_နေ".split("_"),weekdaysMin:"နွေ_လာ_ဂါ_ဟူး_ကြာ_သော_နေ".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[ယနေ.] LT [မှာ]",nextDay:"[မနက်ဖြန်] LT [မှာ]",nextWeek:"dddd LT [မှာ]",lastDay:"[မနေ.က] LT [မှာ]",lastWeek:"[ပြီးခဲ့သော] dddd LT [မှာ]",sameElse:"L"},relativeTime:{future:"လာမည့် %s မှာ",past:"လွန်ခဲ့သော %s က",s:"စက္ကန်.အနည်းငယ်",m:"တစ်မိနစ်",mm:"%d မိနစ်",h:"တစ်နာရီ",hh:"%d နာရီ",d:"တစ်ရက်",dd:"%d ရက်",M:"တစ်လ",MM:"%d လ",y:"တစ်နှစ်",yy:"%d နှစ်"},preparse:function(a){return a.replace(/[၁၂၃၄၅၆၇၈၉၀]/g,function(a){return jh[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return ih[a]})},week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Norwegian Bokmål [nb]
+//! authors : Espen Hovlandsdal : https://github.com/rexxars
+//!           Sigurd Gartmann : https://github.com/sigurdga
+a.defineLocale("nb",{months:"januar_februar_mars_april_mai_juni_juli_august_september_oktober_november_desember".split("_"),monthsShort:"jan._feb._mars_april_mai_juni_juli_aug._sep._okt._nov._des.".split("_"),monthsParseExact:!0,weekdays:"søndag_mandag_tirsdag_onsdag_torsdag_fredag_lørdag".split("_"),weekdaysShort:"sø._ma._ti._on._to._fr._lø.".split("_"),weekdaysMin:"sø_ma_ti_on_to_fr_lø".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY [kl.] HH:mm",LLLL:"dddd D. MMMM YYYY [kl.] HH:mm"},calendar:{sameDay:"[i dag kl.] LT",nextDay:"[i morgen kl.] LT",nextWeek:"dddd [kl.] LT",lastDay:"[i går kl.] LT",lastWeek:"[forrige] dddd [kl.] LT",sameElse:"L"},relativeTime:{future:"om %s",past:"%s siden",s:"noen sekunder",m:"ett minutt",mm:"%d minutter",h:"en time",hh:"%d timer",d:"en dag",dd:"%d dager",M:"en måned",MM:"%d måneder",y:"ett år",yy:"%d år"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Nepalese [ne]
+//! author : suvash : https://github.com/suvash
+var kh={1:"१",2:"२",3:"३",4:"४",5:"५",6:"६",7:"७",8:"८",9:"९",0:"०"},lh={"१":"1","२":"2","३":"3","४":"4","५":"5","६":"6","७":"7","८":"8","९":"9","०":"0"};a.defineLocale("ne",{months:"जनवरी_फेब्रुवरी_मार्च_अप्रिल_मई_जुन_जुलाई_अगष्ट_सेप्टेम्बर_अक्टोबर_नोभेम्बर_डिसेम्बर".split("_"),monthsShort:"जन._फेब्रु._मार्च_अप्रि._मई_जुन_जुलाई._अग._सेप्ट._अक्टो._नोभे._डिसे.".split("_"),monthsParseExact:!0,weekdays:"आइतबार_सोमबार_मङ्गलबार_बुधबार_बिहिबार_शुक्रबार_शनिबार".split("_"),weekdaysShort:"आइत._सोम._मङ्गल._बुध._बिहि._शुक्र._शनि.".split("_"),weekdaysMin:"आ._सो._मं._बु._बि._शु._श.".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"Aको h:mm बजे",LTS:"Aको h:mm:ss बजे",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, Aको h:mm बजे",LLLL:"dddd, D MMMM YYYY, Aको h:mm बजे"},preparse:function(a){return a.replace(/[१२३४५६७८९०]/g,function(a){return lh[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return kh[a]})},meridiemParse:/राति|बिहान|दिउँसो|साँझ/,meridiemHour:function(a,b){return 12===a&&(a=0),"राति"===b?a<4?a:a+12:"बिहान"===b?a:"दिउँसो"===b?a>=10?a:a+12:"साँझ"===b?a+12:void 0},meridiem:function(a,b,c){return a<3?"राति":a<12?"बिहान":a<16?"दिउँसो":a<20?"साँझ":"राति"},calendar:{sameDay:"[आज] LT",nextDay:"[भोलि] LT",nextWeek:"[आउँदो] dddd[,] LT",lastDay:"[हिजो] LT",lastWeek:"[गएको] dddd[,] LT",sameElse:"L"},relativeTime:{future:"%sमा",past:"%s अगाडि",s:"केही क्षण",m:"एक मिनेट",mm:"%d मिनेट",h:"एक घण्टा",hh:"%d घण्टा",d:"एक दिन",dd:"%d दिन",M:"एक महिना",MM:"%d महिना",y:"एक बर्ष",yy:"%d बर्ष"},week:{dow:0,// Sunday is the first day of the week.
+doy:6}});
+//! moment.js locale configuration
+//! locale : Dutch (Belgium) [nl-be]
+//! author : Joris Röling : https://github.com/jorisroling
+//! author : Jacob Middag : https://github.com/middagj
+var mh="jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.".split("_"),nh="jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec".split("_"),oh=[/^jan/i,/^feb/i,/^maart|mrt.?$/i,/^apr/i,/^mei$/i,/^jun[i.]?$/i,/^jul[i.]?$/i,/^aug/i,/^sep/i,/^okt/i,/^nov/i,/^dec/i],ph=/^(januari|februari|maart|april|mei|april|ju[nl]i|augustus|september|oktober|november|december|jan\.?|feb\.?|mrt\.?|apr\.?|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i;a.defineLocale("nl-be",{months:"januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december".split("_"),monthsShort:function(a,b){return/-MMM-/.test(b)?nh[a.month()]:mh[a.month()]},monthsRegex:ph,monthsShortRegex:ph,monthsStrictRegex:/^(januari|februari|maart|mei|ju[nl]i|april|augustus|september|oktober|november|december)/i,monthsShortStrictRegex:/^(jan\.?|feb\.?|mrt\.?|apr\.?|mei|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i,monthsParse:oh,longMonthsParse:oh,shortMonthsParse:oh,weekdays:"zondag_maandag_dinsdag_woensdag_donderdag_vrijdag_zaterdag".split("_"),weekdaysShort:"zo._ma._di._wo._do._vr._za.".split("_"),weekdaysMin:"Zo_Ma_Di_Wo_Do_Vr_Za".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[vandaag om] LT",nextDay:"[morgen om] LT",nextWeek:"dddd [om] LT",lastDay:"[gisteren om] LT",lastWeek:"[afgelopen] dddd [om] LT",sameElse:"L"},relativeTime:{future:"over %s",past:"%s geleden",s:"een paar seconden",m:"één minuut",mm:"%d minuten",h:"één uur",hh:"%d uur",d:"één dag",dd:"%d dagen",M:"één maand",MM:"%d maanden",y:"één jaar",yy:"%d jaar"},ordinalParse:/\d{1,2}(ste|de)/,ordinal:function(a){return a+(1===a||8===a||a>=20?"ste":"de")},week:{dow:1,// Monday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Dutch [nl]
+//! author : Joris Röling : https://github.com/jorisroling
+//! author : Jacob Middag : https://github.com/middagj
+var qh="jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.".split("_"),rh="jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec".split("_"),sh=[/^jan/i,/^feb/i,/^maart|mrt.?$/i,/^apr/i,/^mei$/i,/^jun[i.]?$/i,/^jul[i.]?$/i,/^aug/i,/^sep/i,/^okt/i,/^nov/i,/^dec/i],th=/^(januari|februari|maart|april|mei|april|ju[nl]i|augustus|september|oktober|november|december|jan\.?|feb\.?|mrt\.?|apr\.?|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i;a.defineLocale("nl",{months:"januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december".split("_"),monthsShort:function(a,b){return/-MMM-/.test(b)?rh[a.month()]:qh[a.month()]},monthsRegex:th,monthsShortRegex:th,monthsStrictRegex:/^(januari|februari|maart|mei|ju[nl]i|april|augustus|september|oktober|november|december)/i,monthsShortStrictRegex:/^(jan\.?|feb\.?|mrt\.?|apr\.?|mei|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i,monthsParse:sh,longMonthsParse:sh,shortMonthsParse:sh,weekdays:"zondag_maandag_dinsdag_woensdag_donderdag_vrijdag_zaterdag".split("_"),weekdaysShort:"zo._ma._di._wo._do._vr._za.".split("_"),weekdaysMin:"Zo_Ma_Di_Wo_Do_Vr_Za".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD-MM-YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[vandaag om] LT",nextDay:"[morgen om] LT",nextWeek:"dddd [om] LT",lastDay:"[gisteren om] LT",lastWeek:"[afgelopen] dddd [om] LT",sameElse:"L"},relativeTime:{future:"over %s",past:"%s geleden",s:"een paar seconden",m:"één minuut",mm:"%d minuten",h:"één uur",hh:"%d uur",d:"één dag",dd:"%d dagen",M:"één maand",MM:"%d maanden",y:"één jaar",yy:"%d jaar"},ordinalParse:/\d{1,2}(ste|de)/,ordinal:function(a){return a+(1===a||8===a||a>=20?"ste":"de")},week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Nynorsk [nn]
+//! author : https://github.com/mechuwind
+a.defineLocale("nn",{months:"januar_februar_mars_april_mai_juni_juli_august_september_oktober_november_desember".split("_"),monthsShort:"jan_feb_mar_apr_mai_jun_jul_aug_sep_okt_nov_des".split("_"),weekdays:"sundag_måndag_tysdag_onsdag_torsdag_fredag_laurdag".split("_"),weekdaysShort:"sun_mån_tys_ons_tor_fre_lau".split("_"),weekdaysMin:"su_må_ty_on_to_fr_lø".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY [kl.] H:mm",LLLL:"dddd D. MMMM YYYY [kl.] HH:mm"},calendar:{sameDay:"[I dag klokka] LT",nextDay:"[I morgon klokka] LT",nextWeek:"dddd [klokka] LT",lastDay:"[I går klokka] LT",lastWeek:"[Føregåande] dddd [klokka] LT",sameElse:"L"},relativeTime:{future:"om %s",past:"%s sidan",s:"nokre sekund",m:"eit minutt",mm:"%d minutt",h:"ein time",hh:"%d timar",d:"ein dag",dd:"%d dagar",M:"ein månad",MM:"%d månader",y:"eit år",yy:"%d år"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Punjabi (India) [pa-in]
+//! author : Harpreet Singh : https://github.com/harpreetkhalsagtbit
+var uh={1:"੧",2:"੨",3:"੩",4:"੪",5:"੫",6:"੬",7:"੭",8:"੮",9:"੯",0:"੦"},vh={"੧":"1","੨":"2","੩":"3","੪":"4","੫":"5","੬":"6","੭":"7","੮":"8","੯":"9","੦":"0"};a.defineLocale("pa-in",{
 // There are months name as per Nanakshahi Calender but they are not used as rigidly in modern Punjabi.
-months:"ਜਨਵਰੀ_ਫ਼ਰਵਰੀ_ਮਾਰਚ_ਅਪ੍ਰੈਲ_ਮਈ_ਜੂਨ_ਜੁਲਾਈ_ਅਗਸਤ_ਸਤੰਬਰ_ਅਕਤੂਬਰ_ਨਵੰਬਰ_ਦਸੰਬਰ".split("_"),monthsShort:"ਜਨਵਰੀ_ਫ਼ਰਵਰੀ_ਮਾਰਚ_ਅਪ੍ਰੈਲ_ਮਈ_ਜੂਨ_ਜੁਲਾਈ_ਅਗਸਤ_ਸਤੰਬਰ_ਅਕਤੂਬਰ_ਨਵੰਬਰ_ਦਸੰਬਰ".split("_"),weekdays:"ਐਤਵਾਰ_ਸੋਮਵਾਰ_ਮੰਗਲਵਾਰ_ਬੁਧਵਾਰ_ਵੀਰਵਾਰ_ਸ਼ੁੱਕਰਵਾਰ_ਸ਼ਨੀਚਰਵਾਰ".split("_"),weekdaysShort:"ਐਤ_ਸੋਮ_ਮੰਗਲ_ਬੁਧ_ਵੀਰ_ਸ਼ੁਕਰ_ਸ਼ਨੀ".split("_"),weekdaysMin:"ਐਤ_ਸੋਮ_ਮੰਗਲ_ਬੁਧ_ਵੀਰ_ਸ਼ੁਕਰ_ਸ਼ਨੀ".split("_"),longDateFormat:{LT:"A h:mm ਵਜੇ",LTS:"A h:mm:ss ਵਜੇ",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, A h:mm ਵਜੇ",LLLL:"dddd, D MMMM YYYY, A h:mm ਵਜੇ"},calendar:{sameDay:"[ਅਜ] LT",nextDay:"[ਕਲ] LT",nextWeek:"dddd, LT",lastDay:"[ਕਲ] LT",lastWeek:"[ਪਿਛਲੇ] dddd, LT",sameElse:"L"},relativeTime:{future:"%s ਵਿੱਚ",past:"%s ਪਿਛਲੇ",s:"ਕੁਝ ਸਕਿੰਟ",m:"ਇਕ ਮਿੰਟ",mm:"%d ਮਿੰਟ",h:"ਇੱਕ ਘੰਟਾ",hh:"%d ਘੰਟੇ",d:"ਇੱਕ ਦਿਨ",dd:"%d ਦਿਨ",M:"ਇੱਕ ਮਹੀਨਾ",MM:"%d ਮਹੀਨੇ",y:"ਇੱਕ ਸਾਲ",yy:"%d ਸਾਲ"},preparse:function(a){return a.replace(/[੧੨੩੪੫੬੭੮੯੦]/g,function(a){return nh[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return mh[a]})},
+months:"ਜਨਵਰੀ_ਫ਼ਰਵਰੀ_ਮਾਰਚ_ਅਪ੍ਰੈਲ_ਮਈ_ਜੂਨ_ਜੁਲਾਈ_ਅਗਸਤ_ਸਤੰਬਰ_ਅਕਤੂਬਰ_ਨਵੰਬਰ_ਦਸੰਬਰ".split("_"),monthsShort:"ਜਨਵਰੀ_ਫ਼ਰਵਰੀ_ਮਾਰਚ_ਅਪ੍ਰੈਲ_ਮਈ_ਜੂਨ_ਜੁਲਾਈ_ਅਗਸਤ_ਸਤੰਬਰ_ਅਕਤੂਬਰ_ਨਵੰਬਰ_ਦਸੰਬਰ".split("_"),weekdays:"ਐਤਵਾਰ_ਸੋਮਵਾਰ_ਮੰਗਲਵਾਰ_ਬੁਧਵਾਰ_ਵੀਰਵਾਰ_ਸ਼ੁੱਕਰਵਾਰ_ਸ਼ਨੀਚਰਵਾਰ".split("_"),weekdaysShort:"ਐਤ_ਸੋਮ_ਮੰਗਲ_ਬੁਧ_ਵੀਰ_ਸ਼ੁਕਰ_ਸ਼ਨੀ".split("_"),weekdaysMin:"ਐਤ_ਸੋਮ_ਮੰਗਲ_ਬੁਧ_ਵੀਰ_ਸ਼ੁਕਰ_ਸ਼ਨੀ".split("_"),longDateFormat:{LT:"A h:mm ਵਜੇ",LTS:"A h:mm:ss ਵਜੇ",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, A h:mm ਵਜੇ",LLLL:"dddd, D MMMM YYYY, A h:mm ਵਜੇ"},calendar:{sameDay:"[ਅਜ] LT",nextDay:"[ਕਲ] LT",nextWeek:"dddd, LT",lastDay:"[ਕਲ] LT",lastWeek:"[ਪਿਛਲੇ] dddd, LT",sameElse:"L"},relativeTime:{future:"%s ਵਿੱਚ",past:"%s ਪਿਛਲੇ",s:"ਕੁਝ ਸਕਿੰਟ",m:"ਇਕ ਮਿੰਟ",mm:"%d ਮਿੰਟ",h:"ਇੱਕ ਘੰਟਾ",hh:"%d ਘੰਟੇ",d:"ਇੱਕ ਦਿਨ",dd:"%d ਦਿਨ",M:"ਇੱਕ ਮਹੀਨਾ",MM:"%d ਮਹੀਨੇ",y:"ਇੱਕ ਸਾਲ",yy:"%d ਸਾਲ"},preparse:function(a){return a.replace(/[੧੨੩੪੫੬੭੮੯੦]/g,function(a){return vh[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return uh[a]})},
 // Punjabi notation for meridiems are quite fuzzy in practice. While there exists
 // a rigid notion of a 'Pahar' it is not used as rigidly in modern Punjabi.
 meridiemParse:/ਰਾਤ|ਸਵੇਰ|ਦੁਪਹਿਰ|ਸ਼ਾਮ/,meridiemHour:function(a,b){return 12===a&&(a=0),"ਰਾਤ"===b?a<4?a:a+12:"ਸਵੇਰ"===b?a:"ਦੁਪਹਿਰ"===b?a>=10?a:a+12:"ਸ਼ਾਮ"===b?a+12:void 0},meridiem:function(a,b,c){return a<4?"ਰਾਤ":a<10?"ਸਵੇਰ":a<17?"ਦੁਪਹਿਰ":a<20?"ਸ਼ਾਮ":"ਰਾਤ"},week:{dow:0,// Sunday is the first day of the week.
-doy:6}}),"styczeń_luty_marzec_kwiecień_maj_czerwiec_lipiec_sierpień_wrzesień_październik_listopad_grudzień".split("_")),ph="stycznia_lutego_marca_kwietnia_maja_czerwca_lipca_sierpnia_września_października_listopada_grudnia".split("_"),qh=(kg.defineLocale("pl",{months:function(a,b){return""===b?"("+ph[a.month()]+"|"+oh[a.month()]+")":/D MMMM/.test(b)?ph[a.month()]:oh[a.month()]},monthsShort:"sty_lut_mar_kwi_maj_cze_lip_sie_wrz_paź_lis_gru".split("_"),weekdays:"niedziela_poniedziałek_wtorek_środa_czwartek_piątek_sobota".split("_"),weekdaysShort:"nie_pon_wt_śr_czw_pt_sb".split("_"),weekdaysMin:"Nd_Pn_Wt_Śr_Cz_Pt_So".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Dziś o] LT",nextDay:"[Jutro o] LT",nextWeek:"[W] dddd [o] LT",lastDay:"[Wczoraj o] LT",lastWeek:function(){switch(this.day()){case 0:return"[W zeszłą niedzielę o] LT";case 3:return"[W zeszłą środę o] LT";case 6:return"[W zeszłą sobotę o] LT";default:return"[W zeszły] dddd [o] LT"}},sameElse:"L"},relativeTime:{future:"za %s",past:"%s temu",s:"kilka sekund",m:Vd,mm:Vd,h:Vd,hh:Vd,d:"1 dzień",dd:"%d dni",M:"miesiąc",MM:Vd,y:"rok",yy:Vd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("pt-br",{months:"Janeiro_Fevereiro_Março_Abril_Maio_Junho_Julho_Agosto_Setembro_Outubro_Novembro_Dezembro".split("_"),monthsShort:"Jan_Fev_Mar_Abr_Mai_Jun_Jul_Ago_Set_Out_Nov_Dez".split("_"),weekdays:"Domingo_Segunda-feira_Terça-feira_Quarta-feira_Quinta-feira_Sexta-feira_Sábado".split("_"),weekdaysShort:"Dom_Seg_Ter_Qua_Qui_Sex_Sáb".split("_"),weekdaysMin:"Dom_2ª_3ª_4ª_5ª_6ª_Sáb".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D [de] MMMM [de] YYYY",LLL:"D [de] MMMM [de] YYYY [às] HH:mm",LLLL:"dddd, D [de] MMMM [de] YYYY [às] HH:mm"},calendar:{sameDay:"[Hoje às] LT",nextDay:"[Amanhã às] LT",nextWeek:"dddd [às] LT",lastDay:"[Ontem às] LT",lastWeek:function(){// Saturday + Sunday
-return 0===this.day()||6===this.day()?"[Último] dddd [às] LT":"[Última] dddd [às] LT"},sameElse:"L"},relativeTime:{future:"em %s",past:"%s atrás",s:"poucos segundos",m:"um minuto",mm:"%d minutos",h:"uma hora",hh:"%d horas",d:"um dia",dd:"%d dias",M:"um mês",MM:"%d meses",y:"um ano",yy:"%d anos"},ordinalParse:/\d{1,2}º/,ordinal:"%dº"}),kg.defineLocale("pt",{months:"Janeiro_Fevereiro_Março_Abril_Maio_Junho_Julho_Agosto_Setembro_Outubro_Novembro_Dezembro".split("_"),monthsShort:"Jan_Fev_Mar_Abr_Mai_Jun_Jul_Ago_Set_Out_Nov_Dez".split("_"),weekdays:"Domingo_Segunda-Feira_Terça-Feira_Quarta-Feira_Quinta-Feira_Sexta-Feira_Sábado".split("_"),weekdaysShort:"Dom_Seg_Ter_Qua_Qui_Sex_Sáb".split("_"),weekdaysMin:"Dom_2ª_3ª_4ª_5ª_6ª_Sáb".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D [de] MMMM [de] YYYY",LLL:"D [de] MMMM [de] YYYY HH:mm",LLLL:"dddd, D [de] MMMM [de] YYYY HH:mm"},calendar:{sameDay:"[Hoje às] LT",nextDay:"[Amanhã às] LT",nextWeek:"dddd [às] LT",lastDay:"[Ontem às] LT",lastWeek:function(){// Saturday + Sunday
+doy:6}});
+//! moment.js locale configuration
+//! locale : Polish [pl]
+//! author : Rafal Hirsz : https://github.com/evoL
+var wh="styczeń_luty_marzec_kwiecień_maj_czerwiec_lipiec_sierpień_wrzesień_październik_listopad_grudzień".split("_"),xh="stycznia_lutego_marca_kwietnia_maja_czerwca_lipca_sierpnia_września_października_listopada_grudnia".split("_");a.defineLocale("pl",{months:function(a,b){return""===b?"("+xh[a.month()]+"|"+wh[a.month()]+")":/D MMMM/.test(b)?xh[a.month()]:wh[a.month()]},monthsShort:"sty_lut_mar_kwi_maj_cze_lip_sie_wrz_paź_lis_gru".split("_"),weekdays:"niedziela_poniedziałek_wtorek_środa_czwartek_piątek_sobota".split("_"),weekdaysShort:"ndz_pon_wt_śr_czw_pt_sob".split("_"),weekdaysMin:"Nd_Pn_Wt_Śr_Cz_Pt_So".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Dziś o] LT",nextDay:"[Jutro o] LT",nextWeek:"[W] dddd [o] LT",lastDay:"[Wczoraj o] LT",lastWeek:function(){switch(this.day()){case 0:return"[W zeszłą niedzielę o] LT";case 3:return"[W zeszłą środę o] LT";case 6:return"[W zeszłą sobotę o] LT";default:return"[W zeszły] dddd [o] LT"}},sameElse:"L"},relativeTime:{future:"za %s",past:"%s temu",s:"kilka sekund",m:Xd,mm:Xd,h:Xd,hh:Xd,d:"1 dzień",dd:"%d dni",M:"miesiąc",MM:Xd,y:"rok",yy:Xd},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Portuguese (Brazil) [pt-br]
+//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
+a.defineLocale("pt-br",{months:"Janeiro_Fevereiro_Março_Abril_Maio_Junho_Julho_Agosto_Setembro_Outubro_Novembro_Dezembro".split("_"),monthsShort:"Jan_Fev_Mar_Abr_Mai_Jun_Jul_Ago_Set_Out_Nov_Dez".split("_"),weekdays:"Domingo_Segunda-feira_Terça-feira_Quarta-feira_Quinta-feira_Sexta-feira_Sábado".split("_"),weekdaysShort:"Dom_Seg_Ter_Qua_Qui_Sex_Sáb".split("_"),weekdaysMin:"Dom_2ª_3ª_4ª_5ª_6ª_Sáb".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D [de] MMMM [de] YYYY",LLL:"D [de] MMMM [de] YYYY [às] HH:mm",LLLL:"dddd, D [de] MMMM [de] YYYY [às] HH:mm"},calendar:{sameDay:"[Hoje às] LT",nextDay:"[Amanhã às] LT",nextWeek:"dddd [às] LT",lastDay:"[Ontem às] LT",lastWeek:function(){// Saturday + Sunday
+return 0===this.day()||6===this.day()?"[Último] dddd [às] LT":"[Última] dddd [às] LT"},sameElse:"L"},relativeTime:{future:"em %s",past:"%s atrás",s:"poucos segundos",m:"um minuto",mm:"%d minutos",h:"uma hora",hh:"%d horas",d:"um dia",dd:"%d dias",M:"um mês",MM:"%d meses",y:"um ano",yy:"%d anos"},ordinalParse:/\d{1,2}º/,ordinal:"%dº"}),
+//! moment.js locale configuration
+//! locale : Portuguese [pt]
+//! author : Jefferson : https://github.com/jalex79
+a.defineLocale("pt",{months:"Janeiro_Fevereiro_Março_Abril_Maio_Junho_Julho_Agosto_Setembro_Outubro_Novembro_Dezembro".split("_"),monthsShort:"Jan_Fev_Mar_Abr_Mai_Jun_Jul_Ago_Set_Out_Nov_Dez".split("_"),weekdays:"Domingo_Segunda-Feira_Terça-Feira_Quarta-Feira_Quinta-Feira_Sexta-Feira_Sábado".split("_"),weekdaysShort:"Dom_Seg_Ter_Qua_Qui_Sex_Sáb".split("_"),weekdaysMin:"Dom_2ª_3ª_4ª_5ª_6ª_Sáb".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D [de] MMMM [de] YYYY",LLL:"D [de] MMMM [de] YYYY HH:mm",LLLL:"dddd, D [de] MMMM [de] YYYY HH:mm"},calendar:{sameDay:"[Hoje às] LT",nextDay:"[Amanhã às] LT",nextWeek:"dddd [às] LT",lastDay:"[Ontem às] LT",lastWeek:function(){// Saturday + Sunday
 return 0===this.day()||6===this.day()?"[Último] dddd [às] LT":"[Última] dddd [às] LT"},sameElse:"L"},relativeTime:{future:"em %s",past:"há %s",s:"segundos",m:"um minuto",mm:"%d minutos",h:"uma hora",hh:"%d horas",d:"um dia",dd:"%d dias",M:"um mês",MM:"%d meses",y:"um ano",yy:"%d anos"},ordinalParse:/\d{1,2}º/,ordinal:"%dº",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("ro",{months:"ianuarie_februarie_martie_aprilie_mai_iunie_iulie_august_septembrie_octombrie_noiembrie_decembrie".split("_"),monthsShort:"ian._febr._mart._apr._mai_iun._iul._aug._sept._oct._nov._dec.".split("_"),monthsParseExact:!0,weekdays:"duminică_luni_marți_miercuri_joi_vineri_sâmbătă".split("_"),weekdaysShort:"Dum_Lun_Mar_Mie_Joi_Vin_Sâm".split("_"),weekdaysMin:"Du_Lu_Ma_Mi_Jo_Vi_Sâ".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY H:mm",LLLL:"dddd, D MMMM YYYY H:mm"},calendar:{sameDay:"[azi la] LT",nextDay:"[mâine la] LT",nextWeek:"dddd [la] LT",lastDay:"[ieri la] LT",lastWeek:"[fosta] dddd [la] LT",sameElse:"L"},relativeTime:{future:"peste %s",past:"%s în urmă",s:"câteva secunde",m:"un minut",mm:Wd,h:"o oră",hh:Wd,d:"o zi",dd:Wd,M:"o lună",MM:Wd,y:"un an",yy:Wd},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),[/^янв/i,/^фев/i,/^мар/i,/^апр/i,/^ма[йя]/i,/^июн/i,/^июл/i,/^авг/i,/^сен/i,/^окт/i,/^ноя/i,/^дек/i]),rh=(kg.defineLocale("ru",{months:{format:"января_февраля_марта_апреля_мая_июня_июля_августа_сентября_октября_ноября_декабря".split("_"),standalone:"январь_февраль_март_апрель_май_июнь_июль_август_сентябрь_октябрь_ноябрь_декабрь".split("_")},monthsShort:{
+doy:4}}),a.defineLocale("ro",{months:"ianuarie_februarie_martie_aprilie_mai_iunie_iulie_august_septembrie_octombrie_noiembrie_decembrie".split("_"),monthsShort:"ian._febr._mart._apr._mai_iun._iul._aug._sept._oct._nov._dec.".split("_"),monthsParseExact:!0,weekdays:"duminică_luni_marți_miercuri_joi_vineri_sâmbătă".split("_"),weekdaysShort:"Dum_Lun_Mar_Mie_Joi_Vin_Sâm".split("_"),weekdaysMin:"Du_Lu_Ma_Mi_Jo_Vi_Sâ".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY H:mm",LLLL:"dddd, D MMMM YYYY H:mm"},calendar:{sameDay:"[azi la] LT",nextDay:"[mâine la] LT",nextWeek:"dddd [la] LT",lastDay:"[ieri la] LT",lastWeek:"[fosta] dddd [la] LT",sameElse:"L"},relativeTime:{future:"peste %s",past:"%s în urmă",s:"câteva secunde",m:"un minut",mm:Yd,h:"o oră",hh:Yd,d:"o zi",dd:Yd,M:"o lună",MM:Yd,y:"un an",yy:Yd},week:{dow:1,// Monday is the first day of the week.
+doy:7}});var yh=[/^янв/i,/^фев/i,/^мар/i,/^апр/i,/^ма[йя]/i,/^июн/i,/^июл/i,/^авг/i,/^сен/i,/^окт/i,/^ноя/i,/^дек/i];
+// http://new.gramota.ru/spravka/rules/139-prop : § 103
+// Сокращения месяцев: http://new.gramota.ru/spravka/buro/search-answer?s=242637
+// CLDR data:          http://www.unicode.org/cldr/charts/28/summary/ru.html#1753
+a.defineLocale("ru",{months:{format:"января_февраля_марта_апреля_мая_июня_июля_августа_сентября_октября_ноября_декабря".split("_"),standalone:"январь_февраль_март_апрель_май_июнь_июль_август_сентябрь_октябрь_ноябрь_декабрь".split("_")},monthsShort:{
 // по CLDR именно "июл." и "июн.", но какой смысл менять букву на точку ?
-format:"янв._февр._мар._апр._мая_июня_июля_авг._сент._окт._нояб._дек.".split("_"),standalone:"янв._февр._март_апр._май_июнь_июль_авг._сент._окт._нояб._дек.".split("_")},weekdays:{standalone:"воскресенье_понедельник_вторник_среда_четверг_пятница_суббота".split("_"),format:"воскресенье_понедельник_вторник_среду_четверг_пятницу_субботу".split("_"),isFormat:/\[ ?[Вв] ?(?:прошлую|следующую|эту)? ?\] ?dddd/},weekdaysShort:"вс_пн_вт_ср_чт_пт_сб".split("_"),weekdaysMin:"вс_пн_вт_ср_чт_пт_сб".split("_"),monthsParse:qh,longMonthsParse:qh,shortMonthsParse:qh,
+format:"янв._февр._мар._апр._мая_июня_июля_авг._сент._окт._нояб._дек.".split("_"),standalone:"янв._февр._март_апр._май_июнь_июль_авг._сент._окт._нояб._дек.".split("_")},weekdays:{standalone:"воскресенье_понедельник_вторник_среда_четверг_пятница_суббота".split("_"),format:"воскресенье_понедельник_вторник_среду_четверг_пятницу_субботу".split("_"),isFormat:/\[ ?[Вв] ?(?:прошлую|следующую|эту)? ?\] ?dddd/},weekdaysShort:"вс_пн_вт_ср_чт_пт_сб".split("_"),weekdaysMin:"вс_пн_вт_ср_чт_пт_сб".split("_"),monthsParse:yh,longMonthsParse:yh,shortMonthsParse:yh,
 // полные названия с падежами, по три буквы, для некоторых, по 4 буквы, сокращения с точкой и без точки
 monthsRegex:/^(январ[ья]|янв\.?|феврал[ья]|февр?\.?|марта?|мар\.?|апрел[ья]|апр\.?|ма[йя]|июн[ья]|июн\.?|июл[ья]|июл\.?|августа?|авг\.?|сентябр[ья]|сент?\.?|октябр[ья]|окт\.?|ноябр[ья]|нояб?\.?|декабр[ья]|дек\.?)/i,
 // копия предыдущего
@@ -2699,40 +1115,150 @@ monthsShortRegex:/^(январ[ья]|янв\.?|феврал[ья]|февр?\.?|�
 // полные названия с падежами
 monthsStrictRegex:/^(январ[яь]|феврал[яь]|марта?|апрел[яь]|ма[яй]|июн[яь]|июл[яь]|августа?|сентябр[яь]|октябр[яь]|ноябр[яь]|декабр[яь])/i,
 // Выражение, которое соотвествует только сокращённым формам
-monthsShortStrictRegex:/^(янв\.|февр?\.|мар[т.]|апр\.|ма[яй]|июн[ья.]|июл[ья.]|авг\.|сент?\.|окт\.|нояб?\.|дек\.)/i,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY г.",LLL:"D MMMM YYYY г., HH:mm",LLLL:"dddd, D MMMM YYYY г., HH:mm"},calendar:{sameDay:"[Сегодня в] LT",nextDay:"[Завтра в] LT",lastDay:"[Вчера в] LT",nextWeek:function(a){if(a.week()===this.week())return 2===this.day()?"[Во] dddd [в] LT":"[В] dddd [в] LT";switch(this.day()){case 0:return"[В следующее] dddd [в] LT";case 1:case 2:case 4:return"[В следующий] dddd [в] LT";case 3:case 5:case 6:return"[В следующую] dddd [в] LT"}},lastWeek:function(a){if(a.week()===this.week())return 2===this.day()?"[Во] dddd [в] LT":"[В] dddd [в] LT";switch(this.day()){case 0:return"[В прошлое] dddd [в] LT";case 1:case 2:case 4:return"[В прошлый] dddd [в] LT";case 3:case 5:case 6:return"[В прошлую] dddd [в] LT"}},sameElse:"L"},relativeTime:{future:"через %s",past:"%s назад",s:"несколько секунд",m:Yd,mm:Yd,h:"час",hh:Yd,d:"день",dd:Yd,M:"месяц",MM:Yd,y:"год",yy:Yd},meridiemParse:/ночи|утра|дня|вечера/i,isPM:function(a){return/^(дня|вечера)$/.test(a)},meridiem:function(a,b,c){return a<4?"ночи":a<12?"утра":a<17?"дня":"вечера"},ordinalParse:/\d{1,2}-(й|го|я)/,ordinal:function(a,b){switch(b){case"M":case"d":case"DDD":return a+"-й";case"D":return a+"-го";case"w":case"W":return a+"-я";default:return a}},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("se",{months:"ođđajagemánnu_guovvamánnu_njukčamánnu_cuoŋománnu_miessemánnu_geassemánnu_suoidnemánnu_borgemánnu_čakčamánnu_golggotmánnu_skábmamánnu_juovlamánnu".split("_"),monthsShort:"ođđj_guov_njuk_cuo_mies_geas_suoi_borg_čakč_golg_skáb_juov".split("_"),weekdays:"sotnabeaivi_vuossárga_maŋŋebárga_gaskavahkku_duorastat_bearjadat_lávvardat".split("_"),weekdaysShort:"sotn_vuos_maŋ_gask_duor_bear_láv".split("_"),weekdaysMin:"s_v_m_g_d_b_L".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"MMMM D. [b.] YYYY",LLL:"MMMM D. [b.] YYYY [ti.] HH:mm",LLLL:"dddd, MMMM D. [b.] YYYY [ti.] HH:mm"},calendar:{sameDay:"[otne ti] LT",nextDay:"[ihttin ti] LT",nextWeek:"dddd [ti] LT",lastDay:"[ikte ti] LT",lastWeek:"[ovddit] dddd [ti] LT",sameElse:"L"},relativeTime:{future:"%s geažes",past:"maŋit %s",s:"moadde sekunddat",m:"okta minuhta",mm:"%d minuhtat",h:"okta diimmu",hh:"%d diimmut",d:"okta beaivi",dd:"%d beaivvit",M:"okta mánnu",MM:"%d mánut",y:"okta jahki",yy:"%d jagit"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("si",{months:"ජනවාරි_පෙබරවාරි_මාර්තු_අප්‍රේල්_මැයි_ජූනි_ජූලි_අගෝස්තු_සැප්තැම්බර්_ඔක්තෝබර්_නොවැම්බර්_දෙසැම්බර්".split("_"),monthsShort:"ජන_පෙබ_මාර්_අප්_මැයි_ජූනි_ජූලි_අගෝ_සැප්_ඔක්_නොවැ_දෙසැ".split("_"),weekdays:"ඉරිදා_සඳුදා_අඟහරුවාදා_බදාදා_බ්‍රහස්පතින්දා_සිකුරාදා_සෙනසුරාදා".split("_"),weekdaysShort:"ඉරි_සඳු_අඟ_බදා_බ්‍රහ_සිකු_සෙන".split("_"),weekdaysMin:"ඉ_ස_අ_බ_බ්‍ර_සි_සෙ".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"a h:mm",LTS:"a h:mm:ss",L:"YYYY/MM/DD",LL:"YYYY MMMM D",LLL:"YYYY MMMM D, a h:mm",LLLL:"YYYY MMMM D [වැනි] dddd, a h:mm:ss"},calendar:{sameDay:"[අද] LT[ට]",nextDay:"[හෙට] LT[ට]",nextWeek:"dddd LT[ට]",lastDay:"[ඊයේ] LT[ට]",lastWeek:"[පසුගිය] dddd LT[ට]",sameElse:"L"},relativeTime:{future:"%sකින්",past:"%sකට පෙර",s:"තත්පර කිහිපය",m:"මිනිත්තුව",mm:"මිනිත්තු %d",h:"පැය",hh:"පැය %d",d:"දිනය",dd:"දින %d",M:"මාසය",MM:"මාස %d",y:"වසර",yy:"වසර %d"},ordinalParse:/\d{1,2} වැනි/,ordinal:function(a){return a+" වැනි"},meridiemParse:/පෙර වරු|පස් වරු|පෙ.ව|ප.ව./,isPM:function(a){return"ප.ව."===a||"පස් වරු"===a},meridiem:function(a,b,c){return a>11?c?"ප.ව.":"පස් වරු":c?"පෙ.ව.":"පෙර වරු"}}),"január_február_marec_apríl_máj_jún_júl_august_september_október_november_december".split("_")),sh="jan_feb_mar_apr_máj_jún_júl_aug_sep_okt_nov_dec".split("_"),th=(kg.defineLocale("sk",{months:rh,monthsShort:sh,weekdays:"nedeľa_pondelok_utorok_streda_štvrtok_piatok_sobota".split("_"),weekdaysShort:"ne_po_ut_st_št_pi_so".split("_"),weekdaysMin:"ne_po_ut_st_št_pi_so".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd D. MMMM YYYY H:mm"},calendar:{sameDay:"[dnes o] LT",nextDay:"[zajtra o] LT",nextWeek:function(){switch(this.day()){case 0:return"[v nedeľu o] LT";case 1:case 2:return"[v] dddd [o] LT";case 3:return"[v stredu o] LT";case 4:return"[vo štvrtok o] LT";case 5:return"[v piatok o] LT";case 6:return"[v sobotu o] LT"}},lastDay:"[včera o] LT",lastWeek:function(){switch(this.day()){case 0:return"[minulú nedeľu o] LT";case 1:case 2:return"[minulý] dddd [o] LT";case 3:return"[minulú stredu o] LT";case 4:case 5:return"[minulý] dddd [o] LT";case 6:return"[minulú sobotu o] LT"}},sameElse:"L"},relativeTime:{future:"za %s",past:"pred %s",s:$d,m:$d,mm:$d,h:$d,hh:$d,d:$d,dd:$d,M:$d,MM:$d,y:$d,yy:$d},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("sl",{months:"januar_februar_marec_april_maj_junij_julij_avgust_september_oktober_november_december".split("_"),monthsShort:"jan._feb._mar._apr._maj._jun._jul._avg._sep._okt._nov._dec.".split("_"),monthsParseExact:!0,weekdays:"nedelja_ponedeljek_torek_sreda_četrtek_petek_sobota".split("_"),weekdaysShort:"ned._pon._tor._sre._čet._pet._sob.".split("_"),weekdaysMin:"ne_po_to_sr_če_pe_so".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd, D. MMMM YYYY H:mm"},calendar:{sameDay:"[danes ob] LT",nextDay:"[jutri ob] LT",nextWeek:function(){switch(this.day()){case 0:return"[v] [nedeljo] [ob] LT";case 3:return"[v] [sredo] [ob] LT";case 6:return"[v] [soboto] [ob] LT";case 1:case 2:case 4:case 5:return"[v] dddd [ob] LT"}},lastDay:"[včeraj ob] LT",lastWeek:function(){switch(this.day()){case 0:return"[prejšnjo] [nedeljo] [ob] LT";case 3:return"[prejšnjo] [sredo] [ob] LT";case 6:return"[prejšnjo] [soboto] [ob] LT";case 1:case 2:case 4:case 5:return"[prejšnji] dddd [ob] LT"}},sameElse:"L"},relativeTime:{future:"čez %s",past:"pred %s",s:_d,m:_d,mm:_d,h:_d,hh:_d,d:_d,dd:_d,M:_d,MM:_d,y:_d,yy:_d},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("sq",{months:"Janar_Shkurt_Mars_Prill_Maj_Qershor_Korrik_Gusht_Shtator_Tetor_Nëntor_Dhjetor".split("_"),monthsShort:"Jan_Shk_Mar_Pri_Maj_Qer_Kor_Gus_Sht_Tet_Nën_Dhj".split("_"),weekdays:"E Diel_E Hënë_E Martë_E Mërkurë_E Enjte_E Premte_E Shtunë".split("_"),weekdaysShort:"Die_Hën_Mar_Mër_Enj_Pre_Sht".split("_"),weekdaysMin:"D_H_Ma_Më_E_P_Sh".split("_"),weekdaysParseExact:!0,meridiemParse:/PD|MD/,isPM:function(a){return"M"===a.charAt(0)},meridiem:function(a,b,c){return a<12?"PD":"MD"},longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Sot në] LT",nextDay:"[Nesër në] LT",nextWeek:"dddd [në] LT",lastDay:"[Dje në] LT",lastWeek:"dddd [e kaluar në] LT",sameElse:"L"},relativeTime:{future:"në %s",past:"%s më parë",s:"disa sekonda",m:"një minutë",mm:"%d minuta",h:"një orë",hh:"%d orë",d:"një ditë",dd:"%d ditë",M:"një muaj",MM:"%d muaj",y:"një vit",yy:"%d vite"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),{words:{//Different grammatical cases
-m:["један минут","једне минуте"],mm:["минут","минуте","минута"],h:["један сат","једног сата"],hh:["сат","сата","сати"],dd:["дан","дана","дана"],MM:["месец","месеца","месеци"],yy:["година","године","година"]},correctGrammaticalCase:function(a,b){return 1===a?b[0]:a>=2&&a<=4?b[1]:b[2]},translate:function(a,b,c){var d=th.words[c];return 1===c.length?b?d[0]:d[1]:a+" "+th.correctGrammaticalCase(a,d)}}),uh=(kg.defineLocale("sr-cyrl",{months:"јануар_фебруар_март_април_мај_јун_јул_август_септембар_октобар_новембар_децембар".split("_"),monthsShort:"јан._феб._мар._апр._мај_јун_јул_авг._сеп._окт._нов._дец.".split("_"),monthsParseExact:!0,weekdays:"недеља_понедељак_уторак_среда_четвртак_петак_субота".split("_"),weekdaysShort:"нед._пон._уто._сре._чет._пет._суб.".split("_"),weekdaysMin:"не_по_ут_ср_че_пе_су".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd, D. MMMM YYYY H:mm"},calendar:{sameDay:"[данас у] LT",nextDay:"[сутра у] LT",nextWeek:function(){switch(this.day()){case 0:return"[у] [недељу] [у] LT";case 3:return"[у] [среду] [у] LT";case 6:return"[у] [суботу] [у] LT";case 1:case 2:case 4:case 5:return"[у] dddd [у] LT"}},lastDay:"[јуче у] LT",lastWeek:function(){var a=["[прошле] [недеље] [у] LT","[прошлог] [понедељка] [у] LT","[прошлог] [уторка] [у] LT","[прошле] [среде] [у] LT","[прошлог] [четвртка] [у] LT","[прошлог] [петка] [у] LT","[прошле] [суботе] [у] LT"];return a[this.day()]},sameElse:"L"},relativeTime:{future:"за %s",past:"пре %s",s:"неколико секунди",m:th.translate,mm:th.translate,h:th.translate,hh:th.translate,d:"дан",dd:th.translate,M:"месец",MM:th.translate,y:"годину",yy:th.translate},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:7}}),{words:{//Different grammatical cases
-m:["jedan minut","jedne minute"],mm:["minut","minute","minuta"],h:["jedan sat","jednog sata"],hh:["sat","sata","sati"],dd:["dan","dana","dana"],MM:["mesec","meseca","meseci"],yy:["godina","godine","godina"]},correctGrammaticalCase:function(a,b){return 1===a?b[0]:a>=2&&a<=4?b[1]:b[2]},translate:function(a,b,c){var d=uh.words[c];return 1===c.length?b?d[0]:d[1]:a+" "+uh.correctGrammaticalCase(a,d)}}),vh=(kg.defineLocale("sr",{months:"januar_februar_mart_april_maj_jun_jul_avgust_septembar_oktobar_novembar_decembar".split("_"),monthsShort:"jan._feb._mar._apr._maj_jun_jul_avg._sep._okt._nov._dec.".split("_"),monthsParseExact:!0,weekdays:"nedelja_ponedeljak_utorak_sreda_četvrtak_petak_subota".split("_"),weekdaysShort:"ned._pon._uto._sre._čet._pet._sub.".split("_"),weekdaysMin:"ne_po_ut_sr_če_pe_su".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd, D. MMMM YYYY H:mm"},calendar:{sameDay:"[danas u] LT",nextDay:"[sutra u] LT",nextWeek:function(){switch(this.day()){case 0:return"[u] [nedelju] [u] LT";case 3:return"[u] [sredu] [u] LT";case 6:return"[u] [subotu] [u] LT";case 1:case 2:case 4:case 5:return"[u] dddd [u] LT"}},lastDay:"[juče u] LT",lastWeek:function(){var a=["[prošle] [nedelje] [u] LT","[prošlog] [ponedeljka] [u] LT","[prošlog] [utorka] [u] LT","[prošle] [srede] [u] LT","[prošlog] [četvrtka] [u] LT","[prošlog] [petka] [u] LT","[prošle] [subote] [u] LT"];return a[this.day()]},sameElse:"L"},relativeTime:{future:"za %s",past:"pre %s",s:"nekoliko sekundi",m:uh.translate,mm:uh.translate,h:uh.translate,hh:uh.translate,d:"dan",dd:uh.translate,M:"mesec",MM:uh.translate,y:"godinu",yy:uh.translate},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("ss",{months:"Bhimbidvwane_Indlovana_Indlov'lenkhulu_Mabasa_Inkhwekhweti_Inhlaba_Kholwane_Ingci_Inyoni_Imphala_Lweti_Ingongoni".split("_"),monthsShort:"Bhi_Ina_Inu_Mab_Ink_Inh_Kho_Igc_Iny_Imp_Lwe_Igo".split("_"),weekdays:"Lisontfo_Umsombuluko_Lesibili_Lesitsatfu_Lesine_Lesihlanu_Umgcibelo".split("_"),weekdaysShort:"Lis_Umb_Lsb_Les_Lsi_Lsh_Umg".split("_"),weekdaysMin:"Li_Us_Lb_Lt_Ls_Lh_Ug".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY h:mm A",LLLL:"dddd, D MMMM YYYY h:mm A"},calendar:{sameDay:"[Namuhla nga] LT",nextDay:"[Kusasa nga] LT",nextWeek:"dddd [nga] LT",lastDay:"[Itolo nga] LT",lastWeek:"dddd [leliphelile] [nga] LT",sameElse:"L"},relativeTime:{future:"nga %s",past:"wenteka nga %s",s:"emizuzwana lomcane",m:"umzuzu",mm:"%d emizuzu",h:"lihora",hh:"%d emahora",d:"lilanga",dd:"%d emalanga",M:"inyanga",MM:"%d tinyanga",y:"umnyaka",yy:"%d iminyaka"},meridiemParse:/ekuseni|emini|entsambama|ebusuku/,meridiem:function(a,b,c){return a<11?"ekuseni":a<15?"emini":a<19?"entsambama":"ebusuku"},meridiemHour:function(a,b){return 12===a&&(a=0),"ekuseni"===b?a:"emini"===b?a>=11?a:a+12:"entsambama"===b||"ebusuku"===b?0===a?0:a+12:void 0},ordinalParse:/\d{1,2}/,ordinal:"%d",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("sv",{months:"januari_februari_mars_april_maj_juni_juli_augusti_september_oktober_november_december".split("_"),monthsShort:"jan_feb_mar_apr_maj_jun_jul_aug_sep_okt_nov_dec".split("_"),weekdays:"söndag_måndag_tisdag_onsdag_torsdag_fredag_lördag".split("_"),weekdaysShort:"sön_mån_tis_ons_tor_fre_lör".split("_"),weekdaysMin:"sö_må_ti_on_to_fr_lö".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"YYYY-MM-DD",LL:"D MMMM YYYY",LLL:"D MMMM YYYY [kl.] HH:mm",LLLL:"dddd D MMMM YYYY [kl.] HH:mm",lll:"D MMM YYYY HH:mm",llll:"ddd D MMM YYYY HH:mm"},calendar:{sameDay:"[Idag] LT",nextDay:"[Imorgon] LT",lastDay:"[Igår] LT",nextWeek:"[På] dddd LT",lastWeek:"[I] dddd[s] LT",sameElse:"L"},relativeTime:{future:"om %s",past:"för %s sedan",s:"några sekunder",m:"en minut",mm:"%d minuter",h:"en timme",hh:"%d timmar",d:"en dag",dd:"%d dagar",M:"en månad",MM:"%d månader",y:"ett år",yy:"%d år"},ordinalParse:/\d{1,2}(e|a)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"e":1===b?"a":2===b?"a":"e";return a+c},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("sw",{months:"Januari_Februari_Machi_Aprili_Mei_Juni_Julai_Agosti_Septemba_Oktoba_Novemba_Desemba".split("_"),monthsShort:"Jan_Feb_Mac_Apr_Mei_Jun_Jul_Ago_Sep_Okt_Nov_Des".split("_"),weekdays:"Jumapili_Jumatatu_Jumanne_Jumatano_Alhamisi_Ijumaa_Jumamosi".split("_"),weekdaysShort:"Jpl_Jtat_Jnne_Jtan_Alh_Ijm_Jmos".split("_"),weekdaysMin:"J2_J3_J4_J5_Al_Ij_J1".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[leo saa] LT",nextDay:"[kesho saa] LT",nextWeek:"[wiki ijayo] dddd [saat] LT",lastDay:"[jana] LT",lastWeek:"[wiki iliyopita] dddd [saat] LT",sameElse:"L"},relativeTime:{future:"%s baadaye",past:"tokea %s",s:"hivi punde",m:"dakika moja",mm:"dakika %d",h:"saa limoja",hh:"masaa %d",d:"siku moja",dd:"masiku %d",M:"mwezi mmoja",MM:"miezi %d",y:"mwaka mmoja",yy:"miaka %d"},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),{1:"௧",2:"௨",3:"௩",4:"௪",5:"௫",6:"௬",7:"௭",8:"௮",9:"௯",0:"௦"}),wh={"௧":"1","௨":"2","௩":"3","௪":"4","௫":"5","௬":"6","௭":"7","௮":"8","௯":"9","௦":"0"},xh=(kg.defineLocale("ta",{months:"ஜனவரி_பிப்ரவரி_மார்ச்_ஏப்ரல்_மே_ஜூன்_ஜூலை_ஆகஸ்ட்_செப்டெம்பர்_அக்டோபர்_நவம்பர்_டிசம்பர்".split("_"),monthsShort:"ஜனவரி_பிப்ரவரி_மார்ச்_ஏப்ரல்_மே_ஜூன்_ஜூலை_ஆகஸ்ட்_செப்டெம்பர்_அக்டோபர்_நவம்பர்_டிசம்பர்".split("_"),weekdays:"ஞாயிற்றுக்கிழமை_திங்கட்கிழமை_செவ்வாய்கிழமை_புதன்கிழமை_வியாழக்கிழமை_வெள்ளிக்கிழமை_சனிக்கிழமை".split("_"),weekdaysShort:"ஞாயிறு_திங்கள்_செவ்வாய்_புதன்_வியாழன்_வெள்ளி_சனி".split("_"),weekdaysMin:"ஞா_தி_செ_பு_வி_வெ_ச".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, HH:mm",LLLL:"dddd, D MMMM YYYY, HH:mm"},calendar:{sameDay:"[இன்று] LT",nextDay:"[நாளை] LT",nextWeek:"dddd, LT",lastDay:"[நேற்று] LT",lastWeek:"[கடந்த வாரம்] dddd, LT",sameElse:"L"},relativeTime:{future:"%s இல்",past:"%s முன்",s:"ஒரு சில விநாடிகள்",m:"ஒரு நிமிடம்",mm:"%d நிமிடங்கள்",h:"ஒரு மணி நேரம்",hh:"%d மணி நேரம்",d:"ஒரு நாள்",dd:"%d நாட்கள்",M:"ஒரு மாதம்",MM:"%d மாதங்கள்",y:"ஒரு வருடம்",yy:"%d ஆண்டுகள்"},ordinalParse:/\d{1,2}வது/,ordinal:function(a){return a+"வது"},preparse:function(a){return a.replace(/[௧௨௩௪௫௬௭௮௯௦]/g,function(a){return wh[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return vh[a]})},
+monthsShortStrictRegex:/^(янв\.|февр?\.|мар[т.]|апр\.|ма[яй]|июн[ья.]|июл[ья.]|авг\.|сент?\.|окт\.|нояб?\.|дек\.)/i,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY г.",LLL:"D MMMM YYYY г., HH:mm",LLLL:"dddd, D MMMM YYYY г., HH:mm"},calendar:{sameDay:"[Сегодня в] LT",nextDay:"[Завтра в] LT",lastDay:"[Вчера в] LT",nextWeek:function(a){if(a.week()===this.week())return 2===this.day()?"[Во] dddd [в] LT":"[В] dddd [в] LT";switch(this.day()){case 0:return"[В следующее] dddd [в] LT";case 1:case 2:case 4:return"[В следующий] dddd [в] LT";case 3:case 5:case 6:return"[В следующую] dddd [в] LT"}},lastWeek:function(a){if(a.week()===this.week())return 2===this.day()?"[Во] dddd [в] LT":"[В] dddd [в] LT";switch(this.day()){case 0:return"[В прошлое] dddd [в] LT";case 1:case 2:case 4:return"[В прошлый] dddd [в] LT";case 3:case 5:case 6:return"[В прошлую] dddd [в] LT"}},sameElse:"L"},relativeTime:{future:"через %s",past:"%s назад",s:"несколько секунд",m:$d,mm:$d,h:"час",hh:$d,d:"день",dd:$d,M:"месяц",MM:$d,y:"год",yy:$d},meridiemParse:/ночи|утра|дня|вечера/i,isPM:function(a){return/^(дня|вечера)$/.test(a)},meridiem:function(a,b,c){return a<4?"ночи":a<12?"утра":a<17?"дня":"вечера"},ordinalParse:/\d{1,2}-(й|го|я)/,ordinal:function(a,b){switch(b){case"M":case"d":case"DDD":return a+"-й";case"D":return a+"-го";case"w":case"W":return a+"-я";default:return a}},week:{dow:1,// Monday is the first day of the week.
+doy:7}}),
+//! moment.js locale configuration
+//! locale : Northern Sami [se]
+//! authors : Bård Rolstad Henriksen : https://github.com/karamell
+a.defineLocale("se",{months:"ođđajagemánnu_guovvamánnu_njukčamánnu_cuoŋománnu_miessemánnu_geassemánnu_suoidnemánnu_borgemánnu_čakčamánnu_golggotmánnu_skábmamánnu_juovlamánnu".split("_"),monthsShort:"ođđj_guov_njuk_cuo_mies_geas_suoi_borg_čakč_golg_skáb_juov".split("_"),weekdays:"sotnabeaivi_vuossárga_maŋŋebárga_gaskavahkku_duorastat_bearjadat_lávvardat".split("_"),weekdaysShort:"sotn_vuos_maŋ_gask_duor_bear_láv".split("_"),weekdaysMin:"s_v_m_g_d_b_L".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"MMMM D. [b.] YYYY",LLL:"MMMM D. [b.] YYYY [ti.] HH:mm",LLLL:"dddd, MMMM D. [b.] YYYY [ti.] HH:mm"},calendar:{sameDay:"[otne ti] LT",nextDay:"[ihttin ti] LT",nextWeek:"dddd [ti] LT",lastDay:"[ikte ti] LT",lastWeek:"[ovddit] dddd [ti] LT",sameElse:"L"},relativeTime:{future:"%s geažes",past:"maŋit %s",s:"moadde sekunddat",m:"okta minuhta",mm:"%d minuhtat",h:"okta diimmu",hh:"%d diimmut",d:"okta beaivi",dd:"%d beaivvit",M:"okta mánnu",MM:"%d mánut",y:"okta jahki",yy:"%d jagit"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Sinhalese [si]
+//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
+/*jshint -W100*/
+a.defineLocale("si",{months:"ජනවාරි_පෙබරවාරි_මාර්තු_අප්‍රේල්_මැයි_ජූනි_ජූලි_අගෝස්තු_සැප්තැම්බර්_ඔක්තෝබර්_නොවැම්බර්_දෙසැම්බර්".split("_"),monthsShort:"ජන_පෙබ_මාර්_අප්_මැයි_ජූනි_ජූලි_අගෝ_සැප්_ඔක්_නොවැ_දෙසැ".split("_"),weekdays:"ඉරිදා_සඳුදා_අඟහරුවාදා_බදාදා_බ්‍රහස්පතින්දා_සිකුරාදා_සෙනසුරාදා".split("_"),weekdaysShort:"ඉරි_සඳු_අඟ_බදා_බ්‍රහ_සිකු_සෙන".split("_"),weekdaysMin:"ඉ_ස_අ_බ_බ්‍ර_සි_සෙ".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"a h:mm",LTS:"a h:mm:ss",L:"YYYY/MM/DD",LL:"YYYY MMMM D",LLL:"YYYY MMMM D, a h:mm",LLLL:"YYYY MMMM D [වැනි] dddd, a h:mm:ss"},calendar:{sameDay:"[අද] LT[ට]",nextDay:"[හෙට] LT[ට]",nextWeek:"dddd LT[ට]",lastDay:"[ඊයේ] LT[ට]",lastWeek:"[පසුගිය] dddd LT[ට]",sameElse:"L"},relativeTime:{future:"%sකින්",past:"%sකට පෙර",s:"තත්පර කිහිපය",m:"මිනිත්තුව",mm:"මිනිත්තු %d",h:"පැය",hh:"පැය %d",d:"දිනය",dd:"දින %d",M:"මාසය",MM:"මාස %d",y:"වසර",yy:"වසර %d"},ordinalParse:/\d{1,2} වැනි/,ordinal:function(a){return a+" වැනි"},meridiemParse:/පෙර වරු|පස් වරු|පෙ.ව|ප.ව./,isPM:function(a){return"ප.ව."===a||"පස් වරු"===a},meridiem:function(a,b,c){return a>11?c?"ප.ව.":"පස් වරු":c?"පෙ.ව.":"පෙර වරු"}});
+//! moment.js locale configuration
+//! locale : Slovak [sk]
+//! author : Martin Minka : https://github.com/k2s
+//! based on work of petrbela : https://github.com/petrbela
+var zh="január_február_marec_apríl_máj_jún_júl_august_september_október_november_december".split("_"),Ah="jan_feb_mar_apr_máj_jún_júl_aug_sep_okt_nov_dec".split("_");a.defineLocale("sk",{months:zh,monthsShort:Ah,weekdays:"nedeľa_pondelok_utorok_streda_štvrtok_piatok_sobota".split("_"),weekdaysShort:"ne_po_ut_st_št_pi_so".split("_"),weekdaysMin:"ne_po_ut_st_št_pi_so".split("_"),longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd D. MMMM YYYY H:mm"},calendar:{sameDay:"[dnes o] LT",nextDay:"[zajtra o] LT",nextWeek:function(){switch(this.day()){case 0:return"[v nedeľu o] LT";case 1:case 2:return"[v] dddd [o] LT";case 3:return"[v stredu o] LT";case 4:return"[vo štvrtok o] LT";case 5:return"[v piatok o] LT";case 6:return"[v sobotu o] LT"}},lastDay:"[včera o] LT",lastWeek:function(){switch(this.day()){case 0:return"[minulú nedeľu o] LT";case 1:case 2:return"[minulý] dddd [o] LT";case 3:return"[minulú stredu o] LT";case 4:case 5:return"[minulý] dddd [o] LT";case 6:return"[minulú sobotu o] LT"}},sameElse:"L"},relativeTime:{future:"za %s",past:"pred %s",s:ae,m:ae,mm:ae,h:ae,hh:ae,d:ae,dd:ae,M:ae,MM:ae,y:ae,yy:ae},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),a.defineLocale("sl",{months:"januar_februar_marec_april_maj_junij_julij_avgust_september_oktober_november_december".split("_"),monthsShort:"jan._feb._mar._apr._maj._jun._jul._avg._sep._okt._nov._dec.".split("_"),monthsParseExact:!0,weekdays:"nedelja_ponedeljek_torek_sreda_četrtek_petek_sobota".split("_"),weekdaysShort:"ned._pon._tor._sre._čet._pet._sob.".split("_"),weekdaysMin:"ne_po_to_sr_če_pe_so".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd, D. MMMM YYYY H:mm"},calendar:{sameDay:"[danes ob] LT",nextDay:"[jutri ob] LT",nextWeek:function(){switch(this.day()){case 0:return"[v] [nedeljo] [ob] LT";case 3:return"[v] [sredo] [ob] LT";case 6:return"[v] [soboto] [ob] LT";case 1:case 2:case 4:case 5:return"[v] dddd [ob] LT"}},lastDay:"[včeraj ob] LT",lastWeek:function(){switch(this.day()){case 0:return"[prejšnjo] [nedeljo] [ob] LT";case 3:return"[prejšnjo] [sredo] [ob] LT";case 6:return"[prejšnjo] [soboto] [ob] LT";case 1:case 2:case 4:case 5:return"[prejšnji] dddd [ob] LT"}},sameElse:"L"},relativeTime:{future:"čez %s",past:"pred %s",s:be,m:be,mm:be,h:be,hh:be,d:be,dd:be,M:be,MM:be,y:be,yy:be},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:7}}),
+//! moment.js locale configuration
+//! locale : Albanian [sq]
+//! author : Flakërim Ismani : https://github.com/flakerimi
+//! author : Menelion Elensúle : https://github.com/Oire
+//! author : Oerd Cukalla : https://github.com/oerd
+a.defineLocale("sq",{months:"Janar_Shkurt_Mars_Prill_Maj_Qershor_Korrik_Gusht_Shtator_Tetor_Nëntor_Dhjetor".split("_"),monthsShort:"Jan_Shk_Mar_Pri_Maj_Qer_Kor_Gus_Sht_Tet_Nën_Dhj".split("_"),weekdays:"E Diel_E Hënë_E Martë_E Mërkurë_E Enjte_E Premte_E Shtunë".split("_"),weekdaysShort:"Die_Hën_Mar_Mër_Enj_Pre_Sht".split("_"),weekdaysMin:"D_H_Ma_Më_E_P_Sh".split("_"),weekdaysParseExact:!0,meridiemParse:/PD|MD/,isPM:function(a){return"M"===a.charAt(0)},meridiem:function(a,b,c){return a<12?"PD":"MD"},longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Sot në] LT",nextDay:"[Nesër në] LT",nextWeek:"dddd [në] LT",lastDay:"[Dje në] LT",lastWeek:"dddd [e kaluar në] LT",sameElse:"L"},relativeTime:{future:"në %s",past:"%s më parë",s:"disa sekonda",m:"një minutë",mm:"%d minuta",h:"një orë",hh:"%d orë",d:"një ditë",dd:"%d ditë",M:"një muaj",MM:"%d muaj",y:"një vit",yy:"%d vite"},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Serbian Cyrillic [sr-cyrl]
+//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
+var Bh={words:{//Different grammatical cases
+m:["један минут","једне минуте"],mm:["минут","минуте","минута"],h:["један сат","једног сата"],hh:["сат","сата","сати"],dd:["дан","дана","дана"],MM:["месец","месеца","месеци"],yy:["година","године","година"]},correctGrammaticalCase:function(a,b){return 1===a?b[0]:a>=2&&a<=4?b[1]:b[2]},translate:function(a,b,c){var d=Bh.words[c];return 1===c.length?b?d[0]:d[1]:a+" "+Bh.correctGrammaticalCase(a,d)}};a.defineLocale("sr-cyrl",{months:"јануар_фебруар_март_април_мај_јун_јул_август_септембар_октобар_новембар_децембар".split("_"),monthsShort:"јан._феб._мар._апр._мај_јун_јул_авг._сеп._окт._нов._дец.".split("_"),monthsParseExact:!0,weekdays:"недеља_понедељак_уторак_среда_четвртак_петак_субота".split("_"),weekdaysShort:"нед._пон._уто._сре._чет._пет._суб.".split("_"),weekdaysMin:"не_по_ут_ср_че_пе_су".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd, D. MMMM YYYY H:mm"},calendar:{sameDay:"[данас у] LT",nextDay:"[сутра у] LT",nextWeek:function(){switch(this.day()){case 0:return"[у] [недељу] [у] LT";case 3:return"[у] [среду] [у] LT";case 6:return"[у] [суботу] [у] LT";case 1:case 2:case 4:case 5:return"[у] dddd [у] LT"}},lastDay:"[јуче у] LT",lastWeek:function(){var a=["[прошле] [недеље] [у] LT","[прошлог] [понедељка] [у] LT","[прошлог] [уторка] [у] LT","[прошле] [среде] [у] LT","[прошлог] [четвртка] [у] LT","[прошлог] [петка] [у] LT","[прошле] [суботе] [у] LT"];return a[this.day()]},sameElse:"L"},relativeTime:{future:"за %s",past:"пре %s",s:"неколико секунди",m:Bh.translate,mm:Bh.translate,h:Bh.translate,hh:Bh.translate,d:"дан",dd:Bh.translate,M:"месец",MM:Bh.translate,y:"годину",yy:Bh.translate},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:7}});
+//! moment.js locale configuration
+//! locale : Serbian [sr]
+//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
+var Ch={words:{//Different grammatical cases
+m:["jedan minut","jedne minute"],mm:["minut","minute","minuta"],h:["jedan sat","jednog sata"],hh:["sat","sata","sati"],dd:["dan","dana","dana"],MM:["mesec","meseca","meseci"],yy:["godina","godine","godina"]},correctGrammaticalCase:function(a,b){return 1===a?b[0]:a>=2&&a<=4?b[1]:b[2]},translate:function(a,b,c){var d=Ch.words[c];return 1===c.length?b?d[0]:d[1]:a+" "+Ch.correctGrammaticalCase(a,d)}};a.defineLocale("sr",{months:"januar_februar_mart_april_maj_jun_jul_avgust_septembar_oktobar_novembar_decembar".split("_"),monthsShort:"jan._feb._mar._apr._maj_jun_jul_avg._sep._okt._nov._dec.".split("_"),monthsParseExact:!0,weekdays:"nedelja_ponedeljak_utorak_sreda_četvrtak_petak_subota".split("_"),weekdaysShort:"ned._pon._uto._sre._čet._pet._sub.".split("_"),weekdaysMin:"ne_po_ut_sr_če_pe_su".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"DD.MM.YYYY",LL:"D. MMMM YYYY",LLL:"D. MMMM YYYY H:mm",LLLL:"dddd, D. MMMM YYYY H:mm"},calendar:{sameDay:"[danas u] LT",nextDay:"[sutra u] LT",nextWeek:function(){switch(this.day()){case 0:return"[u] [nedelju] [u] LT";case 3:return"[u] [sredu] [u] LT";case 6:return"[u] [subotu] [u] LT";case 1:case 2:case 4:case 5:return"[u] dddd [u] LT"}},lastDay:"[juče u] LT",lastWeek:function(){var a=["[prošle] [nedelje] [u] LT","[prošlog] [ponedeljka] [u] LT","[prošlog] [utorka] [u] LT","[prošle] [srede] [u] LT","[prošlog] [četvrtka] [u] LT","[prošlog] [petka] [u] LT","[prošle] [subote] [u] LT"];return a[this.day()]},sameElse:"L"},relativeTime:{future:"za %s",past:"pre %s",s:"nekoliko sekundi",m:Ch.translate,mm:Ch.translate,h:Ch.translate,hh:Ch.translate,d:"dan",dd:Ch.translate,M:"mesec",MM:Ch.translate,y:"godinu",yy:Ch.translate},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:7}}),
+//! moment.js locale configuration
+//! locale : siSwati [ss]
+//! author : Nicolai Davies<mail@nicolai.io> : https://github.com/nicolaidavies
+a.defineLocale("ss",{months:"Bhimbidvwane_Indlovana_Indlov'lenkhulu_Mabasa_Inkhwekhweti_Inhlaba_Kholwane_Ingci_Inyoni_Imphala_Lweti_Ingongoni".split("_"),monthsShort:"Bhi_Ina_Inu_Mab_Ink_Inh_Kho_Igc_Iny_Imp_Lwe_Igo".split("_"),weekdays:"Lisontfo_Umsombuluko_Lesibili_Lesitsatfu_Lesine_Lesihlanu_Umgcibelo".split("_"),weekdaysShort:"Lis_Umb_Lsb_Les_Lsi_Lsh_Umg".split("_"),weekdaysMin:"Li_Us_Lb_Lt_Ls_Lh_Ug".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY h:mm A",LLLL:"dddd, D MMMM YYYY h:mm A"},calendar:{sameDay:"[Namuhla nga] LT",nextDay:"[Kusasa nga] LT",nextWeek:"dddd [nga] LT",lastDay:"[Itolo nga] LT",lastWeek:"dddd [leliphelile] [nga] LT",sameElse:"L"},relativeTime:{future:"nga %s",past:"wenteka nga %s",s:"emizuzwana lomcane",m:"umzuzu",mm:"%d emizuzu",h:"lihora",hh:"%d emahora",d:"lilanga",dd:"%d emalanga",M:"inyanga",MM:"%d tinyanga",y:"umnyaka",yy:"%d iminyaka"},meridiemParse:/ekuseni|emini|entsambama|ebusuku/,meridiem:function(a,b,c){return a<11?"ekuseni":a<15?"emini":a<19?"entsambama":"ebusuku"},meridiemHour:function(a,b){return 12===a&&(a=0),"ekuseni"===b?a:"emini"===b?a>=11?a:a+12:"entsambama"===b||"ebusuku"===b?0===a?0:a+12:void 0},ordinalParse:/\d{1,2}/,ordinal:"%d",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Swedish [sv]
+//! author : Jens Alm : https://github.com/ulmus
+a.defineLocale("sv",{months:"januari_februari_mars_april_maj_juni_juli_augusti_september_oktober_november_december".split("_"),monthsShort:"jan_feb_mar_apr_maj_jun_jul_aug_sep_okt_nov_dec".split("_"),weekdays:"söndag_måndag_tisdag_onsdag_torsdag_fredag_lördag".split("_"),weekdaysShort:"sön_mån_tis_ons_tor_fre_lör".split("_"),weekdaysMin:"sö_må_ti_on_to_fr_lö".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"YYYY-MM-DD",LL:"D MMMM YYYY",LLL:"D MMMM YYYY [kl.] HH:mm",LLLL:"dddd D MMMM YYYY [kl.] HH:mm",lll:"D MMM YYYY HH:mm",llll:"ddd D MMM YYYY HH:mm"},calendar:{sameDay:"[Idag] LT",nextDay:"[Imorgon] LT",lastDay:"[Igår] LT",nextWeek:"[På] dddd LT",lastWeek:"[I] dddd[s] LT",sameElse:"L"},relativeTime:{future:"om %s",past:"för %s sedan",s:"några sekunder",m:"en minut",mm:"%d minuter",h:"en timme",hh:"%d timmar",d:"en dag",dd:"%d dagar",M:"en månad",MM:"%d månader",y:"ett år",yy:"%d år"},ordinalParse:/\d{1,2}(e|a)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"e":1===b?"a":2===b?"a":"e";return a+c},week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Swahili [sw]
+//! author : Fahad Kassim : https://github.com/fadsel
+a.defineLocale("sw",{months:"Januari_Februari_Machi_Aprili_Mei_Juni_Julai_Agosti_Septemba_Oktoba_Novemba_Desemba".split("_"),monthsShort:"Jan_Feb_Mac_Apr_Mei_Jun_Jul_Ago_Sep_Okt_Nov_Des".split("_"),weekdays:"Jumapili_Jumatatu_Jumanne_Jumatano_Alhamisi_Ijumaa_Jumamosi".split("_"),weekdaysShort:"Jpl_Jtat_Jnne_Jtan_Alh_Ijm_Jmos".split("_"),weekdaysMin:"J2_J3_J4_J5_Al_Ij_J1".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[leo saa] LT",nextDay:"[kesho saa] LT",nextWeek:"[wiki ijayo] dddd [saat] LT",lastDay:"[jana] LT",lastWeek:"[wiki iliyopita] dddd [saat] LT",sameElse:"L"},relativeTime:{future:"%s baadaye",past:"tokea %s",s:"hivi punde",m:"dakika moja",mm:"dakika %d",h:"saa limoja",hh:"masaa %d",d:"siku moja",dd:"masiku %d",M:"mwezi mmoja",MM:"miezi %d",y:"mwaka mmoja",yy:"miaka %d"},week:{dow:1,// Monday is the first day of the week.
+doy:7}});
+//! moment.js locale configuration
+//! locale : Tamil [ta]
+//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
+var Dh={1:"௧",2:"௨",3:"௩",4:"௪",5:"௫",6:"௬",7:"௭",8:"௮",9:"௯",0:"௦"},Eh={"௧":"1","௨":"2","௩":"3","௪":"4","௫":"5","௬":"6","௭":"7","௮":"8","௯":"9","௦":"0"};a.defineLocale("ta",{months:"ஜனவரி_பிப்ரவரி_மார்ச்_ஏப்ரல்_மே_ஜூன்_ஜூலை_ஆகஸ்ட்_செப்டெம்பர்_அக்டோபர்_நவம்பர்_டிசம்பர்".split("_"),monthsShort:"ஜனவரி_பிப்ரவரி_மார்ச்_ஏப்ரல்_மே_ஜூன்_ஜூலை_ஆகஸ்ட்_செப்டெம்பர்_அக்டோபர்_நவம்பர்_டிசம்பர்".split("_"),weekdays:"ஞாயிற்றுக்கிழமை_திங்கட்கிழமை_செவ்வாய்கிழமை_புதன்கிழமை_வியாழக்கிழமை_வெள்ளிக்கிழமை_சனிக்கிழமை".split("_"),weekdaysShort:"ஞாயிறு_திங்கள்_செவ்வாய்_புதன்_வியாழன்_வெள்ளி_சனி".split("_"),weekdaysMin:"ஞா_தி_செ_பு_வி_வெ_ச".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, HH:mm",LLLL:"dddd, D MMMM YYYY, HH:mm"},calendar:{sameDay:"[இன்று] LT",nextDay:"[நாளை] LT",nextWeek:"dddd, LT",lastDay:"[நேற்று] LT",lastWeek:"[கடந்த வாரம்] dddd, LT",sameElse:"L"},relativeTime:{future:"%s இல்",past:"%s முன்",s:"ஒரு சில விநாடிகள்",m:"ஒரு நிமிடம்",mm:"%d நிமிடங்கள்",h:"ஒரு மணி நேரம்",hh:"%d மணி நேரம்",d:"ஒரு நாள்",dd:"%d நாட்கள்",M:"ஒரு மாதம்",MM:"%d மாதங்கள்",y:"ஒரு வருடம்",yy:"%d ஆண்டுகள்"},ordinalParse:/\d{1,2}வது/,ordinal:function(a){return a+"வது"},preparse:function(a){return a.replace(/[௧௨௩௪௫௬௭௮௯௦]/g,function(a){return Eh[a]})},postformat:function(a){return a.replace(/\d/g,function(a){return Dh[a]})},
 // refer http://ta.wikipedia.org/s/1er1
 meridiemParse:/யாமம்|வைகறை|காலை|நண்பகல்|எற்பாடு|மாலை/,meridiem:function(a,b,c){return a<2?" யாமம்":a<6?" வைகறை":a<10?" காலை":a<14?" நண்பகல்":a<18?" எற்பாடு":a<22?" மாலை":" யாமம்"},meridiemHour:function(a,b){return 12===a&&(a=0),"யாமம்"===b?a<2?a:a+12:"வைகறை"===b||"காலை"===b?a:"நண்பகல்"===b&&a>=10?a:a+12},week:{dow:0,// Sunday is the first day of the week.
-doy:6}}),kg.defineLocale("te",{months:"జనవరి_ఫిబ్రవరి_మార్చి_ఏప్రిల్_మే_జూన్_జూలై_ఆగస్టు_సెప్టెంబర్_అక్టోబర్_నవంబర్_డిసెంబర్".split("_"),monthsShort:"జన._ఫిబ్ర._మార్చి_ఏప్రి._మే_జూన్_జూలై_ఆగ._సెప్._అక్టో._నవ._డిసె.".split("_"),monthsParseExact:!0,weekdays:"ఆదివారం_సోమవారం_మంగళవారం_బుధవారం_గురువారం_శుక్రవారం_శనివారం".split("_"),weekdaysShort:"ఆది_సోమ_మంగళ_బుధ_గురు_శుక్ర_శని".split("_"),weekdaysMin:"ఆ_సో_మం_బు_గు_శు_శ".split("_"),longDateFormat:{LT:"A h:mm",LTS:"A h:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, A h:mm",LLLL:"dddd, D MMMM YYYY, A h:mm"},calendar:{sameDay:"[నేడు] LT",nextDay:"[రేపు] LT",nextWeek:"dddd, LT",lastDay:"[నిన్న] LT",lastWeek:"[గత] dddd, LT",sameElse:"L"},relativeTime:{future:"%s లో",past:"%s క్రితం",s:"కొన్ని క్షణాలు",m:"ఒక నిమిషం",mm:"%d నిమిషాలు",h:"ఒక గంట",hh:"%d గంటలు",d:"ఒక రోజు",dd:"%d రోజులు",M:"ఒక నెల",MM:"%d నెలలు",y:"ఒక సంవత్సరం",yy:"%d సంవత్సరాలు"},ordinalParse:/\d{1,2}వ/,ordinal:"%dవ",meridiemParse:/రాత్రి|ఉదయం|మధ్యాహ్నం|సాయంత్రం/,meridiemHour:function(a,b){return 12===a&&(a=0),"రాత్రి"===b?a<4?a:a+12:"ఉదయం"===b?a:"మధ్యాహ్నం"===b?a>=10?a:a+12:"సాయంత్రం"===b?a+12:void 0},meridiem:function(a,b,c){return a<4?"రాత్రి":a<10?"ఉదయం":a<17?"మధ్యాహ్నం":a<20?"సాయంత్రం":"రాత్రి"},week:{dow:0,// Sunday is the first day of the week.
-doy:6}}),kg.defineLocale("th",{months:"มกราคม_กุมภาพันธ์_มีนาคม_เมษายน_พฤษภาคม_มิถุนายน_กรกฎาคม_สิงหาคม_กันยายน_ตุลาคม_พฤศจิกายน_ธันวาคม".split("_"),monthsShort:"ม.ค._ก.พ._มี.ค._เม.ย._พ.ค._มิ.ย._ก.ค._ส.ค._ก.ย._ต.ค._พ.ย._ธ.ค.".split("_"),monthsParseExact:!0,weekdays:"อาทิตย์_จันทร์_อังคาร_พุธ_พฤหัสบดี_ศุกร์_เสาร์".split("_"),weekdaysShort:"อาทิตย์_จันทร์_อังคาร_พุธ_พฤหัส_ศุกร์_เสาร์".split("_"),// yes, three characters difference
-weekdaysMin:"อา._จ._อ._พ._พฤ._ศ._ส.".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"YYYY/MM/DD",LL:"D MMMM YYYY",LLL:"D MMMM YYYY เวลา H:mm",LLLL:"วันddddที่ D MMMM YYYY เวลา H:mm"},meridiemParse:/ก่อนเที่ยง|หลังเที่ยง/,isPM:function(a){return"หลังเที่ยง"===a},meridiem:function(a,b,c){return a<12?"ก่อนเที่ยง":"หลังเที่ยง"},calendar:{sameDay:"[วันนี้ เวลา] LT",nextDay:"[พรุ่งนี้ เวลา] LT",nextWeek:"dddd[หน้า เวลา] LT",lastDay:"[เมื่อวานนี้ เวลา] LT",lastWeek:"[วัน]dddd[ที่แล้ว เวลา] LT",sameElse:"L"},relativeTime:{future:"อีก %s",past:"%sที่แล้ว",s:"ไม่กี่วินาที",m:"1 นาที",mm:"%d นาที",h:"1 ชั่วโมง",hh:"%d ชั่วโมง",d:"1 วัน",dd:"%d วัน",M:"1 เดือน",MM:"%d เดือน",y:"1 ปี",yy:"%d ปี"}}),kg.defineLocale("tl-ph",{months:"Enero_Pebrero_Marso_Abril_Mayo_Hunyo_Hulyo_Agosto_Setyembre_Oktubre_Nobyembre_Disyembre".split("_"),monthsShort:"Ene_Peb_Mar_Abr_May_Hun_Hul_Ago_Set_Okt_Nob_Dis".split("_"),weekdays:"Linggo_Lunes_Martes_Miyerkules_Huwebes_Biyernes_Sabado".split("_"),weekdaysShort:"Lin_Lun_Mar_Miy_Huw_Biy_Sab".split("_"),weekdaysMin:"Li_Lu_Ma_Mi_Hu_Bi_Sab".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"MM/D/YYYY",LL:"MMMM D, YYYY",LLL:"MMMM D, YYYY HH:mm",LLLL:"dddd, MMMM DD, YYYY HH:mm"},calendar:{sameDay:"[Ngayon sa] LT",nextDay:"[Bukas sa] LT",nextWeek:"dddd [sa] LT",lastDay:"[Kahapon sa] LT",lastWeek:"dddd [huling linggo] LT",sameElse:"L"},relativeTime:{future:"sa loob ng %s",past:"%s ang nakalipas",s:"ilang segundo",m:"isang minuto",mm:"%d minuto",h:"isang oras",hh:"%d oras",d:"isang araw",dd:"%d araw",M:"isang buwan",MM:"%d buwan",y:"isang taon",yy:"%d taon"},ordinalParse:/\d{1,2}/,ordinal:function(a){return a},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),"pagh_wa’_cha’_wej_loS_vagh_jav_Soch_chorgh_Hut".split("_")),yh=(kg.defineLocale("tlh",{months:"tera’ jar wa’_tera’ jar cha’_tera’ jar wej_tera’ jar loS_tera’ jar vagh_tera’ jar jav_tera’ jar Soch_tera’ jar chorgh_tera’ jar Hut_tera’ jar wa’maH_tera’ jar wa’maH wa’_tera’ jar wa’maH cha’".split("_"),monthsShort:"jar wa’_jar cha’_jar wej_jar loS_jar vagh_jar jav_jar Soch_jar chorgh_jar Hut_jar wa’maH_jar wa’maH wa’_jar wa’maH cha’".split("_"),monthsParseExact:!0,weekdays:"lojmItjaj_DaSjaj_povjaj_ghItlhjaj_loghjaj_buqjaj_ghInjaj".split("_"),weekdaysShort:"lojmItjaj_DaSjaj_povjaj_ghItlhjaj_loghjaj_buqjaj_ghInjaj".split("_"),weekdaysMin:"lojmItjaj_DaSjaj_povjaj_ghItlhjaj_loghjaj_buqjaj_ghInjaj".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[DaHjaj] LT",nextDay:"[wa’leS] LT",nextWeek:"LLL",lastDay:"[wa’Hu’] LT",lastWeek:"LLL",sameElse:"L"},relativeTime:{future:ae,past:be,s:"puS lup",m:"wa’ tup",mm:ce,h:"wa’ rep",hh:ce,d:"wa’ jaj",dd:ce,M:"wa’ jar",MM:ce,y:"wa’ DIS",yy:ce},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),{1:"'inci",5:"'inci",8:"'inci",70:"'inci",80:"'inci",2:"'nci",7:"'nci",20:"'nci",50:"'nci",3:"'üncü",4:"'üncü",100:"'üncü",6:"'ncı",9:"'uncu",10:"'uncu",30:"'uncu",60:"'ıncı",90:"'ıncı"}),zh=(kg.defineLocale("tr",{months:"Ocak_Şubat_Mart_Nisan_Mayıs_Haziran_Temmuz_Ağustos_Eylül_Ekim_Kasım_Aralık".split("_"),monthsShort:"Oca_Şub_Mar_Nis_May_Haz_Tem_Ağu_Eyl_Eki_Kas_Ara".split("_"),weekdays:"Pazar_Pazartesi_Salı_Çarşamba_Perşembe_Cuma_Cumartesi".split("_"),weekdaysShort:"Paz_Pts_Sal_Çar_Per_Cum_Cts".split("_"),weekdaysMin:"Pz_Pt_Sa_Ça_Pe_Cu_Ct".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[bugün saat] LT",nextDay:"[yarın saat] LT",nextWeek:"[haftaya] dddd [saat] LT",lastDay:"[dün] LT",lastWeek:"[geçen hafta] dddd [saat] LT",sameElse:"L"},relativeTime:{future:"%s sonra",past:"%s önce",s:"birkaç saniye",m:"bir dakika",mm:"%d dakika",h:"bir saat",hh:"%d saat",d:"bir gün",dd:"%d gün",M:"bir ay",MM:"%d ay",y:"bir yıl",yy:"%d yıl"},ordinalParse:/\d{1,2}'(inci|nci|üncü|ncı|uncu|ıncı)/,ordinal:function(a){if(0===a)// special case for zero
-return a+"'ıncı";var b=a%10,c=a%100-b,d=a>=100?100:null;return a+(yh[b]||yh[c]||yh[d])},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("tzl",{months:"Januar_Fevraglh_Març_Avrïu_Mai_Gün_Julia_Guscht_Setemvar_Listopäts_Noemvar_Zecemvar".split("_"),monthsShort:"Jan_Fev_Mar_Avr_Mai_Gün_Jul_Gus_Set_Lis_Noe_Zec".split("_"),weekdays:"Súladi_Lúneçi_Maitzi_Márcuri_Xhúadi_Viénerçi_Sáturi".split("_"),weekdaysShort:"Súl_Lún_Mai_Már_Xhú_Vié_Sát".split("_"),weekdaysMin:"Sú_Lú_Ma_Má_Xh_Vi_Sá".split("_"),longDateFormat:{LT:"HH.mm",LTS:"HH.mm.ss",L:"DD.MM.YYYY",LL:"D. MMMM [dallas] YYYY",LLL:"D. MMMM [dallas] YYYY HH.mm",LLLL:"dddd, [li] D. MMMM [dallas] YYYY HH.mm"},meridiemParse:/d\'o|d\'a/i,isPM:function(a){return"d'o"===a.toLowerCase()},meridiem:function(a,b,c){return a>11?c?"d'o":"D'O":c?"d'a":"D'A"},calendar:{sameDay:"[oxhi à] LT",nextDay:"[demà à] LT",nextWeek:"dddd [à] LT",lastDay:"[ieiri à] LT",lastWeek:"[sür el] dddd [lasteu à] LT",sameElse:"L"},relativeTime:{future:"osprei %s",past:"ja%s",s:ee,m:ee,mm:ee,h:ee,hh:ee,d:ee,dd:ee,M:ee,MM:ee,y:ee,yy:ee},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("tzm-latn",{months:"innayr_brˤayrˤ_marˤsˤ_ibrir_mayyw_ywnyw_ywlywz_ɣwšt_šwtanbir_ktˤwbrˤ_nwwanbir_dwjnbir".split("_"),monthsShort:"innayr_brˤayrˤ_marˤsˤ_ibrir_mayyw_ywnyw_ywlywz_ɣwšt_šwtanbir_ktˤwbrˤ_nwwanbir_dwjnbir".split("_"),weekdays:"asamas_aynas_asinas_akras_akwas_asimwas_asiḍyas".split("_"),weekdaysShort:"asamas_aynas_asinas_akras_akwas_asimwas_asiḍyas".split("_"),weekdaysMin:"asamas_aynas_asinas_akras_akwas_asimwas_asiḍyas".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[asdkh g] LT",nextDay:"[aska g] LT",nextWeek:"dddd [g] LT",lastDay:"[assant g] LT",lastWeek:"dddd [g] LT",sameElse:"L"},relativeTime:{future:"dadkh s yan %s",past:"yan %s",s:"imik",m:"minuḍ",mm:"%d minuḍ",h:"saɛa",hh:"%d tassaɛin",d:"ass",dd:"%d ossan",M:"ayowr",MM:"%d iyyirn",y:"asgas",yy:"%d isgasn"},week:{dow:6,// Saturday is the first day of the week.
-doy:12}}),kg.defineLocale("tzm",{months:"ⵉⵏⵏⴰⵢⵔ_ⴱⵕⴰⵢⵕ_ⵎⴰⵕⵚ_ⵉⴱⵔⵉⵔ_ⵎⴰⵢⵢⵓ_ⵢⵓⵏⵢⵓ_ⵢⵓⵍⵢⵓⵣ_ⵖⵓⵛⵜ_ⵛⵓⵜⴰⵏⴱⵉⵔ_ⴽⵟⵓⴱⵕ_ⵏⵓⵡⴰⵏⴱⵉⵔ_ⴷⵓⵊⵏⴱⵉⵔ".split("_"),monthsShort:"ⵉⵏⵏⴰⵢⵔ_ⴱⵕⴰⵢⵕ_ⵎⴰⵕⵚ_ⵉⴱⵔⵉⵔ_ⵎⴰⵢⵢⵓ_ⵢⵓⵏⵢⵓ_ⵢⵓⵍⵢⵓⵣ_ⵖⵓⵛⵜ_ⵛⵓⵜⴰⵏⴱⵉⵔ_ⴽⵟⵓⴱⵕ_ⵏⵓⵡⴰⵏⴱⵉⵔ_ⴷⵓⵊⵏⴱⵉⵔ".split("_"),weekdays:"ⴰⵙⴰⵎⴰⵙ_ⴰⵢⵏⴰⵙ_ⴰⵙⵉⵏⴰⵙ_ⴰⴽⵔⴰⵙ_ⴰⴽⵡⴰⵙ_ⴰⵙⵉⵎⵡⴰⵙ_ⴰⵙⵉⴹⵢⴰⵙ".split("_"),weekdaysShort:"ⴰⵙⴰⵎⴰⵙ_ⴰⵢⵏⴰⵙ_ⴰⵙⵉⵏⴰⵙ_ⴰⴽⵔⴰⵙ_ⴰⴽⵡⴰⵙ_ⴰⵙⵉⵎⵡⴰⵙ_ⴰⵙⵉⴹⵢⴰⵙ".split("_"),weekdaysMin:"ⴰⵙⴰⵎⴰⵙ_ⴰⵢⵏⴰⵙ_ⴰⵙⵉⵏⴰⵙ_ⴰⴽⵔⴰⵙ_ⴰⴽⵡⴰⵙ_ⴰⵙⵉⵎⵡⴰⵙ_ⴰⵙⵉⴹⵢⴰⵙ".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[ⴰⵙⴷⵅ ⴴ] LT",nextDay:"[ⴰⵙⴽⴰ ⴴ] LT",nextWeek:"dddd [ⴴ] LT",lastDay:"[ⴰⵚⴰⵏⵜ ⴴ] LT",lastWeek:"dddd [ⴴ] LT",sameElse:"L"},relativeTime:{future:"ⴷⴰⴷⵅ ⵙ ⵢⴰⵏ %s",past:"ⵢⴰⵏ %s",s:"ⵉⵎⵉⴽ",m:"ⵎⵉⵏⵓⴺ",mm:"%d ⵎⵉⵏⵓⴺ",h:"ⵙⴰⵄⴰ",hh:"%d ⵜⴰⵙⵙⴰⵄⵉⵏ",d:"ⴰⵙⵙ",dd:"%d oⵙⵙⴰⵏ",M:"ⴰⵢoⵓⵔ",MM:"%d ⵉⵢⵢⵉⵔⵏ",y:"ⴰⵙⴳⴰⵙ",yy:"%d ⵉⵙⴳⴰⵙⵏ"},week:{dow:6,// Saturday is the first day of the week.
-doy:12}}),kg.defineLocale("uk",{months:{format:"січня_лютого_березня_квітня_травня_червня_липня_серпня_вересня_жовтня_листопада_грудня".split("_"),standalone:"січень_лютий_березень_квітень_травень_червень_липень_серпень_вересень_жовтень_листопад_грудень".split("_")},monthsShort:"січ_лют_бер_квіт_трав_черв_лип_серп_вер_жовт_лист_груд".split("_"),weekdays:he,weekdaysShort:"нд_пн_вт_ср_чт_пт_сб".split("_"),weekdaysMin:"нд_пн_вт_ср_чт_пт_сб".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY р.",LLL:"D MMMM YYYY р., HH:mm",LLLL:"dddd, D MMMM YYYY р., HH:mm"},calendar:{sameDay:ie("[Сьогодні "),nextDay:ie("[Завтра "),lastDay:ie("[Вчора "),nextWeek:ie("[У] dddd ["),lastWeek:function(){switch(this.day()){case 0:case 3:case 5:case 6:return ie("[Минулої] dddd [").call(this);case 1:case 2:case 4:return ie("[Минулого] dddd [").call(this)}},sameElse:"L"},relativeTime:{future:"за %s",past:"%s тому",s:"декілька секунд",m:ge,mm:ge,h:"годину",hh:ge,d:"день",dd:ge,M:"місяць",MM:ge,y:"рік",yy:ge},
+doy:6}}),
+//! moment.js locale configuration
+//! locale : Telugu [te]
+//! author : Krishna Chaitanya Thota : https://github.com/kcthota
+a.defineLocale("te",{months:"జనవరి_ఫిబ్రవరి_మార్చి_ఏప్రిల్_మే_జూన్_జూలై_ఆగస్టు_సెప్టెంబర్_అక్టోబర్_నవంబర్_డిసెంబర్".split("_"),monthsShort:"జన._ఫిబ్ర._మార్చి_ఏప్రి._మే_జూన్_జూలై_ఆగ._సెప్._అక్టో._నవ._డిసె.".split("_"),monthsParseExact:!0,weekdays:"ఆదివారం_సోమవారం_మంగళవారం_బుధవారం_గురువారం_శుక్రవారం_శనివారం".split("_"),weekdaysShort:"ఆది_సోమ_మంగళ_బుధ_గురు_శుక్ర_శని".split("_"),weekdaysMin:"ఆ_సో_మం_బు_గు_శు_శ".split("_"),longDateFormat:{LT:"A h:mm",LTS:"A h:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY, A h:mm",LLLL:"dddd, D MMMM YYYY, A h:mm"},calendar:{sameDay:"[నేడు] LT",nextDay:"[రేపు] LT",nextWeek:"dddd, LT",lastDay:"[నిన్న] LT",lastWeek:"[గత] dddd, LT",sameElse:"L"},relativeTime:{future:"%s లో",past:"%s క్రితం",s:"కొన్ని క్షణాలు",m:"ఒక నిమిషం",mm:"%d నిమిషాలు",h:"ఒక గంట",hh:"%d గంటలు",d:"ఒక రోజు",dd:"%d రోజులు",M:"ఒక నెల",MM:"%d నెలలు",y:"ఒక సంవత్సరం",yy:"%d సంవత్సరాలు"},ordinalParse:/\d{1,2}వ/,ordinal:"%dవ",meridiemParse:/రాత్రి|ఉదయం|మధ్యాహ్నం|సాయంత్రం/,meridiemHour:function(a,b){return 12===a&&(a=0),"రాత్రి"===b?a<4?a:a+12:"ఉదయం"===b?a:"మధ్యాహ్నం"===b?a>=10?a:a+12:"సాయంత్రం"===b?a+12:void 0},meridiem:function(a,b,c){return a<4?"రాత్రి":a<10?"ఉదయం":a<17?"మధ్యాహ్నం":a<20?"సాయంత్రం":"రాత్రి"},week:{dow:0,// Sunday is the first day of the week.
+doy:6}}),
+//! moment.js locale configuration
+//! locale : Tetun Dili (East Timor) [tet]
+//! author : Joshua Brooks : https://github.com/joshbrooks
+//! author : Onorio De J. Afonso : https://github.com/marobo
+a.defineLocale("tet",{months:"Janeiru_Fevereiru_Marsu_Abril_Maiu_Juniu_Juliu_Augustu_Setembru_Outubru_Novembru_Dezembru".split("_"),monthsShort:"Jan_Fev_Mar_Abr_Mai_Jun_Jul_Aug_Set_Out_Nov_Dez".split("_"),weekdays:"Domingu_Segunda_Tersa_Kuarta_Kinta_Sexta_Sabadu".split("_"),weekdaysShort:"Dom_Seg_Ters_Kua_Kint_Sext_Sab".split("_"),weekdaysMin:"Do_Seg_Te_Ku_Ki_Sex_Sa".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[Ohin iha] LT",nextDay:"[Aban iha] LT",nextWeek:"dddd [iha] LT",lastDay:"[Horiseik iha] LT",lastWeek:"dddd [semana kotuk] [iha] LT",sameElse:"L"},relativeTime:{future:"iha %s",past:"%s liuba",s:"minutu balun",m:"minutu ida",mm:"minutus %d",h:"horas ida",hh:"horas %d",d:"loron ida",dd:"loron %d",M:"fulan ida",MM:"fulan %d",y:"tinan ida",yy:"tinan %d"},ordinalParse:/\d{1,2}(st|nd|rd|th)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c},week:{dow:1,// Monday is the first day of the week.
+doy:4}}),
+//! moment.js locale configuration
+//! locale : Thai [th]
+//! author : Kridsada Thanabulpong : https://github.com/sirn
+a.defineLocale("th",{months:"มกราคม_กุมภาพันธ์_มีนาคม_เมษายน_พฤษภาคม_มิถุนายน_กรกฎาคม_สิงหาคม_กันยายน_ตุลาคม_พฤศจิกายน_ธันวาคม".split("_"),monthsShort:"ม.ค._ก.พ._มี.ค._เม.ย._พ.ค._มิ.ย._ก.ค._ส.ค._ก.ย._ต.ค._พ.ย._ธ.ค.".split("_"),monthsParseExact:!0,weekdays:"อาทิตย์_จันทร์_อังคาร_พุธ_พฤหัสบดี_ศุกร์_เสาร์".split("_"),weekdaysShort:"อาทิตย์_จันทร์_อังคาร_พุธ_พฤหัส_ศุกร์_เสาร์".split("_"),// yes, three characters difference
+weekdaysMin:"อา._จ._อ._พ._พฤ._ศ._ส.".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"H:mm",LTS:"H:mm:ss",L:"YYYY/MM/DD",LL:"D MMMM YYYY",LLL:"D MMMM YYYY เวลา H:mm",LLLL:"วันddddที่ D MMMM YYYY เวลา H:mm"},meridiemParse:/ก่อนเที่ยง|หลังเที่ยง/,isPM:function(a){return"หลังเที่ยง"===a},meridiem:function(a,b,c){return a<12?"ก่อนเที่ยง":"หลังเที่ยง"},calendar:{sameDay:"[วันนี้ เวลา] LT",nextDay:"[พรุ่งนี้ เวลา] LT",nextWeek:"dddd[หน้า เวลา] LT",lastDay:"[เมื่อวานนี้ เวลา] LT",lastWeek:"[วัน]dddd[ที่แล้ว เวลา] LT",sameElse:"L"},relativeTime:{future:"อีก %s",past:"%sที่แล้ว",s:"ไม่กี่วินาที",m:"1 นาที",mm:"%d นาที",h:"1 ชั่วโมง",hh:"%d ชั่วโมง",d:"1 วัน",dd:"%d วัน",M:"1 เดือน",MM:"%d เดือน",y:"1 ปี",yy:"%d ปี"}}),
+//! moment.js locale configuration
+//! locale : Tagalog (Philippines) [tl-ph]
+//! author : Dan Hagman : https://github.com/hagmandan
+a.defineLocale("tl-ph",{months:"Enero_Pebrero_Marso_Abril_Mayo_Hunyo_Hulyo_Agosto_Setyembre_Oktubre_Nobyembre_Disyembre".split("_"),monthsShort:"Ene_Peb_Mar_Abr_May_Hun_Hul_Ago_Set_Okt_Nob_Dis".split("_"),weekdays:"Linggo_Lunes_Martes_Miyerkules_Huwebes_Biyernes_Sabado".split("_"),weekdaysShort:"Lin_Lun_Mar_Miy_Huw_Biy_Sab".split("_"),weekdaysMin:"Li_Lu_Ma_Mi_Hu_Bi_Sab".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"MM/D/YYYY",LL:"MMMM D, YYYY",LLL:"MMMM D, YYYY HH:mm",LLLL:"dddd, MMMM DD, YYYY HH:mm"},calendar:{sameDay:"LT [ngayong araw]",nextDay:"[Bukas ng] LT",nextWeek:"LT [sa susunod na] dddd",lastDay:"LT [kahapon]",lastWeek:"LT [noong nakaraang] dddd",sameElse:"L"},relativeTime:{future:"sa loob ng %s",past:"%s ang nakalipas",s:"ilang segundo",m:"isang minuto",mm:"%d minuto",h:"isang oras",hh:"%d oras",d:"isang araw",dd:"%d araw",M:"isang buwan",MM:"%d buwan",y:"isang taon",yy:"%d taon"},ordinalParse:/\d{1,2}/,ordinal:function(a){return a},week:{dow:1,// Monday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Klingon [tlh]
+//! author : Dominika Kruk : https://github.com/amaranthrose
+var Fh="pagh_wa’_cha’_wej_loS_vagh_jav_Soch_chorgh_Hut".split("_");a.defineLocale("tlh",{months:"tera’ jar wa’_tera’ jar cha’_tera’ jar wej_tera’ jar loS_tera’ jar vagh_tera’ jar jav_tera’ jar Soch_tera’ jar chorgh_tera’ jar Hut_tera’ jar wa’maH_tera’ jar wa’maH wa’_tera’ jar wa’maH cha’".split("_"),monthsShort:"jar wa’_jar cha’_jar wej_jar loS_jar vagh_jar jav_jar Soch_jar chorgh_jar Hut_jar wa’maH_jar wa’maH wa’_jar wa’maH cha’".split("_"),monthsParseExact:!0,weekdays:"lojmItjaj_DaSjaj_povjaj_ghItlhjaj_loghjaj_buqjaj_ghInjaj".split("_"),weekdaysShort:"lojmItjaj_DaSjaj_povjaj_ghItlhjaj_loghjaj_buqjaj_ghInjaj".split("_"),weekdaysMin:"lojmItjaj_DaSjaj_povjaj_ghItlhjaj_loghjaj_buqjaj_ghInjaj".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[DaHjaj] LT",nextDay:"[wa’leS] LT",nextWeek:"LLL",lastDay:"[wa’Hu’] LT",lastWeek:"LLL",sameElse:"L"},relativeTime:{future:ce,past:de,s:"puS lup",m:"wa’ tup",mm:ee,h:"wa’ rep",hh:ee,d:"wa’ jaj",dd:ee,M:"wa’ jar",MM:ee,y:"wa’ DIS",yy:ee},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}});
+//! moment.js locale configuration
+//! locale : Turkish [tr]
+//! authors : Erhan Gundogan : https://github.com/erhangundogan,
+//!           Burak Yiğit Kaya: https://github.com/BYK
+var Gh={1:"'inci",5:"'inci",8:"'inci",70:"'inci",80:"'inci",2:"'nci",7:"'nci",20:"'nci",50:"'nci",3:"'üncü",4:"'üncü",100:"'üncü",6:"'ncı",9:"'uncu",10:"'uncu",30:"'uncu",60:"'ıncı",90:"'ıncı"};
+//! moment.js locale configuration
+//! locale : Talossan [tzl]
+//! author : Robin van der Vliet : https://github.com/robin0van0der0v
+//! author : Iustì Canun
+// After the year there should be a slash and the amount of years since December 26, 1979 in Roman numerals.
+// This is currently too difficult (maybe even impossible) to add.
+//! moment.js locale configuration
+//! locale : Central Atlas Tamazight Latin [tzm-latn]
+//! author : Abdel Said : https://github.com/abdelsaid
+//! moment.js locale configuration
+//! locale : Central Atlas Tamazight [tzm]
+//! author : Abdel Said : https://github.com/abdelsaid
+//! moment.js locale configuration
+//! locale : Uzbek [uz]
+//! author : Sardor Muminov : https://github.com/muminoff
+//! moment.js locale configuration
+//! locale : Vietnamese [vi]
+//! author : Bang Nguyen : https://github.com/bangnk
+//! moment.js locale configuration
+//! locale : Pseudo [x-pseudo]
+//! author : Andrew Hood : https://github.com/andrewhood125
+//! moment.js locale configuration
+//! locale : Yoruba Nigeria (yo)
+//! author : Atolagbe Abisoye : https://github.com/andela-batolagbe
+//! moment.js locale configuration
+//! locale : Chinese (China) [zh-cn]
+//! author : suupic : https://github.com/suupic
+//! author : Zeno Zeng : https://github.com/zenozeng
+//! moment.js locale configuration
+//! locale : Chinese (Hong Kong) [zh-hk]
+//! author : Ben : https://github.com/ben-lin
+//! author : Chris Lam : https://github.com/hehachris
+//! author : Konstantin : https://github.com/skfd
+//! moment.js locale configuration
+//! locale : Chinese (Taiwan) [zh-tw]
+//! author : Ben : https://github.com/ben-lin
+//! author : Chris Lam : https://github.com/hehachris
+return a.defineLocale("tr",{months:"Ocak_Şubat_Mart_Nisan_Mayıs_Haziran_Temmuz_Ağustos_Eylül_Ekim_Kasım_Aralık".split("_"),monthsShort:"Oca_Şub_Mar_Nis_May_Haz_Tem_Ağu_Eyl_Eki_Kas_Ara".split("_"),weekdays:"Pazar_Pazartesi_Salı_Çarşamba_Perşembe_Cuma_Cumartesi".split("_"),weekdaysShort:"Paz_Pts_Sal_Çar_Per_Cum_Cts".split("_"),weekdaysMin:"Pz_Pt_Sa_Ça_Pe_Cu_Ct".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[bugün saat] LT",nextDay:"[yarın saat] LT",nextWeek:"[haftaya] dddd [saat] LT",lastDay:"[dün] LT",lastWeek:"[geçen hafta] dddd [saat] LT",sameElse:"L"},relativeTime:{future:"%s sonra",past:"%s önce",s:"birkaç saniye",m:"bir dakika",mm:"%d dakika",h:"bir saat",hh:"%d saat",d:"bir gün",dd:"%d gün",M:"bir ay",MM:"%d ay",y:"bir yıl",yy:"%d yıl"},ordinalParse:/\d{1,2}'(inci|nci|üncü|ncı|uncu|ıncı)/,ordinal:function(a){if(0===a)// special case for zero
+return a+"'ıncı";var b=a%10,c=a%100-b,d=a>=100?100:null;return a+(Gh[b]||Gh[c]||Gh[d])},week:{dow:1,// Monday is the first day of the week.
+doy:7}}),a.defineLocale("tzl",{months:"Januar_Fevraglh_Març_Avrïu_Mai_Gün_Julia_Guscht_Setemvar_Listopäts_Noemvar_Zecemvar".split("_"),monthsShort:"Jan_Fev_Mar_Avr_Mai_Gün_Jul_Gus_Set_Lis_Noe_Zec".split("_"),weekdays:"Súladi_Lúneçi_Maitzi_Márcuri_Xhúadi_Viénerçi_Sáturi".split("_"),weekdaysShort:"Súl_Lún_Mai_Már_Xhú_Vié_Sát".split("_"),weekdaysMin:"Sú_Lú_Ma_Má_Xh_Vi_Sá".split("_"),longDateFormat:{LT:"HH.mm",LTS:"HH.mm.ss",L:"DD.MM.YYYY",LL:"D. MMMM [dallas] YYYY",LLL:"D. MMMM [dallas] YYYY HH.mm",LLLL:"dddd, [li] D. MMMM [dallas] YYYY HH.mm"},meridiemParse:/d\'o|d\'a/i,isPM:function(a){return"d'o"===a.toLowerCase()},meridiem:function(a,b,c){return a>11?c?"d'o":"D'O":c?"d'a":"D'A"},calendar:{sameDay:"[oxhi à] LT",nextDay:"[demà à] LT",nextWeek:"dddd [à] LT",lastDay:"[ieiri à] LT",lastWeek:"[sür el] dddd [lasteu à] LT",sameElse:"L"},relativeTime:{future:"osprei %s",past:"ja%s",s:ge,m:ge,mm:ge,h:ge,hh:ge,d:ge,dd:ge,M:ge,MM:ge,y:ge,yy:ge},ordinalParse:/\d{1,2}\./,ordinal:"%d.",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),a.defineLocale("tzm-latn",{months:"innayr_brˤayrˤ_marˤsˤ_ibrir_mayyw_ywnyw_ywlywz_ɣwšt_šwtanbir_ktˤwbrˤ_nwwanbir_dwjnbir".split("_"),monthsShort:"innayr_brˤayrˤ_marˤsˤ_ibrir_mayyw_ywnyw_ywlywz_ɣwšt_šwtanbir_ktˤwbrˤ_nwwanbir_dwjnbir".split("_"),weekdays:"asamas_aynas_asinas_akras_akwas_asimwas_asiḍyas".split("_"),weekdaysShort:"asamas_aynas_asinas_akras_akwas_asimwas_asiḍyas".split("_"),weekdaysMin:"asamas_aynas_asinas_akras_akwas_asimwas_asiḍyas".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[asdkh g] LT",nextDay:"[aska g] LT",nextWeek:"dddd [g] LT",lastDay:"[assant g] LT",lastWeek:"dddd [g] LT",sameElse:"L"},relativeTime:{future:"dadkh s yan %s",past:"yan %s",s:"imik",m:"minuḍ",mm:"%d minuḍ",h:"saɛa",hh:"%d tassaɛin",d:"ass",dd:"%d ossan",M:"ayowr",MM:"%d iyyirn",y:"asgas",yy:"%d isgasn"},week:{dow:6,// Saturday is the first day of the week.
+doy:12}}),a.defineLocale("tzm",{months:"ⵉⵏⵏⴰⵢⵔ_ⴱⵕⴰⵢⵕ_ⵎⴰⵕⵚ_ⵉⴱⵔⵉⵔ_ⵎⴰⵢⵢⵓ_ⵢⵓⵏⵢⵓ_ⵢⵓⵍⵢⵓⵣ_ⵖⵓⵛⵜ_ⵛⵓⵜⴰⵏⴱⵉⵔ_ⴽⵟⵓⴱⵕ_ⵏⵓⵡⴰⵏⴱⵉⵔ_ⴷⵓⵊⵏⴱⵉⵔ".split("_"),monthsShort:"ⵉⵏⵏⴰⵢⵔ_ⴱⵕⴰⵢⵕ_ⵎⴰⵕⵚ_ⵉⴱⵔⵉⵔ_ⵎⴰⵢⵢⵓ_ⵢⵓⵏⵢⵓ_ⵢⵓⵍⵢⵓⵣ_ⵖⵓⵛⵜ_ⵛⵓⵜⴰⵏⴱⵉⵔ_ⴽⵟⵓⴱⵕ_ⵏⵓⵡⴰⵏⴱⵉⵔ_ⴷⵓⵊⵏⴱⵉⵔ".split("_"),weekdays:"ⴰⵙⴰⵎⴰⵙ_ⴰⵢⵏⴰⵙ_ⴰⵙⵉⵏⴰⵙ_ⴰⴽⵔⴰⵙ_ⴰⴽⵡⴰⵙ_ⴰⵙⵉⵎⵡⴰⵙ_ⴰⵙⵉⴹⵢⴰⵙ".split("_"),weekdaysShort:"ⴰⵙⴰⵎⴰⵙ_ⴰⵢⵏⴰⵙ_ⴰⵙⵉⵏⴰⵙ_ⴰⴽⵔⴰⵙ_ⴰⴽⵡⴰⵙ_ⴰⵙⵉⵎⵡⴰⵙ_ⴰⵙⵉⴹⵢⴰⵙ".split("_"),weekdaysMin:"ⴰⵙⴰⵎⴰⵙ_ⴰⵢⵏⴰⵙ_ⴰⵙⵉⵏⴰⵙ_ⴰⴽⵔⴰⵙ_ⴰⴽⵡⴰⵙ_ⴰⵙⵉⵎⵡⴰⵙ_ⴰⵙⵉⴹⵢⴰⵙ".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd D MMMM YYYY HH:mm"},calendar:{sameDay:"[ⴰⵙⴷⵅ ⴴ] LT",nextDay:"[ⴰⵙⴽⴰ ⴴ] LT",nextWeek:"dddd [ⴴ] LT",lastDay:"[ⴰⵚⴰⵏⵜ ⴴ] LT",lastWeek:"dddd [ⴴ] LT",sameElse:"L"},relativeTime:{future:"ⴷⴰⴷⵅ ⵙ ⵢⴰⵏ %s",past:"ⵢⴰⵏ %s",s:"ⵉⵎⵉⴽ",m:"ⵎⵉⵏⵓⴺ",mm:"%d ⵎⵉⵏⵓⴺ",h:"ⵙⴰⵄⴰ",hh:"%d ⵜⴰⵙⵙⴰⵄⵉⵏ",d:"ⴰⵙⵙ",dd:"%d oⵙⵙⴰⵏ",M:"ⴰⵢoⵓⵔ",MM:"%d ⵉⵢⵢⵉⵔⵏ",y:"ⴰⵙⴳⴰⵙ",yy:"%d ⵉⵙⴳⴰⵙⵏ"},week:{dow:6,// Saturday is the first day of the week.
+doy:12}}),a.defineLocale("uk",{months:{format:"січня_лютого_березня_квітня_травня_червня_липня_серпня_вересня_жовтня_листопада_грудня".split("_"),standalone:"січень_лютий_березень_квітень_травень_червень_липень_серпень_вересень_жовтень_листопад_грудень".split("_")},monthsShort:"січ_лют_бер_квіт_трав_черв_лип_серп_вер_жовт_лист_груд".split("_"),weekdays:je,weekdaysShort:"нд_пн_вт_ср_чт_пт_сб".split("_"),weekdaysMin:"нд_пн_вт_ср_чт_пт_сб".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD.MM.YYYY",LL:"D MMMM YYYY р.",LLL:"D MMMM YYYY р., HH:mm",LLLL:"dddd, D MMMM YYYY р., HH:mm"},calendar:{sameDay:ke("[Сьогодні "),nextDay:ke("[Завтра "),lastDay:ke("[Вчора "),nextWeek:ke("[У] dddd ["),lastWeek:function(){switch(this.day()){case 0:case 3:case 5:case 6:return ke("[Минулої] dddd [").call(this);case 1:case 2:case 4:return ke("[Минулого] dddd [").call(this)}},sameElse:"L"},relativeTime:{future:"за %s",past:"%s тому",s:"декілька секунд",m:ie,mm:ie,h:"годину",hh:ie,d:"день",dd:ie,M:"місяць",MM:ie,y:"рік",yy:ie},
 // M. E.: those two are virtually unused but a user might want to implement them for his/her website for some reason
 meridiemParse:/ночі|ранку|дня|вечора/,isPM:function(a){return/^(дня|вечора)$/.test(a)},meridiem:function(a,b,c){return a<4?"ночі":a<12?"ранку":a<17?"дня":"вечора"},ordinalParse:/\d{1,2}-(й|го)/,ordinal:function(a,b){switch(b){case"M":case"d":case"DDD":case"w":case"W":return a+"-й";case"D":return a+"-го";default:return a}},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("uz",{months:"январ_феврал_март_апрел_май_июн_июл_август_сентябр_октябр_ноябр_декабр".split("_"),monthsShort:"янв_фев_мар_апр_май_июн_июл_авг_сен_окт_ноя_дек".split("_"),weekdays:"Якшанба_Душанба_Сешанба_Чоршанба_Пайшанба_Жума_Шанба".split("_"),weekdaysShort:"Якш_Душ_Сеш_Чор_Пай_Жум_Шан".split("_"),weekdaysMin:"Як_Ду_Се_Чо_Па_Жу_Ша".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"D MMMM YYYY, dddd HH:mm"},calendar:{sameDay:"[Бугун соат] LT [да]",nextDay:"[Эртага] LT [да]",nextWeek:"dddd [куни соат] LT [да]",lastDay:"[Кеча соат] LT [да]",lastWeek:"[Утган] dddd [куни соат] LT [да]",sameElse:"L"},relativeTime:{future:"Якин %s ичида",past:"Бир неча %s олдин",s:"фурсат",m:"бир дакика",mm:"%d дакика",h:"бир соат",hh:"%d соат",d:"бир кун",dd:"%d кун",M:"бир ой",MM:"%d ой",y:"бир йил",yy:"%d йил"},week:{dow:1,// Monday is the first day of the week.
-doy:7}}),kg.defineLocale("vi",{months:"tháng 1_tháng 2_tháng 3_tháng 4_tháng 5_tháng 6_tháng 7_tháng 8_tháng 9_tháng 10_tháng 11_tháng 12".split("_"),monthsShort:"Th01_Th02_Th03_Th04_Th05_Th06_Th07_Th08_Th09_Th10_Th11_Th12".split("_"),monthsParseExact:!0,weekdays:"chủ nhật_thứ hai_thứ ba_thứ tư_thứ năm_thứ sáu_thứ bảy".split("_"),weekdaysShort:"CN_T2_T3_T4_T5_T6_T7".split("_"),weekdaysMin:"CN_T2_T3_T4_T5_T6_T7".split("_"),weekdaysParseExact:!0,meridiemParse:/sa|ch/i,isPM:function(a){return/^ch$/i.test(a)},meridiem:function(a,b,c){return a<12?c?"sa":"SA":c?"ch":"CH"},longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM [năm] YYYY",LLL:"D MMMM [năm] YYYY HH:mm",LLLL:"dddd, D MMMM [năm] YYYY HH:mm",l:"DD/M/YYYY",ll:"D MMM YYYY",lll:"D MMM YYYY HH:mm",llll:"ddd, D MMM YYYY HH:mm"},calendar:{sameDay:"[Hôm nay lúc] LT",nextDay:"[Ngày mai lúc] LT",nextWeek:"dddd [tuần tới lúc] LT",lastDay:"[Hôm qua lúc] LT",lastWeek:"dddd [tuần rồi lúc] LT",sameElse:"L"},relativeTime:{future:"%s tới",past:"%s trước",s:"vài giây",m:"một phút",mm:"%d phút",h:"một giờ",hh:"%d giờ",d:"một ngày",dd:"%d ngày",M:"một tháng",MM:"%d tháng",y:"một năm",yy:"%d năm"},ordinalParse:/\d{1,2}/,ordinal:function(a){return a},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("x-pseudo",{months:"J~áñúá~rý_F~ébrú~árý_~Márc~h_Áp~ríl_~Máý_~Júñé~_Júl~ý_Áú~gúst~_Sép~témb~ér_Ó~ctób~ér_Ñ~óvém~bér_~Décé~mbér".split("_"),monthsShort:"J~áñ_~Féb_~Már_~Ápr_~Máý_~Júñ_~Júl_~Áúg_~Sép_~Óct_~Ñóv_~Déc".split("_"),monthsParseExact:!0,weekdays:"S~úñdá~ý_Mó~ñdáý~_Túé~sdáý~_Wéd~ñésd~áý_T~húrs~dáý_~Fríd~áý_S~átúr~dáý".split("_"),weekdaysShort:"S~úñ_~Móñ_~Túé_~Wéd_~Thú_~Frí_~Sát".split("_"),weekdaysMin:"S~ú_Mó~_Tú_~Wé_T~h_Fr~_Sá".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[T~ódá~ý át] LT",nextDay:"[T~ómó~rró~w át] LT",nextWeek:"dddd [át] LT",lastDay:"[Ý~ést~érdá~ý át] LT",lastWeek:"[L~ást] dddd [át] LT",sameElse:"L"},relativeTime:{future:"í~ñ %s",past:"%s á~gó",s:"á ~féw ~sécó~ñds",m:"á ~míñ~úté",mm:"%d m~íñú~tés",h:"á~ñ hó~úr",hh:"%d h~óúrs",d:"á ~dáý",dd:"%d d~áýs",M:"á ~móñ~th",MM:"%d m~óñt~hs",y:"á ~ýéár",yy:"%d ý~éárs"},ordinalParse:/\d{1,2}(th|st|nd|rd)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c},week:{dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("zh-cn",{months:"一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月".split("_"),monthsShort:"1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月".split("_"),weekdays:"星期日_星期一_星期二_星期三_星期四_星期五_星期六".split("_"),weekdaysShort:"周日_周一_周二_周三_周四_周五_周六".split("_"),weekdaysMin:"日_一_二_三_四_五_六".split("_"),longDateFormat:{LT:"Ah点mm分",LTS:"Ah点m分s秒",L:"YYYY-MM-DD",LL:"YYYY年MMMD日",LLL:"YYYY年MMMD日Ah点mm分",LLLL:"YYYY年MMMD日ddddAh点mm分",l:"YYYY-MM-DD",ll:"YYYY年MMMD日",lll:"YYYY年MMMD日Ah点mm分",llll:"YYYY年MMMD日ddddAh点mm分"},meridiemParse:/凌晨|早上|上午|中午|下午|晚上/,meridiemHour:function(a,b){return 12===a&&(a=0),"凌晨"===b||"早上"===b||"上午"===b?a:"下午"===b||"晚上"===b?a+12:a>=11?a:a+12},meridiem:function(a,b,c){var d=100*a+b;return d<600?"凌晨":d<900?"早上":d<1130?"上午":d<1230?"中午":d<1800?"下午":"晚上"},calendar:{sameDay:function(){return 0===this.minutes()?"[今天]Ah[点整]":"[今天]LT"},nextDay:function(){return 0===this.minutes()?"[明天]Ah[点整]":"[明天]LT"},lastDay:function(){return 0===this.minutes()?"[昨天]Ah[点整]":"[昨天]LT"},nextWeek:function(){var a,b;return a=kg().startOf("week"),b=this.diff(a,"days")>=7?"[下]":"[本]",0===this.minutes()?b+"dddAh点整":b+"dddAh点mm"},lastWeek:function(){var a,b;return a=kg().startOf("week"),b=this.unix()<a.unix()?"[上]":"[本]",0===this.minutes()?b+"dddAh点整":b+"dddAh点mm"},sameElse:"LL"},ordinalParse:/\d{1,2}(日|月|周)/,ordinal:function(a,b){switch(b){case"d":case"D":case"DDD":return a+"日";case"M":return a+"月";case"w":case"W":return a+"周";default:return a}},relativeTime:{future:"%s内",past:"%s前",s:"几秒",m:"1 分钟",mm:"%d 分钟",h:"1 小时",hh:"%d 小时",d:"1 天",dd:"%d 天",M:"1 个月",MM:"%d 个月",y:"1 年",yy:"%d 年"},week:{
+doy:7}}),a.defineLocale("uz",{months:"январ_феврал_март_апрел_май_июн_июл_август_сентябр_октябр_ноябр_декабр".split("_"),monthsShort:"янв_фев_мар_апр_май_июн_июл_авг_сен_окт_ноя_дек".split("_"),weekdays:"Якшанба_Душанба_Сешанба_Чоршанба_Пайшанба_Жума_Шанба".split("_"),weekdaysShort:"Якш_Душ_Сеш_Чор_Пай_Жум_Шан".split("_"),weekdaysMin:"Як_Ду_Се_Чо_Па_Жу_Ша".split("_"),longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"D MMMM YYYY, dddd HH:mm"},calendar:{sameDay:"[Бугун соат] LT [да]",nextDay:"[Эртага] LT [да]",nextWeek:"dddd [куни соат] LT [да]",lastDay:"[Кеча соат] LT [да]",lastWeek:"[Утган] dddd [куни соат] LT [да]",sameElse:"L"},relativeTime:{future:"Якин %s ичида",past:"Бир неча %s олдин",s:"фурсат",m:"бир дакика",mm:"%d дакика",h:"бир соат",hh:"%d соат",d:"бир кун",dd:"%d кун",M:"бир ой",MM:"%d ой",y:"бир йил",yy:"%d йил"},week:{dow:1,// Monday is the first day of the week.
+doy:7}}),a.defineLocale("vi",{months:"tháng 1_tháng 2_tháng 3_tháng 4_tháng 5_tháng 6_tháng 7_tháng 8_tháng 9_tháng 10_tháng 11_tháng 12".split("_"),monthsShort:"Th01_Th02_Th03_Th04_Th05_Th06_Th07_Th08_Th09_Th10_Th11_Th12".split("_"),monthsParseExact:!0,weekdays:"chủ nhật_thứ hai_thứ ba_thứ tư_thứ năm_thứ sáu_thứ bảy".split("_"),weekdaysShort:"CN_T2_T3_T4_T5_T6_T7".split("_"),weekdaysMin:"CN_T2_T3_T4_T5_T6_T7".split("_"),weekdaysParseExact:!0,meridiemParse:/sa|ch/i,isPM:function(a){return/^ch$/i.test(a)},meridiem:function(a,b,c){return a<12?c?"sa":"SA":c?"ch":"CH"},longDateFormat:{LT:"HH:mm",LTS:"HH:mm:ss",L:"DD/MM/YYYY",LL:"D MMMM [năm] YYYY",LLL:"D MMMM [năm] YYYY HH:mm",LLLL:"dddd, D MMMM [năm] YYYY HH:mm",l:"DD/M/YYYY",ll:"D MMM YYYY",lll:"D MMM YYYY HH:mm",llll:"ddd, D MMM YYYY HH:mm"},calendar:{sameDay:"[Hôm nay lúc] LT",nextDay:"[Ngày mai lúc] LT",nextWeek:"dddd [tuần tới lúc] LT",lastDay:"[Hôm qua lúc] LT",lastWeek:"dddd [tuần rồi lúc] LT",sameElse:"L"},relativeTime:{future:"%s tới",past:"%s trước",s:"vài giây",m:"một phút",mm:"%d phút",h:"một giờ",hh:"%d giờ",d:"một ngày",dd:"%d ngày",M:"một tháng",MM:"%d tháng",y:"một năm",yy:"%d năm"},ordinalParse:/\d{1,2}/,ordinal:function(a){return a},week:{dow:1,// Monday is the first day of the week.
+doy:4}}),a.defineLocale("x-pseudo",{months:"J~áñúá~rý_F~ébrú~árý_~Márc~h_Áp~ríl_~Máý_~Júñé~_Júl~ý_Áú~gúst~_Sép~témb~ér_Ó~ctób~ér_Ñ~óvém~bér_~Décé~mbér".split("_"),monthsShort:"J~áñ_~Féb_~Már_~Ápr_~Máý_~Júñ_~Júl_~Áúg_~Sép_~Óct_~Ñóv_~Déc".split("_"),monthsParseExact:!0,weekdays:"S~úñdá~ý_Mó~ñdáý~_Túé~sdáý~_Wéd~ñésd~áý_T~húrs~dáý_~Fríd~áý_S~átúr~dáý".split("_"),weekdaysShort:"S~úñ_~Móñ_~Túé_~Wéd_~Thú_~Frí_~Sát".split("_"),weekdaysMin:"S~ú_Mó~_Tú_~Wé_T~h_Fr~_Sá".split("_"),weekdaysParseExact:!0,longDateFormat:{LT:"HH:mm",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY HH:mm",LLLL:"dddd, D MMMM YYYY HH:mm"},calendar:{sameDay:"[T~ódá~ý át] LT",nextDay:"[T~ómó~rró~w át] LT",nextWeek:"dddd [át] LT",lastDay:"[Ý~ést~érdá~ý át] LT",lastWeek:"[L~ást] dddd [át] LT",sameElse:"L"},relativeTime:{future:"í~ñ %s",past:"%s á~gó",s:"á ~féw ~sécó~ñds",m:"á ~míñ~úté",mm:"%d m~íñú~tés",h:"á~ñ hó~úr",hh:"%d h~óúrs",d:"á ~dáý",dd:"%d d~áýs",M:"á ~móñ~th",MM:"%d m~óñt~hs",y:"á ~ýéár",yy:"%d ý~éárs"},ordinalParse:/\d{1,2}(th|st|nd|rd)/,ordinal:function(a){var b=a%10,c=1===~~(a%100/10)?"th":1===b?"st":2===b?"nd":3===b?"rd":"th";return a+c},week:{dow:1,// Monday is the first day of the week.
+doy:4}}),a.defineLocale("yo",{months:"Sẹ́rẹ́_Èrèlè_Ẹrẹ̀nà_Ìgbé_Èbibi_Òkùdu_Agẹmo_Ògún_Owewe_Ọ̀wàrà_Bélú_Ọ̀pẹ̀̀".split("_"),monthsShort:"Sẹ́r_Èrl_Ẹrn_Ìgb_Èbi_Òkù_Agẹ_Ògú_Owe_Ọ̀wà_Bél_Ọ̀pẹ̀̀".split("_"),weekdays:"Àìkú_Ajé_Ìsẹ́gun_Ọjọ́rú_Ọjọ́bọ_Ẹtì_Àbámẹ́ta".split("_"),weekdaysShort:"Àìk_Ajé_Ìsẹ́_Ọjr_Ọjb_Ẹtì_Àbá".split("_"),weekdaysMin:"Àì_Aj_Ìs_Ọr_Ọb_Ẹt_Àb".split("_"),longDateFormat:{LT:"h:mm A",LTS:"h:mm:ss A",L:"DD/MM/YYYY",LL:"D MMMM YYYY",LLL:"D MMMM YYYY h:mm A",LLLL:"dddd, D MMMM YYYY h:mm A"},calendar:{sameDay:"[Ònì ni] LT",nextDay:"[Ọ̀la ni] LT",nextWeek:"dddd [Ọsẹ̀ tón'bọ] [ni] LT",lastDay:"[Àna ni] LT",lastWeek:"dddd [Ọsẹ̀ tólọ́] [ni] LT",sameElse:"L"},relativeTime:{future:"ní %s",past:"%s kọjá",s:"ìsẹjú aayá die",m:"ìsẹjú kan",mm:"ìsẹjú %d",h:"wákati kan",hh:"wákati %d",d:"ọjọ́ kan",dd:"ọjọ́ %d",M:"osù kan",MM:"osù %d",y:"ọdún kan",yy:"ọdún %d"},ordinalParse:/ọjọ́\s\d{1,2}/,ordinal:"ọjọ́ %d",week:{dow:1,// Monday is the first day of the week.
+doy:4}}),a.defineLocale("zh-cn",{months:"一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月".split("_"),monthsShort:"1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月".split("_"),weekdays:"星期日_星期一_星期二_星期三_星期四_星期五_星期六".split("_"),weekdaysShort:"周日_周一_周二_周三_周四_周五_周六".split("_"),weekdaysMin:"日_一_二_三_四_五_六".split("_"),longDateFormat:{LT:"Ah点mm分",LTS:"Ah点m分s秒",L:"YYYY-MM-DD",LL:"YYYY年MMMD日",LLL:"YYYY年MMMD日Ah点mm分",LLLL:"YYYY年MMMD日ddddAh点mm分",l:"YYYY-MM-DD",ll:"YYYY年MMMD日",lll:"YYYY年MMMD日Ah点mm分",llll:"YYYY年MMMD日ddddAh点mm分"},meridiemParse:/凌晨|早上|上午|中午|下午|晚上/,meridiemHour:function(a,b){return 12===a&&(a=0),"凌晨"===b||"早上"===b||"上午"===b?a:"下午"===b||"晚上"===b?a+12:a>=11?a:a+12},meridiem:function(a,b,c){var d=100*a+b;return d<600?"凌晨":d<900?"早上":d<1130?"上午":d<1230?"中午":d<1800?"下午":"晚上"},calendar:{sameDay:function(){return 0===this.minutes()?"[今天]Ah[点整]":"[今天]LT"},nextDay:function(){return 0===this.minutes()?"[明天]Ah[点整]":"[明天]LT"},lastDay:function(){return 0===this.minutes()?"[昨天]Ah[点整]":"[昨天]LT"},nextWeek:function(){var b,c;return b=a().startOf("week"),c=this.diff(b,"days")>=7?"[下]":"[本]",0===this.minutes()?c+"dddAh点整":c+"dddAh点mm"},lastWeek:function(){var b,c;return b=a().startOf("week"),c=this.unix()<b.unix()?"[上]":"[本]",0===this.minutes()?c+"dddAh点整":c+"dddAh点mm"},sameElse:"LL"},ordinalParse:/\d{1,2}(日|月|周)/,ordinal:function(a,b){switch(b){case"d":case"D":case"DDD":return a+"日";case"M":return a+"月";case"w":case"W":return a+"周";default:return a}},relativeTime:{future:"%s内",past:"%s前",s:"几秒",m:"1 分钟",mm:"%d 分钟",h:"1 小时",hh:"%d 小时",d:"1 天",dd:"%d 天",M:"1 个月",MM:"%d 个月",y:"1 年",yy:"%d 年"},week:{
 // GB/T 7408-1994《数据元和交换格式·信息交换·日期和时间表示法》与ISO 8601:1988等效
 dow:1,// Monday is the first day of the week.
-doy:4}}),kg.defineLocale("zh-hk",{months:"一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月".split("_"),monthsShort:"1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月".split("_"),weekdays:"星期日_星期一_星期二_星期三_星期四_星期五_星期六".split("_"),weekdaysShort:"週日_週一_週二_週三_週四_週五_週六".split("_"),weekdaysMin:"日_一_二_三_四_五_六".split("_"),longDateFormat:{LT:"Ah點mm分",LTS:"Ah點m分s秒",L:"YYYY年MMMD日",LL:"YYYY年MMMD日",LLL:"YYYY年MMMD日Ah點mm分",LLLL:"YYYY年MMMD日ddddAh點mm分",l:"YYYY年MMMD日",ll:"YYYY年MMMD日",lll:"YYYY年MMMD日Ah點mm分",llll:"YYYY年MMMD日ddddAh點mm分"},meridiemParse:/凌晨|早上|上午|中午|下午|晚上/,meridiemHour:function(a,b){return 12===a&&(a=0),"凌晨"===b||"早上"===b||"上午"===b?a:"中午"===b?a>=11?a:a+12:"下午"===b||"晚上"===b?a+12:void 0},meridiem:function(a,b,c){var d=100*a+b;return d<600?"凌晨":d<900?"早上":d<1130?"上午":d<1230?"中午":d<1800?"下午":"晚上"},calendar:{sameDay:"[今天]LT",nextDay:"[明天]LT",nextWeek:"[下]ddddLT",lastDay:"[昨天]LT",lastWeek:"[上]ddddLT",sameElse:"L"},ordinalParse:/\d{1,2}(日|月|週)/,ordinal:function(a,b){switch(b){case"d":case"D":case"DDD":return a+"日";case"M":return a+"月";case"w":case"W":return a+"週";default:return a}},relativeTime:{future:"%s內",past:"%s前",s:"幾秒",m:"1 分鐘",mm:"%d 分鐘",h:"1 小時",hh:"%d 小時",d:"1 天",dd:"%d 天",M:"1 個月",MM:"%d 個月",y:"1 年",yy:"%d 年"}}),kg.defineLocale("zh-tw",{months:"一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月".split("_"),monthsShort:"1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月".split("_"),weekdays:"星期日_星期一_星期二_星期三_星期四_星期五_星期六".split("_"),weekdaysShort:"週日_週一_週二_週三_週四_週五_週六".split("_"),weekdaysMin:"日_一_二_三_四_五_六".split("_"),longDateFormat:{LT:"Ah點mm分",LTS:"Ah點m分s秒",L:"YYYY年MMMD日",LL:"YYYY年MMMD日",LLL:"YYYY年MMMD日Ah點mm分",LLLL:"YYYY年MMMD日ddddAh點mm分",l:"YYYY年MMMD日",ll:"YYYY年MMMD日",lll:"YYYY年MMMD日Ah點mm分",llll:"YYYY年MMMD日ddddAh點mm分"},meridiemParse:/凌晨|早上|上午|中午|下午|晚上/,meridiemHour:function(a,b){return 12===a&&(a=0),"凌晨"===b||"早上"===b||"上午"===b?a:"中午"===b?a>=11?a:a+12:"下午"===b||"晚上"===b?a+12:void 0},meridiem:function(a,b,c){var d=100*a+b;return d<600?"凌晨":d<900?"早上":d<1130?"上午":d<1230?"中午":d<1800?"下午":"晚上"},calendar:{sameDay:"[今天]LT",nextDay:"[明天]LT",nextWeek:"[下]ddddLT",lastDay:"[昨天]LT",lastWeek:"[上]ddddLT",sameElse:"L"},ordinalParse:/\d{1,2}(日|月|週)/,ordinal:function(a,b){switch(b){case"d":case"D":case"DDD":return a+"日";case"M":return a+"月";case"w":case"W":return a+"週";default:return a}},relativeTime:{future:"%s內",past:"%s前",s:"幾秒",m:"1 分鐘",mm:"%d 分鐘",h:"1 小時",hh:"%d 小時",d:"1 天",dd:"%d 天",M:"1 個月",MM:"%d 個月",y:"1 年",yy:"%d 年"}}),kg);return zh.locale("en"),zh});
+doy:4}}),a.defineLocale("zh-hk",{months:"一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月".split("_"),monthsShort:"1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月".split("_"),weekdays:"星期日_星期一_星期二_星期三_星期四_星期五_星期六".split("_"),weekdaysShort:"週日_週一_週二_週三_週四_週五_週六".split("_"),weekdaysMin:"日_一_二_三_四_五_六".split("_"),longDateFormat:{LT:"Ah點mm分",LTS:"Ah點m分s秒",L:"YYYY年MMMD日",LL:"YYYY年MMMD日",LLL:"YYYY年MMMD日Ah點mm分",LLLL:"YYYY年MMMD日ddddAh點mm分",l:"YYYY年MMMD日",ll:"YYYY年MMMD日",lll:"YYYY年MMMD日Ah點mm分",llll:"YYYY年MMMD日ddddAh點mm分"},meridiemParse:/凌晨|早上|上午|中午|下午|晚上/,meridiemHour:function(a,b){return 12===a&&(a=0),"凌晨"===b||"早上"===b||"上午"===b?a:"中午"===b?a>=11?a:a+12:"下午"===b||"晚上"===b?a+12:void 0},meridiem:function(a,b,c){var d=100*a+b;return d<600?"凌晨":d<900?"早上":d<1130?"上午":d<1230?"中午":d<1800?"下午":"晚上"},calendar:{sameDay:"[今天]LT",nextDay:"[明天]LT",nextWeek:"[下]ddddLT",lastDay:"[昨天]LT",lastWeek:"[上]ddddLT",sameElse:"L"},ordinalParse:/\d{1,2}(日|月|週)/,ordinal:function(a,b){switch(b){case"d":case"D":case"DDD":return a+"日";case"M":return a+"月";case"w":case"W":return a+"週";default:return a}},relativeTime:{future:"%s內",past:"%s前",s:"幾秒",m:"1 分鐘",mm:"%d 分鐘",h:"1 小時",hh:"%d 小時",d:"1 天",dd:"%d 天",M:"1 個月",MM:"%d 個月",y:"1 年",yy:"%d 年"}}),a.defineLocale("zh-tw",{months:"一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月".split("_"),monthsShort:"1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月".split("_"),weekdays:"星期日_星期一_星期二_星期三_星期四_星期五_星期六".split("_"),weekdaysShort:"週日_週一_週二_週三_週四_週五_週六".split("_"),weekdaysMin:"日_一_二_三_四_五_六".split("_"),longDateFormat:{LT:"Ah點mm分",LTS:"Ah點m分s秒",L:"YYYY年MMMD日",LL:"YYYY年MMMD日",LLL:"YYYY年MMMD日Ah點mm分",LLLL:"YYYY年MMMD日ddddAh點mm分",l:"YYYY年MMMD日",ll:"YYYY年MMMD日",lll:"YYYY年MMMD日Ah點mm分",llll:"YYYY年MMMD日ddddAh點mm分"},meridiemParse:/凌晨|早上|上午|中午|下午|晚上/,meridiemHour:function(a,b){return 12===a&&(a=0),"凌晨"===b||"早上"===b||"上午"===b?a:"中午"===b?a>=11?a:a+12:"下午"===b||"晚上"===b?a+12:void 0},meridiem:function(a,b,c){var d=100*a+b;return d<600?"凌晨":d<900?"早上":d<1130?"上午":d<1230?"中午":d<1800?"下午":"晚上"},calendar:{sameDay:"[今天]LT",nextDay:"[明天]LT",nextWeek:"[下]ddddLT",lastDay:"[昨天]LT",lastWeek:"[上]ddddLT",sameElse:"L"},ordinalParse:/\d{1,2}(日|月|週)/,ordinal:function(a,b){switch(b){case"d":case"D":case"DDD":return a+"日";case"M":return a+"月";case"w":case"W":return a+"週";default:return a}},relativeTime:{future:"%s內",past:"%s前",s:"幾秒",m:"1 分鐘",mm:"%d 分鐘",h:"1 小時",hh:"%d 小時",d:"1 天",dd:"%d 天",M:"1 個月",MM:"%d 個月",y:"1 年",yy:"%d 年"}}),a.locale("en"),a});
 (function ($, moment)
 {
    var pluginName = "bootstrapMaterialDatePicker";
@@ -5035,117 +3561,116 @@ google.maps = google.maps || {};
   
   google.maps.Load = function(apiLoad) {
     delete google.maps.Load;
-    apiLoad([0.009999999776482582,[[["http://mt0.googleapis.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026"],null,null,null,null,"m@367000000",["https://mts0.google.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026","https://mts1.google.com/maps/vt?lyrs=m@367000000\u0026src=api\u0026hl=en-US\u0026"]],[["http://khm0.googleapis.com/kh?v=703\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=703\u0026hl=en-US\u0026"],null,null,null,1,"703",["https://khms0.google.com/kh?v=703\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=703\u0026hl=en-US\u0026"]],null,[["http://mt0.googleapis.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026"],null,null,null,null,"t@367,r@367000000",["https://mts0.google.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026","https://mts1.google.com/maps/vt?lyrs=t@367,r@367000000\u0026src=api\u0026hl=en-US\u0026"]],null,null,[["http://cbk0.googleapis.com/cbk?","http://cbk1.googleapis.com/cbk?"]],[["http://khm0.googleapis.com/kh?v=101\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=101\u0026hl=en-US\u0026"],null,null,null,null,"101",["https://khms0.google.com/kh?v=101\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=101\u0026hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt?hl=en-US\u0026","http://mt1.googleapis.com/mapslt?hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt/ft?hl=en-US\u0026","http://mt1.googleapis.com/mapslt/ft?hl=en-US\u0026"]],[["http://mt0.googleapis.com/maps/vt?hl=en-US\u0026","http://mt1.googleapis.com/maps/vt?hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt/loom?hl=en-US\u0026","http://mt1.googleapis.com/mapslt/loom?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt/ft?hl=en-US\u0026","https://mts1.googleapis.com/mapslt/ft?hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt/loom?hl=en-US\u0026","https://mts1.googleapis.com/mapslt/loom?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"http://maps.gstatic.com/mapfiles/","http://csi.gstatic.com","https://maps.googleapis.com","http://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","http://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["http://maps.google.com/maps-api-v3/api/js/25/15","3.25.15"],[3358547843],1,null,null,null,null,null,"",null,null,0,"http://khm.googleapis.com/mz?v=703\u0026","AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"http://mt.googleapis.com/maps/vt/icon",[["http://maps.google.com/maps/vt"],["https://maps.google.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",367000000,367],2,500,[null,null,null,null,"http://www.google.com/maps/preview/log204","","http://static.panoramio.com.storage.googleapis.com/photos/",["http://geo0.ggpht.com/cbk","http://geo1.ggpht.com/cbk","http://geo2.ggpht.com/cbk","http://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["http://lh3.ggpht.com/","http://lh4.ggpht.com/","http://lh5.ggpht.com/","http://lh6.ggpht.com/"]],["https://www.google.com/maps/api/js/master?pb=!1m2!1u25!2s15!2sen-US!3sUS!4s25/15","https://www.google.com/maps/api/js/widget?pb=!1m2!1u25!2s15!2sen-US"],null,0,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["25.15"]], loadScriptTime);
+    apiLoad([0.009999999776482582,[null,[["http://khm0.googleapis.com/kh?v=707\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=707\u0026hl=en-US\u0026"],null,null,null,1,"707",["https://khms0.google.com/kh?v=707\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=707\u0026hl=en-US\u0026"]],null,null,null,null,[["http://cbk0.googleapis.com/cbk?","http://cbk1.googleapis.com/cbk?"]],[["http://khm0.googleapis.com/kh?v=102\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=102\u0026hl=en-US\u0026"],null,null,null,null,"102",["https://khms0.google.com/kh?v=102\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=102\u0026hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt?hl=en-US\u0026","http://mt1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"http://maps.gstatic.com/mapfiles/","http://csi.gstatic.com","https://maps.googleapis.com","http://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","http://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["http://maps.google.com/maps-api-v3/api/js/26/14","3.26.14"],[3504178721],1,null,null,null,null,null,"",null,null,0,"http://khm.googleapis.com/mz?v=707\u0026","AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"http://mt.googleapis.com/maps/vt/icon",[["http://maps.google.com/maps/vt"],["https://maps.google.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",368000000,368],2,500,[null,null,null,null,"http://www.google.com/maps/preview/log204","","http://static.panoramio.com.storage.googleapis.com/photos/",["http://geo0.ggpht.com/cbk","http://geo1.ggpht.com/cbk","http://geo2.ggpht.com/cbk","http://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["http://lh3.ggpht.com/","http://lh4.ggpht.com/","http://lh5.ggpht.com/","http://lh6.ggpht.com/"]],["https://www.google.com/maps/api/js/master?pb=!1m2!1u26!2s14!2sen-US!3sUS!4s26/14","https://www.google.com/maps/api/js/widget?pb=!1m2!1u26!2s14!2sen-US"],null,0,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["26.14"]], loadScriptTime);
   };
   var loadScriptTime = (new Date).getTime();
 })();
 // inlined
-(function(_){'use strict';var Fa,Ga,La,gb,mb,nb,ob,pb,tb,ub,xb,Ab,wb,Bb,Hb,Qb,Wb,Xb,$b,cc,dc,fc,hc,jc,ec,gc,lc,oc,pc,tc,Gc,Jc,Oc,Nc,Pc,Qc,Rc,Sc,Tc,Zc,dd,fd,hd,id,qd,sd,rd,wd,xd,Bd,Cd,Hd,Qd,Rd,Sd,ee,ge,ie,le,pe,oe,qe,ve,we,ze,Ce,De,Ee,Ie,Je,Ke,Le,Oe,Qe,Re,Se,Te,Ue,Ve,cf,df,ef,ff,gf,of,pf,qf,tf,wf,Cf,Df,Ff,If,Kf,Vf,Wf,Xf,Yf,Zf,$f,bg,cg,dg,eg,gg,lg,ng,wg,xg,Dg,Bg,Eg,Fg,Jg,Mg,Ng,Rg,Sg,Xg,Yg,Zg,$g,ah,Ca,Da;_.aa="ERROR";_.ba="INVALID_REQUEST";_.ca="MAX_DIMENSIONS_EXCEEDED";_.da="MAX_ELEMENTS_EXCEEDED";_.ea="MAX_WAYPOINTS_EXCEEDED";
-_.fa="NOT_FOUND";_.ga="OK";_.ha="OVER_QUERY_LIMIT";_.ia="REQUEST_DENIED";_.ja="UNKNOWN_ERROR";_.la="ZERO_RESULTS";_.ma=function(){return function(a){return a}};_.na=function(){return function(){}};_.oa=function(a){return function(b){this[a]=b}};_.k=function(a){return function(){return this[a]}};_.pa=function(a){return function(){return a}};_.ra=function(a){return function(){return _.qa[a].apply(this,arguments)}};_.r=function(a){return void 0!==a};_.sa=_.na();
-_.ta=function(a){a.Tb=function(){return a.cb?a.cb:a.cb=new a}};
-_.ua=function(a){var b=typeof a;if("object"==b)if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);if("[object Window]"==c)return"object";if("[object Array]"==c||"number"==typeof a.length&&"undefined"!=typeof a.splice&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("splice"))return"array";if("[object Function]"==c||"undefined"!=typeof a.call&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("call"))return"function"}else return"null";
-else if("function"==b&&"undefined"==typeof a.call)return"object";return b};_.wa=function(a){return"array"==_.ua(a)};_.xa=function(a){var b=_.ua(a);return"array"==b||"object"==b&&"number"==typeof a.length};_.ya=function(a){return"string"==typeof a};_.za=function(a){return"number"==typeof a};_.Aa=function(a){return"function"==_.ua(a)};_.Ba=function(a){var b=typeof a;return"object"==b&&null!=a||"function"==b};_.Ea=function(a){return a[Ca]||(a[Ca]=++Da)};
-Fa=function(a,b,c){return a.call.apply(a.bind,arguments)};Ga=function(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}};_.u=function(a,b,c){_.u=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?Fa:Ga;return _.u.apply(null,arguments)};_.Ha=function(){return+new Date};
-_.v=function(a,b){function c(){}c.prototype=b.prototype;a.Kb=b.prototype;a.prototype=new c;a.prototype.constructor=a;a.iq=function(a,c,f){for(var g=Array(arguments.length-2),h=2;h<arguments.length;h++)g[h-2]=arguments[h];return b.prototype[c].apply(a,g)}};_.Ia=function(a){return a.replace(/^[\s\xa0]+|[\s\xa0]+$/g,"")};_.Ka=function(){return-1!=_.Ja.toLowerCase().indexOf("webkit")};
-_.Ma=function(a,b){var c=0;a=_.Ia(String(a)).split(".");b=_.Ia(String(b)).split(".");for(var d=Math.max(a.length,b.length),e=0;0==c&&e<d;e++){var f=a[e]||"",g=b[e]||"";do{f=/(\d*)(\D*)(.*)/.exec(f)||["","","",""];g=/(\d*)(\D*)(.*)/.exec(g)||["","","",""];if(0==f[0].length&&0==g[0].length)break;c=La(0==f[1].length?0:(0,window.parseInt)(f[1],10),0==g[1].length?0:(0,window.parseInt)(g[1],10))||La(0==f[2].length,0==g[2].length)||La(f[2],g[2]);f=f[3];g=g[3]}while(0==c)}return c};
-La=function(a,b){return a<b?-1:a>b?1:0};_.Na=function(a,b,c){c=null==c?0:0>c?Math.max(0,a.length+c):c;if(_.ya(a))return _.ya(b)&&1==b.length?a.indexOf(b,c):-1;for(;c<a.length;c++)if(c in a&&a[c]===b)return c;return-1};_.y=function(a,b,c){for(var d=a.length,e=_.ya(a)?a.split(""):a,f=0;f<d;f++)f in e&&b.call(c,e[f],f,a)};_.Pa=function(a,b){b=_.Oa(a,b,void 0);return 0>b?null:_.ya(a)?a.charAt(b):a[b]};
-_.Oa=function(a,b,c){for(var d=a.length,e=_.ya(a)?a.split(""):a,f=0;f<d;f++)if(f in e&&b.call(c,e[f],f,a))return f;return-1};_.Ra=function(a,b){b=_.Na(a,b);var c;(c=0<=b)&&_.Qa(a,b);return c};_.Qa=function(a,b){Array.prototype.splice.call(a,b,1)};_.Sa=function(a,b,c){return 2>=arguments.length?Array.prototype.slice.call(a,b):Array.prototype.slice.call(a,b,c)};_.A=function(a){return a?a.length:0};_.Ua=function(a,b){_.Ta(b,function(c){a[c]=b[c]})};_.Va=function(a){for(var b in a)return!1;return!0};
-_.Wa=function(a,b,c){null!=b&&(a=Math.max(a,b));null!=c&&(a=Math.min(a,c));return a};_.Xa=function(a,b,c){c-=b;return((a-b)%c+c)%c+b};_.Ya=function(a,b,c){return Math.abs(a-b)<=(c||1E-9)};_.Za=function(a,b){for(var c=[],d=_.A(a),e=0;e<d;++e)c.push(b(a[e],e));return c};_.ab=function(a,b){for(var c=_.$a(void 0,_.A(b)),d=_.$a(void 0,0);d<c;++d)a.push(b[d])};_.B=function(a){return"number"==typeof a};_.bb=function(a){return"object"==typeof a};_.$a=function(a,b){return null==a?b:a};
-_.cb=function(a){return"string"==typeof a};_.db=function(a){return a===!!a};_.Ta=function(a,b){for(var c in a)b(c,a[c])};_.fb=function(a){return function(){var b=this,c=arguments;_.eb(function(){a.apply(b,c)})}};_.eb=function(a){return window.setTimeout(a,0)};gb=function(a,b){if(Object.prototype.hasOwnProperty.call(a,b))return a[b]};_.hb=function(a){window.console&&window.console.error&&window.console.error(a)};_.kb=function(a){a=a||window.event;_.ib(a);_.jb(a)};
-_.ib=function(a){a.cancelBubble=!0;a.stopPropagation&&a.stopPropagation()};_.jb=function(a){a.preventDefault&&_.r(a.defaultPrevented)?a.preventDefault():a.returnValue=!1};_.lb=function(a){a.handled=!0;_.r(a.bubbles)||(a.returnValue="handled")};mb=function(a,b){a.__e3_||(a.__e3_={});a=a.__e3_;a[b]||(a[b]={});return a[b]};nb=function(a,b){a=a.__e3_||{};if(b)b=a[b]||{};else{b={};for(var c in a)_.Ua(b,a[c])}return b};ob=function(a,b){return function(c){return b.call(a,c,this)}};
-pb=function(a,b,c){return function(d){var e=[b,a];_.ab(e,arguments);_.C.trigger.apply(this,e);c&&_.lb.apply(null,arguments)}};tb=function(a,b,c,d){this.cb=a;this.f=b;this.b=c;this.j=null;this.l=d;this.id=++qb;mb(a,b)[this.id]=this;rb&&"tagName"in a&&(sb[this.id]=this)};
-ub=function(a){return a.j=function(b){b||(b=window.event);if(b&&!b.target)try{b.target=b.srcElement}catch(d){}var c;c=a.b.apply(a.cb,[b]);return b&&"click"==b.type&&(b=b.srcElement)&&"A"==b.tagName&&"javascript:void(0)"==b.href?!1:c}};_.vb=function(a){return""+(_.Ba(a)?_.Ea(a):a)};_.G=_.na();xb=function(a,b){var c=b+"_changed";if(a[c])a[c]();else a.changed(b);var c=wb(a,b),d;for(d in c){var e=c[d];xb(e.Qc,e.vb)}_.C.trigger(a,b.toLowerCase()+"_changed")};
-_.zb=function(a){return yb[a]||(yb[a]=a.substr(0,1).toUpperCase()+a.substr(1))};Ab=function(a){a.gm_accessors_||(a.gm_accessors_={});return a.gm_accessors_};wb=function(a,b){a.gm_bindings_||(a.gm_bindings_={});a.gm_bindings_.hasOwnProperty(b)||(a.gm_bindings_[b]={});return a.gm_bindings_[b]};Bb=function(a){this.message=a;this.name="InvalidValueError";this.stack=Error().stack};_.Cb=function(a,b){var c="";if(null!=b){if(!(b instanceof Bb))return b;c=": "+b.message}return new Bb(a+c)};
-_.Db=function(a){if(!(a instanceof Bb))throw a;_.hb(a.name+": "+a.message)};_.Eb=function(a,b){return function(c){if(!c||!_.bb(c))throw _.Cb("not an Object");var d={},e;for(e in c)if(d[e]=c[e],!b&&!a[e])throw _.Cb("unknown property "+e);for(e in a)try{var f=a[e](d[e]);if(_.r(f)||Object.prototype.hasOwnProperty.call(c,e))d[e]=a[e](d[e])}catch(g){throw _.Cb("in property "+e,g);}return d}};Hb=function(a){try{return!!a.cloneNode}catch(b){return!1}};
-_.Ib=function(a,b,c){return c?function(c){if(c instanceof a)return c;try{return new a(c)}catch(e){throw _.Cb("when calling new "+b,e);}}:function(c){if(c instanceof a)return c;throw _.Cb("not an instance of "+b);}};_.Jb=function(a){return function(b){for(var c in a)if(a[c]==b)return b;throw _.Cb(b);}};_.Kb=function(a){return function(b){if(!_.wa(b))throw _.Cb("not an Array");return _.Za(b,function(b,d){try{return a(b)}catch(e){throw _.Cb("at index "+d,e);}})}};
-_.Lb=function(a,b){return function(c){if(a(c))return c;throw _.Cb(b||""+c);}};_.Mb=function(a){return function(b){for(var c=[],d=0,e=a.length;d<e;++d){var f=a[d];try{(f.Fg||f)(b)}catch(g){if(!(g instanceof Bb))throw g;c.push(g.message);continue}return(f.then||f)(b)}throw _.Cb(c.join("; and "));}};_.Nb=function(a,b){return function(c){return b(a(c))}};_.Pb=function(a){return function(b){return null==b?b:a(b)}};
-Qb=function(a){return function(b){if(b&&null!=b[a])return b;throw _.Cb("no "+a+" property");}};_.Rb=function(a){return a*Math.PI/180};_.Sb=function(a){return 180*a/Math.PI};_.H=function(a,b,c){if(a&&(void 0!==a.lat||void 0!==a.lng))try{Tb(a),b=a.lng,a=a.lat,c=!1}catch(d){_.Db(d)}a-=0;b-=0;c||(a=_.Wa(a,-90,90),180!=b&&(b=_.Xa(b,-180,180)));this.lat=function(){return a};this.lng=function(){return b}};_.Ub=function(a){return _.Rb(a.lat())};_.Vb=function(a){return _.Rb(a.lng())};
-Wb=function(a,b){b=Math.pow(10,b);return Math.round(a*b)/b};Xb=_.na();_.Yb=function(a){try{if(a instanceof _.H)return a;a=Tb(a);return new _.H(a.lat,a.lng)}catch(b){throw _.Cb("not a LatLng or LatLngLiteral",b);}};_.Zb=function(a){this.b=_.Yb(a)};$b=function(a){if(a instanceof Xb)return a;try{return new _.Zb(_.Yb(a))}catch(b){}throw _.Cb("not a Geometry or LatLng or LatLngLiteral object");};_.ac=function(a,b){if(a)return function(){--a||b()};b();return _.sa};
-_.bc=function(a,b,c){var d=a.getElementsByTagName("head")[0];a=a.createElement("script");a.type="text/javascript";a.charset="UTF-8";a.src=b;c&&(a.onerror=c);d.appendChild(a);return a};cc=function(a){for(var b="",c=0,d=arguments.length;c<d;++c){var e=arguments[c];e.length&&"/"==e[0]?b=e:(b&&"/"!=b[b.length-1]&&(b+="/"),b+=e)}return b};dc=function(a){this.j=window.document;this.b={};this.f=a};fc=function(){this.l={};this.f={};this.m={};this.b={};this.j=new ec};
-hc=function(a,b){a.l[b]||(a.l[b]=!0,gc(a.j,function(c){for(var d=c.ii[b],e=d?d.length:0,f=0;f<e;++f){var g=d[f];a.b[g]||hc(a,g)}c=c.pn;c.b[b]||_.bc(c.j,cc(c.f,b)+".js")}))};jc=function(a,b){var c=ic;this.pn=a;this.ii=c;a={};for(var d in c)for(var e=c[d],f=0,g=e.length;f<g;++f){var h=e[f];a[h]||(a[h]=[]);a[h].push(d)}this.Jo=a;this.Il=b};ec=function(){this.b=[]};gc=function(a,b){a.f?b(a.f):a.b.push(b)};_.J=function(a,b,c){var d=fc.Tb();a=""+a;d.b[a]?b(d.b[a]):((d.f[a]=d.f[a]||[]).push(b),c||hc(d,a))};
-_.kc=function(a,b){fc.Tb().b[""+a]=b};lc=function(a,b,c){var d=[],e=_.ac(a.length,function(){b.apply(null,d)});_.y(a,function(a,b){_.J(a,function(a){d[b]=a;e()},c)})};_.mc=function(a){a=a||{};this.j=a.id;this.b=null;try{this.b=a.geometry?$b(a.geometry):null}catch(b){_.Db(b)}this.f=a.properties||{}};_.K=function(a,b){this.x=a;this.y=b};oc=function(a){if(a instanceof _.K)return a;try{_.Eb({x:_.nc,y:_.nc},!0)(a)}catch(b){throw _.Cb("not a Point",b);}return new _.K(a.x,a.y)};
-_.M=function(a,b,c,d){this.width=a;this.height=b;this.j=c||"px";this.f=d||"px"};pc=function(a){if(a instanceof _.M)return a;try{_.Eb({height:_.nc,width:_.nc},!0)(a)}catch(b){throw _.Cb("not a Size",b);}return new _.M(a.width,a.height)};_.qc=function(a){return function(){return this.get(a)}};_.rc=function(a,b){return b?function(c){try{this.set(a,b(c))}catch(d){_.Db(_.Cb("set"+_.zb(a),d))}}:function(b){this.set(a,b)}};
-_.sc=function(a,b){_.Ta(b,function(b,d){var e=_.qc(b);a["get"+_.zb(b)]=e;d&&(d=_.rc(b,d),a["set"+_.zb(b)]=d)})};_.uc=function(a){this.b=a||[];tc(this)};tc=function(a){a.set("length",a.b.length)};_.vc=function(a){this.j=a||_.vb;this.f={}};_.yc=function(a,b){var c=a.f,d=a.j(b);c[d]||(c[d]=b,_.C.trigger(a,"insert",b),a.b&&a.b(b))};_.zc=_.oa("b");_.Ac=function(a,b,c){this.heading=a;this.pitch=_.Wa(b,-90,90);this.zoom=Math.max(0,c)};_.Bc=function(){this.__gm=new _.G;this.l=null};_.Cc=_.ma();
-_.Dc=function(a,b,c){for(var d in a)b.call(c,a[d],d,a)};_.Ec=function(a){return-1!=_.Ja.indexOf(a)};_.Fc=function(){return _.Ec("Trident")||_.Ec("MSIE")};Gc=function(){return(_.Ec("Chrome")||_.Ec("CriOS"))&&!_.Ec("Edge")};Jc=function(a){_.Hc.setTimeout(function(){throw a;},0)};Oc=function(){var a=_.Kc.f,a=Lc(a);!_.Aa(_.Hc.setImmediate)||_.Hc.Window&&_.Hc.Window.prototype&&!_.Ec("Edge")&&_.Hc.Window.prototype.setImmediate==_.Hc.setImmediate?(Mc||(Mc=Nc()),Mc(a)):_.Hc.setImmediate(a)};
-Nc=function(){var a=_.Hc.MessageChannel;"undefined"===typeof a&&"undefined"!==typeof window&&window.postMessage&&window.addEventListener&&!_.Ec("Presto")&&(a=function(){var a=window.document.createElement("IFRAME");a.style.display="none";a.src="";window.document.documentElement.appendChild(a);var b=a.contentWindow,a=b.document;a.open();a.write("");a.close();var c="callImmediate"+Math.random(),d="file:"==b.location.protocol?"*":b.location.protocol+"//"+b.location.host,a=(0,_.u)(function(a){if(("*"==
-d||a.origin==d)&&a.data==c)this.port1.onmessage()},this);b.addEventListener("message",a,!1);this.port1={};this.port2={postMessage:function(){b.postMessage(c,d)}}});if("undefined"!==typeof a&&!_.Fc()){var b=new a,c={},d=c;b.port1.onmessage=function(){if(_.r(c.next)){c=c.next;var a=c.yh;c.yh=null;a()}};return function(a){d.next={yh:a};d=d.next;b.port2.postMessage(0)}}return"undefined"!==typeof window.document&&"onreadystatechange"in window.document.createElement("SCRIPT")?function(a){var b=window.document.createElement("SCRIPT");
-b.onreadystatechange=function(){b.onreadystatechange=null;b.parentNode.removeChild(b);b=null;a();a=null};window.document.documentElement.appendChild(b)}:function(a){_.Hc.setTimeout(a,0)}};Pc=function(a,b,c){this.l=c;this.j=a;this.m=b;this.f=0;this.b=null};Qc=function(){this.f=this.b=null};Rc=function(){this.next=this.b=this.Lc=null};_.Kc=function(a,b){_.Kc.b||_.Kc.m();_.Kc.j||(_.Kc.b(),_.Kc.j=!0);_.Kc.l.add(a,b)};Sc=function(a,b){return function(c){return c.Lc==a&&c.context==(b||null)}};
-Tc=function(a){this.S=[];this.b=a&&a.Cd||_.sa;this.f=a&&a.Ed||_.sa};_.Vc=function(a,b,c,d){function e(){_.y(f,function(a){b.call(c||null,function(b){if(a.Fd){if(a.Fd.wh)return;a.Fd.wh=!0;_.Ra(g.S,a);g.S.length||g.b()}a.Lc.call(a.context,b)})})}var f=a.S.slice(0),g=a;d&&d.gp?e():Uc(e)};_.Wc=function(){this.S=new Tc({Cd:(0,_.u)(this.Cd,this),Ed:(0,_.u)(this.Ed,this)})};_.Xc=function(){_.Wc.call(this)};_.Yc=function(a){_.Wc.call(this);this.b=a};Zc=_.na();
-dd=function(a){var b=a;if(a instanceof Array)b=Array(a.length),_.cd(b,a);else if(a instanceof Object){var c=b={},d;for(d in a)a.hasOwnProperty(d)&&(c[d]=dd(a[d]))}return b};_.cd=function(a,b){for(var c=0;c<b.length;++c)b.hasOwnProperty(c)&&(a[c]=dd(b[c]))};_.N=function(a,b){a[b]||(a[b]=[]);return a[b]};_.ed=function(a,b){return a[b]?a[b].length:0};
-_.gd=function(a,b){if(null==a||null==b)return null==a==(null==b);if(a.constructor!=Array&&a.constructor!=Object)throw Error("Invalid object type passed into JsProto.areObjectsEqual()");if(a===b)return!0;if(a.constructor!=b.constructor)return!1;for(var c in a)if(!(c in b&&fd(a[c],b[c])))return!1;for(var d in b)if(!(d in a))return!1;return!0};
-fd=function(a,b){if(a===b||!(!0!==a&&1!==a||!0!==b&&1!==b)||!(!1!==a&&0!==a||!1!==b&&0!==b))return!0;if(a instanceof Object&&b instanceof Object){if(!_.gd(a,b))return!1}else return!1;return!0};hd=function(a,b,c,d){this.type=a;this.label=b;this.Ql=c;this.Ic=d};id=function(a){switch(a){case "d":case "f":case "i":case "j":case "u":case "v":case "x":case "y":case "g":case "h":case "n":case "o":case "e":return 0;case "s":case "z":case "B":return"";case "b":return!1;default:return null}};
-_.jd=function(a,b,c){return new hd(a,1,_.r(b)?b:id(a),c)};_.kd=function(a,b,c){return new hd(a,2,_.r(b)?b:id(a),c)};_.ld=function(a,b){return new hd(a,3,void 0,b)};_.md=function(a){return _.jd("i",a)};_.nd=function(a){return _.jd("v",a)};_.od=function(a){return _.jd("b",a)};_.pd=function(a){return _.jd("e",a)};_.O=function(a,b){return _.jd("m",a,b)};qd=_.na();
-sd=function(a,b,c){for(var d=1;d<b.A.length;++d){var e=b.A[d],f=a[d+b.F];if(e&&null!=f)if(3==e.label)for(var g=0;g<f.length;++g)rd(f[g],d,e,c);else rd(f,d,e,c)}};rd=function(a,b,c,d){if("m"==c.type){var e=d.length;sd(a,c.Ic,d);d.splice(e,0,[b,"m",d.length-e].join(""))}else"b"==c.type&&(a=a?"1":"0"),d.push([b,c.type,(0,window.encodeURIComponent)(a)].join(""))};_.td=function(){return _.Ec("iPhone")&&!_.Ec("iPod")&&!_.Ec("iPad")};_.ud=function(a){_.ud[" "](a);return a};
-wd=function(a,b){var c=vd;return Object.prototype.hasOwnProperty.call(c,a)?c[a]:c[a]=b(a)};xd=function(){var a=_.Hc.document;return a?a.documentMode:void 0};_.zd=function(a){return wd(a,function(){return 0<=_.Ma(_.yd,a)})};_.Ad=function(a,b){this.b=a||0;this.f=b||0};Bd=_.na();Cd=function(a,b){-180==a&&180!=b&&(a=180);-180==b&&180!=a&&(b=180);this.b=a;this.f=b};_.Dd=function(a){return a.b>a.f};_.Fd=function(a,b){return 1E-9>=Math.abs(b.b-a.b)%360+Math.abs(_.Ed(b)-_.Ed(a))};
-_.Gd=function(a,b){var c=b-a;return 0<=c?c:b+180-(a-180)};_.Ed=function(a){return a.isEmpty()?0:_.Dd(a)?360-(a.b-a.f):a.f-a.b};Hd=function(a,b){this.f=a;this.b=b};_.Id=function(a){return a.isEmpty()?0:a.b-a.f};_.Jd=function(a,b){a=a&&_.Yb(a);b=b&&_.Yb(b);if(a){b=b||a;var c=_.Wa(a.lat(),-90,90),d=_.Wa(b.lat(),-90,90);this.f=new Hd(c,d);a=a.lng();b=b.lng();360<=b-a?this.b=new Cd(-180,180):(a=_.Xa(a,-180,180),b=_.Xa(b,-180,180),this.b=new Cd(a,b))}else this.f=new Hd(1,-1),this.b=new Cd(180,-180)};
-_.Kd=function(a,b,c,d){return new _.Jd(new _.H(a,b,!0),new _.H(c,d,!0))};_.Md=function(a){if(a instanceof _.Jd)return a;try{return a=Ld(a),_.Kd(a.south,a.west,a.north,a.east)}catch(b){throw _.Cb("not a LatLngBounds or LatLngBoundsLiteral",b);}};_.Nd=_.oa("__gm");Qd=function(){this.b={};this.j={};this.f={}};Rd=function(){this.b={}};Sd=function(a){this.b=new Rd;var b=this;_.C.addListenerOnce(a,"addfeature",function(){_.J("data",function(c){c.b(b,a,b.b)})})};_.Ud=function(a){this.b=[];try{this.b=Td(a)}catch(b){_.Db(b)}};
-_.Wd=function(a){this.b=(0,_.Vd)(a)};_.Yd=function(a){this.b=Xd(a)};_.Zd=function(a){this.b=(0,_.Vd)(a)};_.$d=function(a){this.b=(0,_.Vd)(a)};_.be=function(a){this.b=ae(a)};_.de=function(a){this.b=ce(a)};ee=function(a){a=a||{};a.clickable=_.$a(a.clickable,!0);a.visible=_.$a(a.visible,!0);this.setValues(a);_.J("marker",_.sa)};ge=function(a){var b=_,c=fc.Tb().j;a=c.f=new jc(new dc(a),b);for(var b=0,d=c.b.length;b<d;++b)c.b[b](a);c.b.length=0};
-_.he=function(a){this.__gm={set:null,xe:null};ee.call(this,a)};ie=function(a){a=a||{};a.visible=_.$a(a.visible,!0);return a};_.je=function(a){return a&&a.radius||6378137};le=function(a){return a instanceof _.uc?ke(a):new _.uc((0,_.Vd)(a))};pe=function(a){var b;_.wa(a)||a instanceof _.uc?0==_.A(a)?b=!0:(b=a instanceof _.uc?a.getAt(0):a[0],b=_.wa(b)||b instanceof _.uc):b=!1;return b?a instanceof _.uc?oe(ke)(a):new _.uc(_.Kb(le)(a)):new _.uc([le(a)])};
-oe=function(a){return function(b){if(!(b instanceof _.uc))throw _.Cb("not an MVCArray");b.forEach(function(b,d){try{a(b)}catch(e){throw _.Cb("at index "+d,e);}});return b}};qe=function(a){this.set("latLngs",new _.uc([new _.uc]));this.setValues(ie(a));_.J("poly",_.sa)};_.re=function(a){qe.call(this,a)};_.se=function(a){qe.call(this,a)};
-_.te=function(a,b,c){function d(a){if(!a)throw _.Cb("not a Feature");if("Feature"!=a.type)throw _.Cb('type != "Feature"');var b=a.geometry;try{b=null==b?null:e(b)}catch(d){throw _.Cb('in property "geometry"',d);}var f=a.properties||{};if(!_.bb(f))throw _.Cb("properties is not an Object");var g=c.idPropertyName;a=g?f[g]:a.id;if(null!=a&&!_.B(a)&&!_.cb(a))throw _.Cb((g||"id")+" is not a string or number");return{id:a,geometry:b,properties:f}}function e(a){if(null==a)throw _.Cb("is null");var b=(a.type+
-"").toLowerCase(),c=a.coordinates;try{switch(b){case "point":return new _.Zb(h(c));case "multipoint":return new _.Zd(n(c));case "linestring":return g(c);case "multilinestring":return new _.Yd(p(c));case "polygon":return f(c);case "multipolygon":return new _.de(t(c))}}catch(d){throw _.Cb('in property "coordinates"',d);}if("geometrycollection"==b)try{return new _.Ud(w(a.geometries))}catch(d){throw _.Cb('in property "geometries"',d);}throw _.Cb("invalid type");}function f(a){return new _.be(q(a))}function g(a){return new _.Wd(n(a))}
-function h(a){a=l(a);return _.Yb({lat:a[1],lng:a[0]})}if(!b)return[];c=c||{};var l=_.Kb(_.nc),n=_.Kb(h),p=_.Kb(g),q=_.Kb(function(a){a=n(a);if(!a.length)throw _.Cb("contains no elements");if(!a[0].b(a[a.length-1]))throw _.Cb("first and last positions are not equal");return new _.$d(a.slice(0,-1))}),t=_.Kb(f),w=_.Kb(e),z=_.Kb(d);if("FeatureCollection"==b.type){b=b.features;try{return _.Za(z(b),function(b){return a.add(b)})}catch(x){throw _.Cb('in property "features"',x);}}if("Feature"==b.type)return[a.add(d(b))];
-throw _.Cb("not a Feature or FeatureCollection");};ve=function(a){var b=this;this.setValues(a||{});this.b=new Qd;_.C.forward(this.b,"addfeature",this);_.C.forward(this.b,"removefeature",this);_.C.forward(this.b,"setgeometry",this);_.C.forward(this.b,"setproperty",this);_.C.forward(this.b,"removeproperty",this);this.f=new Sd(this.b);this.f.bindTo("map",this);this.f.bindTo("style",this);_.y(_.ue,function(a){_.C.forward(b.f,a,b)});this.j=!1};we=function(a){a.j||(a.j=!0,_.J("drawing_impl",function(b){b.Jm(a)}))};
-_.xe=function(a){this.b=a||[]};_.ye=function(a){this.b=a||[]};ze=function(a){this.b=a||[]};_.Ae=function(a){this.b=a||[]};_.Be=function(a){this.b=a||[]};Ce=function(a){if(!a)return null;var b;_.ya(a)?(b=window.document.createElement("div"),b.style.overflow="auto",b.innerHTML=a):a.nodeType==window.Node.TEXT_NODE?(b=window.document.createElement("div"),b.appendChild(a)):b=a;return b};
-De=function(a,b){this.b=a;this.ud=b;a.addListener("map_changed",(0,_.u)(this.Jn,this));this.bindTo("map",a);this.bindTo("disableAutoPan",a);this.bindTo("maxWidth",a);this.bindTo("position",a);this.bindTo("zIndex",a);this.bindTo("internalAnchor",a,"anchor");this.bindTo("internalContent",a,"content");this.bindTo("internalPixelOffset",a,"pixelOffset")};Ee=function(a,b,c,d){c?a.bindTo(b,c,d):(a.unbind(b),a.set(b,void 0))};
-_.Fe=function(a){function b(){e||(e=!0,_.J("infowindow",function(a){a.fl(d)}))}window.setTimeout(function(){_.J("infowindow",_.sa)},100);a=a||{};var c=!!a.ud;delete a.ud;var d=new De(this,c),e=!1;_.C.addListenerOnce(this,"anchor_changed",b);_.C.addListenerOnce(this,"map_changed",b);this.setValues(a)};_.He=function(a){_.Ge&&a&&_.Ge.push(a)};Ie=function(a){this.setValues(a)};Je=_.na();Ke=_.na();Le=_.na();_.Me=function(){_.J("geocoder",_.sa)};
-_.Ne=function(a,b,c){this.J=null;this.set("url",a);this.set("bounds",_.Pb(_.Md)(b));this.setValues(c)};Oe=function(a,b){_.cb(a)?(this.set("url",a),this.setValues(b)):this.setValues(a)};_.Pe=function(){var a=this;_.J("layers",function(b){b.b(a)})};Qe=function(a){this.setValues(a);var b=this;_.J("layers",function(a){a.f(b)})};Re=function(){var a=this;_.J("layers",function(b){b.j(a)})};Se=function(a){this.b=a||[]};Te=function(a){this.b=a||[]};Ue=function(a){this.b=a||[]};Ve=function(a){this.b=a||[]};
-_.We=function(a){this.b=a||[]};_.$e=function(a){this.b=a||[]};_.af=function(a){this.b=a||[]};_.bf=function(a){this.b=a||[]};cf=function(a){this.b=a||[]};df=function(a){this.b=a||[]};ef=function(a){this.b=a||[]};ff=function(a){this.b=a||[]};gf=function(a){this.b=a||[]};_.hf=function(a){this.b=a||[]};_.jf=function(a){this.b=a||[]};_.kf=function(a){a=a.b[0];return null!=a?a:""};_.lf=function(a){a=a.b[1];return null!=a?a:""};_.nf=function(){var a=_.mf(_.P).b[9];return null!=a?a:""};
-of=function(){var a=_.mf(_.P).b[7];return null!=a?a:""};pf=function(){var a=_.mf(_.P).b[12];return null!=a?a:""};qf=function(a){a=a.b[0];return null!=a?a:""};_.rf=function(a){a=a.b[1];return null!=a?a:""};tf=function(){var a=_.P.b[4],a=(a?new ef(a):sf).b[0];return null!=a?a:0};_.uf=function(){var a=_.P.b[0];return null!=a?a:1};_.vf=function(a){a=a.b[6];return null!=a?a:""};wf=function(){var a=_.P.b[11];return null!=a?a:""};_.xf=function(){var a=_.P.b[16];return null!=a?a:""};
-_.mf=function(a){return(a=a.b[2])?new cf(a):yf};_.Af=function(){var a=_.P.b[3];return a?new df(a):zf};Cf=function(){var a=_.P.b[33];return a?new Se(a):Bf};Df=function(a){return _.N(_.P.b,8)[a]};Ff=function(){var a=_.P.b[36],a=(a?new gf(a):Ef).b[0];return null!=a?a:""};
-If=function(a,b){_.Bc.call(this);_.He(a);this.__gm=new _.G;this.j=null;b&&b.client&&(this.j=_.Gf[b.client]||null);var c=this.controls=[];_.Ta(_.Hf,function(a,b){c[b]=new _.uc});this.m=!0;this.f=a;this.setPov(new _.Ac(0,0,1));b&&b.wb&&!_.B(b.wb.zoom)&&(b.wb.zoom=_.B(b.zoom)?b.zoom:1);this.setValues(b);void 0==this.getVisible()&&this.setVisible(!0);this.__gm.Pc=b&&b.Pc||new _.vc;_.C.addListenerOnce(this,"pano_changed",_.fb(function(){_.J("marker",(0,_.u)(function(a){a.b(this.__gm.Pc,this)},this))}))};
-_.Jf=function(){this.l=[];this.f=this.b=this.j=null};Kf=function(a,b,c){this.X=b;this.b=new _.Yc(new _.zc([]));this.C=new _.vc;this.K=new _.uc;this.G=new _.vc;this.H=new _.vc;this.l=new _.vc;var d=this.Pc=new _.vc;d.b=function(){delete d.b;_.J("marker",_.fb(function(b){b.b(d,a)}))};this.j=new If(b,{visible:!1,enableCloseButton:!0,Pc:d});this.j.bindTo("reportErrorControl",a);this.j.m=!1;this.f=new _.Jf;this.Y=c};_.Lf=function(){this.S=new Tc};
-_.Nf=function(){this.b=new _.K(128,128);this.j=256/360;this.l=256/(2*Math.PI);this.f=!0};_.Of=function(a){this.L=this.M=window.Infinity;this.R=this.O=-window.Infinity;_.y(a||[],this.extend,this)};_.Pf=function(a,b,c,d){var e=new _.Of;e.M=a;e.L=b;e.O=c;e.R=d;return e};_.Qf=function(a,b,c){if(a=a.fromLatLngToPoint(b))c=Math.pow(2,c),a.x*=c,a.y*=c;return a};
-_.Rf=function(a,b){var c=a.lat()+_.Sb(b);90<c&&(c=90);var d=a.lat()-_.Sb(b);-90>d&&(d=-90);b=Math.sin(b);var e=Math.cos(_.Rb(a.lat()));if(90==c||-90==d||1E-6>e)return new _.Jd(new _.H(d,-180),new _.H(c,180));b=_.Sb(Math.asin(b/e));return new _.Jd(new _.H(d,a.lng()-b),new _.H(c,a.lng()+b))};_.Sf=function(a){this.Dl=a||0;_.C.bind(this,"forceredraw",this,this.C)};_.Tf=function(a,b){a=a.style;a.width=b.width+b.j;a.height=b.height+b.f};_.Uf=function(a){return new _.M(a.offsetWidth,a.offsetHeight)};
-Vf=function(a){this.b=a||[]};Wf=function(a){this.b=a||[]};Xf=function(a){this.b=a||[]};Yf=function(a){this.b=a||[]};Zf=function(a){this.b=a||[]};$f=function(a,b,c,d){_.Sf.call(this);this.m=b;this.l=new _.Nf;this.D=c+"/maps/api/js/StaticMapService.GetMapImage";this.f=this.b=null;this.j=d;this.set("div",a);this.set("loading",!0)};bg=function(a){var b=a.get("tilt")||a.get("mapMaker")||_.A(a.get("styles"));a=a.get("mapTypeId");return b?null:ag[a]};cg=function(a){a.parentNode&&a.parentNode.removeChild(a)};
-dg=function(a,b){var c=a.f;c.onload=null;c.onerror=null;b&&(c.parentNode||a.b.appendChild(c),_.Tf(c,a.get("size")),_.C.trigger(a,"staticmaploaded"),a.j.set(_.Ha()));a.set("loading",!1)};eg=function(a,b){var c=a.f;b!=c.src?(cg(c),c.onload=function(){dg(a,!0)},c.onerror=function(){dg(a,!1)},c.src=b):!c.parentNode&&b&&a.b.appendChild(c)};
-gg=function(a,b,c,d,e){var f=_.fg[15]?pf():of();this.b=a;this.f=d;this.j=_.r(e)?e:_.Ha();var g=f+"/csi?v=2&s=mapsapi3&v3v="+Ff()+"&action="+a;_.Dc(c,function(a,b){g+="&"+(0,window.encodeURIComponent)(b)+"="+(0,window.encodeURIComponent)(a)});b&&(g+="&e="+b);this.l=g};_.ig=function(a,b){var c={};c[b]=void 0;_.hg(a,c)};
-_.hg=function(a,b){var c="";_.Dc(b,function(a,b){var f=(null!=a?a:_.Ha())-this.j;c&&(c+=",");c+=b+"."+Math.round(f);null==a&&window.performance&&window.performance.mark&&window.performance.mark("mapsapi:"+this.b+":"+b)},a);b=a.l+"&rt="+c;a.f.createElement("img").src=b;(a=_.Hc.__gm_captureCSI)&&a(b)};
-_.jg=function(a,b){b=b||{};var c=b.ho||{},d=_.N(_.P.b,12).join(",");d&&(c.libraries=d);var d=_.vf(_.P),e=Cf(),f=[];d&&f.push(d);_.y(e.B(),function(a,b){a&&_.y(a,function(a,c){null!=a&&f.push(b+1+"_"+(c+1)+"_"+a)})});b.dm&&(f=f.concat(b.dm));return new gg(a,f.join(","),c,b.document||window.document,b.startTime)};lg=function(){this.f=_.jg("apiboot2",{startTime:_.kg});_.ig(this.f,"main");this.b=!1};ng=function(){var a=mg;a.b||(a.b=!0,_.ig(a.f,"firstmap"))};_.og=_.na();_.pg=function(){this.b=""};
-_.qg=function(a){var b=new _.pg;b.b=a;return b};_.sg=function(){this.Tf="";this.uk=_.rg;this.b=null};_.tg=function(a,b){var c=new _.sg;c.Tf=a;c.b=b;return c};_.ug=function(a,b){b.parentNode&&b.parentNode.insertBefore(a,b.nextSibling)};_.vg=function(a){a&&a.parentNode&&a.parentNode.removeChild(a)};wg=function(a,b,c,d,e){this.b=!!b;this.node=null;this.f=0;this.j=!1;this.l=!c;a&&this.setPosition(a,d);this.depth=void 0!=e?e:this.f||0;this.b&&(this.depth*=-1)};
-xg=function(a,b,c,d){wg.call(this,a,b,c,null,d)};_.zg=function(a){for(var b;b=a.firstChild;)_.yg(b),a.removeChild(b)};_.yg=function(a){a=new xg(a);try{for(;;)_.C.clearInstanceListeners(a.next())}catch(b){if(b!==_.Ag)throw b;}};
-Dg=function(a,b){var c=_.Ha();mg&&ng();var d=new _.Lf;_.Nd.call(this,new Kf(this,a,d));var e=b||{};_.r(e.mapTypeId)||(e.mapTypeId="roadmap");this.setValues(e);this.b=_.fg[15]&&e.noControlsOrLogging;this.mapTypes=new Bd;this.features=new _.G;_.He(a);this.notify("streetView");b=_.Uf(a);e.noClear||_.zg(a);var f=null;_.P&&Bg(e.useStaticMap,b)&&(f=new $f(a,_.Cg,_.nf(),new _.Yc(null)),_.C.forward(f,"staticmaploaded",this),f.set("size",b),f.bindTo("center",this),f.bindTo("zoom",this),f.bindTo("mapTypeId",
-this),f.bindTo("styles",this),f.bindTo("mapMaker",this));this.overlayMapTypes=new _.uc;var g=this.controls=[];_.Ta(_.Hf,function(a,b){g[b]=new _.uc});var h=this,l=!0;_.J("map",function(a){a.f(h,e,f,l,c,d)});l=!1;this.data=new ve({map:this})};Bg=function(a,b){if(_.r(a))return!!a;a=b.width;b=b.height;return 384E3>=a*b&&800>=a&&800>=b};Eg=function(){_.J("maxzoom",_.sa)};Fg=function(a,b){!a||_.cb(a)||_.B(a)?(this.set("tableId",a),this.setValues(b)):this.setValues(a)};_.Gg=_.na();
-_.Hg=function(a){this.setValues(ie(a));_.J("poly",_.sa)};_.Ig=function(a){this.setValues(ie(a));_.J("poly",_.sa)};Jg=function(){this.b=null};_.Kg=function(){this.b=null};
-_.Lg=function(a){this.tileSize=a.tileSize||new _.M(256,256);this.name=a.name;this.alt=a.alt;this.minZoom=a.minZoom;this.maxZoom=a.maxZoom;this.j=(0,_.u)(a.getTileUrl,a);this.b=new _.vc;this.f=null;this.set("opacity",a.opacity);_.Hc.window&&_.C.addDomListener(window,"online",(0,_.u)(this.bo,this));var b=this;_.J("map",function(a){var d=b.f=a.b,e=b.tileSize||new _.M(256,256);b.b.forEach(function(a){var c=a.__gmimt,h=c.ba,l=c.zoom,n=b.j(h,l);c.Lb=d(h,l,e,a,n,function(){_.C.trigger(a,"load")})})})};
-Mg=function(a,b){null!=a.style.opacity?a.style.opacity=b:a.style.filter=b&&"alpha(opacity="+Math.round(100*b)+")"};Ng=function(a){a=a.get("opacity");return"number"==typeof a?a:1};_.Og=_.na();_.Pg=function(a,b){this.set("styles",a);a=b||{};this.b=a.baseMapTypeId||"roadmap";this.minZoom=a.minZoom;this.maxZoom=a.maxZoom||20;this.name=a.name;this.alt=a.alt;this.projection=null;this.tileSize=new _.M(256,256)};
-_.Qg=function(a,b){_.Lb(Hb,"container is not a Node")(a);this.setValues(b);_.J("controls",(0,_.u)(function(b){b.Cl(this,a)},this))};Rg=_.oa("b");Sg=function(a,b,c){for(var d=Array(b.length),e=0,f=b.length;e<f;++e)d[e]=b.charCodeAt(e);d.unshift(c);a=a.b;c=b=0;for(e=d.length;c<e;++c)b*=1729,b+=d[c],b%=a;return b};
-Xg=function(){var a=tf(),b=new Rg(131071),c=(0,window.unescape)("%26%74%6F%6B%65%6E%3D");return function(d){d=d.replace(Vg,"%27");var e=d+c;Wg||(Wg=/(?:https?:\/\/[^/]+)?(.*)/);d=Wg.exec(d);return e+Sg(b,d&&d[1],a)}};Yg=function(){var a=new Rg(2147483647);return function(b){return Sg(a,b,0)}};Zg=function(a){for(var b=a.split("."),c=window,d=window,e=0;e<b.length;e++)if(d=c,c=c[b[e]],!c)throw _.Cb(a+" is not a function");return function(){c.apply(d)}};
-$g=function(){for(var a in Object.prototype)window.console&&window.console.error("This site adds property <"+a+"> to Object.prototype. Extending Object.prototype breaks JavaScript for..in loops, which are used heavily in Google Maps API v3.")};ah=function(a){(a="version"in a)&&window.console&&window.console.error("You have included the Google Maps API multiple times on this page. This may cause unexpected errors.");return a};_.qa=[];_.Hc=this;Ca="closure_uid_"+(1E9*Math.random()>>>0);Da=0;var rb,sb;_.C={};rb="undefined"!=typeof window.navigator&&-1!=window.navigator.userAgent.toLowerCase().indexOf("msie");sb={};_.C.addListener=function(a,b,c){return new tb(a,b,c,0)};_.C.hasListeners=function(a,b){b=(a=a.__e3_)&&a[b];return!!b&&!_.Va(b)};_.C.removeListener=function(a){a&&a.remove()};_.C.clearListeners=function(a,b){_.Ta(nb(a,b),function(a,b){b&&b.remove()})};_.C.clearInstanceListeners=function(a){_.Ta(nb(a),function(a,c){c&&c.remove()})};
-_.C.trigger=function(a,b,c){if(_.C.hasListeners(a,b)){var d=_.Sa(arguments,2),e=nb(a,b),f;for(f in e){var g=e[f];g&&g.b.apply(g.cb,d)}}};_.C.addDomListener=function(a,b,c,d){if(a.addEventListener){var e=d?4:1;a.addEventListener(b,c,d);c=new tb(a,b,c,e)}else a.attachEvent?(c=new tb(a,b,c,2),a.attachEvent("on"+b,ub(c))):(a["on"+b]=c,c=new tb(a,b,c,3));return c};_.C.addDomListenerOnce=function(a,b,c,d){var e=_.C.addDomListener(a,b,function(){e.remove();return c.apply(this,arguments)},d);return e};
-_.C.W=function(a,b,c,d){return _.C.addDomListener(a,b,ob(c,d))};_.C.bind=function(a,b,c,d){return _.C.addListener(a,b,(0,_.u)(d,c))};_.C.addListenerOnce=function(a,b,c){var d=_.C.addListener(a,b,function(){d.remove();return c.apply(this,arguments)});return d};_.C.forward=function(a,b,c){return _.C.addListener(a,b,pb(b,c))};_.C.Ra=function(a,b,c,d){return _.C.addDomListener(a,b,pb(b,c,!d))};_.C.aj=function(){var a=sb,b;for(b in a)a[b].remove();sb={};(a=_.Hc.CollectGarbage)&&a()};
-_.C.Ao=function(){rb&&_.C.addDomListener(window,"unload",_.C.aj)};var qb=0;tb.prototype.remove=function(){if(this.cb){switch(this.l){case 1:this.cb.removeEventListener(this.f,this.b,!1);break;case 4:this.cb.removeEventListener(this.f,this.b,!0);break;case 2:this.cb.detachEvent("on"+this.f,this.j);break;case 3:this.cb["on"+this.f]=null}delete mb(this.cb,this.f)[this.id];this.j=this.b=this.cb=null;delete sb[this.id]}};_.m=_.G.prototype;_.m.get=function(a){var b=Ab(this);a+="";b=gb(b,a);if(_.r(b)){if(b){a=b.vb;var b=b.Qc,c="get"+_.zb(a);return b[c]?b[c]():b.get(a)}return this[a]}};_.m.set=function(a,b){var c=Ab(this);a+="";var d=gb(c,a);if(d)if(a=d.vb,d=d.Qc,c="set"+_.zb(a),d[c])d[c](b);else d.set(a,b);else this[a]=b,c[a]=null,xb(this,a)};_.m.notify=function(a){var b=Ab(this);a+="";(b=gb(b,a))?b.Qc.notify(b.vb):xb(this,a)};
-_.m.setValues=function(a){for(var b in a){var c=a[b],d="set"+_.zb(b);if(this[d])this[d](c);else this.set(b,c)}};_.m.setOptions=_.G.prototype.setValues;_.m.changed=_.na();var yb={};_.G.prototype.bindTo=function(a,b,c,d){a+="";c=(c||a)+"";this.unbind(a);var e={Qc:this,vb:a},f={Qc:b,vb:c,th:e};Ab(this)[a]=f;wb(b,c)[_.vb(e)]=e;d||xb(this,a)};_.G.prototype.unbind=function(a){var b=Ab(this),c=b[a];c&&(c.th&&delete wb(c.Qc,c.vb)[_.vb(c.th)],this[a]=this.get(a),b[a]=null)};
-_.G.prototype.unbindAll=function(){var a=(0,_.u)(this.unbind,this),b=Ab(this),c;for(c in b)a(c)};_.G.prototype.addListener=function(a,b){return _.C.addListener(this,a,b)};_.bh={ROADMAP:"roadmap",SATELLITE:"satellite",HYBRID:"hybrid",TERRAIN:"terrain"};_.Hf={TOP_LEFT:1,TOP_CENTER:2,TOP:2,TOP_RIGHT:3,LEFT_CENTER:4,LEFT_TOP:5,LEFT:5,LEFT_BOTTOM:6,RIGHT_TOP:7,RIGHT:7,RIGHT_CENTER:8,RIGHT_BOTTOM:9,BOTTOM_LEFT:10,BOTTOM_CENTER:11,BOTTOM:11,BOTTOM_RIGHT:12,CENTER:13};var ch={Yp:"Point",Wp:"LineString",POLYGON:"Polygon"};_.v(Bb,Error);var eh;_.nc=_.Lb(_.B,"not a number");_.dh=_.Lb(_.cb,"not a string");eh=_.Lb(_.db,"not a boolean");_.fh=_.Pb(_.nc);_.gh=_.Pb(_.dh);_.hh=_.Pb(eh);var Tb=_.Eb({lat:_.nc,lng:_.nc},!0);_.H.prototype.toString=function(){return"("+this.lat()+", "+this.lng()+")"};_.H.prototype.toJSON=function(){return{lat:this.lat(),lng:this.lng()}};_.H.prototype.b=function(a){return a?_.Ya(this.lat(),a.lat())&&_.Ya(this.lng(),a.lng()):!1};_.H.prototype.equals=_.H.prototype.b;_.H.prototype.toUrlValue=function(a){a=_.r(a)?a:6;return Wb(this.lat(),a)+","+Wb(this.lng(),a)};_.Vd=_.Kb(_.Yb);_.v(_.Zb,Xb);_.Zb.prototype.getType=_.pa("Point");_.Zb.prototype.forEachLatLng=function(a){a(this.b)};_.Zb.prototype.get=_.k("b");var Td=_.Kb($b);_.ta(fc);fc.prototype.Zb=function(a,b){var c=this,d=c.m;gc(c.j,function(e){for(var f=e.ii[a]||[],g=e.Jo[a]||[],h=d[a]=_.ac(f.length,function(){delete d[a];b(e.Il);for(var f=c.f[a],h=f?f.length:0,l=0;l<h;++l)f[l](c.b[a]);delete c.f[a];l=0;for(f=g.length;l<f;++l)h=g[l],d[h]&&d[h]()}),l=0,n=f.length;l<n;++l)c.b[f[l]]&&h()})};_.m=_.mc.prototype;_.m.getId=_.k("j");_.m.getGeometry=_.k("b");_.m.setGeometry=function(a){var b=this.b;try{this.b=a?$b(a):null}catch(c){_.Db(c);return}_.C.trigger(this,"setgeometry",{feature:this,newGeometry:this.b,oldGeometry:b})};_.m.getProperty=function(a){return gb(this.f,a)};_.m.setProperty=function(a,b){if(void 0===b)this.removeProperty(a);else{var c=this.getProperty(a);this.f[a]=b;_.C.trigger(this,"setproperty",{feature:this,name:a,newValue:b,oldValue:c})}};
-_.m.removeProperty=function(a){var b=this.getProperty(a);delete this.f[a];_.C.trigger(this,"removeproperty",{feature:this,name:a,oldValue:b})};_.m.forEachProperty=function(a){for(var b in this.f)a(this.getProperty(b),b)};_.m.toGeoJson=function(a){var b=this;_.J("data",function(c){c.f(b,a)})};_.ih=new _.K(0,0);_.K.prototype.toString=function(){return"("+this.x+", "+this.y+")"};_.K.prototype.b=function(a){return a?a.x==this.x&&a.y==this.y:!1};_.K.prototype.equals=_.K.prototype.b;_.K.prototype.round=function(){this.x=Math.round(this.x);this.y=Math.round(this.y)};_.K.prototype.De=_.ra(0);_.jh=new _.M(0,0);_.M.prototype.toString=function(){return"("+this.width+", "+this.height+")"};_.M.prototype.b=function(a){return a?a.width==this.width&&a.height==this.height:!1};_.M.prototype.equals=_.M.prototype.b;var kh={CIRCLE:0,FORWARD_CLOSED_ARROW:1,FORWARD_OPEN_ARROW:2,BACKWARD_CLOSED_ARROW:3,BACKWARD_OPEN_ARROW:4};_.v(_.uc,_.G);_.m=_.uc.prototype;_.m.getAt=function(a){return this.b[a]};_.m.indexOf=function(a){for(var b=0,c=this.b.length;b<c;++b)if(a===this.b[b])return b;return-1};_.m.forEach=function(a){for(var b=0,c=this.b.length;b<c;++b)a(this.b[b],b)};_.m.setAt=function(a,b){var c=this.b[a],d=this.b.length;if(a<d)this.b[a]=b,_.C.trigger(this,"set_at",a,c),this.l&&this.l(a,c);else{for(c=d;c<a;++c)this.insertAt(c,void 0);this.insertAt(a,b)}};
-_.m.insertAt=function(a,b){this.b.splice(a,0,b);tc(this);_.C.trigger(this,"insert_at",a);this.f&&this.f(a)};_.m.removeAt=function(a){var b=this.b[a];this.b.splice(a,1);tc(this);_.C.trigger(this,"remove_at",a,b);this.j&&this.j(a,b);return b};_.m.push=function(a){this.insertAt(this.b.length,a);return this.b.length};_.m.pop=function(){return this.removeAt(this.b.length-1)};_.m.getArray=_.k("b");_.m.clear=function(){for(;this.get("length");)this.pop()};_.sc(_.uc.prototype,{length:null});_.vc.prototype.remove=function(a){var b=this.f,c=this.j(a);b[c]&&(delete b[c],_.C.trigger(this,"remove",a),this.onRemove&&this.onRemove(a))};_.vc.prototype.contains=function(a){return!!this.f[this.j(a)]};_.vc.prototype.forEach=function(a){var b=this.f,c;for(c in b)a.call(this,b[c])};_.zc.prototype.nb=_.ra(1);_.zc.prototype.forEach=function(a,b){_.y(this.b,function(c,d){a.call(b,c,d)})};var lh=_.Eb({zoom:_.fh,heading:_.nc,pitch:_.nc});_.v(_.Bc,_.G);var mh=function(a){return function(){return a}}(null);a:{var nh=_.Hc.navigator;if(nh){var oh=nh.userAgent;if(oh){_.Ja=oh;break a}}_.Ja=""};var Mc,Lc=_.Cc;Pc.prototype.get=function(){var a;0<this.f?(this.f--,a=this.b,this.b=a.next,a.next=null):a=this.j();return a};var ph=new Pc(function(){return new Rc},function(a){a.reset()},100);Qc.prototype.add=function(a,b){var c=ph.get();c.set(a,b);this.f?this.f.next=c:this.b=c;this.f=c};Qc.prototype.remove=function(){var a=null;this.b&&(a=this.b,this.b=this.b.next,this.b||(this.f=null),a.next=null);return a};Rc.prototype.set=function(a,b){this.Lc=a;this.b=b;this.next=null};Rc.prototype.reset=function(){this.next=this.b=this.Lc=null};_.Kc.m=function(){if(_.Hc.Promise&&_.Hc.Promise.resolve){var a=_.Hc.Promise.resolve(void 0);_.Kc.b=function(){a.then(_.Kc.f)}}else _.Kc.b=function(){Oc()}};_.Kc.C=function(a){_.Kc.b=function(){Oc();a&&a(_.Kc.f)}};_.Kc.j=!1;_.Kc.l=new Qc;_.Kc.f=function(){for(var a;a=_.Kc.l.remove();){try{a.Lc.call(a.b)}catch(c){Jc(c)}var b=ph;b.m(a);b.f<b.l&&(b.f++,a.next=b.b,b.b=a)}_.Kc.j=!1};Tc.prototype.addListener=function(a,b,c){c=c?{wh:!1}:null;var d=!this.S.length,e=_.Pa(this.S,Sc(a,b));e?e.Fd=e.Fd&&c:this.S.push({Lc:a,context:b||null,Fd:c});d&&this.f();return a};Tc.prototype.addListenerOnce=function(a,b){this.addListener(a,b,!0);return a};Tc.prototype.removeListener=function(a,b){if(this.S.length){var c=this.S;a=_.Oa(c,Sc(a,b),void 0);0<=a&&_.Qa(c,a);this.S.length||this.b()}};var Uc=_.Kc;_.m=_.Wc.prototype;_.m.Ed=_.na();_.m.Cd=_.na();_.m.addListener=function(a,b){return this.S.addListener(a,b)};_.m.addListenerOnce=function(a,b){return this.S.addListenerOnce(a,b)};_.m.removeListener=function(a,b){return this.S.removeListener(a,b)};_.m.notify=function(a){_.Vc(this.S,function(a){a(this.get())},this,a)};_.v(_.Xc,_.Wc);_.Xc.prototype.set=function(a){this.Li(a);this.notify()};_.v(_.Yc,_.Xc);_.Yc.prototype.get=_.k("b");_.Yc.prototype.Li=_.oa("b");_.v(Zc,_.G);_.qh=_.jd("d",void 0);_.rh=_.ld("d");_.sh=_.jd("f",void 0);_.Q=_.md();_.th=_.kd("i",void 0);_.uh=_.ld("i");_.vh=_.ld("j");_.wh=_.jd("u",void 0);_.xh=_.kd("u",void 0);_.yh=_.ld("u");_.zh=_.nd();_.R=_.od();_.S=_.pd();_.Ah=_.ld("e");_.T=_.jd("s",void 0);_.Bh=_.kd("s",void 0);_.Ch=_.ld("s");_.Dh=_.jd("x",void 0);_.Eh=_.kd("x",void 0);_.Fh=_.ld("x");_.Gh=_.ld("y");var Ih;_.Hh=new qd;Ih=/'/g;qd.prototype.b=function(a,b){var c=[];sd(a,b,c);return c.join("&").replace(Ih,"%27")};_.ud[" "]=_.sa;var Vh,vd,Zh;_.Jh=_.Ec("Opera");_.Kh=_.Fc();_.Lh=_.Ec("Edge");_.Mh=_.Ec("Gecko")&&!(_.Ka()&&!_.Ec("Edge"))&&!(_.Ec("Trident")||_.Ec("MSIE"))&&!_.Ec("Edge");_.Nh=_.Ka()&&!_.Ec("Edge");_.Oh=_.Ec("Macintosh");_.Ph=_.Ec("Windows");_.Qh=_.Ec("Linux")||_.Ec("CrOS");_.Rh=_.Ec("Android");_.Sh=_.td();_.Th=_.Ec("iPad");_.Uh=_.Ec("iPod");
-a:{var Wh="",Xh=function(){var a=_.Ja;if(_.Mh)return/rv\:([^\);]+)(\)|;)/.exec(a);if(_.Lh)return/Edge\/([\d\.]+)/.exec(a);if(_.Kh)return/\b(?:MSIE|rv)[: ]([^\);]+)(\)|;)/.exec(a);if(_.Nh)return/WebKit\/(\S+)/.exec(a);if(_.Jh)return/(?:Version)[ \/]?(\S+)/.exec(a)}();Xh&&(Wh=Xh?Xh[1]:"");if(_.Kh){var Yh=xd();if(null!=Yh&&Yh>(0,window.parseFloat)(Wh)){Vh=String(Yh);break a}}Vh=Wh}_.yd=Vh;vd={};Zh=_.Hc.document;_.$h=Zh&&_.Kh?xd()||("CSS1Compat"==Zh.compatMode?(0,window.parseInt)(_.yd,10):5):void 0;_.ai=_.Ec("Firefox");_.bi=_.td()||_.Ec("iPod");_.ci=_.Ec("iPad");_.di=_.Ec("Android")&&!(Gc()||_.Ec("Firefox")||_.Ec("Opera")||_.Ec("Silk"));_.ei=Gc();_.fi=_.Ec("Safari")&&!(Gc()||_.Ec("Coast")||_.Ec("Opera")||_.Ec("Edge")||_.Ec("Silk")||_.Ec("Android"))&&!(_.td()||_.Ec("iPad")||_.Ec("iPod"));_.Ad.prototype.heading=_.k("b");_.Ad.prototype.Ta=_.ra(2);_.Ad.prototype.toString=function(){return this.b+","+this.f};_.gi=new _.Ad;_.v(Bd,_.G);Bd.prototype.set=function(a,b){if(null!=b&&!(b&&_.B(b.maxZoom)&&b.tileSize&&b.tileSize.width&&b.tileSize.height&&b.getTile&&b.getTile.apply))throw Error("Expected value implementing google.maps.MapType");return _.G.prototype.set.apply(this,arguments)};_.m=Cd.prototype;_.m.isEmpty=function(){return 360==this.b-this.f};_.m.intersects=function(a){var b=this.b,c=this.f;return this.isEmpty()||a.isEmpty()?!1:_.Dd(this)?_.Dd(a)||a.b<=this.f||a.f>=b:_.Dd(a)?a.b<=c||a.f>=b:a.b<=c&&a.f>=b};_.m.contains=function(a){-180==a&&(a=180);var b=this.b,c=this.f;return _.Dd(this)?(a>=b||a<=c)&&!this.isEmpty():a>=b&&a<=c};_.m.extend=function(a){this.contains(a)||(this.isEmpty()?this.b=this.f=a:_.Gd(a,this.b)<_.Gd(this.f,a)?this.b=a:this.f=a)};
-_.m.Rb=function(){var a=(this.b+this.f)/2;_.Dd(this)&&(a=_.Xa(a+180,-180,180));return a};_.m=Hd.prototype;_.m.isEmpty=function(){return this.f>this.b};_.m.intersects=function(a){var b=this.f,c=this.b;return b<=a.f?a.f<=c&&a.f<=a.b:b<=a.b&&b<=c};_.m.contains=function(a){return a>=this.f&&a<=this.b};_.m.extend=function(a){this.isEmpty()?this.b=this.f=a:a<this.f?this.f=a:a>this.b&&(this.b=a)};_.m.Rb=function(){return(this.b+this.f)/2};_.m=_.Jd.prototype;_.m.getCenter=function(){return new _.H(this.f.Rb(),this.b.Rb())};_.m.toString=function(){return"("+this.getSouthWest()+", "+this.getNorthEast()+")"};_.m.toJSON=function(){return{south:this.f.f,west:this.b.b,north:this.f.b,east:this.b.f}};_.m.toUrlValue=function(a){var b=this.getSouthWest(),c=this.getNorthEast();return[b.toUrlValue(a),c.toUrlValue(a)].join()};
-_.m.Nj=function(a){if(!a)return!1;a=_.Md(a);var b=this.f,c=a.f;return(b.isEmpty()?c.isEmpty():1E-9>=Math.abs(c.f-b.f)+Math.abs(b.b-c.b))&&_.Fd(this.b,a.b)};_.Jd.prototype.equals=_.Jd.prototype.Nj;_.m=_.Jd.prototype;_.m.contains=function(a){return this.f.contains(a.lat())&&this.b.contains(a.lng())};_.m.intersects=function(a){a=_.Md(a);return this.f.intersects(a.f)&&this.b.intersects(a.b)};_.m.extend=function(a){this.f.extend(a.lat());this.b.extend(a.lng());return this};
-_.m.union=function(a){a=_.Md(a);if(!a||a.isEmpty())return this;this.extend(a.getSouthWest());this.extend(a.getNorthEast());return this};_.m.getSouthWest=function(){return new _.H(this.f.f,this.b.b,!0)};_.m.getNorthEast=function(){return new _.H(this.f.b,this.b.f,!0)};_.m.toSpan=function(){return new _.H(_.Id(this.f),_.Ed(this.b),!0)};_.m.isEmpty=function(){return this.f.isEmpty()||this.b.isEmpty()};var Ld=_.Eb({south:_.nc,west:_.nc,north:_.nc,east:_.nc},!1);_.v(_.Nd,_.G);_.m=Qd.prototype;_.m.contains=function(a){return this.b.hasOwnProperty(_.vb(a))};_.m.getFeatureById=function(a){return gb(this.f,a)};
-_.m.add=function(a){a=a||{};a=a instanceof _.mc?a:new _.mc(a);if(!this.contains(a)){var b=a.getId();if(b){var c=this.getFeatureById(b);c&&this.remove(c)}c=_.vb(a);this.b[c]=a;b&&(this.f[b]=a);var d=_.C.forward(a,"setgeometry",this),e=_.C.forward(a,"setproperty",this),f=_.C.forward(a,"removeproperty",this);this.j[c]=function(){_.C.removeListener(d);_.C.removeListener(e);_.C.removeListener(f)};_.C.trigger(this,"addfeature",{feature:a})}return a};
-_.m.remove=function(a){var b=_.vb(a),c=a.getId();if(this.b[b]){delete this.b[b];c&&delete this.f[c];if(c=this.j[b])delete this.j[b],c();_.C.trigger(this,"removefeature",{feature:a})}};_.m.forEach=function(a){for(var b in this.b)a(this.b[b])};Rd.prototype.get=function(a){return this.b[a]};Rd.prototype.set=function(a,b){var c=this.b;c[a]||(c[a]={});_.Ua(c[a],b);_.C.trigger(this,"changed",a)};Rd.prototype.reset=function(a){delete this.b[a];_.C.trigger(this,"changed",a)};Rd.prototype.forEach=function(a){_.Ta(this.b,a)};_.v(Sd,_.G);Sd.prototype.overrideStyle=function(a,b){this.b.set(_.vb(a),b)};Sd.prototype.revertStyle=function(a){a?this.b.reset(_.vb(a)):this.b.forEach((0,_.u)(this.b.reset,this.b))};_.v(_.Ud,Xb);_.m=_.Ud.prototype;_.m.getType=_.pa("GeometryCollection");_.m.getLength=function(){return this.b.length};_.m.getAt=function(a){return this.b[a]};_.m.getArray=function(){return this.b.slice()};_.m.forEachLatLng=function(a){this.b.forEach(function(b){b.forEachLatLng(a)})};_.v(_.Wd,Xb);_.m=_.Wd.prototype;_.m.getType=_.pa("LineString");_.m.getLength=function(){return this.b.length};_.m.getAt=function(a){return this.b[a]};_.m.getArray=function(){return this.b.slice()};_.m.forEachLatLng=function(a){this.b.forEach(a)};var Xd=_.Kb(_.Ib(_.Wd,"google.maps.Data.LineString",!0));_.v(_.Yd,Xb);_.m=_.Yd.prototype;_.m.getType=_.pa("MultiLineString");_.m.getLength=function(){return this.b.length};_.m.getAt=function(a){return this.b[a]};_.m.getArray=function(){return this.b.slice()};_.m.forEachLatLng=function(a){this.b.forEach(function(b){b.forEachLatLng(a)})};_.v(_.Zd,Xb);_.m=_.Zd.prototype;_.m.getType=_.pa("MultiPoint");_.m.getLength=function(){return this.b.length};_.m.getAt=function(a){return this.b[a]};_.m.getArray=function(){return this.b.slice()};_.m.forEachLatLng=function(a){this.b.forEach(a)};_.v(_.$d,Xb);_.m=_.$d.prototype;_.m.getType=_.pa("LinearRing");_.m.getLength=function(){return this.b.length};_.m.getAt=function(a){return this.b[a]};_.m.getArray=function(){return this.b.slice()};_.m.forEachLatLng=function(a){this.b.forEach(a)};var ae=_.Kb(_.Ib(_.$d,"google.maps.Data.LinearRing",!0));_.v(_.be,Xb);_.m=_.be.prototype;_.m.getType=_.pa("Polygon");_.m.getLength=function(){return this.b.length};_.m.getAt=function(a){return this.b[a]};_.m.getArray=function(){return this.b.slice()};_.m.forEachLatLng=function(a){this.b.forEach(function(b){b.forEachLatLng(a)})};var ce=_.Kb(_.Ib(_.be,"google.maps.Data.Polygon",!0));_.v(_.de,Xb);_.m=_.de.prototype;_.m.getType=_.pa("MultiPolygon");_.m.getLength=function(){return this.b.length};_.m.getAt=function(a){return this.b[a]};_.m.getArray=function(){return this.b.slice()};_.m.forEachLatLng=function(a){this.b.forEach(function(b){b.forEachLatLng(a)})};var hi=_.Eb({source:_.dh,webUrl:_.gh,iosDeepLinkId:_.gh});var ii=_.Nb(_.Eb({placeId:_.gh,query:_.gh,location:_.Yb}),function(a){if(a.placeId&&a.query)throw _.Cb("cannot set both placeId and query");if(!a.placeId&&!a.query)throw _.Cb("must set one of placeId or query");return a});_.v(ee,_.G);
-_.sc(ee.prototype,{position:_.Pb(_.Yb),title:_.gh,icon:_.Pb(_.Mb([_.dh,{Fg:Qb("url"),then:_.Eb({url:_.dh,scaledSize:_.Pb(pc),size:_.Pb(pc),origin:_.Pb(oc),anchor:_.Pb(oc),labelOrigin:_.Pb(oc),path:_.Lb(function(a){return null==a})},!0)},{Fg:Qb("path"),then:_.Eb({path:_.Mb([_.dh,_.Jb(kh)]),anchor:_.Pb(oc),labelOrigin:_.Pb(oc),fillColor:_.gh,fillOpacity:_.fh,rotation:_.fh,scale:_.fh,strokeColor:_.gh,strokeOpacity:_.fh,strokeWeight:_.fh,url:_.Lb(function(a){return null==a})},!0)}])),label:_.Pb(_.Mb([_.dh,{Fg:Qb("text"),
-then:_.Eb({text:_.dh,fontSize:_.gh,fontWeight:_.gh,fontFamily:_.gh},!0)}])),shadow:_.Cc,shape:_.Cc,cursor:_.gh,clickable:_.hh,animation:_.Cc,draggable:_.hh,visible:_.hh,flat:_.Cc,zIndex:_.fh,opacity:_.fh,place:_.Pb(ii),attribution:_.Pb(hi)});var ic={main:[],common:["main"],util:["common"],adsense:["main"],controls:["util"],data:["util"],directions:["util","geometry"],distance_matrix:["util"],drawing:["main"],drawing_impl:["controls"],elevation:["util","geometry"],geocoder:["util"],geojson:["main"],imagery_viewer:["main"],geometry:["main"],infowindow:["util"],kml:["onion","util","map"],layers:["map"],map:["common"],marker:["util"],maxzoom:["util"],onion:["util","map"],overlay:["common"],panoramio:["main"],places:["main"],places_impl:["controls"],
-poly:["util","map","geometry"],search:["main"],search_impl:["onion"],stats:["util"],streetview:["util","geometry"],usage:["util"],visualization:["main"],visualization_impl:["onion"],weather:["main"],zombie:["main"]};var ji=_.Hc.google.maps,ki=fc.Tb(),li=(0,_.u)(ki.Zb,ki);ji.__gjsload__=li;_.Ta(ji.modules,li);delete ji.modules;_.mi=_.Pb(_.Ib(_.Nd,"Map"));var ni=_.Pb(_.Ib(_.Bc,"StreetViewPanorama"));_.v(_.he,ee);_.he.prototype.map_changed=function(){this.__gm.set&&this.__gm.set.remove(this);var a=this.get("map");this.__gm.set=a&&a.__gm.Pc;this.__gm.set&&_.yc(this.__gm.set,this)};_.he.MAX_ZINDEX=1E6;_.sc(_.he.prototype,{map:_.Mb([_.mi,ni])});var ke=oe(_.Ib(_.H,"LatLng"));_.v(qe,_.G);qe.prototype.map_changed=qe.prototype.visible_changed=function(){var a=this;_.J("poly",function(b){b.f(a)})};qe.prototype.getPath=function(){return this.get("latLngs").getAt(0)};qe.prototype.setPath=function(a){try{this.get("latLngs").setAt(0,le(a))}catch(b){_.Db(b)}};_.sc(qe.prototype,{draggable:_.hh,editable:_.hh,map:_.mi,visible:_.hh});_.v(_.re,qe);_.re.prototype.Ha=!0;_.re.prototype.getPaths=function(){return this.get("latLngs")};_.re.prototype.setPaths=function(a){this.set("latLngs",pe(a))};_.v(_.se,qe);_.se.prototype.Ha=!1;_.ue="click dblclick mousedown mousemove mouseout mouseover mouseup rightclick".split(" ");_.v(ve,_.G);_.m=ve.prototype;_.m.contains=function(a){return this.b.contains(a)};_.m.getFeatureById=function(a){return this.b.getFeatureById(a)};_.m.add=function(a){return this.b.add(a)};_.m.remove=function(a){this.b.remove(a)};_.m.forEach=function(a){this.b.forEach(a)};_.m.addGeoJson=function(a,b){return _.te(this.b,a,b)};_.m.loadGeoJson=function(a,b,c){var d=this.b;_.J("data",function(e){e.gm(d,a,b,c)})};_.m.toGeoJson=function(a){var b=this.b;_.J("data",function(c){c.cm(b,a)})};
-_.m.overrideStyle=function(a,b){this.f.overrideStyle(a,b)};_.m.revertStyle=function(a){this.f.revertStyle(a)};_.m.controls_changed=function(){this.get("controls")&&we(this)};_.m.drawingMode_changed=function(){this.get("drawingMode")&&we(this)};_.sc(ve.prototype,{map:_.mi,style:_.Cc,controls:_.Pb(_.Kb(_.Jb(ch))),controlPosition:_.Pb(_.Jb(_.Hf)),drawingMode:_.Pb(_.Jb(ch))});_.xe.prototype.B=_.k("b");_.ye.prototype.B=_.k("b");_.oi=new _.xe;_.pi=new _.xe;ze.prototype.B=_.k("b");_.qi=new _.Ae;_.Ae.prototype.B=_.k("b");_.ri=new _.xe;_.si=new ze;_.Be.prototype.B=_.k("b");_.ti=new _.ye;_.ui=new _.Be;_.vi={METRIC:0,IMPERIAL:1};_.wi={DRIVING:"DRIVING",WALKING:"WALKING",BICYCLING:"BICYCLING",TRANSIT:"TRANSIT"};_.xi={BEST_GUESS:"bestguess",OPTIMISTIC:"optimistic",PESSIMISTIC:"pessimistic"};_.yi={BUS:"BUS",RAIL:"RAIL",SUBWAY:"SUBWAY",TRAIN:"TRAIN",TRAM:"TRAM"};_.zi={LESS_WALKING:"LESS_WALKING",FEWER_TRANSFERS:"FEWER_TRANSFERS"};var Ai=_.Eb({routes:_.Kb(_.Lb(_.bb))},!0);_.v(De,_.G);_.m=De.prototype;_.m.internalAnchor_changed=function(){var a=this.get("internalAnchor");Ee(this,"attribution",a);Ee(this,"place",a);Ee(this,"internalAnchorMap",a,"map");Ee(this,"internalAnchorPoint",a,"anchorPoint");a instanceof _.he?Ee(this,"internalAnchorPosition",a,"internalPosition"):Ee(this,"internalAnchorPosition",a,"position")};
-_.m.internalAnchorPoint_changed=De.prototype.internalPixelOffset_changed=function(){var a=this.get("internalAnchorPoint")||_.ih,b=this.get("internalPixelOffset")||_.jh;this.set("pixelOffset",new _.M(b.width+Math.round(a.x),b.height+Math.round(a.y)))};_.m.internalAnchorPosition_changed=function(){var a=this.get("internalAnchorPosition");a&&this.set("position",a)};_.m.internalAnchorMap_changed=function(){this.get("internalAnchor")&&this.b.set("map",this.get("internalAnchorMap"))};
-_.m.Jn=function(){var a=this.get("internalAnchor");!this.b.get("map")&&a&&a.get("map")&&this.set("internalAnchor",null)};_.m.internalContent_changed=function(){this.set("content",Ce(this.get("internalContent")))};_.m.trigger=function(a){_.C.trigger(this.b,a)};_.m.close=function(){this.b.set("map",null)};_.v(_.Fe,_.G);_.sc(_.Fe.prototype,{content:_.Mb([_.gh,_.Lb(Hb)]),position:_.Pb(_.Yb),size:_.Pb(pc),map:_.Mb([_.mi,ni]),anchor:_.Pb(_.Ib(_.G,"MVCObject")),zIndex:_.fh});_.Fe.prototype.open=function(a,b){this.set("anchor",b);b?!this.get("map")&&a&&this.set("map",a):this.set("map",a)};_.Fe.prototype.close=function(){this.set("map",null)};_.Ge=[];_.v(Ie,_.G);Ie.prototype.changed=function(a){if("map"==a||"panel"==a){var b=this;_.J("directions",function(c){c.Km(b,a)})}"panel"==a&&_.He(this.getPanel())};_.sc(Ie.prototype,{directions:Ai,map:_.mi,panel:_.Pb(_.Lb(Hb)),routeIndex:_.fh});Je.prototype.route=function(a,b){_.J("directions",function(c){c.Ii(a,b,!0)})};Ke.prototype.getDistanceMatrix=function(a,b){_.J("distance_matrix",function(c){c.b(a,b)})};Le.prototype.getElevationAlongPath=function(a,b){_.J("elevation",function(c){c.getElevationAlongPath(a,b)})};Le.prototype.getElevationForLocations=function(a,b){_.J("elevation",function(c){c.getElevationForLocations(a,b)})};_.Bi=_.Ib(_.Jd,"LatLngBounds");_.Me.prototype.geocode=function(a,b){_.J("geocoder",function(c){c.geocode(a,b)})};_.v(_.Ne,_.G);_.Ne.prototype.map_changed=function(){var a=this;_.J("kml",function(b){b.b(a)})};_.sc(_.Ne.prototype,{map:_.mi,url:null,bounds:null,opacity:_.fh});_.Di={UNKNOWN:"UNKNOWN",OK:_.ga,INVALID_REQUEST:_.ba,DOCUMENT_NOT_FOUND:"DOCUMENT_NOT_FOUND",FETCH_ERROR:"FETCH_ERROR",INVALID_DOCUMENT:"INVALID_DOCUMENT",DOCUMENT_TOO_LARGE:"DOCUMENT_TOO_LARGE",LIMITS_EXCEEDED:"LIMITS_EXECEEDED",TIMED_OUT:"TIMED_OUT"};_.v(Oe,_.G);_.m=Oe.prototype;_.m.Ud=function(){var a=this;_.J("kml",function(b){b.f(a)})};_.m.url_changed=Oe.prototype.Ud;_.m.driveFileId_changed=Oe.prototype.Ud;_.m.map_changed=Oe.prototype.Ud;_.m.zIndex_changed=Oe.prototype.Ud;_.sc(Oe.prototype,{map:_.mi,defaultViewport:null,metadata:null,status:null,url:_.gh,screenOverlays:_.hh,zIndex:_.fh});_.v(_.Pe,_.G);_.sc(_.Pe.prototype,{map:_.mi});_.v(Qe,_.G);_.sc(Qe.prototype,{map:_.mi});_.v(Re,_.G);_.sc(Re.prototype,{map:_.mi});_.Gf={japan_prequake:20,japan_postquake2010:24};_.Ei={NEAREST:"nearest",BEST:"best"};_.Fi={DEFAULT:"default",OUTDOOR:"outdoor"};var Gi,Hi,Ii,Ji;Se.prototype.B=_.k("b");var Ki=new Te,Li=new Ue,Mi=new Ve;Te.prototype.B=_.k("b");Ue.prototype.B=_.k("b");Ve.prototype.B=_.k("b");_.We.prototype.B=_.k("b");_.Ni=new _.We;_.Oi=new _.We;var yf,zf,sf,Bf,Ef;_.$e.prototype.B=_.k("b");_.$e.prototype.getUrl=function(a){return _.N(this.b,0)[a]};_.$e.prototype.setUrl=function(a,b){_.N(this.b,0)[a]=b};_.af.prototype.B=_.k("b");_.bf.prototype.B=_.k("b");_.Pi=new _.$e;_.Qi=new _.$e;_.Ri=new _.$e;_.Si=new _.$e;_.Ti=new _.$e;cf.prototype.B=_.k("b");df.prototype.B=_.k("b");ef.prototype.B=_.k("b");ff.prototype.B=_.k("b");_.Ui=new _.bf;_.Vi=new _.af;yf=new cf;zf=new df;sf=new ef;_.Wi=new _.hf;_.Xi=new _.jf;Bf=new Se;Ef=new gf;gf.prototype.B=_.k("b");
-_.hf.prototype.B=_.k("b");_.jf.prototype.B=_.k("b");_.v(If,_.Bc);If.prototype.visible_changed=function(){var a=this;!a.C&&a.getVisible()&&(a.C=!0,_.J("streetview",function(b){var c;a.j&&(c=a.j);b.co(a,c)}))};_.sc(If.prototype,{visible:_.hh,pano:_.gh,position:_.Pb(_.Yb),pov:_.Pb(lh),photographerPov:null,location:null,links:_.Kb(_.Lb(_.bb)),status:null,zoom:_.fh,enableCloseButton:_.hh});If.prototype.registerPanoProvider=_.rc("panoProvider");_.m=_.Jf.prototype;_.m.ce=_.ra(3);_.m.Fb=_.ra(4);_.m.Od=_.ra(5);_.m.Nd=_.ra(6);_.m.Md=_.ra(7);_.v(Kf,Zc);_.Lf.prototype.addListener=function(a,b){this.S.addListener(a,b)};_.Lf.prototype.addListenerOnce=function(a,b){this.S.addListenerOnce(a,b)};_.Lf.prototype.removeListener=function(a,b){this.S.removeListener(a,b)};_.Lf.prototype.b=_.ra(8);_.fg={};_.Nf.prototype.fromLatLngToPoint=function(a,b){b=b||new _.K(0,0);var c=this.b;b.x=c.x+a.lng()*this.j;a=_.Wa(Math.sin(_.Rb(a.lat())),-(1-1E-15),1-1E-15);b.y=c.y+.5*Math.log((1+a)/(1-a))*-this.l;return b};_.Nf.prototype.fromPointToLatLng=function(a,b){var c=this.b;return new _.H(_.Sb(2*Math.atan(Math.exp((a.y-c.y)/-this.l))-Math.PI/2),(a.x-c.x)/this.j,b)};_.Of.prototype.isEmpty=function(){return!(this.M<this.O&&this.L<this.R)};_.Of.prototype.extend=function(a){a&&(this.M=Math.min(this.M,a.x),this.O=Math.max(this.O,a.x),this.L=Math.min(this.L,a.y),this.R=Math.max(this.R,a.y))};_.Of.prototype.getCenter=function(){return new _.K((this.M+this.O)/2,(this.L+this.R)/2)};_.Yi=_.Pf(-window.Infinity,-window.Infinity,window.Infinity,window.Infinity);_.Zi=_.Pf(0,0,0,0);_.v(_.Sf,_.G);_.Sf.prototype.N=function(){var a=this;a.G||(a.G=window.setTimeout(function(){a.G=void 0;a.aa()},a.Dl))};_.Sf.prototype.C=function(){this.G&&window.clearTimeout(this.G);this.G=void 0;this.aa()};var $i,aj;Vf.prototype.B=_.k("b");Wf.prototype.B=_.k("b");var ij=new Vf;var jj,kj;Xf.prototype.B=_.k("b");Yf.prototype.B=_.k("b");var lj;Zf.prototype.B=_.k("b");Zf.prototype.getZoom=function(){var a=this.b[2];return null!=a?a:0};Zf.prototype.setZoom=function(a){this.b[2]=a};var mj=new Xf,nj=new Yf,oj=new Wf,pj=new Se;_.v($f,_.Sf);var ag={roadmap:0,satellite:2,hybrid:3,terrain:4},qj={0:1,2:2,3:2,4:2};_.m=$f.prototype;_.m.Nh=_.qc("center");_.m.Ug=_.qc("zoom");_.m.changed=function(){var a=this.Nh(),b=this.Ug(),c=bg(this);if(a&&!a.b(this.I)||this.H!=b||this.K!=c)cg(this.f),this.N(),this.H=b,this.K=c;this.I=a};
-_.m.aa=function(){var a="",b=this.Nh(),c=this.Ug(),d=bg(this),e=this.get("size");if(b&&(0,window.isFinite)(b.lat())&&(0,window.isFinite)(b.lng())&&1<c&&null!=d&&e&&e.width&&e.height&&this.b){_.Tf(this.b,e);var f;(b=_.Qf(this.l,b,c))?(f=new _.Of,f.M=Math.round(b.x-e.width/2),f.O=f.M+e.width,f.L=Math.round(b.y-e.height/2),f.R=f.L+e.height):f=null;b=qj[d];if(f){var a=new Zf,g;a.b[0]=a.b[0]||[];g=new Xf(a.b[0]);g.b[0]=f.M;g.b[1]=f.L;a.b[1]=b;a.setZoom(c);a.b[3]=a.b[3]||[];c=new Yf(a.b[3]);c.b[0]=f.O-
-f.M;c.b[1]=f.R-f.L;a.b[4]=a.b[4]||[];c=new Wf(a.b[4]);c.b[0]=d;c.b[4]=_.kf(_.mf(_.P));c.b[5]=_.lf(_.mf(_.P)).toLowerCase();c.b[9]=!0;c.b[11]=!0;d=this.D+(0,window.unescape)("%3F");if(!lj){c=lj={F:-1,A:[]};jj||(jj={F:-1,A:[,_.Q,_.Q]});b=_.O(mj,jj);kj||(kj={F:-1,A:[]},kj.A=[,_.wh,_.wh,_.pd(1)]);f=_.O(nj,kj);aj||(g=[],aj={F:-1,A:g},g[1]=_.S,g[2]=_.R,g[3]=_.R,g[5]=_.T,g[6]=_.T,$i||($i={F:-1,A:[,_.Ah,_.R]}),g[9]=_.O(ij,$i),g[10]=_.R,g[11]=_.R,g[12]=_.R,g[100]=_.R);g=_.O(oj,aj);if(!Gi){var h=Gi={F:-1,A:[]};
-Hi||(Hi={F:-1,A:[,_.R]});var l=_.O(Ki,Hi);Ji||(Ji={F:-1,A:[,_.R,_.R]});var n=_.O(Mi,Ji);Ii||(Ii={F:-1,A:[,_.R]});h.A=[,l,,,,,,,,,n,,_.O(Li,Ii)]}c.A=[,b,_.S,_.wh,f,g,_.O(pj,Gi)]}a=_.Hh.b(a.b,lj);a=this.m(d+a)}}this.f&&e&&(_.Tf(this.f,e),eg(this,a))};
-_.m.div_changed=function(){var a=this.get("div"),b=this.b;if(a)if(b)a.appendChild(b);else{b=this.b=window.document.createElement("div");b.style.overflow="hidden";var c=this.f=window.document.createElement("img");_.C.addDomListener(b,"contextmenu",function(a){_.jb(a);_.lb(a)});c.ontouchstart=c.ontouchmove=c.ontouchend=c.ontouchcancel=function(a){_.kb(a);_.lb(a)};_.Tf(c,_.jh);a.appendChild(b);this.aa()}else b&&(cg(b),this.b=null)};var mg;_.Ag="StopIteration"in _.Hc?_.Hc.StopIteration:{message:"StopIteration",stack:""};_.og.prototype.next=function(){throw _.Ag;};_.og.prototype.rf=function(){return this};_.pg.prototype.Vf=!0;_.pg.prototype.Ub=_.ra(10);_.pg.prototype.$h=!0;_.pg.prototype.se=_.ra(12);_.qg("about:blank");_.sg.prototype.$h=!0;_.sg.prototype.se=_.ra(11);_.sg.prototype.Vf=!0;_.sg.prototype.Ub=_.ra(9);_.rg={};_.tg("<!DOCTYPE html>",0);_.tg("",0);_.tg("<br>",0);!_.Mh&&!_.Kh||_.Kh&&9<=Number(_.$h)||_.Mh&&_.zd("1.9.1");_.Kh&&_.zd("9");_.v(wg,_.og);wg.prototype.setPosition=function(a,b,c){if(this.node=a)this.f=_.za(b)?b:1!=this.node.nodeType?0:this.b?-1:1;_.za(c)&&(this.depth=c)};
-wg.prototype.next=function(){var a;if(this.j){if(!this.node||this.l&&0==this.depth)throw _.Ag;a=this.node;var b=this.b?-1:1;if(this.f==b){var c=this.b?a.lastChild:a.firstChild;c?this.setPosition(c):this.setPosition(a,-1*b)}else(c=this.b?a.previousSibling:a.nextSibling)?this.setPosition(c):this.setPosition(a.parentNode,-1*b);this.depth+=this.f*(this.b?-1:1)}else this.j=!0;a=this.node;if(!this.node)throw _.Ag;return a};
-wg.prototype.splice=function(a){var b=this.node,c=this.b?1:-1;this.f==c&&(this.f=-1*c,this.depth+=this.f*(this.b?-1:1));this.b=!this.b;wg.prototype.next.call(this);this.b=!this.b;for(var c=_.xa(arguments[0])?arguments[0]:arguments,d=c.length-1;0<=d;d--)_.ug(c[d],b);_.vg(b)};_.v(xg,wg);xg.prototype.next=function(){do xg.Kb.next.call(this);while(-1==this.f);return this.node};_.sj=_.Hc.document&&_.Hc.document.createElement("div");_.v(Dg,_.Nd);_.m=Dg.prototype;_.m.streetView_changed=function(){this.get("streetView")||this.set("streetView",this.__gm.j)};_.m.getDiv=function(){return this.__gm.X};_.m.panBy=function(a,b){var c=this.__gm;_.J("map",function(){_.C.trigger(c,"panby",a,b)})};_.m.panTo=function(a){var b=this.__gm;a=_.Yb(a);_.J("map",function(){_.C.trigger(b,"panto",a)})};_.m.panToBounds=function(a){var b=this.__gm,c=_.Md(a);_.J("map",function(){_.C.trigger(b,"pantolatlngbounds",c)})};
-_.m.fitBounds=function(a){var b=this;a=_.Md(a);_.J("map",function(c){c.fitBounds(b,a)})};_.sc(Dg.prototype,{bounds:null,streetView:ni,center:_.Pb(_.Yb),zoom:_.fh,mapTypeId:_.gh,projection:null,heading:_.fh,tilt:_.fh,clickableIcons:eh});Eg.prototype.getMaxZoomAtLatLng=function(a,b){_.J("maxzoom",function(c){c.getMaxZoomAtLatLng(a,b)})};_.v(Fg,_.G);Fg.prototype.changed=function(a){if("suppressInfoWindows"!=a&&"clickable"!=a){var b=this;_.J("onion",function(a){a.b(b)})}};_.sc(Fg.prototype,{map:_.mi,tableId:_.fh,query:_.Pb(_.Mb([_.dh,_.Lb(_.bb,"not an Object")]))});_.v(_.Gg,_.G);_.Gg.prototype.map_changed=function(){var a=this;_.J("overlay",function(b){b.jl(a)})};_.sc(_.Gg.prototype,{panes:null,projection:null,map:_.Mb([_.mi,ni])});_.v(_.Hg,_.G);_.Hg.prototype.map_changed=_.Hg.prototype.visible_changed=function(){var a=this;_.J("poly",function(b){b.b(a)})};_.Hg.prototype.center_changed=function(){_.C.trigger(this,"bounds_changed")};_.Hg.prototype.radius_changed=_.Hg.prototype.center_changed;_.Hg.prototype.getBounds=function(){var a=this.get("radius"),b=this.get("center");if(b&&_.B(a)){var c=this.get("map"),c=c&&c.__gm.get("mapType");return _.Rf(b,a/_.je(c))}return null};
-_.sc(_.Hg.prototype,{center:_.Pb(_.Yb),draggable:_.hh,editable:_.hh,map:_.mi,radius:_.fh,visible:_.hh});_.v(_.Ig,_.G);_.Ig.prototype.map_changed=_.Ig.prototype.visible_changed=function(){var a=this;_.J("poly",function(b){b.j(a)})};_.sc(_.Ig.prototype,{draggable:_.hh,editable:_.hh,bounds:_.Pb(_.Md),map:_.mi,visible:_.hh});_.v(Jg,_.G);Jg.prototype.map_changed=function(){var a=this;_.J("streetview",function(b){b.il(a)})};_.sc(Jg.prototype,{map:_.mi});_.Kg.prototype.getPanorama=function(a,b){var c=this.b||void 0;_.J("streetview",function(d){_.J("geometry",function(e){d.nm(a,b,e.computeHeading,e.computeOffset,c)})})};_.Kg.prototype.getPanoramaByLocation=function(a,b,c){this.getPanorama({location:a,radius:b,preference:50>(b||0)?"best":"nearest"},c)};_.Kg.prototype.getPanoramaById=function(a,b){this.getPanorama({pano:a},b)};_.v(_.Lg,_.G);_.m=_.Lg.prototype;_.m.getTile=function(a,b,c){if(!a||!c)return null;var d=c.createElement("div");c={ba:a,zoom:b,Lb:null};d.__gmimt=c;_.yc(this.b,d);var e=Ng(this);1!=e&&Mg(d,e);if(this.f){var e=this.tileSize||new _.M(256,256),f=this.j(a,b);c.Lb=this.f(a,b,e,d,f,function(){_.C.trigger(d,"load")})}return d};_.m.releaseTile=function(a){a&&this.b.contains(a)&&(this.b.remove(a),(a=a.__gmimt.Lb)&&a.release())};_.m.Mf=_.ra(13);_.m.bo=function(){this.f&&this.b.forEach(function(a){a.__gmimt.Lb.ub()})};
-_.m.opacity_changed=function(){var a=Ng(this);this.b.forEach(function(b){Mg(b,a)})};_.m.bd=!0;_.sc(_.Lg.prototype,{opacity:_.fh});_.v(_.Og,_.G);_.Og.prototype.getTile=mh;_.Og.prototype.tileSize=new _.M(256,256);_.Og.prototype.bd=!0;_.v(_.Pg,_.Og);_.v(_.Qg,_.G);_.sc(_.Qg.prototype,{attribution:_.Pb(hi),place:_.Pb(ii)});var tj={Animation:{BOUNCE:1,DROP:2,Zp:3,Xp:4},Circle:_.Hg,ControlPosition:_.Hf,Data:ve,GroundOverlay:_.Ne,ImageMapType:_.Lg,InfoWindow:_.Fe,LatLng:_.H,LatLngBounds:_.Jd,MVCArray:_.uc,MVCObject:_.G,Map:Dg,MapTypeControlStyle:{DEFAULT:0,HORIZONTAL_BAR:1,DROPDOWN_MENU:2,INSET:3,INSET_LARGE:4},MapTypeId:_.bh,MapTypeRegistry:Bd,Marker:_.he,MarkerImage:function(a,b,c,d,e){this.url=a;this.size=b||e;this.origin=c;this.anchor=d;this.scaledSize=e;this.labelOrigin=null},NavigationControlStyle:{DEFAULT:0,SMALL:1,
-ANDROID:2,ZOOM_PAN:3,$p:4,Qk:5},OverlayView:_.Gg,Point:_.K,Polygon:_.re,Polyline:_.se,Rectangle:_.Ig,ScaleControlStyle:{DEFAULT:0},Size:_.M,StreetViewPreference:_.Ei,StreetViewSource:_.Fi,StrokePosition:{CENTER:0,INSIDE:1,OUTSIDE:2},SymbolPath:kh,ZoomControlStyle:{DEFAULT:0,SMALL:1,LARGE:2,Qk:3},event:_.C};
-_.Ua(tj,{BicyclingLayer:_.Pe,DirectionsRenderer:Ie,DirectionsService:Je,DirectionsStatus:{OK:_.ga,UNKNOWN_ERROR:_.ja,OVER_QUERY_LIMIT:_.ha,REQUEST_DENIED:_.ia,INVALID_REQUEST:_.ba,ZERO_RESULTS:_.la,MAX_WAYPOINTS_EXCEEDED:_.ea,NOT_FOUND:_.fa},DirectionsTravelMode:_.wi,DirectionsUnitSystem:_.vi,DistanceMatrixService:Ke,DistanceMatrixStatus:{OK:_.ga,INVALID_REQUEST:_.ba,OVER_QUERY_LIMIT:_.ha,REQUEST_DENIED:_.ia,UNKNOWN_ERROR:_.ja,MAX_ELEMENTS_EXCEEDED:_.da,MAX_DIMENSIONS_EXCEEDED:_.ca},DistanceMatrixElementStatus:{OK:_.ga,
-NOT_FOUND:_.fa,ZERO_RESULTS:_.la},ElevationService:Le,ElevationStatus:{OK:_.ga,UNKNOWN_ERROR:_.ja,OVER_QUERY_LIMIT:_.ha,REQUEST_DENIED:_.ia,INVALID_REQUEST:_.ba,Up:"DATA_NOT_AVAILABLE"},FusionTablesLayer:Fg,Geocoder:_.Me,GeocoderLocationType:{ROOFTOP:"ROOFTOP",RANGE_INTERPOLATED:"RANGE_INTERPOLATED",GEOMETRIC_CENTER:"GEOMETRIC_CENTER",APPROXIMATE:"APPROXIMATE"},GeocoderStatus:{OK:_.ga,UNKNOWN_ERROR:_.ja,OVER_QUERY_LIMIT:_.ha,REQUEST_DENIED:_.ia,INVALID_REQUEST:_.ba,ZERO_RESULTS:_.la,ERROR:_.aa},KmlLayer:Oe,
-KmlLayerStatus:_.Di,MaxZoomService:Eg,MaxZoomStatus:{OK:_.ga,ERROR:_.aa},SaveWidget:_.Qg,StreetViewCoverageLayer:Jg,StreetViewPanorama:If,StreetViewService:_.Kg,StreetViewStatus:{OK:_.ga,UNKNOWN_ERROR:_.ja,ZERO_RESULTS:_.la},StyledMapType:_.Pg,TrafficLayer:Qe,TrafficModel:_.xi,TransitLayer:Re,TransitMode:_.yi,TransitRoutePreference:_.zi,TravelMode:_.wi,UnitSystem:_.vi});_.Ua(ve,{Feature:_.mc,Geometry:Xb,GeometryCollection:_.Ud,LineString:_.Wd,LinearRing:_.$d,MultiLineString:_.Yd,MultiPoint:_.Zd,MultiPolygon:_.de,Point:_.Zb,Polygon:_.be});var Vg=/'/g,Wg;_.kc("main",{});window.google.maps.Load(function(a,b){var c=window.google.maps;$g();var d=ah(c);_.P=new ff(a);_.uj=Math.random()<_.uf();_.vj=Math.round(1E15*Math.random()).toString(36);_.Cg=Xg();_.Ci=Yg();_.rj=new _.uc;_.kg=b;for(a=0;a<_.ed(_.P.b,8);++a)_.fg[Df(a)]=!0;a=_.Af();ge(qf(a));_.Ta(tj,function(a,b){c[a]=b});c.version=_.rf(a);window.setTimeout(function(){lc(["util","stats"],function(a,b){a.f.b();a.j();d&&b.b.b({ev:"api_alreadyloaded",client:_.vf(_.P),key:_.xf()})})},5E3);_.C.Ao();mg=new lg;(a=wf())&&lc(_.N(_.P.b,
-12),Zg(a),!0)});}).call(this,{});
+(function(_){'use strict';var Ja,Ka,Pa,Sa,jb,pb,qb,rb,sb,wb,xb,Bb,Eb,zb,Fb,Jb,Rb,Xb,Yb,ac,dc,ec,gc,ic,kc,fc,hc,mc,sc,tc,yc,Mc,Oc,Uc,Tc,Vc,Wc,Xc,Yc,Zc,fd,hd,jd,ld,nd,od,Cd,Ed,Dd,Id,Jd,Nd,Rd,Wd,ce,de,ee,se,ue,we,ze,Be,Ae,Ce,He,Ie,Je,Ke,Le,Pe,Qe,Re,Se,Ve,$e,af,bf,cf,df,ef,ff,hf,jf,kf,qf,sf,Cf,Df,Ef,Ff,Gf,Hf,Jf,Kf,Tf,Uf,Vf,$f,bg,kg,lg,sg,qg,tg,ug,yg,Bg,Cg,Gg,Hg,Kg,Lg,Mg,Ng,Og,Ga,Ha;_.ba="ERROR";_.ca="INVALID_REQUEST";_.da="MAX_DIMENSIONS_EXCEEDED";_.ea="MAX_ELEMENTS_EXCEEDED";_.fa="MAX_WAYPOINTS_EXCEEDED";_.ga="NOT_FOUND";
+_.ha="OK";_.ia="OVER_QUERY_LIMIT";_.ja="REQUEST_DENIED";_.ka="UNKNOWN_ERROR";_.la="ZERO_RESULTS";_.ma=function(){return function(a){return a}};_.na=function(){return function(){}};_.pa=function(a){return function(b){this[a]=b}};_.qa=function(a){return function(){return this[a]}};_.ra=function(a){return function(){return a}};_.ta=function(a){return function(){return _.sa[a].apply(this,arguments)}};_.m=function(a){return void 0!==a};_.ua=_.na();
+_.va=function(){throw Error("unimplemented abstract method");};_.wa=function(a){a.Ob=function(){return a.Wa?a.Wa:a.Wa=new a}};
+_.xa=function(a){var b=typeof a;if("object"==b)if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);if("[object Window]"==c)return"object";if("[object Array]"==c||"number"==typeof a.length&&"undefined"!=typeof a.splice&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("splice"))return"array";if("[object Function]"==c||"undefined"!=typeof a.call&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("call"))return"function"}else return"null";
+else if("function"==b&&"undefined"==typeof a.call)return"object";return b};_.ya=function(a){return"array"==_.xa(a)};_.za=function(a){var b=_.xa(a);return"array"==b||"object"==b&&"number"==typeof a.length};_.Ba=function(a){return"string"==typeof a};_.Ca=function(a){return"number"==typeof a};_.Da=function(a){return"function"==_.xa(a)};_.Ea=function(a){var b=typeof a;return"object"==b&&null!=a||"function"==b};_.Ia=function(a){return a[Ga]||(a[Ga]=++Ha)};
+Ja=function(a,b,c){return a.call.apply(a.bind,arguments)};Ka=function(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}};_.p=function(a,b,c){_.p=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?Ja:Ka;return _.p.apply(null,arguments)};_.La=function(){return+new Date};
+_.t=function(a,b){function c(){}c.prototype=b.prototype;a.Zb=b.prototype;a.prototype=new c;a.prototype.constructor=a;a.Mp=function(a,c,f){for(var d=Array(arguments.length-2),e=2;e<arguments.length;e++)d[e-2]=arguments[e];return b.prototype[c].apply(a,d)}};_.Ma=function(a){return a.replace(/^[\s\xa0]+|[\s\xa0]+$/g,"")};_.Oa=function(){return-1!=_.Na.toLowerCase().indexOf("webkit")};
+_.Qa=function(a,b){var c=0;a=_.Ma(String(a)).split(".");b=_.Ma(String(b)).split(".");for(var d=Math.max(a.length,b.length),e=0;0==c&&e<d;e++){var f=a[e]||"",g=b[e]||"";do{f=/(\d*)(\D*)(.*)/.exec(f)||["","","",""];g=/(\d*)(\D*)(.*)/.exec(g)||["","","",""];if(0==f[0].length&&0==g[0].length)break;c=Pa(0==f[1].length?0:(0,window.parseInt)(f[1],10),0==g[1].length?0:(0,window.parseInt)(g[1],10))||Pa(0==f[2].length,0==g[2].length)||Pa(f[2],g[2]);f=f[3];g=g[3]}while(0==c)}return c};
+Pa=function(a,b){return a<b?-1:a>b?1:0};_.Ra=function(a,b,c){c=null==c?0:0>c?Math.max(0,a.length+c):c;if(_.Ba(a))return _.Ba(b)&&1==b.length?a.indexOf(b,c):-1;for(;c<a.length;c++)if(c in a&&a[c]===b)return c;return-1};_.v=function(a,b,c){for(var d=a.length,e=_.Ba(a)?a.split(""):a,f=0;f<d;f++)f in e&&b.call(c,e[f],f,a)};Sa=function(a,b){for(var c=a.length,d=_.Ba(a)?a.split(""):a,e=0;e<c;e++)if(e in d&&b.call(void 0,d[e],e,a))return e;return-1};
+_.Ua=function(a,b){b=_.Ra(a,b);var c;(c=0<=b)&&_.Ta(a,b);return c};_.Ta=function(a,b){Array.prototype.splice.call(a,b,1)};_.Va=function(a,b,c){return 2>=arguments.length?Array.prototype.slice.call(a,b):Array.prototype.slice.call(a,b,c)};_.w=function(a){return a?a.length:0};_.Xa=function(a,b){_.Wa(b,function(c){a[c]=b[c]})};_.Ya=function(a){for(var b in a)return!1;return!0};_.Za=function(a,b,c){null!=b&&(a=Math.max(a,b));null!=c&&(a=Math.min(a,c));return a};
+_.$a=function(a,b,c){c-=b;return((a-b)%c+c)%c+b};_.ab=function(a,b,c){return Math.abs(a-b)<=(c||1E-9)};_.bb=function(a,b){for(var c=[],d=_.w(a),e=0;e<d;++e)c.push(b(a[e],e));return c};_.db=function(a,b){for(var c=_.cb(void 0,_.w(b)),d=_.cb(void 0,0);d<c;++d)a.push(b[d])};_.x=function(a){return"number"==typeof a};_.eb=function(a){return"object"==typeof a};_.cb=function(a,b){return null==a?b:a};_.fb=function(a){return"string"==typeof a};_.gb=function(a){return a===!!a};
+_.Wa=function(a,b){for(var c in a)b(c,a[c])};_.ib=function(a){return function(){var b=this,c=arguments;_.hb(function(){a.apply(b,c)})}};_.hb=function(a){return window.setTimeout(a,0)};jb=function(a,b){if(Object.prototype.hasOwnProperty.call(a,b))return a[b]};_.kb=function(a){window.console&&window.console.error&&window.console.error(a)};_.nb=function(a){a=a||window.event;_.lb(a);_.mb(a)};_.lb=function(a){a.cancelBubble=!0;a.stopPropagation&&a.stopPropagation()};
+_.mb=function(a){a.preventDefault&&_.m(a.defaultPrevented)?a.preventDefault():a.returnValue=!1};_.ob=function(a){a.handled=!0;_.m(a.bubbles)||(a.returnValue="handled")};pb=function(a,b){a.__e3_||(a.__e3_={});a=a.__e3_;a[b]||(a[b]={});return a[b]};qb=function(a,b){var c=a.__e3_||{};if(b)a=c[b]||{};else for(b in a={},c)_.Xa(a,c[b]);return a};rb=function(a,b){return function(c){return b.call(a,c,this)}};
+sb=function(a,b,c){return function(d){var e=[b,a];_.db(e,arguments);_.z.trigger.apply(this,e);c&&_.ob.apply(null,arguments)}};wb=function(a,b,c,d){this.Wa=a;this.f=b;this.b=c;this.j=null;this.l=d;this.id=++tb;pb(a,b)[this.id]=this;ub&&"tagName"in a&&(vb[this.id]=this)};
+xb=function(a){return a.j=function(b){b||(b=window.event);if(b&&!b.target)try{b.target=b.srcElement}catch(d){}var c;c=a.b.apply(a.Wa,[b]);return b&&"click"==b.type&&(b=b.srcElement)&&"A"==b.tagName&&"javascript:void(0)"==b.href?!1:c}};_.yb=function(a){return""+(_.Ea(a)?_.Ia(a):a)};_.C=_.na();Bb=function(a,b){var c=b+"_changed";if(a[c])a[c]();else a.changed(b);var c=zb(a,b),d;for(d in c){var e=c[d];Bb(e.Kc,e.qb)}_.z.trigger(a,b.toLowerCase()+"_changed")};
+_.Db=function(a){return Cb[a]||(Cb[a]=a.substr(0,1).toUpperCase()+a.substr(1))};Eb=function(a){a.gm_accessors_||(a.gm_accessors_={});return a.gm_accessors_};zb=function(a,b){a.gm_bindings_||(a.gm_bindings_={});a.gm_bindings_.hasOwnProperty(b)||(a.gm_bindings_[b]={});return a.gm_bindings_[b]};Fb=function(a){this.message=a;this.name="InvalidValueError";this.stack=Error().stack};_.Gb=function(a,b){var c="";if(null!=b){if(!(b instanceof Fb))return b;c=": "+b.message}return new Fb(a+c)};
+_.Hb=function(a){if(!(a instanceof Fb))throw a;_.kb(a.name+": "+a.message)};_.Ib=function(a,b){var c;c=c?c+": ":"";return function(d){if(!d||!_.eb(d))throw _.Gb(c+"not an Object");var e={},f;for(f in d)if(e[f]=d[f],!b&&!a[f])throw _.Gb(c+"unknown property "+f);for(f in a)try{var g=a[f](e[f]);if(_.m(g)||Object.prototype.hasOwnProperty.call(d,f))e[f]=a[f](e[f])}catch(h){throw _.Gb(c+"in property "+f,h);}return e}};Jb=function(a){try{return!!a.cloneNode}catch(b){return!1}};
+_.Kb=function(a,b,c){return c?function(c){if(c instanceof a)return c;try{return new a(c)}catch(e){throw _.Gb("when calling new "+b,e);}}:function(c){if(c instanceof a)return c;throw _.Gb("not an instance of "+b);}};_.Lb=function(a){return function(b){for(var c in a)if(a[c]==b)return b;throw _.Gb(b);}};_.Mb=function(a){return function(b){if(!_.ya(b))throw _.Gb("not an Array");return _.bb(b,function(b,d){try{return a(b)}catch(e){throw _.Gb("at index "+d,e);}})}};
+_.Nb=function(a,b){return function(c){if(a(c))return c;throw _.Gb(b||""+c);}};_.Ob=function(a){return function(b){for(var c=[],d=0,e=a.length;d<e;++d){var f=a[d];try{(f.rg||f)(b)}catch(g){if(!(g instanceof Fb))throw g;c.push(g.message);continue}return(f.then||f)(b)}throw _.Gb(c.join("; and "));}};_.Pb=function(a,b){return function(c){return b(a(c))}};_.Qb=function(a){return function(b){return null==b?b:a(b)}};
+Rb=function(a){return function(b){if(b&&null!=b[a])return b;throw _.Gb("no "+a+" property");}};_.Sb=function(a){return a*Math.PI/180};_.Tb=function(a){return 180*a/Math.PI};_.E=function(a,b,c){if(a&&(void 0!==a.lat||void 0!==a.lng))try{Ub(a),b=a.lng,a=a.lat,c=!1}catch(d){_.Hb(d)}a-=0;b-=0;c||(a=_.Za(a,-90,90),180!=b&&(b=_.$a(b,-180,180)));this.lat=function(){return a};this.lng=function(){return b}};_.Vb=function(a){return _.Sb(a.lat())};_.Wb=function(a){return _.Sb(a.lng())};
+Xb=function(a,b){b=Math.pow(10,b);return Math.round(a*b)/b};Yb=_.na();_.Zb=function(a){try{if(a instanceof _.E)return a;a=Ub(a);return new _.E(a.lat,a.lng)}catch(b){throw _.Gb("not a LatLng or LatLngLiteral",b);}};_.$b=function(a){this.b=_.Zb(a)};ac=function(a){if(a instanceof Yb)return a;try{return new _.$b(_.Zb(a))}catch(b){}throw _.Gb("not a Geometry or LatLng or LatLngLiteral object");};_.bc=function(a,b){if(a)return function(){--a||b()};b();return _.ua};
+_.cc=function(a,b,c){var d=a.getElementsByTagName("head")[0];a=a.createElement("script");a.type="text/javascript";a.charset="UTF-8";a.src=b;c&&(a.onerror=c);d.appendChild(a);return a};dc=function(a){for(var b="",c=0,d=arguments.length;c<d;++c){var e=arguments[c];e.length&&"/"==e[0]?b=e:(b&&"/"!=b[b.length-1]&&(b+="/"),b+=e)}return b};ec=function(a){this.j=window.document;this.b={};this.f=a};gc=function(){this.l={};this.f={};this.m={};this.b={};this.j=new fc};
+ic=function(a,b){a.l[b]||(a.l[b]=!0,hc(a.j,function(c){for(var d=c.ai[b],e=d?d.length:0,f=0;f<e;++f){var g=d[f];a.b[g]||ic(a,g)}c=c.$m;c.b[b]||_.cc(c.j,dc(c.f,b)+".js")}))};kc=function(a,b){var c=jc;this.$m=a;this.ai=c;a={};for(var d in c)for(var e=c[d],f=0,g=e.length;f<g;++f){var h=e[f];a[h]||(a[h]=[]);a[h].push(d)}this.qo=a;this.vl=b};fc=function(){this.b=[]};hc=function(a,b){a.f?b(a.f):a.b.push(b)};_.F=function(a,b,c){var d=gc.Ob();a=""+a;d.b[a]?b(d.b[a]):((d.f[a]=d.f[a]||[]).push(b),c||ic(d,a))};
+_.lc=function(a,b){gc.Ob().b[""+a]=b};mc=function(a,b,c){var d=[],e=_.bc(a.length,function(){b.apply(null,d)});_.v(a,function(a,b){_.F(a,function(a){d[b]=a;e()},c)})};_.qc=function(a){a=a||{};this.j=a.id;this.b=null;try{this.b=a.geometry?ac(a.geometry):null}catch(b){_.Hb(b)}this.f=a.properties||{}};_.G=function(a,b){this.x=a;this.y=b};sc=function(a){if(a instanceof _.G)return a;try{_.Ib({x:_.rc,y:_.rc},!0)(a)}catch(b){throw _.Gb("not a Point",b);}return new _.G(a.x,a.y)};
+_.I=function(a,b,c,d){this.width=a;this.height=b;this.j=c||"px";this.f=d||"px"};tc=function(a){if(a instanceof _.I)return a;try{_.Ib({height:_.rc,width:_.rc},!0)(a)}catch(b){throw _.Gb("not a Size",b);}return new _.I(a.width,a.height)};_.uc=function(a){return function(){return this.get(a)}};_.vc=function(a,b){return b?function(c){try{this.set(a,b(c))}catch(d){_.Hb(_.Gb("set"+_.Db(a),d))}}:function(b){this.set(a,b)}};
+_.xc=function(a,b){_.Wa(b,function(b,d){var c=_.uc(b);a["get"+_.Db(b)]=c;d&&(d=_.vc(b,d),a["set"+_.Db(b)]=d)})};_.zc=function(a){this.b=a||[];yc(this)};yc=function(a){a.set("length",a.b.length)};_.Ac=function(a){this.j=a||_.yb;this.f={}};_.Bc=function(a,b){var c=a.f,d=a.j(b);c[d]||(c[d]=b,_.z.trigger(a,"insert",b),a.b&&a.b(b))};_.Cc=_.pa("b");_.Dc=function(a,b,c){this.heading=a;this.pitch=_.Za(b,-90,90);this.zoom=Math.max(0,c)};_.Ec=function(){this.__gm=new _.C;this.m=null};_.Fc=_.ma();
+_.Jc=function(a,b,c){for(var d in a)b.call(c,a[d],d,a)};_.Kc=function(a){return-1!=_.Na.indexOf(a)};_.Lc=function(){return _.Kc("Trident")||_.Kc("MSIE")};Mc=function(){return(_.Kc("Chrome")||_.Kc("CriOS"))&&!_.Kc("Edge")};Oc=function(a){_.Nc.setTimeout(function(){throw a;},0)};Uc=function(){var a=_.Qc.f,a=Rc(a);!_.Da(_.Nc.setImmediate)||_.Nc.Window&&_.Nc.Window.prototype&&!_.Kc("Edge")&&_.Nc.Window.prototype.setImmediate==_.Nc.setImmediate?(Sc||(Sc=Tc()),Sc(a)):_.Nc.setImmediate(a)};
+Tc=function(){var a=_.Nc.MessageChannel;"undefined"===typeof a&&"undefined"!==typeof window&&window.postMessage&&window.addEventListener&&!_.Kc("Presto")&&(a=function(){var a=window.document.createElement("IFRAME");a.style.display="none";a.src="";window.document.documentElement.appendChild(a);var b=a.contentWindow,a=b.document;a.open();a.write("");a.close();var c="callImmediate"+Math.random(),d="file:"==b.location.protocol?"*":b.location.protocol+"//"+b.location.host,a=(0,_.p)(function(a){if(("*"==
+d||a.origin==d)&&a.data==c)this.port1.onmessage()},this);b.addEventListener("message",a,!1);this.port1={};this.port2={postMessage:function(){b.postMessage(c,d)}}});if("undefined"!==typeof a&&!_.Lc()){var b=new a,c={},d=c;b.port1.onmessage=function(){if(_.m(c.next)){c=c.next;var a=c.hh;c.hh=null;a()}};return function(a){d.next={hh:a};d=d.next;b.port2.postMessage(0)}}return"undefined"!==typeof window.document&&"onreadystatechange"in window.document.createElement("SCRIPT")?function(a){var b=window.document.createElement("SCRIPT");
+b.onreadystatechange=function(){b.onreadystatechange=null;b.parentNode.removeChild(b);b=null;a();a=null};window.document.documentElement.appendChild(b)}:function(a){_.Nc.setTimeout(a,0)}};Vc=function(a,b,c){this.l=c;this.j=a;this.m=b;this.f=0;this.b=null};Wc=function(){this.f=this.b=null};Xc=function(){this.next=this.b=this.Gc=null};_.Qc=function(a,b){_.Qc.b||_.Qc.m();_.Qc.j||(_.Qc.b(),_.Qc.j=!0);_.Qc.l.add(a,b)};Yc=function(a,b){return function(c){return c.Gc==a&&c.context==(b||null)}};
+Zc=function(a){this.S=[];this.b=a&&a.sd||_.ua;this.f=a&&a.td||_.ua};_.ad=function(a,b,c,d){function e(){_.v(f,function(a){b.call(c||null,function(b){if(a.ud){if(a.ud.fh)return;a.ud.fh=!0;_.Ua(g.S,a);g.S.length||g.b()}a.Gc.call(a.context,b)})})}var f=a.S.slice(0),g=a;d&&d.Oo?e():$c(e)};_.bd=function(){this.S=new Zc({sd:(0,_.p)(this.sd,this),td:(0,_.p)(this.td,this)})};_.cd=function(){_.bd.call(this)};_.gd=function(a){return new fd(a)};fd=function(a){_.bd.call(this);this.b=a};hd=_.na();
+jd=function(a){var b=a;if(a instanceof Array)b=Array(a.length),_.id(b,a);else if(a instanceof Object){var c=b={},d;for(d in a)a.hasOwnProperty(d)&&(c[d]=jd(a[d]))}return b};_.id=function(a,b){for(var c=0;c<b.length;++c)b.hasOwnProperty(c)&&(a[c]=jd(b[c]))};_.kd=function(a,b){a[b]||(a[b]=[]);return a[b]};
+_.md=function(a,b){if(null==a||null==b)return null==a==(null==b);if(a.constructor!=Array&&a.constructor!=Object)throw Error("Invalid object type passed into JsProto.areObjectsEqual()");if(a===b)return!0;if(a.constructor!=b.constructor)return!1;for(var c in a)if(!(c in b&&ld(a[c],b[c])))return!1;for(var d in b)if(!(d in a))return!1;return!0};
+ld=function(a,b){if(a===b||!(!0!==a&&1!==a||!0!==b&&1!==b)||!(!1!==a&&0!==a||!1!==b&&0!==b))return!0;if(a instanceof Object&&b instanceof Object){if(!_.md(a,b))return!1}else return!1;return!0};nd=function(a,b,c,d){this.type=a;this.label=b;this.Cl=c;this.Ec=d};od=function(a){switch(a){case "d":case "f":case "i":case "j":case "u":case "v":case "x":case "y":case "g":case "h":case "n":case "o":case "e":return 0;case "s":case "z":case "B":return"";case "b":return!1;default:return null}};
+_.pd=function(a,b,c){return new nd(a,1,_.m(b)?b:od(a),c)};_.qd=function(a,b,c){return new nd(a,2,_.m(b)?b:od(a),c)};_.rd=function(a,b,c){return new nd(a,3,c,b)};_.sd=function(a){return _.pd("i",a)};_.td=function(a){return _.pd("v",a)};_.ud=function(a){return _.pd("b",a)};_.vd=function(a){return _.pd("e",a)};_.L=function(a,b){return _.pd("m",a,b)};_.N=function(a){this.data=a||[]};_.yd=function(a,b,c){a=a.data[b];return null!=a?a:c};_.O=function(a,b,c){return _.yd(a,b,c||0)};
+_.P=function(a,b,c){return _.yd(a,b,c||"")};_.Q=function(a,b){var c=a.data[b];c||(c=a.data[b]=[]);return c};_.zd=function(a,b){return _.kd(a.data,b)};_.Ad=function(a,b,c){return _.zd(a,b)[c]};_.Bd=function(a,b){return a.data[b]?a.data[b].length:0};Cd=_.na();Ed=function(a,b,c){for(var d=1;d<b.A.length;++d){var e=b.A[d],f=a[d+b.D];if(e&&null!=f)if(3==e.label)for(var g=0;g<f.length;++g)Dd(f[g],d,e,c);else Dd(f,d,e,c)}};
+Dd=function(a,b,c,d){if("m"==c.type){var e=d.length;Ed(a,c.Ec,d);d.splice(e,0,[b,"m",d.length-e].join(""))}else"b"==c.type&&(a=a?"1":"0"),d.push([b,c.type,(0,window.encodeURIComponent)(a)].join(""))};_.Fd=function(){return _.Kc("iPhone")&&!_.Kc("iPod")&&!_.Kc("iPad")};_.Gd=function(a){_.Gd[" "](a);return a};Id=function(a,b){var c=Hd;return Object.prototype.hasOwnProperty.call(c,a)?c[a]:c[a]=b(a)};Jd=function(){var a=_.Nc.document;return a?a.documentMode:void 0};
+_.Ld=function(a){return Id(a,function(){return 0<=_.Qa(_.Kd,a)})};_.Md=function(a,b){this.b=a||0;this.f=b||0};Nd=_.na();Rd=function(a,b){-180==a&&180!=b&&(a=180);-180==b&&180!=a&&(b=180);this.b=a;this.f=b};_.Sd=function(a){return a.b>a.f};_.Ud=function(a,b){return 1E-9>=Math.abs(b.b-a.b)%360+Math.abs(_.Td(b)-_.Td(a))};_.Vd=function(a,b){var c=b-a;return 0<=c?c:b+180-(a-180)};_.Td=function(a){return a.isEmpty()?0:_.Sd(a)?360-(a.b-a.f):a.f-a.b};Wd=function(a,b){this.f=a;this.b=b};
+_.Xd=function(a){return a.isEmpty()?0:a.b-a.f};_.Yd=function(a,b){a=a&&_.Zb(a);b=b&&_.Zb(b);if(a){b=b||a;var c=_.Za(a.lat(),-90,90),d=_.Za(b.lat(),-90,90);this.f=new Wd(c,d);a=a.lng();b=b.lng();360<=b-a?this.b=new Rd(-180,180):(a=_.$a(a,-180,180),b=_.$a(b,-180,180),this.b=new Rd(a,b))}else this.f=new Wd(1,-1),this.b=new Rd(180,-180)};_.Zd=function(a,b,c,d){return new _.Yd(new _.E(a,b,!0),new _.E(c,d,!0))};
+_.ae=function(a){if(a instanceof _.Yd)return a;try{return a=$d(a),_.Zd(a.south,a.west,a.north,a.east)}catch(b){throw _.Gb("not a LatLngBounds or LatLngBoundsLiteral",b);}};_.be=_.pa("__gm");ce=function(){this.b={};this.j={};this.f={}};de=function(){this.b={}};ee=function(a){this.b=new de;var b=this;_.z.addListenerOnce(a,"addfeature",function(){_.F("data",function(c){c.b(b,a,b.b)})})};_.ge=function(a){this.b=[];try{this.b=fe(a)}catch(b){_.Hb(b)}};_.ie=function(a){this.b=(0,_.he)(a)};
+_.ke=function(a){this.b=je(a)};_.le=function(a){this.b=(0,_.he)(a)};_.me=function(a){this.b=(0,_.he)(a)};_.pe=function(a){this.b=ne(a)};_.re=function(a){this.b=qe(a)};se=function(a){a=a||{};a.clickable=_.cb(a.clickable,!0);a.visible=_.cb(a.visible,!0);this.setValues(a);_.F("marker",_.ua)};ue=function(a){var b=te,c=gc.Ob().j;a=c.f=new kc(new ec(a),b);for(var b=0,d=c.b.length;b<d;++b)c.b[b](a);c.b.length=0};_.ve=function(a){this.__gm={set:null,me:null};se.call(this,a)};
+we=function(a){a=a||{};a.visible=_.cb(a.visible,!0);return a};_.xe=function(a){return a&&a.radius||6378137};ze=function(a){return a instanceof _.zc?ye(a):new _.zc((0,_.he)(a))};Be=function(a){var b;_.ya(a)||a instanceof _.zc?0==_.w(a)?b=!0:(b=a instanceof _.zc?a.getAt(0):a[0],b=_.ya(b)||b instanceof _.zc):b=!1;return b?a instanceof _.zc?Ae(ye)(a):new _.zc(_.Mb(ze)(a)):new _.zc([ze(a)])};
+Ae=function(a){return function(b){if(!(b instanceof _.zc))throw _.Gb("not an MVCArray");b.forEach(function(b,d){try{a(b)}catch(e){throw _.Gb("at index "+d,e);}});return b}};Ce=function(a){this.set("latLngs",new _.zc([new _.zc]));this.setValues(we(a));_.F("poly",_.ua)};_.De=function(a){Ce.call(this,a)};_.Ee=function(a){Ce.call(this,a)};
+_.Fe=function(a,b,c){function d(a){if(!a)throw _.Gb("not a Feature");if("Feature"!=a.type)throw _.Gb('type != "Feature"');var b=a.geometry;try{b=null==b?null:e(b)}catch(H){throw _.Gb('in property "geometry"',H);}var d=a.properties||{};if(!_.eb(d))throw _.Gb("properties is not an Object");var f=c.idPropertyName;a=f?d[f]:a.id;if(null!=a&&!_.x(a)&&!_.fb(a))throw _.Gb((f||"id")+" is not a string or number");return{id:a,geometry:b,properties:d}}function e(a){if(null==a)throw _.Gb("is null");var b=(a.type+
+"").toLowerCase(),c=a.coordinates;try{switch(b){case "point":return new _.$b(h(c));case "multipoint":return new _.le(n(c));case "linestring":return g(c);case "multilinestring":return new _.ke(q(c));case "polygon":return f(c);case "multipolygon":return new _.re(u(c))}}catch(J){throw _.Gb('in property "coordinates"',J);}if("geometrycollection"==b)try{return new _.ge(y(a.geometries))}catch(J){throw _.Gb('in property "geometries"',J);}throw _.Gb("invalid type");}function f(a){return new _.pe(r(a))}function g(a){return new _.ie(n(a))}
+function h(a){a=l(a);return _.Zb({lat:a[1],lng:a[0]})}if(!b)return[];c=c||{};var l=_.Mb(_.rc),n=_.Mb(h),q=_.Mb(g),r=_.Mb(function(a){a=n(a);if(!a.length)throw _.Gb("contains no elements");if(!a[0].b(a[a.length-1]))throw _.Gb("first and last positions are not equal");return new _.me(a.slice(0,-1))}),u=_.Mb(f),y=_.Mb(e),B=_.Mb(d);if("FeatureCollection"==b.type){b=b.features;try{return _.bb(B(b),function(b){return a.add(b)})}catch(D){throw _.Gb('in property "features"',D);}}if("Feature"==b.type)return[a.add(d(b))];
+throw _.Gb("not a Feature or FeatureCollection");};He=function(a){var b=this;a=a||{};this.setValues(a);this.b=new ce;_.z.forward(this.b,"addfeature",this);_.z.forward(this.b,"removefeature",this);_.z.forward(this.b,"setgeometry",this);_.z.forward(this.b,"setproperty",this);_.z.forward(this.b,"removeproperty",this);this.f=new ee(this.b);this.f.bindTo("map",this);this.f.bindTo("style",this);_.v(_.Ge,function(a){_.z.forward(b.f,a,b)});this.j=!1};Ie=function(a){a.j||(a.j=!0,_.F("drawing_impl",function(b){b.wm(a)}))};
+Je=function(a){if(!a)return null;var b;_.Ba(a)?(b=window.document.createElement("div"),b.style.overflow="auto",b.innerHTML=a):a.nodeType==window.Node.TEXT_NODE?(b=window.document.createElement("div"),b.appendChild(a)):b=a;return b};
+Ke=function(a,b){this.b=a;this.ld=b;a.addListener("map_changed",(0,_.p)(this.xn,this));this.bindTo("map",a);this.bindTo("disableAutoPan",a);this.bindTo("maxWidth",a);this.bindTo("position",a);this.bindTo("zIndex",a);this.bindTo("internalAnchor",a,"anchor");this.bindTo("internalContent",a,"content");this.bindTo("internalPixelOffset",a,"pixelOffset")};Le=function(a,b,c,d){c?a.bindTo(b,c,d):(a.unbind(b),a.set(b,void 0))};
+_.Me=function(a){function b(){e||(e=!0,_.F("infowindow",function(a){a.Xk(d)}))}window.setTimeout(function(){_.F("infowindow",_.ua)},100);a=a||{};var c=!!a.ld;delete a.ld;var d=new Ke(this,c),e=!1;_.z.addListenerOnce(this,"anchor_changed",b);_.z.addListenerOnce(this,"map_changed",b);this.setValues(a)};_.Oe=function(a){_.Ne&&a&&_.Ne.push(a)};Pe=function(a){this.setValues(a)};Qe=_.na();Re=_.na();Se=_.na();_.Te=function(){_.F("geocoder",_.ua)};
+_.Ue=function(a,b,c){this.H=null;this.set("url",a);this.set("bounds",_.Qb(_.ae)(b));this.setValues(c)};Ve=function(a,b){_.fb(a)?(this.set("url",a),this.setValues(b)):this.setValues(a)};_.Ze=function(){var a=this;_.F("layers",function(b){b.b(a)})};$e=function(a){this.setValues(a);var b=this;_.F("layers",function(a){a.f(b)})};af=function(){var a=this;_.F("layers",function(b){b.j(a)})};bf=function(a){this.data=a||[]};cf=function(a){this.data=a||[]};df=function(a){this.data=a||[]};
+ef=function(a){this.data=a||[]};ff=function(a){this.data=a||[]};_.gf=function(a){this.data=a||[]};hf=function(a){this.data=a||[]};jf=function(a){this.data=a||[]};kf=function(a){this.data=a||[]};_.lf=function(a){return _.P(a,0)};_.mf=function(a){return _.P(a,1)};_.nf=function(a){return new ff(a.data[2])};
+qf=function(a,b){_.Ec.call(this);_.Oe(a);this.__gm=new _.C;this.j=null;b&&b.client&&(this.j=_.of[b.client]||null);var c=this.controls=[];_.Wa(_.pf,function(a,b){c[b]=new _.zc});this.l=!0;this.f=a;this.B=!1;this.__gm.Jc=b&&b.Jc||new _.Ac;this.set("standAlone",!0);this.setPov(new _.Dc(0,0,1));b&&b.wd&&!_.x(b.wd.zoom)&&(b.wd.zoom=_.x(b.zoom)?b.zoom:1);this.setValues(b);void 0==this.getVisible()&&this.setVisible(!0);_.z.addListenerOnce(this,"pano_changed",_.ib(function(){_.F("marker",(0,_.p)(function(a){a.b(this.__gm.Jc,
+this)},this))}))};_.rf=function(){this.l=[];this.j=this.b=this.f=null};sf=function(a,b,c,d){this.U=b;this.b=_.gd(new _.Cc([]));this.B=new _.Ac;this.O=new _.zc;this.F=new _.Ac;this.G=new _.Ac;this.l=new _.Ac;var e=this.Jc=new _.Ac;e.b=function(){delete e.b;_.F("marker",_.ib(function(b){b.b(e,a)}))};this.j=new qf(c,{visible:!1,enableCloseButton:!0,Jc:e});this.j.bindTo("reportErrorControl",a);this.j.l=!1;this.f=new _.rf;this.V=d};_.tf=function(){this.S=new Zc};
+_.uf=function(){this.b=new _.G(128,128);this.j=256/360;this.l=256/(2*Math.PI);this.f=!0};_.vf=function(a){this.K=this.J=window.Infinity;this.N=this.M=-window.Infinity;_.v(a||[],this.extend,this)};_.wf=function(a,b,c,d){var e=new _.vf;e.J=a;e.K=b;e.M=c;e.N=d;return e};_.xf=function(a,b,c){if(a=a.fromLatLngToPoint(b))c=Math.pow(2,c),a.x*=c,a.y*=c;return a};
+_.yf=function(a,b){var c=a.lat()+_.Tb(b);90<c&&(c=90);var d=a.lat()-_.Tb(b);-90>d&&(d=-90);b=Math.sin(b);var e=Math.cos(_.Sb(a.lat()));if(90==c||-90==d||1E-6>e)return new _.Yd(new _.E(d,-180),new _.E(c,180));b=_.Tb(Math.asin(b/e));return new _.Yd(new _.E(d,a.lng()-b),new _.E(c,a.lng()+b))};_.zf=function(a){this.ql=a||0;_.z.bind(this,"forceredraw",this,this.B)};_.Af=function(a,b){a=a.style;a.width=b.width+b.j;a.height=b.height+b.f};_.Bf=function(a){return new _.I(a.offsetWidth,a.offsetHeight)};
+Cf=function(a){this.data=a||[]};Df=function(a){this.data=a||[]};Ef=function(a){this.data=a||[]};Ff=function(a){this.data=a||[]};Gf=function(a){this.data=a||[]};Hf=function(a,b,c,d){_.zf.call(this);this.m=b;this.l=new _.uf;this.C=c+"/maps/api/js/StaticMapService.GetMapImage";this.f=this.b=null;this.j=d;this.set("div",a);this.set("loading",!0)};Jf=function(a){var b=a.get("tilt")||_.w(a.get("styles"));a=a.get("mapTypeId");return b?null:If[a]};Kf=function(a){a.parentNode&&a.parentNode.removeChild(a)};
+Tf=function(a,b){var c=a.f;c.onload=null;c.onerror=null;a.get("size")&&(b&&(c.parentNode||a.b.appendChild(c),_.Af(c,a.get("size")),_.z.trigger(a,"staticmaploaded"),a.j.set(_.La())),a.set("loading",!1))};Uf=function(a,b){var c=a.f;b!=c.src?(Kf(c),c.onload=function(){Tf(a,!0)},c.onerror=function(){Tf(a,!1)},c.src=b):!c.parentNode&&b&&a.b.appendChild(c)};
+Vf=function(a,b,c,d,e){var f=_.P(_.nf(_.R),7);this.b=a;this.f=d;this.j=_.m(e)?e:_.La();var g=f+"/csi?v=2&s=mapsapi3&v3v="+_.P(new kf(_.R.data[36]),0)+"&action="+a;_.Jc(c,function(a,b){g+="&"+(0,window.encodeURIComponent)(b)+"="+(0,window.encodeURIComponent)(a)});b&&(g+="&e="+b);this.l=g};_.Xf=function(a,b){var c={};c[b]=void 0;_.Wf(a,c)};
+_.Wf=function(a,b){var c="";_.Jc(b,function(a,b){var d=(null!=a?a:_.La())-this.j;c&&(c+=",");c+=b+"."+Math.round(d);null==a&&window.performance&&window.performance.mark&&window.performance.mark("mapsapi:"+this.b+":"+b)},a);b=a.l+"&rt="+c;a.f.createElement("img").src=b;(a=_.Nc.__gm_captureCSI)&&a(b)};
+_.Yf=function(a,b){b=b||{};var c=b.Rn||{},d=_.zd(_.R,12).join(",");d&&(c.libraries=d);var d=_.P(_.R,6),e=new bf(_.R.data[33]),f=[];d&&f.push(d);_.v(e.data,function(a,b){a&&_.v(a,function(a,c){null!=a&&f.push(b+1+"_"+(c+1)+"_"+a)})});b.Pl&&(f=f.concat(b.Pl));return new Vf(a,f.join(","),c,b.document||window.document,b.startTime)};$f=function(){this.f=_.Yf("apiboot2",{startTime:_.Zf});_.Xf(this.f,"main");this.b=!1};bg=function(){var a=ag;a.b||(a.b=!0,_.Xf(a.f,"firstmap"))};_.cg=_.na();
+_.dg=function(){this.b=""};_.eg=function(a){var b=new _.dg;b.b=a;return b};_.gg=function(){this.Mf="";this.kk=_.fg;this.b=null};_.hg=function(a,b){var c=new _.gg;c.Mf=a;c.b=b;return c};_.ig=function(a,b){b.parentNode&&b.parentNode.insertBefore(a,b.nextSibling)};_.jg=function(a){a&&a.parentNode&&a.parentNode.removeChild(a)};kg=function(a,b,c,d,e){this.b=!!b;this.node=null;this.f=0;this.j=!1;this.l=!c;a&&this.setPosition(a,d);this.depth=void 0!=e?e:this.f||0;this.b&&(this.depth*=-1)};
+lg=function(a,b,c,d){kg.call(this,a,b,c,null,d)};_.ng=function(a){for(var b;b=a.firstChild;)_.mg(b),a.removeChild(b)};_.mg=function(a){a=new lg(a);try{for(;;)_.z.clearInstanceListeners(a.next())}catch(b){if(b!==_.og)throw b;}};
+sg=function(a,b){var c=_.La();ag&&bg();var d=new _.tf,e=b||{};e.noClear||_.ng(a);var f="undefined"==typeof window.document?null:window.document.createElement("div");f&&a.appendChild&&(a.appendChild(f),f.style.width=f.style.height="100%");_.be.call(this,new sf(this,a,f,d));_.m(e.mapTypeId)||(e.mapTypeId="roadmap");this.setValues(e);this.b=_.pg[15]&&e.noControlsOrLogging;this.mapTypes=new Nd;this.features=new _.C;_.Oe(f);this.notify("streetView");a=_.Bf(f);var g=null;_.R&&qg(e.useStaticMap,a)&&(g=new Hf(f,
+_.rg,_.P(_.nf(_.R),9),new fd(null)),_.z.forward(g,"staticmaploaded",this),g.set("size",a),g.bindTo("center",this),g.bindTo("zoom",this),g.bindTo("mapTypeId",this),g.bindTo("styles",this));this.overlayMapTypes=new _.zc;var h=this.controls=[];_.Wa(_.pf,function(a,b){h[b]=new _.zc});var l=this,n=!0;_.F("map",function(a){l.getDiv()&&f&&a.f(l,e,f,g,n,c,d)});n=!1;this.data=new He({map:this})};qg=function(a,b){if(_.m(a))return!!a;a=b.width;b=b.height;return 384E3>=a*b&&800>=a&&800>=b};
+tg=function(){_.F("maxzoom",_.ua)};ug=function(a,b){!a||_.fb(a)||_.x(a)?(this.set("tableId",a),this.setValues(b)):this.setValues(a)};_.vg=_.na();_.wg=function(a){this.setValues(we(a));_.F("poly",_.ua)};_.xg=function(a){this.setValues(we(a));_.F("poly",_.ua)};yg=function(){this.b=null};_.zg=function(){this.b=null};
+_.Ag=function(a){this.tileSize=a.tileSize||new _.I(256,256);this.name=a.name;this.alt=a.alt;this.minZoom=a.minZoom;this.maxZoom=a.maxZoom;this.j=(0,_.p)(a.getTileUrl,a);this.b=new _.Ac;this.f=null;this.set("opacity",a.opacity);var b=this;_.F("map",function(a){var c=b.f=a.b,e=b.tileSize||new _.I(256,256);b.b.forEach(function(a){var d=a.__gmimt,f=d.Z,l=d.zoom,n=b.j(f,l);d.$b=c(f,l,e,a,n,function(){_.z.trigger(a,"load")})})})};
+Bg=function(a,b){null!=a.style.opacity?a.style.opacity=b:a.style.filter=b&&"alpha(opacity="+Math.round(100*b)+")"};Cg=function(a){a=a.get("opacity");return"number"==typeof a?a:1};_.Dg=_.na();_.Eg=function(a,b){this.set("styles",a);a=b||{};this.f=a.baseMapTypeId||"roadmap";this.minZoom=a.minZoom;this.maxZoom=a.maxZoom||20;this.name=a.name;this.alt=a.alt;this.projection=null;this.tileSize=new _.I(256,256)};
+_.Fg=function(a,b){_.Nb(Jb,"container is not a Node")(a);this.setValues(b);_.F("controls",(0,_.p)(function(b){b.pl(this,a)},this))};Gg=_.pa("b");Hg=function(a,b,c){for(var d=Array(b.length),e=0,f=b.length;e<f;++e)d[e]=b.charCodeAt(e);d.unshift(c);a=a.b;c=b=0;for(e=d.length;c<e;++c)b*=1729,b+=d[c],b%=a;return b};
+Kg=function(){var a=_.O(new hf(_.R.data[4]),0),b=new Gg(131071),c=(0,window.unescape)("%26%74%6F%6B%65%6E%3D");return function(d){d=d.replace(Ig,"%27");var e=d+c;Jg||(Jg=/(?:https?:\/\/[^/]+)?(.*)/);d=Jg.exec(d);return e+Hg(b,d&&d[1],a)}};Lg=function(){var a=new Gg(2147483647);return function(b){return Hg(a,b,0)}};Mg=function(a){for(var b=a.split("."),c=window,d=window,e=0;e<b.length;e++)if(d=c,c=c[b[e]],!c)throw _.Gb(a+" is not a function");return function(){c.apply(d)}};
+Ng=function(){for(var a in Object.prototype)window.console&&window.console.error("This site adds property <"+a+"> to Object.prototype. Extending Object.prototype breaks JavaScript for..in loops, which are used heavily in Google Maps API v3.")};Og=function(a){(a="version"in a)&&window.console&&window.console.error("You have included the Google Maps API multiple times on this page. This may cause unexpected errors.");return a};_.sa=[];_.Nc=this;Ga="closure_uid_"+(1E9*Math.random()>>>0);Ha=0;var ub,vb;_.z={};ub="undefined"!=typeof window.navigator&&-1!=window.navigator.userAgent.toLowerCase().indexOf("msie");vb={};_.z.addListener=function(a,b,c){return new wb(a,b,c,0)};_.z.hasListeners=function(a,b){b=(a=a.__e3_)&&a[b];return!!b&&!_.Ya(b)};_.z.removeListener=function(a){a&&a.remove()};_.z.clearListeners=function(a,b){_.Wa(qb(a,b),function(a,b){b&&b.remove()})};_.z.clearInstanceListeners=function(a){_.Wa(qb(a),function(a,c){c&&c.remove()})};
+_.z.trigger=function(a,b,c){if(_.z.hasListeners(a,b)){var d=_.Va(arguments,2),e=qb(a,b),f;for(f in e){var g=e[f];g&&g.b.apply(g.Wa,d)}}};_.z.addDomListener=function(a,b,c,d){if(a.addEventListener){var e=d?4:1;a.addEventListener(b,c,d);c=new wb(a,b,c,e)}else a.attachEvent?(c=new wb(a,b,c,2),a.attachEvent("on"+b,xb(c))):(a["on"+b]=c,c=new wb(a,b,c,3));return c};_.z.addDomListenerOnce=function(a,b,c,d){var e=_.z.addDomListener(a,b,function(){e.remove();return c.apply(this,arguments)},d);return e};
+_.z.W=function(a,b,c,d){return _.z.addDomListener(a,b,rb(c,d))};_.z.bind=function(a,b,c,d){return _.z.addListener(a,b,(0,_.p)(d,c))};_.z.addListenerOnce=function(a,b,c){var d=_.z.addListener(a,b,function(){d.remove();return c.apply(this,arguments)});return d};_.z.forward=function(a,b,c){return _.z.addListener(a,b,sb(b,c))};_.z.Ma=function(a,b,c,d){return _.z.addDomListener(a,b,sb(b,c,!d))};_.z.Ti=function(){var a=vb,b;for(b in a)a[b].remove();vb={};(a=_.Nc.CollectGarbage)&&a()};
+_.z.fo=function(){ub&&_.z.addDomListener(window,"unload",_.z.Ti)};var tb=0;wb.prototype.remove=function(){if(this.Wa){switch(this.l){case 1:this.Wa.removeEventListener(this.f,this.b,!1);break;case 4:this.Wa.removeEventListener(this.f,this.b,!0);break;case 2:this.Wa.detachEvent("on"+this.f,this.j);break;case 3:this.Wa["on"+this.f]=null}delete pb(this.Wa,this.f)[this.id];this.j=this.b=this.Wa=null;delete vb[this.id]}};_.k=_.C.prototype;_.k.get=function(a){var b=Eb(this);a+="";b=jb(b,a);if(_.m(b)){if(b){a=b.qb;var b=b.Kc,c="get"+_.Db(a);return b[c]?b[c]():b.get(a)}return this[a]}};_.k.set=function(a,b){var c=Eb(this);a+="";var d=jb(c,a);if(d)if(a=d.qb,d=d.Kc,c="set"+_.Db(a),d[c])d[c](b);else d.set(a,b);else this[a]=b,c[a]=null,Bb(this,a)};_.k.notify=function(a){var b=Eb(this);a+="";(b=jb(b,a))?b.Kc.notify(b.qb):Bb(this,a)};
+_.k.setValues=function(a){for(var b in a){var c=a[b],d="set"+_.Db(b);if(this[d])this[d](c);else this.set(b,c)}};_.k.setOptions=_.C.prototype.setValues;_.k.changed=_.na();var Cb={};_.C.prototype.bindTo=function(a,b,c,d){a+="";c=(c||a)+"";this.unbind(a);var e={Kc:this,qb:a},f={Kc:b,qb:c,bh:e};Eb(this)[a]=f;zb(b,c)[_.yb(e)]=e;d||Bb(this,a)};_.C.prototype.unbind=function(a){var b=Eb(this),c=b[a];c&&(c.bh&&delete zb(c.Kc,c.qb)[_.yb(c.bh)],this[a]=this.get(a),b[a]=null)};
+_.C.prototype.unbindAll=function(){var a=(0,_.p)(this.unbind,this),b=Eb(this),c;for(c in b)a(c)};_.C.prototype.addListener=function(a,b){return _.z.addListener(this,a,b)};_.Tg={ROADMAP:"roadmap",SATELLITE:"satellite",HYBRID:"hybrid",TERRAIN:"terrain"};_.pf={TOP_LEFT:1,TOP_CENTER:2,TOP:2,TOP_RIGHT:3,LEFT_CENTER:4,LEFT_TOP:5,LEFT:5,LEFT_BOTTOM:6,RIGHT_TOP:7,RIGHT:7,RIGHT_CENTER:8,RIGHT_BOTTOM:9,BOTTOM_LEFT:10,BOTTOM_CENTER:11,BOTTOM:11,BOTTOM_RIGHT:12,CENTER:13};var Ug={Fp:"Point",Dp:"LineString",POLYGON:"Polygon"};_.t(Fb,Error);var Vg,Xg;_.rc=_.Nb(_.x,"not a number");Vg=_.Pb(_.rc,function(a){if((0,window.isNaN)(a))throw _.Gb("NaN is not an accepted value");return a});_.Wg=_.Nb(_.fb,"not a string");Xg=_.Nb(_.gb,"not a boolean");_.Yg=_.Qb(_.rc);_.Zg=_.Qb(_.Wg);_.$g=_.Qb(Xg);var Ub=_.Ib({lat:_.rc,lng:_.rc},!0);_.E.prototype.toString=function(){return"("+this.lat()+", "+this.lng()+")"};_.E.prototype.toJSON=function(){return{lat:this.lat(),lng:this.lng()}};_.E.prototype.b=function(a){return a?_.ab(this.lat(),a.lat())&&_.ab(this.lng(),a.lng()):!1};_.E.prototype.equals=_.E.prototype.b;_.E.prototype.toUrlValue=function(a){a=_.m(a)?a:6;return Xb(this.lat(),a)+","+Xb(this.lng(),a)};Yb.prototype.getType=_.va;Yb.prototype.forEachLatLng=_.va;_.he=_.Mb(_.Zb);_.t(_.$b,Yb);_.$b.prototype.getType=_.ra("Point");_.$b.prototype.forEachLatLng=function(a){a(this.b)};_.$b.prototype.get=_.qa("b");var fe=_.Mb(ac);_.wa(gc);gc.prototype.wb=function(a,b){var c=this,d=c.m;hc(c.j,function(e){for(var f=e.ai[a]||[],g=e.qo[a]||[],h=d[a]=_.bc(f.length,function(){delete d[a];b(e.vl);for(var f=c.f[a],h=f?f.length:0,l=0;l<h;++l)f[l](c.b[a]);delete c.f[a];l=0;for(f=g.length;l<f;++l)h=g[l],d[h]&&d[h]()}),l=0,n=f.length;l<n;++l)c.b[f[l]]&&h()})};_.k=_.qc.prototype;_.k.getId=_.qa("j");_.k.getGeometry=_.qa("b");_.k.setGeometry=function(a){var b=this.b;try{this.b=a?ac(a):null}catch(c){_.Hb(c);return}_.z.trigger(this,"setgeometry",{feature:this,newGeometry:this.b,oldGeometry:b})};_.k.getProperty=function(a){return jb(this.f,a)};_.k.setProperty=function(a,b){if(void 0===b)this.removeProperty(a);else{var c=this.getProperty(a);this.f[a]=b;_.z.trigger(this,"setproperty",{feature:this,name:a,newValue:b,oldValue:c})}};
+_.k.removeProperty=function(a){var b=this.getProperty(a);delete this.f[a];_.z.trigger(this,"removeproperty",{feature:this,name:a,oldValue:b})};_.k.forEachProperty=function(a){for(var b in this.f)a(this.getProperty(b),b)};_.k.toGeoJson=function(a){var b=this;_.F("data",function(c){c.f(b,a)})};_.ah=new _.G(0,0);_.G.prototype.toString=function(){return"("+this.x+", "+this.y+")"};_.G.prototype.b=function(a){return a?a.x==this.x&&a.y==this.y:!1};_.G.prototype.equals=_.G.prototype.b;_.G.prototype.round=function(){this.x=Math.round(this.x);this.y=Math.round(this.y)};_.G.prototype.se=_.ta(0);_.bh=new _.I(0,0);_.I.prototype.toString=function(){return"("+this.width+", "+this.height+")"};_.I.prototype.b=function(a){return a?a.width==this.width&&a.height==this.height:!1};_.I.prototype.equals=_.I.prototype.b;var ch={CIRCLE:0,FORWARD_CLOSED_ARROW:1,FORWARD_OPEN_ARROW:2,BACKWARD_CLOSED_ARROW:3,BACKWARD_OPEN_ARROW:4};_.t(_.zc,_.C);_.k=_.zc.prototype;_.k.getAt=function(a){return this.b[a]};_.k.indexOf=function(a){for(var b=0,c=this.b.length;b<c;++b)if(a===this.b[b])return b;return-1};_.k.forEach=function(a){for(var b=0,c=this.b.length;b<c;++b)a(this.b[b],b)};_.k.setAt=function(a,b){var c=this.b[a],d=this.b.length;if(a<d)this.b[a]=b,_.z.trigger(this,"set_at",a,c),this.l&&this.l(a,c);else{for(c=d;c<a;++c)this.insertAt(c,void 0);this.insertAt(a,b)}};
+_.k.insertAt=function(a,b){this.b.splice(a,0,b);yc(this);_.z.trigger(this,"insert_at",a);this.f&&this.f(a)};_.k.removeAt=function(a){var b=this.b[a];this.b.splice(a,1);yc(this);_.z.trigger(this,"remove_at",a,b);this.j&&this.j(a,b);return b};_.k.push=function(a){this.insertAt(this.b.length,a);return this.b.length};_.k.pop=function(){return this.removeAt(this.b.length-1)};_.k.getArray=_.qa("b");_.k.clear=function(){for(;this.get("length");)this.pop()};_.xc(_.zc.prototype,{length:null});_.Ac.prototype.remove=function(a){var b=this.f,c=this.j(a);b[c]&&(delete b[c],_.z.trigger(this,"remove",a),this.onRemove&&this.onRemove(a))};_.Ac.prototype.contains=function(a){return!!this.f[this.j(a)]};_.Ac.prototype.forEach=function(a){var b=this.f,c;for(c in b)a.call(this,b[c])};_.Cc.prototype.gb=_.ta(1);_.Cc.prototype.forEach=function(a,b){_.v(this.b,function(c,d){a.call(b,c,d)})};var dh=_.Ib({zoom:_.Qb(Vg),heading:Vg,pitch:Vg});_.t(_.Ec,_.C);var eh=function(a){return function(){return a}}(null);a:{var fh=_.Nc.navigator;if(fh){var gh=fh.userAgent;if(gh){_.Na=gh;break a}}_.Na=""};var Sc,Rc=_.Fc;Vc.prototype.get=function(){var a;0<this.f?(this.f--,a=this.b,this.b=a.next,a.next=null):a=this.j();return a};var hh=new Vc(function(){return new Xc},function(a){a.reset()},100);Wc.prototype.add=function(a,b){var c=hh.get();c.set(a,b);this.f?this.f.next=c:this.b=c;this.f=c};Wc.prototype.remove=function(){var a=null;this.b&&(a=this.b,this.b=this.b.next,this.b||(this.f=null),a.next=null);return a};Xc.prototype.set=function(a,b){this.Gc=a;this.b=b;this.next=null};Xc.prototype.reset=function(){this.next=this.b=this.Gc=null};_.Qc.m=function(){var a=_.Nc.Promise;if(-1!=String(a).indexOf("[native code]")){var b=a.resolve(void 0);_.Qc.b=function(){b.then(_.Qc.f)}}else _.Qc.b=function(){Uc()}};_.Qc.B=function(a){_.Qc.b=function(){Uc();a&&a(_.Qc.f)}};_.Qc.j=!1;_.Qc.l=new Wc;_.Qc.f=function(){for(var a;a=_.Qc.l.remove();){try{a.Gc.call(a.b)}catch(c){Oc(c)}var b=hh;b.m(a);b.f<b.l&&(b.f++,a.next=b.b,b.b=a)}_.Qc.j=!1};Zc.prototype.addListener=function(a,b,c){c=c?{fh:!1}:null;var d=!this.S.length,e;e=this.S;var f=Sa(e,Yc(a,b));(e=0>f?null:_.Ba(e)?e.charAt(f):e[f])?e.ud=e.ud&&c:this.S.push({Gc:a,context:b||null,ud:c});d&&this.f();return a};Zc.prototype.addListenerOnce=function(a,b){this.addListener(a,b,!0);return a};Zc.prototype.removeListener=function(a,b){if(this.S.length){var c=this.S;a=Sa(c,Yc(a,b));0<=a&&_.Ta(c,a);this.S.length||this.b()}};var $c=_.Qc;_.k=_.bd.prototype;_.k.td=_.na();_.k.sd=_.na();_.k.addListener=function(a,b){return this.S.addListener(a,b)};_.k.addListenerOnce=function(a,b){return this.S.addListenerOnce(a,b)};_.k.removeListener=function(a,b){return this.S.removeListener(a,b)};_.k.get=_.va;_.k.notify=function(a){_.ad(this.S,function(a){a(this.get())},this,a)};_.t(_.cd,_.bd);_.cd.prototype.set=function(a){this.jg(a);this.notify()};_.cd.prototype.jg=_.va;_.t(fd,_.cd);fd.prototype.get=_.qa("b");fd.prototype.jg=_.pa("b");_.t(hd,_.C);_.ih=_.pd("d",void 0);_.jh=_.rd("d");_.kh=_.pd("f",void 0);_.S=_.sd();_.lh=_.qd("i",void 0);_.mh=_.rd("i");_.nh=_.rd("j",void 0,"");_.oh=_.pd("u",void 0);_.ph=_.qd("u",void 0);_.qh=_.rd("u");_.rh=_.td();_.T=_.ud();_.U=_.vd();_.sh=_.rd("e");_.V=_.pd("s",void 0);_.th=_.qd("s",void 0);_.uh=_.rd("s");_.vh=_.pd("x",void 0);_.wh=_.qd("x",void 0);_.xh=_.rd("x");_.yh=_.rd("y");_.N.prototype.be=_.ta(2);_.N.prototype.ng=_.ta(3);var Ah;_.zh=new Cd;Ah=/'/g;Cd.prototype.b=function(a,b){var c=[];Ed(a,b,c);return c.join("&").replace(Ah,"%27")};_.Gd[" "]=_.ua;var Nh,Hd;_.Bh=_.Kc("Opera");_.Ch=_.Lc();_.Dh=_.Kc("Edge");_.Eh=_.Kc("Gecko")&&!(_.Oa()&&!_.Kc("Edge"))&&!(_.Kc("Trident")||_.Kc("MSIE"))&&!_.Kc("Edge");_.Fh=_.Oa()&&!_.Kc("Edge");_.Gh=_.Kc("Macintosh");_.Hh=_.Kc("Windows");_.Ih=_.Kc("Linux")||_.Kc("CrOS");_.Jh=_.Kc("Android");_.Kh=_.Fd();_.Lh=_.Kc("iPad");_.Mh=_.Kc("iPod");
+a:{var Oh="",Ph=function(){var a=_.Na;if(_.Eh)return/rv\:([^\);]+)(\)|;)/.exec(a);if(_.Dh)return/Edge\/([\d\.]+)/.exec(a);if(_.Ch)return/\b(?:MSIE|rv)[: ]([^\);]+)(\)|;)/.exec(a);if(_.Fh)return/WebKit\/(\S+)/.exec(a);if(_.Bh)return/(?:Version)[ \/]?(\S+)/.exec(a)}();Ph&&(Oh=Ph?Ph[1]:"");if(_.Ch){var Qh=Jd();if(null!=Qh&&Qh>(0,window.parseFloat)(Oh)){Nh=String(Qh);break a}}Nh=Oh}_.Kd=Nh;Hd={};var Sh=_.Nc.document;_.Rh=Sh&&_.Ch?Jd()||("CSS1Compat"==Sh.compatMode?(0,window.parseInt)(_.Kd,10):5):void 0;_.Th=_.Kc("Firefox");_.Uh=_.Fd()||_.Kc("iPod");_.Vh=_.Kc("iPad");_.Wh=_.Kc("Android")&&!(Mc()||_.Kc("Firefox")||_.Kc("Opera")||_.Kc("Silk"));_.Xh=Mc();_.Yh=_.Kc("Safari")&&!(Mc()||_.Kc("Coast")||_.Kc("Opera")||_.Kc("Edge")||_.Kc("Silk")||_.Kc("Android"))&&!(_.Fd()||_.Kc("iPad")||_.Kc("iPod"));_.Md.prototype.heading=_.qa("b");_.Md.prototype.Pa=_.ta(4);_.Md.prototype.toString=function(){return this.b+","+this.f};_.Zh=new _.Md;_.t(Nd,_.C);Nd.prototype.set=function(a,b){if(null!=b&&!(b&&_.x(b.maxZoom)&&b.tileSize&&b.tileSize.width&&b.tileSize.height&&b.getTile&&b.getTile.apply))throw Error("Expected value implementing google.maps.MapType");return _.C.prototype.set.apply(this,arguments)};_.k=Rd.prototype;_.k.isEmpty=function(){return 360==this.b-this.f};_.k.intersects=function(a){var b=this.b,c=this.f;return this.isEmpty()||a.isEmpty()?!1:_.Sd(this)?_.Sd(a)||a.b<=this.f||a.f>=b:_.Sd(a)?a.b<=c||a.f>=b:a.b<=c&&a.f>=b};_.k.contains=function(a){-180==a&&(a=180);var b=this.b,c=this.f;return _.Sd(this)?(a>=b||a<=c)&&!this.isEmpty():a>=b&&a<=c};_.k.extend=function(a){this.contains(a)||(this.isEmpty()?this.b=this.f=a:_.Vd(a,this.b)<_.Vd(this.f,a)?this.b=a:this.f=a)};
+_.k.Mb=function(){var a=(this.b+this.f)/2;_.Sd(this)&&(a=_.$a(a+180,-180,180));return a};_.k=Wd.prototype;_.k.isEmpty=function(){return this.f>this.b};_.k.intersects=function(a){var b=this.f,c=this.b;return b<=a.f?a.f<=c&&a.f<=a.b:b<=a.b&&b<=c};_.k.contains=function(a){return a>=this.f&&a<=this.b};_.k.extend=function(a){this.isEmpty()?this.b=this.f=a:a<this.f?this.f=a:a>this.b&&(this.b=a)};_.k.Mb=function(){return(this.b+this.f)/2};_.k=_.Yd.prototype;_.k.getCenter=function(){return new _.E(this.f.Mb(),this.b.Mb())};_.k.toString=function(){return"("+this.getSouthWest()+", "+this.getNorthEast()+")"};_.k.toJSON=function(){return{south:this.f.f,west:this.b.b,north:this.f.b,east:this.b.f}};_.k.toUrlValue=function(a){var b=this.getSouthWest(),c=this.getNorthEast();return[b.toUrlValue(a),c.toUrlValue(a)].join()};
+_.k.Ej=function(a){if(!a)return!1;a=_.ae(a);var b=this.f,c=a.f;return(b.isEmpty()?c.isEmpty():1E-9>=Math.abs(c.f-b.f)+Math.abs(b.b-c.b))&&_.Ud(this.b,a.b)};_.Yd.prototype.equals=_.Yd.prototype.Ej;_.k=_.Yd.prototype;_.k.contains=function(a){a=_.Zb(a);return this.f.contains(a.lat())&&this.b.contains(a.lng())};_.k.intersects=function(a){a=_.ae(a);return this.f.intersects(a.f)&&this.b.intersects(a.b)};_.k.extend=function(a){a=_.Zb(a);this.f.extend(a.lat());this.b.extend(a.lng());return this};
+_.k.union=function(a){a=_.ae(a);if(!a||a.isEmpty())return this;this.extend(a.getSouthWest());this.extend(a.getNorthEast());return this};_.k.getSouthWest=function(){return new _.E(this.f.f,this.b.b,!0)};_.k.getNorthEast=function(){return new _.E(this.f.b,this.b.f,!0)};_.k.toSpan=function(){return new _.E(_.Xd(this.f),_.Td(this.b),!0)};_.k.isEmpty=function(){return this.f.isEmpty()||this.b.isEmpty()};var $d=_.Ib({south:_.rc,west:_.rc,north:_.rc,east:_.rc},!1);_.t(_.be,_.C);_.k=ce.prototype;_.k.contains=function(a){return this.b.hasOwnProperty(_.yb(a))};_.k.getFeatureById=function(a){return jb(this.f,a)};
+_.k.add=function(a){a=a||{};a=a instanceof _.qc?a:new _.qc(a);if(!this.contains(a)){var b=a.getId();if(b){var c=this.getFeatureById(b);c&&this.remove(c)}c=_.yb(a);this.b[c]=a;b&&(this.f[b]=a);var d=_.z.forward(a,"setgeometry",this),e=_.z.forward(a,"setproperty",this),f=_.z.forward(a,"removeproperty",this);this.j[c]=function(){_.z.removeListener(d);_.z.removeListener(e);_.z.removeListener(f)};_.z.trigger(this,"addfeature",{feature:a})}return a};
+_.k.remove=function(a){var b=_.yb(a),c=a.getId();if(this.b[b]){delete this.b[b];c&&delete this.f[c];if(c=this.j[b])delete this.j[b],c();_.z.trigger(this,"removefeature",{feature:a})}};_.k.forEach=function(a){for(var b in this.b)a(this.b[b])};de.prototype.get=function(a){return this.b[a]};de.prototype.set=function(a,b){var c=this.b;c[a]||(c[a]={});_.Xa(c[a],b);_.z.trigger(this,"changed",a)};de.prototype.reset=function(a){delete this.b[a];_.z.trigger(this,"changed",a)};de.prototype.forEach=function(a){_.Wa(this.b,a)};_.t(ee,_.C);ee.prototype.overrideStyle=function(a,b){this.b.set(_.yb(a),b)};ee.prototype.revertStyle=function(a){a?this.b.reset(_.yb(a)):this.b.forEach((0,_.p)(this.b.reset,this.b))};_.t(_.ge,Yb);_.k=_.ge.prototype;_.k.getType=_.ra("GeometryCollection");_.k.getLength=function(){return this.b.length};_.k.getAt=function(a){return this.b[a]};_.k.getArray=function(){return this.b.slice()};_.k.forEachLatLng=function(a){this.b.forEach(function(b){b.forEachLatLng(a)})};_.t(_.ie,Yb);_.k=_.ie.prototype;_.k.getType=_.ra("LineString");_.k.getLength=function(){return this.b.length};_.k.getAt=function(a){return this.b[a]};_.k.getArray=function(){return this.b.slice()};_.k.forEachLatLng=function(a){this.b.forEach(a)};var je=_.Mb(_.Kb(_.ie,"google.maps.Data.LineString",!0));_.t(_.ke,Yb);_.k=_.ke.prototype;_.k.getType=_.ra("MultiLineString");_.k.getLength=function(){return this.b.length};_.k.getAt=function(a){return this.b[a]};_.k.getArray=function(){return this.b.slice()};_.k.forEachLatLng=function(a){this.b.forEach(function(b){b.forEachLatLng(a)})};_.t(_.le,Yb);_.k=_.le.prototype;_.k.getType=_.ra("MultiPoint");_.k.getLength=function(){return this.b.length};_.k.getAt=function(a){return this.b[a]};_.k.getArray=function(){return this.b.slice()};_.k.forEachLatLng=function(a){this.b.forEach(a)};_.t(_.me,Yb);_.k=_.me.prototype;_.k.getType=_.ra("LinearRing");_.k.getLength=function(){return this.b.length};_.k.getAt=function(a){return this.b[a]};_.k.getArray=function(){return this.b.slice()};_.k.forEachLatLng=function(a){this.b.forEach(a)};var ne=_.Mb(_.Kb(_.me,"google.maps.Data.LinearRing",!0));_.t(_.pe,Yb);_.k=_.pe.prototype;_.k.getType=_.ra("Polygon");_.k.getLength=function(){return this.b.length};_.k.getAt=function(a){return this.b[a]};_.k.getArray=function(){return this.b.slice()};_.k.forEachLatLng=function(a){this.b.forEach(function(b){b.forEachLatLng(a)})};var qe=_.Mb(_.Kb(_.pe,"google.maps.Data.Polygon",!0));_.t(_.re,Yb);_.k=_.re.prototype;_.k.getType=_.ra("MultiPolygon");_.k.getLength=function(){return this.b.length};_.k.getAt=function(a){return this.b[a]};_.k.getArray=function(){return this.b.slice()};_.k.forEachLatLng=function(a){this.b.forEach(function(b){b.forEachLatLng(a)})};var $h=_.Ib({source:_.Wg,webUrl:_.Zg,iosDeepLinkId:_.Zg});var ai=_.Pb(_.Ib({placeId:_.Zg,query:_.Zg,location:_.Zb}),function(a){if(a.placeId&&a.query)throw _.Gb("cannot set both placeId and query");if(!a.placeId&&!a.query)throw _.Gb("must set one of placeId or query");return a});_.t(se,_.C);
+_.xc(se.prototype,{position:_.Qb(_.Zb),title:_.Zg,icon:_.Qb(_.Ob([_.Wg,{rg:Rb("url"),then:_.Ib({url:_.Wg,scaledSize:_.Qb(tc),size:_.Qb(tc),origin:_.Qb(sc),anchor:_.Qb(sc),labelOrigin:_.Qb(sc),path:_.Nb(function(a){return null==a})},!0)},{rg:Rb("path"),then:_.Ib({path:_.Ob([_.Wg,_.Lb(ch)]),anchor:_.Qb(sc),labelOrigin:_.Qb(sc),fillColor:_.Zg,fillOpacity:_.Yg,rotation:_.Yg,scale:_.Yg,strokeColor:_.Zg,strokeOpacity:_.Yg,strokeWeight:_.Yg,url:_.Nb(function(a){return null==a})},!0)}])),label:_.Qb(_.Ob([_.Wg,{rg:Rb("text"),
+then:_.Ib({text:_.Wg,fontSize:_.Zg,fontWeight:_.Zg,fontFamily:_.Zg},!0)}])),shadow:_.Fc,shape:_.Fc,cursor:_.Zg,clickable:_.$g,animation:_.Fc,draggable:_.$g,visible:_.$g,flat:_.Fc,zIndex:_.Yg,opacity:_.Yg,place:_.Qb(ai),attribution:_.Qb($h)});var jc={main:[],common:["main"],util:["common"],adsense:["main"],controls:["util"],data:["util"],directions:["util","geometry"],distance_matrix:["util"],drawing:["main"],drawing_impl:["controls"],elevation:["util","geometry"],geocoder:["util"],geojson:["main"],imagery_viewer:["main"],geometry:["main"],infowindow:["util"],kml:["onion","util","map"],layers:["map"],map:["common"],marker:["util"],maxzoom:["util"],onion:["util","map"],overlay:["common"],panoramio:["main"],places:["main"],places_impl:["controls"],
+poly:["util","map","geometry"],search:["main"],search_impl:["onion"],stats:["util"],streetview:["util","geometry"],usage:["util"],visualization:["main"],visualization_impl:["onion"],weather:["main"],zombie:["main"]};var bi=_.Nc.google.maps,ci=gc.Ob(),di=(0,_.p)(ci.wb,ci);bi.__gjsload__=di;_.Wa(bi.modules,di);delete bi.modules;_.ei=_.Qb(_.Kb(_.be,"Map"));var fi=_.Qb(_.Kb(_.Ec,"StreetViewPanorama"));_.t(_.ve,se);_.ve.prototype.map_changed=function(){this.__gm.set&&this.__gm.set.remove(this);var a=this.get("map");this.__gm.set=a&&a.__gm.Jc;this.__gm.set&&_.Bc(this.__gm.set,this)};_.ve.MAX_ZINDEX=1E6;_.xc(_.ve.prototype,{map:_.Ob([_.ei,fi])});var ye=Ae(_.Kb(_.E,"LatLng"));_.t(Ce,_.C);Ce.prototype.map_changed=Ce.prototype.visible_changed=function(){var a=this;_.F("poly",function(b){b.f(a)})};Ce.prototype.getPath=function(){return this.get("latLngs").getAt(0)};Ce.prototype.setPath=function(a){try{this.get("latLngs").setAt(0,ze(a))}catch(b){_.Hb(b)}};_.xc(Ce.prototype,{draggable:_.$g,editable:_.$g,map:_.ei,visible:_.$g});_.t(_.De,Ce);_.De.prototype.Ea=!0;_.De.prototype.getPaths=function(){return this.get("latLngs")};_.De.prototype.setPaths=function(a){this.set("latLngs",Be(a))};_.t(_.Ee,Ce);_.Ee.prototype.Ea=!1;_.Ge="click dblclick mousedown mousemove mouseout mouseover mouseup rightclick".split(" ");_.t(He,_.C);_.k=He.prototype;_.k.contains=function(a){return this.b.contains(a)};_.k.getFeatureById=function(a){return this.b.getFeatureById(a)};_.k.add=function(a){return this.b.add(a)};_.k.remove=function(a){this.b.remove(a)};_.k.forEach=function(a){this.b.forEach(a)};_.k.addGeoJson=function(a,b){return _.Fe(this.b,a,b)};_.k.loadGeoJson=function(a,b,c){var d=this.b;_.F("data",function(e){e.Sl(d,a,b,c)})};_.k.toGeoJson=function(a){var b=this.b;_.F("data",function(c){c.Ol(b,a)})};
+_.k.overrideStyle=function(a,b){this.f.overrideStyle(a,b)};_.k.revertStyle=function(a){this.f.revertStyle(a)};_.k.controls_changed=function(){this.get("controls")&&Ie(this)};_.k.drawingMode_changed=function(){this.get("drawingMode")&&Ie(this)};_.xc(He.prototype,{map:_.ei,style:_.Fc,controls:_.Qb(_.Mb(_.Lb(Ug))),controlPosition:_.Qb(_.Lb(_.pf)),drawingMode:_.Qb(_.Lb(Ug))});_.gi={METRIC:0,IMPERIAL:1};_.hi={DRIVING:"DRIVING",WALKING:"WALKING",BICYCLING:"BICYCLING",TRANSIT:"TRANSIT"};_.ii={BEST_GUESS:"bestguess",OPTIMISTIC:"optimistic",PESSIMISTIC:"pessimistic"};_.ji={BUS:"BUS",RAIL:"RAIL",SUBWAY:"SUBWAY",TRAIN:"TRAIN",TRAM:"TRAM"};_.ki={LESS_WALKING:"LESS_WALKING",FEWER_TRANSFERS:"FEWER_TRANSFERS"};var li=_.Ib({routes:_.Mb(_.Nb(_.eb))},!0);_.t(Ke,_.C);_.k=Ke.prototype;_.k.internalAnchor_changed=function(){var a=this.get("internalAnchor");Le(this,"attribution",a);Le(this,"place",a);Le(this,"internalAnchorMap",a,"map");Le(this,"internalAnchorPoint",a,"anchorPoint");a instanceof _.ve?Le(this,"internalAnchorPosition",a,"internalPosition"):Le(this,"internalAnchorPosition",a,"position")};
+_.k.internalAnchorPoint_changed=Ke.prototype.internalPixelOffset_changed=function(){var a=this.get("internalAnchorPoint")||_.ah,b=this.get("internalPixelOffset")||_.bh;this.set("pixelOffset",new _.I(b.width+Math.round(a.x),b.height+Math.round(a.y)))};_.k.internalAnchorPosition_changed=function(){var a=this.get("internalAnchorPosition");a&&this.set("position",a)};_.k.internalAnchorMap_changed=function(){this.get("internalAnchor")&&this.b.set("map",this.get("internalAnchorMap"))};
+_.k.xn=function(){var a=this.get("internalAnchor");!this.b.get("map")&&a&&a.get("map")&&this.set("internalAnchor",null)};_.k.internalContent_changed=function(){this.set("content",Je(this.get("internalContent")))};_.k.trigger=function(a){_.z.trigger(this.b,a)};_.k.close=function(){this.b.set("map",null)};_.t(_.Me,_.C);_.xc(_.Me.prototype,{content:_.Ob([_.Zg,_.Nb(Jb)]),position:_.Qb(_.Zb),size:_.Qb(tc),map:_.Ob([_.ei,fi]),anchor:_.Qb(_.Kb(_.C,"MVCObject")),zIndex:_.Yg});_.Me.prototype.open=function(a,b){this.set("anchor",b);b?!this.get("map")&&a&&this.set("map",a):this.set("map",a)};_.Me.prototype.close=function(){this.set("map",null)};_.Ne=[];_.t(Pe,_.C);Pe.prototype.changed=function(a){if("map"==a||"panel"==a){var b=this;_.F("directions",function(c){c.xm(b,a)})}"panel"==a&&_.Oe(this.getPanel())};_.xc(Pe.prototype,{directions:li,map:_.ei,panel:_.Qb(_.Nb(Jb)),routeIndex:_.Yg});Qe.prototype.route=function(a,b){_.F("directions",function(c){c.Ci(a,b,!0)})};Re.prototype.getDistanceMatrix=function(a,b){_.F("distance_matrix",function(c){c.b(a,b)})};Se.prototype.getElevationAlongPath=function(a,b){_.F("elevation",function(c){c.getElevationAlongPath(a,b)})};Se.prototype.getElevationForLocations=function(a,b){_.F("elevation",function(c){c.getElevationForLocations(a,b)})};_.mi=_.Kb(_.Yd,"LatLngBounds");_.Te.prototype.geocode=function(a,b){_.F("geocoder",function(c){c.geocode(a,b)})};_.t(_.Ue,_.C);_.Ue.prototype.map_changed=function(){var a=this;_.F("kml",function(b){b.b(a)})};_.xc(_.Ue.prototype,{map:_.ei,url:null,bounds:null,opacity:_.Yg});_.oi={UNKNOWN:"UNKNOWN",OK:_.ha,INVALID_REQUEST:_.ca,DOCUMENT_NOT_FOUND:"DOCUMENT_NOT_FOUND",FETCH_ERROR:"FETCH_ERROR",INVALID_DOCUMENT:"INVALID_DOCUMENT",DOCUMENT_TOO_LARGE:"DOCUMENT_TOO_LARGE",LIMITS_EXCEEDED:"LIMITS_EXECEEDED",TIMED_OUT:"TIMED_OUT"};_.t(Ve,_.C);_.k=Ve.prototype;_.k.Nd=function(){var a=this;_.F("kml",function(b){b.f(a)})};_.k.url_changed=Ve.prototype.Nd;_.k.driveFileId_changed=Ve.prototype.Nd;_.k.map_changed=Ve.prototype.Nd;_.k.zIndex_changed=Ve.prototype.Nd;_.xc(Ve.prototype,{map:_.ei,defaultViewport:null,metadata:null,status:null,url:_.Zg,screenOverlays:_.$g,zIndex:_.Yg});_.t(_.Ze,_.C);_.xc(_.Ze.prototype,{map:_.ei});_.t($e,_.C);_.xc($e.prototype,{map:_.ei});_.t(af,_.C);_.xc(af.prototype,{map:_.ei});_.of={japan_prequake:20,japan_postquake2010:24};_.pi={NEAREST:"nearest",BEST:"best"};_.qi={DEFAULT:"default",OUTDOOR:"outdoor"};var ri;_.t(bf,_.N);var si;_.t(cf,_.N);var ti;_.t(df,_.N);var ui;_.t(ef,_.N);_.t(ff,_.N);_.t(_.gf,_.N);_.t(hf,_.N);_.t(jf,_.N);_.t(kf,_.N);_.t(qf,_.Ec);qf.prototype.visible_changed=function(){var a=this;!a.B&&a.getVisible()&&(a.B=!0,_.F("streetview",function(b){var c;a.j&&(c=a.j);b.On(a,c)}))};_.xc(qf.prototype,{visible:_.$g,pano:_.Zg,position:_.Qb(_.Zb),pov:_.Qb(dh),motionTracking:Xg,photographerPov:null,location:null,links:_.Mb(_.Nb(_.eb)),status:null,zoom:_.Yg,enableCloseButton:_.$g});qf.prototype.registerPanoProvider=function(a,b){this.set("panoProvider",{ui:a,options:b||{}})};_.k=_.rf.prototype;_.k.Xd=_.ta(5);_.k.zb=_.ta(6);_.k.Gd=_.ta(7);_.k.Fd=_.ta(8);_.k.Ed=_.ta(9);_.t(sf,hd);_.tf.prototype.addListener=function(a,b){this.S.addListener(a,b)};_.tf.prototype.addListenerOnce=function(a,b){this.S.addListenerOnce(a,b)};_.tf.prototype.removeListener=function(a,b){this.S.removeListener(a,b)};_.tf.prototype.b=_.ta(10);_.pg={};_.uf.prototype.fromLatLngToPoint=function(a,b){b=b||new _.G(0,0);var c=this.b;b.x=c.x+a.lng()*this.j;a=_.Za(Math.sin(_.Sb(a.lat())),-(1-1E-15),1-1E-15);b.y=c.y+.5*Math.log((1+a)/(1-a))*-this.l;return b};_.uf.prototype.fromPointToLatLng=function(a,b){var c=this.b;return new _.E(_.Tb(2*Math.atan(Math.exp((a.y-c.y)/-this.l))-Math.PI/2),(a.x-c.x)/this.j,b)};_.vf.prototype.isEmpty=function(){return!(this.J<this.M&&this.K<this.N)};_.vf.prototype.extend=function(a){a&&(this.J=Math.min(this.J,a.x),this.M=Math.max(this.M,a.x),this.K=Math.min(this.K,a.y),this.N=Math.max(this.N,a.y))};_.vf.prototype.getCenter=function(){return new _.G((this.J+this.M)/2,(this.K+this.N)/2)};_.vi=_.wf(-window.Infinity,-window.Infinity,window.Infinity,window.Infinity);_.wi=_.wf(0,0,0,0);_.t(_.zf,_.C);_.zf.prototype.L=function(){var a=this;a.F||(a.F=window.setTimeout(function(){a.F=void 0;a.Y()},a.ql))};_.zf.prototype.B=function(){this.F&&window.clearTimeout(this.F);this.F=void 0;this.Y()};_.zf.prototype.Y=_.va;var xi;_.t(Cf,_.N);var yi;_.t(Df,_.N);var zi;_.t(Ef,_.N);var Ai;_.t(Ff,_.N);var Li;_.t(Gf,_.N);Gf.prototype.getZoom=function(){return _.O(this,2)};Gf.prototype.setZoom=function(a){this.data[2]=a};_.t(Hf,_.zf);var If={roadmap:0,satellite:2,hybrid:3,terrain:4},Mi={0:1,2:2,3:2,4:2};_.k=Hf.prototype;_.k.Ch=_.uc("center");_.k.Gg=_.uc("zoom");_.k.changed=function(){var a=this.Ch(),b=this.Gg(),c=Jf(this);if(a&&!a.b(this.I)||this.G!=b||this.O!=c)Kf(this.f),this.L(),this.G=b,this.O=c;this.I=a};
+_.k.Y=function(){var a="",b=this.Ch(),c=this.Gg(),d=Jf(this),e=this.get("size");if(e){if(b&&(0,window.isFinite)(b.lat())&&(0,window.isFinite)(b.lng())&&1<c&&null!=d&&e&&e.width&&e.height&&this.b){_.Af(this.b,e);var f;(b=_.xf(this.l,b,c))?(f=new _.vf,f.J=Math.round(b.x-e.width/2),f.M=f.J+e.width,f.K=Math.round(b.y-e.height/2),f.N=f.K+e.height):f=null;b=Mi[d];if(f){var a=new Gf,g=new Ef(_.Q(a,0));g.data[0]=f.J;g.data[1]=f.K;a.data[1]=b;a.setZoom(c);c=new Ff(_.Q(a,3));c.data[0]=f.M-f.J;c.data[1]=f.N-
+f.K;c=new Df(_.Q(a,4));c.data[0]=d;c.data[4]=_.lf(_.nf(_.R));c.data[5]=_.mf(_.nf(_.R)).toLowerCase();c.data[9]=!0;c.data[11]=!0;d=this.C+(0,window.unescape)("%3F");if(!Li){c=Li={D:-1,A:[]};b=new Ef([]);zi||(zi={D:-1,A:[,_.S,_.S]});b=_.L(b,zi);f=new Ff([]);Ai||(Ai={D:-1,A:[]},Ai.A=[,_.oh,_.oh,_.vd(1)]);f=_.L(f,Ai);g=new Df([]);if(!yi){var h=[];yi={D:-1,A:h};h[1]=_.U;h[2]=_.T;h[3]=_.T;h[5]=_.V;h[6]=_.V;var l=new Cf([]);xi||(xi={D:-1,A:[,_.sh,_.T]});h[9]=_.L(l,xi);h[10]=_.T;h[11]=_.T;h[12]=_.T;h[100]=
+_.T}g=_.L(g,yi);h=new bf([]);if(!ri){var l=ri={D:-1,A:[]},n=new cf([]);si||(si={D:-1,A:[,_.T]});var n=_.L(n,si),q=new ef([]);ui||(ui={D:-1,A:[,_.T,_.T]});var q=_.L(q,ui),r=new df([]);ti||(ti={D:-1,A:[,_.T]});l.A=[,n,,,,,,,,,q,,_.L(r,ti)]}c.A=[,b,_.U,_.oh,f,g,_.L(h,ri)]}a=_.zh.b(a.data,Li);a=this.m(d+a)}}this.f&&(_.Af(this.f,e),Uf(this,a))}};
+_.k.div_changed=function(){var a=this.get("div"),b=this.b;if(a)if(b)a.appendChild(b);else{b=this.b=window.document.createElement("div");b.style.overflow="hidden";var c=this.f=window.document.createElement("img");_.z.addDomListener(b,"contextmenu",function(a){_.mb(a);_.ob(a)});c.ontouchstart=c.ontouchmove=c.ontouchend=c.ontouchcancel=function(a){_.nb(a);_.ob(a)};_.Af(c,_.bh);a.appendChild(b);this.Y()}else b&&(Kf(b),this.b=null)};var ag;_.og="StopIteration"in _.Nc?_.Nc.StopIteration:{message:"StopIteration",stack:""};_.cg.prototype.next=function(){throw _.og;};_.cg.prototype.lf=function(){return this};_.dg.prototype.Of=!0;_.dg.prototype.Pb=_.ta(12);_.dg.prototype.Ph=!0;_.dg.prototype.fe=_.ta(14);_.eg("about:blank");_.gg.prototype.Ph=!0;_.gg.prototype.fe=_.ta(13);_.gg.prototype.Of=!0;_.gg.prototype.Pb=_.ta(11);_.fg={};_.hg("<!DOCTYPE html>",0);_.hg("",0);_.hg("<br>",0);!_.Eh&&!_.Ch||_.Ch&&9<=Number(_.Rh)||_.Eh&&_.Ld("1.9.1");_.Ch&&_.Ld("9");_.t(kg,_.cg);kg.prototype.setPosition=function(a,b,c){if(this.node=a)this.f=_.Ca(b)?b:1!=this.node.nodeType?0:this.b?-1:1;_.Ca(c)&&(this.depth=c)};
+kg.prototype.next=function(){var a;if(this.j){if(!this.node||this.l&&0==this.depth)throw _.og;a=this.node;var b=this.b?-1:1;if(this.f==b){var c=this.b?a.lastChild:a.firstChild;c?this.setPosition(c):this.setPosition(a,-1*b)}else(c=this.b?a.previousSibling:a.nextSibling)?this.setPosition(c):this.setPosition(a.parentNode,-1*b);this.depth+=this.f*(this.b?-1:1)}else this.j=!0;a=this.node;if(!this.node)throw _.og;return a};
+kg.prototype.splice=function(a){var b=this.node,c=this.b?1:-1;this.f==c&&(this.f=-1*c,this.depth+=this.f*(this.b?-1:1));this.b=!this.b;kg.prototype.next.call(this);this.b=!this.b;for(var c=_.za(arguments[0])?arguments[0]:arguments,d=c.length-1;0<=d;d--)_.ig(c[d],b);_.jg(b)};_.t(lg,kg);lg.prototype.next=function(){do lg.Zb.next.call(this);while(-1==this.f);return this.node};_.t(sg,_.be);_.k=sg.prototype;_.k.streetView_changed=function(){var a=this.get("streetView");a?a.set("standAlone",!1):this.set("streetView",this.__gm.j)};_.k.getDiv=function(){return this.__gm.U};_.k.panBy=function(a,b){var c=this.__gm;_.F("map",function(){_.z.trigger(c,"panby",a,b)})};_.k.panTo=function(a){var b=this.__gm;a=_.Zb(a);_.F("map",function(){_.z.trigger(b,"panto",a)})};_.k.panToBounds=function(a){var b=this.__gm,c=_.ae(a);_.F("map",function(){_.z.trigger(b,"pantolatlngbounds",c)})};
+_.k.fitBounds=function(a){var b=this;a=_.ae(a);_.F("map",function(c){c.fitBounds(b,a)})};_.xc(sg.prototype,{bounds:null,streetView:fi,center:_.Qb(_.Zb),zoom:_.Yg,mapTypeId:_.Zg,projection:null,heading:_.Yg,tilt:_.Yg,clickableIcons:Xg});tg.prototype.getMaxZoomAtLatLng=function(a,b){_.F("maxzoom",function(c){c.getMaxZoomAtLatLng(a,b)})};_.t(ug,_.C);ug.prototype.changed=function(a){if("suppressInfoWindows"!=a&&"clickable"!=a){var b=this;_.F("onion",function(a){a.b(b)})}};_.xc(ug.prototype,{map:_.ei,tableId:_.Yg,query:_.Qb(_.Ob([_.Wg,_.Nb(_.eb,"not an Object")]))});_.t(_.vg,_.C);_.vg.prototype.map_changed=function(){var a=this;_.F("overlay",function(b){b.Zk(a)})};_.xc(_.vg.prototype,{panes:null,projection:null,map:_.Ob([_.ei,fi])});_.t(_.wg,_.C);_.wg.prototype.map_changed=_.wg.prototype.visible_changed=function(){var a=this;_.F("poly",function(b){b.b(a)})};_.wg.prototype.center_changed=function(){_.z.trigger(this,"bounds_changed")};_.wg.prototype.radius_changed=_.wg.prototype.center_changed;_.wg.prototype.getBounds=function(){var a=this.get("radius"),b=this.get("center");if(b&&_.x(a)){var c=this.get("map"),c=c&&c.__gm.get("baseMapType");return _.yf(b,a/_.xe(c))}return null};
+_.xc(_.wg.prototype,{center:_.Qb(_.Zb),draggable:_.$g,editable:_.$g,map:_.ei,radius:_.Yg,visible:_.$g});_.t(_.xg,_.C);_.xg.prototype.map_changed=_.xg.prototype.visible_changed=function(){var a=this;_.F("poly",function(b){b.j(a)})};_.xc(_.xg.prototype,{draggable:_.$g,editable:_.$g,bounds:_.Qb(_.ae),map:_.ei,visible:_.$g});_.t(yg,_.C);yg.prototype.map_changed=function(){var a=this;_.F("streetview",function(b){b.Yk(a)})};_.xc(yg.prototype,{map:_.ei});_.zg.prototype.getPanorama=function(a,b){var c=this.b||void 0;_.F("streetview",function(d){_.F("geometry",function(e){d.$l(a,b,e.computeHeading,e.computeOffset,c)})})};_.zg.prototype.getPanoramaByLocation=function(a,b,c){this.getPanorama({location:a,radius:b,preference:50>(b||0)?"best":"nearest"},c)};_.zg.prototype.getPanoramaById=function(a,b){this.getPanorama({pano:a},b)};_.t(_.Ag,_.C);_.k=_.Ag.prototype;_.k.getTile=function(a,b,c){if(!a||!c)return null;var d=c.createElement("div");c={Z:a,zoom:b,$b:null};d.__gmimt=c;_.Bc(this.b,d);var e=Cg(this);1!=e&&Bg(d,e);if(this.f){var e=this.tileSize||new _.I(256,256),f=this.j(a,b);c.$b=this.f(a,b,e,d,f,function(){_.z.trigger(d,"load")})}return d};_.k.releaseTile=function(a){a&&this.b.contains(a)&&(this.b.remove(a),(a=a.__gmimt.$b)&&a.release())};_.k.Ef=_.ta(15);
+_.k.opacity_changed=function(){var a=Cg(this);this.b.forEach(function(b){Bg(b,a)})};_.k.Gb=!0;_.xc(_.Ag.prototype,{opacity:_.Yg});_.t(_.Dg,_.C);_.Dg.prototype.getTile=eh;_.Dg.prototype.b=_.va;_.Dg.prototype.tileSize=new _.I(256,256);_.Dg.prototype.Gb=!0;_.t(_.Eg,_.Dg);_.t(_.Fg,_.C);_.xc(_.Fg.prototype,{attribution:_.Qb($h),place:_.Qb(ai)});var Oi={Animation:{BOUNCE:1,DROP:2,Gp:3,Ep:4},Circle:_.wg,ControlPosition:_.pf,Data:He,GroundOverlay:_.Ue,ImageMapType:_.Ag,InfoWindow:_.Me,LatLng:_.E,LatLngBounds:_.Yd,MVCArray:_.zc,MVCObject:_.C,Map:sg,MapTypeControlStyle:{DEFAULT:0,HORIZONTAL_BAR:1,DROPDOWN_MENU:2,INSET:3,INSET_LARGE:4},MapTypeId:_.Tg,MapTypeRegistry:Nd,Marker:_.ve,MarkerImage:function(a,b,c,d,e){this.url=a;this.size=b||e;this.origin=c;this.anchor=d;this.scaledSize=e;this.labelOrigin=null},NavigationControlStyle:{DEFAULT:0,SMALL:1,
+ANDROID:2,ZOOM_PAN:3,Hp:4,Hk:5},OverlayView:_.vg,Point:_.G,Polygon:_.De,Polyline:_.Ee,Rectangle:_.xg,ScaleControlStyle:{DEFAULT:0},Size:_.I,StreetViewPreference:_.pi,StreetViewSource:_.qi,StrokePosition:{CENTER:0,INSIDE:1,OUTSIDE:2},SymbolPath:ch,ZoomControlStyle:{DEFAULT:0,SMALL:1,LARGE:2,Hk:3},event:_.z};
+_.Xa(Oi,{BicyclingLayer:_.Ze,DirectionsRenderer:Pe,DirectionsService:Qe,DirectionsStatus:{OK:_.ha,UNKNOWN_ERROR:_.ka,OVER_QUERY_LIMIT:_.ia,REQUEST_DENIED:_.ja,INVALID_REQUEST:_.ca,ZERO_RESULTS:_.la,MAX_WAYPOINTS_EXCEEDED:_.fa,NOT_FOUND:_.ga},DirectionsTravelMode:_.hi,DirectionsUnitSystem:_.gi,DistanceMatrixService:Re,DistanceMatrixStatus:{OK:_.ha,INVALID_REQUEST:_.ca,OVER_QUERY_LIMIT:_.ia,REQUEST_DENIED:_.ja,UNKNOWN_ERROR:_.ka,MAX_ELEMENTS_EXCEEDED:_.ea,MAX_DIMENSIONS_EXCEEDED:_.da},DistanceMatrixElementStatus:{OK:_.ha,
+NOT_FOUND:_.ga,ZERO_RESULTS:_.la},ElevationService:Se,ElevationStatus:{OK:_.ha,UNKNOWN_ERROR:_.ka,OVER_QUERY_LIMIT:_.ia,REQUEST_DENIED:_.ja,INVALID_REQUEST:_.ca,Bp:"DATA_NOT_AVAILABLE"},FusionTablesLayer:ug,Geocoder:_.Te,GeocoderLocationType:{ROOFTOP:"ROOFTOP",RANGE_INTERPOLATED:"RANGE_INTERPOLATED",GEOMETRIC_CENTER:"GEOMETRIC_CENTER",APPROXIMATE:"APPROXIMATE"},GeocoderStatus:{OK:_.ha,UNKNOWN_ERROR:_.ka,OVER_QUERY_LIMIT:_.ia,REQUEST_DENIED:_.ja,INVALID_REQUEST:_.ca,ZERO_RESULTS:_.la,ERROR:_.ba},KmlLayer:Ve,
+KmlLayerStatus:_.oi,MaxZoomService:tg,MaxZoomStatus:{OK:_.ha,ERROR:_.ba},SaveWidget:_.Fg,StreetViewCoverageLayer:yg,StreetViewPanorama:qf,StreetViewService:_.zg,StreetViewStatus:{OK:_.ha,UNKNOWN_ERROR:_.ka,ZERO_RESULTS:_.la},StyledMapType:_.Eg,TrafficLayer:$e,TrafficModel:_.ii,TransitLayer:af,TransitMode:_.ji,TransitRoutePreference:_.ki,TravelMode:_.hi,UnitSystem:_.gi});_.Xa(He,{Feature:_.qc,Geometry:Yb,GeometryCollection:_.ge,LineString:_.ie,LinearRing:_.me,MultiLineString:_.ke,MultiPoint:_.le,MultiPolygon:_.re,Point:_.$b,Polygon:_.pe});_.lc("main",{});var Ig=/'/g,Jg;var te=arguments[0];
+window.google.maps.Load(function(a,b){var c=window.google.maps;Ng();var d=Og(c);_.R=new jf(a);_.Pi=Math.random()<_.O(_.R,0,1);_.Qi=Math.round(1E15*Math.random()).toString(36);_.rg=Kg();_.ni=Lg();_.Ni=new _.zc;_.Zf=b;for(a=0;a<_.Bd(_.R,8);++a)_.pg[_.Ad(_.R,8,a)]=!0;a=new _.gf(_.R.data[3]);ue(_.P(a,0));_.Wa(Oi,function(a,b){c[a]=b});c.version=_.P(a,1);window.setTimeout(function(){mc(["util","stats"],function(a,b){a.f.b();a.j();d&&b.b.b({ev:"api_alreadyloaded",client:_.P(_.R,6),key:_.P(_.R,16)})})},
+5E3);_.z.fo();ag=new $f;(a=_.P(_.R,11))&&mc(_.zd(_.R,12),Mg(a),!0)});}).call(this,{});
 
 
 (function($) {
@@ -5159,6 +3684,7 @@ KmlLayerStatus:_.Di,MaxZoomService:Eg,MaxZoomStatus:{OK:_.ga,ERROR:_.aa},SaveWid
 //    $('.btn-cancel').click(function(e){
 //    e.preventDefault();});
 //    });
+
 
 
 
@@ -5198,8 +3724,9 @@ KmlLayerStatus:_.Di,MaxZoomService:Eg,MaxZoomStatus:{OK:_.ga,ERROR:_.aa},SaveWid
         $(this).toggleClass('open');
     });
 
-    $('.bid_list_button').click(function() {
+    $('.bid_list_button, .bid_list-footer').click(function() {
         $('.bid_list').toggleClass('open');
+
     });
 
     $('.bid_list-footer .btn').click(function() {
@@ -5209,10 +3736,14 @@ KmlLayerStatus:_.Di,MaxZoomService:Eg,MaxZoomStatus:{OK:_.ga,ERROR:_.aa},SaveWid
         $('.bids_list').toggleClass('open');
     });
 
-    $('#modal-dtp .btn-cancel').click(function() {
-        $('#modal-dtp').toggleClass('open');
+    $('#modal-help .btn-cancel').click(function() {
+        $('#modal-help').toggleClass('open');
     });
 
+    $('#modal-copy .btn-cancel').click(function() {
+        $('#modal-copy').toggleClass('open');
+    });
+    
     $('.dialog_window_publication_bids_list-footer .btn-public').click(function() {
         var snackbarContainer = document.querySelector('#snackbar_container');
         var handler = function(event) {
@@ -5337,8 +3868,11 @@ KmlLayerStatus:_.Di,MaxZoomService:Eg,MaxZoomStatus:{OK:_.ga,ERROR:_.aa},SaveWid
     });
     $('.right_menu_button').click(function() {
         $('.right_menu').toggleClass('close');
-        $('.bid_list').toggleClass('close');
+        //$('.bid_list').toggleClass('close');
         $('.main_search_container').toggleClass('close');
+        $('.ol-overviewmap').toggleClass('close');
+        $('.account_container').toggleClass('close');
+        $('.language_container').toggleClass('close');
 
     });
 
@@ -5439,18 +3973,2282 @@ KmlLayerStatus:_.Di,MaxZoomService:Eg,MaxZoomStatus:{OK:_.ga,ERROR:_.aa},SaveWid
             $(this).next('.mdl-navigation__level2').slideToggle(400); //раскрываем/скрываем следующий за "кликнутым" p блок div с эффектом slide
         }
     });
-    $('.mdl-navigation__level3').click(function(event) { //при клике на пункт меню:
+    //Убираем выключения слоя при перетаскивании слайдера//
+    var slide_vinOrtoSidebar = true;
+    $('#slider_vinOrtoSidebar').on('mousedown', function(event){
+        slide_vinOrtoSidebar = false;
+    })
 
-        if (event.target.className == 'material-icons') {
+    $('#slider_vinOrtoSidebar').on('click', function(event){
+        event.stopImmediatePropagation();
+        slide_vinOrtoSidebar = true;
+    })
+    var slide_orto10000sidebar = true;
+    $('#slider_orto10000sidebar').on('mousedown', function(event){
+        slide_orto10000sidebar = false;
+    })
 
+    $('#slider_orto10000sidebar').on('click', function(event){
+        event.stopImmediatePropagation();
+        slide_orto10000sidebar = true;
+    })
+
+    $('.mdl-navigation__level3').on('click',function(event) { //при клике на пункт меню:
+        console.log($(this).getId);
+        if(($(this).attr('id') == 'orto10000' && slide_orto10000sidebar == false)||($(this).attr('id') == 'vinOrto' && slide_vinOrtoSidebar == false)){
+        }else{
+            event.relatedTarget;
+            if (event.target.className == 'material-icons') {
+
+            } else {
+                $(this).toggleClass('active'); //делаем данный пункт активным/неактивным
+                $(this).next('.demo-filters').slideToggle(400); //раскрываем/скрываем следующий за "кликнутым" p блок div с эффектом slide
+            }
+        }
+        slide_vinOrtoSidebar = true;
+        slide_orto10000sidebar = true;
+
+    });
+    //---------------------------------------------------------------//
+})(jQuery);
+
+var map;
+
+var osmLayer;
+var googleLayer;
+var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'vinOrtoSidebar', 'topoVinSidebar'];
+
+
+function showUP(layer, elem) {
+
+
+    map.getLayers().forEach(function (l, i) {
+        if (($.inArray(l.get('name'), art)) > -1) {
+            if (l.get('name') === layer) {
+                l.setVisible(true);
+                // addclass(.on_layer)
+                $(elem).addClass('on_layer');
+            }
+        }
+    });
+}
+function showDOWN(layer) {
+
+
+    map.getLayers().forEach(function (l, i) {
+        if (($.inArray(l.get('name'), art)) > -1) {
+            if (l.get('name') === layer) {
+                l.setVisible(false);
+            }
+        }
+    });
+}
+
+function toggleOL(layer, elem) {
+
+    map.getLayers().forEach(function (l, i) {
+        if (($.inArray(l.get('name'), art)) > -1) {
+            if (l.get('name') === layer ) {
+                if (l.getVisible() == true && !elem.hasClass('active')) {
+                    l.setVisible(false);
+                    // delclass(.on_layer)
+                    $(elem).removeClass('on_layer');
+                } else {
+                    l.setVisible(true);
+                }
+            }
+        }
+    });
+}
+
+function toggleChevron(e) {
+    $(e.target)
+        .prev('.panel-heading')
+        .find("i.indicator")
+        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+}
+
+function toggleUP(e) {
+    //   var id = $('#accordion .in').parent().attr("id");
+    var trg = $(e.target)
+        .prev('.panel-heading');
+    trg.find("a")
+        .addClass('active');
+    trg.find("i.indicator")
+        .addClass('active');
+//    swtch($(e.target).attr('id'));
+}
+
+function toggleDOWN(e) {
+    var trg = $(e.target)
+        .prev('.panel-heading');
+    trg.find("a")
+        .removeClass('active');
+    trg.find("i.indicator")
+        .removeClass('active');
+}
+
+function layersOff(map){
+    $('.mdl-navigation__level3').click(function () {
+
+        if($(this).hasClass('active')){
+
+            $(this).closest('.mdl-navigation__level2').prev().find('.layersOff').show().children('label').addClass('is-checked');
+        }else{
+            var isActive = false;
+
+            $(this).closest('.mdl-navigation__level2').find('a.mdl-navigation__link').each(function(){
+               if($(this).hasClass('active')){
+                   isActive = true;
+                   return false;
+               }
+            });
+
+            if(isActive == false){
+
+                $(this).closest('.mdl-navigation__level2').prev().find('.layersOff').hide().removeClass('is-checked');
+
+
+            }
+        }
+    });
+
+//    $('.mdl-navigation__level1').prepend('<div class="layersOff"><label class="mdl-checkbox mdl-js-checkbox" for="checkbox2"><input type="checkbox" id="checkbox2" class="mdl-checkbox__input"><span class="mdl-checkbox__label"></span></label></div></label>');
+$('.mdl-navigation__level1').prepend('<div class="layersOff"><label class="mdl-checkbox mdl-js-checkbox" for="checkbox2"><input type="checkbox" id="checkbox2" class="mdl-checkbox__input"><span class="mdl-checkbox__label"></span><span class="mdl-checkbox__focus-helper"></span><span class="mdl-checkbox__box-outline"><span class="mdl-checkbox__tick-outline"></span></label></div>');
+    $('.layersOff').on('mousedown',function (event) {
+        var layersName = [];
+        $(this).parents('.mdl-navigation__level1').next().find('a.mdl-navigation__link').each(function(){
+            //console.log(this);
+            $(this).next('form').slideUp(500);
+            $(this).removeClass('active');
+            $(this).children('.legend-button').hide();
+            if($(this).children('.legend-button').hasClass('active')){
+               $('.legend-button').removeClass('active')
+                $('.new_legend').hide();
+            }
+            layersName.push($(this).attr('href').substring(1));
+        });
+
+        if( $(this).parents('.mdl-navigation__level1').next('.mdl-navigation__level2').css('display') == 'none'){
+            $(this).parents('.mdl-navigation__level1').removeClass('active');
+        }
+
+        if(layersName.length > 0){
+            map.getLayers().forEach(function(layer) {
+                if(layer.get('name') != undefined){
+                    if((layersName.indexOf(layer.get('name'))) != -1 ){
+                        layer.setVisible(false);
+                    }
+                }
+            });
+        }
+        $('#slider_wms3').hide();
+        $(this).prop('checked', false).hide();
+        event.stopPropagation();
+    });
+
+}
+
+function getLayerName(){
+
+}
+
+function addLegend(map) {
+    var urlGeoServer = '/geoserver';
+    var layerOn = '';
+    var url = '';
+    $('.mdl-navigation__level3').prepend('<button class="legend-button mdl-button mdl-js-button mdl-button--icon new_menu_but" data-upgraded=",MaterialButton"><i class="material-icons">keyboard_arrow_right</i></button>');
+
+    $('.mdl-navigation__level3').click(function () {
+        if ($(this).hasClass('active')) {
+            $(this).children('.legend-button').show();
         } else {
-            $(this).toggleClass('active'); //делаем данный пункт активным/неактивным
-            $(this).next('.demo-filters').slideToggle(400); //раскрываем/скрываем следующий за "кликнутым" p блок div с эффектом slide
+            $(this).children('.legend-button').hide();
+        }
+    });
+    var ifChange = false;
+    $('.legend-button').click(function (event) {
+
+
+        if($(this).hasClass("active")){
+            $(this).removeClass("active");
+            $('.new_legend').hide();
+            $('.legend').hide();
+        }else{
+            $('.legend-button').removeClass('active');
+            $(this).addClass("active");
+            $('.new_legend').show();
+
+
+            layerName = $(this).parent().attr('href');
+            layerName = layerName.substring(1);
+            map.getLayers().forEach(function (layer) {
+                if (layer.get('name') == layerName) {
+                    layerOn = layer.getSource().getParams().LAYERS;
+                }
+            });
+            var layerName = $(this).parent().text();
+            var reg = /[a-zA-Z0-9._]/gi;
+            layerName = layerName.replace(reg, '');
+            layerName = layerName.trim();
+            url = urlGeoServer + '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=50&HEIGHT=30&LAYER=' + layerOn;
+            $('.new_legent_title').text('Умовні знаки (' + layerName+')');
+            $('.new_legend img').attr('src', url);
+        }
+
+        ifChange = true;
+        event.stopPropagation();
+
+    });
+
+    $('input[name=legend-radio]').change(function (event) {
+
+        if (ifChange == false) {
+            $('.legend').hide();
+            $(this).removeAttr("checked");
+            $(this).next().removeClass('active');
+        } else {
+            $('.arrow_box').removeClass('active');
+            $(this).next().addClass('active');
+            $('.legend').show();
+            layerName = $('input[name=legend-radio]:checked').parent().attr('href');
+            layerName = layerName.substring(1);
+            map.getLayers().forEach(function (layer) {
+                if (layer.get('name') == layerName) {
+                    layerOn = layer.getSource().getParams().LAYERS;
+                }
+            });
+            var layerName = $(this).parent().text();
+            var reg = /[a-zA-Z0-9._]/gi;
+            layerName = layerName.replace(reg, '');
+            layerName = layerName.trim();
+            url = urlGeoServer + '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=50&HEIGHT=30&LAYER=' + layerOn;
+            $('.legend').html('Умовні знаки (' + layerName + ')<br><img  src="' + url + '">')
+        }
+    });
+
+}
+function checkIp() {
+    var idTicketit = $('#id_ticketit').val();
+    var checkIp;
+    $.ajax({
+        url: '/checkIp',
+        type: 'POST',
+        async: false,
+        dataType: "json",
+        data: {
+            'idTicketit': idTicketit
+        },
+        success: function (data) {
+            checkIp = data.ifIp;
+        }
+    });
+    return checkIp;
+}
+
+function votingResult() {
+    var voiceResult;
+    var idTicketit = $('#id_ticketit').val();
+    $.ajax({
+        url: '/votingResult',
+        type: 'POST',
+        async: false,
+        dataType: "json",
+        data: {
+            'idTicketit': idTicketit
+        },
+        success: function (data) {
+            voiceResult = "<hr><div id='voting-res'><span class='title' >Результати опитування:</span>"
+            voiceResult += "<span class='right_menu_content-description'>Підтримали: <b style='color: green'>" + data.true + "</b></span>"
+            voiceResult += "<span class='right_menu_content-description'> Не підтримали: <b style='color: red'>" + data.false + "</b></span></div>"
+            voiceResult += '<div class="modal-dtp"><input type="button" class="btn btn-primary btn-block" value="Загальні результати опитування"></div><hr>'
         }
 
     });
-})(jQuery);
+    return voiceResult;
+}
 
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function parsemaplinkURL() {
+    var regex = new RegExp(/\/maplink\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)$/),
+        result = regex.exec(window.location.href);
+        return result;
+}
+
+function select(element) {
+    var selectedText;
+
+    if (element.nodeName === 'INPUT' || element.nodeName === 'TEXTAREA') {
+        element.focus();
+        element.setSelectionRange(0, element.value.length);
+
+        selectedText = element.value;
+    }
+    else {
+        if (element.hasAttribute('contenteditable')) {
+            element.focus();
+        }
+
+        var selection = window.getSelection();
+        var range = document.createRange();
+
+        range.selectNodeContents(element);
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        selectedText = selection.toString();
+    }
+
+    return selectedText;
+}
+
+$(function () {
+    $('#main_tt7').on('click', function(){
+        $('#modal-help').toggleClass('open');
+    });
+
+    $("#save_map_url").on('click', function() {
+          var coord =  map.getView().getCenter();
+          var str = window.location.protocol + "//" + window.location.hostname+"/maplink/"+map.getView().getZoom()+"/"+coord[0]+"/"+coord[1];
+          console.log(str);
+          $('#permlink').val(str);
+          $('#modal-copy').toggleClass('open');
+    });
+ //   Вызываем модальное окно для статистики по ДТП
+ //   $('#orto10000base i').tooltip();
+$('body').click(function(){
+    $('.tooltip-info').removeClass('active');
+});
+/*$('.map_mode_select ul li i').on('click', function(){
+    console.log('sds');
+
+});*/
+   /* $('.tooltip-info').hover(function(){
+        $('.mdl-tooltip').removeClass('is-active');
+
+    })*/
+    new Clipboard('.material-icons.buffer');
+new Clipboard('.btn-copy');
+
+    /*$('.map_mode_select .mdl-menu__item div .material-icons').click(function(){
+
+        var target = document.getElementById("hiddenText");
+        target.textContent = "sdssdsdss";
+        console.log(target.textContent);
+        select(target);
+        document.execCommand("copy");
+
+
+    });*/
+
+
+
+
+    $('.mdl-menu .material-icons:not(.buffer)').on('click', function (event) {
+        console.log('sds');
+        if (!$(this).next().hasClass('active')) {
+            $('.tooltip-info').removeClass('active');
+        }
+        $(this).next('.tooltip-info').toggleClass('active');
+        event.stopPropagation();
+    })
+
+    //$('#modal-help').modal();
+
+
+//    $('.carousel').carousel();
+    setTimeout(function () {
+
+//        $('.ol-zoom').css({
+//        //        position:'absolute',
+//        //        left: ($(document).width() - $('.ol-zoom').outerWidth())/2,
+//                top: '300 px;'
+//        });       
+
+        var windowHeight;
+        var windowWidth;
+        var contentHeight;
+        var contentWidth;
+        var isDevice = true;
+        $('.bid_list_button').click(function(){
+            var height = $('.layersAll').height()
+            console.log($('.layersAll').height());
+            if($('.bid_list').hasClass('open')){
+                console.log($('.layersAll').height());
+                console.log($('.bid_list-content').height());
+
+                $('.layersAll').height(height-180);
+            }else{
+                $('.layersAll').height(height+180);
+            }
+        });
+        $('.language_container').click(function(){
+            if($('.language_container i').text()=="UA"){
+                $('.language_container i').text("EN")
+                $('.language_container .mdl-tooltip').text("English");
+            }else{
+                $('.language_container i').text("UA");
+                $('.language_container .mdl-tooltip').text("Українською");
+            }
+            console.log($('.language_container i').text())
+        });
+        // calculations for elements that changes size on window resize
+        var windowResizeHandler = function () {
+            windowHeight = $(window).height();
+            windowWidth = $(window).width();
+            contentHeight = windowHeight - $('header').height();
+            //contentWidth = windowWidth - $('.demo-drawer').width();
+            //$('#leftSide').height(windowHeight);
+            //$('#rightSide').height(windowHeight);
+            //$('.closeLeftSide').height(contentHeight);
+            $('#wrapper').height(contentHeight);
+
+            $('#mapView').height(contentHeight);
+            $('#wrapper').width(windowWidth);
+            $('#content').height(contentHeight);
+            $('#external_control').css({top: windowHeight / 2});
+
+
+            var carousel_block_height = $('.carousel-block').height();
+            if($('.carousel-block').closest('.bx-wrapper').css('display') == 'none'){
+                carousel_block_height = 0;
+            }
+            $('.layersAll').height(windowHeight-$('.bid_list').height()-$('.mdl-layout-title').height());
+
+            var right_menu_content_block = windowHeight-$('.right_menu_footer-block').height()- $('.right_menu_title-block').height()-carousel_block_height;
+            $('.right_menu_content-block').css('height', right_menu_content_block);
+            $('.right_menu_content-block').closest('.bx-viewport').height(windowHeight - $('.right_menu_footer-block').height());
+
+            if ($('.mdl-card__title').is(':visible')) {
+                $('.mdl-card__supporting-text').height(windowHeight - $('.mdl-card__title').height() - $('.demo-card__title').height() - $('.mdl-card__actions').height() * 2.6);
+            } else {
+                $('.mdl-card__supporting-text').height(windowHeight - $('.demo-card__title').height() - $('.mdl-card__actions').height() * 2.1);
+            }
+            //$(".item").height(windowHeight- $('.mdl-card__actions').height() * 2);
+//            
+//            $('#carousel-main').height(windowHeight - $('div.mdl-card__title').height() - $('.mdl-card__actions').height() * 2);
+//        setTimeout(function () {
+//            $('.commentsFormWrapper').width(contentWidth);
+//        }, 300);
+
+            if (map) {
+//            google.maps.event.trigger(map, 'resize');
+                map.updateSize();
+
+            }
+
+            // Add custom scrollbar for left side navigation
+           /* if (windowWidth > 767) {
+                $('.bigNav').slimScroll({
+                    height: contentHeight - $('.leftUserWraper').height()
+                });
+            } else {
+                $('.bigNav').slimScroll({
+                    height: contentHeight
+                });
+            }
+            if ($('.bigNav').parent('.slimScrollDiv').size() > 0) {
+                $('.bigNav').parent().replaceWith($('.bigNav'));
+                if (windowWidth > 767) {
+                    $('.bigNav').slimScroll({
+                        height: contentHeight - $('.leftUserWraper').height()
+                    });
+                } else {
+                    $('.bigNav').slimScroll({
+                        height: contentHeight
+                    });
+                }
+            }*/
+        }
+
+
+        $(window).resize(function () {
+            windowResizeHandler();
+        });
+        var navExpanded = true;
+        $('#information').on('click', function (event) {
+            if (event.target.classList.contains('voting') == true) {
+                var votingRes = event.target.name;
+                var idTicketit = $('#id_ticketit').val();
+                $.ajax({
+                    url: '/voting',
+                    type: 'POST',
+                    dataType: "json",
+                    data: {
+                        'votingRes': votingRes,
+                        'idTicketit': idTicketit
+                    },
+                    success: function (data) {
+                        $('.votingAll').hide();
+                        $('.votingAll').after('<div class="title votingMessage" id="votingMessage" >Дякуємо, що прийняли участь в опитуванні.</div>')
+                        $('.votingMessage').after(votingResult());
+                    }
+
+                });
+            }
+        });
+
+        $('.fl1').on('change', function () {
+            var filterstr = '';
+            $('select.fl1').each(function (i, elem) {
+                if (filterstr === '') {
+                    if ($(elem).val()) {
+                        filterstr = "(" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
+                    }
+                } else {
+                    if ($(elem).val()) {
+                        filterstr += " AND (" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
+                    }
+                }
+            });
+            $('input[type=text].fl1').each(function (i, elem) {
+                var tmp = '';
+                if ($.isNumeric($(elem).val()) && ($(elem).val() > 0)) {
+                    if ($(elem).attr('id').substr(0, 3) == 'min') {
+                        tmp = "(" + $(elem).attr('id').substr(3) + ">'" + $(elem).val() + "')";
+                    }
+                    if ($(elem).attr('id').substr(0, 3) == 'max') {
+                        tmp = "(" + $(elem).attr('id').substr(3) + "<'" + $(elem).val() + "')";
+                    }
+                    if (filterstr === '') {
+                        filterstr = tmp;
+                    } else {
+                        filterstr += " AND " + tmp;
+                    }
+                }
+            });
+            wmsSource.updateParams({
+                CQL_FILTER: filterstr
+            });
+        });
+
+        $('.fl2').on('change', function () {
+            var filterstr = '';
+            $('select.fl2').each(function (i, elem) {
+                if (filterstr === '') {
+                    if ($(elem).val()) {
+                        filterstr = "(" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
+                    }
+                } else {
+                    if ($(elem).val()) {
+                        filterstr += " AND (" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
+                    }
+                }
+            });
+            $('input[type=text].fl2').each(function (i, elem) {
+                var tmp = '';
+                if ($.isNumeric($(elem).val()) && ($(elem).val() > 0)) {
+                    if ($(elem).attr('id').substr(0, 3) == 'min') {
+                        tmp = "(" + $(elem).attr('id').substr(3) + ">'" + $(elem).val() + "')";
+                    }
+                    if ($(elem).attr('id').substr(0, 3) == 'max') {
+                        tmp = "(" + $(elem).attr('id').substr(3) + "<'" + $(elem).val() + "')";
+                    }
+                    if (filterstr === '') {
+                        filterstr = tmp;
+                    } else {
+                        filterstr += " AND " + tmp;
+                    }
+                }
+            });
+
+//            console.log(filterstr);
+            wmsSource2.updateParams({
+                CQL_FILTER: filterstr
+            });
+        });
+
+        $('.fl3').on('change', function () {
+            var filterstr = '';
+            $('select.fl3').each(function (i, elem) {
+                if (filterstr === '') {
+                    if ($(elem).val()) {
+                        filterstr = "(" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
+                    }
+                } else {
+                    if ($(elem).val()) {
+                        filterstr += " AND (" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
+                    }
+                }
+            });
+            $('input[type=text].fl3').each(function (i, elem) {
+                var tmp = '';
+                if ($.isNumeric($(elem).val()) && ($(elem).val() > 0)) {
+                    if ($(elem).attr('id').substr(0, 3) == 'min') {
+                        tmp = "(" + $(elem).attr('id').substr(3) + ">'" + $(elem).val() + "')";
+                    }
+                    if ($(elem).attr('id').substr(0, 3) == 'max') {
+                        tmp = "(" + $(elem).attr('id').substr(3) + "<'" + $(elem).val() + "')";
+                    }
+                    if (filterstr === '') {
+                        filterstr = tmp;
+                    } else {
+                        filterstr += " AND " + tmp;
+                    }
+                }
+            });
+            wmsSource3.updateParams({
+                CQL_FILTER: filterstr
+            });
+        });
+
+        $('.fl4').on('change', function () {
+            var filterstr = '';
+            $('select.fl4').each(function (i, elem) {
+                if (filterstr === '') {
+                    if ($(elem).val()) {
+                        filterstr = "(" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
+                    }
+                } else {
+                    if ($(elem).val()) {
+                        filterstr += " AND (" + $(elem).attr('id') + "='" + $(elem).val().toUpperCase() + "')";
+                    }
+                }
+            });
+            $('input[type=text].fl4').each(function (i, elem) {
+                var tmp = '';
+                if ($.isNumeric($(elem).val()) && ($(elem).val() > 0)) {
+                    if ($(elem).attr('id').substr(0, 3) == 'min') {
+                        tmp = "(" + $(elem).attr('id').substr(3) + ">'" + $(elem).val() + "')";
+                    }
+                    if ($(elem).attr('id').substr(0, 3) == 'max') {
+                        tmp = "(" + $(elem).attr('id').substr(3) + "<'" + $(elem).val() + "')";
+                    }
+                    if (filterstr === '') {
+                        filterstr = tmp;
+                    } else {
+                        filterstr += " AND " + tmp;
+                    }
+                }
+            });
+            wmsSource4.updateParams({
+                CQL_FILTER: filterstr
+            });
+        });
+
+        $('.fl8').on('change', function () {
+            var filterstr = '';
+            $('select.fl8').each(function (i, elem) {
+                if (filterstr === '') {
+                    if ($(elem).val()) {
+                        filterstr = "(" + $(elem).attr('id') + "='" + $(elem).val() + "')";
+                    }
+                } else {
+                    if ($(elem).val()) {
+                        filterstr += " AND (" + $(elem).attr('id') + "='" + $(elem).val() + "')";
+                    }
+                }
+                if ($(elem).val() == "") {
+                    filterstr = "notview";
+                }
+            });
+            $('input[type=text].fl8').each(function (i, elem) {
+                var tmp = '';
+                if ($.isNumeric($(elem).val()) && ($(elem).val() > 0)) {
+                    if ($(elem).attr('id').substr(0, 3) == 'min') {
+                        tmp = "(" + $(elem).attr('id').substr(3) + ">'" + $(elem).val() + "')";
+                    }
+                    if ($(elem).attr('id').substr(0, 3) == 'max') {
+                        tmp = "(" + $(elem).attr('id').substr(3) + "<'" + $(elem).val() + "')";
+                    }
+                    if (filterstr === '') {
+                        filterstr = tmp;
+                    } else {
+                        filterstr += " AND " + tmp;
+                    }
+                }
+            });
+//            console.log(filterstr);
+            if (filterstr == "notview") {
+                wmsSource8.updateParams({CQL_FILTER: null});
+            } else {
+                wmsSource8.updateParams({
+                    CQL_FILTER: filterstr
+                });
+            }
+        });
+
+        $('.fl19').on('change', function () {
+            var filterstr = '';
+            $('select.fl19').each(function (i, elem) {
+                if (filterstr === '') {
+                    if ($(elem).val()) {
+                        filterstr = "(" + $(elem).attr('id') + "='" + $(elem).val() + "')";
+                    }
+                } else {
+                    if ($(elem).val()) {
+                        filterstr += " AND (" + $(elem).attr('id') + "='" + $(elem).val() + "')";
+                    }
+                }
+            });
+            if (filterstr == "") {
+                filterstr = "notview";
+            }
+
+            $('input[type=text].fl19').each(function (i, elem) {
+                var tmp = '';
+                if ($.isNumeric($(elem).val()) && ($(elem).val() > 0)) {
+                    if ($(elem).attr('id').substr(0, 3) == 'min') {
+                        tmp = "(" + $(elem).attr('id').substr(3) + ">'" + $(elem).val() + "')";
+                    }
+                    if ($(elem).attr('id').substr(0, 3) == 'max') {
+                        tmp = "(" + $(elem).attr('id').substr(3) + "<'" + $(elem).val() + "')";
+                    }
+                    if (filterstr === '') {
+                        filterstr = tmp;
+                    } else {
+                        filterstr += " AND " + tmp;
+                    }
+                }
+            });
+            if (filterstr == "notview") {
+                wmsSource19.updateParams({CQL_FILTER: null});
+            } else {
+                wmsSource19.updateParams({
+                    CQL_FILTER: filterstr
+                });
+            }
+        });
+//        $('#accordion').on('hidden.bs.collapse', toggleDOWN);
+//        $('#accordion').on('shown.bs.collapse', toggleUP);
+//        $('a.accordion-toggle').on('click', function () {
+        $('a.mdl-navigation__link').on('click', function () {
+            toggleOL($(this).attr('href').substr(1), $(this));
+           /* if ($(this).hasClass('active') == false && $(this).find('.arrow_box').hasClass('active')) {
+                $('.legend').hide();
+                $(this).find('.legend-radio').hide();
+                $(this).find('.legend-radio').removeAttr('checked');
+                $(this).find('.arrow_box').removeClass('active');
+                $(this).find('.arrow_box').hide();
+            }*/
+
+            if ($(this).next().find('a.mdl-navigation__link').hasClass('active') && $(this).hasClass('active') == false) {
+                $(this).addClass('active');
+            }
+        });
+
+
+
+        $('.navHandler, .closeLeftSide').click(function () {
+            if (!navExpanded) {
+                $('.logo').addClass('expanded');
+
+                $('#leftSide').addClass('expanded');
+                if (windowWidth < 768) {
+                    $('.closeLeftSide').show();
+                }
+                $('#bazlayer').addClass('expanded');
+                $('#external_control').addClass('expanded');
+                $('.hasSub').addClass('hasSubActive');
+                $('.leftNav').addClass('bigNav');
+                $('#tools').addClass('expanded');
+                if (windowWidth > 767) {
+                    $('.full').addClass('m-full');
+                }
+                windowResizeHandler();
+                navExpanded = true;
+            } else {
+                $('.logo').removeClass('expanded');
+                $('#leftSide').removeClass('expanded');
+                $('.closeLeftSide').hide();
+                $('#bazlayer').removeClass('expanded');
+                $('#external_control').removeClass('expanded');
+                $('.hasSub').removeClass('hasSubActive');
+                $('.bigNav').slimScroll({destroy: true});
+                $('.leftNav').removeClass('bigNav');
+                $('#tools').removeClass('expanded');
+                $('.leftNav').css('overflow', 'visible');
+                $('.full').removeClass('m-full');
+                navExpanded = false;
+            }
+        });
+
+        var fullm = false;
+        $('#fullm').click(function () {
+            if (!fullm) {
+                $('#content').hide();
+
+                $('#mapView').addClass('expanded');
+                $('#mapView').css("width", "100%");
+                fullm = true;
+                windowResizeHandler();
+            } else {
+                $('#mapView').removeClass('expanded');
+                $('#mapView').css("width", "50%");
+                $('#content').show();
+                fullm = false;
+                windowResizeHandler();
+            }
+        });
+
+        //windowResizeHandler();
+
+//        $('.selectpicker').selectpicker('refrjesh');
+
+        $("#searchstring").mask("9999999999:99:999:9999");
+
+        $("#searchbutton").on('click',
+            function () {
+                if ($("#searchstring").val() != '') {
+
+                    $('html, body').css("cursor", "wait");
+                    $.ajax({
+                        url: '/find-Parcel',
+                        type: 'GET',
+                        data: {
+                            'cadnum': $("#searchstring").val()
+                        },
+                        success: function (data) {
+                            var box = [data.data[0].st_xmin, data.data[0].st_ymin, data.data[0].st_xmax, data.data[0].st_ymax];
+                            //                           var areaExtent = ol.extent.applyTransform(box, ol.proj.getTransform('EPSG:4326', 'EPSG:3857'));
+                            view.fit(box, map.getSize());
+                            view.setZoom(16);
+//                            iconFeature.setGeometry(new ol.geom.Point( view.getCenter()) );
+//                            gmlSource.addFeature(iconFeature); 
+                            var evt = view.getCenter();
+                            $('html, body').css("cursor", "wait");
+                            $.ajax({
+                                type: 'GET',
+                                //                url: 'http://portal.dzk.gov.ua/kadastrova-karta/getobjectinfo',
+                                url: '/getobjectinfo',
+                                data: {
+                                    'x': evt[1],
+                                    'y': evt[0],
+                                    'layer': 'kadastr',
+                                    'zoom': 16
+                                },
+                                success: function (data) {
+
+                                    //                data = $.parseJSON(JSON.stringify(data));
+                                    // console.log(data);
+                                    if (data.data) {
+                                        var goi = $.parseJSON(data.data);
+
+                                        var regex = /[0-9]{10}:[0-9]{2}:[0-9]{3}:[0-9]{4}/g;
+                                        var regex2 = /\u0422\u0438\u043f \u0432\u043b\u0430\u0441\u043d\u043e\u0441\u0442\u0456:<\/div>(.*?)<\/li>/;
+                                        var regex3 = /<div class=\"label\">\u0426\u0456\u043b\u044c\u043e\u0432\u0435 \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f:<\/div>(.*?)<\/li>/
+                                        var str;
+
+                                        if (goi.dilanka) {
+                                            str = goi.dilanka;
+                                        } else if (goi.ikk) {
+                                            str = goi.ikk;
+                                        } else if (goi.rajonunion) {
+                                            str = goi.rajonunion;
+                                        } else {
+                                            str = goi.obl;
+                                        }
+
+                                        if (str) {
+                                            var koatuu = regex.exec(str);
+                                            var nom = koatuu;
+                                            //koatuu = koatuu + ' ' + regex2.exec(str)[1] + ' ' + regex3.exec(str)[1]
+                                            if (regex2.exec(str) != null) {
+                                                koatuu = koatuu + ' ' + regex2.exec(str)[1];
+                                            }
+                                            if (regex3.exec(str) != null) {
+                                                koatuu = koatuu + ' ' + regex3.exec(str)[1];
+                                            }
+                                            //                   console.log(regex2.exec(str)[1]);
+                                            if (koatuu) {
+                                                if (data.username != '') {
+                                                    //        $('#alert_placeholder').html('<div class="alert alert-success fade in"><a class="close" data-dismiss="alert">Ã—</a><span>'+ koatuu + '<button>Pay</button></span></div>');
+                                                    koatuu = koatuu + '<button type="button" onclick="reque(\'' + nom + '\');">Ð—Ð°Ð¼Ð¾Ð²Ð¸Ñ‚Ð¸, ' + data.username + '</button>';
+                                                }
+                                                content.innerHTML = ol.coordinate.toStringHDMS(ol.proj.transform(evt, 'EPSG:3857', 'EPSG:4326')) + '  ' + koatuu;
+                                                overlay.setPosition(evt);
+                                                view.setCenter(evt);
+                                            } else {
+                                                $('#alert_placeholder').html('');
+                                            }
+                                        }
+                                        //         console.log(data);
+                                    }
+                                    $('html, body').css("cursor", "auto");
+                                },
+                                error: function () {
+                                    $('html, body').css("cursor", "auto");
+                                }
+
+                            });
+                            //        content.innerHTML = $("#searchstring").val();
+                            //        overlay.setPosition(view.getCenter());
+                            $('html, body').css("cursor", "auto");
+                        },
+                        error: function () {
+                            $('html, body').css("cursor", "auto");
+                        }
+                    });
+                }
+            }
+        );
+
+//        $('body').removeClass('notransition');
+//        var satLayer = new ol.layer.Tile({visible: false, source: new ol.source.MapQuest({layer: 'sat'}), name: 'sat'});
+
+        //var satLayer = new ol.layer.Tile({
+        //    source: new ol.source.BingMaps({
+        //      culture: 'ru',
+        //      key: 'Ak-dzM4wZjSqTlzveKz5u0d4IQ4bRzVI309GxmkgSVr1ewS6iPSrOvOKhA-CJlm3',
+        //      imagerySet: 'AerialWithLabels',
+        //  }),
+        //    visible: 0
+        //});
+        var projection = new ol.proj.Projection({
+            code: 'EPSG:900913',
+            units: 'm'
+        });
+        var popup = new ol.Overlay({
+            element: document.getElementById('popup')
+        })
+//var w = $(window).width();
+//var h = $(window).height();
+/*        var wmsSource = new ol.source.ImageWMS({
+            url: '/kmda/wms',
+            //         url: 'http://212.26.144.110/geowebcache/service/wms',
+//            url: 'http://212.26.144.107:8092/vector/geoserver/gwc/service/wms',
+            //   url: 'http://192.168.33.51/geowebcache/service/wms',
+            params: {
+                'LAYERS': 'kmda:kmda_l_orenda',
+                'ALIAS':'Власність',
+                'VERSION': '1.1.1',
+                'TILED': true,
+                'WIDTH': 768,
+                'HEIGHT': 520,
+                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
+//            projection: 'EPSG:900913',
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+//            extent: [3365331.64184455,6509557.90965887,3417855.95133155,6545186.44247934],
+            }
+        });
+
+        var wmsLayer = new ol.layer.Image({
+            source: wmsSource,
+            visible: 0,
+            name: 'wms1',
+            //           extent: map.getView().calculateExtent(map.getSize()),
+//            imageSize: [192,192]
+        });*/
+
+        var vectorVinSidebarWms = new ol.source.TileWMS({
+            url: '/geoserver/nsdi/wms',
+            params: {
+                'LAYERS': 'nsdi:nsdi',
+                'ALIAS':'Векторна карта',
+                'VERSION': '1.1.1',
+                'TILED': 'true',
+                'FORMAT': 'image/png8',
+                'WIDTH': 702,
+                'HEIGHT': 768,
+                'CRS': 'EPSG:900913',
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+
+        var vectorVinSidebar = new ol.layer.Tile({
+            source: vectorVinSidebarWms,
+            visible: 0,
+            name: 'vectorVinSidebar'
+        });
+
+        var gryntSidebarWms = new ol.source.TileWMS({
+            url: 'http://212.26.144.103/geowebcache/service/wms',
+            params: {
+                'LAYERS': 'grunt',
+                'ALIAS':'Грунти',
+                'VERSION': '1.1.1',
+                'TILED': 'true',
+                'FORMAT': 'image/png8',
+                'WIDTH': 702,
+                'HEIGHT': 768,
+                'CRS': 'EPSG:900913',
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+
+        var gryntSidebar = new ol.layer.Tile({
+            source: gryntSidebarWms,
+            visible: 0,
+            name: 'gryntSidebar'
+        });
+
+        var parcelSidebarWms = new ol.source.TileWMS({
+            url: '/dzk',
+            params: {
+                'LAYERS': 'kadastr',
+                'ALIAS':'Кадастровий поділ',
+                'VERSION': '1.1.1',
+                'TILED': 'true',
+                'FORMAT': 'image/png',
+                'WIDTH': 256,
+                'HEIGHT': 256,
+                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+
+        var parcelSidebar = new ol.layer.Tile({
+            source: parcelSidebarWms,
+            visible: 0,
+            name: 'parcelSidebar'
+        });
+
+        var dynamicSidebarWms = new ol.source.TileWMS({
+            url: 'http://212.26.144.103/dzk/wms',
+            params: {
+                'LAYERS': 'dzk:osm',
+                'ALIAS':'Динамічна карта',
+                'VERSION': '1.1.1',
+                'TILED': 'true',
+                'FORMAT': 'image/png',
+                'WIDTH': 702,
+                'HEIGHT': 768,
+                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+
+        var dynamicSidebar = new ol.layer.Tile({
+            source: dynamicSidebarWms,
+            visible: 0,
+            name: 'dynamicSidebar'
+        });
+
+        var osmLayer = new ol.layer.Tile({
+            source: new ol.source.OSM(),
+           // visible: 1,
+            name: 'osm',
+            visible: 0,
+        });
+
+        var pubLayer = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://212.26.144.103/map/dzk_overview/{z}/{x}/{-y}.png',
+                crossOrigin: 'null',
+            }),
+            name: 'pub',
+            visible: 1,
+        });
+
+        var kiev2006Layer = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://map.land.gov.ua/map/ortho10k_all/{z}/{x}/{-y}.jpg',
+                crossOrigin: 'null'
+            }),
+            name: 'kiev2006',
+            visible: 0,
+        });
+
+        var orto10000sidebar = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://map.land.gov.ua/map/ortho10k_all/{z}/{x}/{-y}.jpg',
+                crossOrigin: 'null'
+            }),
+            name: 'orto10000sidebar',
+            visible: 0,
+        });
+
+        var orto2000sidebar = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://map.land.gov.ua/map/ortho2k_all/{z}/{x}/{-y}.jpg',
+                crossOrigin: 'null'
+            }),
+            name: 'orto2000sidebar',
+            visible: 0,
+        });
+        var topoVin = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://212.26.144.103/map/topo2k_vyn/{z}/{x}/{y}.png',
+                crossOrigin: 'null'
+            }),
+            name: 'topoVin',
+            visible: 0,
+        });
+
+        var topoVinSidebar = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://212.26.144.103/map/topo2k_vyn/{z}/{x}/{y}.png',
+                crossOrigin: 'null',
+                params:{
+                 'ALIAS':'Топографічна карта'
+                }
+            }),
+            name: 'topoVinSidebar',
+            visible: 0,
+        });
+
+
+        var vin2015Layer = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://212.26.144.103/map/ortho2k_vyn/{z}/{x}/{-y}.png',
+                crossOrigin: 'null',
+            }),
+            name: 'vin2015',
+            visible: 0,
+        });
+
+        var vinOrtoSidebar = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://212.26.144.103/map/ortho2k_vyn/{z}/{x}/{-y}.png',
+                crossOrigin: 'null',
+            }),
+            name: 'vinOrtoSidebar',
+            visible: 0,
+            params: {
+                alias:'Ортофотоплан'
+            }
+        });
+
+
+        var emptyRelief = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://212.26.144.103/map/relief/{z}/{x}/{y}.png',
+                crossOrigin: 'null',
+            }),
+            name: 'emptyRelief',
+            visible: 0,
+        });
+
+        var emptyLayer = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://212.26.144.103/files/404-tile707.png',
+                crossOrigin: 'null',
+            }),
+            name: 'emptyLayer',
+            visible: 0,
+        });
+
+
+       /* var gryntSidebar = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://map.land.gov.ua/geowebcache/service/wms/{z}/{x}/{-y}.png',
+                crossOrigin: 'null',
+            }),
+            name: 'gryntSidebar',
+            visible: 0,
+        });
+*/
+        var dzk_overview = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+//                url: '/ortho2k_2015/{z}/{x}/{-y}.jpg',
+                url: 'http://212.26.144.103/map/dzk_overview/{z}/{x}/{-y}.png',
+                crossOrigin: 'null',
+            }),
+            name: 'dzk_overview',
+            visible: 0,
+        });
+
+        var kiev2015Layer = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+//                url: '/ortho2k_2015/{z}/{x}/{-y}.jpg',
+                url: 'http://map.land.gov.ua/map/ortho_kiev/{z}/{x}/{-y}.jpg',
+                crossOrigin: 'null',
+            }),
+            name: 'kiev2015',
+            visible: 0,
+        });
+
+
+        var getPar = parsemaplinkURL();
+        if((getPar === null) || (getPar.length!==4)) {        
+        var view = new ol.View({
+             center: [3170647.44192, 6315057.33961],
+            zoom: 12,
+            minZoom: 2
+        });
+        } else {
+        var view = new ol.View({
+            center: [getPar[2],getPar[3]],
+            zoom: getPar[1],
+            minZoom: 2  
+            });
+        }
+
+
+
+        /**
+         * Create an overlay to anchor the popup to the map.
+         */
+//        var container = document.getElementById('popup');
+//        var content = document.getElementById('popup-content');
+//        var closer = document.getElementById('popup-closer');
+//
+//        closer.onclick = function () {
+//            overlay.setPosition(undefined);
+//            closer.blur();
+//            return false;
+//        };
+
+//        var overlay = new ol.Overlay(/** @type {olx.OverlayOptions} */ ({
+//            element: container,
+//            autoPan: true,
+//            autoPanAnimation: {
+//                duration: 250
+//            }
+//        }));
+
+//        var gmap = new google.maps.Map(document.getElementById('gmap'), {
+//            disableDefaultUI: true,
+//            keyboardShortcuts: false,
+//            draggable: false,
+//            disableDoubleClickZoom: true,
+//            scrollwheel: false,
+//            streetViewControl: false
+//          });
+
+
+        var cycleLayer = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=b29e6bf28b894c94958bfd507072f4c8',
+                crossOrigin: 'null',
+            }),
+            name: 'OpenCycleMap',
+            visible: 0,
+        });                        
+        
+        googleLayer = new olgm.layer.Google({name: 'google', visible: 0, mapTypeId: google.maps.MapTypeId.SATELLITE});
+        var googleHybridLayer = new olgm.layer.Google({
+            name: 'googlehybrid',
+            visible: 0,
+            mapTypeId: google.maps.MapTypeId.HYBRID
+        });
+
+
+        map = new ol.Map({
+            target: "mapView",
+            layers: [
+                topoVin,
+                googleLayer,
+                googleHybridLayer,
+//                satLayer,
+                osmLayer,
+                emptyRelief,
+                cycleLayer,
+                cycleLayer,
+                pubLayer,
+                kiev2006Layer,
+                vin2015Layer,
+                parcelSidebar,
+                vectorVinSidebar,
+                vinOrtoSidebar,
+                orto10000sidebar,
+                orto2000sidebar,
+                dynamicSidebar,
+                gryntSidebar,
+                emptyLayer,
+                topoVinSidebar,
+
+            ],
+            view: view,
+            controls: [],
+        });
+
+        $('#vinOrto').on('click',function(){
+            if($(this).hasClass('active')){
+                $('#slider_vinOrtoSidebar').show();
+            }else{
+                $('#slider_vinOrtoSidebar').hide();
+            }
+        });
+
+        var sliderVinOrto = $('#slider_vinOrtoSidebar').slider({
+            value: vinOrtoSidebar.getOpacity()*100,
+            range: "min"
+
+        })
+
+        sliderVinOrto.on('slide', function(ev, ui) {
+            vinOrtoSidebar.setOpacity(ui.value/100);
+            //ev.stopPropagation();
+        });
+
+        $('#orto10000').on('click',function(){
+            if($(this).hasClass('active')){
+                $('#slider_orto10000sidebar').show();
+            }else{
+                $('#slider_orto10000sidebar').hide();
+            }
+        });
+
+        var sliderOrto10000 = $('#slider_orto10000sidebar').slider({
+            value: orto10000sidebar.getOpacity()*100,
+            range: "min"
+
+        })
+        sliderOrto10000.on('slide', function(ev, ui) {
+            orto10000sidebar.setOpacity(ui.value/100);
+            //ev.stopPropagation();
+        });
+
+
+       /* $('#slider_wms3').on('mousedown', function(event){
+            event.stopPropagation();
+        })*/
+        map.addOverlay(popup);
+//  var zoomslider = new ol.control.ZoomSlider();
+//  map.addControl(zoomslider);
+        var external_control = new ol.control.Zoom({
+            target: document.getElementById('external_control')
+        });
+        map.addControl(external_control);
+        var overview = new ol.control.OverviewMap({
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                })
+            ],
+            target: 'map',
+            label: '«',
+            collapseLabel: '»',
+        });
+        $('#main_tt9').on('click', function(){
+           window.print();
+        });
+        map.addControl(overview);
+        //$('.ol-overviewmap').addClass('ol-rotate');
+        //$('.ol-control').addClass('left_menu_open');
+
+        $('.ol-overviewmap button').attr("id", "ol-overviewmap");
+        $('.ol-overviewmap button').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-overviewmap" >Оглядова карта</div>');
+        $('.ol-zoom-in').attr("id", "ol-zoom-in");
+        $('.ol-zoom-in').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-zoom-in" >Збільшити</div>');
+        $('.ol-zoom-out').attr("id", "ol-zoom-out");
+        $('.ol-zoom-out').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-zoom-out" >Зменшити</div>')
+
+
+
+        var olGM = new olgm.OLGoogleMaps({map: map}); // map is the ol.Map instance
+        olGM.activate();
+        $('div.mapPlaceholder').remove();
+        windowResizeHandler();
+       // addLegend(map);
+        addMeasure(map);
+        layersOff(map);
+
+
+        $('.zoomOff .mdl-checkbox').on('mouseup', function(){
+           // $('.account_block').toggleClass('close');
+            $('.ol-zoom').toggleClass('hide');
+           // console.log($('#checkbox-zoom').attr('checked'));
+        });
+
+        $('.map_mode_select li').on('click', function(event){
+            var selected = $(this).attr('data-val');
+            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006','emptyRelief', 'emptyLayer', 'topoVin'];
+            map.getLayers().forEach(function (l, i) {
+                if (($.inArray(l.get('name'), artbaz)) > -1) {
+                    if (l.get('name') !== selected) {
+
+                        l.setVisible(false);
+                    } else {
+                    //    console.log(l.get('name'));
+                        if (l.get('name') == 'OpenCycleMap' || l.get('name') == 'osm') {
+                            $('.osm-copyright').show();
+                        }else{
+                            $('.osm-copyright').hide();
+                        }
+                        l.setVisible(true);
+
+                    }
+                }
+            });
+        });
+
+        $('#bazlayer select').change();
+
+        var sliderInfo;
+        var sliderCarousel;
+        map.on('singleclick', function (evt) {
+            if(!$('#length').hasClass('active') && !$('#area').hasClass('active')){
+
+            var viewResolution = (view.getResolution());
+            var infocontainer = $('#information');
+            var url;
+            var flah = false;
+            var infostr="";
+            var layerAlias;
+            var indic;
+            var count = 0;
+
+            map.getLayers().forEach(function (l, i) {
+                if ((($.inArray(l.get('name'), art)) > -1) && (l.getVisible())) {
+
+                    if(l.getSource().getParams().ALIAS){
+                        layerAlias = l.getSource().getParams().ALIAS;
+                    }else{
+                        layerAlias = "Не визначено";
+                    }
+                    if(sliderInfo != undefined){
+                        sliderInfo.destroySlider();
+                    }
+                    if(sliderCarousel != undefined){
+                       // sliderCarousel.destroySlider();
+                    }
+                    url = l.getSource().getGetFeatureInfoUrl(
+                        evt.coordinate, viewResolution, 'EPSG:900913',
+                        {'INFO_FORMAT': 'application/json'});
+                    //var fitextent  = [3399302.74458409,6523059.490493268,3400267.76206619,6524024.507975368];
+                    //map.getView().fit(fitextent, map.getSize());
+                    //console.log(l.getSource().getExtent());
+                    $.ajax({
+                        url: url,
+                        async: false,
+                        dataType: 'json',
+//          jsonpCallback: 'parseResponse'
+                    }).then(function (response) {
+                        //         var result = parser.readFeatures(response);
+//                        temp_photo = response.features[0].properties.objectid;
+                      //  console.log(response);
+
+                        for (var i = 0; i < response.features.length; i++) {
+
+                            if (!flah) {
+                                flah = true;
+                            } else {
+                                /*infostr += "<div class='item'>";
+                                infostr += "<div class='mdl-card__title mdl-card--expand mdl-color--teal-300'></div>";
+                                indic += '<li data-target="#carousel-example-generic" data-slide-to="' + count + '"></li>';*/
+                            }
+                      if(response.features[0].properties.objectid) {
+                      $('#orendadocnew').attr('action', 'orendadoc/'+response.features[0].properties.objectid+'/new');
+                  }
+                            var name;
+                            if ((name = response.features[i].properties.ObjectName) === undefined) {
+                                if ((name = response.features[i].properties.objectname) === undefined) {
+                                    if ((name = response.features[i].properties.orgname) === undefined) {
+                                        if ((name = response.features[i].properties.function_z) === undefined) {
+                                            if ((name = response.features[i].properties.name) === undefined) {
+                                                if ((name = response.features[i].properties.obj_name) === undefined) {
+                                                    if ((name = response.features[i].properties.name1) === undefined) {
+                                                        if ((name = response.features[i].properties.objectname) === undefined) {
+                                                            if ((name = response.features[i].properties.sname) === undefined) {
+                                                                name = response.features[i].properties.subject;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            if (response.features[i].properties.full_name) {
+                                name = response.features[i].properties.full_name;
+                            }
+                            if (response.features[i].properties.addr_number) {
+                                name += ", " + response.features[i].properties.addr_number;
+                            }
+                            if (!name) {
+                                name = '';
+                            }
+                            infostr += '<div>'
+
+                            if (response.features[i].properties.html != undefined) {
+                                var pattern = /http:[^ >]+[^>]*jpeg|http:[^ >]+[^>]*png.*?/g;
+                                var src = response.features[i].properties.html.match(pattern);
+
+                                if(src != null){
+                                    infostr += '<div class="carousel-block">';
+                                    src.forEach(function(item){
+                                        infostr += '<li><img src="'+item+'" alt=""></li>'
+                                    });
+                                    infostr += '</div>';
+                                }/*else{
+                                    infostr += '<div><div class="carousel-block"><li><img src="/img/example.jpg" alt=""></li><li><img src="/img/example.jpg" alt=""></li></div>';
+                                }*/
+                            }/* else{
+                                infostr += '<div><div class="carousel-block"><li><img src="/img/example.jpg" alt=""></li><li><img src="/img/example.jpg" alt=""></li></div>';
+                            }*/
+                            infostr += "<div class='right_menu_title-block'><span class='layer-alias'><p> " + layerAlias + "</p></span>";
+                            infostr += "<span class='title'>" + name + "</span>";
+
+                            var districtname;
+                            if ((districtname = response.features[i].properties.DistrictName) === undefined) {
+                                if ((districtname = response.features[i].properties.district) === undefined) {
+                                    if ((districtname = response.features[i].properties.type_str) === undefined) {
+                                        districtname = ' ';
+                                    }
+                                }
+                            }
+                            var addrstreet;
+                            if ((addrstreet = response.features[i].properties.ObjectAddrStreet) === undefined) {
+                                if ((addrstreet = response.features[i].properties.street) === undefined) {
+                                    if ((addrstreet = response.features[i].properties.adress) === undefined) {
+                                        if ((addrstreet = response.features[i].properties.name_str) === undefined) {
+                                            if ((addrstreet = response.features[i].properties.street) === undefined) {
+                                                addrstreet = response.features[i].properties.long;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            var housenum;
+                            if ((housenum = response.features[i].properties.ObjectAddrNumber) === undefined) {
+                                if ((housenum = response.features[i].properties.house) === undefined) {
+                                    if ((housenum = response.features[i].properties.num_str) === undefined) {
+                                        if ((housenum = response.features[i].properties.house) === undefined) {
+                                            housenum = response.features[i].properties.lat;
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (districtname && addrstreet && housenum) {
+                                infostr += "<span class='adrs'>" + districtname + " " + addrstreet + " " + housenum + "</span>";
+                            }
+                            if (response.features[i].properties.reclAdress !== undefined) {
+                                infostr += "<span class='adrs'>" + response.features[i].properties.reclAdress + "</span>";
+                            }
+                            if (response.features[i].properties.code_addro !== undefined) {
+                                infostr += "<span class='adrs'>" + response.features[i].properties.code_addrn + " " + response.features[i].properties.code_addro + "</span>";
+                            }
+                            if (response.features[i].properties.address !== undefined) {
+                                infostr += "<span class='adrs'>" + response.features[i].properties.address + "</span>";
+                            }
+
+                            infostr += "</div><div class='right_menu_content-block'>";
+                            if (response.features[i].properties.cadnum != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Кадастровий номер</span><span class='right_menu_content-description'>" + response.features[i].properties.cadnum + "</span>";
+                            }
+                            var ownership;
+                            if ((ownership = response.features[i].properties.OrgOwnership) === undefined) {
+                                ownership = response.features[i].properties.ownership;
+                            }
+                            if (ownership) {
+                                infostr += "<span class='right_menu_content-title'>Форма власностi</span><span class='right_menu_content-description'>" + ownership + "</span>";
+                            }
+                            if (response.features[i].properties.right_type !== undefined) {
+                                infostr += "<span class='right_menu_content-title'>Права власностi</span><span class='right_menu_content-description'>" + response.features[i].properties.right_type + "</span>";
+                            }
+                            if (response.features[i].properties.type !== undefined) {
+                                infostr += "<span class='right_menu_content-title'>Тип</span><span class='right_menu_content-description'>" + response.features[i].properties.type + "</span>";
+                            }
+                            if (response.features[i].properties.reclType !== undefined) {
+                                infostr += "<span class='right_menu_content-title'>Тип</span><span class='right_menu_content-description'>" + response.features[i].properties.reclType + "</span>";
+                            }
+                            if (response.features[i].properties.reclOwner !== undefined) {
+                                infostr += "<span class='right_menu_content-title'>Замовник</span><span class='right_menu_content-description'>" + response.features[i].properties.reclOwner + "</span>";
+                            }
+                            if (response.features[i].properties.zamovn_b !== undefined) {
+                                infostr += "<span class='right_menu_content-title'>Замовник</span><span class='right_menu_content-description'>" + response.features[i].properties.zamovn_b + "</span>";
+                            }
+
+                            if (response.features[i].properties.zamovnyk !== undefined) {
+                                infostr += "<span class='right_menu_content-title'>Замовник</span><span class='right_menu_content-description'>"  + response.features[i].properties.zamovnyk + "</span>";
+                            }
+                            if (response.features[i].properties.rozrobnik_ !== undefined) {
+                                infostr += "<span class='right_menu_content-title'>Розробник</span><span class='right_menu_content-description'>"  + response.features[i].properties.rozrobnik_ + "</span>";
+                            }
+                            var sqrtotal;
+                            if ((sqrtotal = response.features[i].properties.SqrTotal) === undefined) {
+                                if ((sqrtotal = response.features[i].properties.sqrtotal) === undefined) {
+                                    if ((sqrtotal = response.features[i].properties.area) === undefined) {
+                                        if ((sqrtotal = response.features[i].properties.arearishkr) === undefined) {
+                                            if ((sqrtotal = response.features[i].properties.reclArea) === undefined) {
+                                                sqrtotal = response.features[i].properties.aqrtotal;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            if (sqrtotal) {
+                                infostr += "<span class='right_menu_content-title'>Загальна площа (кв. м.)</span><span class='right_menu_content-description'>"  + sqrtotal + "</span>";
+                            }
+                            var costbalance;
+                            if ((costbalance = response.features[i].properties.CostBalans) === undefined) {
+                                costbalance = response.features[i].properties.costbalans;
+                            }
+                            if (costbalance) {
+                                infostr += "<span class='right_menu_content-title'>Балансова вартiсть (тис. грн.)</span><span class='right_menu_content-description'>"  + costbalance + "</span>";
+                            }
+
+                            var busage;
+                            if ((busage = response.features[i].properties.BuildingUsage) === undefined) {
+                                if ((busage = response.features[i].properties.purpose) === undefined) {
+                                    if ((busage = response.features[i].properties.startfunc) === undefined) {
+                                        busage = response.features[i].properties.industryname;
+                                    }
+                                }
+                            }
+                            if (busage) {
+                                infostr += "<span class='right_menu_content-title'>Призначення</span><span class='right_menu_content-description'>"  + busage + "</span>";
+                            }
+                            var bkind;
+                            if ((bkind = response.features[i].properties.BuildingKind) == undefined) {
+                                if ((bkind = response.features[i].properties.kind) == undefined) {
+                                    bkind = response.features[i].properties.p0003;
+                                }
+                            }
+                            if (bkind) {
+                                infostr += "<span class='right_menu_content-title'>Вид об'єкту</span><span class='right_menu_content-description'>"  + bkind + "</span>";
+                            }
+                            var btype;
+                            if ((btype = response.features[i].properties.BuildingType) == undefined) {
+                                if ((btype = response.features[i].properties.btype) == undefined) {
+                                    if (response.features[i].properties.p0010 !== undefined) {
+                                        btype = response.features[i].properties.p0010 + " " + response.features[i].properties.p0013;
+                                    }
+                                    if (btype === undefined) {
+                                        btype = response.features[i].properties.kindname;
+                                    }
+                                    if (btype === undefined) {
+                                        btype = response.features[i].properties.occupationname;
+                                    }
+                                }
+                            }
+                            if (btype) {
+                                infostr += "<span class='right_menu_content-title'>Тип об'єкту</span><span class='right_menu_content-description'>"  + btype + "</span>";
+                            }
+                            var btech;
+                            if ((btech = response.features[i].properties.BTS_NAME) == undefined) {
+                                btech = response.features[i].properties.btechstate;
+                            }
+                            if (btech) {
+                                infostr += "<span class='right_menu_content-title'>Стан об'єкту</span><span class='right_menu_content-description'>"  + btech + "</span>";
+                            }
+                            if (response.features[i].properties.link != undefined) {
+                                if (response.features[i].properties.name_obj != undefined) {
+                                    infostr += "<span class='right_menu_content-title'>Посилання на документ</span>";
+                                } else {
+                                    infostr += "<span class='right_menu_content-title'>" + response.features[i].properties.name_obj + "</span>";
+                                }
+                                infostr += "<span class='right_menu_content-description'><a target='_blank' href='/PDF/" + response.features[i].properties.id_region + "/" + response.features[i].properties.link + "'>" + response.features[i].properties.doc_type + "</a></span>";
+                            }
+                            if (response.features[i].properties.num_in != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Вхідний номер</span><span class='right_menu_content-description'>" + response.features[i].properties.num_in + "</span>";
+                            }
+                            if (response.features[i].properties.data_in != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Вхідна дата</span><span class='right_menu_content-description'>" + response.features[i].properties.data_in + "</span>";
+                            }
+                            if (response.features[i].properties.num_out != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Вихідний номер</span><span class='right_menu_content-description'>" + response.features[i].properties.num_out + "</span>";
+                            }
+                            if (response.features[i].properties.data_out != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Вихідна дата</span><span class='right_menu_content-description'>"+ response.features[i].properties.data_out + "</span>";
+                            }
+                            if (response.features[i].properties.cad_num_z != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Кадастровий номер</span><span class='right_menu_content-description'>" + response.features[i].properties.cad_num_z + "</span>";
+                            }
+
+                            if (response.features[i].properties.chanfunc != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Нова функція території за генеральним планом міста</span><span class='right_menu_content-description'>" + response.features[i].properties.chanfunc + "</span>";
+                            }
+                            if (response.features[i].properties.code_func1 != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Код нової функції</span><span class='right_menu_content-description'>" + response.features[i].properties.code_func1 + "</span>";
+                            }
+
+                            if (response.features[i].properties.nrishkmda != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Номер рішення КМДА</span><span class='right_menu_content-description'>" + response.features[i].properties.nrishkmda + "</span>";
+                            }
+
+                            if (response.features[i].properties.n_rish_kmr != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Номер рішення Київради про затвердження</span><span class='right_menu_content-description'>" + response.features[i].properties.n_rish_kmr + "</span>";
+                            }
+                            if (response.features[i].properties.rayon_b != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Адмінрайон міста</span><span class='right_menu_content-description'>" + response.features[i].properties.rayon_b + "</span>";
+                            }
+                            if (response.features[i].properties.rozrobnik_doc != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Розробник містобудівної документації</span><span class='right_menu_content-description'>" + response.features[i].properties.rozrobnik_doc + "</span>";
+                            }
+                            if (response.features[i].properties.reestrazno != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Реєстраціний номер</span><span class='right_menu_content-description'>" + response.features[i].properties.reestrazno + "</span>";
+                            }
+
+                            if (response.features[i].properties.stadia_roz != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Стадія розроблення </span><span class='right_menu_content-description'>" + response.features[i].properties.stadia_roz + "</span>";
+                            }
+                            if (response.features[i].properties.type_b != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Тип містобудівної документації</span><span class='right_menu_content-description'>" + response.features[i].properties.type_b + "</span>";
+                            }
+
+                            if (response.features[i].properties.daterihkr != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Дата рішення КМДА</span><span class='right_menu_content-description'>" + response.features[i].properties.daterihkr + "</span>";
+                            }
+                            if (response.features[i].properties.group_name != null) {
+                                infostr += "<span class='right_menu_content-title'>Назва групи</span><span class='right_menu_content-description'>" + response.features[i].properties.group_name + "</span>";
+                            }
+                            if (response.features[i].properties.pidstavaza != null) {
+                                infostr += "<span class='right_menu_content-title'>Підстава внесення</span><span class='right_menu_content-description'>" + response.features[i].properties.pidstavaza + "</span>";
+                            }
+                            if (response.features[i].properties.code != null) {
+                                infostr += "<span class='right_menu_content-title'>Код</span><span class='right_menu_content-description'>" + response.features[i].properties.code + "</span>";
+                            }
+                            if (response.features[i].properties.status != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Статус</span><span class='right_menu_content-description'>" + response.features[i].properties.status + "</span>";
+                            }
+                            if (response.features[i].properties.zamovn != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Замовник</span><span class='right_menu_content-description'>" + response.features[i].properties.zamovn + "</span>";
+                            }
+                            if (response.features[i].properties.p_name != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Місце розташування</span><span class='right_menu_content-description'>" + response.features[i].properties.p_name + "</span>";
+                            }
+                            if (response.features[i].properties.content != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Опис</span><span class='right_menu_content-description'>" + response.features[i].properties.content + "</span>";
+                            }
+
+                            if (response.features[i].properties.inv_number != null) {
+                                infostr += "<span class='right_menu_content-title'>Інвентарний номер</span><span class='right_menu_content-description'>" + response.features[i].properties.inv_number + "</span>";
+                            }
+                            if (response.features[i].properties.priority_name != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Статус</span><span class='right_menu_content-description'>" + response.features[i].properties.priority_name + "</span>";
+                            }
+                            /*if (response.features[i].properties.priority_id != undefined) {
+                             infostr += "<small> Статус</small>";
+                             switch(response.features[i].properties.priority_id) {
+                             case 1:
+                             infostr += "<h5>Внесено</h5>";
+                             break;
+                             case 2:
+                             infostr += "<h5>Перевірено</h5>";
+                             break;
+                             default:
+                             infostr += "<h5>Не визначено</h5>";
+                             }
+                             }*/
+                            if (response.features[i].properties.p_mode != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Форма паркування</span><span class='right_menu_content-description'>" + response.features[i].properties.p_mode + "</span>";
+                            }
+
+                            if (response.features[i].properties.p_zone != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Номер зони</span><span class='right_menu_content-description'>" + response.features[i].properties.p_zone + "</span>";
+                            }
+
+                            if (response.features[i].properties.area_project != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Проектна площа ремонту (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.area_project + "</span>";
+                            }
+                            if (response.features[i].properties.area_fact != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Фактична площа ремонту (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.area_fact + "</span>";
+                            }
+                            if (response.features[i].properties.cost_repairs != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Проектна вартість ремонту (тис. грн.)</span><span class='right_menu_content-description'>" + response.features[i].properties.cost_repairs + "</span>";
+                            }
+                            if (response.features[i].properties.cost_repairs_fact != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Фактична вартість ремонту (тис. грн.)</span><span class='right_menu_content-description'>" + response.features[i].properties.cost_repairs_fact + "</span>";
+                            }
+
+                            if (response.features[i].properties.field_1 != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Ідентифікатор об'єкта</span><span class='right_menu_content-description'>" + response.features[i].properties.field_1 + "</span>";
+                            }
+                            if (response.features[i].properties.field_2 != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Номер ПВ-ВП</span><span class='right_menu_content-description'>" + response.features[i].properties.field_2 + "</span>";
+                            }
+                            if (response.features[i].properties.field_3 != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Тип опори</span><span class='right_menu_content-description'>" + response.features[i].properties.field_3 + "</span>";
+                            }
+                            if (response.features[i].properties.field_4 != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Дата установки опори</span><span class='right_menu_content-description'>" + response.features[i].properties.field_4 + "</span>";
+                            }
+                            if (response.features[i].properties.field_5 != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Кронштейн</span><span class='right_menu_content-description'>" + response.features[i].properties.field_5 + "</span>";
+                            }
+                            if (response.features[i].properties.field_6 != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Тип світильника</span><span class='right_menu_content-description'>" + response.features[i].properties.field_6 + "</span>";
+                            }
+                            if (response.features[i].properties.field_7 != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Дата установки світильника</span><span class='right_menu_content-description'>" + response.features[i].properties.field_7 + "</span>";
+                            }
+                            if (response.features[i].properties.field_8 != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Дата установки ламп</span><span class='right_menu_content-description'>" + response.features[i].properties.field_8 + "</span>";
+                            }
+                            if (response.features[i].properties.field_9 != undefined) {
+                                infostr += "<span class='right_menu_content-title'>Номер опори</span><span class='right_menu_content-description'>" + response.features[i].properties.field_9 + "</span>";
+                            }
+                            if (response.features[i].properties.agreement_number) {
+                                infostr += "<span class='right_menu_content-title'>Номер договору</span><span class='right_menu_content-description'>" + response.features[i].properties.agreement_number + "</span>";
+                            }
+                            if (response.features[i].properties.agreement_date) {
+                                infostr += "<span class='right_menu_content-title'>Дата договору</span><span class='right_menu_content-description'>" + response.features[i].properties.agreement_date + "</span>";
+                            }
+                            if (response.features[i].properties.sqr_rent) {
+                                infostr += "<span class='right_menu_content-title'>Площа оренди</span><span class='right_menu_content-description'>" + response.features[i].properties.sqr_rent + " (кв. м.)</span>";
+                            }
+                            if (response.features[i].properties.reason) {
+                                infostr += "<span class='right_menu_content-title'>Підстава</span><span class='right_menu_content-description'>" + response.features[i].properties.reason + "</span>";
+                            }
+
+                            if (response.features[i].properties.org_name) {
+                                infostr += "<span class='right_menu_content-title'>Балансоутримувач</span><span class='right_menu_content-description'>" + response.features[i].properties.org_name + "</span>";
+                            }
+                            if (response.features[i].properties.region) {
+                                infostr += "<span class='right_menu_content-title'>Район</span><span class='right_menu_content-description'>" + response.features[i].properties.region + "</span>";
+                            }
+                            if (response.features[i].properties.subject) {
+                                infostr += "<span class='right_menu_content-title'>Суб'єкт господарювання</span><span class='right_menu_content-description'>" + response.features[i].properties.subject + "</span>";
+                            }
+                            if (response.features[i].properties.category_id >= 0) {
+                                if (response.features[i].properties.id) {
+
+                                    $('#id_ticketit').remove();
+                                    $('#information').after("<input type='hidden' id = 'id_ticketit' name = 'id_ticketit' value='" + response.features[i].properties.id + "'>");
+                                }
+                                if (checkIp() == true) {
+                                    if ($('body').is('#votingMessage')) {
+                                        $('#votingMessage').remove();
+                                    }
+
+                                    infostr += votingResult();
+                                } else {
+                                    infostr += '<div class="votingAll btn-group btn-group-justified"><div class="btn-group"><input type="button" name="1" class="voting btn btn-success" value="Підтримую"></div><div class="btn-group"><input type="button" class="voting btn btn-danger" value="Не підтримую" name="0"></div></div>';
+                                }
+                            }
+
+                            if (response.features[i].properties.tech) {
+                                infostr += "<span class='right_menu_content-title'>Тех. облаштування</span><span class='right_menu_content-description'>" + response.features[i].properties.tech + "</span>";
+                            }
+                            if (response.features[i].properties.type) {
+                                infostr += "<span class='right_menu_content-title'>Тип паркування</span><span class='right_menu_content-description'>" + response.features[i].properties.type + "</span>";
+                            }
+                            if (response.features[i].properties.zone) {
+                                infostr += "<span class='right_menu_content-title'>Зона</span><span class='right_menu_content-description'>" + response.features[i].properties.zone + "</span>";
+                            }
+                            if (response.features[i].properties.payment_type) {
+                                infostr += "<span class='right_menu_content-title'>Вид оплати</span><span class='right_menu_content-description'>" + response.features[i].properties.payment_type + "</span>";
+                            }
+                            if (response.features[i].properties.allsquare) {
+                                infostr += "<span class='right_menu_content-title'>Площа (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.allsquare + "</span>";
+                            }
+                            if (response.features[i].properties.cars) {
+                                infostr += "<span class='right_menu_content-title'>Машиномісць</span><span class='right_menu_content-description'>" + response.features[i].properties.cars + "</span>";
+                            }
+                            if (response.features[i].properties.freesquare) {
+                                infostr += "<span class='right_menu_content-title'>Безоплатне паркування (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.freesquare + "</span>";
+                            }
+
+                            if (response.features[i].properties.mode) {
+                                infostr += "<span class='right_menu_content-title'>Режим роботи</span><span class='right_menu_content-description'>" + response.features[i].properties.mode + "</span>";
+                            }
+                            if (response.features[i].properties.paysquare) {
+                                infostr += "<span class='right_menu_content-title'>Для паркування (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.paysquare + "</span>";
+                            }
+                            if (response.features[i].properties.privilege) {
+                                infostr += "<span class='right_menu_content-title'>Кількість пільгових машиномісць</span><span class='right_menu_content-description'>" + response.features[i].properties.privilege + "</span>";
+                            }
+                            if (response.features[i].properties.price) {
+                                infostr += "<span class='right_menu_content-title'>Вартість</span><span class='right_menu_content-description'>" + response.features[i].properties.price + "</span>";
+                            }
+
+                            if (response.features[i].properties.p_cost || response.features[i].properties.p_cost == 0) {
+                                if (response.features[i].properties.p_cost == 0) {
+                                    infostr += "<span class='right_menu_content-title'>Надходження(грн.)</span><span class='right_menu_content-description'>Інформація не надана КПТС</span>>";
+                                } else {
+                                    infostr += "<span class='right_menu_content-title'>Надходження (грн.)</span><span class='right_menu_content-description'>" + response.features[i].properties.p_cost + "</span>";
+                                }
+                            }
+                            if (response.features[i].properties.objectid) {
+                                $("#orendadoc").attr('href', "/orendadoc/" + response.features[i].properties.objectid + "/new");
+                            }
+                            infostr += "</div></div></div>";
+                        }
+
+                    });
+
+                }
+            });
+            if(infostr != "" && $('.right_menu').hasClass('close')){
+                $('.right_menu').toggleClass('close');
+              //  $('.bid_list').toggleClass('close');
+                $('.main_search_container').toggleClass('close');
+                $('.ol-overviewmap').toggleClass('close');
+                $('.account_container').toggleClass('close');
+                $('.language_container').toggleClass('close');
+                $('.right_menu_button').show();
+            }else if(!$('.right_menu').hasClass('close') && infostr==""){
+                $('.right_menu').toggleClass('close');
+            //    $('.bid_list').toggleClass('close');
+                $('.main_search_container').toggleClass('close');
+                $('.right_menu_button').hide();
+                $('.ol-overviewmap').toggleClass('close');
+                $('.account_container').toggleClass('close');
+                $('.language_container').toggleClass('close');
+            }
+            if(infostr==""){
+                $('.right_menu_button').hide();
+            }
+            setTimeout(function () {
+                if (flah) {
+
+                    $('ol.carousel-indicators').html(indic);
+                    $('#information').html(infostr);
+                    if($('div').is('.carousel-block')){
+                        sliderCarousel = $('.carousel-block').bxSlider();
+                    }
+                    sliderInfo = $('.info-slider').bxSlider({pager: false});
+                    $('.mdl-card__supporting-text img:not(:first)').each(function (i, elem) {
+                        $(this).hide().wrap("<a href='" + this.src + "' data-toggle='lightbox' data-gallery='multiimages'></a>");
+                    });
+
+//                    var wrp = "<a href='"+$('.mdl-card__supporting-text img').src+"'></a>";
+//                    $('.mdl-card__supporting-text img').wrap(wrp);
+                    if ($('.mdl-card__supporting-text img').filter(':first').attr("src") != null) {
+                        var srcimg = 'url("' + $('.mdl-card__supporting-text img').filter(':first').attr('src') + '")';
+                        $('.mdl-card__title').css("background-image", srcimg).show();
+
+                        $('.mdl-card__title').wrap("<a href='" + $('.mdl-card__supporting-text img').filter(':first').attr('src') + "' data-toggle='lightbox' data-gallery='multiimages'></a>");
+                        $('.mdl-card__supporting-text img').filter(':first').hide();
+                    }
+
+                    $('.demo-info').show();
+                    windowResizeHandler();
+                    $('#view-source').hide();
+//                        rightNav = true;
+//                    }
+                } else {
+                    //console.log("no" + infostr);
+                    infocontainer.innerHTML = '&nbsp;';
+//                    if (rightNav) {
+//                        $("#rightSide").removeClass("expanded");
+//                        $("#rightSwitch").removeClass("expanded");
+//                        $("#rightblur").removeClass("expanded");
+                    $('.demo-info').hide();
+                    $('#view-source').show();
+//                        rightNav = false;
+//                    }
+                }
+            }, 300);
+            }
+        });
+//        $("#rightClose").on('click', function () {
+//            $("#rightSide").removeClass("expanded");
+//            rightNav = false;
+//            $("#rightSwitch").removeClass("expanded");
+//            $("#rightblur").removeClass("expanded");
+//        });
+        $('#main_search_input').bind("enterKey", function (e) {
+            var searchval = $('#main_search_input').val();
+            console.log(searchval);
+            $.ajax({
+                url: 'https://maps.googleapis.com/maps/api/geocode/json',
+                data: { 'address': searchval + ' Винница' },
+                success: function (data) {
+
+                    var sourceProj = map.getView().getProjection();
+
+                    var c1 = ol.proj.transform([data.results[0].geometry.viewport.northeast.lng,data.results[0].geometry.viewport.northeast.lat],'EPSG:4326','EPSG:900913');
+
+                    var c2 = ol.proj.transform([data.results[0].geometry.viewport.southwest.lng,data.results[0].geometry.viewport.southwest.lat], 'EPSG:4326', 'EPSG:900913');
+
+                    var fitextent = [c1[0],c1[1],c2[0],c2[1]];
+
+                    map.getView().fit(fitextent, map.getSize());
+                }
+        })
+        });
+        $('#main_search_input').keyup(function (e) {
+            if (e.keyCode == 13) {
+                $(this).trigger("enterKey");
+            }
+        });
+
+
+
+
+     /*   $('#main_search_input').bind("enterKey", function (e) {
+            var searchval = $('#main_search_input').val();
+//    console.log(searchval);
+            $.ajax({hg
+                url: '/search',
+                type: 'POST',
+                data: {searchstring: searchval},
+                success: function (data) {
+//            console.log(data.names);
+                    var fitextent = [data[0], data[1], data[2], data[3]];
+                    map.getView().fit(fitextent, map.getSize());
+
+                    wmsSource15.updateParams({
+                        CQL_FILTER: "id = " + data[4] // 10143
+                    });
+                    wmsLayer15.setVisible(true);
+
+//            wmsSource6.updateParams({'LAYERS': 'kmda:kmda_l_street', 'VERSION': '1.1.1', 'TILED': 'true', 'FORMAT': 'image/png8', 'WIDTH': 768, 'HEIGHT': 396, 'CRS': 'EPSG:900913', 'STYLE': 'a_street_flash',//, CQL_FILTER:'koatuu=3520386800'
+//                serverType: 'geoserver',
+//                crossOrigin: '',
+//                projection: projection,
+//            });
+//            map.render();
+                },
+                error: function () {
+                    wmsLayer15.setVisible(false);
+                }
+            });
+        });
+        $('#main_search_input').keyup(function (e) {
+            if (e.keyCode == 13) {
+                $(this).trigger("enterKey");
+            }
+        });
+        $('#main_search_input').autocomplete({
+            source: '/autocomplete',
+            minLength: 3,
+            select: function (e, ui) {
+                var value = ui.item.value;
+                $.ajax({
+                    url: '/search',
+                    type: 'POST',
+                    data: {searchstring: value},
+                    success: function (data) {
+
+                        var fitextent = [data[0], data[1], data[2], data[3]];
+                        map.getView().fit(fitextent, map.getSize());
+
+                        wmsSource15.updateParams({
+                            CQL_FILTER: "id = " + data[4] // 10143
+                        });
+                        wmsLayer15.setVisible(true);
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+        });*/
+
+
+    }, 300);
+
+
+});
+
+/*----Add measure (START)----*/
+function addMeasure(map) {
+
+    var source = new ol.source.Vector();
+    var style = new ol.style.Style({
+        fill: new ol.style.Fill({
+            color: 'rgba(255, 255, 255, 0.4)',
+        }),
+        stroke: new ol.style.Stroke({
+            color: '#09f',
+            width: 3
+        }),
+        image: new ol.style.Circle({
+            radius: 7,
+            fill: new ol.style.Fill({
+                color: '#ffcc33'
+            })
+        })
+    })
+    var vector = new ol.layer.Vector({
+        source: source,
+        style: style
+    });
+
+    /**
+     * The measure tooltip element.
+     * @type {Element}
+     */
+    var measureTooltipElement;
+
+    /**
+     * Overlay to show the measurement.
+     * @type {ol.Overlay}
+     */
+    var measureTooltip;
+    /**
+     * Currently drawed feature
+     * @type {ol.Feature}
+     */
+
+    var sketch;
+    /**
+     * Element for currently drawed feature
+     * @type {Element}
+     */
+    var sketchElement;
+    var typeSelect;
+    /**
+     * handle pointer move
+     * @param {Event} evt
+     */
+    var wgs84Sphere = new ol.Sphere(6378137);
+
+    map.addLayer(vector);
+    $('#erase').on('mousedown', function(){
+        $(this).addClass('active');
+
+    });
+    $('#erase').on('mouseup', function(){
+        $('.measure').removeClass('active');
+        $('.tooltip.tooltip-static').remove();
+        map.removeInteraction(draw);
+        source.clear();
+    });
+
+    $('.measure:not(#erase)').on('click', function (e) {
+
+        if($(this).hasClass('active')){
+            $(this).removeClass('active')
+            $('.tooltip.tooltip-static').remove();
+        }else{
+            source.clear();
+            $('.measure').removeClass('active')
+            $('.tooltip.tooltip-static').remove();
+
+            $(this).addClass('active')
+            map.removeInteraction(draw);
+        }
+        if($(this).hasClass('active')){
+            typeSelect = $(this).attr('id')
+
+            addInteraction();
+        }else{
+            map.removeInteraction(draw);
+            source.clear();
+        }
+    });
+
+    createMeasureTooltip();
+    var draw; // global so we can remove it later
+    function addInteraction() {
+        var type = (typeSelect == 'area' ? 'Polygon' : 'LineString');
+        draw = new ol.interaction.Draw({
+            source: source,
+            type: /** @type {ol.geom.GeometryType} */ (type),
+            style: new ol.style.Style({
+                fill: new ol.style.Fill({
+                    color: 'rgba(255, 255, 255, 0.4)'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(0, 0, 0, 0.7)',
+                    lineDash: [10, 10],
+                    width: 2
+                }),
+                image: new ol.style.Circle({
+                    radius: 5,
+                    stroke: new ol.style.Stroke({
+                        color: 'rgba(0, 0, 0, 0.8)'
+                    }),
+                    fill: new ol.style.Fill({
+                        color: 'rgba(255, 255, 255, 0.2)'
+                    })
+                })
+            })
+        });
+        map.addInteraction(draw);
+        var listener;
+        draw.on('drawstart',
+            function (evt) {
+                sketch = evt.feature;
+                var tooltipCoord = evt.coordinate;
+                listener = sketch.getGeometry().on('change', function(evt) {
+                    var geom = evt.target;
+                    var output;
+                    if (geom instanceof ol.geom.Polygon) {
+                        output = formatArea(geom);
+                        tooltipCoord = geom.getInteriorPoint().getCoordinates();
+                    } else if (geom instanceof ol.geom.LineString) {
+                        output = formatLength(geom);
+                        tooltipCoord = geom.getLastCoordinate();
+                    }
+                    measureTooltipElement.innerHTML = output;
+                    measureTooltip.setPosition(tooltipCoord);
+                });
+            }, this);
+        draw.on('drawend',
+            function() {
+                measureTooltipElement.className = 'tooltip tooltip-static';
+                measureTooltip.setOffset([0, -9]);
+                // unset sketch
+                sketch = null;
+                // unset tooltip so that a new one can be created
+                measureTooltipElement = null;
+                createMeasureTooltip();
+                ol.Observable.unByKey(listener);
+            }, this);
+    }
+
+    /**
+     * format length output
+     * @param {ol.geom.LineString} line
+     * @return {string}
+     */
+
+    var formatLength = function (line) {
+        var length;
+        var coordinates = line.getCoordinates();
+        length = 0;
+        var sourceProj = map.getView().getProjection();
+        for (var i = 0, ii = coordinates.length - 1; i < ii; ++i) {
+            var c1 = ol.proj.transform(coordinates[i], sourceProj, 'EPSG:4326');
+            var c2 = ol.proj.transform(coordinates[i + 1], sourceProj, 'EPSG:4326');
+            length += wgs84Sphere.haversineDistance(c1, c2);
+        }
+        var output;
+        if (length > 100) {
+            output = (Math.round(length / 1000 * 100) / 100) +
+                ' ' + 'км';
+        } else {
+            output = (Math.round(length * 100) / 100) +
+                ' ' + 'м';
+        }
+        return output;
+    };
+
+    /**
+     * format length output
+     * @param {ol.geom.Polygon} polygon
+     * @return {string}
+     */
+    var formatArea = function (polygon) {
+        var area;
+        var sourceProj = map.getView().getProjection();
+        var geom = /** @type {ol.geom.Polygon} */(polygon.clone().transform(
+            sourceProj, 'EPSG:4326'));
+        var coordinates = geom.getLinearRing(0).getCoordinates();
+        area = Math.abs(wgs84Sphere.geodesicArea(coordinates));
+        var output;
+        if (area > 10000) {
+            output = (Math.round(area / 1000000 * 100) / 100) +
+                ' ' + 'км<sup>2</sup>';
+        } else {
+            output = (Math.round(area * 100) / 100) +
+                ' ' + 'м<sup>2</sup>';
+        }
+        return output;
+    };
+
+    function createMeasureTooltip() {
+        if (measureTooltipElement) {
+            measureTooltipElement.parentNode.removeChild(measureTooltipElement);
+        }
+        measureTooltipElement = document.createElement('div');
+        measureTooltipElement.className = 'tooltip tooltip-measure';
+        measureTooltip = new ol.Overlay({
+            element: measureTooltipElement,
+            offset: [0, -15],
+            positioning: 'bottom-center'
+        });
+        map.addOverlay(measureTooltip);
+    }
+
+  /*  $('.measure').hover(function(){
+       $(this).addClass('is-active');
+    });
+    $('.measure').mouseleave(function(){
+        $(this).removeClass('is-active');
+    });*/
+
+    /*----Add measure (END)----*/
+
+}
 (function($) {
 
     $('#sample5').change(function() {

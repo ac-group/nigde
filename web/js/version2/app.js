@@ -263,6 +263,13 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
+function parsemaplinkURL() {
+    var regex = new RegExp(/\/maplink\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)$/),
+        result = regex.exec(window.location.href);
+        return result;
+}
+
 function select(element) {
     var selectedText;
 
@@ -293,8 +300,15 @@ function select(element) {
 $(function () {
     $('#main_tt7').on('click', function(){
         $('#modal-help').toggleClass('open');
-    })
+    });
 
+    $("#save_map_url").on('click', function() {
+          var coord =  map.getView().getCenter();
+          var str = window.location.protocol + "//" + window.location.hostname+"/maplink/"+map.getView().getZoom()+"/"+coord[0]+"/"+coord[1];
+          console.log(str);
+          $('#permlink').val(str);
+          $('#modal-copy').toggleClass('open');
+    });
  //   Вызываем модальное окно для статистики по ДТП
  //   $('#orto10000base i').tooltip();
 $('body').click(function(){
@@ -309,7 +323,7 @@ $('body').click(function(){
 
     })*/
     new Clipboard('.material-icons.buffer');
-
+new Clipboard('.btn-copy');
 
     /*$('.map_mode_select .mdl-menu__item div .material-icons').click(function(){
 
@@ -1139,14 +1153,22 @@ $('body').click(function(){
             visible: 0,
         });
 
+
+        var getPar = parsemaplinkURL();
+        if((getPar === null) || (getPar.length!==4)) {        
         var view = new ol.View({
              center: [3170647.44192, 6315057.33961],
-//            extent: [3365331.64184455, 6509557.90965887, 3417855.95133155, 6545186.44247934],
-
-//            projection: projection,
             zoom: 12,
             minZoom: 2
         });
+        } else {
+        var view = new ol.View({
+            center: [getPar[2],getPar[3]],
+            zoom: getPar[1],
+            minZoom: 2  
+            });
+        }
+
 
 
         /**

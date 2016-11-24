@@ -60,4 +60,11 @@ class Version2Controller extends Controller
         return $votingResultAll;
 
     }
+    
+    public function maplinkAction(Request $request) {
+        $zoom = $request->get('zoom');
+        $x = $request->get('x');
+        $y = $request->get('y');
+        return $this->render('@kmda/Default/version2/index.html.twig');
+    }
 }

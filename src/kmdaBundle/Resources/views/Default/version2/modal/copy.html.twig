@@ -1,0 +1,18 @@
+{% block modalCopy %}
+    <div class="modal_bg" id="modal-copy">
+        <div class="dialog_window_publication_bids_list_copy">
+            <div class="dialog_window_publication_bids_list-head">
+                <span class="title">
+                    URL
+                </span>
+                <textarea id="permlink"></textarea>
+            </div>
+            <div class="dialog_window_publication_bids_list-footer">
+                <div class="control_bttons">
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect  btn-copy" data-clipboard-target="#permlink">Copy</button>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect  btn-cancel">Закрити</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock modalCopy%}

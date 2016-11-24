@@ -65,6 +65,10 @@
         $('#modal-help').toggleClass('open');
     });
 
+    $('#modal-copy .btn-cancel').click(function() {
+        $('#modal-copy').toggleClass('open');
+    });
+    
     $('.dialog_window_publication_bids_list-footer .btn-public').click(function() {
         var snackbarContainer = document.querySelector('#snackbar_container');
         var handler = function(event) {
