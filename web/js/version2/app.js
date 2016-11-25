@@ -1285,6 +1285,24 @@ new Clipboard('.btn-copy');
             //ev.stopPropagation();
         });
 
+        $('#topoVinSidebar').on('click',function(){
+            if($(this).hasClass('active')){
+                $('#slider_topoVinSidebar').show();
+            }else{
+                $('#slider_topoVinSidebar').hide();
+            }
+        });
+
+        var sliderTopoVin = $('#slider_topoVinSidebar').slider({
+            value: topoVinSidebar.getOpacity()*100,
+            range: "min"
+
+        })
+        sliderTopoVin.on('slide', function(ev, ui) {
+            topoVinSidebar.setOpacity(ui.value/100);
+            //ev.stopPropagation();
+        });
+
 
        /* $('#slider_wms3').on('mousedown', function(event){
             event.stopPropagation();
@@ -1926,10 +1944,9 @@ new Clipboard('.btn-copy');
                 data: { 'address': searchval + ' Винница' },
                 success: function (data) {
 
-                    var sourceProj = map.getView().getProjection();
+                   // var sourceProj = map.getView().getProjection();
 
                     var c1 = ol.proj.transform([data.results[0].geometry.viewport.northeast.lng,data.results[0].geometry.viewport.northeast.lat],'EPSG:4326','EPSG:900913');
-
                     var c2 = ol.proj.transform([data.results[0].geometry.viewport.southwest.lng,data.results[0].geometry.viewport.southwest.lat], 'EPSG:4326', 'EPSG:900913');
 
                     var fitextent = [c1[0],c1[1],c2[0],c2[1]];
