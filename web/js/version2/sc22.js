@@ -4289,7 +4289,7 @@ function getParameterByName(name, url) {
 }
 
 function parsemaplinkURL() {
-    var regex = new RegExp(/\/maplink\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)$/),
+    var regex = new RegExp(/\/maplink\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)$/),
         result = regex.exec(window.location.href);
         return result;
 }
@@ -4328,8 +4328,25 @@ $(function () {
 
     $("#save_map_url").on('click', function() {
           var coord =  map.getView().getCenter();
-          var str = window.location.protocol + "//" + window.location.hostname+"/maplink/"+map.getView().getZoom()+"/"+coord[0]+"/"+coord[1];
-          console.log(str);
+          var str = window.location.protocol + "//" + window.location.hostname+"/maplink/"+map.getView().getZoom()+"/"+coord[0]+"/"+coord[1]+"/";
+//          console.log(str);
+            map.getLayers().forEach(function (l, i) {
+            if (($.inArray(l.get('name'), art)) > -1) {
+                if(l.getVisible()) {
+                str+=1;
+            } else { str+=0; }
+            }
+          });
+            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006','emptyRelief', 'emptyLayer', 'topoVin'];
+            str+="/";
+            map.getLayers().forEach(function (l, i) {
+                if (($.inArray(l.get('name'), artbaz)) > -1) {
+                if(l.getVisible()) {
+                str+=1;
+            } else { str+=0; }
+            }
+        });             
+          
           $('#permlink').val(str);
           $('#modal-copy').toggleClass('open');
     });
@@ -5179,7 +5196,7 @@ new Clipboard('.btn-copy');
 
 
         var getPar = parsemaplinkURL();
-        if((getPar === null) || (getPar.length!==4)) {        
+        if((getPar === null) || (getPar.length!==5)) {        
         var view = new ol.View({
              center: [3170647.44192, 6315057.33961],
             zoom: 12,
@@ -5191,6 +5208,7 @@ new Clipboard('.btn-copy');
             zoom: getPar[1],
             minZoom: 2  
             });
+
         }
 
 
@@ -5271,7 +5289,30 @@ new Clipboard('.btn-copy');
             view: view,
             controls: [],
         });
-
+        if(getPar!=null){
+        if(getPar.length===6) {
+            var ic = 0;
+            map.getLayers().forEach(function (l, i) {
+            if (($.inArray(l.get('name'), art)) > -1) {
+                if(getPar[4].charAt(ic)==1) {
+                    l.setVisible(true);
+                }
+                ic++;
+            }
+          });
+      
+          ic=0;
+            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006','emptyRelief', 'emptyLayer', 'topoVin'];
+            map.getLayers().forEach(function (l, i) {
+                if (($.inArray(l.get('name'), artbaz)) > -1) {
+                    if(getPar[5].charAt(ic)==1) {
+                        l.setVisible(true);
+                    }
+                    ic++;                    
+                }
+        });  
+    }
+    }
         $('#vinOrto').on('click',function(){
             if($(this).hasClass('active')){
                 $('#slider_vinOrtoSidebar').show();
@@ -5306,24 +5347,6 @@ new Clipboard('.btn-copy');
         })
         sliderOrto10000.on('slide', function(ev, ui) {
             orto10000sidebar.setOpacity(ui.value/100);
-            //ev.stopPropagation();
-        });
-
-        $('#topoVinSidebar').on('click',function(){
-            if($(this).hasClass('active')){
-                $('#slider_topoVinSidebar').show();
-            }else{
-                $('#slider_topoVinSidebar').hide();
-            }
-        });
-
-        var sliderTopoVin = $('#slider_topoVinSidebar').slider({
-            value: topoVinSidebar.getOpacity()*100,
-            range: "min"
-
-        })
-        sliderTopoVin.on('slide', function(ev, ui) {
-            topoVinSidebar.setOpacity(ui.value/100);
             //ev.stopPropagation();
         });
 
@@ -5968,9 +5991,10 @@ new Clipboard('.btn-copy');
                 data: { 'address': searchval + ' Винница' },
                 success: function (data) {
 
-                   // var sourceProj = map.getView().getProjection();
+                    var sourceProj = map.getView().getProjection();
 
                     var c1 = ol.proj.transform([data.results[0].geometry.viewport.northeast.lng,data.results[0].geometry.viewport.northeast.lat],'EPSG:4326','EPSG:900913');
+
                     var c2 = ol.proj.transform([data.results[0].geometry.viewport.southwest.lng,data.results[0].geometry.viewport.southwest.lat], 'EPSG:4326', 'EPSG:900913');
 
                     var fitextent = [c1[0],c1[1],c2[0],c2[1]];

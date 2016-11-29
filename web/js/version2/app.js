@@ -265,7 +265,7 @@ function getParameterByName(name, url) {
 }
 
 function parsemaplinkURL() {
-    var regex = new RegExp(/\/maplink\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)$/),
+    var regex = new RegExp(/\/maplink\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)$/),
         result = regex.exec(window.location.href);
         return result;
 }
@@ -304,8 +304,25 @@ $(function () {
 
     $("#save_map_url").on('click', function() {
           var coord =  map.getView().getCenter();
-          var str = window.location.protocol + "//" + window.location.hostname+"/maplink/"+map.getView().getZoom()+"/"+coord[0]+"/"+coord[1]+"/1";
-          console.log(str);
+          var str = window.location.protocol + "//" + window.location.hostname+"/maplink/"+map.getView().getZoom()+"/"+coord[0]+"/"+coord[1]+"/";
+//          console.log(str);
+            map.getLayers().forEach(function (l, i) {
+            if (($.inArray(l.get('name'), art)) > -1) {
+                if(l.getVisible()) {
+                str+=1;
+            } else { str+=0; }
+            }
+          });
+            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006','emptyRelief', 'emptyLayer', 'topoVin'];
+            str+="/";
+            map.getLayers().forEach(function (l, i) {
+                if (($.inArray(l.get('name'), artbaz)) > -1) {
+                if(l.getVisible()) {
+                str+=1;
+            } else { str+=0; }
+            }
+        });             
+          
           $('#permlink').val(str);
           $('#modal-copy').toggleClass('open');
     });
@@ -1167,11 +1184,7 @@ new Clipboard('.btn-copy');
             zoom: getPar[1],
             minZoom: 2  
             });
-            if(getPar[4]==1){
-                vectorVinSidebar.setVisible(true);
-            } else {
-                vectorVinSidebar.setVisible(false);
-            }
+
         }
 
 
@@ -1252,7 +1265,34 @@ new Clipboard('.btn-copy');
             view: view,
             controls: [],
         });
-
+        if(getPar!=null){
+        if(getPar.length===6) {
+            var ic = 0;
+            map.getLayers().forEach(function (l, i) {
+            if (($.inArray(l.get('name'), art)) > -1) {
+                if(getPar[4].charAt(ic)==1) {
+                    l.setVisible(true);
+                } else {
+                    l.setVisible(false);
+                }
+                ic++;
+            }
+          });
+      
+          ic=0;
+            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006','emptyRelief', 'emptyLayer', 'topoVin'];
+            map.getLayers().forEach(function (l, i) {
+                if (($.inArray(l.get('name'), artbaz)) > -1) {
+                    if(getPar[5].charAt(ic)==1) {
+                        l.setVisible(true);
+                    } {
+                    l.setVisible(false);
+                }
+                    ic++;                    
+                }
+        });  
+    }
+    }
         $('#vinOrto').on('click',function(){
             if($(this).hasClass('active')){
                 $('#slider_vinOrtoSidebar').show();
