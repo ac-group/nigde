@@ -16335,8 +16335,8 @@ a:active {
 
 .bid_list {
     width: 100%;
-    position: fixed;
-    right: 0;
+    position: absolute;
+    //right: 0;
     bottom: 0;
     z-index: 1000;
     transition: right 1s;
@@ -16544,8 +16544,12 @@ a:active {
 .open .bid_list-content-fix {
     padding-top: 2px;
     overflow: hidden;
-}
 
+}
+.bid_list-content-fix {
+    border-top: solid 1px rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: none;
+}
 .open .bid_list-content {
     height: 180px;
     overflow: hidden;
@@ -19138,34 +19142,30 @@ background: rgba(74, 160, 255, 1)
 .ol-zoom.hide{
     display: none;
 }
-#slider_orto10000sidebar,
-#slider_vinOrtoSidebar{
+.mdl-navigation__level3 .ui-slider{
     display: none;
     width: 90%;
     margin: 12px 0 10px 6px;
     font-size: 14px;
 }
-#slider_orto10000sidebar,
-#slider_vinOrtoSidebar.ui-widget-content{
+.mdl-navigation__level3 .ui-slider.ui-widget-content{
     background: #ebf5ff;
 }
-#slider_orto10000sidebar span,
-#slider_vinOrtoSidebar span{
+.mdl-navigation__level3 .ui-slider span{
     border: 2px solid #3396ff;
     background: rgb(185, 207, 255);
 }
-#slider_orto10000sidebar span:focus,
-#slider_vinOrtoSidebar span:focus{
+
+.mdl-navigation__level3 .ui-slider span:focus{
    outline: none;
 }
-#slider_orto10000sidebar .ui-slider-range,
-#slider_vinOrtoSidebar .ui-slider-range {
+.mdl-navigation__level3 .ui-slider .ui-slider-range{
     background: rgb(152, 205, 255);
 }
-#slider_orto10000sidebar .ui-slider-handle,
-#slider_wms3  .ui-slider-handle {
+.mdl-navigation__level3 .ui-slider .ui-slider-handle{
     border-color: rgb(154, 154, 154);
 }
+
 .layersAll{
     position: static;
     overflow-y: auto;

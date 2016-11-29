@@ -3,7 +3,7 @@ kmda_homepage:
     defaults: { _controller: kmdaBundle:Version2:index }
     
 kmda_maplink:
-    path:     /maplink/{zoom}/{x}/{y}
+    path:     /maplink/{zoom}/{x}/{y}/{l}
     defaults: { _controller: kmdaBundle:Version2:maplink }
     requirements:
         _method: GET

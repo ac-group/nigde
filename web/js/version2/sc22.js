@@ -3561,7 +3561,7 @@ google.maps = google.maps || {};
   
   google.maps.Load = function(apiLoad) {
     delete google.maps.Load;
-    apiLoad([0.009999999776482582,[null,[["http://khm0.googleapis.com/kh?v=707\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=707\u0026hl=en-US\u0026"],null,null,null,1,"707",["https://khms0.google.com/kh?v=707\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=707\u0026hl=en-US\u0026"]],null,null,null,null,[["http://cbk0.googleapis.com/cbk?","http://cbk1.googleapis.com/cbk?"]],[["http://khm0.googleapis.com/kh?v=102\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=102\u0026hl=en-US\u0026"],null,null,null,null,"102",["https://khms0.google.com/kh?v=102\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=102\u0026hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt?hl=en-US\u0026","http://mt1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"http://maps.gstatic.com/mapfiles/","http://csi.gstatic.com","https://maps.googleapis.com","http://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","http://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["http://maps.google.com/maps-api-v3/api/js/26/14","3.26.14"],[3504178721],1,null,null,null,null,null,"",null,null,0,"http://khm.googleapis.com/mz?v=707\u0026","AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"http://mt.googleapis.com/maps/vt/icon",[["http://maps.google.com/maps/vt"],["https://maps.google.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",368000000,368],2,500,[null,null,null,null,"http://www.google.com/maps/preview/log204","","http://static.panoramio.com.storage.googleapis.com/photos/",["http://geo0.ggpht.com/cbk","http://geo1.ggpht.com/cbk","http://geo2.ggpht.com/cbk","http://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["http://lh3.ggpht.com/","http://lh4.ggpht.com/","http://lh5.ggpht.com/","http://lh6.ggpht.com/"]],["https://www.google.com/maps/api/js/master?pb=!1m2!1u26!2s14!2sen-US!3sUS!4s26/14","https://www.google.com/maps/api/js/widget?pb=!1m2!1u26!2s14!2sen-US"],null,0,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["26.14"]], loadScriptTime);
+    apiLoad([0.009999999776482582,[null,[["http://khm0.googleapis.com/kh?v=707\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=707\u0026hl=en-US\u0026"],null,null,null,1,"707",["https://khms0.google.com/kh?v=707\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=707\u0026hl=en-US\u0026"]],null,null,null,null,[["http://cbk0.googleapis.com/cbk?","http://cbk1.googleapis.com/cbk?"]],[["http://khm0.googleapis.com/kh?v=102\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=102\u0026hl=en-US\u0026"],null,null,null,null,"102",["https://khms0.google.com/kh?v=102\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=102\u0026hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt?hl=en-US\u0026","http://mt1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"http://maps.gstatic.com/mapfiles/","http://csi.gstatic.com","https://maps.googleapis.com","http://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","http://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["http://maps.google.com/maps-api-v3/api/js/26/14","3.26.14"],[361821661],1,null,null,null,null,null,"",null,null,0,"http://khm.googleapis.com/mz?v=707\u0026","AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"http://mt.googleapis.com/maps/vt/icon",[["http://maps.google.com/maps/vt"],["https://maps.google.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",368000000,368],2,500,[null,null,null,null,"http://www.google.com/maps/preview/log204","","http://static.panoramio.com.storage.googleapis.com/photos/",["http://geo0.ggpht.com/cbk","http://geo1.ggpht.com/cbk","http://geo2.ggpht.com/cbk","http://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["http://lh3.ggpht.com/","http://lh4.ggpht.com/","http://lh5.ggpht.com/","http://lh6.ggpht.com/"]],["https://www.google.com/maps/api/js/master?pb=!1m2!1u26!2s14!2sen-US!3sUS!4s26/14","https://www.google.com/maps/api/js/widget?pb=!1m2!1u26!2s14!2sen-US"],null,0,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["26.14"]], loadScriptTime);
   };
   var loadScriptTime = (new Date).getTime();
 })();
@@ -3983,19 +3983,28 @@ window.google.maps.Load(function(a,b){var c=window.google.maps;Ng();var d=Og(c);
         event.stopImmediatePropagation();
         slide_vinOrtoSidebar = true;
     })
+
     var slide_orto10000sidebar = true;
     $('#slider_orto10000sidebar').on('mousedown', function(event){
         slide_orto10000sidebar = false;
     })
-
     $('#slider_orto10000sidebar').on('click', function(event){
         event.stopImmediatePropagation();
         slide_orto10000sidebar = true;
     })
 
+    var slide_topoVinSidebar = true;
+    $('#slider_topoVinSidebar').on('mousedown', function(event){
+        slide_topoVinSidebar = false;
+    })
+    $('#slider_topoVinSidebar').on('click', function(event){
+        event.stopImmediatePropagation();
+        slide_topoVinSidebar = true;
+    })
+
     $('.mdl-navigation__level3').on('click',function(event) { //при клике на пункт меню:
-        console.log($(this).getId);
-        if(($(this).attr('id') == 'orto10000' && slide_orto10000sidebar == false)||($(this).attr('id') == 'vinOrto' && slide_vinOrtoSidebar == false)){
+        console.log($(this).attr('id'));
+        if(($(this).attr('id') == 'orto10000' && slide_orto10000sidebar == false)||($(this).attr('id') == 'vinOrto' && slide_vinOrtoSidebar == false) ||($(this).attr('id') == 'topoVinSidebar' && slide_topoVinSidebar == false)){
         }else{
             event.relatedTarget;
             if (event.target.className == 'material-icons') {
@@ -4007,6 +4016,7 @@ window.google.maps.Load(function(a,b){var c=window.google.maps;Ng();var d=Og(c);
         }
         slide_vinOrtoSidebar = true;
         slide_orto10000sidebar = true;
+        slide_topoVinSidebar = true;
 
     });
     //---------------------------------------------------------------//
@@ -5299,6 +5309,24 @@ new Clipboard('.btn-copy');
             //ev.stopPropagation();
         });
 
+        $('#topoVinSidebar').on('click',function(){
+            if($(this).hasClass('active')){
+                $('#slider_topoVinSidebar').show();
+            }else{
+                $('#slider_topoVinSidebar').hide();
+            }
+        });
+
+        var sliderTopoVin = $('#slider_topoVinSidebar').slider({
+            value: topoVinSidebar.getOpacity()*100,
+            range: "min"
+
+        })
+        sliderTopoVin.on('slide', function(ev, ui) {
+            topoVinSidebar.setOpacity(ui.value/100);
+            //ev.stopPropagation();
+        });
+
 
        /* $('#slider_wms3').on('mousedown', function(event){
             event.stopPropagation();
@@ -5940,10 +5968,9 @@ new Clipboard('.btn-copy');
                 data: { 'address': searchval + ' Винница' },
                 success: function (data) {
 
-                    var sourceProj = map.getView().getProjection();
+                   // var sourceProj = map.getView().getProjection();
 
                     var c1 = ol.proj.transform([data.results[0].geometry.viewport.northeast.lng,data.results[0].geometry.viewport.northeast.lat],'EPSG:4326','EPSG:900913');
-
                     var c2 = ol.proj.transform([data.results[0].geometry.viewport.southwest.lng,data.results[0].geometry.viewport.southwest.lat], 'EPSG:4326', 'EPSG:900913');
 
                     var fitextent = [c1[0],c1[1],c2[0],c2[1]];
