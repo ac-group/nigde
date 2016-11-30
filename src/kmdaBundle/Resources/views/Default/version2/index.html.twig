@@ -92,11 +92,21 @@
                     <div class="mdl-navigation__level2">
                         <a id='orto10000' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#orto10000sidebar">
                             <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Ортофотоплан, 2006р. (М 1:10000)
+                            <i id='orto10000sidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
                             <div id="slider_orto10000sidebar"></div>
                         </a>
+                        <div class="tooltip-info">
+                            <a href="http://map.land.gov.ua/kadastrova-karta" target="_blank">Публічна кадастрова карта</a><br>
+                            <i id="insert_sidebar_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer">
+                                Скопіювати в буфер
+                            </div>
+                        </div>
 
                         <a class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#orto2000sidebar">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Ортофотоплан, 2010р. (М 1:2000)</a>
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Ортофотоплан, 2010р. (М 1:2000)
+                            <i id='orto2000sidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                        </a>
                     </div>
                 </div>
                 <div class="level_menu">
@@ -105,9 +115,21 @@
 
                     <div class="mdl-navigation__level2">
                         <a class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#dynamicSidebar">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Динамічна карта</a>
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Динамічна карта
+                            <i id='dynamicSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                        </a>
                         <a class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#gryntSidebar">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Грунти</a>
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Грунти
+                            <i id='gryntSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://map.land.gov.ua/kadastrova-karta" target="_blank">Публічна кадастрова карта</a><br>
+                            <i id="insert_sidebar_buffer2" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer2">
+                                Скопіювати в буфер
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -117,14 +139,17 @@
                         <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">location_city</i>Вінниця</a>
                     <div class="mdl-navigation__level2">
                         <a class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#vectorVinSidebar">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>Векторна
-                            карта</a>
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>Векторна карта
+                            <i id='vectorVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                        </a>
                         <a id="vinOrto" class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#vinOrtoSidebar">
                             <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>Ортофотоплан (м. Вінниця)
+                            <i id='vinOrtoSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
                             <div id="slider_vinOrtoSidebar"></div>
                         </a>
                         <a id='topoVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#topoVinSidebar">
                             <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>Топографічна карта
+                            <i id='topoVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
                             <div id="slider_topoVinSidebar"></div>
                         </a>
 
@@ -136,8 +161,16 @@
 
                     <div class="mdl-navigation__level2">
                         <a class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#parcelSidebar">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Кадастровий
-                            поділ</a>
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Кадастровий поділ
+                            <i id='parcelSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://map.land.gov.ua/kadastrova-karta" target="_blank">Публічна кадастрова карта</a><br>
+                            <i id="insert_sidebar_buffer3" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer3">
+                                Скопіювати в буфер
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>

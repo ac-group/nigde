@@ -366,7 +366,7 @@ $('body').click(function(){
 
     })*/
     new Clipboard('.material-icons.buffer');
-new Clipboard('.btn-copy');
+    new Clipboard('.btn-copy');
 
     /*$('.map_mode_select .mdl-menu__item div .material-icons').click(function(){
 
@@ -383,11 +383,20 @@ new Clipboard('.btn-copy');
 
 
     $('.mdl-menu .material-icons:not(.buffer)').on('click', function (event) {
-        console.log('sds');
+        //console.log('sds');
         if (!$(this).next().hasClass('active')) {
             $('.tooltip-info').removeClass('active');
         }
         $(this).next('.tooltip-info').toggleClass('active');
+        event.stopPropagation();
+    })
+
+    $('.mdl-navigation__level3 .material-icons:not(.buffer)').on('click', function (event) {
+        //console.log('sds');
+        if (!$(this).parent().next().hasClass('active')) {
+            $('.tooltip-info').removeClass('active');
+        }
+        $(this).parent().next('.tooltip-info').toggleClass('active');
         event.stopPropagation();
     })
 
