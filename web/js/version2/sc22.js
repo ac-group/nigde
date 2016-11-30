@@ -3561,7 +3561,7 @@ google.maps = google.maps || {};
   
   google.maps.Load = function(apiLoad) {
     delete google.maps.Load;
-    apiLoad([0.009999999776482582,[null,[["http://khm0.googleapis.com/kh?v=707\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=707\u0026hl=en-US\u0026"],null,null,null,1,"707",["https://khms0.google.com/kh?v=707\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=707\u0026hl=en-US\u0026"]],null,null,null,null,[["http://cbk0.googleapis.com/cbk?","http://cbk1.googleapis.com/cbk?"]],[["http://khm0.googleapis.com/kh?v=102\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=102\u0026hl=en-US\u0026"],null,null,null,null,"102",["https://khms0.google.com/kh?v=102\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=102\u0026hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt?hl=en-US\u0026","http://mt1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"http://maps.gstatic.com/mapfiles/","http://csi.gstatic.com","https://maps.googleapis.com","http://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","http://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["http://maps.google.com/maps-api-v3/api/js/26/14","3.26.14"],[361821661],1,null,null,null,null,null,"",null,null,0,"http://khm.googleapis.com/mz?v=707\u0026","AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"http://mt.googleapis.com/maps/vt/icon",[["http://maps.google.com/maps/vt"],["https://maps.google.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",368000000,368],2,500,[null,null,null,null,"http://www.google.com/maps/preview/log204","","http://static.panoramio.com.storage.googleapis.com/photos/",["http://geo0.ggpht.com/cbk","http://geo1.ggpht.com/cbk","http://geo2.ggpht.com/cbk","http://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["http://lh3.ggpht.com/","http://lh4.ggpht.com/","http://lh5.ggpht.com/","http://lh6.ggpht.com/"]],["https://www.google.com/maps/api/js/master?pb=!1m2!1u26!2s14!2sen-US!3sUS!4s26/14","https://www.google.com/maps/api/js/widget?pb=!1m2!1u26!2s14!2sen-US"],null,0,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["26.14"]], loadScriptTime);
+    apiLoad([0.009999999776482582,[null,[["http://khm0.googleapis.com/kh?v=707\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=707\u0026hl=en-US\u0026"],null,null,null,1,"707",["https://khms0.google.com/kh?v=707\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=707\u0026hl=en-US\u0026"]],null,null,null,null,[["http://cbk0.googleapis.com/cbk?","http://cbk1.googleapis.com/cbk?"]],[["http://khm0.googleapis.com/kh?v=102\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=102\u0026hl=en-US\u0026"],null,null,null,null,"102",["https://khms0.google.com/kh?v=102\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=102\u0026hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt?hl=en-US\u0026","http://mt1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"http://maps.gstatic.com/mapfiles/","http://csi.gstatic.com","https://maps.googleapis.com","http://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","http://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["http://maps.google.com/maps-api-v3/api/js/26/14","3.26.14"],[2654338464],1,null,null,null,null,null,"",null,null,0,"http://khm.googleapis.com/mz?v=707\u0026","AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"http://mt.googleapis.com/maps/vt/icon",[["http://maps.google.com/maps/vt"],["https://maps.google.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",368000000,368],2,500,[null,null,null,null,"http://www.google.com/maps/preview/log204","","http://static.panoramio.com.storage.googleapis.com/photos/",["http://geo0.ggpht.com/cbk","http://geo1.ggpht.com/cbk","http://geo2.ggpht.com/cbk","http://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["http://lh3.ggpht.com/","http://lh4.ggpht.com/","http://lh5.ggpht.com/","http://lh6.ggpht.com/"]],["https://www.google.com/maps/api/js/master?pb=!1m2!1u26!2s14!2sen-US!3sUS!4s26/14","https://www.google.com/maps/api/js/widget?pb=!1m2!1u26!2s14!2sen-US"],null,0,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["26.14"]], loadScriptTime);
   };
   var loadScriptTime = (new Date).getTime();
 })();
@@ -4278,6 +4278,25 @@ function votingResult() {
     return voiceResult;
 }
 
+//Useful Functions
+function checkBin(n){return/^[01]{1,64}$/.test(n)}
+function checkDec(n){return/^[0-9]{1,64}$/.test(n)}
+function checkHex(n){return/^[0-9A-Fa-f]{1,64}$/.test(n)}
+function pad(s,z){s=""+s;return s.length<z?pad("0"+s,z):s}
+function unpad(s){s=""+s;return s.replace(/^0+/,'')}
+
+//Decimal operations
+function Dec2Bin(n){if(!checkDec(n)||n<0)return 0;return n.toString(2)}
+function Dec2Hex(n){if(!checkDec(n)||n<0)return 0;return n.toString(16)}
+
+//Binary Operations
+function Bin2Dec(n){if(!checkBin(n))return 0;return parseInt(n,2).toString(10)}
+function Bin2Hex(n){if(!checkBin(n))return 0;return parseInt(n,2).toString(16)}
+
+//Hexadecimal Operations
+function Hex2Bin(n){if(!checkHex(n))return 0;return parseInt(n,16).toString(2)}
+function Hex2Dec(n){if(!checkHex(n))return 0;return parseInt(n,16).toString(10)}
+
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -4329,24 +4348,31 @@ $(function () {
     $("#save_map_url").on('click', function() {
           var coord =  map.getView().getCenter();
           var str = window.location.protocol + "//" + window.location.hostname+"/maplink/"+map.getView().getZoom()+"/"+coord[0]+"/"+coord[1]+"/";
-//          console.log(str);
+            var temp='';
             map.getLayers().forEach(function (l, i) {
             if (($.inArray(l.get('name'), art)) > -1) {
                 if(l.getVisible()) {
-                str+=1;
-            } else { str+=0; }
+                    temp+=1;
+                } else { 
+                    temp+=0;
+                }
             }
           });
+
+            str+=Bin2Hex(temp);
             var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006','emptyRelief', 'emptyLayer', 'topoVin'];
-            str+="/";
+
+            temp='';
             map.getLayers().forEach(function (l, i) {
                 if (($.inArray(l.get('name'), artbaz)) > -1) {
-                if(l.getVisible()) {
-                str+=1;
-            } else { str+=0; }
-            }
-        });             
-          
+                        if(l.getVisible()) {
+                        temp+=1;
+                    } else { 
+                        temp+=0;
+                    }
+                }
+            });             
+            str+="/"+Bin2Hex(temp);
           $('#permlink').val(str);
           $('#modal-copy').toggleClass('open');
     });
@@ -5038,7 +5064,7 @@ new Clipboard('.btn-copy');
         });
 
         var dynamicSidebarWms = new ol.source.TileWMS({
-            url: 'http://212.26.144.103/dzk/wms',
+            url: 'http://212.26.144.103/geoserver/dzk/wms',
             params: {
                 'LAYERS': 'dzk:osm',
                 'ALIAS':'Динамічна карта',
@@ -5194,25 +5220,6 @@ new Clipboard('.btn-copy');
             visible: 0,
         });
 
-
-        var getPar = parsemaplinkURL();
-        if((getPar === null) || (getPar.length!==6)) {        
-        var view = new ol.View({
-             center: [3170647.44192, 6315057.33961],
-            zoom: 12,
-            minZoom: 2
-        });
-        } else {
-        var view = new ol.View({
-            center: [getPar[2],getPar[3]],
-            zoom: getPar[1],
-            minZoom: 2  
-            });
-console.log(getPar);
-        }
-
-
-
         /**
          * Create an overlay to anchor the popup to the map.
          */
@@ -5271,7 +5278,7 @@ console.log(getPar);
                 osmLayer,
                 emptyRelief,
                 cycleLayer,
-                cycleLayer,
+//                cycleLayer,
                 pubLayer,
                 kiev2006Layer,
                 vin2015Layer,
@@ -5286,11 +5293,38 @@ console.log(getPar);
                 topoVinSidebar,
 
             ],
-            view: view,
+//            view: view,
             controls: [],
         });
-        if(getPar!=null){
-        if(getPar.length===6) {
+                var getPar = parsemaplinkURL();
+
+        if((getPar === null) || (getPar.length!==6)) {        
+        var view = new ol.View({
+             center: [3170647.44192, 6315057.33961],
+            zoom: 12,
+            minZoom: 2
+        });
+        } else {
+            getPar[4]=pad(Hex2Bin(getPar[4]),8);
+            getPar[5]=pad(Hex2Bin(getPar[5]),10);
+     //       console.log(getPar[5]);
+        var view = new ol.View({
+            center: [getPar[2],getPar[3]],
+            zoom: getPar[1],
+            minZoom: 2  
+            });
+          ic=0;
+            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006','emptyRelief', 'emptyLayer', 'topoVin'];
+            map.getLayers().forEach(function (l, i) {
+                if (($.inArray(l.get('name'), artbaz)) > -1) {
+                    if(getPar[5].charAt(ic)==1) {
+                        l.setVisible(true);
+                    } else {
+                    l.setVisible(false);
+                }
+                    ic++;                    
+                }
+        });  
             var ic = 0;
             map.getLayers().forEach(function (l, i) {
             if (($.inArray(l.get('name'), art)) > -1) {
@@ -5302,21 +5336,8 @@ console.log(getPar);
                 ic++;
             }
           });
-      
-          ic=0;
-            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006','emptyRelief', 'emptyLayer', 'topoVin'];
-            map.getLayers().forEach(function (l, i) {
-                if (($.inArray(l.get('name'), artbaz)) > -1) {
-                    if(getPar[5].charAt(ic)==1) {
-                        l.setVisible(true);
-                    } {
-                    l.setVisible(false);
-                }
-                    ic++;                    
-                }
-        });  
-    }
-    }
+        }
+map.setView(view);
         $('#vinOrto').on('click',function(){
             if($(this).hasClass('active')){
                 $('#slider_vinOrtoSidebar').show();
@@ -5989,7 +6010,7 @@ console.log(getPar);
 //        });
         $('#main_search_input').bind("enterKey", function (e) {
             var searchval = $('#main_search_input').val();
-            console.log(searchval);
+//            console.log(searchval);
             $.ajax({
                 url: 'https://maps.googleapis.com/maps/api/geocode/json',
                 data: { 'address': searchval + ' Винница' },

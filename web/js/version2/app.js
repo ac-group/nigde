@@ -254,6 +254,25 @@ function votingResult() {
     return voiceResult;
 }
 
+//Useful Functions
+function checkBin(n){return/^[01]{1,64}$/.test(n)}
+function checkDec(n){return/^[0-9]{1,64}$/.test(n)}
+function checkHex(n){return/^[0-9A-Fa-f]{1,64}$/.test(n)}
+function pad(s,z){s=""+s;return s.length<z?pad("0"+s,z):s}
+function unpad(s){s=""+s;return s.replace(/^0+/,'')}
+
+//Decimal operations
+function Dec2Bin(n){if(!checkDec(n)||n<0)return 0;return n.toString(2)}
+function Dec2Hex(n){if(!checkDec(n)||n<0)return 0;return n.toString(16)}
+
+//Binary Operations
+function Bin2Dec(n){if(!checkBin(n))return 0;return parseInt(n,2).toString(10)}
+function Bin2Hex(n){if(!checkBin(n))return 0;return parseInt(n,2).toString(16)}
+
+//Hexadecimal Operations
+function Hex2Bin(n){if(!checkHex(n))return 0;return parseInt(n,16).toString(2)}
+function Hex2Dec(n){if(!checkHex(n))return 0;return parseInt(n,16).toString(10)}
+
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -315,21 +334,21 @@ $(function () {
                 }
             }
           });
-    //      console.log(temp.toString(16));
-            str+=temp;
+
+            str+=Bin2Hex(temp);
             var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006','emptyRelief', 'emptyLayer', 'topoVin'];
-            str+="/";
-            console.log('--------------');
+
+            temp='';
             map.getLayers().forEach(function (l, i) {
                 if (($.inArray(l.get('name'), artbaz)) > -1) {
                         if(l.getVisible()) {
-                        str+=1;
+                        temp+=1;
                     } else { 
-                        str+=0;
+                        temp+=0;
                     }
                 }
             });             
-          
+            str+="/"+Bin2Hex(temp);
           $('#permlink').val(str);
           $('#modal-copy').toggleClass('open');
     });
@@ -1021,7 +1040,7 @@ new Clipboard('.btn-copy');
         });
 
         var dynamicSidebarWms = new ol.source.TileWMS({
-            url: 'http://212.26.144.103/dzk/wms',
+            url: 'http://212.26.144.103/geoserver/dzk/wms',
             params: {
                 'LAYERS': 'dzk:osm',
                 'ALIAS':'Динамічна карта',
@@ -1262,6 +1281,9 @@ new Clipboard('.btn-copy');
             minZoom: 2
         });
         } else {
+            getPar[4]=pad(Hex2Bin(getPar[4]),8);
+            getPar[5]=pad(Hex2Bin(getPar[5]),10);
+     //       console.log(getPar[5]);
         var view = new ol.View({
             center: [getPar[2],getPar[3]],
             zoom: getPar[1],
