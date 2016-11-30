@@ -5196,7 +5196,7 @@ new Clipboard('.btn-copy');
 
 
         var getPar = parsemaplinkURL();
-        if((getPar === null) || (getPar.length!==5)) {        
+        if((getPar === null) || (getPar.length!==6)) {        
         var view = new ol.View({
              center: [3170647.44192, 6315057.33961],
             zoom: 12,
@@ -5208,7 +5208,7 @@ new Clipboard('.btn-copy');
             zoom: getPar[1],
             minZoom: 2  
             });
-
+console.log(getPar);
         }
 
 
@@ -5296,6 +5296,8 @@ new Clipboard('.btn-copy');
             if (($.inArray(l.get('name'), art)) > -1) {
                 if(getPar[4].charAt(ic)==1) {
                     l.setVisible(true);
+                } else {
+                    l.setVisible(false);
                 }
                 ic++;
             }
@@ -5307,7 +5309,9 @@ new Clipboard('.btn-copy');
                 if (($.inArray(l.get('name'), artbaz)) > -1) {
                     if(getPar[5].charAt(ic)==1) {
                         l.setVisible(true);
-                    }
+                    } {
+                    l.setVisible(false);
+                }
                     ic++;                    
                 }
         });  
