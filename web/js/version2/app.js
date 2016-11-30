@@ -1342,6 +1342,25 @@ map.setView(view);
             //ev.stopPropagation();
         });
 
+        $('#topoVinSidebar').on('click',function(){
+            if($(this).hasClass('active')){
+                $('#slider_topoVinSidebar').show();
+            }else{
+                $('#slider_topoVinSidebar').hide();
+            }
+        });
+
+        var sliderTopoVin = $('#slider_topoVinSidebar').slider({
+            value: topoVinSidebar.getOpacity()*100,
+            range: "min"
+
+        })
+
+        sliderTopoVin.on('slide', function(ev, ui) {
+            topoVinSidebar.setOpacity(ui.value/100);
+            //ev.stopPropagation();
+        });
+
         $('#orto10000').on('click',function(){
             if($(this).hasClass('active')){
                 $('#slider_orto10000sidebar').show();
@@ -1359,6 +1378,7 @@ map.setView(view);
             orto10000sidebar.setOpacity(ui.value/100);
             //ev.stopPropagation();
         });
+
 
 
        /* $('#slider_wms3').on('mousedown', function(event){
