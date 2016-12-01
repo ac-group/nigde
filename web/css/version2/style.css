@@ -3654,7 +3654,11 @@ background: rgba(74, 160, 255, 1)
 }
 .tooltip-info.active{
     display: block;
+    white-space: nowrap;
 }
+
+
+
 .tooltip-info{
     float: right;
     margin: -20px 0px 0 220px;
@@ -3686,13 +3690,20 @@ background: rgba(74, 160, 255, 1)
     text-align: center;*/
 
 }
-
+.mdl-navigation__level2 .tooltip-info{
+    margin: -33px 0 0 0;
+    left: 320px ;
+}
 .tooltip-info a{
     color: #fff;
 }
 .tooltip-info a:hover{
     color: #333d71;
     text-decoration: underline;
+}
+.mdl-layout__drawer{
+    overflow-y: initial;
+    overflow: visible;
 }
 /*
 .edit_buttons .mdl-button.active{
