@@ -3561,7 +3561,7 @@ google.maps = google.maps || {};
   
   google.maps.Load = function(apiLoad) {
     delete google.maps.Load;
-    apiLoad([0.009999999776482582,[null,[["http://khm0.googleapis.com/kh?v=707\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=707\u0026hl=en-US\u0026"],null,null,null,1,"707",["https://khms0.google.com/kh?v=707\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=707\u0026hl=en-US\u0026"]],null,null,null,null,[["http://cbk0.googleapis.com/cbk?","http://cbk1.googleapis.com/cbk?"]],[["http://khm0.googleapis.com/kh?v=102\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=102\u0026hl=en-US\u0026"],null,null,null,null,"102",["https://khms0.google.com/kh?v=102\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=102\u0026hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt?hl=en-US\u0026","http://mt1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"http://maps.gstatic.com/mapfiles/","http://csi.gstatic.com","https://maps.googleapis.com","http://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","http://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["http://maps.google.com/maps-api-v3/api/js/26/14","3.26.14"],[2654338464],1,null,null,null,null,null,"",null,null,0,"http://khm.googleapis.com/mz?v=707\u0026","AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"http://mt.googleapis.com/maps/vt/icon",[["http://maps.google.com/maps/vt"],["https://maps.google.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",368000000,368],2,500,[null,null,null,null,"http://www.google.com/maps/preview/log204","","http://static.panoramio.com.storage.googleapis.com/photos/",["http://geo0.ggpht.com/cbk","http://geo1.ggpht.com/cbk","http://geo2.ggpht.com/cbk","http://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["http://lh3.ggpht.com/","http://lh4.ggpht.com/","http://lh5.ggpht.com/","http://lh6.ggpht.com/"]],["https://www.google.com/maps/api/js/master?pb=!1m2!1u26!2s14!2sen-US!3sUS!4s26/14","https://www.google.com/maps/api/js/widget?pb=!1m2!1u26!2s14!2sen-US"],null,0,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["26.14"]], loadScriptTime);
+    apiLoad([0.009999999776482582,[null,[["http://khm0.googleapis.com/kh?v=707\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=707\u0026hl=en-US\u0026"],null,null,null,1,"707",["https://khms0.google.com/kh?v=707\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=707\u0026hl=en-US\u0026"]],null,null,null,null,[["http://cbk0.googleapis.com/cbk?","http://cbk1.googleapis.com/cbk?"]],[["http://khm0.googleapis.com/kh?v=102\u0026hl=en-US\u0026","http://khm1.googleapis.com/kh?v=102\u0026hl=en-US\u0026"],null,null,null,null,"102",["https://khms0.google.com/kh?v=102\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=102\u0026hl=en-US\u0026"]],[["http://mt0.googleapis.com/mapslt?hl=en-US\u0026","http://mt1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"http://maps.gstatic.com/mapfiles/","http://csi.gstatic.com","https://maps.googleapis.com","http://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","http://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["http://maps.google.com/maps-api-v3/api/js/26/15","3.26.15"],[629544441],1,null,null,null,null,null,"",null,null,0,"http://khm.googleapis.com/mz?v=707\u0026","AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"http://mt.googleapis.com/maps/vt/icon",[["http://maps.google.com/maps/vt"],["https://maps.google.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",368000000,368],2,500,[null,null,null,null,"http://www.google.com/maps/preview/log204","","http://static.panoramio.com.storage.googleapis.com/photos/",["http://geo0.ggpht.com/cbk","http://geo1.ggpht.com/cbk","http://geo2.ggpht.com/cbk","http://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["http://lh3.ggpht.com/","http://lh4.ggpht.com/","http://lh5.ggpht.com/","http://lh6.ggpht.com/"]],["https://www.google.com/maps/api/js/master?pb=!1m2!1u26!2s15!2sen-US!3sUS!4s26/15","https://www.google.com/maps/api/js/widget?pb=!1m2!1u26!2s15!2sen-US"],null,0,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["26.15"]], loadScriptTime);
   };
   var loadScriptTime = (new Date).getTime();
 })();
@@ -4347,7 +4347,8 @@ $(function () {
 
     $("#save_map_url").on('click', function() {
           var coord =  map.getView().getCenter();
-          var str = window.location.protocol + "//" + window.location.hostname+"/maplink/"+map.getView().getZoom()+"/"+coord[0]+"/"+coord[1]+"/";
+          var t = ol.proj.transform(coord,'EPSG:900913','EPSG:4326');
+          var str = window.location.protocol + "//" + window.location.hostname+"/maplink/"+map.getView().getZoom()+"/"+t[1]+"/"+t[0]+"/";
             var temp='';
             map.getLayers().forEach(function (l, i) {
             if (($.inArray(l.get('name'), art)) > -1) {
@@ -5278,7 +5279,6 @@ new Clipboard('.btn-copy');
                 osmLayer,
                 emptyRelief,
                 cycleLayer,
-//                cycleLayer,
                 pubLayer,
                 kiev2006Layer,
                 vin2015Layer,
@@ -5308,8 +5308,10 @@ new Clipboard('.btn-copy');
             getPar[4]=pad(Hex2Bin(getPar[4]),8);
             getPar[5]=pad(Hex2Bin(getPar[5]),10);
      //       console.log(getPar[5]);
+        var t =  ol.proj.transform([getPar[3],-getPar[2]],'EPSG:4326','EPSG:900913');
+
         var view = new ol.View({
-            center: [getPar[2],getPar[3]],
+            center: [t[0],-t[1]],
             zoom: getPar[1],
             minZoom: 2  
             });

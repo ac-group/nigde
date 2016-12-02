@@ -323,7 +323,8 @@ $(function () {
 
     $("#save_map_url").on('click', function() {
           var coord =  map.getView().getCenter();
-          var str = window.location.protocol + "//" + window.location.hostname+"/maplink/"+map.getView().getZoom()+"/"+coord[0]+"/"+coord[1]+"/";
+          var t = ol.proj.transform(coord,'EPSG:900913','EPSG:4326');
+          var str = window.location.protocol + "//" + window.location.hostname+"/maplink/"+map.getView().getZoom()+"/"+t[1]+"/"+t[0]+"/";
             var temp='';
             map.getLayers().forEach(function (l, i) {
             if (($.inArray(l.get('name'), art)) > -1) {
@@ -366,7 +367,7 @@ $('body').click(function(){
 
     })*/
     new Clipboard('.material-icons.buffer');
-    new Clipboard('.btn-copy');
+new Clipboard('.btn-copy');
 
     /*$('.map_mode_select .mdl-menu__item div .material-icons').click(function(){
 
@@ -383,20 +384,11 @@ $('body').click(function(){
 
 
     $('.mdl-menu .material-icons:not(.buffer)').on('click', function (event) {
-        //console.log('sds');
+        console.log('sds');
         if (!$(this).next().hasClass('active')) {
             $('.tooltip-info').removeClass('active');
         }
         $(this).next('.tooltip-info').toggleClass('active');
-        event.stopPropagation();
-    })
-
-    $('.mdl-navigation__level3 .material-icons:not(.buffer)').on('click', function (event) {
-        //console.log('sds');
-        if (!$(this).parent().next().hasClass('active')) {
-            $('.tooltip-info').removeClass('active');
-        }
-        $(this).parent().next('.tooltip-info').toggleClass('active');
         event.stopPropagation();
     })
 
@@ -1263,7 +1255,6 @@ $('body').click(function(){
                 osmLayer,
                 emptyRelief,
                 cycleLayer,
-//                cycleLayer,
                 pubLayer,
                 kiev2006Layer,
                 vin2015Layer,
@@ -1293,8 +1284,10 @@ $('body').click(function(){
             getPar[4]=pad(Hex2Bin(getPar[4]),8);
             getPar[5]=pad(Hex2Bin(getPar[5]),10);
      //       console.log(getPar[5]);
+        var t =  ol.proj.transform([getPar[3],-getPar[2]],'EPSG:4326','EPSG:900913');
+
         var view = new ol.View({
-            center: [getPar[2],getPar[3]],
+            center: [t[0],-t[1]],
             zoom: getPar[1],
             minZoom: 2  
             });
@@ -1342,25 +1335,6 @@ map.setView(view);
             //ev.stopPropagation();
         });
 
-        $('#topoVinSidebar').on('click',function(){
-            if($(this).hasClass('active')){
-                $('#slider_topoVinSidebar').show();
-            }else{
-                $('#slider_topoVinSidebar').hide();
-            }
-        });
-
-        var sliderTopoVin = $('#slider_topoVinSidebar').slider({
-            value: topoVinSidebar.getOpacity()*100,
-            range: "min"
-
-        })
-
-        sliderTopoVin.on('slide', function(ev, ui) {
-            topoVinSidebar.setOpacity(ui.value/100);
-            //ev.stopPropagation();
-        });
-
         $('#orto10000').on('click',function(){
             if($(this).hasClass('active')){
                 $('#slider_orto10000sidebar').show();
@@ -1378,7 +1352,6 @@ map.setView(view);
             orto10000sidebar.setOpacity(ui.value/100);
             //ev.stopPropagation();
         });
-
 
 
        /* $('#slider_wms3').on('mousedown', function(event){
