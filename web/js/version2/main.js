@@ -239,11 +239,11 @@
         $('.conclusion_back_block_fix').addClass('open');
         conclusion_target = $(this);
         prim_conclusion_target = $(this).parent($('.conclusion_container')).find($('.prim_cont'));
-        if (prim_conclusion_target.html() !== '') {
+        /*if (prim_conclusion_target.html() !== '') {
            // console.log(prim_conclusion_target.html());
         } else {
             console.log('dsd');
-        }
+        }*/
 
         // prim_conclusion_target = $(this).parent($('.conclusion_container')).children($('.mdl-tooltip'));
 

@@ -8724,7 +8724,7 @@ select:focus {
 .mdl-layout__drawer .mdl-navigation .level_menu .mdl-navigation__link.active {
     /*    background-color: #e0e0e0;*/
     color: #339bff !important;
-    z-index: 1000;
+    z-index: 1;
 }
 .mdl-layout__drawer .mdl-navigation .level_menu .mdl-navigation__link.active  i {
     color: #339bff !important;

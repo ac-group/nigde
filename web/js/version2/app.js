@@ -392,6 +392,15 @@ new Clipboard('.btn-copy');
         event.stopPropagation();
     })
 
+    $('.mdl-navigation__level3 .material-icons:not(.buffer)').on('click', function (event) {
+        //console.log('sds');
+        if (!$(this).parent().next().hasClass('active')) {
+            $('.tooltip-info').removeClass('active');
+        }
+        $(this).parent().next('.tooltip-info').toggleClass('active');
+        event.stopPropagation();
+    })
+
     //$('#modal-help').modal();
 
 
@@ -1324,7 +1333,8 @@ new Clipboard('.btn-copy');
           });
         }
         map.setView(view);
-        $('#vinOrto').on('click',function(){
+
+        $('#vinOrtoSidebar').on('click',function(){
             if($(this).hasClass('active')){
                 $('#slider_vinOrtoSidebar').show();
             }else{
@@ -1340,6 +1350,25 @@ new Clipboard('.btn-copy');
 
         sliderVinOrto.on('slide', function(ev, ui) {
             vinOrtoSidebar.setOpacity(ui.value/100);
+            //ev.stopPropagation();
+        });
+
+        $('#topoVinSidebar').on('click',function(){
+            if($(this).hasClass('active')){
+                $('#slider_topoVinSidebar').show();
+            }else{
+                $('#slider_topoVinSidebar').hide();
+            }
+        });
+
+        var sliderTopoVin = $('#slider_topoVinSidebar').slider({
+            value: topoVinSidebar.getOpacity()*100,
+            range: "min"
+
+        })
+
+        sliderTopoVin.on('slide', function(ev, ui) {
+            topoVinSidebar.setOpacity(ui.value/100);
             //ev.stopPropagation();
         });
 
