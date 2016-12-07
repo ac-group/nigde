@@ -446,8 +446,13 @@ new Clipboard('.btn-copy');
             $('#wrapper').width(windowWidth);
             $('#content').height(contentHeight);
             $('#external_control').css({top: windowHeight / 2});
+            var mapCenterWidth = $('.map-center').width();
+            var mapCenterHeigth = $('.map-center').width();
+            $('.map-center').css('left', (windowWidth - mapCenterWidth) / 2);
+            $('.map-center').css('top', (windowHeight - mapCenterHeigth) / 2);
 
-
+            var logoWidth = $('.head_block_logo').width();
+            $('.head_block_logo').css('left', (windowWidth -logoWidth)/2);
             var carousel_block_height = $('.carousel-block').height();
             if($('.carousel-block').closest('.bx-wrapper').css('display') == 'none'){
                 carousel_block_height = 0;
@@ -1064,10 +1069,13 @@ new Clipboard('.btn-copy');
         });
 
         var osmLayer = new ol.layer.Tile({
-            source: new ol.source.OSM(),
+            source: new ol.source.OSM({
+                url: 'http://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            }),
            // visible: 1,
             name: 'osm',
             visible: 0,
+
         });
 
         var pubLayer = new ol.layer.Tile({
@@ -1276,7 +1284,7 @@ new Clipboard('.btn-copy');
 
         if((getPar === null) || (getPar.length!==6)) {        
         var view = new ol.View({
-             center: [3170647.44192, 6315057.33961],
+            center: [3170647.44192, 6315057.33961],
             zoom: 12,
             minZoom: 2
         });
@@ -1315,7 +1323,7 @@ new Clipboard('.btn-copy');
             }
           });
         }
-map.setView(view);
+        map.setView(view);
         $('#vinOrto').on('click',function(){
             if($(this).hasClass('active')){
                 $('#slider_vinOrtoSidebar').show();
@@ -1357,6 +1365,10 @@ map.setView(view);
        /* $('#slider_wms3').on('mousedown', function(event){
             event.stopPropagation();
         })*/
+
+
+
+
         map.addOverlay(popup);
 //  var zoomslider = new ol.control.ZoomSlider();
 //  map.addControl(zoomslider);
@@ -1404,6 +1416,11 @@ map.setView(view);
             $('.ol-zoom').toggleClass('hide');
            // console.log($('#checkbox-zoom').attr('checked'));
         });
+        $('.centerOff .mdl-checkbox').on('mouseup', function(){
+            // $('.account_block').toggleClass('close');
+            $('.map-center').toggleClass('hide');
+            // console.log($('#checkbox-zoom').attr('checked'));
+        });
 
         $('.map_mode_select li').on('click', function(event){
             var selected = $(this).attr('data-val');
@@ -1429,9 +1446,29 @@ map.setView(view);
 
         $('#bazlayer select').change();
 
+        var center = map.getView().getCenter();
+        $('.x').text(center[0].toFixed(2));
+        $('.y').text(center[1].toFixed(2));
+        map.on('pointerdrag', function(evt){
+            console.log(evt);
+             center = map.getView().getCenter();
+            $('.x').text(center[0].toFixed(2));
+            $('.y').text(center[1].toFixed(2));
+            //console.log(extent);
+        });
+        map.on('moveend', function(evt){
+            console.log(evt);
+            center = map.getView().getCenter();
+            $('.x').text(center[0].toFixed(2));
+            $('.y').text(center[1].toFixed(2));
+            //console.log(extent);
+        });
+
+
         var sliderInfo;
         var sliderCarousel;
         map.on('singleclick', function (evt) {
+
             if(!$('#length').hasClass('active') && !$('#area').hasClass('active')){
 
             var viewResolution = (view.getResolution());

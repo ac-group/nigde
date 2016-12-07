@@ -9,13 +9,7 @@
 //    $('.btn-cancel').click(function(e){
 //    e.preventDefault();});
 //    });
-
-
-
-
-
     // Доделки
-
 
     $('.open_menu_but').click(function() {
         $('.demo-drawer').toggleClass('left_menu_open');
@@ -24,6 +18,7 @@
         $('.ol-zoom').toggleClass('left_menu_open');
        // $('.ol-overviewmap').toggleClass('left_menu_open');
         $('.new_legend').toggleClass('left_menu_open');
+        $('.coordinate').toggleClass('left_menu_open');
 
         // $('.bid_list').toggleClass('left');
     });
