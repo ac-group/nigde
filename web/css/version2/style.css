@@ -3718,15 +3718,18 @@ background: rgba(74, 160, 255, 1)
 }
 
 .coordinate{
-    padding: 4px;
-    border-radius: 3px;
+    padding: 4px 4px 4px 12px;
+    color:#339bff;
+ //  border-radius: 3px;
     position: fixed;
     height: 26px;
-    background: white;
+    background: none;
     z-index: 1100;
-    bottom: 0;
-    border: 1px solid darkgrey;
-    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+    bottom: -2px;
+    text-shadow: white 2px 2px 0, white -2px -2px 0, white -2px 2px 0, white 2px -2px 0;
+
+   // border: 1px solid darkgrey;
+ //   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
     margin-bottom: -1px;
     transition: left 1s;
     left:320px;
@@ -3736,6 +3739,7 @@ background: rgba(74, 160, 255, 1)
     //transition: left 1s;
     left: 0;
 }
+
 .coordinate{
 
 }
@@ -3754,4 +3758,24 @@ background: rgba(74, 160, 255, 1)
     display: none;
     vertical-align: -webkit-baseline-middle;
     color: #0702ce;
+}
+.ol-scale-line {
+    background:#339bff;
+    position: relative;
+    bottom: 1px;
+    left: 0px;
+}
+.scale-line.left_menu_open {
+    position: absolute;
+    left: 160px;
+    bottom: 0;
+}
+.scale-line{
+    left: 480px;
+    transition: left 1s;
+    position: absolute;
+    bottom: 0;
+}
+.ol-scale-line {
+
 }

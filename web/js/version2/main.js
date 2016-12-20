@@ -19,6 +19,7 @@
        // $('.ol-overviewmap').toggleClass('left_menu_open');
         $('.new_legend').toggleClass('left_menu_open');
         $('.coordinate').toggleClass('left_menu_open');
+        $('.scale-line').toggleClass('left_menu_open');
 
         // $('.bid_list').toggleClass('left');
     });

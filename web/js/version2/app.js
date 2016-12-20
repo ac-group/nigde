@@ -1324,6 +1324,7 @@ new Clipboard('.btn-copy');
 
 
         map = new ol.Map({
+
             target: "mapView",
             layers: [
                 topoVin,
@@ -1348,7 +1349,11 @@ new Clipboard('.btn-copy');
 
             ],
 //            view: view,
-            controls: [],
+            controls: ol.control.defaults().extend([
+                new ol.control.ScaleLine({
+                    className: 'ol-scale-line',
+                    target: document.getElementById('scale-line')})
+            ]),
         });
                 var getPar = parsemaplinkURL();
 
@@ -1506,6 +1511,10 @@ new Clipboard('.btn-copy');
        });
 
 
+
+
+
+       // unitsSelect.bindTo('value', scaleLineControl, 'metric');
 
         $('.zoomOff .mdl-checkbox').on('mouseup', function(){
            // $('.account_block').toggleClass('close');
