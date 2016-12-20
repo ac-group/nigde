@@ -1,5 +1,7 @@
 var map;
-
+var coordinate;
+var trackLayer;
+var marker;
 var osmLayer;
 var googleLayer;
 var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'vinOrtoSidebar', 'topoVinSidebar'];
@@ -100,13 +102,14 @@ function layersOff(map){
     });
 
 //    $('.mdl-navigation__level1').prepend('<div class="layersOff"><label class="mdl-checkbox mdl-js-checkbox" for="checkbox2"><input type="checkbox" id="checkbox2" class="mdl-checkbox__input"><span class="mdl-checkbox__label"></span></label></div></label>');
-$('.mdl-navigation__level1').prepend('<div class="layersOff"><label class="mdl-checkbox mdl-js-checkbox" for="checkbox2"><input type="checkbox" id="checkbox2" class="mdl-checkbox__input"><span class="mdl-checkbox__label"></span><span class="mdl-checkbox__focus-helper"></span><span class="mdl-checkbox__box-outline"><span class="mdl-checkbox__tick-outline"></span></label></div>');
+    $('.mdl-navigation__level1').prepend('<div class="layersOff"><label class="mdl-checkbox mdl-js-checkbox" for="checkbox2"><input type="checkbox" id="checkbox2" class="mdl-checkbox__input"><span class="mdl-checkbox__label"></span><span class="mdl-checkbox__focus-helper"></span><span class="mdl-checkbox__box-outline"><span class="mdl-checkbox__tick-outline"></span></label></div>');
     $('.layersOff').on('mousedown',function (event) {
         var layersName = [];
         $(this).parents('.mdl-navigation__level1').next().find('a.mdl-navigation__link').each(function(){
             //console.log(this);
             $(this).next('form').slideUp(500);
             $(this).removeClass('active');
+            $(this).children('.ui-slider').hide();
             $(this).children('.legend-button').hide();
             if($(this).children('.legend-button').hasClass('active')){
                $('.legend-button').removeClass('active')
@@ -232,28 +235,6 @@ function checkIp() {
     return checkIp;
 }
 
-function votingResult() {
-    var voiceResult;
-    var idTicketit = $('#id_ticketit').val();
-    $.ajax({
-        url: '/votingResult',
-        type: 'POST',
-        async: false,
-        dataType: "json",
-        data: {
-            'idTicketit': idTicketit
-        },
-        success: function (data) {
-            voiceResult = "<hr><div id='voting-res'><span class='title' >Результати опитування:</span>"
-            voiceResult += "<span class='right_menu_content-description'>Підтримали: <b style='color: green'>" + data.true + "</b></span>"
-            voiceResult += "<span class='right_menu_content-description'> Не підтримали: <b style='color: red'>" + data.false + "</b></span></div>"
-            voiceResult += '<div class="modal-dtp"><input type="button" class="btn btn-primary btn-block" value="Загальні результати опитування"></div><hr>'
-        }
-
-    });
-    return voiceResult;
-}
-
 //Useful Functions
 function checkBin(n){return/^[01]{1,64}$/.test(n)}
 function checkDec(n){return/^[0-9]{1,64}$/.test(n)}
@@ -315,6 +296,86 @@ function select(element) {
 
     return selectedText;
 }
+
+function geolocation(map){
+
+    if($('#main_tt4').hasClass('active')){
+
+        var trackStyle = new ol.style.Style({
+            stroke: new ol.style.Stroke({
+                color: 'rgba(0,0,255,1.0)',
+                width: 3,
+                lineCap: 'round'
+            })
+        });
+
+        // use a single feature with a linestring geometry to display our track
+        var trackFeature = new ol.Feature({
+            geometry: new ol.geom.LineString([])
+        });
+
+        // we'll need a vector layer to render it
+        console.log(trackLayer);
+        if(trackLayer === undefined){
+            trackLayer = new ol.layer.Vector({
+                source: new ol.source.Vector({
+                    features: [trackFeature]
+                }),
+                style: trackStyle
+            });
+        }
+        map.addLayer(trackLayer);
+        console.log(trackLayer);
+
+
+        var view = map.getView();
+
+        // set up the geolocation api to track our position
+        var geolocation = new ol.Geolocation({
+            tracking: true,
+            projection: view.getProjection()
+        });
+
+        // bind the view's projection
+
+        // when we get a position update, add the coordinate to the track's
+        // geometry and recenter the view
+        if(marker === undefined){
+            $('#location').show();
+            marker = new ol.Overlay({
+                element: document.getElementById('location'),
+                positioning: 'center-center',
+            });
+           // console.log($('#location').getAttribute('display'));
+         //
+        }
+        map.addOverlay(marker);
+
+        geolocation.on('change:position', function () {
+            coordinate = geolocation.getPosition();
+            console.log(coordinate);
+            view.setCenter(coordinate);
+            marker.setPosition(coordinate)
+            trackFeature.getGeometry().appendCoordinate(coordinate);
+        });
+        view.setCenter(coordinate);
+        var deviceOrientation = new ol.DeviceOrientation({
+            tracking: true
+        });
+        deviceOrientation.on('change:heading', onChangeHeading);
+        function onChangeHeading(event) {
+            var heading = event.target.getHeading();
+            view.setRotation(-heading);
+        }
+    } else {
+        console.log(marker);
+        console.log(trackLayer);
+        map.removeLayer(trackLayer);
+        map.removeOverlay(marker);
+    }
+
+}
+
 
 $(function () {
     $('#main_tt7').on('click', function(){
@@ -1439,6 +1500,12 @@ new Clipboard('.btn-copy');
         addMeasure(map);
         layersOff(map);
 
+       $('#main_tt4').on('click', function(){
+               $('#main_tt4').toggleClass('active');
+               geolocation(map);
+       });
+
+
 
         $('.zoomOff .mdl-checkbox').on('mouseup', function(){
            // $('.account_block').toggleClass('close');
@@ -1475,23 +1542,29 @@ new Clipboard('.btn-copy');
 
         $('#bazlayer select').change();
 
+
+        //Додати координати центра карти//
         var center = map.getView().getCenter();
-        $('.x').text(center[0].toFixed(2));
-        $('.y').text(center[1].toFixed(2));
+
+        var coord = ol.proj.transform([center[0], center[1]],'EPSG:900913','EPSG:4326');
+        $('.x').text(coord[0].toFixed(4));
+        $('.y').text(coord[1].toFixed(4));
+
         map.on('pointerdrag', function(evt){
-            console.log(evt);
-             center = map.getView().getCenter();
-            $('.x').text(center[0].toFixed(2));
-            $('.y').text(center[1].toFixed(2));
-            //console.log(extent);
-        });
-        map.on('moveend', function(evt){
-            console.log(evt);
             center = map.getView().getCenter();
-            $('.x').text(center[0].toFixed(2));
-            $('.y').text(center[1].toFixed(2));
-            //console.log(extent);
+            coord = ol.proj.transform([center[0], center[1]],'EPSG:900913','EPSG:4326');
+            $('.x').text(coord[0].toFixed(4));
+            $('.y').text(coord[1].toFixed(4));
         });
+
+        map.on('moveend', function(evt){
+            center = map.getView().getCenter();
+            coord = ol.proj.transform([center[0], center[1]],'EPSG:900913','EPSG:4326');
+            $('.x').text(coord[0].toFixed(4));
+            $('.y').text(coord[1].toFixed(4));
+        });
+        //end--Додати координати центра карти//
+
 
 
         var sliderInfo;

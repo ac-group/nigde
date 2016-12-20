@@ -2530,7 +2530,7 @@ tr td {
 }
 
 .edit_buttons .mdl-button.active i {
-    color: #00bcd4;
+    color: #0f5f9f;
 }
 
 .edit_buttons .mdl-button img.no_active {
@@ -3749,4 +3749,9 @@ background: rgba(74, 160, 255, 1)
 }
 .map-center.hide{
     display: none;
+}
+#location{
+    display: none;
+    vertical-align: -webkit-baseline-middle;
+    color: #0702ce;
 }
