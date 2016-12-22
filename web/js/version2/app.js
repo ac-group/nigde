@@ -5,7 +5,7 @@ var marker;
 var osmLayer;
 var googleLayer;
 var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'vinOrtoSidebar', 'topoVinSidebar'];
-var mb;
+var md;
 
 function showUP(layer, elem) {
 
@@ -383,7 +383,7 @@ function geolocation(map){
 
 
 $(function () {
-    var md = new MobileDetect(window.navigator.userAgent);
+    md = new MobileDetect(window.navigator.userAgent);
     console.log(md.mobile());
 
 
@@ -404,7 +404,7 @@ $(function () {
             if (($.inArray(l.get('name'), art)) > -1) {
                 if(l.getVisible()) {
                     temp+=1;
-                } else { 
+                } else {
                     temp+=0;
                 }
             }
@@ -418,11 +418,11 @@ $(function () {
                 if (($.inArray(l.get('name'), artbaz)) > -1) {
                         if(l.getVisible()) {
                         temp+=1;
-                    } else { 
+                    } else {
                         temp+=0;
                     }
                 }
-            });             
+            });
             str+="/"+Bin2Hex(temp);
           $('#permlink').val(str);
           $('#modal-copy').toggleClass('open');
@@ -485,7 +485,7 @@ $('body').click(function(){
 //        //        position:'absolute',
 //        //        left: ($(document).width() - $('.ol-zoom').outerWidth())/2,
 //                top: '300 px;'
-//        });       
+//        });
 
         var windowHeight;
         var windowWidth;
@@ -512,7 +512,7 @@ $('body').click(function(){
                     window.location.replace('/en' + window.location.pathname.substr(3));
                 } else {
                     if(window.location.pathname==="/"){
-                    window.location.replace('/en');    
+                    window.location.replace('/en');
                     } else {
                     window.location.replace('/en' + window.location.pathname);
                 }
@@ -522,7 +522,7 @@ $('body').click(function(){
                 $('.language_container .mdl-tooltip').text("Українською");
 
                     window.location.replace('/uk' + window.location.pathname.substr(3));
-                
+
             }
         });
         // calculations for elements that changes size on window resize
@@ -563,7 +563,7 @@ $('body').click(function(){
                 $('.mdl-card__supporting-text').height(windowHeight - $('.demo-card__title').height() - $('.mdl-card__actions').height() * 2.1);
             }
             //$(".item").height(windowHeight- $('.mdl-card__actions').height() * 2);
-//            
+//
 //            $('#carousel-main').height(windowHeight - $('div.mdl-card__title').height() - $('.mdl-card__actions').height() * 2);
 //        setTimeout(function () {
 //            $('.commentsFormWrapper').width(contentWidth);
@@ -942,7 +942,7 @@ $('body').click(function(){
                             view.fit(box, map.getSize());
                             view.setZoom(16);
 //                            iconFeature.setGeometry(new ol.geom.Point( view.getCenter()) );
-//                            gmlSource.addFeature(iconFeature); 
+//                            gmlSource.addFeature(iconFeature);
                             var evt = view.getCenter();
                             $('html, body').css("cursor", "wait");
                             $.ajax({
@@ -1337,8 +1337,8 @@ $('body').click(function(){
             }),
             name: 'OpenCycleMap',
             visible: 0,
-        });                        
-        
+        });
+
         googleLayer = new olgm.layer.Google({name: 'google', visible: 0, mapTypeId: google.maps.MapTypeId.SATELLITE});
         var googleHybridLayer = new olgm.layer.Google({
             name: 'googlehybrid',
@@ -1381,7 +1381,7 @@ $('body').click(function(){
         });
                 var getPar = parsemaplinkURL();
 
-        if((getPar === null) || (getPar.length!==6)) {        
+        if((getPar === null) || (getPar.length!==6)) {
         var view = new ol.View({
             center: [3170647.44192, 6315057.33961],
             zoom: 12,
@@ -1396,7 +1396,7 @@ $('body').click(function(){
         var view = new ol.View({
             center: [t[0],-t[1]],
             zoom: getPar[1],
-            minZoom: 2  
+            minZoom: 2
             });
           ic=0;
             var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006','emptyRelief', 'emptyLayer', 'topoVin'];
@@ -1407,9 +1407,9 @@ $('body').click(function(){
                     } else {
                     l.setVisible(false);
                 }
-                    ic++;                    
+                    ic++;
                 }
-        });  
+        });
             var ic = 0;
             map.getLayers().forEach(function (l, i) {
             if (($.inArray(l.get('name'), art)) > -1) {
@@ -1491,11 +1491,8 @@ $('body').click(function(){
         map.addOverlay(popup);
 
        // console.log(isMobile.any()+'sdsddssxxx');
-        if(!md.mobile()){
-            var external_control = new ol.control.Zoom({
-                target: document.getElementById('external_control')
-            });
-            map.addControl(external_control);
+        if(md.mobile() !== null){
+            $('.ol-zoom').hide();
         }
 
         var overview = new ol.control.OverviewMap({
@@ -1512,8 +1509,6 @@ $('body').click(function(){
            window.print();
         });
         map.addControl(overview);
-        //$('.ol-overviewmap').addClass('ol-rotate');
-        //$('.ol-control').addClass('left_menu_open');
 
         $('.ol-overviewmap button').attr("id", "ol-overviewmap");
         $('.ol-overviewmap button').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-overviewmap" >Оглядова карта</div>');
