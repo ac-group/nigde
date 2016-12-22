@@ -5,7 +5,7 @@ var marker;
 var osmLayer;
 var googleLayer;
 var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'vinOrtoSidebar', 'topoVinSidebar'];
-
+var isMobile;
 
 function showUP(layer, elem) {
 
@@ -325,7 +325,7 @@ function geolocation(map){
             });
         }
         map.addLayer(trackLayer);
-        console.log(trackLayer);
+        //console.log(trackLayer);
 
 
         var view = map.getView();
@@ -352,8 +352,14 @@ function geolocation(map){
         map.addOverlay(marker);
 
         geolocation.on('change:position', function () {
-            coordinate = geolocation.getPosition();
-            console.log(coordinate);
+            if (isMobile.any()) {
+                coordinate = geolocation.getPosition();
+                coordinate  = ol.proj.transform([coordinate[0], coordinate[1]],'EPSG:4326','EPSG:900913');
+                //console.log(coordinate[0]);
+            } else {
+                coordinate = geolocation.getPosition();
+              //  console.log(coordinate[0]);
+            }
             view.setCenter(coordinate);
             marker.setPosition(coordinate)
             trackFeature.getGeometry().appendCoordinate(coordinate);
@@ -368,8 +374,6 @@ function geolocation(map){
             view.setRotation(-heading);
         }
     } else {
-        console.log(marker);
-        console.log(trackLayer);
         map.removeLayer(trackLayer);
         map.removeOverlay(marker);
     }
@@ -378,6 +382,28 @@ function geolocation(map){
 
 
 $(function () {
+    isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+
+
     $('#main_tt7').on('click', function(){
         $('#modal-help').toggleClass('open');
     });
@@ -428,7 +454,7 @@ $('body').click(function(){
 
     })*/
     new Clipboard('.material-icons.buffer');
-new Clipboard('.btn-copy');
+    new Clipboard('.btn-copy');
 
     /*$('.map_mode_select .mdl-menu__item div .material-icons').click(function(){
 
@@ -499,7 +525,7 @@ new Clipboard('.btn-copy');
                 $('.language_container i').text("UA");
                 $('.language_container .mdl-tooltip').text("Українською");
             }
-            console.log($('.language_container i').text())
+            //console.log($('.language_container i').text())
         });
         // calculations for elements that changes size on window resize
         var windowResizeHandler = function () {
@@ -1465,12 +1491,15 @@ new Clipboard('.btn-copy');
 
 
         map.addOverlay(popup);
-//  var zoomslider = new ol.control.ZoomSlider();
-//  map.addControl(zoomslider);
-        var external_control = new ol.control.Zoom({
-            target: document.getElementById('external_control')
-        });
-        map.addControl(external_control);
+
+       // console.log(isMobile.any()+'sdsddssxxx');
+        if(!isMobile.any()){
+            var external_control = new ol.control.Zoom({
+                target: document.getElementById('external_control')
+            });
+            map.addControl(external_control);
+        }
+
         var overview = new ol.control.OverviewMap({
             layers: [
                 new ol.layer.Tile({
