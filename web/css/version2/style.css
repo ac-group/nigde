@@ -3726,7 +3726,7 @@ background: rgba(74, 160, 255, 1)
     background: none;
     z-index: 1100;
     bottom: -2px;
-    text-shadow: white 2px 2px 0, white -2px -2px 0, white -2px 2px 0, white 2px -2px 0;
+    text-shadow: white 1px 1px 0, white -1px -1px 0, white -1px 1px 0, white 1px -1px 0;
 
    // border: 1px solid darkgrey;
  //   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);

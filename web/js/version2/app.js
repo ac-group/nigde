@@ -353,16 +353,8 @@ function geolocation(map){
         map.addOverlay(marker);
 
         geolocation.on('change:position', function () {
-            if (md.mobile()) {
-                coordinate = geolocation.getPosition();
-                $('.x').text(coordinate[0]);
-                $('.y').text(coordinate[1]);
-                coordinate  = ol.proj.transform([coordinate[0], coordinate[1]],'EPSG:4326','EPSG:900913');
-                //console.log(coordinate[0]);
-            } else {
-                coordinate = geolocation.getPosition();
-              //  console.log(coordinate[0]);
-            }
+
+            coordinate = geolocation.getPosition();
             view.setCenter(coordinate);
             marker.setPosition(coordinate)
             trackFeature.getGeometry().appendCoordinate(coordinate);
@@ -1565,7 +1557,7 @@ $('body').click(function(){
         //Додати координати центра карти//
         var center = map.getView().getCenter();
 
-      /*  var coord = ol.proj.transform([center[0], center[1]],'EPSG:900913','EPSG:4326');
+        var coord = ol.proj.transform([center[0], center[1]],'EPSG:900913','EPSG:4326');
         $('.x').text(coord[0].toFixed(4));
         $('.y').text(coord[1].toFixed(4));
 
@@ -1581,7 +1573,7 @@ $('body').click(function(){
             coord = ol.proj.transform([center[0], center[1]],'EPSG:900913','EPSG:4326');
             $('.x').text(coord[0].toFixed(4));
             $('.y').text(coord[1].toFixed(4));
-        });*/
+        });
         //end--Додати координати центра карти//
 
 
