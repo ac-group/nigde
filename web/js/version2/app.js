@@ -5,7 +5,7 @@ var marker;
 var osmLayer;
 var googleLayer;
 var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'vinOrtoSidebar', 'topoVinSidebar'];
-var isMobile;
+var mb;
 
 function showUP(layer, elem) {
 
@@ -299,6 +299,7 @@ function select(element) {
 
 function geolocation(map){
 
+
     if($('#main_tt4').hasClass('active')){
 
         var trackStyle = new ol.style.Style({
@@ -352,7 +353,7 @@ function geolocation(map){
         map.addOverlay(marker);
 
         geolocation.on('change:position', function () {
-            if (isMobile.any()) {
+            if (md.mobile()) {
                 coordinate = geolocation.getPosition();
                 coordinate  = ol.proj.transform([coordinate[0], coordinate[1]],'EPSG:4326','EPSG:900913');
                 //console.log(coordinate[0]);
@@ -382,26 +383,8 @@ function geolocation(map){
 
 
 $(function () {
-    isMobile = {
-        Android: function() {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function() {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function() {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function() {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function() {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-        }
-    };
+    var md = new MobileDetect(window.navigator.userAgent);
+    console.log(md.mobile());
 
 
     $('#main_tt7').on('click', function(){
@@ -1508,7 +1491,7 @@ $('body').click(function(){
         map.addOverlay(popup);
 
        // console.log(isMobile.any()+'sdsddssxxx');
-        if(!isMobile.any()){
+        if(!md.mobile()){
             var external_control = new ol.control.Zoom({
                 target: document.getElementById('external_control')
             });
