@@ -360,14 +360,14 @@ function geolocation(map){
             trackFeature.getGeometry().appendCoordinate(coordinate);
         });
         view.setCenter(coordinate);
-        var deviceOrientation = new ol.DeviceOrientation({
+      /*  var deviceOrientation = new ol.DeviceOrientation({
             tracking: true
         });
         deviceOrientation.on('change:heading', onChangeHeading);
         function onChangeHeading(event) {
             var heading = event.target.getHeading();
             view.setRotation(-heading);
-        }
+        }*/
     } else {
         map.removeLayer(trackLayer);
         map.removeOverlay(marker);
