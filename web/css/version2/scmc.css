@@ -2019,6 +2019,7 @@ tr td {
     white-space: normal;
     color: rgba(0, 0, 0, 0.87);
     text-align: left;
+    z-index: 1010;
 }
 
 .mdl-tooltip.mctooltip_adr {
@@ -2583,7 +2584,7 @@ tr td {
 }
 
 .edit_buttons .mdl-button.active i {
-    color: #00bcd4;
+    color: #0f5f9f;
 }
 
 .edit_buttons .mdl-button img.no_active {
@@ -3520,7 +3521,7 @@ textarea {
     color: #3396ff;
     font-weight: 600;
     vertical-align: top;
-    padding-left: 40px;
+   // padding-left: 40px;
     text-shadow: rgba(0, 0, 0, 0.4) 0 0 1px;
 
 }
@@ -3592,7 +3593,7 @@ background: rgba(74, 160, 255, 1)
 .head_block_logo{
     position: fixed;
     bottom: 15px;
-    left: 43%;
+ //   left: 43%;
     z-index: 3;
     opacity: 0.5;
 }
@@ -3677,6 +3678,14 @@ background: rgba(74, 160, 255, 1)
     left: 208px;
     margin-top: -4px;
 }
+
+.info-sidebar.material-icons{
+    font-size:16px !important;
+    position: absolute;
+    left: 278px;
+    margin-top: 4px;
+}
+.mdl-navigation__level2 .tooltip-info .material-icons,
 .mdl-menu .tooltip-info .material-icons{
     font-size:26px;
     position: static;
@@ -3685,6 +3694,7 @@ background: rgba(74, 160, 255, 1)
     margin-left: 35%;
     color: white !important;
 }
+.mdl-navigation__level2 .tooltip-info .material-icons:hover,
 .mdl-menu .tooltip-info .material-icons:hover{
     color: #333d71 !important;
 }
@@ -3699,7 +3709,11 @@ background: rgba(74, 160, 255, 1)
 }
 .tooltip-info.active{
     display: block;
+    white-space: nowrap;
 }
+
+
+
 .tooltip-info{
     float: right;
     margin: -20px 0px 0 220px;
@@ -3710,7 +3724,7 @@ background: rgba(74, 160, 255, 1)
    // display: inline-block;
     position: fixed;
     font-size: 12px;
-    z-index: 1000;
+    z-index: 1001;
    /* -webkit-transform: scale(0);
     transform: scale(0);
     -webkit-transform-origin: top center;
@@ -3731,7 +3745,10 @@ background: rgba(74, 160, 255, 1)
     text-align: center;*/
 
 }
-
+.mdl-navigation__level2 .tooltip-info{
+    margin: -33px 0 0 0;
+    left: 320px ;
+}
 .tooltip-info a{
     color: #fff;
 }
@@ -3739,11 +3756,83 @@ background: rgba(74, 160, 255, 1)
     color: #333d71;
     text-decoration: underline;
 }
+.mdl-layout__drawer{
+    overflow-y: initial;
+    overflow: visible;
+}
 /*
 .edit_buttons .mdl-button.active{
     background-color: rgba(51,150,255,0.3);
 }*/
+.mdl-navigation__level2{
+ z-index: 1;
+}
+.mdl-tooltip{
+    opacity: 1;
+}
 
+.coordinate{
+    padding: 4px 4px 4px 12px;
+    color:#339bff;
+ //  border-radius: 3px;
+    position: fixed;
+    height: 26px;
+    background: none;
+    z-index: 1100;
+    bottom: -2px;
+    text-shadow: white 2px 2px 0, white -2px -2px 0, white -2px 2px 0, white 2px -2px 0;
+
+   // border: 1px solid darkgrey;
+ //   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+    margin-bottom: -1px;
+    transition: left 1s;
+    left:320px;
+
+}
+.coordinate.left_menu_open{
+    //transition: left 1s;
+    left: 0;
+}
+
+.coordinate{
+
+}
+
+.map-center{
+    position: fixed;
+    color:#0058ff !important;
+    font-size: 18px;
+    z-index: 1100;
+    display: block;
+}
+.map-center.hide{
+    display: none;
+}
+#location{
+    display: none;
+    vertical-align: -webkit-baseline-middle;
+    color: #0702ce;
+}
+.ol-scale-line {
+    background:#339bff;
+    position: relative;
+    bottom: 1px;
+    left: 0px;
+}
+.scale-line.left_menu_open {
+    position: absolute;
+    left: 160px;
+    bottom: 0;
+}
+.scale-line{
+    left: 480px;
+    transition: left 1s;
+    position: absolute;
+    bottom: 0;
+}
+.ol-scale-line {
+
+}
 /**
  * BxSlider v4.1.2 - Fully loaded, responsive content slider
  * http://bxslider.com

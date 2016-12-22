@@ -4,6 +4,7 @@ namespace kmdaBundle\Controller;
 
 //use kmdaBundle\Repository\VotingDtpRepository;
 use kmdaBundle\Entity\VotingDtp;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use kmdaBundle\Entity\OrendaDoc;
@@ -66,5 +67,18 @@ class Version2Controller extends Controller
         $x = $request->get('x');
         $y = $request->get('y');
         return $this->render('@kmda/Default/version2/index.html.twig');
+    }
+
+    public function setlangAction(Request $request) {
+        if($request->get('lang')=='en') {
+            $this->get('translator')->setLocale('en');
+            $this->get('translator')->setFallbackLocales(array('en'));
+            $this->get('session')->set('_locale', 'en');
+        } else {
+            $this->get('translator')->setLocale('uk');
+            $this->get('translator')->setFallbackLocales(array('uk'));
+            $this->get('session')->set('_locale', 'uk');
+        }
+        return new JsonResponse($this->get('translator')->getLocale(),200);
     }
 }

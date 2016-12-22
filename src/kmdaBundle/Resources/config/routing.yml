@@ -1,12 +1,20 @@
 kmda_homepage:
-    path:     /
-    defaults: { _controller: kmdaBundle:Version2:index }
+    path:     /{_locale}
+    defaults: { _controller: kmdaBundle:Version2:index, _locale: %locale% }
+    requirements:
+        _locale:  en|uk
     
 kmda_maplink:
-    path:     /maplink/{zoom}/{x}/{y}/{l}/{b}
-    defaults: { _controller: kmdaBundle:Version2:maplink }
+    path:     /{_locale}/maplink/{zoom}/{x}/{y}/{l}/{b}
+    defaults: { _controller: kmdaBundle:Version2:maplink, _locale: %locale% }
     requirements:
         _method: GET
+        _locale:  en|uk
+
+kmda_setlocale:
+    path: /setlocale
+    defaults: { _controller: kmdaBundle:Version2:setlang }
+    condition: "request.isXmlHttpRequest()"
         
 kmda_getphoto:
     path:     /getphoto/{id}

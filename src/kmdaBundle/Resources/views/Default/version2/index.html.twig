@@ -3,8 +3,8 @@
 {% block stylesheets %}
     {% stylesheets
     'css/version2/bootstrap.css'
-    '//fonts.googleapis.com/icon?family=Material+Icons'
-    '//fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=cyrillic,cyrillic-ext'
+    'https://fonts.googleapis.com/icon?family=Material+Icons'
+    'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=cyrillic,cyrillic-ext'
     'css/version2/material.min.css'
     'css/version2/new_css.css'
     'css/version2/style.css'
@@ -37,7 +37,7 @@
     'js/jquery.maskedinput.min.js'
     'js/ol.js'
     'js/ol3gm.js'
-    '//maps.googleapis.com/maps/api/js?v=3&key=AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g'
+    'https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g'
     'js/version2/main.js'
     'js/version2/app.js'
     'js/new_modal.js'
@@ -70,14 +70,14 @@
     </div>
     <div class="head_block_logo">
         <a href="#" class="company_logo">
-            <img src="/img/nsci1.png" alt="logo"> NSDI
+            <img src="/img/nsci1.png" alt="logo"> {{'НIГД'|trans }}
         </a>
     </div>
     <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50 is-visible left_menu_open"
          aria-hidden="false">
         <span class="mdl-layout-title brand">
                <a href="#" class="company_logo">
-                   <img src="/img/nsci1.png" alt="logo"> NSDI
+                   <img src="/img/nsci1.png" alt="logo"> {{'НIГД'|trans }}
                </a>
                <button class="mdl-button mdl-js-button mdl-button--icon  open_menu_but">
                    <i class="material-icons">keyboard_arrow_left</i>
@@ -86,75 +86,75 @@
 
                              {#Тултіпи для шарів#}
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="orto10000">
-            Ортофотоплани масштабу 1:10000, які створені в рамках проекту світового банку
+            {{'Ортофотоплани'|trans}} {{'масштабу'|trans}} 1:10000, {{'які створені в рамках проекту світового банку'|trans}}
         </div>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="orto2000">
-            Ортофотоплани масштабу 1:2000, які створені в рамках проекту світового банку
+            {{'Ортофотоплани'|trans}} {{'масштабу'|trans}} 1:2000, {{'які створені в рамках проекту світового банку'|trans}}
         </div>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="gryntSidebar">
-            Карта грунтів України
+            {{'Карта грунтів України'|trans}}
         </div>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="vectorVinSidebar">
-            Векторна карта масштабу 1:10000
+            {{'Векторна карта'|trans}} {{'масштабу'|trans}} 1:10000
         </div>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="vinOrtoSidebar">
-           Ортофотоплан масштабу 1:2000 на м. Вінниця
+           {{'Ортофотоплан'|trans}} {{'масштабу'|trans}} 1:2000 {{'на м. Вінниця'|trans}}
         </div>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="topoVinSidebar">
-            Топографічна карта масштабу 1:10000
+            {{'Топографічна карта'|trans}} {{'масштабу'|trans}} 1:10000
         </div>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="topoVinSidebar">
-            Топографічна карта масштабу 1:10000
+            {{'Топографічна карта'|trans}} {{'масштабу'|trans}} 1:10000
         </div>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="parcelSidebar">
-            Земельні ділянки (Публічна кадастрова карта)
+            {{'Земельні ділянки'|trans}} ({{'Публічна кадастрова карта'|trans}})
         </div>
                             {#Тултіпи для шарів(end)#}
         <div class="layersAll">
             <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
                 <div class="level_menu">
                     <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
-                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">terrain</i>Аерофотознімання</a>
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">terrain</i>{{'Аерофотознімання'|trans}}</a>
 
                     <div class="mdl-navigation__level2">
                         <a id='orto10000' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#orto10000sidebar">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Ортофотоплан, 2006р. (М 1:10000)
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>{{'Ортофотоплан'|trans}}, 2006 (М 1:10000)
                             <i id='orto10000sidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
                             <div id="slider_orto10000sidebar"></div>
 
                         </a>
                         <div class="tooltip-info">
-                            <a href="http://map.land.gov.ua/kadastrova-karta" target="_blank">Публічна кадастрова карта</a><br>
+                            <a href="http://map.land.gov.ua/kadastrova-karta" target="_blank">{{'Публічна кадастрова карта'|trans}}</a><br>
                             <i id="insert_sidebar_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
                             <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer">
-                                Скопіювати в буфер
+                                {{'Скопіювати в буфер'|trans}}
                             </div>
                         </div>
 
                         <a id='orto2000' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#orto2000sidebar">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Ортофотоплан, 2010р. (М 1:2000)
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>{{'Ортофотоплан'|trans}}, 2010 (М 1:2000)
                             <i id='orto2000sidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
                         </a>
                     </div>
                 </div>
                 <div class="level_menu">
                     <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
-                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">terrain</i>Тематичні карти</a>
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">terrain</i>{{'Тематичні карти'|trans}}</a>
 
                     <div class="mdl-navigation__level2">
                         <a class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#dynamicSidebar">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Динамічна карта
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>{{'Динамічна карта'|trans}}
                             <i id='dynamicSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
                         </a>
                         <a id='gryntSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#gryntSidebar">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Грунти
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>{{'Грунти'|trans}}
                             <i id='gryntSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
                         </a>
                         <div class="tooltip-info">
-                            <a href="http://map.land.gov.ua/kadastrova-karta" target="_blank">Публічна кадастрова карта</a><br>
+                            <a href="http://map.land.gov.ua/kadastrova-karta" target="_blank">{{'Публічна кадастрова карта'|trans}}</a><br>
                             <i id="insert_sidebar_buffer2" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
                             <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer2">
-                                Скопіювати в буфер
+                                {{'Скопіювати в буфер'|trans}}
                             </div>
                         </div>
 
@@ -164,19 +164,19 @@
 
                 <div class="level_menu">
                     <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
-                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">location_city</i>Вінниця</a>
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">location_city</i>{{'Вінниця'|trans}}</a>
                     <div class="mdl-navigation__level2">
                         <a id="vectorVinSidebar" class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#vectorVinSidebar">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>Векторна карта
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Векторна карта'|trans}}
                             <i id='vectorVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
                         </a>
                         <a id="vinOrtoSidebar" class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#vinOrtoSidebar">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>Ортофотоплан (м. Вінниця)
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Ортофотоплан'|trans}} ({{'Вінниця'|trans}})
                             <i id='vinOrtoSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
                             <div id="slider_vinOrtoSidebar"></div>
                         </a>
                         <a id='topoVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#topoVinSidebar">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>Топографічна карта
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Топографічна карта'|trans}}
                             <i id='topoVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
                             <div id="slider_topoVinSidebar"></div>
                         </a>
@@ -185,11 +185,11 @@
                 </div>
                 <div class="level_menu">
                     <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
-                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">terrain</i>Земля</a>
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">terrain</i>{{'Земля'|trans}}</a>
 
                     <div class="mdl-navigation__level2">
                         <a id='parcelSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#parcelSidebar">
-                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>Кадастровий поділ
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>{{'Кадастровий поділ'|trans}}
                             <i id='parcelSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
                         </a>
                         <div class="tooltip-info">
@@ -212,13 +212,13 @@
                     <div class="bid_list-content">
                         <div class="zoomOff">
                             <label class="mdl-checkbox mdl-js-checkbox" for="checkbox-zoom">
-                                <span class="mdl-checkbox__label">Відображати зум</span>
+                                <span class="mdl-checkbox__label">{{'Відображати зум'|trans}}</span>
                                 <input type="checkbox" id="checkbox-zoom" class="mdl-checkbox__input" checked>
                             </label>
                         </div>
                         <div class="centerOff">
                             <label class="mdl-checkbox mdl-js-checkbox" for="map-сenter">
-                                <span class="mdl-checkbox__label">Відображати центр карти</span>
+                                <span class="mdl-checkbox__label">{{'Відображати центр карти'|trans}}</span>
                                 <input type="checkbox" id="map-сenter" class="mdl-checkbox__input" checked>
                             </label>
                         </div>
@@ -226,7 +226,7 @@
                 </div>
             </div>
             <div class="bid_list-footer">
-                <a href="#" class="btn">НАЛАШТУВАННЯ</a>
+                <a href="#" class="btn">{{'НАЛАШТУВАННЯ'|trans}}</a>
             </div>
         </div>
     </div>
@@ -274,40 +274,40 @@
             <i class="material-icons">near_me</i>
         </button>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt4">
-            Поточна
+            {{'Поточна'|trans}}
         </div>
         <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color measure" id="length">
             <img src="/img/ruler_nsci.png" class="no_active"><img
                     src="/img/ruler_nsci_active.png" class="is_active">
         </button>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="length">
-            Відстань
+            {{'Відстань'|trans}}
         </div>
         <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color measure" id="area">
             <img src="/img/area_nsci1.png" class="no_active"><img
                     src="/img/area_nsci1_active.png" class="is_active">
         </button>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="area">
-            Площа
+            {{'Площа'|trans}}
         </div>
         <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color measure" id="erase">
             <img src="/img/delete_nsci.png" class="no_active"><img src="/img/delete_nsci_active.png"
                                                                    class="is_active">
         </button>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="erase">
-            Очистити
+           {{'Очистити'|trans}}
         </div>
         <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt7">
             <i class="material-icons"> help_outline</i>
         </button>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt7">
-            Допомога
+            {{'Допомога'|trans}}
         </div>
         <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="save_map_url">
             <i class="material-icons">add_to_photos</i>
         </button>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="save_map_url">
-            Зберегти налаштування
+            {{'Зберегти налаштування'|trans}}
         </div>
        {# <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt7">
             <i class="material-icons">room</i>
@@ -322,11 +322,11 @@
             <i class="material-icons">print</i>
         </button>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt9">
-            Роздрукувати карту
+            {{'Роздрукувати карту'|trans}}
         </div>
     </div>
 
-    <div class="osm-copyright">©<a target="_blank" href="http://www.openstreetmap.org/copyright">Участники
+    <div class="osm-copyright">©<a target="_blank" href="http://www.openstreetmap.org/copyright">{{'Участники'|trans}} 
             OpenStreetMap</a></div>
 
     <div class="map_mode_select left_menu_open">
@@ -334,19 +334,19 @@
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height ">
 
             <input class="mdl-textfield__input " type="text" id="map_mode" readonly tabIndex="-1"
-                   value="Оглядова карта України">
+                   value="{{ 'Оглядова карта України'|trans|raw }}">
             <label for="map_mode">
                 <i class="mdl-icon-toggle__label material-icons">arrow_drop_down</i>
             </label>
             <ul for="map_mode" class="mdl-menu mdl-menu--bottom-left mdl-js-menu ">
 
-                <li id="viewMap" class="mdl-menu__item" data-val="pub">Оглядова карта України
+                <li id="viewMap" class="mdl-menu__item" data-val="pub">{{ 'Оглядова карта України'|trans|raw }}
                     <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
                 </li>
                 <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="viewMap">
-                    Оглядова карта України масштабу 1:100000
+                    {{ 'Оглядова карта України'|trans|raw }} {{'масштабу'|trans}} 1:100000
                 </div>
-                <li id='orto10000base' class="mdl-menu__item" data-val="kiev2006">Ортофотоплани, 2006р
+                <li id='orto10000base' class="mdl-menu__item" data-val="kiev2006">{{ 'Ортофотоплани'|trans|raw }}, 2006
                     <i id='orto10000baseInfo' class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
                     <div class="tooltip-info">
                         <a href="http://map.land.gov.ua/kadastrova-karta" target="_blank">Публічна кадастрова карта</a><br>
@@ -358,19 +358,19 @@
                 </li>
 
                 <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="orto10000base">
-                    Ортофотоплани масштабу 1:10000, які створені в рамках проекту світового банку
+                    {{'Ортофотоплани'|trans}} {{'масштабу'|trans}} 1:10000, {{'які створені в рамках проекту світового банку'|trans}}
                 </div>
-                <li id='orto2000base' class="mdl-menu__item" data-val="vin2015">Ортофотоплани, 2015р
+                <li id='orto2000base' class="mdl-menu__item" data-val="vin2015">{{'Ортофотоплани'|trans}}, 2015
                     <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
                 </li>
                 <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="orto2000base">
-                    Ортофотоплани масштабу 1:2000
+                    {{'Ортофотоплани'|trans}} {{'масштабу'|trans}} 1:2000
                 </div>
-                <li id='topoVin' class="mdl-menu__item" data-val="topoVin">Топографічна карта
+                <li id='topoVin' class="mdl-menu__item" data-val="topoVin">{{'Топографічна карта'|trans}}
                     <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
                 </li>
                 <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="topoVin">
-                     Топографічна карта масштабу 1:2000
+                     {{'Топографічна карта'|trans}} {{'масштабу'|trans}} 1:2000
                 </div>
                 <hr>
 
@@ -381,12 +381,12 @@
                         <a id='bufferOSM' href="https://www.openstreetmap.org/" target="_blank">Open Street Map</a><br>
                         <i id="insert_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="https://www.openstreetmap.org/" role="presentation">insert_link</i>
                         <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_buffer">
-                            Скопіювати в буфер
+                            {{'Скопіювати в буфер'|trans}}
                         </div>
                     </div>
                 </li>
                 <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="osmBase">
-                    Веб-картографічний проект по створенню детальної вільної і безкоштовної географічної карти світу
+                    {{'Веб-картографічний проект по створенню детальної, вільної і безкоштовної географічної карти світу'|trans}}
                 </div>
                 <li id='osmCycle' class="mdl-menu__item" data-val="OpenCycleMap">Open Street Cycle Map
                     <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
@@ -394,12 +394,12 @@
                         <a href="https://www.openstreetmap.org/#layers=C" target="_blank">Open Street Cycle Map</a><br>
                         <i id="insert_buffer1" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="https://www.openstreetmap.org/#layers=C" role="presentation">insert_link</i>
                         <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_buffer1">
-                            Скопіювати в буфер
+                            {{'Скопіювати в буфер'|trans}}
                         </div>
                     </div>
                 </li>
                 <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="osmCycle">
-                    Веб-картографічний проект по створенню детальної, вільної і безкоштовної географічної карти світу
+                    {{'Веб-картографічний проект по створенню детальної, вільної і безкоштовної географічної карти світу'|trans}}
                 </div>
                 <li id='googleSatelit'class="mdl-menu__item" data-val="google">Google Satellite
                     <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
@@ -407,12 +407,12 @@
                         <a href="https://www.google.com.ua/maps/@49.2326973,28.4969277,13683m/data=!3m1!1e3" target="_blank">Google Satellite</a><br>
                         <i id="insert_buffer3" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="https://www.google.com.ua/maps" role="presentation">insert_link</i>
                         <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_buffer3">
-                            Скопіювати в буфер
+                            {{'Скопіювати в буфер'|trans}}
                         </div>
                     </div>
                 </li>
                 <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="googleSatelit">
-                    Набір додатків, побудованих на основі безкоштовного картографічного сервісу і технологій, які надає компанія Google.
+                    {{'Набір додатків, побудованих на основі безкоштовного картографічного сервісу і технологій, які надає компанія Google.'|trans}}
                 </div>
                 <li id='googleHybrid'class="mdl-menu__item" data-val="googlehybrid">Google Hybryd
                     <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
@@ -420,30 +420,30 @@
                         <a href="https://www.google.com.ua/maps/@49.2326973,28.4969277,13683m" target="_blank">Google Hybrid</a><br>
                         <i id="insert_buffer4" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="https://www.google.com.ua/maps" role="presentation">insert_link</i>
                         <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_buffer4">
-                            Скопіювати в буфер
+                            {{'Скопіювати в буфер'|trans}}
                         </div>
                     </div>
                 </li>
                 <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="googleHybrid">
-                    Набір додатків, побудованих на основі безкоштовного картографічного сервісу і технологій, які надає компанія Google.
+                    {{'Набір додатків, побудованих на основі безкоштовного картографічного сервісу і технологій, які надає компанія Google.'|trans}}
                 </div>
                 <hr>
-                <li id='emptyLayerR'class="mdl-menu__item" data-val="emptyRelief">Порожній шар (рельєф)
+                <li id='emptyLayerR'class="mdl-menu__item" data-val="emptyRelief">{{'Порожній шар (рельєф)'|trans}}
                     <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
                 </li>
                 <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="emptyLayerR">
-                    Базовий шар рельєфу
+                    {{'Базовий шар рельєфу'|trans}}
                 </div>
-                <li id='emptyLayer'class="mdl-menu__item" data-val="emptyLayer">Порожній шар
+                <li id='emptyLayer'class="mdl-menu__item" data-val="emptyLayer">{{'Порожній шар'|trans}}
                     <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
                 </li>
                 <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="emptyLayer">
-                    Базовий порожній шар
+                    {{'Базовий порожній шар'|trans}}
                 </div>
             </ul>
         </div>
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="map_mode">
-            Обрати підоснову
+            {{'Обрати підоснову'|trans}}
         </div>
     </div>
 
@@ -456,13 +456,13 @@
         <div class="main_search_container ">
             <div class="main_search_block">
                 <i class="material-icons clear_icon main_clear_block_button">clear</i>
-                <input type="text" placeholder="Пошук" id="main_search_input">
+                <input type="text" placeholder="{{'Пошук'|trans}}" id="main_search_input">
                 <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab bg_white mdl-js-ripple-effect btn_small search_block_button main_search_block_button"
                         id="main_tt8">
                     <i class="material-icons">search</i>
                 </button>
                 <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt8">
-                    Пошук
+                    {{'Пошук'|trans}}
                 </div>
             </div>
         </div>
@@ -472,18 +472,28 @@
                     <i class="material-icons">account_circle</i>
                 </button>
                 <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt10">
-                    Авторизуватись
+                    {{'Авторизуватись'|trans}}
                 </div>
             </div>
         </div>
         <div class="language_container ">
+            
             <div class="language_block">
+                {% if app.request.getLocale() == 'uk' %}
                 <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt11">
                     <i class="material-icons">UA</i>
                 </button>
                 <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt11">
                     Українською
                 </div>
+                {% else %}
+                <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt11">
+                    <i class="material-icons">EN</i>
+                </button>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt11">
+                    English
+                </div>                    
+                {% endif %}
             </div>
         </div>
     </div>

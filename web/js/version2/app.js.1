@@ -1,11 +1,9 @@
 var map;
-var coordinate;
-var trackLayer;
-var marker;
+
 var osmLayer;
 var googleLayer;
 var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'vinOrtoSidebar', 'topoVinSidebar'];
-var isMobile;
+
 
 function showUP(layer, elem) {
 
@@ -102,14 +100,13 @@ function layersOff(map){
     });
 
 //    $('.mdl-navigation__level1').prepend('<div class="layersOff"><label class="mdl-checkbox mdl-js-checkbox" for="checkbox2"><input type="checkbox" id="checkbox2" class="mdl-checkbox__input"><span class="mdl-checkbox__label"></span></label></div></label>');
-    $('.mdl-navigation__level1').prepend('<div class="layersOff"><label class="mdl-checkbox mdl-js-checkbox" for="checkbox2"><input type="checkbox" id="checkbox2" class="mdl-checkbox__input"><span class="mdl-checkbox__label"></span><span class="mdl-checkbox__focus-helper"></span><span class="mdl-checkbox__box-outline"><span class="mdl-checkbox__tick-outline"></span></label></div>');
+$('.mdl-navigation__level1').prepend('<div class="layersOff"><label class="mdl-checkbox mdl-js-checkbox" for="checkbox2"><input type="checkbox" id="checkbox2" class="mdl-checkbox__input"><span class="mdl-checkbox__label"></span><span class="mdl-checkbox__focus-helper"></span><span class="mdl-checkbox__box-outline"><span class="mdl-checkbox__tick-outline"></span></label></div>');
     $('.layersOff').on('mousedown',function (event) {
         var layersName = [];
         $(this).parents('.mdl-navigation__level1').next().find('a.mdl-navigation__link').each(function(){
             //console.log(this);
             $(this).next('form').slideUp(500);
             $(this).removeClass('active');
-            $(this).children('.ui-slider').hide();
             $(this).children('.legend-button').hide();
             if($(this).children('.legend-button').hasClass('active')){
                $('.legend-button').removeClass('active')
@@ -235,6 +232,28 @@ function checkIp() {
     return checkIp;
 }
 
+function votingResult() {
+    var voiceResult;
+    var idTicketit = $('#id_ticketit').val();
+    $.ajax({
+        url: '/votingResult',
+        type: 'POST',
+        async: false,
+        dataType: "json",
+        data: {
+            'idTicketit': idTicketit
+        },
+        success: function (data) {
+            voiceResult = "<hr><div id='voting-res'><span class='title' >Результати опитування:</span>"
+            voiceResult += "<span class='right_menu_content-description'>Підтримали: <b style='color: green'>" + data.true + "</b></span>"
+            voiceResult += "<span class='right_menu_content-description'> Не підтримали: <b style='color: red'>" + data.false + "</b></span></div>"
+            voiceResult += '<div class="modal-dtp"><input type="button" class="btn btn-primary btn-block" value="Загальні результати опитування"></div><hr>'
+        }
+
+    });
+    return voiceResult;
+}
+
 //Useful Functions
 function checkBin(n){return/^[01]{1,64}$/.test(n)}
 function checkDec(n){return/^[0-9]{1,64}$/.test(n)}
@@ -297,113 +316,7 @@ function select(element) {
     return selectedText;
 }
 
-function geolocation(map){
-
-    if($('#main_tt4').hasClass('active')){
-
-        var trackStyle = new ol.style.Style({
-            stroke: new ol.style.Stroke({
-                color: 'rgba(0,0,255,1.0)',
-                width: 3,
-                lineCap: 'round'
-            })
-        });
-
-        // use a single feature with a linestring geometry to display our track
-        var trackFeature = new ol.Feature({
-            geometry: new ol.geom.LineString([])
-        });
-
-        // we'll need a vector layer to render it
-        console.log(trackLayer);
-        if(trackLayer === undefined){
-            trackLayer = new ol.layer.Vector({
-                source: new ol.source.Vector({
-                    features: [trackFeature]
-                }),
-                style: trackStyle
-            });
-        }
-        map.addLayer(trackLayer);
-        //console.log(trackLayer);
-
-
-        var view = map.getView();
-
-        // set up the geolocation api to track our position
-        var geolocation = new ol.Geolocation({
-            tracking: true,
-            projection: view.getProjection()
-        });
-
-        // bind the view's projection
-
-        // when we get a position update, add the coordinate to the track's
-        // geometry and recenter the view
-        if(marker === undefined){
-            $('#location').show();
-            marker = new ol.Overlay({
-                element: document.getElementById('location'),
-                positioning: 'center-center',
-            });
-           // console.log($('#location').getAttribute('display'));
-         //
-        }
-        map.addOverlay(marker);
-
-        geolocation.on('change:position', function () {
-            if (isMobile.any()) {
-                coordinate = geolocation.getPosition();
-                coordinate  = ol.proj.transform([coordinate[0], coordinate[1]],'EPSG:4326','EPSG:900913');
-                //console.log(coordinate[0]);
-            } else {
-                coordinate = geolocation.getPosition();
-              //  console.log(coordinate[0]);
-            }
-            view.setCenter(coordinate);
-            marker.setPosition(coordinate)
-            trackFeature.getGeometry().appendCoordinate(coordinate);
-        });
-        view.setCenter(coordinate);
-        var deviceOrientation = new ol.DeviceOrientation({
-            tracking: true
-        });
-        deviceOrientation.on('change:heading', onChangeHeading);
-        function onChangeHeading(event) {
-            var heading = event.target.getHeading();
-            view.setRotation(-heading);
-        }
-    } else {
-        map.removeLayer(trackLayer);
-        map.removeOverlay(marker);
-    }
-
-}
-
-
 $(function () {
-    isMobile = {
-        Android: function() {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function() {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function() {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function() {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function() {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-        }
-    };
-
-
     $('#main_tt7').on('click', function(){
         $('#modal-help').toggleClass('open');
     });
@@ -411,11 +324,7 @@ $(function () {
     $("#save_map_url").on('click', function() {
           var coord =  map.getView().getCenter();
           var t = ol.proj.transform(coord,'EPSG:900913','EPSG:4326');
-          if($('.language_container i').text()=="UA"){
-          var str = window.location.protocol + "//" + window.location.hostname+"/uk/maplink/"+map.getView().getZoom()+"/"+t[1]+"/"+t[0]+"/";
-      } else {
-          var str = window.location.protocol + "//" + window.location.hostname+"/en/maplink/"+map.getView().getZoom()+"/"+t[1]+"/"+t[0]+"/";
-      }
+          var str = window.location.protocol + "//" + window.location.hostname+"/maplink/"+map.getView().getZoom()+"/"+t[1]+"/"+t[0]+"/";
             var temp='';
             map.getLayers().forEach(function (l, i) {
             if (($.inArray(l.get('name'), art)) > -1) {
@@ -458,7 +367,7 @@ $('body').click(function(){
 
     })*/
     new Clipboard('.material-icons.buffer');
-    new Clipboard('.btn-copy');
+new Clipboard('.btn-copy');
 
     /*$('.map_mode_select .mdl-menu__item div .material-icons').click(function(){
 
@@ -480,15 +389,6 @@ $('body').click(function(){
             $('.tooltip-info').removeClass('active');
         }
         $(this).next('.tooltip-info').toggleClass('active');
-        event.stopPropagation();
-    })
-
-    $('.mdl-navigation__level3 .material-icons:not(.buffer)').on('click', function (event) {
-        //console.log('sds');
-        if (!$(this).parent().next().hasClass('active')) {
-            $('.tooltip-info').removeClass('active');
-        }
-        $(this).parent().next('.tooltip-info').toggleClass('active');
         event.stopPropagation();
     })
 
@@ -525,22 +425,11 @@ $('body').click(function(){
             if($('.language_container i').text()=="UA"){
                 $('.language_container i').text("EN")
                 $('.language_container .mdl-tooltip').text("English");
-                if(window.location.pathname.indexOf('/uk')===0) {
-                    window.location.replace('/en' + window.location.pathname.substr(3));
-                } else {
-                    if(window.location.pathname==="/"){
-                    window.location.replace('/en');    
-                    } else {
-                    window.location.replace('/en' + window.location.pathname);
-                }
-                }
             }else{
                 $('.language_container i').text("UA");
                 $('.language_container .mdl-tooltip').text("Українською");
-
-                    window.location.replace('/uk' + window.location.pathname.substr(3));
-                
             }
+            console.log($('.language_container i').text())
         });
         // calculations for elements that changes size on window resize
         var windowResizeHandler = function () {
@@ -557,13 +446,8 @@ $('body').click(function(){
             $('#wrapper').width(windowWidth);
             $('#content').height(contentHeight);
             $('#external_control').css({top: windowHeight / 2});
-            var mapCenterWidth = $('.map-center').width();
-            var mapCenterHeigth = $('.map-center').width();
-            $('.map-center').css('left', (windowWidth - mapCenterWidth) / 2);
-            $('.map-center').css('top', (windowHeight - mapCenterHeigth) / 2);
 
-            var logoWidth = $('.head_block_logo').width();
-            $('.head_block_logo').css('left', (windowWidth -logoWidth)/2);
+
             var carousel_block_height = $('.carousel-block').height();
             if($('.carousel-block').closest('.bx-wrapper').css('display') == 'none'){
                 carousel_block_height = 0;
@@ -1180,13 +1064,10 @@ $('body').click(function(){
         });
 
         var osmLayer = new ol.layer.Tile({
-            source: new ol.source.OSM({
-                url: 'http://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            }),
+            source: new ol.source.OSM({url: 'http://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'}),
            // visible: 1,
             name: 'osm',
             visible: 0,
-
         });
 
         var pubLayer = new ol.layer.Tile({
@@ -1365,7 +1246,6 @@ $('body').click(function(){
 
 
         map = new ol.Map({
-
             target: "mapView",
             layers: [
                 topoVin,
@@ -1390,17 +1270,13 @@ $('body').click(function(){
 
             ],
 //            view: view,
-            controls: ol.control.defaults().extend([
-                new ol.control.ScaleLine({
-                    className: 'ol-scale-line',
-                    target: document.getElementById('scale-line')})
-            ]),
+            controls: [],
         });
                 var getPar = parsemaplinkURL();
 
         if((getPar === null) || (getPar.length!==6)) {        
         var view = new ol.View({
-            center: [3170647.44192, 6315057.33961],
+             center: [3170647.44192, 6315057.33961],
             zoom: 12,
             minZoom: 2
         });
@@ -1439,9 +1315,8 @@ $('body').click(function(){
             }
           });
         }
-        map.setView(view);
-
-        $('#vinOrtoSidebar').on('click',function(){
+map.setView(view);
+        $('#vinOrto').on('click',function(){
             if($(this).hasClass('active')){
                 $('#slider_vinOrtoSidebar').show();
             }else{
@@ -1457,25 +1332,6 @@ $('body').click(function(){
 
         sliderVinOrto.on('slide', function(ev, ui) {
             vinOrtoSidebar.setOpacity(ui.value/100);
-            //ev.stopPropagation();
-        });
-
-        $('#topoVinSidebar').on('click',function(){
-            if($(this).hasClass('active')){
-                $('#slider_topoVinSidebar').show();
-            }else{
-                $('#slider_topoVinSidebar').hide();
-            }
-        });
-
-        var sliderTopoVin = $('#slider_topoVinSidebar').slider({
-            value: topoVinSidebar.getOpacity()*100,
-            range: "min"
-
-        })
-
-        sliderTopoVin.on('slide', function(ev, ui) {
-            topoVinSidebar.setOpacity(ui.value/100);
             //ev.stopPropagation();
         });
 
@@ -1501,20 +1357,13 @@ $('body').click(function(){
        /* $('#slider_wms3').on('mousedown', function(event){
             event.stopPropagation();
         })*/
-
-
-
-
         map.addOverlay(popup);
-
-       // console.log(isMobile.any()+'sdsddssxxx');
-        if(!isMobile.any()){
-            var external_control = new ol.control.Zoom({
-                target: document.getElementById('external_control')
-            });
-            map.addControl(external_control);
-        }
-
+//  var zoomslider = new ol.control.ZoomSlider();
+//  map.addControl(zoomslider);
+        var external_control = new ol.control.Zoom({
+            target: document.getElementById('external_control')
+        });
+        map.addControl(external_control);
         var overview = new ol.control.OverviewMap({
             layers: [
                 new ol.layer.Tile({
@@ -1549,26 +1398,11 @@ $('body').click(function(){
         addMeasure(map);
         layersOff(map);
 
-       $('#main_tt4').on('click', function(){
-               $('#main_tt4').toggleClass('active');
-               geolocation(map);
-       });
-
-
-
-
-
-       // unitsSelect.bindTo('value', scaleLineControl, 'metric');
 
         $('.zoomOff .mdl-checkbox').on('mouseup', function(){
            // $('.account_block').toggleClass('close');
             $('.ol-zoom').toggleClass('hide');
            // console.log($('#checkbox-zoom').attr('checked'));
-        });
-        $('.centerOff .mdl-checkbox').on('mouseup', function(){
-            // $('.account_block').toggleClass('close');
-            $('.map-center').toggleClass('hide');
-            // console.log($('#checkbox-zoom').attr('checked'));
         });
 
         $('.map_mode_select li').on('click', function(event){
@@ -1595,35 +1429,9 @@ $('body').click(function(){
 
         $('#bazlayer select').change();
 
-
-        //Додати координати центра карти//
-        var center = map.getView().getCenter();
-
-        var coord = ol.proj.transform([center[0], center[1]],'EPSG:900913','EPSG:4326');
-        $('.x').text(coord[0].toFixed(4));
-        $('.y').text(coord[1].toFixed(4));
-
-        map.on('pointerdrag', function(evt){
-            center = map.getView().getCenter();
-            coord = ol.proj.transform([center[0], center[1]],'EPSG:900913','EPSG:4326');
-            $('.x').text(coord[0].toFixed(4));
-            $('.y').text(coord[1].toFixed(4));
-        });
-
-        map.on('moveend', function(evt){
-            center = map.getView().getCenter();
-            coord = ol.proj.transform([center[0], center[1]],'EPSG:900913','EPSG:4326');
-            $('.x').text(coord[0].toFixed(4));
-            $('.y').text(coord[1].toFixed(4));
-        });
-        //end--Додати координати центра карти//
-
-
-
         var sliderInfo;
         var sliderCarousel;
         map.on('singleclick', function (evt) {
-
             if(!$('#length').hasClass('active') && !$('#area').hasClass('active')){
 
             var viewResolution = (view.getResolution());
