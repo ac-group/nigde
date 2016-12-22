@@ -355,6 +355,8 @@ function geolocation(map){
         geolocation.on('change:position', function () {
             if (md.mobile()) {
                 coordinate = geolocation.getPosition();
+                $('.x').text(coordinate[0]);
+                $('.y').text(coordinate[1]);
                 coordinate  = ol.proj.transform([coordinate[0], coordinate[1]],'EPSG:4326','EPSG:900913');
                 //console.log(coordinate[0]);
             } else {
@@ -378,7 +380,6 @@ function geolocation(map){
         map.removeLayer(trackLayer);
         map.removeOverlay(marker);
     }
-
 }
 
 
@@ -442,19 +443,6 @@ $('body').click(function(){
     })*/
     new Clipboard('.material-icons.buffer');
     new Clipboard('.btn-copy');
-
-    /*$('.map_mode_select .mdl-menu__item div .material-icons').click(function(){
-
-        var target = document.getElementById("hiddenText");
-        target.textContent = "sdssdsdss";
-        console.log(target.textContent);
-        select(target);
-        document.execCommand("copy");
-
-
-    });*/
-
-
 
 
     $('.mdl-menu .material-icons:not(.buffer)').on('click', function (event) {
@@ -1577,7 +1565,7 @@ $('body').click(function(){
         //Додати координати центра карти//
         var center = map.getView().getCenter();
 
-        var coord = ol.proj.transform([center[0], center[1]],'EPSG:900913','EPSG:4326');
+      /*  var coord = ol.proj.transform([center[0], center[1]],'EPSG:900913','EPSG:4326');
         $('.x').text(coord[0].toFixed(4));
         $('.y').text(coord[1].toFixed(4));
 
@@ -1593,7 +1581,7 @@ $('body').click(function(){
             coord = ol.proj.transform([center[0], center[1]],'EPSG:900913','EPSG:4326');
             $('.x').text(coord[0].toFixed(4));
             $('.y').text(coord[1].toFixed(4));
-        });
+        });*/
         //end--Додати координати центра карти//
 
 
