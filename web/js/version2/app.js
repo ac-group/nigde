@@ -4,7 +4,7 @@ var trackLayer;
 var marker;
 var osmLayer;
 var googleLayer;
-var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'vinOrtoSidebar', 'topoVinSidebar'];
+var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar'];
 var md;
 
 function showUP(layer, elem) {
@@ -1073,6 +1073,52 @@ $('body').click(function(){
             name: 'vectorVinSidebar'
         });
 
+        var boundVinSidebarWms = new ol.source.TileWMS({
+            url: '/geoserver/nsdi/wms',
+            params: {
+                'LAYERS': 'nsdi:boundary_admin',
+                'ALIAS':'Адміністративний кордон',
+                'VERSION': '1.1.0',
+                'TILED': 'true',
+                'FORMAT': 'image/png8',
+                'WIDTH': 768,
+                'HEIGHT': 509,
+                'CRS': 'EPSG:3857',
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+
+        var boundVinSidebar = new ol.layer.Tile({
+            source: boundVinSidebarWms,
+            visible: 0,
+            name: 'boundVinSidebar'
+        });
+
+        var hydroVinSidebarWms = new ol.source.TileWMS({
+            url: '/geoserver/nsdi/wms',
+            params: {
+                'LAYERS': 'nsdi:hydro_polygon',
+                'ALIAS':'Гідрографія',
+                'VERSION': '1.1.0',
+                'TILED': 'true',
+                'FORMAT': 'image/png8',
+                'WIDTH': 768,
+                'HEIGHT': 667,
+                'CRS': 'EPSG:3857',
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+
+        var hydroVinSidebar = new ol.layer.Tile({
+            source: hydroVinSidebarWms,
+            visible: 0,
+            name: 'hydroVinSidebar'
+        });
+        
         var gryntSidebarWms = new ol.source.TileWMS({
             url: 'http://212.26.144.103/geowebcache/service/wms',
             params: {
@@ -1348,9 +1394,10 @@ $('body').click(function(){
                 orto2000sidebar,
                 dynamicSidebar,
                 gryntSidebar,
+                boundVinSidebar,
                 emptyLayer,
                 topoVinSidebar,
-
+                hydroVinSidebar,
             ],
 //            view: view,
             controls: ol.control.defaults().extend([
