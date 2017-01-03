@@ -2113,6 +2113,15 @@ $('body').click(function(){
                             if (response.features[i].properties.zone) {
                                 infostr += "<span class='right_menu_content-title'>Зона</span><span class='right_menu_content-description'>" + response.features[i].properties.zone + "</span>";
                             }
+                            if (response.features[i].properties.scale) {
+                                infostr += "<span class='right_menu_content-title'>Масштаб</span><span class='right_menu_content-description'>" + response.features[i].properties.scale + "</span>";
+                            }
+                            if (response.features[i].properties.nomenclru) {
+                                infostr += "<span class='right_menu_content-title'>Номер номенклатури</span><span class='right_menu_content-description'>" + response.features[i].properties.nomenclru + "</span>";
+                            }
+                            if (response.features[i].properties.nomenclen) {
+                                infostr += "<span class='right_menu_content-description'>" + response.features[i].properties.nomenclen + "</span>";
+                            }
                             if (response.features[i].properties.payment_type) {
                                 infostr += "<span class='right_menu_content-title'>Вид оплати</span><span class='right_menu_content-description'>" + response.features[i].properties.payment_type + "</span>";
                             }
