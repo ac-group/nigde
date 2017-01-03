@@ -4,7 +4,7 @@ var trackLayer;
 var marker;
 var osmLayer;
 var googleLayer;
-var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar'];
+var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'razgrafkaSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar'];
 var md;
 
 function showUP(layer, elem) {
@@ -1118,6 +1118,29 @@ $('body').click(function(){
             visible: 0,
             name: 'hydroVinSidebar'
         });
+
+        var razgrafkaSidebarWms = new ol.source.TileWMS({
+            url: '/geoserver/nsdi/wms',
+            params: {
+                'LAYERS': 'nsdi:razgrafka1942_ua',
+//                'ALIAS':'Гідрографія',
+                'VERSION': '1.1.0',
+                'TILED': 'true',
+                'FORMAT': 'image/png8',
+                'WIDTH': 768,
+                'HEIGHT': 601,
+                'CRS': 'EPSG:900913',
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+
+        var razgrafkaSidebar = new ol.layer.Tile({
+            source: razgrafkaSidebarWms,
+            visible: 0,
+            name: 'razgrafkaSidebar'
+        });
         
         var gryntSidebarWms = new ol.source.TileWMS({
             url: 'http://212.26.144.103/geowebcache/service/wms',
@@ -1135,6 +1158,7 @@ $('body').click(function(){
                 projection: projection,
             }
         });
+
 
         var gryntSidebar = new ol.layer.Tile({
             source: gryntSidebarWms,
@@ -1398,6 +1422,7 @@ $('body').click(function(){
                 emptyLayer,
                 topoVinSidebar,
                 hydroVinSidebar,
+                razgrafkaSidebar,
             ],
 //            view: view,
             controls: ol.control.defaults().extend([
@@ -2083,7 +2108,7 @@ $('body').click(function(){
                                 infostr += "<span class='right_menu_content-title'>Тех. облаштування</span><span class='right_menu_content-description'>" + response.features[i].properties.tech + "</span>";
                             }
                             if (response.features[i].properties.type) {
-                                infostr += "<span class='right_menu_content-title'>Тип паркування</span><span class='right_menu_content-description'>" + response.features[i].properties.type + "</span>";
+                                infostr += "<span class='right_menu_content-title'>Тип об'єкту</span><span class='right_menu_content-description'>" + response.features[i].properties.type + "</span>";
                             }
                             if (response.features[i].properties.zone) {
                                 infostr += "<span class='right_menu_content-title'>Зона</span><span class='right_menu_content-description'>" + response.features[i].properties.zone + "</span>";

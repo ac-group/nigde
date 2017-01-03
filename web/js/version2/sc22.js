@@ -4552,7 +4552,7 @@ google.maps = google.maps || {};
   
   google.maps.Load = function(apiLoad) {
     delete google.maps.Load;
-    apiLoad([0.009999999776482582,[null,[["https://khms0.googleapis.com/kh?v=709\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=709\u0026hl=en-US\u0026"],null,null,null,1,"709",["https://khms0.google.com/kh?v=709\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=709\u0026hl=en-US\u0026"]],null,null,null,null,[["https://cbks0.googleapis.com/cbk?","https://cbks1.googleapis.com/cbk?"]],[["https://khms0.googleapis.com/kh?v=102\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=102\u0026hl=en-US\u0026"],null,null,null,null,"102",["https://khms0.google.com/kh?v=102\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=102\u0026hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"https://maps.gstatic.com/mapfiles/","https://csi.gstatic.com","https://maps.googleapis.com","https://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","https://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["https://maps.googleapis.com/maps-api-v3/api/js/26/16","3.26.16"],[266968700],1,null,null,null,null,null,"",null,null,1,"https://khms.googleapis.com/mz?v=709\u0026","AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"https://mts.googleapis.com/maps/vt/icon",[["https://maps.googleapis.com/maps/vt"],["https://maps.googleapis.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",371000000,371],2,500,[null,null,null,null,"https://www.google.com/maps/preview/log204","","https://static.panoramio.com.storage.googleapis.com/photos/",["https://geo0.ggpht.com/cbk","https://geo1.ggpht.com/cbk","https://geo2.ggpht.com/cbk","https://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["https://lh3.ggpht.com/","https://lh4.ggpht.com/","https://lh5.ggpht.com/","https://lh6.ggpht.com/"]],["https://www.google.com/maps/api/js/master?pb=!1m2!1u26!2s16!2sen-US!3sUS!4s26/16","https://www.google.com/maps/api/js/widget?pb=!1m2!1u26!2s16!2sen-US"],null,0,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["26.16"]], loadScriptTime);
+    apiLoad([0.009999999776482582,[null,[["https://khms0.googleapis.com/kh?v=709\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=709\u0026hl=en-US\u0026"],null,null,null,1,"709",["https://khms0.google.com/kh?v=709\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=709\u0026hl=en-US\u0026"]],null,null,null,null,[["https://cbks0.googleapis.com/cbk?","https://cbks1.googleapis.com/cbk?"]],[["https://khms0.googleapis.com/kh?v=102\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=102\u0026hl=en-US\u0026"],null,null,null,null,"102",["https://khms0.google.com/kh?v=102\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=102\u0026hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"https://maps.gstatic.com/mapfiles/","https://csi.gstatic.com","https://maps.googleapis.com","https://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","https://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["https://maps.googleapis.com/maps-api-v3/api/js/26/16","3.26.16"],[3624415298],1,null,null,null,null,null,"",null,null,1,"https://khms.googleapis.com/mz?v=709\u0026","AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"https://mts.googleapis.com/maps/vt/icon",[["https://maps.googleapis.com/maps/vt"],["https://maps.googleapis.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",371000000,371],2,500,[null,null,null,null,"https://www.google.com/maps/preview/log204","","https://static.panoramio.com.storage.googleapis.com/photos/",["https://geo0.ggpht.com/cbk","https://geo1.ggpht.com/cbk","https://geo2.ggpht.com/cbk","https://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["https://lh3.ggpht.com/","https://lh4.ggpht.com/","https://lh5.ggpht.com/","https://lh6.ggpht.com/"]],["https://www.google.com/maps/api/js/master?pb=!1m2!1u26!2s16!2sen-US!3sUS!4s26/16","https://www.google.com/maps/api/js/widget?pb=!1m2!1u26!2s16!2sen-US"],null,0,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["26.16"]], loadScriptTime);
   };
   var loadScriptTime = (new Date).getTime();
 })();
@@ -5015,7 +5015,7 @@ var trackLayer;
 var marker;
 var osmLayer;
 var googleLayer;
-var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar'];
+var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'razgrafkaSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar'];
 var md;
 
 function showUP(layer, elem) {
@@ -6129,6 +6129,29 @@ $('body').click(function(){
             visible: 0,
             name: 'hydroVinSidebar'
         });
+
+        var razgrafkaSidebarWms = new ol.source.TileWMS({
+            url: '/geoserver/nsdi/wms',
+            params: {
+                'LAYERS': 'nsdi:razgrafka1942_ua',
+//                'ALIAS':'Гідрографія',
+                'VERSION': '1.1.0',
+                'TILED': 'true',
+                'FORMAT': 'image/png8',
+                'WIDTH': 768,
+                'HEIGHT': 601,
+                'CRS': 'EPSG:900913',
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+
+        var razgrafkaSidebar = new ol.layer.Tile({
+            source: razgrafkaSidebarWms,
+            visible: 0,
+            name: 'razgrafkaSidebar'
+        });
         
         var gryntSidebarWms = new ol.source.TileWMS({
             url: 'http://212.26.144.103/geowebcache/service/wms',
@@ -6146,6 +6169,7 @@ $('body').click(function(){
                 projection: projection,
             }
         });
+
 
         var gryntSidebar = new ol.layer.Tile({
             source: gryntSidebarWms,
@@ -6409,6 +6433,7 @@ $('body').click(function(){
                 emptyLayer,
                 topoVinSidebar,
                 hydroVinSidebar,
+                razgrafkaSidebar,
             ],
 //            view: view,
             controls: ol.control.defaults().extend([
@@ -7094,7 +7119,7 @@ $('body').click(function(){
                                 infostr += "<span class='right_menu_content-title'>Тех. облаштування</span><span class='right_menu_content-description'>" + response.features[i].properties.tech + "</span>";
                             }
                             if (response.features[i].properties.type) {
-                                infostr += "<span class='right_menu_content-title'>Тип паркування</span><span class='right_menu_content-description'>" + response.features[i].properties.type + "</span>";
+                                infostr += "<span class='right_menu_content-title'>Тип об'єкту</span><span class='right_menu_content-description'>" + response.features[i].properties.type + "</span>";
                             }
                             if (response.features[i].properties.zone) {
                                 infostr += "<span class='right_menu_content-title'>Зона</span><span class='right_menu_content-description'>" + response.features[i].properties.zone + "</span>";
