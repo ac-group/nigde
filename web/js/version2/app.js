@@ -4,7 +4,7 @@ var trackLayer;
 var marker;
 var osmLayer;
 var googleLayer;
-var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'razgrafkaSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar'];
+var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'razgrafkaSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar', 'geodeticSidebar'];
 var md;
 
 function showUP(layer, elem) {
@@ -1141,6 +1141,29 @@ $('body').click(function(){
             visible: 0,
             name: 'razgrafkaSidebar'
         });
+
+        var geodeticSidebarWms = new ol.source.TileWMS({
+            url: '/geoserver/nsdi/wms',
+            params: {
+                'LAYERS': 'nsdi:dgm',
+//                'ALIAS':'Гідрографія',
+                'VERSION': '1.1.0',
+                'TILED': 'true',
+                'FORMAT': 'image/png8',
+                'WIDTH': 768,
+                'HEIGHT': 515,
+                'CRS': 'EPSG:900913',
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+
+        var geodeticSidebar = new ol.layer.Tile({
+            source: geodeticSidebarWms,
+            visible: 0,
+            name: 'geodeticSidebar'
+        });
         
         var gryntSidebarWms = new ol.source.TileWMS({
             url: 'http://212.26.144.103/geowebcache/service/wms',
@@ -1423,6 +1446,7 @@ $('body').click(function(){
                 topoVinSidebar,
                 hydroVinSidebar,
                 razgrafkaSidebar,
+                geodeticSidebar
             ],
 //            view: view,
             controls: ol.control.defaults().extend([
