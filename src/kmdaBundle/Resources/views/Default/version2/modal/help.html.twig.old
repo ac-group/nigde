@@ -6,8 +6,9 @@
                     {{'Допомога'|trans}}
                 </span>
                 <div class="dialog_window_publication_bids_list-body">
-{# HELP #}
-Допомога по функціоналу вьювера. qweqwe
+
+
+                  {# сюда добавляем информацию #}
 
 
                 </div>

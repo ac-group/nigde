@@ -4,7 +4,7 @@ var trackLayer;
 var marker;
 var osmLayer;
 var googleLayer;
-var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'razgrafkaSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar', 'geodeticSidebar'];
+var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'razgrafkaSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar', 'geodeticSidebar', 'buildingsVinSidebar', 'fencesVinSidebar'];
 var md;
 
 function showUP(layer, elem) {
@@ -1119,6 +1119,50 @@ $('body').click(function(){
             name: 'hydroVinSidebar'
         });
 
+        var buildingVinSidebarWms = new ol.source.TileWMS({
+            url: '/geoserver/nsdi/wms',
+            params: {
+                'LAYERS': 'nsdi:nsdi_building',
+                'VERSION': '1.1.0',
+                'TILED': 'true',
+                'FORMAT': 'image/png8',
+                'WIDTH': 768,
+                'HEIGHT': 697,
+                'CRS': 'EPSG:3857',
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+
+        var buildingVinSidebar = new ol.layer.Tile({
+            source: buildingVinSidebarWms,
+            visible: 0,
+            name: 'buildingsVinSidebar'
+        });
+
+        var fencesVinSidebarWms = new ol.source.TileWMS({
+            url: '/geoserver/nsdi/wms',
+            params: {
+                'LAYERS': 'nsdi:fences',
+                'VERSION': '1.1.0',
+                'TILED': 'true',
+                'FORMAT': 'image/png8',
+                'WIDTH': 768,
+                'HEIGHT': 699,
+                'CRS': 'EPSG:3857',
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+
+        var fencesVinSidebar = new ol.layer.Tile({
+            source: fencesVinSidebarWms,
+            visible: 0,
+            name: 'fencesVinSidebar'
+        });
+        
         var razgrafkaSidebarWms = new ol.source.TileWMS({
             url: '/geoserver/nsdi/wms',
             params: {
@@ -1446,6 +1490,8 @@ $('body').click(function(){
                 topoVinSidebar,
                 hydroVinSidebar,
                 razgrafkaSidebar,
+                buildingVinSidebar,
+                fencesVinSidebar,
                 geodeticSidebar
             ],
 //            view: view,
