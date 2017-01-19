@@ -302,33 +302,6 @@ function geolocation(map){
 
     if($('#main_tt4').hasClass('active')){
 
-        var trackStyle = new ol.style.Style({
-            stroke: new ol.style.Stroke({
-                color: 'rgba(0,0,255,1.0)',
-                width: 3,
-                lineCap: 'round'
-            })
-        });
-
-        // use a single feature with a linestring geometry to display our track
-        var trackFeature = new ol.Feature({
-            geometry: new ol.geom.LineString([])
-        });
-
-        // we'll need a vector layer to render it
-        console.log(trackLayer);
-        if(trackLayer === undefined){
-            trackLayer = new ol.layer.Vector({
-                source: new ol.source.Vector({
-                    features: [trackFeature]
-                }),
-                style: trackStyle
-            });
-        }
-        map.addLayer(trackLayer);
-        //console.log(trackLayer);
-
-
         var view = map.getView();
 
         // set up the geolocation api to track our position
@@ -338,7 +311,6 @@ function geolocation(map){
         });
 
         // bind the view's projection
-
         // when we get a position update, add the coordinate to the track's
         // geometry and recenter the view
         if(marker === undefined){
@@ -347,8 +319,6 @@ function geolocation(map){
                 element: document.getElementById('location'),
                 positioning: 'center-center',
             });
-           // console.log($('#location').getAttribute('display'));
-         //
         }
         map.addOverlay(marker);
 
@@ -357,17 +327,9 @@ function geolocation(map){
             coordinate = geolocation.getPosition();
             view.setCenter(coordinate);
             marker.setPosition(coordinate)
-            trackFeature.getGeometry().appendCoordinate(coordinate);
         });
         view.setCenter(coordinate);
-      /*  var deviceOrientation = new ol.DeviceOrientation({
-            tracking: true
-        });
-        deviceOrientation.on('change:heading', onChangeHeading);
-        function onChangeHeading(event) {
-            var heading = event.target.getHeading();
-            view.setRotation(-heading);
-        }*/
+        view.setZoom(14);
     } else {
         map.removeLayer(trackLayer);
         map.removeOverlay(marker);
