@@ -3,7 +3,7 @@ var coordinate;
 var trackLayer;
 var marker;
 var osmLayer;
-var googleLayer;
+// var googleLayer;
 var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'razgrafkaSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar', 'geodeticSidebar', 'buildingsVinSidebar', 'fencesVinSidebar', 'engcommVinSidebar'];
 var md;
 
@@ -896,6 +896,7 @@ $(function () {
             params: {
                 'LAYERS': 'nsdi:nsdi',
                 'ALIAS': 'Векторна карта',
+                'ALIAS_E': 'Vector Map',
                 'VERSION': '1.1.1',
                 'TILED': 'true',
                 'FORMAT': 'image/png8',
@@ -919,6 +920,7 @@ $(function () {
             params: {
                 'LAYERS': 'nsdi:boundary_admin',
                 'ALIAS': 'Адміністративний кордон',
+                'ALIAS_E': 'Boundary administrative',
                 'VERSION': '1.1.0',
                 'TILED': 'true',
                 'FORMAT': 'image/png8',
@@ -942,6 +944,7 @@ $(function () {
             params: {
                 'LAYERS': 'nsdi:hydro_polygon',
                 'ALIAS': 'Гідрографія',
+                'ALIAS_E': 'Hydrography',
                 'VERSION': '1.1.0',
                 'TILED': 'true',
                 'FORMAT': 'image/png8',
@@ -964,6 +967,8 @@ $(function () {
             url: '/geoserver/nsdi/wms',
             params: {
                 'LAYERS': 'nsdi:nsdi_building',
+                'ALIAS': 'Будівлі',
+                'ALIAS_E': 'Building',
                 'VERSION': '1.1.0',
                 'TILED': 'true',
                 'FORMAT': 'image/png8',
@@ -986,6 +991,8 @@ $(function () {
             url: '/geoserver/nsdi/wms',
             params: {
                 'LAYERS': 'nsdi:fences',
+                'ALIAS': 'Огорожі',
+                'ALIAS_E': 'Fences',
                 'VERSION': '1.1.0',
                 'TILED': 'true',
                 'FORMAT': 'image/png8',
@@ -1008,6 +1015,8 @@ $(function () {
             url: '/geoserver/nsdi/wms',
             params: {
                 'LAYERS': 'nsdi_engineering_communication',
+                'ALIAS': 'Інженерні комунікації',
+                'ALIAS_E': 'Engineering Communication (Building)',
                 'VERSION': '1.1.0',
                 'TILED': 'true',
                 'FORMAT': 'image/png8',
@@ -1025,12 +1034,13 @@ $(function () {
             visible: 0,
             name: 'engcommVinSidebar'
         });
-        
+
         var razgrafkaSidebarWms = new ol.source.TileWMS({
             url: '/geoserver/nsdi/wms',
             params: {
                 'LAYERS': 'nsdi:razgrafka1942_ua',
-//                'ALIAS':'Гідрографія',
+                'ALIAS':'Разграфка (Україна 1942)',
+                'ALIAS_E': 'Geographical GRID (Ukraine 1942)',
                 'VERSION': '1.1.0',
                 'TILED': 'true',
                 'FORMAT': 'image/png8',
@@ -1053,7 +1063,8 @@ $(function () {
             url: '/geoserver/nsdi/wms',
             params: {
                 'LAYERS': 'nsdi:dgm',
-//                'ALIAS':'Гідрографія',
+                'ALIAS': 'Державна геодезична мережа',
+                'ALIAS_E': 'State geodetic network',
                 'VERSION': '1.1.0',
                 'TILED': 'true',
                 'FORMAT': 'image/png8',
@@ -1077,6 +1088,7 @@ $(function () {
             params: {
                 'LAYERS': 'grunt',
                 'ALIAS': 'Грунти',
+                'ALIAS_E': 'Soils',
                 'VERSION': '1.1.1',
                 'TILED': 'true',
                 'FORMAT': 'image/png8',
@@ -1101,6 +1113,7 @@ $(function () {
             params: {
                 'LAYERS': 'kadastr',
                 'ALIAS': 'Кадастровий поділ',
+                'ALIAS_E': 'Cadastral Division',
                 'VERSION': '1.1.1',
                 'TILED': 'true',
                 'FORMAT': 'image/png',
@@ -1124,6 +1137,7 @@ $(function () {
             params: {
                 'LAYERS': 'dzk:osm',
                 'ALIAS': 'Динамічна карта',
+                'ALIAS_E': 'Dynamic Map',
                 'VERSION': '1.1.1',
                 'TILED': 'true',
                 'FORMAT': 'image/png',
@@ -1201,7 +1215,8 @@ $(function () {
                 url: 'http://212.26.144.103/map/topo2k_vyn/{z}/{x}/{y}.png',
                 crossOrigin: 'null',
                 params: {
-                    'ALIAS': 'Топографічна карта'
+                    'ALIAS': 'Топографічна карта',
+                    'ALIAS_E': 'Topographic map'
                 }
             }),
             name: 'topoVinSidebar',
@@ -1319,7 +1334,7 @@ $(function () {
             visible: 0,
         });
 
-        googleLayer = new olgm.layer.Google({name: 'google', visible: 0, mapTypeId: google.maps.MapTypeId.SATELLITE});
+        var googleLayer = new olgm.layer.Google({name: 'google', visible: 0, mapTypeId: google.maps.MapTypeId.SATELLITE});
         var googleHybridLayer = new olgm.layer.Google({
             name: 'googlehybrid',
             visible: 0,
@@ -1334,7 +1349,6 @@ $(function () {
                 topoVin,
                 googleLayer,
                 googleHybridLayer,
-//                satLayer,
                 osmLayer,
                 emptyRelief,
                 cycleLayer,
@@ -1391,6 +1405,12 @@ $(function () {
 
                 if (getPar[4].charAt(ic) == 1) {
                     l.setVisible(true);
+                    if (($.inArray(l.get('name'), art)) > -1) {
+                        $('#' + l.get('name')).addClass('active');
+                    $('#' + l.get('name')).closest('.mdl-navigation__level2').prev().closest('.mdl-navigation__level1').addClass('active');
+                 //      $('#' + l.get('name')).closest('.mdl-navigation__level2').prev().closest('.layersOff').show().children('label').addClass('is-checked');
+
+                    }
                 } else {
                     l.setVisible(false);
                 }
@@ -1611,7 +1631,11 @@ $(function () {
                     if ((($.inArray(l.get('name'), art)) > -1) && (l.getVisible())) {
 
                         if (l.getSource().getParams().ALIAS) {
+                            if ($('.language_container i').text() == "UA") {
                             layerAlias = l.getSource().getParams().ALIAS;
+                        } else {
+                            layerAlias = l.getSource().getParams().ALIAS_E;
+                        }
                         } else {
                             layerAlias = "Не визначено";
                         }
@@ -1639,449 +1663,18 @@ $(function () {
 
                             for (var i = 0; i < response.features.length; i++) {
 
-                            if (!flah) {
-                                flah = true;
-                            } else {
-                                /*infostr += "<div class='item'>";
-                                infostr += "<div class='mdl-card__title mdl-card--expand mdl-color--teal-300'></div>";
-                                indic += '<li data-target="#carousel-example-generic" data-slide-to="' + count + '"></li>';*/
-                            }
-                      if(response.features[0].properties.objectid) {
-                      $('#orendadocnew').attr('action', 'orendadoc/'+response.features[0].properties.objectid+'/new');
-                  }
-                            var name;
-                            if ((name = response.features[i].properties.ObjectName) === undefined) {
-                                if ((name = response.features[i].properties.objectname) === undefined) {
-                                    if ((name = response.features[i].properties.orgname) === undefined) {
-                                        if ((name = response.features[i].properties.function_z) === undefined) {
-                                            if ((name = response.features[i].properties.name) === undefined) {
-                                                if ((name = response.features[i].properties.obj_name) === undefined) {
-                                                    if ((name = response.features[i].properties.name1) === undefined) {
-                                                        if ((name = response.features[i].properties.objectname) === undefined) {
-                                                            if ((name = response.features[i].properties.sname) === undefined) {
-                                                                name = response.features[i].properties.subject;
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
+                                if (!flah) {
+                                    flah = true;
                                 }
-                            }
-                            if (response.features[i].properties.full_name) {
-                                name = response.features[i].properties.full_name;
-                            }
-                            if (response.features[i].properties.addr_number) {
-                                name += ", " + response.features[i].properties.addr_number;
-                            }
-                            if (!name) {
-                                name = '';
-                            }
-                            infostr += '<div>'
-
-                            if (response.features[i].properties.html != undefined) {
-                                var pattern = /http:[^ >]+[^>]*jpeg|http:[^ >]+[^>]*png.*?/g;
-                                var src = response.features[i].properties.html.match(pattern);
-
-                                if(src != null){
-                                    infostr += '<div class="carousel-block">';
-                                    src.forEach(function(item){
-                                        infostr += '<li><img src="'+item+'" alt=""></li>'
-                                    });
-                                    infostr += '</div>';
-                                }/*else{
-                                    infostr += '<div><div class="carousel-block"><li><img src="/img/example.jpg" alt=""></li><li><img src="/img/example.jpg" alt=""></li></div>';
-                                }*/
-                            }/* else{
-                                infostr += '<div><div class="carousel-block"><li><img src="/img/example.jpg" alt=""></li><li><img src="/img/example.jpg" alt=""></li></div>';
-                            }*/
-                            infostr += "<div class='right_menu_title-block'><span class='layer-alias'><p> " + layerAlias + "</p></span>";
-                                infostr += "<span class='title'>" + name + "</span>";
-
-                                var districtname;
-                                if ((districtname = response.features[i].properties.DistrictName) === undefined) {
-                                    if ((districtname = response.features[i].properties.district) === undefined) {
-                                        if ((districtname = response.features[i].properties.type_str) === undefined) {
-                                            districtname = ' ';
-                                        }
-                                    }
-                                }
-                                var addrstreet;
-                                if ((addrstreet = response.features[i].properties.ObjectAddrStreet) === undefined) {
-                                    if ((addrstreet = response.features[i].properties.street) === undefined) {
-                                        if ((addrstreet = response.features[i].properties.adress) === undefined) {
-                                            if ((addrstreet = response.features[i].properties.name_str) === undefined) {
-                                                if ((addrstreet = response.features[i].properties.street) === undefined) {
-                                                    addrstreet = response.features[i].properties.long;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                                var housenum;
-                                if ((housenum = response.features[i].properties.ObjectAddrNumber) === undefined) {
-                                    if ((housenum = response.features[i].properties.house) === undefined) {
-                                        if ((housenum = response.features[i].properties.num_str) === undefined) {
-                                            if ((housenum = response.features[i].properties.house) === undefined) {
-                                                housenum = response.features[i].properties.lat;
-                                            }
-                                        }
-                                    }
-                                }
-
-                                if (districtname && addrstreet && housenum) {
-                                    infostr += "<span class='adrs'>" + districtname + " " + addrstreet + " " + housenum + "</span>";
-                                }
-                                if (response.features[i].properties.reclAdress !== undefined) {
-                                    infostr += "<span class='adrs'>" + response.features[i].properties.reclAdress + "</span>";
-                                }
-                                if (response.features[i].properties.code_addro !== undefined) {
-                                    infostr += "<span class='adrs'>" + response.features[i].properties.code_addrn + " " + response.features[i].properties.code_addro + "</span>";
-                                }
-                                if (response.features[i].properties.address !== undefined) {
-                                    infostr += "<span class='adrs'>" + response.features[i].properties.address + "</span>";
-                                }
-
+                                infostr += '<div>'
+                                infostr += "<div class='right_menu_title-block'><span class='layer-alias'><p> " + layerAlias + "</p></span>";
+//                                infostr += "<span class='title'>" + "name" + "</span>";
+//                                    infostr += "<span class='adrs'>" + "address" + "</span>";
                                 infostr += "</div><div class='right_menu_content-block'>";
-                                if (response.features[i].properties.cadnum != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Кадастровий номер</span><span class='right_menu_content-description'>" + response.features[i].properties.cadnum + "</span>";
-                                }
-                                var ownership;
-                                if ((ownership = response.features[i].properties.OrgOwnership) === undefined) {
-                                    ownership = response.features[i].properties.ownership;
-                                }
-                                if (ownership) {
-                                    infostr += "<span class='right_menu_content-title'>Форма власностi</span><span class='right_menu_content-description'>" + ownership + "</span>";
-                                }
-                                if (response.features[i].properties.right_type !== undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Права власностi</span><span class='right_menu_content-description'>" + response.features[i].properties.right_type + "</span>";
-                                }
-                                if (response.features[i].properties.type !== undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Тип</span><span class='right_menu_content-description'>" + response.features[i].properties.type + "</span>";
-                                }
-                                if (response.features[i].properties.reclType !== undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Тип</span><span class='right_menu_content-description'>" + response.features[i].properties.reclType + "</span>";
-                                }
-                                if (response.features[i].properties.reclOwner !== undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Замовник</span><span class='right_menu_content-description'>" + response.features[i].properties.reclOwner + "</span>";
-                                }
-                                if (response.features[i].properties.zamovn_b !== undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Замовник</span><span class='right_menu_content-description'>" + response.features[i].properties.zamovn_b + "</span>";
-                                }
-
-                                if (response.features[i].properties.zamovnyk !== undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Замовник</span><span class='right_menu_content-description'>" + response.features[i].properties.zamovnyk + "</span>";
-                                }
-                                if (response.features[i].properties.rozrobnik_ !== undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Розробник</span><span class='right_menu_content-description'>" + response.features[i].properties.rozrobnik_ + "</span>";
-                                }
-                                var sqrtotal;
-                                if ((sqrtotal = response.features[i].properties.SqrTotal) === undefined) {
-                                    if ((sqrtotal = response.features[i].properties.sqrtotal) === undefined) {
-                                        if ((sqrtotal = response.features[i].properties.area) === undefined) {
-                                            if ((sqrtotal = response.features[i].properties.arearishkr) === undefined) {
-                                                if ((sqrtotal = response.features[i].properties.reclArea) === undefined) {
-                                                    sqrtotal = response.features[i].properties.aqrtotal;
-                                                }
-                                            }
-                                        }
+                                for (var key in response.features[i].properties) {
+                                    if((response.features[i].properties[key] != null) && (response.features[i].properties[key] != 0)) {
+                                        infostr += "<span class='right_menu_content-title'>" + key + "</span><span class='right_menu_content-description'>" + response.features[i].properties[key] + "</span>";
                                     }
-                                }
-                                if (sqrtotal) {
-                                    infostr += "<span class='right_menu_content-title'>Загальна площа (кв. м.)</span><span class='right_menu_content-description'>" + sqrtotal + "</span>";
-                                }
-                                var costbalance;
-                                if ((costbalance = response.features[i].properties.CostBalans) === undefined) {
-                                    costbalance = response.features[i].properties.costbalans;
-                                }
-                                if (costbalance) {
-                                    infostr += "<span class='right_menu_content-title'>Балансова вартiсть (тис. грн.)</span><span class='right_menu_content-description'>" + costbalance + "</span>";
-                                }
-
-                                var busage;
-                                if ((busage = response.features[i].properties.BuildingUsage) === undefined) {
-                                    if ((busage = response.features[i].properties.purpose) === undefined) {
-                                        if ((busage = response.features[i].properties.startfunc) === undefined) {
-                                            busage = response.features[i].properties.industryname;
-                                        }
-                                    }
-                                }
-                                if (busage) {
-                                    infostr += "<span class='right_menu_content-title'>Призначення</span><span class='right_menu_content-description'>" + busage + "</span>";
-                                }
-                                var bkind;
-                                if ((bkind = response.features[i].properties.BuildingKind) == undefined) {
-                                    if ((bkind = response.features[i].properties.kind) == undefined) {
-                                        bkind = response.features[i].properties.p0003;
-                                    }
-                                }
-                                if (bkind) {
-                                    infostr += "<span class='right_menu_content-title'>Вид об'єкту</span><span class='right_menu_content-description'>" + bkind + "</span>";
-                                }
-                                var btype;
-                                if ((btype = response.features[i].properties.BuildingType) == undefined) {
-                                    if ((btype = response.features[i].properties.btype) == undefined) {
-                                        if (response.features[i].properties.p0010 !== undefined) {
-                                            btype = response.features[i].properties.p0010 + " " + response.features[i].properties.p0013;
-                                        }
-                                        if (btype === undefined) {
-                                            btype = response.features[i].properties.kindname;
-                                        }
-                                        if (btype === undefined) {
-                                            btype = response.features[i].properties.occupationname;
-                                        }
-                                    }
-                                }
-                                if (btype) {
-                                    infostr += "<span class='right_menu_content-title'>Тип об'єкту</span><span class='right_menu_content-description'>" + btype + "</span>";
-                                }
-                                var btech;
-                                if ((btech = response.features[i].properties.BTS_NAME) == undefined) {
-                                    btech = response.features[i].properties.btechstate;
-                                }
-                                if (btech) {
-                                    infostr += "<span class='right_menu_content-title'>Стан об'єкту</span><span class='right_menu_content-description'>" + btech + "</span>";
-                                }
-                                if (response.features[i].properties.link != undefined) {
-                                    if (response.features[i].properties.name_obj != undefined) {
-                                        infostr += "<span class='right_menu_content-title'>Посилання на документ</span>";
-                                    } else {
-                                        infostr += "<span class='right_menu_content-title'>" + response.features[i].properties.name_obj + "</span>";
-                                    }
-                                    infostr += "<span class='right_menu_content-description'><a target='_blank' href='/PDF/" + response.features[i].properties.id_region + "/" + response.features[i].properties.link + "'>" + response.features[i].properties.doc_type + "</a></span>";
-                                }
-                                if (response.features[i].properties.num_in != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Вхідний номер</span><span class='right_menu_content-description'>" + response.features[i].properties.num_in + "</span>";
-                                }
-                                if (response.features[i].properties.data_in != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Вхідна дата</span><span class='right_menu_content-description'>" + response.features[i].properties.data_in + "</span>";
-                                }
-                                if (response.features[i].properties.num_out != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Вихідний номер</span><span class='right_menu_content-description'>" + response.features[i].properties.num_out + "</span>";
-                                }
-                                if (response.features[i].properties.data_out != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Вихідна дата</span><span class='right_menu_content-description'>" + response.features[i].properties.data_out + "</span>";
-                                }
-                                if (response.features[i].properties.cad_num_z != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Кадастровий номер</span><span class='right_menu_content-description'>" + response.features[i].properties.cad_num_z + "</span>";
-                                }
-
-                                if (response.features[i].properties.chanfunc != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Нова функція території за генеральним планом міста</span><span class='right_menu_content-description'>" + response.features[i].properties.chanfunc + "</span>";
-                                }
-                                if (response.features[i].properties.code_func1 != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Код нової функції</span><span class='right_menu_content-description'>" + response.features[i].properties.code_func1 + "</span>";
-                                }
-
-                                if (response.features[i].properties.nrishkmda != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Номер рішення КМДА</span><span class='right_menu_content-description'>" + response.features[i].properties.nrishkmda + "</span>";
-                                }
-
-                                if (response.features[i].properties.n_rish_kmr != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Номер рішення Київради про затвердження</span><span class='right_menu_content-description'>" + response.features[i].properties.n_rish_kmr + "</span>";
-                                }
-                                if (response.features[i].properties.rayon_b != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Адмінрайон міста</span><span class='right_menu_content-description'>" + response.features[i].properties.rayon_b + "</span>";
-                                }
-                                if (response.features[i].properties.rozrobnik_doc != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Розробник містобудівної документації</span><span class='right_menu_content-description'>" + response.features[i].properties.rozrobnik_doc + "</span>";
-                                }
-                                if (response.features[i].properties.reestrazno != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Реєстраціний номер</span><span class='right_menu_content-description'>" + response.features[i].properties.reestrazno + "</span>";
-                                }
-
-                                if (response.features[i].properties.stadia_roz != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Стадія розроблення </span><span class='right_menu_content-description'>" + response.features[i].properties.stadia_roz + "</span>";
-                                }
-                                if (response.features[i].properties.type_b != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Тип містобудівної документації</span><span class='right_menu_content-description'>" + response.features[i].properties.type_b + "</span>";
-                                }
-
-                                if (response.features[i].properties.daterihkr != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Дата рішення КМДА</span><span class='right_menu_content-description'>" + response.features[i].properties.daterihkr + "</span>";
-                                }
-                                if (response.features[i].properties.group_name != null) {
-                                    infostr += "<span class='right_menu_content-title'>Назва групи</span><span class='right_menu_content-description'>" + response.features[i].properties.group_name + "</span>";
-                                }
-                                if (response.features[i].properties.pidstavaza != null) {
-                                    infostr += "<span class='right_menu_content-title'>Підстава внесення</span><span class='right_menu_content-description'>" + response.features[i].properties.pidstavaza + "</span>";
-                                }
-                                if (response.features[i].properties.code != null) {
-                                    infostr += "<span class='right_menu_content-title'>Код</span><span class='right_menu_content-description'>" + response.features[i].properties.code + "</span>";
-                                }
-                                if (response.features[i].properties.status != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Статус</span><span class='right_menu_content-description'>" + response.features[i].properties.status + "</span>";
-                                }
-                                if (response.features[i].properties.zamovn != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Замовник</span><span class='right_menu_content-description'>" + response.features[i].properties.zamovn + "</span>";
-                                }
-                                if (response.features[i].properties.p_name != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Місце розташування</span><span class='right_menu_content-description'>" + response.features[i].properties.p_name + "</span>";
-                                }
-                                if (response.features[i].properties.content != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Опис</span><span class='right_menu_content-description'>" + response.features[i].properties.content + "</span>";
-                                }
-
-                                if (response.features[i].properties.inv_number != null) {
-                                    infostr += "<span class='right_menu_content-title'>Інвентарний номер</span><span class='right_menu_content-description'>" + response.features[i].properties.inv_number + "</span>";
-                                }
-                                if (response.features[i].properties.priority_name != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Статус</span><span class='right_menu_content-description'>" + response.features[i].properties.priority_name + "</span>";
-                                }
-                                /*if (response.features[i].properties.priority_id != undefined) {
-                                 infostr += "<small> Статус</small>";
-                                 switch(response.features[i].properties.priority_id) {
-                                 case 1:
-                                 infostr += "<h5>Внесено</h5>";
-                                 break;
-                                 case 2:
-                                 infostr += "<h5>Перевірено</h5>";
-                                 break;
-                                 default:
-                                 infostr += "<h5>Не визначено</h5>";
-                                 }
-                                 }*/
-                                if (response.features[i].properties.p_mode != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Форма паркування</span><span class='right_menu_content-description'>" + response.features[i].properties.p_mode + "</span>";
-                                }
-
-                                if (response.features[i].properties.p_zone != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Номер зони</span><span class='right_menu_content-description'>" + response.features[i].properties.p_zone + "</span>";
-                                }
-
-                                if (response.features[i].properties.area_project != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Проектна площа ремонту (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.area_project + "</span>";
-                                }
-                                if (response.features[i].properties.area_fact != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Фактична площа ремонту (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.area_fact + "</span>";
-                                }
-                                if (response.features[i].properties.cost_repairs != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Проектна вартість ремонту (тис. грн.)</span><span class='right_menu_content-description'>" + response.features[i].properties.cost_repairs + "</span>";
-                                }
-                                if (response.features[i].properties.cost_repairs_fact != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Фактична вартість ремонту (тис. грн.)</span><span class='right_menu_content-description'>" + response.features[i].properties.cost_repairs_fact + "</span>";
-                                }
-
-                                if (response.features[i].properties.field_1 != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Ідентифікатор об'єкта</span><span class='right_menu_content-description'>" + response.features[i].properties.field_1 + "</span>";
-                                }
-                                if (response.features[i].properties.field_2 != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Номер ПВ-ВП</span><span class='right_menu_content-description'>" + response.features[i].properties.field_2 + "</span>";
-                                }
-                                if (response.features[i].properties.field_3 != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Тип опори</span><span class='right_menu_content-description'>" + response.features[i].properties.field_3 + "</span>";
-                                }
-                                if (response.features[i].properties.field_4 != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Дата установки опори</span><span class='right_menu_content-description'>" + response.features[i].properties.field_4 + "</span>";
-                                }
-                                if (response.features[i].properties.field_5 != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Кронштейн</span><span class='right_menu_content-description'>" + response.features[i].properties.field_5 + "</span>";
-                                }
-                                if (response.features[i].properties.field_6 != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Тип світильника</span><span class='right_menu_content-description'>" + response.features[i].properties.field_6 + "</span>";
-                                }
-                                if (response.features[i].properties.field_7 != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Дата установки світильника</span><span class='right_menu_content-description'>" + response.features[i].properties.field_7 + "</span>";
-                                }
-                                if (response.features[i].properties.field_8 != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Дата установки ламп</span><span class='right_menu_content-description'>" + response.features[i].properties.field_8 + "</span>";
-                                }
-                                if (response.features[i].properties.field_9 != undefined) {
-                                    infostr += "<span class='right_menu_content-title'>Номер опори</span><span class='right_menu_content-description'>" + response.features[i].properties.field_9 + "</span>";
-                                }
-                                if (response.features[i].properties.agreement_number) {
-                                    infostr += "<span class='right_menu_content-title'>Номер договору</span><span class='right_menu_content-description'>" + response.features[i].properties.agreement_number + "</span>";
-                                }
-                                if (response.features[i].properties.agreement_date) {
-                                    infostr += "<span class='right_menu_content-title'>Дата договору</span><span class='right_menu_content-description'>" + response.features[i].properties.agreement_date + "</span>";
-                                }
-                                if (response.features[i].properties.sqr_rent) {
-                                    infostr += "<span class='right_menu_content-title'>Площа оренди</span><span class='right_menu_content-description'>" + response.features[i].properties.sqr_rent + " (кв. м.)</span>";
-                                }
-                                if (response.features[i].properties.reason) {
-                                    infostr += "<span class='right_menu_content-title'>Підстава</span><span class='right_menu_content-description'>" + response.features[i].properties.reason + "</span>";
-                                }
-
-                                if (response.features[i].properties.org_name) {
-                                    infostr += "<span class='right_menu_content-title'>Балансоутримувач</span><span class='right_menu_content-description'>" + response.features[i].properties.org_name + "</span>";
-                                }
-                                if (response.features[i].properties.region) {
-                                    infostr += "<span class='right_menu_content-title'>Район</span><span class='right_menu_content-description'>" + response.features[i].properties.region + "</span>";
-                                }
-                                if (response.features[i].properties.subject) {
-                                    infostr += "<span class='right_menu_content-title'>Суб'єкт господарювання</span><span class='right_menu_content-description'>" + response.features[i].properties.subject + "</span>";
-                                }
-                                if (response.features[i].properties.category_id >= 0) {
-                                    if (response.features[i].properties.id) {
-
-                                        $('#id_ticketit').remove();
-                                        $('#information').after("<input type='hidden' id = 'id_ticketit' name = 'id_ticketit' value='" + response.features[i].properties.id + "'>");
-                                    }
-                                    if (checkIp() == true) {
-                                        if ($('body').is('#votingMessage')) {
-                                            $('#votingMessage').remove();
-                                        }
-
-                                        infostr += votingResult();
-                                    } else {
-                                        infostr += '<div class="votingAll btn-group btn-group-justified"><div class="btn-group"><input type="button" name="1" class="voting btn btn-success" value="Підтримую"></div><div class="btn-group"><input type="button" class="voting btn btn-danger" value="Не підтримую" name="0"></div></div>';
-                                    }
-                                }
-
-                                if (response.features[i].properties.tech) {
-                                    infostr += "<span class='right_menu_content-title'>Тех. облаштування</span><span class='right_menu_content-description'>" + response.features[i].properties.tech + "</span>";
-                                }
-                                if (response.features[i].properties.type) {
-                                    infostr += "<span class='right_menu_content-title'>Тип об'єкту</span><span class='right_menu_content-description'>" + response.features[i].properties.type + "</span>";
-                                }
-                                if (response.features[i].properties.zone) {
-                                    infostr += "<span class='right_menu_content-title'>Зона</span><span class='right_menu_content-description'>" + response.features[i].properties.zone + "</span>";
-                                }
-                                if (response.features[i].properties.scale) {
-                                    infostr += "<span class='right_menu_content-title'>Масштаб</span><span class='right_menu_content-description'>" + response.features[i].properties.scale + "</span>";
-                                }
-                                if (response.features[i].properties.nomenclru) {
-                                    infostr += "<span class='right_menu_content-title'>Номер номенклатури</span><span class='right_menu_content-description'>" + response.features[i].properties.nomenclru + "</span>";
-                                }
-                                if (response.features[i].properties.nomenclen) {
-                                    infostr += "<span class='right_menu_content-description'>" + response.features[i].properties.nomenclen + "</span>";
-                                }
-                                if (response.features[i].properties.payment_type) {
-                                    infostr += "<span class='right_menu_content-title'>Вид оплати</span><span class='right_menu_content-description'>" + response.features[i].properties.payment_type + "</span>";
-                                }
-                                if (response.features[i].properties.allsquare) {
-                                    infostr += "<span class='right_menu_content-title'>Площа (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.allsquare + "</span>";
-                                }
-                                if (response.features[i].properties.cars) {
-                                    infostr += "<span class='right_menu_content-title'>Машиномісць</span><span class='right_menu_content-description'>" + response.features[i].properties.cars + "</span>";
-                                }
-                                if (response.features[i].properties.freesquare) {
-                                    infostr += "<span class='right_menu_content-title'>Безоплатне паркування (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.freesquare + "</span>";
-                                }
-
-                                if (response.features[i].properties.mode) {
-                                    infostr += "<span class='right_menu_content-title'>Режим роботи</span><span class='right_menu_content-description'>" + response.features[i].properties.mode + "</span>";
-                                }
-                                if (response.features[i].properties.paysquare) {
-                                    infostr += "<span class='right_menu_content-title'>Для паркування (кв. м.)</span><span class='right_menu_content-description'>" + response.features[i].properties.paysquare + "</span>";
-                                }
-                                if (response.features[i].properties.privilege) {
-                                    infostr += "<span class='right_menu_content-title'>Кількість пільгових машиномісць</span><span class='right_menu_content-description'>" + response.features[i].properties.privilege + "</span>";
-                                }
-                                if (response.features[i].properties.price) {
-                                    infostr += "<span class='right_menu_content-title'>Вартість</span><span class='right_menu_content-description'>" + response.features[i].properties.price + "</span>";
-                                }
-
-                                if (response.features[i].properties.p_cost || response.features[i].properties.p_cost == 0) {
-                                    if (response.features[i].properties.p_cost == 0) {
-                                        infostr += "<span class='right_menu_content-title'>Надходження(грн.)</span><span class='right_menu_content-description'>Інформація не надана КПТС</span>>";
-                                    } else {
-                                        infostr += "<span class='right_menu_content-title'>Надходження (грн.)</span><span class='right_menu_content-description'>" + response.features[i].properties.p_cost + "</span>";
-                                    }
-                                }
-                                if (response.features[i].properties.objectid) {
-                                    $("#orendadoc").attr('href', "/orendadoc/" + response.features[i].properties.objectid + "/new");
                                 }
                                 infostr += "</div></div></div>";
                             }

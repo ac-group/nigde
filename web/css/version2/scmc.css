@@ -80,9 +80,7 @@ a:active {
 .head_block {
     z-index: 1;
     width: 100%;
-   // background: rgba(255,255,255,0.8);
     height: 68px;
-  //  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
 }
 
 .left_menu i:hover,
@@ -173,7 +171,6 @@ a:active {
 .left_menu_head .company_logo {
     margin: 24px 16px;
     display: inline-block;
-//    z-index: 5;
 }
 
 .left_menu_head .open_menu_but {
@@ -1093,8 +1090,6 @@ a:active {
 }
 .dialog_window_publication_bids_list_copy {
     position: absolute;
-    width: 448px;
-    height: 64px;
     left: 50%;
     margin-left: -224px;
     background: white;
@@ -1102,6 +1097,11 @@ a:active {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
+}
+
+#permlink {
+    width: 100%;
+    height: 100%;
 }
 
 .dialog_window_publication_bids_list-head {
