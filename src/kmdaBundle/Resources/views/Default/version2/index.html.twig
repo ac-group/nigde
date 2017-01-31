@@ -12,17 +12,16 @@
     'css/version2/bootstrap-material-datetimepicker.css'
     '//ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/themes/base/jquery-ui.css'
     'css/new_modal.css'
-    output='css/version2/sc1.css'
-    filter='cssrewrite' %}
+    filter='cssrewrite'
+    output='css/version2/sc22.css'
+ %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
 {% endblock %}
 
 
 {% block javascripts %}
-
-    {% javascripts
-
+    {% javascripts 
     '//code.jquery.com/jquery-2.2.4.min.js'
     'js/version2/material.min.js'
     'js/version2/mobile-detect.js'
@@ -41,12 +40,10 @@
     'js/version2/main.js'
     'js/version2/app.js'
     'js/new_modal.js'
-
-
+    filter='?uglifyjs2'
     output='js/version2/sc22.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
-
 {% endblock %}
 
 {% block body -%}
@@ -234,7 +231,7 @@
                         <a id='boundVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#boundVinSidebar">
                             <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Адміністративний кордон'|trans}}
                             <i id='boundVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
-                            <div id="slider_topoVinSidebar"></div>
+                            <div id="slider_boundVinSidebar"></div>
                         </a>
                         <div class="tooltip-info">
                             <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/b6dc193b-cb73-4210-b7de-e30dc43d0635" target="_blank">{{'Метадані'|trans}}</a><br>
@@ -270,9 +267,13 @@
                             <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Огорожі'|trans}}
                             <i id='fencesVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
                         </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/b6dc193b-cb73-4210-b7de-e30dc43d0635" target="_blank">{{'Метадані'|trans}}</a><br>
+                        </div>
                         <a id='engcommVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#engcommVinSidebar">
                             <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Інженерні комунікації'|trans}}
                             <i id='engcommVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                            <div id="slider_engcommVinSidebar"></div>
                         </a>
                         <div class="tooltip-info">
                             <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/b6dc193b-cb73-4210-b7de-e30dc43d0635" target="_blank">{{'Метадані'|trans}}</a><br>
@@ -280,6 +281,14 @@
                             <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer">
                                 {{'Скопіювати в буфер'|trans}}
                             </div>#}
+                        </div>
+                        <a id='vegetVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#vegetVinSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Рослинність'|trans}}
+                            <i id='vegetVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                            <div id="slider_vegetVinSidebar"></div>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/b6dc193b-cb73-4210-b7de-e30dc43d0635" target="_blank">{{'Метадані'|trans}}</a><br>
                         </div>
                     </div>
                 </div>

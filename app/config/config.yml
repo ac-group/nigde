@@ -13,7 +13,14 @@ assetic:
     debug:          "%kernel.debug%"
     use_controller: false
 #    bundles:        [ kmdaBundle ]
+    # the path to the node executable
+    node: /usr/bin/nodejs
     filters:
+        uglifyjs2:
+            # the path to the uglifyjs executable
+            bin: /usr/local/bin/uglifyjs
+        uglifycss:
+            bin: /usr/local/bin/uglifycss
         cssrewrite: ~
         
 framework:

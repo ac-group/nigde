@@ -4,7 +4,7 @@ var trackLayer;
 var marker;
 var osmLayer;
 // var googleLayer;
-var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'razgrafkaSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar', 'geodeticSidebar', 'buildingsVinSidebar', 'fencesVinSidebar', 'engcommVinSidebar'];
+var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'razgrafkaSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar', 'geodeticSidebar', 'buildingsVinSidebar', 'fencesVinSidebar', 'engcommVinSidebar', 'vegetVinSidebar'];
 var md;
 
 function showUP(layer, elem) {
@@ -1034,7 +1034,31 @@ $(function () {
             visible: 0,
             name: 'engcommVinSidebar'
         });
+        
+        var vegetVinSidebarWms = new ol.source.TileWMS({
+            url: '/geoserver/nsdi/wms',
+            params: {
+                'LAYERS': 'nsdi_vegetation',
+                'ALIAS': 'Рослинність',
+                'ALIAS_E': 'Vegetation',
+                'VERSION': '1.1.0',
+                'TILED': 'true',
+                'FORMAT': 'image/png8',
+                'WIDTH': 768,
+                'HEIGHT': 703,
+                'CRS': 'EPSG:3857',
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
 
+        var vegetVinSidebar = new ol.layer.Tile({
+            source: vegetVinSidebarWms,
+            visible: 0,
+            name: 'vegetVinSidebar'
+        });
+        
         var razgrafkaSidebarWms = new ol.source.TileWMS({
             url: '/geoserver/nsdi/wms',
             params: {
@@ -1370,7 +1394,8 @@ $(function () {
                 geodeticSidebar,
                 buildingVinSidebar,
                 fencesVinSidebar,
-                engcommVinSidebar
+                engcommVinSidebar,
+                vegetVinSidebar
             ],
 //            view: view,
             controls: ol.control.defaults().extend([
@@ -1406,10 +1431,14 @@ $(function () {
                 if (getPar[4].charAt(ic) == 1) {
                     l.setVisible(true);
                     if (($.inArray(l.get('name'), art)) > -1) {
-                        $('#' + l.get('name')).addClass('active');
-                    $('#' + l.get('name')).closest('.mdl-navigation__level2').prev().closest('.mdl-navigation__level1').addClass('active');
+                    
+                    $('#' + l.get('name')).addClass('active').closest('.mdl-navigation__level2').prev().closest('.mdl-navigation__level1').addClass('active');
                  //      $('#' + l.get('name')).closest('.mdl-navigation__level2').prev().closest('.layersOff').show().children('label').addClass('is-checked');
 
+                    } 
+                    else {
+// Set base layer switcher title
+                        $('#map_mode').val($("li.mdl-menu__item[data-val='" + l.get('name') + "']").text()); 
                     }
                 } else {
                     l.setVisible(false);
@@ -1489,9 +1518,45 @@ $(function () {
             value: hydroVinSidebar.getOpacity() * 100,
             range: "min"
 
-        })
+        });
         sliderhydro.on('slide', function (ev, ui) {
             hydroVinSidebar.setOpacity(ui.value / 100);
+            //ev.stopPropagation();
+        });
+        
+        $('#engcommVinSidebar').on('click', function () {
+            if ($(this).hasClass('active')) {
+                $('#slider_engcommVinSidebar').show();
+            } else {
+                $('#slider_engcommVinSidebar').hide();
+            }
+        });
+
+        var sliderengcomm = $('#slider_engcommVinSidebar').slider({
+            value: engcommVinSidebar.getOpacity() * 100,
+            range: "min"
+
+        });
+        sliderengcomm.on('slide', function (ev, ui) {
+            engcommVinSidebar.setOpacity(ui.value / 100);
+            //ev.stopPropagation();
+        });
+        
+        $('#vegetVinSidebar').on('click', function () {
+            if ($(this).hasClass('active')) {
+                $('#slider_vegetVinSidebar').show();
+            } else {
+                $('#slider_vegetVinSidebar').hide();
+            }
+        });
+
+        var sliderveget = $('#slider_vegetVinSidebar').slider({
+            value: vegetVinSidebar.getOpacity() * 100,
+            range: "min"
+
+        }); 
+        sliderveget.on('slide', function (ev, ui) {
+            vegetVinSidebar.setOpacity(ui.value / 100);
             //ev.stopPropagation();
         });
 
