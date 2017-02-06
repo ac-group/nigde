@@ -4,7 +4,7 @@ var trackLayer;
 var marker;
 var osmLayer;
 // var googleLayer;
-var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'razgrafkaSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar', 'geodeticSidebar', 'buildingsVinSidebar', 'fencesVinSidebar', 'engcommVinSidebar', 'vegetVinSidebar'];
+var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'razgrafkaSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar', 'geodeticSidebar', 'buildingsVinSidebar', 'fencesVinSidebar', 'engcommVinSidebar', 'vegetVinSidebar', 'streetsVinSidebar', 'transportVinSidebar'];
 var md;
 
 function showUP(layer, elem) {
@@ -1179,7 +1179,54 @@ $(function () {
             visible: 0,
             name: 'dynamicSidebar'
         });
+        
+        var streetsSidebarWms = new ol.source.TileWMS({
+            url: '/geoserver/wms',
+            params: {
+                'LAYERS': 'nsdi_street',
+                'ALIAS': 'Вулична мережа',
+                'ALIAS_E': 'Street network',
+                'VERSION': '1.1.1',
+                'TILED': 'true',
+                'FORMAT': 'image/png',
+                'WIDTH': 768,
+                'HEIGHT': 692,
+                'CRS': 'EPSG:900913', //, CQL_FILTER:'koatuu=3520386800'
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+        var streetsVinSidebar = new ol.layer.Tile({
+            source: streetsSidebarWms,
+            visible: 0,
+            name: 'streetsVinSidebar'
+        });
 
+        var transportSidebarWms = new ol.source.TileWMS({
+            url: '/geoserver/nsdi/wms',
+            params: {
+                'LAYERS': 'nsdi:nsdi_transport',
+                'ALIAS': 'Транспортна мережа',
+                'ALIAS_E': 'Transport network',
+                'VERSION': '1.1.0',
+                'TILED': 'true',
+                'FORMAT': 'image/png8',
+                'WIDTH': 768,
+                'HEIGHT': 557,
+                'CRS': 'EPSG:900913',
+                serverType: 'geoserver',
+                crossOrigin: '',
+                projection: projection,
+            }
+        });
+
+        var transportVinSidebar = new ol.layer.Tile({
+            source: transportSidebarWms,
+            visible: 0,
+            name: 'transportVinSidebar'
+        });
+        
         var osmLayer = new ol.layer.Tile({
             source: new ol.source.OSM({
                 url: 'http://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -1395,7 +1442,9 @@ $(function () {
                 buildingVinSidebar,
                 fencesVinSidebar,
                 engcommVinSidebar,
-                vegetVinSidebar
+                vegetVinSidebar,
+                streetsVinSidebar,
+                transportVinSidebar
             ],
 //            view: view,
             controls: ol.control.defaults().extend([
@@ -1433,7 +1482,8 @@ $(function () {
                     if (($.inArray(l.get('name'), art)) > -1) {
                     
                     $('#' + l.get('name')).addClass('active').closest('.mdl-navigation__level2').prev().closest('.mdl-navigation__level1').addClass('active');
-                 //      $('#' + l.get('name')).closest('.mdl-navigation__level2').prev().closest('.layersOff').show().children('label').addClass('is-checked');
+
+        //            alert($('#' + l.get('name')).closest('.mdl-navigation__level2').prev().closest('.mdl-navigation__level1').attr('href'));
 
                     } 
                     else {
@@ -1563,9 +1613,37 @@ $(function () {
         /* $('#slider_wms3').on('mousedown', function(event){
          event.stopPropagation();
          })*/
+        $('#buildingsVinSidebar').on('click', function () {
+            if ($(this).hasClass('active')) {
+                $('#slider_buildingsVinSidebar').show();
+            } else {
+                $('#slider_buildingsVinSidebar').hide();
+            }
+        });
+        var sliderbuild = $('#slider_buildingsVinSidebar').slider({
+            value: buildingVinSidebar.getOpacity() * 100,
+            range: "min"
+        }); 
+        sliderbuild.on('slide', function (ev, ui) {
+            buildingVinSidebar.setOpacity(ui.value / 100);
+            //ev.stopPropagation();
+        });
 
-
-
+        $('#streetsVinSidebar').on('click', function () {
+            if ($(this).hasClass('active')) {
+                $('#slider_streetsVinSidebar').show();
+            } else {
+                $('#slider_streetsVinSidebar').hide();
+            }
+        });
+        var sliderstreets = $('#slider_streetsVinSidebar').slider({
+            value: streetsVinSidebar.getOpacity() * 100,
+            range: "min"
+        }); 
+        sliderstreets.on('slide', function (ev, ui) {
+            streetsVinSidebar.setOpacity(ui.value / 100);
+            //ev.stopPropagation();
+        });
 
         map.addOverlay(popup);
 
