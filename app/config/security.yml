@@ -69,6 +69,8 @@ security:
 #    - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 192.168.33.17 }
     - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
     # URL of FOSUserBundle which need to be available to anonymous users
+    - { path: ^/css/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/js/, role: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }

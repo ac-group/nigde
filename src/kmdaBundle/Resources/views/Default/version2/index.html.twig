@@ -9,7 +9,6 @@
     'css/version2/new_css.css'
     'css/version2/style.css'
     'css/version2/jquery.bxslider.css'
-    'css/version2/bootstrap-material-datetimepicker.css'
     '//ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/themes/base/jquery-ui.css'
     'css/new_modal.css'
     filter='cssrewrite'
@@ -21,6 +20,9 @@
 
 
 {% block javascripts %}
+        <script async defer
+      src='https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g'>
+    </script>
     {% javascripts 
     '//code.jquery.com/jquery-2.2.4.min.js'
     'js/version2/material.min.js'
@@ -30,13 +32,10 @@
     'js/version2/jquery.bxslider.min.js'
     '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'
     '//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js'
-    '//momentjs.com/downloads/moment-with-locales.min.js'
-    'js/version2/bootstrap-material-datetimepicker.js'
     '//code.jquery.com/ui/1.12.1/jquery-ui.min.js'
     'js/jquery.maskedinput.min.js'
     'js/ol.js'
     'js/ol3gm.js'
-    'https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g'
     'js/version2/main.js'
     'js/version2/app.js'
     'js/new_modal.js'
@@ -590,11 +589,11 @@
         </div>
         <div class="account_container ">
             <div class="account_block">
-                <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt10">
+                <a href="{{ path('fos_user_security_logout') }}" class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt10">
                     <i class="material-icons">account_circle</i>
-                </button>
+                </a>
                 <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt10">
-                    {{'Авторизуватись'|trans}}
+                    {{'Вийти'|trans}}
                 </div>
             </div>
         </div>

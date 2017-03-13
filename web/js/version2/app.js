@@ -1482,8 +1482,8 @@ $(function () {
                     if (($.inArray(l.get('name'), art)) > -1) {
                     
                     $('#' + l.get('name')).addClass('active').closest('.mdl-navigation__level2').prev().closest('.mdl-navigation__level1').addClass('active');
+//                    $('#' + l.get('name')).closest('.mdl-navigation__level2').prev().find('.layersOff').show().children('label').addClass('is-checked');
 
-        //            alert($('#' + l.get('name')).closest('.mdl-navigation__level2').prev().closest('.mdl-navigation__level1').attr('href'));
 
                     } 
                     else {

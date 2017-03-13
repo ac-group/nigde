@@ -1,27 +1,30 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-{#    {% stylesheets
-        'css/bootstrap.css'
-        'css/app.css'
-        filter='cssrewrite' %}
+    {% stylesheets
+        '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
+        '//fonts.googleapis.com/icon?family=Material+Icons'
+        '//code.getmdl.io/1.3.0/material.light_blue-blue.min.css'
+        filter='cssrewrite'
+        filter='uglifycss'
+    %}
     <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}#}
-<link href="/css/bootstrap.css" rel="stylesheet">
-<link href="/css/app.css" rel="stylesheet">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts 
+        '//code.jquery.com/jquery-2.2.4.min.js'
+        '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
+        '//code.getmdl.io/1.3.0/material.min.js'
+        filter='uglifyjs2'
+      %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 {% block body -%}
-        <div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-            {% else %}
-                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-            {% endif %}
-        </div>
+
 
         {% for type, messages in app.session.flashBag.all %}
             {% for message in messages %}

@@ -118,15 +118,6 @@
         }
     });
 
-
-
-    $('#orenda_resh_golova_expected_date').bootstrapMaterialDatePicker({ weekStart: 0, time: false, editable: false });
-    $('#orenda_resh_golova_expected_time').bootstrapMaterialDatePicker({
-        date: false,
-        format: 'HH:mm',
-        editable: false
-    });
-
     // Выкашиваю
 
     // $(function() {
