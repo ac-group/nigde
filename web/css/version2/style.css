@@ -3694,7 +3694,7 @@ background: rgba(74, 160, 255, 1)
 .mdl-navigation__level2 .tooltip-info{
     margin: -33px 0 0 0;
     left: 320px ;
-    text-align: center;
+    text-align: left;
 }
 .tooltip-info a{
     color: #fff;

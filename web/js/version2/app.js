@@ -919,8 +919,8 @@ $(function () {
         var boundVinSidebarWms = new ol.source.TileWMS({
             url: '/geoserver/nsdi/wms',
             params: {
-                'LAYERS': 'nsdi:boundary_admin',
-                'ALIAS': 'Адміністративний кордон',
+                'LAYERS': 'nsdi_admin',
+                'ALIAS': 'Адміністративні одиниці',
                 'ALIAS_E': 'Boundary administrative',
                 'VERSION': '1.1.0',
                 'TILED': 'true',
@@ -967,8 +967,8 @@ $(function () {
         var buildingVinSidebarWms = new ol.source.TileWMS({
             url: '/geoserver/nsdi/wms',
             params: {
-                'LAYERS': 'nsdi:nsdi_building',
-                'ALIAS': 'Будівлі',
+                'LAYERS': 'nsdi_building_part',
+                'ALIAS': 'Будівлі та їх частини',
                 'ALIAS_E': 'Building',
                 'VERSION': '1.1.0',
                 'TILED': 'true',
@@ -988,7 +988,7 @@ $(function () {
             name: 'buildingsVinSidebar'
         });
 
-        var fencesVinSidebarWms = new ol.source.TileWMS({
+       /* var fencesVinSidebarWms = new ol.source.TileWMS({
             url: '/geoserver/nsdi/wms',
             params: {
                 'LAYERS': 'nsdi:fences',
@@ -1010,7 +1010,7 @@ $(function () {
             source: fencesVinSidebarWms,
             visible: 0,
             name: 'fencesVinSidebar'
-        });
+        });*/
 
         var engcommVinSidebarWms = new ol.source.TileWMS({
             url: '/geoserver/nsdi/wms',
@@ -1181,7 +1181,7 @@ $(function () {
             name: 'dynamicSidebar'
         });
         
-        var streetsSidebarWms = new ol.source.TileWMS({
+       /* var streetsSidebarWms = new ol.source.TileWMS({
             url: '/geoserver/wms',
             params: {
                 'LAYERS': 'nsdi_street',
@@ -1202,12 +1202,12 @@ $(function () {
             source: streetsSidebarWms,
             visible: 0,
             name: 'streetsVinSidebar'
-        });
+        });*/
 
         var transportSidebarWms = new ol.source.TileWMS({
             url: '/geoserver/nsdi/wms',
             params: {
-                'LAYERS': 'nsdi:nsdi_transport',
+                'LAYERS': 'nsdi_transport_network',
                 'ALIAS': 'Транспортна мережа',
                 'ALIAS_E': 'Transport network',
                 'VERSION': '1.1.0',
@@ -1441,10 +1441,10 @@ $(function () {
                 razgrafkaSidebar,
                 geodeticSidebar,
                 buildingVinSidebar,
-                fencesVinSidebar,
+               // fencesVinSidebar,
                 engcommVinSidebar,
                 vegetVinSidebar,
-                streetsVinSidebar,
+               // streetsVinSidebar,
                 transportVinSidebar
             ],
 //            view: view,
@@ -1645,19 +1645,19 @@ $(function () {
             //ev.stopPropagation();
         });
 
-        $('#streetsVinSidebar').on('click', function () {
+        $('#transportVinSidebar').on('click', function () {
             if ($(this).hasClass('active')) {
-                $('#slider_streetsVinSidebar').show();
+                $('#slider_transportVinSidebar').show();
             } else {
-                $('#slider_streetsVinSidebar').hide();
+                $('#slider_transportVinSidebar').hide();
             }
         });
-        var sliderstreets = $('#slider_streetsVinSidebar').slider({
-            value: streetsVinSidebar.getOpacity() * 100,
+        var sliderTransport = $('#slider_transportVinSidebar').slider({
+            value: transportVinSidebar.getOpacity() * 100,
             range: "min"
         }); 
-        sliderstreets.on('slide', function (ev, ui) {
-            streetsVinSidebar.setOpacity(ui.value / 100);
+        sliderTransport.on('slide', function (ev, ui) {
+            transportVinSidebar.setOpacity(ui.value / 100);
             //ev.stopPropagation();
         });
 
