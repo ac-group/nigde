@@ -2514,7 +2514,7 @@ tr td {
 }
 
 .edit_buttons {
-    height: 280px;
+    height: 320px;
 }
 
 .edit_buttons .mdl-button {
@@ -3301,7 +3301,7 @@ textarea {
     left: 30px;
     transition: left 1s;
     top: auto;
-    bottom: 375px;
+    bottom: 415px;
 }
 
 .ol-overviewmap {
