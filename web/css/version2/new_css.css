@@ -8757,3 +8757,6 @@ select:focus {
 .mdl-navigation__level1 .layersOff{
     display: none;
 }
+a#downloadInstruction{
+    color: rgb(64,196,255);
+}
