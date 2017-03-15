@@ -397,6 +397,13 @@
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt4">
             {{'Поточна'|trans}}
         </div>
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt12">
+            <i class="material-icons">zoom_out_map</i>
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt12">
+            {{'Показати повністю'|trans}}
+        </div>
+
         <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color measure" id="length">
             <img src="/img/ruler_nsci.png" class="no_active"><img
                     src="/img/ruler_nsci_active.png" class="is_active">
@@ -619,8 +626,8 @@
         </div>
     </div>
     <div class="coordinate  left_menu_open">
-       X:<span class="x"></span>,
-       Y:<span class="y"></span>
+       B:<span class="x"></span>,
+       L:<span class="y"></span>
     </div>
     <i class="mdl-color-text--blue-grey-400 material-icons map-center" role="presentation">add</i></a>
     {% include '@version2/modal/help.html.twig' %}

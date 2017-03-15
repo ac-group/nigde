@@ -377,7 +377,8 @@ function geolocation(map) {
 
 $(function () {
     md = new MobileDetect(window.navigator.userAgent);
-    //  console.log(md.mobile());
+
+
 
 
     $('#main_tt7').on('click', function () {
@@ -1518,6 +1519,21 @@ $(function () {
             vinOrtoSidebar.setOpacity(ui.value / 100);
             //ev.stopPropagation();
         });
+
+        //Зумируем на весь екстент
+        $('#main_tt12').on('mousedown', function () {
+            $(this).toggleClass('active');
+            var view = new ol.View({
+                center: [3170647.44192, 6315057.33961],
+                zoom: 12,
+                minZoom: 2
+            });
+            map.setView(view);
+        });
+        $('#main_tt12').on('mouseup', function () {
+            $(this).toggleClass('active');
+        });
+        ///*********///
 
         $('#topoVinSidebar').on('click', function () {
             if ($(this).hasClass('active')) {
