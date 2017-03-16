@@ -1686,9 +1686,15 @@ $(function () {
         $('.ol-overviewmap button').attr("id", "ol-overviewmap");
         $('.ol-overviewmap button').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-overviewmap" >Оглядова карта</div>');
         $('.ol-zoom-in').attr("id", "ol-zoom-in");
+        if ($('.language_container i').text() == "UA") {
         $('.ol-zoom-in').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-zoom-in" >Збільшити</div>');
         $('.ol-zoom-out').attr("id", "ol-zoom-out");
-        $('.ol-zoom-out').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-zoom-out" >Зменшити</div>')
+        $('.ol-zoom-out').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-zoom-out" >Зменшити</div>');
+    } else {
+        $('.ol-zoom-in').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-zoom-in" >Enlarge</div>');
+        $('.ol-zoom-out').attr("id", "ol-zoom-out");
+        $('.ol-zoom-out').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-zoom-out" >Decrease</div>');        
+    }
 
 
 

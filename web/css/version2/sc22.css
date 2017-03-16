@@ -15569,7 +15569,9 @@ select:focus {
 .mdl-navigation__level1 .layersOff{
     display: none;
 }
-
+a#downloadInstruction{
+    color: rgb(64,196,255);
+}
 /*Все importants чтоб перекрыть скриптовые инлайновые стили*/
 
 body {
@@ -18086,7 +18088,7 @@ tr td {
 }
 
 .edit_buttons {
-    height: 280px;
+    height: 320px;
 }
 
 .edit_buttons .mdl-button {
@@ -18873,7 +18875,7 @@ textarea {
     left: 30px;
     transition: left 1s;
     top: auto;
-    bottom: 375px;
+    bottom: 415px;
 }
 
 .ol-overviewmap {
@@ -19266,7 +19268,7 @@ background: rgba(74, 160, 255, 1)
 .mdl-navigation__level2 .tooltip-info{
     margin: -33px 0 0 0;
     left: 320px ;
-    text-align: center;
+    text-align: left;
 }
 .tooltip-info a{
     color: #fff;
