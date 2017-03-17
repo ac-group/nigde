@@ -314,9 +314,18 @@
         slide_topoVinSidebar = true;
     })
 
+    var slide_boundVinSidebar = true;
+    $('#slider_boundVinSidebar').on('mousedown', function(event){
+        slide_boundVinSidebar = false;
+    })
+    $('#slider_boundVinSidebar').on('click', function(event){
+        event.stopImmediatePropagation();
+        slide_boundVinSidebar = true;
+    })
+
     $('.mdl-navigation__level3').on('click',function(event) { //при клике на пункт меню:
-        console.log($(this).attr('id'));
-        if(($(this).attr('id') == 'orto10000' && slide_orto10000sidebar == false)||($(this).attr('id') == 'vinOrto' && slide_vinOrtoSidebar == false) ||($(this).attr('id') == 'topoVinSidebar' && slide_topoVinSidebar == false)){
+        //console.log($(this).attr('id'));
+        if(($(this).attr('id') == 'orto10000' && slide_orto10000sidebar == false)||($(this).attr('id') == 'vinOrto' && slide_vinOrtoSidebar == false) ||($(this).attr('id') == 'topoVinSidebar' && slide_topoVinSidebar == false) || ($(this).attr('id') == 'boundVinSidebar' && slide_boundVinSidebar == false)){
         }else{
             event.relatedTarget;
             if (event.target.className == 'material-icons') {
@@ -329,6 +338,7 @@
         slide_vinOrtoSidebar = true;
         slide_orto10000sidebar = true;
         slide_topoVinSidebar = true;
+        slide_boundVinSidebar = true;
 
     });
     //---------------------------------------------------------------//

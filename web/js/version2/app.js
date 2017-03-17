@@ -1544,6 +1544,8 @@ $(function () {
             }
         });
 
+
+
         var sliderTopoVin = $('#slider_topoVinSidebar').slider({
             value: topoVinSidebar.getOpacity() * 100,
             range: "min"
@@ -1554,6 +1556,29 @@ $(function () {
             topoVinSidebar.setOpacity(ui.value / 100);
             //ev.stopPropagation();
         });
+
+
+        //Слайдер Адміністративні одиниці
+        $('#boundVinSidebar').on('click', function () {
+            if ($(this).hasClass('active')) {
+                $('#slider_boundVinSidebar').show();
+            } else {
+                $('#slider_boundVinSidebar').hide();
+            }
+        });
+
+        var sliderVinSidebar = $('#slider_boundVinSidebar').slider({
+            value: boundVinSidebar.getOpacity() * 100,
+            range: "min"
+
+        })
+
+        sliderVinSidebar.on('slide', function (ev, ui) {
+            boundVinSidebar.setOpacity(ui.value / 100);
+            //ev.stopPropagation();
+        });
+        //END Слайдер Адміністративні одиниці
+
 
         $('#orto10000').on('click', function () {
             if ($(this).hasClass('active')) {
