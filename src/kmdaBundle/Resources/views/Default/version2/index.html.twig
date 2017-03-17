@@ -18,10 +18,9 @@
     {% endstylesheets %}
 {% endblock %}
 
-
 {% block javascripts %}
-        <script async defer
-      src='https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyA5UC7HmZcSpXpGmdn8JYrrnn-kz4XF22g'>
+        <script
+      src='https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyADCA0LMlMFz6z6SqQkrxnEzao8jJAyDEQ&libraries=places'>
     </script>
     {% javascripts 
     '//code.jquery.com/jquery-2.2.4.min.js'
@@ -626,7 +625,7 @@
         <div class="main_search_container ">
             <div class="main_search_block">
                 <i class="material-icons clear_icon main_clear_block_button">clear</i>
-                <input type="text" placeholder="{{'Пошук'|trans}}" id="main_search_input">
+                <input type="text"  placeholder="{{'Пошук'|trans}}" id="main_search_input">
                 <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab bg_white mdl-js-ripple-effect btn_small search_block_button main_search_block_button"
                         id="main_tt8">
                     <i class="material-icons">search</i>
@@ -674,11 +673,17 @@
     <i class="mdl-color-text--blue-grey-400 material-icons map-center" role="presentation">add</i></a>
     {% include '@version2/modal/help.html.twig' %}
     {% include '@version2/modal/copy.html.twig' %}
+    {% include '@version2/modal/errorSearchAddress.html.twig' %}
+
     <div id="mapView" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;">
 
     </div>
     <div id="scale-line" class="scale-line left_menu_open"></div>
     <i id="location" class="material-icons">gps_fixed</i>
+    <i id="searchLocation" class="material-icons">location_on</i>
+
+
+
 
     </body>
 

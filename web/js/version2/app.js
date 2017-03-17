@@ -2,10 +2,12 @@ var map;
 var coordinate;
 var trackLayer;
 var marker;
+var searchMarker;
 var osmLayer;
 // var googleLayer;
 var art = ['parcelSidebar', 'vectorVinSidebar', 'wms3', 'orto10000sidebar', 'orto2000sidebar', 'dynamicSidebar', 'gryntSidebar', 'razgrafkaSidebar', 'boundVinSidebar', 'vinOrtoSidebar', 'topoVinSidebar', 'hydroVinSidebar', 'geodeticSidebar', 'buildingsVinSidebar', 'fencesVinSidebar', 'engcommVinSidebar', 'vegetVinSidebar', 'streetsVinSidebar', 'transportVinSidebar'];
 var md;
+
 
 function showUP(layer, elem) {
 
@@ -106,7 +108,7 @@ function layersOff(map) {
     $('.layersOff').on('mousedown', function (event) {
         var layersName = [];
         $(this).parents('.mdl-navigation__level1').next().find('a.mdl-navigation__link').each(function () {
-            //console.log(this);
+
             $(this).next('form').slideUp(500);
             $(this).removeClass('active');
             $(this).children('.ui-slider').hide();
@@ -369,7 +371,6 @@ function geolocation(map) {
         view.setCenter(coordinate);
         view.setZoom(14);
     } else {
-        map.removeLayer(trackLayer);
         map.removeOverlay(marker);
     }
 }
@@ -1917,23 +1918,65 @@ $(function () {
 //            $("#rightSwitch").removeClass("expanded");
 //            $("#rightblur").removeClass("expanded");
 //        });
+
+
+        //Автозаповнення адреси
+        var input = document.getElementById('main_search_input');
+        var searchBox = new google.maps.places.Autocomplete(input);
+
+        var dialog = document.querySelector('dialog');
+        dialog.querySelector('.btn-cancel').addEventListener('click', function() {
+            dialog.close();
+        });
+        $('.main_search_block').click(function () {
+            if(!$('.main_search_block').hasClass('open')){
+                if(searchMarker !== undefined){
+                    map.removeOverlay(searchMarker);
+                }
+            }
+        });
+
         $('#main_search_input').bind("enterKey", function (e) {
+            $('.pac-container').remove();
+            //console.log(searchBox);
             var searchval = $('#main_search_input').val();
+
+
+            var input = document.getElementById('main_search_input');
+            var searchBox = new google.maps.places.Autocomplete(input);
 //            console.log(searchval);
             $.ajax({
                 url: 'https://maps.googleapis.com/maps/api/geocode/json',
-                data: {'address': searchval + ' Винница'},
+                data: {'address': searchval},
                 success: function (data) {
+                    if(data.status == 'ZERO_RESULTS'){
+                        dialog.showModal();
+                        if(searchMarker !== undefined){
+                            map.removeOverlay(searchMarker);
+                        }
+                    }else{
+                        if(searchMarker !== undefined){
+                            map.removeOverlay(searchMarker);
+                        }
+                        var sourceProj = map.getView().getProjection();
+                        var c1 = ol.proj.transform([data.results[0].geometry.viewport.northeast.lng, data.results[0].geometry.viewport.northeast.lat], 'EPSG:4326', 'EPSG:900913');
+                        var c2 = ol.proj.transform([data.results[0].geometry.viewport.southwest.lng, data.results[0].geometry.viewport.southwest.lat], 'EPSG:4326', 'EPSG:900913');
+                        var fitextent = [c1[0], c1[1], c2[0], c2[1]];
 
-                    var sourceProj = map.getView().getProjection();
 
-                    var c1 = ol.proj.transform([data.results[0].geometry.viewport.northeast.lng, data.results[0].geometry.viewport.northeast.lat], 'EPSG:4326', 'EPSG:900913');
+                        map.getView().fit(fitextent, map.getSize());
+                        if(searchMarker === undefined){
+                            searchMarker = new ol.Overlay({
+                                element: document.getElementById('searchLocation'),
+                                positioning: 'center-center',
+                            });
+                        }
+                        map.addOverlay(searchMarker);
+                        var position = ol.proj.transform([data.results[0].geometry.location.lng,data.results[0].geometry.location.lat], 'EPSG:4326', 'EPSG:900913');
+                        searchMarker.setPosition(position);
+                        $('#searchLocation').show();
+                    }
 
-                    var c2 = ol.proj.transform([data.results[0].geometry.viewport.southwest.lng, data.results[0].geometry.viewport.southwest.lat], 'EPSG:4326', 'EPSG:900913');
-
-                    var fitextent = [c1[0], c1[1], c2[0], c2[1]];
-
-                    map.getView().fit(fitextent, map.getSize());
                 }
             })
         });

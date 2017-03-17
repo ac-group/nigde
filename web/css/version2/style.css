@@ -1017,6 +1017,7 @@ a:active {
     z-index: 100;
     display: none;
 }
+#errorSearchAddress,
 #modal-help.open, #modal-copy.open,
 .bids_list.open {
     display: block;
@@ -1093,12 +1094,14 @@ a:active {
 .dialog_window_publication_bids_list i {
     color: rgba(0, 0, 0, 0.68)
 }
-
+.control_bttons,
 .dialog_window_publication_bids_list-footer .control_bttons {
     text-align: right;
     margin-right: 8px;
 }
-
+.mdl-button:hover{
+    background: rgba(51,150,255,0.2);
+}
 #snackbar_container {
     z-index: 100;
 }
@@ -2727,7 +2730,7 @@ tr td {
     -moz-box-shadow: none;
     box-shadow: none;
     height: 30px;
-    width: 245px;
+    width: 300px;
     padding-left: 64px;
     font-size: 13px;
     font-weight: normal;
@@ -3755,6 +3758,7 @@ background: rgba(74, 160, 255, 1)
 .map-center.hide{
     display: none;
 }
+#searchLocation,
 #location{
     display: none;
     vertical-align: -webkit-baseline-middle;
@@ -3778,5 +3782,10 @@ background: rgba(74, 160, 255, 1)
     bottom: 0;
 }
 .ol-scale-line {
+
+}
+#searchLocation{
+    font-size: 30px;
+    color: #e91e63;
 
 }

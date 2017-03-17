@@ -8572,53 +8572,6 @@ select:focus {
     right: 8px;
     top: 0px;
 }
-/* arrow-box */
-/*.arrow_box {
-    position: absolute;
-    background: #e0e0e0;
-    margin: -2px 0 0 222px;
-
-}
-.arrow_box:after, .arrow_box:before {
-    left: 100%;
-    top: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-}
-
-.arrow_box:after {
-    border-color: rgba(224, 224, 224, 0);
-    border-left-color: #e0e0e0;
-    border-radius: 1px;
-    border-width: 7px;
-    margin-top: -7px;
-}
-.active.arrow_box:after {
-    border-color: rgba(224, 224, 224, 0);
-    border-left-color: #7cded2;
-    border-radius: 1px;
-    border-width: 7px;
-    margin-top: -7px;
-}
-.arrow_box:before {
-    border-color: rgba(128, 128, 128, 0);
-    border-left-color: #808080;
-    border-radius: 5px;
-    border-width: 10px;
-    margin-top: -10px;
-}
-
-.active.arrow_box:before {
-    border-color: rgba(128, 128, 128, 0);
-    border-left-color: #5fa59b;
-    border-radius: 5px;
-    border-width: 10px;
-    margin-top: -10px;
-}*/
 
 .active.arrow_box{
     border-left-color: #e01551;
