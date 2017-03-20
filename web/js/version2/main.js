@@ -285,61 +285,27 @@
             $(this).next('.mdl-navigation__level2').slideToggle(400); //раскрываем/скрываем следующий за "кликнутым" p блок div с эффектом slide
         }
     });
+
+
     //Убираем выключения слоя при перетаскивании слайдера//
-    var slide_vinOrtoSidebar = true;
-    $('#slider_vinOrtoSidebar').on('mousedown', function(event){
-        slide_vinOrtoSidebar = false;
-    })
-
-    $('#slider_vinOrtoSidebar').on('click', function(event){
+    var flag_slide = true;
+     $('.slider_tr').on('mousedown', function(event){
+        flag_slide = false;
+     })
+     $('.slider_tr').on('click', function(event){
         event.stopImmediatePropagation();
-        slide_vinOrtoSidebar = true;
-    })
-
-    var slide_orto10000sidebar = true;
-    $('#slider_orto10000sidebar').on('mousedown', function(event){
-        slide_orto10000sidebar = false;
-    })
-    $('#slider_orto10000sidebar').on('click', function(event){
-        event.stopImmediatePropagation();
-        slide_orto10000sidebar = true;
-    })
-
-    var slide_topoVinSidebar = true;
-    $('#slider_topoVinSidebar').on('mousedown', function(event){
-        slide_topoVinSidebar = false;
-    })
-    $('#slider_topoVinSidebar').on('click', function(event){
-        event.stopImmediatePropagation();
-        slide_topoVinSidebar = true;
-    })
-
-    var slide_boundVinSidebar = true;
-    $('#slider_boundVinSidebar').on('mousedown', function(event){
-        slide_boundVinSidebar = false;
-    })
-    $('#slider_boundVinSidebar').on('click', function(event){
-        event.stopImmediatePropagation();
-        slide_boundVinSidebar = true;
-    })
+        flag_slide = true;
+     })
 
     $('.mdl-navigation__level3').on('click',function(event) { //при клике на пункт меню:
-        //console.log($(this).attr('id'));
-        if(($(this).attr('id') == 'orto10000' && slide_orto10000sidebar == false)||($(this).attr('id') == 'vinOrto' && slide_vinOrtoSidebar == false) ||($(this).attr('id') == 'topoVinSidebar' && slide_topoVinSidebar == false) || ($(this).attr('id') == 'boundVinSidebar' && slide_boundVinSidebar == false)){
-        }else{
+        if(flag_slide == true){
             event.relatedTarget;
-            if (event.target.className == 'material-icons') {
-
-            } else {
-                $(this).toggleClass('active'); //делаем данный пункт активным/неактивным
-                $(this).next('.demo-filters').slideToggle(400); //раскрываем/скрываем следующий за "кликнутым" p блок div с эффектом slide
+            if (event.target.className != 'material-icons') {
+                $(this).toggleClass('active');//делаем данный пункт активным/неактивным
             }
+        }else{
+            flag_slide = true;
         }
-        slide_vinOrtoSidebar = true;
-        slide_orto10000sidebar = true;
-        slide_topoVinSidebar = true;
-        slide_boundVinSidebar = true;
-
     });
     //---------------------------------------------------------------//
 })(jQuery);

@@ -1502,191 +1502,8 @@ $(function () {
         }
         map.setView(view);
 
-        $('#vinOrtoSidebar').on('click', function () {
-            if ($(this).hasClass('active')) {
-                $('#slider_vinOrtoSidebar').show();
-            } else {
-                $('#slider_vinOrtoSidebar').hide();
-            }
-        });
 
-        var sliderVinOrto = $('#slider_vinOrtoSidebar').slider({
-            value: vinOrtoSidebar.getOpacity() * 100,
-            range: "min"
-
-        })
-
-        sliderVinOrto.on('slide', function (ev, ui) {
-            vinOrtoSidebar.setOpacity(ui.value / 100);
-            //ev.stopPropagation();
-        });
-
-        //Зумируем на весь екстент
-        $('#main_tt12').on('mousedown', function () {
-            $(this).toggleClass('active');
-            var view = new ol.View({
-                center: [3170647.44192, 6315057.33961],
-                zoom: 12,
-                minZoom: 2
-            });
-            map.setView(view);
-        });
-        $('#main_tt12').on('mouseup', function () {
-            $(this).toggleClass('active');
-        });
-        ///*********///
-
-        $('#topoVinSidebar').on('click', function () {
-            if ($(this).hasClass('active')) {
-                $('#slider_topoVinSidebar').show();
-            } else {
-                $('#slider_topoVinSidebar').hide();
-            }
-        });
-
-
-
-        var sliderTopoVin = $('#slider_topoVinSidebar').slider({
-            value: topoVinSidebar.getOpacity() * 100,
-            range: "min"
-
-        })
-
-        sliderTopoVin.on('slide', function (ev, ui) {
-            topoVinSidebar.setOpacity(ui.value / 100);
-            //ev.stopPropagation();
-        });
-
-
-        //Слайдер Адміністративні одиниці
-        $('#boundVinSidebar').on('click', function () {
-            if ($(this).hasClass('active')) {
-                $('#slider_boundVinSidebar').show();
-            } else {
-                $('#slider_boundVinSidebar').hide();
-            }
-        });
-
-        var sliderVinSidebar = $('#slider_boundVinSidebar').slider({
-            value: boundVinSidebar.getOpacity() * 100,
-            range: "min"
-
-        })
-
-        sliderVinSidebar.on('slide', function (ev, ui) {
-            boundVinSidebar.setOpacity(ui.value / 100);
-            //ev.stopPropagation();
-        });
-        //END Слайдер Адміністративні одиниці
-
-
-        $('#orto10000').on('click', function () {
-            if ($(this).hasClass('active')) {
-                $('#slider_orto10000sidebar').show();
-            } else {
-                $('#slider_orto10000sidebar').hide();
-            }
-        });
-
-        var sliderOrto10000 = $('#slider_orto10000sidebar').slider({
-            value: orto10000sidebar.getOpacity() * 100,
-            range: "min"
-
-        })
-        sliderOrto10000.on('slide', function (ev, ui) {
-            orto10000sidebar.setOpacity(ui.value / 100);
-            //ev.stopPropagation();
-        });
-
-        $('#hydroVinSidebar').on('click', function () {
-            if ($(this).hasClass('active')) {
-                $('#slider_hydroVinSidebar').show();
-            } else {
-                $('#slider_hydroVinSidebar').hide();
-            }
-        });
-
-        var sliderhydro = $('#slider_hydroVinSidebar').slider({
-            value: hydroVinSidebar.getOpacity() * 100,
-            range: "min"
-
-        });
-        sliderhydro.on('slide', function (ev, ui) {
-            hydroVinSidebar.setOpacity(ui.value / 100);
-            //ev.stopPropagation();
-        });
-        
-        $('#engcommVinSidebar').on('click', function () {
-            if ($(this).hasClass('active')) {
-                $('#slider_engcommVinSidebar').show();
-            } else {
-                $('#slider_engcommVinSidebar').hide();
-            }
-        });
-
-        var sliderengcomm = $('#slider_engcommVinSidebar').slider({
-            value: engcommVinSidebar.getOpacity() * 100,
-            range: "min"
-
-        });
-        sliderengcomm.on('slide', function (ev, ui) {
-            engcommVinSidebar.setOpacity(ui.value / 100);
-            //ev.stopPropagation();
-        });
-        
-        $('#vegetVinSidebar').on('click', function () {
-            if ($(this).hasClass('active')) {
-                $('#slider_vegetVinSidebar').show();
-            } else {
-                $('#slider_vegetVinSidebar').hide();
-            }
-        });
-
-        var sliderveget = $('#slider_vegetVinSidebar').slider({
-            value: vegetVinSidebar.getOpacity() * 100,
-            range: "min"
-
-        }); 
-        sliderveget.on('slide', function (ev, ui) {
-            vegetVinSidebar.setOpacity(ui.value / 100);
-            //ev.stopPropagation();
-        });
-
-        /* $('#slider_wms3').on('mousedown', function(event){
-         event.stopPropagation();
-         })*/
-        $('#buildingsVinSidebar').on('click', function () {
-            if ($(this).hasClass('active')) {
-                $('#slider_buildingsVinSidebar').show();
-            } else {
-                $('#slider_buildingsVinSidebar').hide();
-            }
-        });
-        var sliderbuild = $('#slider_buildingsVinSidebar').slider({
-            value: buildingVinSidebar.getOpacity() * 100,
-            range: "min"
-        }); 
-        sliderbuild.on('slide', function (ev, ui) {
-            buildingVinSidebar.setOpacity(ui.value / 100);
-            //ev.stopPropagation();
-        });
-
-        $('#transportVinSidebar').on('click', function () {
-            if ($(this).hasClass('active')) {
-                $('#slider_transportVinSidebar').show();
-            } else {
-                $('#slider_transportVinSidebar').hide();
-            }
-        });
-        var sliderTransport = $('#slider_transportVinSidebar').slider({
-            value: transportVinSidebar.getOpacity() * 100,
-            range: "min"
-        }); 
-        sliderTransport.on('slide', function (ev, ui) {
-            transportVinSidebar.setOpacity(ui.value / 100);
-            //ev.stopPropagation();
-        });
-
+        addSlider(map);
         map.addOverlay(popup);
 
         // console.log(isMobile.any()+'sdsddssxxx');
@@ -1937,13 +1754,28 @@ $(function () {
                 }, 300);
             }
         });
-//        $("#rightClose").on('click', function () {
-//            $("#rightSide").removeClass("expanded");
-//            rightNav = false;
-//            $("#rightSwitch").removeClass("expanded");
-//            $("#rightblur").removeClass("expanded");
-//        });
 
+        //Зумувати до початкового екстенту//
+       $('#main_tt12').on('mousedown', function () {
+           $(this).toggleClass('active');
+           var viewIn = map.getView();
+           var bounce = ol.animation.bounce({
+               resolution: viewIn.getResolution()*2
+           });
+           var pan = ol.animation.pan({ source: viewIn.getCenter() });
+           var zoom = ol.animation.zoom({ resolution: viewIn.getResolution()  });
+           map.beforeRender(pan, zoom, bounce);
+           var viewTo = new ol.View({
+                center: [3170647.44192, 6315057.33961],
+                zoom: 12
+
+           });
+            map.setView(viewTo);
+        });
+        $('#main_tt12').on('mouseup', function () {
+            $(this).toggleClass('active');
+        });
+        //END Зумувати то початкового екстенту//
 
         //Автозаповнення адреси
         var input = document.getElementById('main_search_input');
