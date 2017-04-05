@@ -1080,6 +1080,7 @@ a:active {
     top: 62px;
     bottom: 50px;
     left: 0;
+    margin-left: 25px;
 }
 
 .dialog_window_publication_bids_list-footer {
@@ -3564,6 +3565,9 @@ background: rgba(74, 160, 255, 1)
     @page {
         size:landscape;
     }
+    .language_container,
+    .account_container,
+    .main_search_container,
     .demo-drawer,
     .map_mode_select,
     .edit_buttons{
@@ -3788,4 +3792,8 @@ background: rgba(74, 160, 255, 1)
     font-size: 30px;
     color: #e91e63;
 
+}
+
+.dialog_window_publication_bids_list-footer .mdl-button{
+    padding: 0 15px;
 }
