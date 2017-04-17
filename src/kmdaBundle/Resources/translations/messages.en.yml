@@ -12,10 +12,10 @@
 Карта грунтів України: Map of soil Ukraine
 Векторна карта: Vector map
 на м. Вінниця: to c. Vinnitsa
-Топографічна карта: Topographic map
+Топографічна карта України : Topographic map of Ukraine
 Земельні ділянки: Ground section
 Вінниця: Vinnitsa
-Земля: Earth
+Земля: Land Parcels
 Кадастровий поділ: Cadastral division
 НАЛАШТУВАННЯ: SETTINGS
 Відображати зум: Display zoom
@@ -45,7 +45,7 @@
 Гідрографія: Hydrography
 Разграфка: Geographical GRID
 Державна геодезична мережа: State geodetic network
-Будівлі: Building
+Будівлі: Buildings
 Огорожі: Fences
 Інженерні комунікації: Engineering Communication
 Рослинність: Vegetation
@@ -57,32 +57,33 @@
 <метадані>: <metadata>
 Метадані: Metadata
 Квартали: Quarters
-Функціонально-цілісні комплекси: Functional entire complex
+Функціонально-цілісні комплекси: Territories of functional complexes
 Топографічний план: Topographic plan
 Гідрографічні об'єкти: Hydrographic objects
-Водойми: Reservoirs
-Водотоки та канави: Streams and ditches
+Водойми: Water bodies
+Водотоки та канави: Water courses and ditches
 Колодязі і свердловини: Wells
 Острови: Islands
-Споруди водопостачання: Constructions water
-Споруди водопропускні: Buildings conduit
+Споруди водопостачання: Water supply constractions
+Споруди водопропускні: Culverts
 Державний кордон України.: The state border of Ukraine.
 Гідрографічні об’єкти та гідротехнічні споруди: Hydrographic objects and waterworks
 Будівлі та їх частини: Buildings and parts
 Частини будівель: Parts of buildings
-Лінії електропредач: Electric mains
-Споруди на інженерних комунікаціях: Facilities for utilities
+Лінії електропредач: Power lines
+Споруди на інженерних комунікаціях: Constructions on engineering communications
 Трубопроводи: Pipelines
 Рослинність та ґрунти: Vegetation and soils
-Дерева, що стоять окремо: Trees that stand apart
-Деревна рослинність: Woody vegetation
-Контури рослинності та ґрунтів: The contours of vegetation and soil
+Дерева, що стоять окремо: Separate trees
+Деревна рослинність: Tree vegetation
+Контури рослинності та ґрунтів: Contours of vegetation and soil
 Садова рослинність: Garden vegetation
-Смуги деревних насаджень: Strips of wood plantations
-Трав'яна рослинність: Herbaceous vegetation
-Чагарникова рослинність: Shrubs
+Смуги деревних насаджень: Stripes of trees plantations
+Трав'яна рослинність: Grassland vegetation
+Чагарникова рослинність: Shrub vegetation
 Транспортні мережі: Transport networks
-Вулична мережа: Outdoor network
-Рейковий транспорт: Rail transport
-Споруди на транспортній мережі: Buildings on the transport network
+Вулична мережа: Street network
+Рейковий транспорт: Rail network
+Споруди на транспортній мережі: Constructions on transport networks
 Показати повністю: Show full
+Топографічна карта Вінниці: Topographic map of Vinnitsa

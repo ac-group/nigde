@@ -1295,7 +1295,14 @@ $(function () {
             name: 'topoVinSidebar',
             visible: 0,
         });
-
+        var topoUA = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://map.land.gov.ua/map/topo100k_all/{z}/{x}/{-y}.jpg',
+                crossOrigin: 'null'
+            }),
+            name: 'topoUA',
+            visible: 0,
+        });
 
         var vin2015Layer = new ol.layer.Tile({
             source: new ol.source.XYZ({
@@ -1420,6 +1427,7 @@ $(function () {
             target: "mapView",
             layers: [
                 topoVin,
+                topoUA,
                 googleLayer,
                 googleHybridLayer,
                 osmLayer,
@@ -1573,7 +1581,7 @@ $(function () {
 
         $('.map_mode_select li').on('click', function (event) {
             var selected = $(this).attr('data-val');
-            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006', 'emptyRelief', 'emptyLayer', 'topoVin'];
+            var artbaz = ['pub', 'osm', 'OpenCycleMap', 'google', 'googlehybrid', 'vin2015', 'kiev2006', 'emptyRelief', 'emptyLayer', 'topoVin', 'topoUA'];
             map.getLayers().forEach(function (l, i) {
                 if (($.inArray(l.get('name'), artbaz)) > -1) {
                     if (l.get('name') !== selected) {

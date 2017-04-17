@@ -15384,53 +15384,6 @@ select:focus {
     right: 8px;
     top: 0px;
 }
-/* arrow-box */
-/*.arrow_box {
-    position: absolute;
-    background: #e0e0e0;
-    margin: -2px 0 0 222px;
-
-}
-.arrow_box:after, .arrow_box:before {
-    left: 100%;
-    top: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-}
-
-.arrow_box:after {
-    border-color: rgba(224, 224, 224, 0);
-    border-left-color: #e0e0e0;
-    border-radius: 1px;
-    border-width: 7px;
-    margin-top: -7px;
-}
-.active.arrow_box:after {
-    border-color: rgba(224, 224, 224, 0);
-    border-left-color: #7cded2;
-    border-radius: 1px;
-    border-width: 7px;
-    margin-top: -7px;
-}
-.arrow_box:before {
-    border-color: rgba(128, 128, 128, 0);
-    border-left-color: #808080;
-    border-radius: 5px;
-    border-width: 10px;
-    margin-top: -10px;
-}
-
-.active.arrow_box:before {
-    border-color: rgba(128, 128, 128, 0);
-    border-left-color: #5fa59b;
-    border-radius: 5px;
-    border-width: 10px;
-    margin-top: -10px;
-}*/
 
 .active.arrow_box{
     border-left-color: #e01551;
@@ -16591,6 +16544,7 @@ a:active {
     z-index: 100;
     display: none;
 }
+#errorSearchAddress,
 #modal-help.open, #modal-copy.open,
 .bids_list.open {
     display: block;
@@ -16653,6 +16607,7 @@ a:active {
     top: 62px;
     bottom: 50px;
     left: 0;
+    margin-left: 25px;
 }
 
 .dialog_window_publication_bids_list-footer {
@@ -16667,12 +16622,14 @@ a:active {
 .dialog_window_publication_bids_list i {
     color: rgba(0, 0, 0, 0.68)
 }
-
+.control_bttons,
 .dialog_window_publication_bids_list-footer .control_bttons {
     text-align: right;
     margin-right: 8px;
 }
-
+.mdl-button:hover{
+    background: rgba(51,150,255,0.2);
+}
 #snackbar_container {
     z-index: 100;
 }
@@ -18301,7 +18258,7 @@ tr td {
     -moz-box-shadow: none;
     box-shadow: none;
     height: 30px;
-    width: 245px;
+    width: 300px;
     padding-left: 64px;
     font-size: 13px;
     font-weight: normal;
@@ -19135,6 +19092,9 @@ background: rgba(74, 160, 255, 1)
     @page {
         size:landscape;
     }
+    .language_container,
+    .account_container,
+    .main_search_container,
     .demo-drawer,
     .map_mode_select,
     .edit_buttons{
@@ -19329,6 +19289,7 @@ background: rgba(74, 160, 255, 1)
 .map-center.hide{
     display: none;
 }
+#searchLocation,
 #location{
     display: none;
     vertical-align: -webkit-baseline-middle;
@@ -19353,6 +19314,15 @@ background: rgba(74, 160, 255, 1)
 }
 .ol-scale-line {
 
+}
+#searchLocation{
+    font-size: 30px;
+    color: #e91e63;
+
+}
+
+.dialog_window_publication_bids_list-footer .mdl-button{
+    padding: 0 15px;
 }
 /**
  * BxSlider v4.1.2 - Fully loaded, responsive content slider

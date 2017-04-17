@@ -23,15 +23,15 @@ class Version2Controller extends Controller
     public function indexAction()
     {
         $votingResultAll = $this->votingResult();
-        $orendaDoc = new OrendaDoc();
-        $form = $this->createForm('kmdaBundle\Form\OrendaDocType', $orendaDoc);
-        unset($orendaDoc);
-        unset($form);
-        if(($this->getUser()->getUsername()=='secretar')||($this->getUser()->getUsername()=='golova')) {
-            return $this->redirectToRoute('orendaresh_index');
-        }
-        $orendaDoc = new OrendaDoc();
-        $form = $this->createForm('kmdaBundle\Form\OrendaDocType', $orendaDoc);   
+//        $orendaDoc = new OrendaDoc();
+//        $form = $this->createForm('kmdaBundle\Form\OrendaDocType', $orendaDoc);
+//        unset($orendaDoc);
+//        unset($form);
+//        if(($this->getUser()->getUsername()=='secretar')||($this->getUser()->getUsername()=='golova')) {
+//            return $this->redirectToRoute('orendaresh_index');
+//        }
+//        $orendaDoc = new OrendaDoc();
+//        $form = $this->createForm('kmdaBundle\Form\OrendaDocType', $orendaDoc);   
         
         $processHandler = $this->container->get('lexik_workflow.handler.orenda_agreement');        
         $em = $this->getDoctrine()->getManager();
@@ -49,7 +49,7 @@ class Version2Controller extends Controller
 
         
         return $this->render('@kmda/Default/version2/index.html.twig', array(
-            'form' => $form->createView(),
+//            'form' => $form->createView(),
             'count' => $count,
             'votingResultAll' => $votingResultAll
         ));

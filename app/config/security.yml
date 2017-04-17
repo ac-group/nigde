@@ -88,4 +88,4 @@ security:
 #    - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/orendadoc/, role: [ROLE_APPLICANT, ROLE_GOLOVA ] }
     - { path: ^/meeting/, role: [ROLE_SECRETAR, ROLE_GOLOVA] }
-    - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
