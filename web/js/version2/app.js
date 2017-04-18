@@ -387,6 +387,11 @@ $(function () {
     });
 
     $("#save_map_url").on('click', function () {
+        if($('.mdl-layout__drawer').hasClass('left_menu_open')){
+           $('#modal-copy .dialog_window_publication_bids_list_copy').css('left','315px');
+        }else{
+            $('#modal-copy .dialog_window_publication_bids_list_copy').css('left','625px');
+        }
         var coord = map.getView().getCenter();
         var t = ol.proj.transform(coord, 'EPSG:900913', 'EPSG:4326');
         if ($('.language_container i').text() == "UA") {
@@ -1268,7 +1273,7 @@ $(function () {
 
         var orto2000sidebar = new ol.layer.Tile({
             source: new ol.source.XYZ({
-                url: 'http://map.land.gov.ua/map/ortho2k_all/{z}/{x}/{-y}.jpg',
+                url: 'http://212.26.144.103/map/ortho2k_all/{z}/{x}/{-y}.jpg',
                 crossOrigin: 'null'
             }),
             name: 'orto2000sidebar',
@@ -1436,7 +1441,6 @@ $(function () {
                 pubLayer,
                 kiev2006Layer,
                 vin2015Layer,
-                parcelSidebar,
                 vectorVinSidebar,
                 vinOrtoSidebar,
                 orto10000sidebar,
@@ -1454,7 +1458,8 @@ $(function () {
                 engcommVinSidebar,
                 vegetVinSidebar,
                // streetsVinSidebar,
-                transportVinSidebar
+                transportVinSidebar,
+                parcelSidebar
             ],
 //            view: view,
             controls: ol.control.defaults().extend([

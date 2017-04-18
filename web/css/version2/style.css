@@ -1037,13 +1037,14 @@ a:active {
 }
 .dialog_window_publication_bids_list_copy {
     position: absolute;
-    left: 50%;
+    left: 625px;
     margin-left: -224px;
     background: white;
-    top: 120px;
+    bottom: 50px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
+    width: 350px;
 }
 
 #permlink {
@@ -1056,6 +1057,7 @@ a:active {
     border-bottom: solid 1px rgba(0, 0, 0, 0.12);
     width: 100%;
     height: 62px;
+    padding: 7px;
 }
 
 .dialog_window_publication_bids_list-head span {
@@ -2948,7 +2950,7 @@ textarea {
 }
 
 .main_mdl-tooltip {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 500;
     font-style: normal;
     font-stretch: normal;
@@ -3796,4 +3798,20 @@ background: rgba(74, 160, 255, 1)
 
 .dialog_window_publication_bids_list-footer .mdl-button{
     padding: 0 15px;
+}
+
+
+.tooltip-info.active{
+  //  background: rgba(51,155,255,.9);
+  ///  position: relative;
+  //  width: 100px;
+    //height: 50px;
+}
+.tooltip-info.active::after {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 7px;
+    border: 8px solid transparent;
+    border-right: 7px solid rgba(51,155,255,.9);
 }
