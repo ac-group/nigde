@@ -1,0 +1,708 @@
+{% extends ':version2:index.html.twig' %}
+
+{% block stylesheets %}
+    {% stylesheets
+    'css/version2/bootstrap.css'
+    'https://fonts.googleapis.com/icon?family=Material+Icons'
+    'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=cyrillic,cyrillic-ext'
+    'css/version2/material.min.css'
+    'css/version2/new_css.css'
+    'css/version2/style.css'
+    'css/version2/jquery.bxslider.css'
+    '//ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/themes/base/jquery-ui.css'
+    'css/new_modal.css'
+    filter='cssrewrite'
+    output='css/version2/sc22.css'
+ %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+        <script
+      src='https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyADCA0LMlMFz6z6SqQkrxnEzao8jJAyDEQ&libraries=places'>
+    </script>
+    {% javascripts 
+    '//code.jquery.com/jquery-2.2.4.min.js'
+    'js/version2/material.min.js'
+    'js/version2/mobile-detect.js'
+    'js/version2/clipboard.min.js'
+    'js/version2/getmdl-select.min.js'
+    'js/version2/jquery.bxslider.min.js'
+
+    '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'
+    '//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js'
+    '//code.jquery.com/ui/1.12.1/jquery-ui.min.js'
+    'js/jquery.maskedinput.min.js'
+    'js/ol.js'
+    'js/ol3gm.js'
+    'js/version2/addSlider.js'
+    'js/version2/main.js'
+    'js/version2/app.js'
+    'js/new_modal.js'
+    filter='?uglifyjs2'
+    output='js/version2/sc22.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block body -%}
+    <body>
+    <div class="head_block">
+        <div class="menu_button">
+            <button class="mdl-button mdl-js-button mdl-button--icon filter_list open_menu_but">
+                <i class="material-icons">menu</i>
+            </button>
+
+        </div>
+    </div>
+    <div class="head_block_logo">
+        <a href="#" class="company_logo">
+            <img src="/img/nsci1.png" alt="logo"> {{'НIГД'|trans }}
+        </a>
+    </div>
+    <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50 is-visible left_menu_open"
+         aria-hidden="false">
+        <span class="mdl-layout-title brand">
+               <a href="#" class="company_logo">
+                   <img src="/img/nsci1.png" alt="logo"> {{'НIГД'|trans }}
+               </a>
+               <button class="mdl-button mdl-js-button mdl-button--icon  open_menu_but">
+                   <i class="material-icons">keyboard_arrow_left</i>
+               </button>
+        </span>
+
+                             {#Тултіпи для шарів#}
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="orto10000">
+            {{'Ортофотоплани'|trans}} {{'масштабу'|trans}} 1:10000, {{'які створені в рамках проекту світового банку'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="orto2000">
+            {{'Ортофотоплани'|trans}} {{'масштабу'|trans}} 1:2000, {{'які створені в рамках проекту світового банку'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="gryntSidebar">
+            {{'Карта грунтів України'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="vectorVinSidebar">
+            {{'Векторний план'|trans}} {{'масштабу'|trans}} 1:2000
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="vinOrtoSidebar">
+           {{'Ортофотоплан'|trans}} {{'масштабу'|trans}} 1:2000
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="topoVinSidebar">
+            {{'Топографічний план'|trans}} {{'масштабу'|trans}} 1:2000
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="boundVinSidebar">
+            {{'Державний кордон України.'|trans}} {{'Адміністративні одиниці'|trans}}
+            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/ukr/catalog.search#/metadata/030100" target="_blank">{{'Метадані'|trans}}</a><br>            
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="hydroVinSidebar">
+            {{'Гідрографічні об’єкти та гідротехнічні споруди'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="buildingsVinSidebar">
+            {{'Будівлі та їх частини'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="engcommVinSidebar">
+            {{'Інженерні комунікації'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="vegetVinSidebar">
+            {{'Рослинність та ґрунти'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="transportVinSidebar">
+            {{'Транспортні мережі'|trans}}
+        </div>
+       {# <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="topoVinSidebar">
+            {{'Топографічна карта'|trans}} {{'масштабу'|trans}} 1:10000
+        </div>#}
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="parcelSidebar">
+            {{'Земельні ділянки'|trans}} ({{'Публічна кадастрова карта'|trans}})
+        </div>
+                            {#Тултіпи для шарів(end)#}
+        <div class="layersAll">
+            <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+                <div class="level_menu">
+                    <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">terrain</i>{{'Аерофотознімання'|trans}}</a>
+
+                    <div class="mdl-navigation__level2">
+                        <a id='orto10000sidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#orto10000sidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>{{'Ортофотоплан'|trans}}, 2006 (М 1:10000)
+                            <i id='orto10000sidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                            <div id="slider_orto10000sidebar" class="slider_tr"></div>
+
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://map.land.gov.ua/kadastrova-karta" target="_blank">{{'Публічна кадастрова карта'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/b6dc193b-cb73-4210-b7de-e30dc43d0635" target="_blank">{{'Метадані'|trans}}</a><br>
+                            <i id="insert_sidebar_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer">
+                                {{'Скопіювати в буфер'|trans}}
+                            </div>
+                        </div>
+
+                        <a id='orto2000' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#orto2000sidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>{{'Ортофотоплан'|trans}}, 2010 (М 1:2000)
+                            <i id='orto2000sidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/b6dc193b-cb73-4210-b7de-e30dc43d0635" target="_blank">{{'Метадані'|trans}}</a><br>
+                            {#<i id="insert_sidebar_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer">
+                                {{'Скопіювати в буфер'|trans}}
+                            </div>#}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="level_menu">
+                    <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">terrain</i>{{'Тематичні карти'|trans}}</a>
+
+                    <div class="mdl-navigation__level2">
+                        <a id='dynamicSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#dynamicSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>{{'Динамічна карта'|trans}} ({{'Україна'|trans}})
+                            <i id='dynamicSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/b6dc193b-cb73-4210-b7de-e30dc43d0635" target="_blank">{{'Метадані'|trans}}</a><br>
+                            {#<i id="insert_sidebar_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer">
+                                {{'Скопіювати в буфер'|trans}}
+                            </div>#}
+                        </div>
+                        <a id='gryntSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#gryntSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>{{'Грунти'|trans}}
+                            <i id='gryntSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                        </a>
+
+                        <div class="tooltip-info">
+                            <a href="http://map.land.gov.ua/kadastrova-karta" target="_blank">{{'Публічна кадастрова карта'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/b6dc193b-cb73-4210-b7de-e30dc43d0635" target="_blank">{{'Метадані'|trans}}</a><br>
+                            <i id="insert_sidebar_buffer2" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer2">
+                                {{'Скопіювати в буфер'|trans}}
+                            </div>
+                        </div>
+                        <a id='razgrafkaSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#razgrafkaSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>{{'Разграфка'|trans}} ({{'Україна'|trans}} 1942)
+                            <i id='razgrafkaSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/b6dc193b-cb73-4210-b7de-e30dc43d0635" target="_blank">{{'Метадані'|trans}}</a><br>
+                            {#<i id="insert_sidebar_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer">
+                                {{'Скопіювати в буфер'|trans}}
+                            </div>#}
+                        </div>
+                        <a id='geodeticSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#geodeticSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>{{'Державна геодезична мережа'|trans}}
+                            <i id='geodeticSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/b6dc193b-cb73-4210-b7de-e30dc43d0635" target="_blank">{{'Метадані'|trans}}</a><br>
+                            {#<i id="insert_sidebar_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer">
+                                {{'Скопіювати в буфер'|trans}}
+                            </div>#}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="level_menu">
+                    <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">location_city</i>{{'Вінниця'|trans}}</a>
+                    <div class="mdl-navigation__level2">
+                        <a  class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#vectorVinSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Векторний план'|trans}} 1:2000
+                            <i id='vectorVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/010201" target="_blank">{{'Векторний план'|trans}} 1:2000 {{'<метадані>'|trans}}</a><br>
+                            {#<i id="insert_sidebar_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer">
+                                {{'Скопіювати в буфер'|trans}}
+                            </div>#}
+                        </div>
+                        <a id="vinOrtoSidebar" class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#vinOrtoSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Ортофотоплан'|trans}} 1:2000
+                            <i id='vinOrtoSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                            <div id="slider_vinOrtoSidebar" class="slider_tr"></div>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/010100" target="_blank">{{'Ортофотоплан'|trans}}1:2000{{'<метадані>'|trans}}</a><br>
+                            {#<i id="insert_sidebar_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer">
+                                {{'Скопіювати в буфер'|trans}}
+                            </div>#}
+                        </div>
+                        <a id='topoVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#topoVinSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Топографічний план'|trans}} 1:2000
+                            <i id='topoVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                            <div id="slider_topoVinSidebar" class="slider_tr"></div>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/ukr/catalog.search#/metadata/010200" target="_blank">{{'Топографічний план'|trans}}1:2000 {{'<метадані>'|trans}}</a><br>
+                            {#<i id="insert_sidebar_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer">
+                                {{'Скопіювати в буфер'|trans}}
+                            </div>#}
+                        </div>
+                        <a id='boundVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#boundVinSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Адміністративні одиниці'|trans}}
+                            <i id='boundVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                            <div id="slider_boundVinSidebar" class="slider_tr"></div>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/e653d366-5841-4ca7-818e-bd6356732e92" target="_blank">{{'Адміністративні одиниці'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/030301" target="_blank">{{'Квартали'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/030302" target="_blank">{{'Функціонально-цілісні комплекси'|trans}}  {{'<метадані>'|trans}}</a><br>
+                            {#<i id="insert_sidebar_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer">
+                                {{'Скопіювати в буфер'|trans}}
+                            </div>#}
+                        </div>
+                        <a id='hydroVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#hydroVinSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Гідрографічні об\'єкти'|trans}}
+                            <i id='hydroVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                            <div id="slider_hydroVinSidebar" class="slider_tr"></div>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/ae52e1bc-a1ac-4403-854a-0ff8916df8b7" target="_blank">{{'Водойми'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/f194486a-b022-4b11-bb30-07a4fedd49c4" target="_blank">{{'Водотоки та канави'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/050601" target="_blank">{{'Колодязі і свердловини'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/ce5a2c2e-e6f7-4554-aacf-2cbabec47a06" target="_blank">{{'Острови'|trans}}  {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/050604" target="_blank">{{'Споруди водопостачання'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/3c113d10-b8b1-4006-aa40-ce55720e10a4" target="_blank">{{'Споруди водопропускні'|trans}} {{'<метадані>'|trans}}</a><br>
+                            {#<i id="insert_sidebar_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer">
+                                {{'Скопіювати в буфер'|trans}}
+                            </div>#}
+                        </div>
+                        <a id='buildingsVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#buildingsVinSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Будівлі та їх частини'|trans}}
+                            <i id='buildingsVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                            <div id="slider_buildingsVinSidebar" class="slider_tr"></div>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/b6dc193b-cb73-4210-b7de-e30dc43d0635" target="_blank">{{'Будівлі'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/f01cc5d7-fc5f-4546-94ed-60e049f2b967" target="_blank">{{'Частини будівель'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/62045278-af5d-4bea-9f9f-6664635d6783" target="_blank">{{'Огорожі'|trans}} {{'<метадані>'|trans}}</a><br>
+
+
+
+                        </div>
+                       {# <a id='fencesVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#fencesVinSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Огорожі'|trans}}
+                            <i id='fencesVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                        </a>
+                        <div class="tooltip-info">
+
+                        </div>#}
+                        <a id='engcommVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#engcommVinSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Інженерні комунікації'|trans}}
+                            <i id='engcommVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                            <div id="slider_engcommVinSidebar" class="slider_tr"></div>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/011ef583-7dd3-4d60-af56-4aa008d7acf4" target="_blank">{{'Лінії електропредач'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/7dfa774f-88ef-480b-89bb-5af62a82dff3" target="_blank">{{'Споруди на інженерних комунікаціях'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/080300" target="_blank">{{'Трубопроводи'|trans}} {{'<метадані>'|trans}}</a><br>
+
+                            {#<i id="insert_sidebar_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer">
+                                {{'Скопіювати в буфер'|trans}}
+                            </div>#}
+                        </div>
+                        <a id='vegetVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#vegetVinSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Рослинність'|trans}}
+                            <i id='vegetVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                            <div id="slider_vegetVinSidebar" class="slider_tr"></div>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/2cc66b4d-f692-4aa4-96bf-aa1f748ea51a" target="_blank">{{'Дерева, що стоять окремо'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/79ed87dd-9ecd-4292-ac03-6c421de7c6f7" target="_blank">{{'Деревна рослинність'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/091500" target="_blank">{{'Контури рослинності та ґрунтів'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/090800" target="_blank">{{'Садова рослинність'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/0c1cf15e-5fde-4f50-8d72-db8907eb0624" target="_blank">{{'Смуги деревних насаджень'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/bcd68a65-4038-4983-bddb-3c9fca1baf9c" target="_blank">{{'Трав\'яна рослинність'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/090400" target="_blank">{{'Чагарникова рослинність'|trans}} {{'<метадані>'|trans}}</a><br>
+                        </div>
+                      {#  <a id='streetsVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#streetsVinSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Вулична мережа'|trans}}
+                            <i id='streetsVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                            <div id="slider_streetsVinSidebar"></div>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/b6dc193b-cb73-4210-b7de-e30dc43d0635" target="_blank">{{'Метадані'|trans}}</a><br>
+                        </div>#}
+                        <a id='transportVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#transportVinSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Транспортні мережі'|trans}}
+                            <i id='transportVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                            <div id="slider_transportVinSidebar" class="slider_tr"></div>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/dce6eb35-6815-4e86-9d3d-a5be1516ed6a" target="_blank">{{'Вулична мережа'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/070300" target="_blank">{{'Рейковий транспорт'|trans}} {{'<метадані>'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search?node=srv#/metadata/070500" target="_blank">{{'Споруди на транспортній мережі'|trans}} {{'<метадані>'|trans}}</a><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="level_menu">
+                    <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
+                        <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">terrain</i>{{'Земля'|trans}}</a>
+
+                    <div class="mdl-navigation__level2">
+                        <a id='parcelSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#parcelSidebar">
+                            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flip_to_back</i>{{'Кадастровий поділ'|trans}}
+                            <i id='parcelSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
+                        </a>
+                        <div class="tooltip-info">
+                            <a href="http://map.land.gov.ua/kadastrova-karta" target="_blank">{{'Публічна кадастрова карта'|trans}}</a><br>
+                            <a href="http://geoportal.dzk.gov.ua/geonetwork/srv/rus/catalog.search#/metadata/b6dc193b-cb73-4210-b7de-e30dc43d0635" target="_blank">{{'Метадані'|trans}}</a><br>
+                            <i id="insert_sidebar_buffer3" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                            <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_sidebar_buffer3">
+                                {{'Скопіювати в буфер'|trans}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="bid_list">
+            <div class="bid_list_container">
+                <div class="bid_list_button">
+                    <i class="material-icons">keyboard_arrow_up</i>
+                </div>
+                <div class="bid_list-content-fix">
+                    <div class="bid_list-content">
+                        <div class="zoomOff">
+                            <label class="mdl-checkbox mdl-js-checkbox" for="checkbox-zoom">
+                                <span class="mdl-checkbox__label">{{'Відображати зум'|trans}}</span>
+                                <input type="checkbox" id="checkbox-zoom" class="mdl-checkbox__input" checked>
+                            </label>
+                        </div>
+                        <div class="centerOff">
+                            <label class="mdl-checkbox mdl-js-checkbox" for="map-сenter">
+                                <span class="mdl-checkbox__label">{{'Відображати центр карти'|trans}}</span>
+                                <input type="checkbox" id="map-сenter" class="mdl-checkbox__input" checked>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bid_list-footer">
+                <a href="#" class="btn">{{'НАЛАШТУВАННЯ'|trans}}</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="snackbar_container" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+
+
+    <div class="right_menu close">
+        <div class="right_menu_container">
+            <div class="right_menu_button">
+                <i class="material-icons">chevron_right</i>
+            </div>
+
+            <div class='info'>
+                <div class="info-slider" id="information">
+
+                </div>
+            </div>
+
+            <div class="right_menu_footer-block">
+                <div class="control_bttons">
+                    {#  <button class=" mdl-button mdl-js-button mdl-js-ripple-effect btn-add">СТВОРИТИ ЗАЯВКУ</button>#}
+                    <div class="control_i">
+                        <button class="mdl-button mdl-js-button mdl-button--icon filter_list btn">
+                            <i class="material-icons">sms_failed</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon filter_list btn">
+                            <i class="material-icons">share</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="edit_buttons left_menu_open">
+
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color"    id="main_tt4">
+
+            <i class="material-icons">near_me</i>
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt4">
+            {{'Поточна'|trans}}
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt12">
+            <i class="material-icons">zoom_out_map</i>
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt12">
+            {{'Показати повністю'|trans}}
+        </div>
+
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color measure" id="length">
+            <img src="/img/ruler_nsci.png" class="no_active"><img
+                    src="/img/ruler_nsci_active.png" class="is_active">
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="length">
+            {{'Відстань'|trans}}
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color measure" id="area">
+            <img src="/img/area_nsci1.png" class="no_active"><img
+                    src="/img/area_nsci1_active.png" class="is_active">
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="area">
+            {{'Площа'|trans}}
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color measure" id="erase">
+            <img src="/img/delete_nsci.png" class="no_active"><img src="/img/delete_nsci_active.png"
+                                                                   class="is_active">
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="erase">
+           {{'Очистити'|trans}}
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt7">
+            <i class="material-icons"> help_outline</i>
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt7">
+            {{'Допомога'|trans}}
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="save_map_url">
+            <i class="material-icons">add_to_photos</i>
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="save_map_url">
+            {{'Зберегти налаштування'|trans}}
+        </div>
+       {# <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt7">
+            <i class="material-icons">room</i>
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt7">
+            Мітка
+        </div>#}
+
+
+
+        <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt9">
+            <i class="material-icons">print</i>
+        </button>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt9">
+            {{'Роздрукувати карту'|trans}}
+        </div>
+    </div>
+
+    <div class="osm-copyright">©<a target="_blank" href="http://www.openstreetmap.org/copyright">{{'Участники'|trans}} 
+            OpenStreetMap</a></div>
+
+    <div class="map_mode_select left_menu_open">
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height ">
+
+            <input class="mdl-textfield__input " type="text" id="map_mode" readonly tabIndex="-1"
+                   value="{{ 'Оглядова карта України'|trans|raw }}">
+            <label for="map_mode">
+                <i class="mdl-icon-toggle__label material-icons">arrow_drop_down</i>
+            </label>
+            <ul for="map_mode" class="mdl-menu mdl-menu--bottom-left mdl-js-menu ">
+
+                <li id="viewMap" class="mdl-menu__item" data-val="pub">{{ 'Оглядова карта України'|trans|raw }}
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                </li>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="viewMap">
+                    {{ 'Оглядова карта України'|trans|raw }} {{'масштабу'|trans}} 1:100000
+                </div>
+                <li id='orto10000base' class="mdl-menu__item" data-val="kiev2006">{{ 'Ортофотоплани'|trans|raw }}, 2006
+                    <i id='orto10000baseInfo' class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                    <div class="tooltip-info">
+                        <a href="http://map.land.gov.ua/kadastrova-karta" target="_blank">{{'Публічна кадастрова карта'|trans}}</a><br>
+                        <i id="insert_buffer2" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="http://map.land.gov.ua/kadastrova-karta" role="presentation">insert_link</i>
+                        <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_buffer2">
+                            {{'Скопіювати в буфер'|trans}}
+                        </div>
+                    </div>
+                </li>
+
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="orto10000base">
+                    {{'Ортофотоплани'|trans}} {{'масштабу'|trans}} 1:10000, {{'які створені в рамках проекту світового банку'|trans}}
+                </div>
+                <li id='orto2000base' class="mdl-menu__item" data-val="vin2015">{{'Ортофотоплани'|trans}}, 2015
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                </li>
+                <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="orto2000base">
+                    {{'Ортофотоплани'|trans}} {{'масштабу'|trans}} 1:2000
+                </div>
+                <li id='topoUA' class="mdl-menu__item" data-val="topoUA">{{'Топографічна карта України'|trans}}
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                </li>
+                <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="topoUA">
+                     {{'Топографічна карта України'|trans}} {{'масштабу'|trans}} 1:100000
+                </div>                
+                <li id='topoVin' class="mdl-menu__item" data-val="topoVin">{{'Топографічна карта Вінниці'|trans}}
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                </li>
+                <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="topoVin">
+                     {{'Топографічна карта Вінниці'|trans}} {{'масштабу'|trans}} 1:2000
+                </div>
+                <hr>
+
+
+                <li id='osmBase' class="mdl-menu__item" data-clipboard-text="https://www.openstreetmap.org/" data-clipboard-text="https://www.openstreetmap.org/" data-val="osm">Open Street Map
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                    <div id='orto10000baseInfoTooltip' class="tooltip-info">
+                        <a id='bufferOSM' href="https://www.openstreetmap.org/" target="_blank">Open Street Map</a><br>
+                        <i id="insert_buffer" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="https://www.openstreetmap.org/" role="presentation">insert_link</i>
+                        <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_buffer">
+                            {{'Скопіювати в буфер'|trans}}
+                        </div>
+                    </div>
+                </li>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="osmBase">
+                    {{'Веб-картографічний проект по створенню детальної, вільної і безкоштовної географічної карти світу'|trans}}
+                </div>
+                <li id='osmCycle' class="mdl-menu__item" data-val="OpenCycleMap">Open Street Cycle Map
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                    <div class="tooltip-info">
+                        <a href="https://www.openstreetmap.org/#layers=C" target="_blank">Open Street Cycle Map</a><br>
+                        <i id="insert_buffer1" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="https://www.openstreetmap.org/#layers=C" role="presentation">insert_link</i>
+                        <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_buffer1">
+                            {{'Скопіювати в буфер'|trans}}
+                        </div>
+                    </div>
+                </li>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="osmCycle">
+                    {{'Веб-картографічний проект по створенню детальної, вільної і безкоштовної географічної карти світу'|trans}}
+                </div>
+                <li id='googleSatelit'class="mdl-menu__item" data-val="google">Google Satellite
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                    <div class="tooltip-info">
+                        <a href="https://www.google.com.ua/maps/@49.2326973,28.4969277,13683m/data=!3m1!1e3" target="_blank">Google Satellite</a><br>
+                        <i id="insert_buffer3" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="https://www.google.com.ua/maps" role="presentation">insert_link</i>
+                        <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_buffer3">
+                            {{'Скопіювати в буфер'|trans}}
+                        </div>
+                    </div>
+                </li>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="googleSatelit">
+                    {{'Набір додатків, побудованих на основі безкоштовного картографічного сервісу і технологій, які надає компанія Google.'|trans}}
+                </div>
+                <li id='googleHybrid'class="mdl-menu__item" data-val="googlehybrid">Google Hybryd
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                    <div class="tooltip-info">
+                        <a href="https://www.google.com.ua/maps/@49.2326973,28.4969277,13683m" target="_blank">Google Hybrid</a><br>
+                        <i id="insert_buffer4" class="mdl-color-text--blue-grey-400 material-icons buffer"  data-clipboard-text="https://www.google.com.ua/maps" role="presentation">insert_link</i>
+                        <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="insert_buffer4">
+                            {{'Скопіювати в буфер'|trans}}
+                        </div>
+                    </div>
+                </li>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="googleHybrid">
+                    {{'Набір додатків, побудованих на основі безкоштовного картографічного сервісу і технологій, які надає компанія Google.'|trans}}
+                </div>
+                <hr>
+                <li id='emptyLayerR'class="mdl-menu__item" data-val="emptyRelief">{{'Порожній шар (рельєф)'|trans}}
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                </li>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="emptyLayerR">
+                    {{'Базовий шар рельєфу'|trans}}
+                </div>
+                <li id='emptyLayer'class="mdl-menu__item" data-val="emptyLayer">{{'Порожній шар'|trans}}
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
+                </li>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="emptyLayer">
+                    {{'Базовий порожній шар'|trans}}
+                </div>
+            </ul>
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="map_mode">
+            {{'Обрати підоснову'|trans}}
+        </div>
+    </div>
+
+    <div class="new_legend">
+            <span class="new_legent_title">
+            </span>
+        <img src="">
+    </div>
+    <div right_container>
+        <div class="main_search_container ">
+            <div class="main_search_block">
+                <i class="material-icons clear_icon main_clear_block_button">clear</i>
+                <input type="text"  placeholder="{{'Пошук'|trans}}" id="main_search_input">
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab bg_white mdl-js-ripple-effect btn_small search_block_button main_search_block_button"
+                        id="main_tt8">
+                    <i class="material-icons">search</i>
+                </button>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt8">
+                    {{'Пошук'|trans}}
+                </div>
+            </div>
+        </div>
+        <div class="account_container ">
+            <div class="account_block">
+                {% if app.user %}
+                <a href="{{ path('fos_user_security_logout') }}" class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt10">
+                    <i class="material-icons">exit_to_app</i>
+                </a>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt10">
+                    {{'Вийти'|trans}}, {{ app.user.username }}
+                </div>
+                {% else %}
+                <a href="{{ path('fos_user_security_login') }}" class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt10">
+                    <i class="material-icons">account_circle</i>
+                </a>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt10">
+                    {{'Авторизуватись'|trans}}
+                </div>
+{% endif %}                    
+            </div>
+        </div>
+        <div class="language_container ">
+            
+            <div class="language_block">
+                {% if app.request.getLocale() == 'uk' %}
+                <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt11">
+                    <i class="material-icons">UA</i>
+                </button>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt11">
+                    Українською
+                </div>
+                {% else %}
+                <button class="mdl-button mdl-js-button mdl-button--icon btn_theme_hover_color" id="main_tt11">
+                    <i class="material-icons">EN</i>
+                </button>
+                <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="main_tt11">
+                    English
+                </div>                    
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="coordinate  left_menu_open">
+       B:<span class="x"></span>,
+       L:<span class="y"></span>
+    </div>
+    <i class="mdl-color-text--blue-grey-400 material-icons map-center" role="presentation">add</i></a>
+    {% include '@version2/modal/help.html.twig' %}
+    {% include '@version2/modal/copy.html.twig' %}
+    {% include '@version2/modal/errorSearchAddress.html.twig' %}
+
+    <div id="mapView" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;">
+
+    </div>
+    <div id="scale-line" class="scale-line left_menu_open"></div>
+    <i id="location" class="material-icons">gps_fixed</i>
+    <i id="searchLocation" class="material-icons">location_on</i>
+
+
+
+
+    </body>
+
+{% endblock body %}
