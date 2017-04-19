@@ -306,7 +306,7 @@ function getParameterByName(name, url) {
 }
 
 function parsemaplinkURL() {
-    var regex = new RegExp(/\/maplink\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)$/),
+    var regex = new RegExp(/\/maplink\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)\/([0-9a-fA-F]+)$/),
             result = regex.exec(window.location.href);
     return result;
 }
