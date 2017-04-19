@@ -109,17 +109,48 @@
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="transportVinSidebar">
             {{'Транспортні мережі'|trans}}
         </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="transportVinSidebar">
+            {{'Транспортні мережі'|trans}}
+        </div>
        {# <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="topoVinSidebar">
             {{'Топографічна карта'|trans}} {{'масштабу'|trans}} 1:10000
         </div>#}
         <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="parcelSidebar">
             {{'Земельні ділянки'|trans}} ({{'Публічна кадастрова карта'|trans}})
         </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="aerophotography">
+            {{'Аерофотозйомка, проведена в рамках проекту світового банку'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="thematicMap">
+            {{'Тематичні шари на територію України'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="pilotVinnica">
+            {{'Пілотна територія проекту зі створення прототипу НІГД (JICA, ЦДЗК)'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="kadastralData">
+            {{'Дані земельного кадастру (ЦДЗК)'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="orto10000sidebar">
+            {{'Ортофотоплани масштабу 1:10000, які створені в рамках проекту світового банку'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="dynamicSidebar">
+            {{'Векторна карта з OpenStreetMap'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="razgrafkaSidebar">
+            {{'Номенклатура і розграфка топографічних карт масштабів від 1:1000000 до 1:10000'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="geodeticSidebar">
+            {{'Дані ДГМ по матеріалам НДІГК'|trans}}
+        </div>
+        <div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="vectorVinSidebar">
+            {{'Векторний план пілотної території масштабу 1:2000'|trans}}
+        </div>
+
                             {#Тултіпи для шарів(end)#}
         <div class="layersAll">
             <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
                 <div class="level_menu">
-                    <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
+                    <a id='aerophotography' class="mdl-navigation__link mdl-navigation__level1 " href="#">
                         <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">terrain</i>{{'Аерофотознімання'|trans}}</a>
 
                     <div class="mdl-navigation__level2">
@@ -144,7 +175,7 @@
                     </div>
                 </div>
                 <div class="level_menu">
-                    <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
+                    <a id="thematicMap"class="mdl-navigation__link mdl-navigation__level1 " href="#">
                         <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">terrain</i>{{'Тематичні карти'|trans}}</a>
 
                     <div class="mdl-navigation__level2">
@@ -182,10 +213,10 @@
 
 
                 <div class="level_menu">
-                    <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
+                    <a id = 'pilotVinnica' class="mdl-navigation__link mdl-navigation__level1 " href="#">
                         <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">location_city</i>{{'Вінниця'|trans}}</a>
                     <div class="mdl-navigation__level2">
-                        <a  class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#vectorVinSidebar">
+                        <a  id ='vectorVinSidebar' class="mdl-navigation__link legend-tooltip mdl-navigation__level3" href="#vectorVinSidebar">
                             <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers</i>{{'Векторний план'|trans}} 1:2000
                             <i id='vectorVinSidebarInfo' class="mdl-color-text--blue-grey-400 material-icons info-sidebar" role="presentation">info</i>
                         </a>
@@ -321,7 +352,7 @@
                     </div>
                 </div>
                 <div class="level_menu">
-                    <a class="mdl-navigation__link mdl-navigation__level1 " href="#">
+                    <a id = 'kadastralData' class="mdl-navigation__link mdl-navigation__level1 " href="#">
                         <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">terrain</i>{{'Земля'|trans}}</a>
 
                     <div class="mdl-navigation__level2">
@@ -505,7 +536,7 @@
                     <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
                 </li>
                 <div  class="mdl-tooltip main_mdl-tooltip" data-mdl-for="orto2000base">
-                    {{'Ортофотоплани'|trans}} {{'масштабу'|trans}} 1:2000
+                    {{'Ортофотоплани'|trans}} {{'масштабу'|trans}} 1:2000, ({{'створені в рамках пілотного проекту зі створення прототипу НІГД (JICA, ЦДЗК)'|trans}})
                 </div>
                 <li id='topoUA' class="mdl-menu__item" data-val="topoUA">{{'Топографічна карта України'|trans}}
                     <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">info</i>
