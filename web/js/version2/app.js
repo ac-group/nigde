@@ -1538,12 +1538,14 @@ $(function () {
             window.print();
         });
         map.addControl(overview);
-
+        $('.ol-zoom-in').after('<button class="ol-zoom-all" type="button" id="ol-zoom-all" tabindex="0"><i class="material-icons">language</i></button> ' +
+            '<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-zoom-all">Показати повністю</div>');
         $('.ol-overviewmap button').attr("id", "ol-overviewmap");
         $('.ol-overviewmap button').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-overviewmap" >Оглядова карта</div>');
         $('.ol-zoom-in').attr("id", "ol-zoom-in");
         if ($('.language_container i').text() == "UA") {
         $('.ol-zoom-in').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-zoom-in" >Збільшити</div>');
+
         $('.ol-zoom-out').attr("id", "ol-zoom-out");
         $('.ol-zoom-out').append('<div class="mdl-tooltip main_mdl-tooltip" data-mdl-for="ol-zoom-out" >Зменшити</div>');
     } else {
@@ -1565,6 +1567,21 @@ $(function () {
         $('#main_tt4').on('click', function () {
             $('#main_tt4').toggleClass('active');
             geolocation(map);
+        });
+
+        $('.ol-zoom-all').on('mousedown', function(){
+           $(this).addClass('active');
+        });
+        $('.ol-zoom-all').on('mouseup', function(){
+            $(this).removeClass('active');
+        });
+
+        $('.ol-zoom-all').on('click', function(){
+            var view = new ol.View({
+                center: [3506000, 6125000],
+                zoom: 6
+            });
+            map.setView(view);
         });
 
 

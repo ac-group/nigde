@@ -27,6 +27,7 @@ a:active {
     z-index: 1;
     width: 100%;
     height: 68px;
+    width: 0;
 }
 
 .left_menu i:hover,
@@ -2441,7 +2442,7 @@ tr td {
 
 .ol-zoom.ol-control {
     width: 40px;
-    height: 80px;
+    height: 120px;
 }
 
 .ol-overviewmap-map .ol-overviewmap-box {
@@ -2535,8 +2536,9 @@ tr td {
     text-align: center;
 }
 
+.ol-zoom-all.active,
 .edit_buttons .mdl-button.active i {
-    color: #0f5f9f;
+    color: #0f5f9f !important;
 }
 
 .edit_buttons .mdl-button img.no_active {
@@ -3128,6 +3130,7 @@ textarea {
         position: fixed;
         top: 0;
         z-index: 99;
+
     }
 
     .sub_header.meetings_create {
@@ -3307,7 +3310,7 @@ textarea {
     left: 30px;
     transition: left 1s;
     top: auto;
-    bottom: 415px;
+    bottom: 425px;
 }
 
 .ol-overviewmap {
