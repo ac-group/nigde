@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Clearinghouse</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            
+            body {
+                margin:0;
+                padding:0;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 24px;
+            }
+            p {
+                margin-top: 0;
+                margin-bottom: 5px;
+            }
+            table {
+                border-spacing: 0;
+            }
+
+               #footer {
+    position: fixed; /* Фиксированное положение */
+    left: 0; bottom: 0; /* Левый нижний угол */
+    padding: 10px; /* Поля вокруг текста */
+    background: #9cc960; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    width: 100%; /* Ширина слоя */
+    text-align: center;
+    color: black;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    
+   }
+        </style>
+    </head>
+    <body>
+        <table width="100%" style="height: calc(100vh - 45px);">
+            <tr>
+                <td width="30" style="background-color: #666600; height: 120px;"></td>
+                <td colspan="3" align="center"><p style="color: green; font-size: 34px; margin-top: 10px;">ЗАГАЛЬНА IНФОРМАЦIЯ ПРО КАТАЛОГ МЕТАДАНИХ</p>
+                    <p style="text-decoration:underline; font-size: 30px; font-family: Arial;">Clearinghouse</p>
+                    <p style="font-family: Arial;">Каталог геопросторових даних</p>
+                    <p style="font-family: Arial; font-size: 20px;">Програмний комплекс</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color: #cccc66"></td>
+                <td align="right"><p style="font-weight: bold;">Каталог метаданих НIГД</p>
+                    <p>збереження</p>
+                    <p>редагування</p>
+                    <p>публiкацiя</p>
+                </td>
+                <td width="667" rowspan="2"><img src="images/front.png" height="477" usemap="#frontmap"></td>
+                <td align="left"><p style="font-weight: bold;">Портал геопросторових даних</p>
+                    <p>iнтерактивна карта</p>
+                    
+            </tr>
+            <tr>
+                <td style="background-color: #999900"></td>
+                <td  align="right"><p style="font-weight: bold;">Файлове сховище даних НIГД</p>
+                    <p>збереження</p>
+                    <p>завантаження</p>
+                
+                <td  align="left"><p style="font-weight: bold;">Вiкiпедiя НIГД</p>
+                    <p>довiдкова iнформацiя</p>
+            </tr>    
+       
+        </table>
+          <div id="footer">
+   Каталог метаданних (NSDI Metadata Editor)
+  </div>
+<map name="frontmap">
+  <area shape="poly" coords="2,1,329,3,329,187,217,189,206,216,62,215,60,52,4,46" href="http://geoportal.dzk.gov.ua" alt="GeoPortal">
+   <area shape="poly" coords="341,7,618,4,620,42,614,51,612,221,470,221,470,197,457,186,339,187" href="http://map.dzk.gov.ua" alt="Data Viewer">
+   <area shape="poly" coords="472,226,613,229,612,260,660,267,662,312,616,311,614,416,588,445,338,447,337,261,468,258" href="http://wiki-nsdi.dzk.gov.ua" alt="Wiki">
+   <area shape="poly" coords="63,227,205,229,207,255,331,261,335,447,90,446,62,421" href="http://fs.dzk.gov.ua" alt="File Storage">
+   <area shape="poly" coords="217,195,460,194,465,250,454,253,220,255,213,242" href="front.html" alt="Clearing House">
+</map>
+    </body>
+</html>

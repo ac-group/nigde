@@ -1140,7 +1140,7 @@ $(function () {
         });
 
         var parcelSidebarWms = new ol.source.TileWMS({
-            url: '/dzk',
+            url: '/dzkc',
             params: {
                 'LAYERS': 'kadastr',
                 'ALIAS': 'Кадастровий поділ',

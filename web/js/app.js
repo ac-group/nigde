@@ -1013,7 +1013,7 @@ $(function () {
         });
 
         var wmsSource11 = new ol.source.TileWMS({
-            url: '/dzk',
+            url: '/dzkc',
             params: {
                 'LAYERS': 'kadastr',
                 'VERSION': '1.1.1',
