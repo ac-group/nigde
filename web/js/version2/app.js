@@ -1115,7 +1115,7 @@ $(function () {
         });
 
         var gryntSidebarWms = new ol.source.TileWMS({
-            url: 'http://212.26.144.103/geowebcache/service/wms',
+            url: 'http://map.land.gov.ua/geowebcache/service/wms',
             params: {
                 'LAYERS': 'grunt',
                 'ALIAS': 'Грунти',
